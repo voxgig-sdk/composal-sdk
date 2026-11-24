@@ -352,6 +352,11 @@ main: kit: entity: agent_marketplace: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -480,6 +485,11 @@ main: kit: entity: agent_marketplace: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -532,6 +542,11 @@ main: kit: entity: agent_marketplace: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -832,6 +847,11 @@ main: kit: entity: agent_marketplace: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -898,6 +918,11 @@ main: kit: entity: agent_marketplace: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           s: [
             {
               lit: "api"
@@ -960,6 +985,11 @@ main: kit: entity: agent_marketplace: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

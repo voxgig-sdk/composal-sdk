@@ -105,6 +105,11 @@ main: kit: entity: project_ios_app: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rb: {
             alternatives: [
               {

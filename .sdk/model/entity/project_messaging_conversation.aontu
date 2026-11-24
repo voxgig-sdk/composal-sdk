@@ -174,6 +174,12 @@ main: kit: entity: project_messaging_conversation: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -256,6 +262,12 @@ main: kit: entity: project_messaging_conversation: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -342,6 +354,12 @@ main: kit: entity: project_messaging_conversation: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -419,6 +437,11 @@ main: kit: entity: project_messaging_conversation: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -499,6 +522,12 @@ main: kit: entity: project_messaging_conversation: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -587,6 +616,12 @@ main: kit: entity: project_messaging_conversation: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -673,6 +708,12 @@ main: kit: entity: project_messaging_conversation: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"

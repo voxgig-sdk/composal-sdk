@@ -63,6 +63,11 @@ main: kit: entity: deployment_dashboard_nomad: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

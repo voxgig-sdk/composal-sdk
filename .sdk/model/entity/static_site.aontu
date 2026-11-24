@@ -270,6 +270,11 @@ main: kit: entity: static_site: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -441,6 +446,11 @@ main: kit: entity: static_site: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -494,6 +504,11 @@ main: kit: entity: static_site: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -545,6 +560,11 @@ main: kit: entity: static_site: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -598,6 +618,11 @@ main: kit: entity: static_site: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

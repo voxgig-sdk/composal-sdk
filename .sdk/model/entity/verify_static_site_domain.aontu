@@ -233,6 +233,12 @@ main: kit: entity: verify_static_site_domain: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

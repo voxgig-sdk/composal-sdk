@@ -207,6 +207,11 @@ main: kit: entity: dream: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -388,6 +393,11 @@ main: kit: entity: dream: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

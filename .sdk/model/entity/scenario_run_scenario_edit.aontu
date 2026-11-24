@@ -66,6 +66,8 @@ main: kit: entity: scenario_run_scenario_edit: {
           r: {
             param: {
               id: "run_id"
+              project_id: "project_id"
+              scenario_run_id: "scenario_run_id"
             }
           }
           rs: {
@@ -176,6 +178,8 @@ main: kit: entity: scenario_run_scenario_edit: {
           r: {
             param: {
               id: "run_id"
+              project_id: "project_id"
+              scenario_run_id: "scenario_run_id"
             }
           }
           rs: {
@@ -285,6 +289,8 @@ main: kit: entity: scenario_run_scenario_edit: {
           r: {
             param: {
               id: "run_id"
+              project_id: "project_id"
+              scenario_run_id: "scenario_run_id"
             }
           }
           rs: {

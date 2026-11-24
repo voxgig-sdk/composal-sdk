@@ -105,6 +105,11 @@ main: kit: entity: pages_project_scenario: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

@@ -97,6 +97,7 @@ main: kit: entity: media_file: {
           }
           r: {
             param: {
+              browser_session_id: "browser_session_id"
               file_id: "id"
               id: "media_id"
             }

@@ -53,7 +53,7 @@ func TestVerifyAppDomainEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"create"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "verify_app_domain." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -69,19 +69,36 @@ func TestVerifyAppDomainEntity(t *testing.T) {
 		}
 
 		if setup.live {
-			t.Skip("Live coverage incomplete: the flow has no step to run")
-			return
+			for _, _liveKey := range []string{"app01", "id01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, verify_app_domainEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_VERIFY_APP_DOMAIN_ENTID", _liveKey)
+				}
+			}
 		}
+		client := setup.client
+		_ = client
 
-		// Bootstrap entity data from existing test data (no create step in flow).
-		verifyAppDomainRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.verify_app_domain")))
-		var verifyAppDomainRef01Data map[string]any
-		if len(verifyAppDomainRef01DataRaw) > 0 {
-			verifyAppDomainRef01Data = core.ToMapAny(verifyAppDomainRef01DataRaw[0][1])
+		if setup.live {
+			livePace()
 		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = verifyAppDomainRef01Data
+		// CREATE
+		verifyAppDomainRef01Ent := client.VerifyAppDomain(nil)
+		verifyAppDomainRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath(setup.data, []any{"new", "verify_app_domain"}), "verify_app_domain_ref01"))
+		verifyAppDomainRef01Data["app_id"] = setup.idmap["app01"]
+		verifyAppDomainRef01Data["id"] = setup.idmap["id01"]
+
+		verifyAppDomainRef01DataResult, err := verifyAppDomainRef01Ent.Create(verifyAppDomainRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
+		}
+		verifyAppDomainRef01Data = core.ToMapAny(entityData(verifyAppDomainRef01DataResult))
+		if verifyAppDomainRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
+		if verifyAppDomainRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 	})
 }
@@ -111,7 +128,7 @@ func verify_app_domainBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03"},
+		[]any{"verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03", "id01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

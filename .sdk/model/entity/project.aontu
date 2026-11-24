@@ -516,6 +516,11 @@ main: kit: entity: project: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -1055,6 +1060,11 @@ main: kit: entity: project: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -2122,6 +2132,11 @@ main: kit: entity: project: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -2202,6 +2217,11 @@ main: kit: entity: project: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -2267,6 +2287,11 @@ main: kit: entity: project: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rb: {
             alternatives: [

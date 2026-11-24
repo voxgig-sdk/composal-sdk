@@ -130,6 +130,7 @@ main: kit: entity: scenario_revision: {
           r: {
             param: {
               id: "scenario_id"
+              project_id: "project_id"
             }
           }
           rs: {

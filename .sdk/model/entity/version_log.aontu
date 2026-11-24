@@ -179,6 +179,7 @@ main: kit: entity: version_log: {
           }
           r: {
             param: {
+              binary_id: "binary_id"
               id: "version_id"
             }
           }

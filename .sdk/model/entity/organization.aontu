@@ -360,6 +360,11 @@ main: kit: entity: organization: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -422,6 +427,11 @@ main: kit: entity: organization: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -483,6 +493,11 @@ main: kit: entity: organization: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

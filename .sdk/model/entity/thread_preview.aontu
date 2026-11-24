@@ -83,6 +83,7 @@ main: kit: entity: thread_preview: {
           r: {
             param: {
               id: "agent_id"
+              thread_id: "thread_id"
             }
           }
           rs: {

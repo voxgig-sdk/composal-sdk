@@ -520,6 +520,11 @@ main: kit: entity: browser_session: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -585,6 +590,11 @@ main: kit: entity: browser_session: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

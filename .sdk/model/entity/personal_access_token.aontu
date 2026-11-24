@@ -115,6 +115,11 @@ main: kit: entity: personal_access_token: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

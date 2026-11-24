@@ -68,6 +68,7 @@ main: kit: entity: messaging_conversation_upload: {
           r: {
             param: {
               id: "messaging_conversation_id"
+              project_id: "project_id"
             }
           }
           rb: {

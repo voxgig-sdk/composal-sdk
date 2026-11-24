@@ -154,6 +154,12 @@ main: kit: entity: domain_path_rule: {
               "domain_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -225,6 +231,12 @@ main: kit: entity: domain_path_rule: {
               "app_id"
               "domain_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+            }
           }
           rs: {
             kind: "json"
@@ -305,6 +317,13 @@ main: kit: entity: domain_path_rule: {
               "domain_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -394,6 +413,13 @@ main: kit: entity: domain_path_rule: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -476,6 +502,13 @@ main: kit: entity: domain_path_rule: {
               "domain_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -564,6 +597,13 @@ main: kit: entity: domain_path_rule: {
               "domain_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              domain_id: "domain_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

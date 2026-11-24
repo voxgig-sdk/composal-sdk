@@ -269,6 +269,11 @@ main: kit: entity: member: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -334,6 +339,11 @@ main: kit: entity: member: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -403,6 +413,11 @@ main: kit: entity: member: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

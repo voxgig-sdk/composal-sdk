@@ -154,6 +154,7 @@ main: kit: entity: environment_discovery_run: {
           }
           r: {
             param: {
+              id: "id"
               verify_environment_id: "environment_id"
             }
           }
@@ -334,6 +335,7 @@ main: kit: entity: environment_discovery_run: {
           }
           r: {
             param: {
+              id: "id"
               verify_environment_id: "environment_id"
             }
           }

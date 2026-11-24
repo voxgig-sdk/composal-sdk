@@ -230,6 +230,11 @@ main: kit: entity: product_map_journey: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -412,6 +417,7 @@ main: kit: entity: product_map_journey: {
           r: {
             param: {
               journey_id: "id"
+              project_id: "project_id"
             }
           }
           rs: {

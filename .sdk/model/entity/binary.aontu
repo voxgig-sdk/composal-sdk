@@ -230,6 +230,11 @@ main: kit: entity: binary: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -480,6 +485,11 @@ main: kit: entity: binary: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

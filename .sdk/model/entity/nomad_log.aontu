@@ -177,6 +177,11 @@ main: kit: entity: nomad_log: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

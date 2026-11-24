@@ -136,6 +136,12 @@ main: kit: entity: browser_session_control: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              browser_session_id: "browser_session_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

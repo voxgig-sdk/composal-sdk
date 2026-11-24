@@ -37,7 +37,7 @@ describe("VerifyStaticSiteDomainEntity", function()
     local setup = verify_static_site_domain_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"create"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "verify_static_site_domain." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -51,19 +51,29 @@ describe("VerifyStaticSiteDomainEntity", function()
     end
 
     if setup.live then
-      pending("Live coverage incomplete: the flow has no step to run")
-      return
+      for _, _live_key in ipairs({"id01", "static_site01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_VERIFY_STATIC_SITE_DOMAIN_ENTID")
+        end
+      end
     end
-
     local client = setup.client
 
-    -- Bootstrap entity data from existing test data.
-    local verify_static_site_domain_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.verify_static_site_domain")))
-    local verify_static_site_domain_ref01_data = nil
-    if #verify_static_site_domain_ref01_data_raw > 0 then
-      verify_static_site_domain_ref01_data = helpers.to_map(verify_static_site_domain_ref01_data_raw[1][2])
+    if setup.live then
+      runner.live_pace()
     end
+    -- CREATE
+    local verify_static_site_domain_ref01_ent = client:VerifyStaticSiteDomain(nil)
+    local verify_static_site_domain_ref01_data = helpers.to_map(vs.getprop(
+      vs.getpath(setup.data, "new.verify_static_site_domain"), "verify_static_site_domain_ref01"))
+    verify_static_site_domain_ref01_data["id"] = setup.idmap["id01"]
+    verify_static_site_domain_ref01_data["static_site_id"] = setup.idmap["static_site01"]
+
+    local verify_static_site_domain_ref01_data_result, err = verify_static_site_domain_ref01_ent:create(verify_static_site_domain_ref01_data, nil)
+    assert.is_nil(err)
+    verify_static_site_domain_ref01_data = helpers.to_map(type(verify_static_site_domain_ref01_data_result) == 'table' and verify_static_site_domain_ref01_data_result.data_get and verify_static_site_domain_ref01_data_result:data_get() or verify_static_site_domain_ref01_data_result)
+    assert.is_not_nil(verify_static_site_domain_ref01_data)
+    assert.is_not_nil(verify_static_site_domain_ref01_data["id"])
 
   end)
 end)
@@ -88,7 +98,7 @@ function verify_static_site_domain_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03" },
+    { "verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03", "id01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

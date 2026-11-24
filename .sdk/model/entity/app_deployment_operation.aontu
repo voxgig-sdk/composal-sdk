@@ -448,6 +448,7 @@ main: kit: entity: app_deployment_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               operation_id: "id"
             }
           }
@@ -524,6 +525,7 @@ main: kit: entity: app_deployment_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               operation_id: "id"
             }
           }
@@ -608,6 +610,7 @@ main: kit: entity: app_deployment_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               operation_id: "id"
             }
           }
@@ -684,6 +687,11 @@ main: kit: entity: app_deployment_operation: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -763,6 +771,11 @@ main: kit: entity: app_deployment_operation: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -835,6 +848,7 @@ main: kit: entity: app_deployment_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               operation_id: "id"
             }
           }
@@ -905,6 +919,7 @@ main: kit: entity: app_deployment_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               operation_id: "id"
             }
           }

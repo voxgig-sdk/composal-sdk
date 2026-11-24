@@ -74,6 +74,11 @@ main: kit: entity: product_map_identity_decision: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

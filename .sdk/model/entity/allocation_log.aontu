@@ -158,6 +158,12 @@ main: kit: entity: allocation_log: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              allocation_id: "allocation_id"
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

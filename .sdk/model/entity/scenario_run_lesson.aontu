@@ -87,6 +87,8 @@ main: kit: entity: scenario_run_lesson: {
           r: {
             param: {
               id: "run_id"
+              project_id: "project_id"
+              scenario_run_id: "scenario_run_id"
             }
           }
           rs: {

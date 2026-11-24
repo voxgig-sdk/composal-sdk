@@ -165,4 +165,6 @@ values in Postman.
 - `static_site_deployment` `BasicStaticSiteDeploymentFlow`: the flow creates a record it has no route to remove
 - `thread_preview` `BasicThreadPreviewFlow`: the flow creates a record it has no route to remove
 - `verification_project_scenario` `BasicVerificationProjectScenarioFlow`: the flow creates a record it has no route to remove
+- `verify_app_domain` `BasicVerifyAppDomainFlow`: the flow creates a record it has no route to remove
+- `verify_static_site_domain` `BasicVerifyStaticSiteDomainFlow`: the flow creates a record it has no route to remove
 - `web_bot_auth` `BasicWebBotAuthFlow`: the flow creates a record it has no route to remove

@@ -212,6 +212,11 @@ main: kit: entity: project_fixture: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rb: {
             alternatives: [
               {
@@ -347,6 +352,11 @@ main: kit: entity: project_fixture: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -426,6 +436,12 @@ main: kit: entity: project_fixture: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -516,6 +532,12 @@ main: kit: entity: project_fixture: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -612,6 +634,12 @@ main: kit: entity: project_fixture: {
               "version"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           s: [
             {
               lit: "api"
@@ -697,6 +725,12 @@ main: kit: entity: project_fixture: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"

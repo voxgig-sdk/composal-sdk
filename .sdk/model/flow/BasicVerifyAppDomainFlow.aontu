@@ -12,7 +12,8 @@ main: kit: flow: BasicVerifyAppDomainFlow:
       }
 
       m: {
-        app_id: "app01"
+        app_id: "app01",
+        id: "id01"
       }
 
       o: "create"

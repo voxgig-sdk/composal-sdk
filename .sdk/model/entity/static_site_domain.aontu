@@ -252,6 +252,12 @@ main: kit: entity: static_site_domain: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -314,6 +320,11 @@ main: kit: entity: static_site_domain: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -368,6 +379,11 @@ main: kit: entity: static_site_domain: {
             exist: [
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"
@@ -431,6 +447,12 @@ main: kit: entity: static_site_domain: {
               "id"
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"
@@ -499,6 +521,12 @@ main: kit: entity: static_site_domain: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -564,6 +592,12 @@ main: kit: entity: static_site_domain: {
               "id"
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"
@@ -631,6 +665,12 @@ main: kit: entity: static_site_domain: {
               "id"
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"

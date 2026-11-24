@@ -57,6 +57,12 @@ main: kit: entity: service_endpoint: {
               "service_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              service_id: "service_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -128,6 +134,12 @@ main: kit: entity: service_endpoint: {
               "app_id"
               "service_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              service_id: "service_id"
+            }
           }
           rs: {
             kind: "json"
@@ -208,6 +220,13 @@ main: kit: entity: service_endpoint: {
               "id"
               "service_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+              service_id: "service_id"
+            }
           }
           rs: {
             kind: "json"
@@ -293,6 +312,13 @@ main: kit: entity: service_endpoint: {
               "service_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+              service_id: "service_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -375,6 +401,13 @@ main: kit: entity: service_endpoint: {
               "id"
               "service_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+              service_id: "service_id"
+            }
           }
           rs: {
             kind: "json"
@@ -459,6 +492,13 @@ main: kit: entity: service_endpoint: {
               "id"
               "service_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+              service_id: "service_id"
+            }
           }
           rs: {
             kind: "json"

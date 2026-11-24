@@ -123,6 +123,11 @@ main: kit: entity: me_email: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -262,6 +267,11 @@ main: kit: entity: me_email: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -324,6 +334,11 @@ main: kit: entity: me_email: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -379,6 +394,11 @@ main: kit: entity: me_email: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

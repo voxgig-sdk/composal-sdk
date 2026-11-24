@@ -129,6 +129,7 @@ main: kit: entity: local_thread_delivery: {
             param: {
               delivery_id: "id"
               id: "agent_id"
+              local_thread_id: "local_thread_id"
             }
           }
           rs: {
@@ -236,6 +237,7 @@ main: kit: entity: local_thread_delivery: {
             param: {
               delivery_id: "id"
               id: "agent_id"
+              local_thread_id: "local_thread_id"
             }
           }
           rs: {

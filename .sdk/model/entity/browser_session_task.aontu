@@ -219,6 +219,12 @@ main: kit: entity: browser_session_task: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              browser_session_id: "browser_session_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -307,6 +313,11 @@ main: kit: entity: browser_session_task: {
               "organization_id"
             ]
           }
+          r: {
+            param: {
+              browser_session_id: "browser_session_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -383,6 +394,12 @@ main: kit: entity: browser_session_task: {
               "id"
               "organization_id"
             ]
+          }
+          r: {
+            param: {
+              browser_session_id: "browser_session_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

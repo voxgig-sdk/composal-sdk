@@ -135,6 +135,12 @@ main: kit: entity: cdn_hostname: {
               "cdn_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -206,6 +212,12 @@ main: kit: entity: cdn_hostname: {
               "app_id"
               "cdn_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+            }
           }
           rs: {
             kind: "json"
@@ -286,6 +298,13 @@ main: kit: entity: cdn_hostname: {
               "cdn_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -371,6 +390,13 @@ main: kit: entity: cdn_hostname: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -453,6 +479,13 @@ main: kit: entity: cdn_hostname: {
               "cdn_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -537,6 +570,13 @@ main: kit: entity: cdn_hostname: {
               "cdn_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              cdn_id: "cdn_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

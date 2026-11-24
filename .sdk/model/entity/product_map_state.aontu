@@ -236,6 +236,11 @@ main: kit: entity: product_map_state: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -415,6 +420,7 @@ main: kit: entity: product_map_state: {
           }
           r: {
             param: {
+              project_id: "project_id"
               state_id: "id"
             }
           }

@@ -257,6 +257,11 @@ main: kit: entity: app: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -311,6 +316,11 @@ main: kit: entity: app: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -589,6 +599,11 @@ main: kit: entity: app: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -654,6 +669,11 @@ main: kit: entity: app: {
               "id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -708,6 +728,11 @@ main: kit: entity: app: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -773,6 +798,11 @@ main: kit: entity: app: {
             exist: [
               "id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

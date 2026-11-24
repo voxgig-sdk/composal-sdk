@@ -233,6 +233,12 @@ main: kit: entity: binary_version: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              binary_id: "binary_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -327,6 +333,12 @@ main: kit: entity: binary_version: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              binary_id: "binary_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -425,6 +437,11 @@ main: kit: entity: binary_version: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              binary_id: "binary_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -517,6 +534,11 @@ main: kit: entity: binary_version: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              binary_id: "binary_id"
+            }
           }
           rs: {
             kind: "json"
@@ -614,6 +636,12 @@ main: kit: entity: binary_version: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              binary_id: "binary_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -708,6 +736,12 @@ main: kit: entity: binary_version: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              binary_id: "binary_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

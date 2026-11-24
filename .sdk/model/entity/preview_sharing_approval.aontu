@@ -150,6 +150,7 @@ main: kit: entity: preview_sharing_approval: {
           }
           r: {
             param: {
+              app_id: "app_id"
               id: "preview_id"
             }
           }
@@ -227,6 +228,7 @@ main: kit: entity: preview_sharing_approval: {
           }
           r: {
             param: {
+              app_id: "app_id"
               id: "preview_id"
             }
           }

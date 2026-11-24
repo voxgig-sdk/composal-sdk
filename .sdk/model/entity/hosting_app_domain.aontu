@@ -282,6 +282,12 @@ main: kit: entity: hosting_app_domain: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -351,6 +357,12 @@ main: kit: entity: hosting_app_domain: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -418,6 +430,11 @@ main: kit: entity: hosting_app_domain: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -488,6 +505,11 @@ main: kit: entity: hosting_app_domain: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -553,6 +575,12 @@ main: kit: entity: hosting_app_domain: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -624,6 +652,12 @@ main: kit: entity: hosting_app_domain: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -692,6 +726,12 @@ main: kit: entity: hosting_app_domain: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -762,6 +802,12 @@ main: kit: entity: hosting_app_domain: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

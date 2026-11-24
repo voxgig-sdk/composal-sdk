@@ -45,6 +45,7 @@ main: kit: entity: deployment_file: {
           r: {
             param: {
               id: "deployment_id"
+              static_site_id: "static_site_id"
             }
           }
           rs: {

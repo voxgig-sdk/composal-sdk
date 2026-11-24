@@ -141,6 +141,11 @@ main: kit: entity: pages_project_run: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

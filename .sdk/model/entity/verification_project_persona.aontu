@@ -261,6 +261,12 @@ main: kit: entity: verification_project_persona: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -342,6 +348,11 @@ main: kit: entity: verification_project_persona: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -413,6 +424,11 @@ main: kit: entity: verification_project_persona: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -493,6 +509,12 @@ main: kit: entity: verification_project_persona: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -586,6 +608,12 @@ main: kit: entity: verification_project_persona: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -671,6 +699,12 @@ main: kit: entity: verification_project_persona: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -763,6 +797,12 @@ main: kit: entity: verification_project_persona: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"

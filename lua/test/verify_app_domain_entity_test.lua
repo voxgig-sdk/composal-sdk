@@ -37,7 +37,7 @@ describe("VerifyAppDomainEntity", function()
     local setup = verify_app_domain_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({}) do
+    for _, _op in ipairs({"create"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "verify_app_domain." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -51,19 +51,29 @@ describe("VerifyAppDomainEntity", function()
     end
 
     if setup.live then
-      pending("Live coverage incomplete: the flow has no step to run")
-      return
+      for _, _live_key in ipairs({"app01", "id01"}) do
+        if setup.synthetic_only or setup.idmap[_live_key] == nil then
+          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_VERIFY_APP_DOMAIN_ENTID")
+        end
+      end
     end
-
     local client = setup.client
 
-    -- Bootstrap entity data from existing test data.
-    local verify_app_domain_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.verify_app_domain")))
-    local verify_app_domain_ref01_data = nil
-    if #verify_app_domain_ref01_data_raw > 0 then
-      verify_app_domain_ref01_data = helpers.to_map(verify_app_domain_ref01_data_raw[1][2])
+    if setup.live then
+      runner.live_pace()
     end
+    -- CREATE
+    local verify_app_domain_ref01_ent = client:VerifyAppDomain(nil)
+    local verify_app_domain_ref01_data = helpers.to_map(vs.getprop(
+      vs.getpath(setup.data, "new.verify_app_domain"), "verify_app_domain_ref01"))
+    verify_app_domain_ref01_data["app_id"] = setup.idmap["app01"]
+    verify_app_domain_ref01_data["id"] = setup.idmap["id01"]
+
+    local verify_app_domain_ref01_data_result, err = verify_app_domain_ref01_ent:create(verify_app_domain_ref01_data, nil)
+    assert.is_nil(err)
+    verify_app_domain_ref01_data = helpers.to_map(type(verify_app_domain_ref01_data_result) == 'table' and verify_app_domain_ref01_data_result.data_get and verify_app_domain_ref01_data_result:data_get() or verify_app_domain_ref01_data_result)
+    assert.is_not_nil(verify_app_domain_ref01_data)
+    assert.is_not_nil(verify_app_domain_ref01_data["id"])
 
   end)
 end)
@@ -88,7 +98,7 @@ function verify_app_domain_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03" },
+    { "verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03", "id01" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

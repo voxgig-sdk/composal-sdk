@@ -64,19 +64,25 @@ const utility_1 = require("../../utility");
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE;
-        for (const op of []) {
+        for (const op of ['create']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'verify_app_domain.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "verify_app_domain", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "app_id", "or": "app_id", "r": true, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "POST", "o": "/api/v1/hosting/apps/{app_id}/domains/{id}/verify", "q": { "exist": ["app_id", "id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "hosting" }, { "lit": "apps" }, { "var": "app_id" }, { "lit": "domains" }, { "var": "id" }, { "lit": "verify" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [["$.main.kit.entity.app"]] }, "key$": "verify_app_domain", "name__orig": "verify_app_domain", "Name": "VerifyAppDomain", "name_": "verify_app_domain", "name-": "verify-app-domain", "NAME": "VERIFY_APP_DOMAIN", "index$": 208 }, { "active": true, "entity": "verify_app_domain", "key$": "BasicVerifyAppDomainFlow", "kind": "basic", "name": "BasicVerifyAppDomainFlow", "param": {}, "step": [{ "a": false, "d": {}, "i": { "ref": "verify_app_domain_ref01" }, "m": { "app_id": "app01" }, "o": "create", "s": [], "v": [], "unreachable": true }] }, 'VerifyAppDomain', { "POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [{ "name": "app_id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }, { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 1 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "verify_app_domain.create.0": "GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "verify_app_domain", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "app_id", "or": "app_id", "r": true, "t": "`$STRING`", "index$": 0 }, { "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 1 }] }, "k": "http", "m": "POST", "o": "/api/v1/hosting/apps/{app_id}/domains/{id}/verify", "q": { "exist": ["app_id", "id"] }, "r": { "param": { "app_id": "app_id", "id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "hosting" }, { "lit": "apps" }, { "var": "app_id" }, { "lit": "domains" }, { "var": "id" }, { "lit": "verify" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [["$.main.kit.entity.app"]] }, "key$": "verify_app_domain", "name__orig": "verify_app_domain", "Name": "VerifyAppDomain", "name_": "verify_app_domain", "name-": "verify-app-domain", "NAME": "VERIFY_APP_DOMAIN", "index$": 208 }, { "active": true, "entity": "verify_app_domain", "key$": "BasicVerifyAppDomainFlow", "kind": "basic", "name": "BasicVerifyAppDomainFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "verify_app_domain_ref01" }, "m": { "app_id": "app01", "id": "id01" }, "o": "create", "s": [], "v": [], "index$": 0 }] }, 'VerifyAppDomain', { "POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [{ "name": "app_id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }, { "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 1 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "verify_app_domain.create.0": "GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
-        let verify_app_domain_ref01_data = Object.values(setup.data.existing.verify_app_domain)[0];
+        // CREATE
+        const verify_app_domain_ref01_ent = client.VerifyAppDomain();
+        let verify_app_domain_ref01_data = setup.data.new.verify_app_domain['verify_app_domain_ref01'];
+        verify_app_domain_ref01_data['app_id'] = setup.idmap['app01'];
+        verify_app_domain_ref01_data['id'] = setup.idmap['id01'];
+        verify_app_domain_ref01_data = (await verify_app_domain_ref01_ent.create(verify_app_domain_ref01_data)).data();
+        (0, node_assert_1.default)(null != verify_app_domain_ref01_data.id);
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live
@@ -98,7 +104,7 @@ function basicSetup(extra) {
     const struct = client.utility().struct;
     const merge = struct.merge;
     const transform = struct.transform;
-    let idmap = transform(['verify_app_domain01', 'verify_app_domain02', 'verify_app_domain03', 'app01', 'app02', 'app03'], {
+    let idmap = transform(['verify_app_domain01', 'verify_app_domain02', 'verify_app_domain03', 'app01', 'app02', 'app03', 'id01'], {
         '`$PACK`': ['', {
                 '`$KEY`': '`$COPY`',
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']

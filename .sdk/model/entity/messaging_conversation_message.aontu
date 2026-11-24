@@ -179,6 +179,7 @@ main: kit: entity: messaging_conversation_message: {
             param: {
               id: "messaging_conversation_id"
               message_id: "id"
+              project_id: "project_id"
             }
           }
           rs: {
@@ -280,6 +281,7 @@ main: kit: entity: messaging_conversation_message: {
           r: {
             param: {
               id: "messaging_conversation_id"
+              project_id: "project_id"
             }
           }
           rs: {

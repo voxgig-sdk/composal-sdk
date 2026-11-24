@@ -239,6 +239,12 @@ main: kit: entity: app_data_resource: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -307,6 +313,12 @@ main: kit: entity: app_data_resource: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -388,6 +400,12 @@ main: kit: entity: app_data_resource: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -457,6 +475,12 @@ main: kit: entity: app_data_resource: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -525,6 +549,12 @@ main: kit: entity: app_data_resource: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -597,6 +627,11 @@ main: kit: entity: app_data_resource: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -654,6 +689,11 @@ main: kit: entity: app_data_resource: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -720,6 +760,12 @@ main: kit: entity: app_data_resource: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -791,6 +837,12 @@ main: kit: entity: app_data_resource: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -859,6 +911,12 @@ main: kit: entity: app_data_resource: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -929,6 +987,12 @@ main: kit: entity: app_data_resource: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

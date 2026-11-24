@@ -45,7 +45,7 @@ class VerifyAppDomainEntityTest extends TestCase
         $setup = verify_app_domain_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach ([] as $_op) {
+        foreach (["create"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "verify_app_domain." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -58,18 +58,28 @@ class VerifyAppDomainEntityTest extends TestCase
         }
 
         if (!empty($setup["live"])) {
-            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+            foreach (["app01", "id01"] as $_liveKey) {
+                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
+                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_VERIFY_APP_DOMAIN_ENTID");
+                }
+            }
         }
-
         $client = $setup["client"];
 
-        // Bootstrap entity data from existing test data.
-        $verify_app_domain_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.verify_app_domain")));
-        $verify_app_domain_ref01_data = null;
-        if (count($verify_app_domain_ref01_data_raw) > 0) {
-            $verify_app_domain_ref01_data = Helpers::to_map($verify_app_domain_ref01_data_raw[0][1]);
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
         }
+        // CREATE
+        $verify_app_domain_ref01_ent = $client->VerifyAppDomain(null);
+        $verify_app_domain_ref01_data = Helpers::to_map(Vs::getprop(
+            Vs::getpath($setup["data"], "new.verify_app_domain"), "verify_app_domain_ref01"));
+        $verify_app_domain_ref01_data["app_id"] = $setup["idmap"]["app01"];
+        $verify_app_domain_ref01_data["id"] = $setup["idmap"]["id01"];
+
+        $verify_app_domain_ref01_data_result = $verify_app_domain_ref01_ent->create($verify_app_domain_ref01_data, null);
+        $verify_app_domain_ref01_data = Helpers::to_map(is_object($verify_app_domain_ref01_data_result) && method_exists($verify_app_domain_ref01_data_result, 'data_get') ? $verify_app_domain_ref01_data_result->data_get() : $verify_app_domain_ref01_data_result);
+        $this->assertNotNull($verify_app_domain_ref01_data);
+        $this->assertNotNull($verify_app_domain_ref01_data["id"]);
 
     }
 }
@@ -89,7 +99,7 @@ function verify_app_domain_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03"] as $k) {
+    foreach (["verify_app_domain01", "verify_app_domain02", "verify_app_domain03", "app01", "app02", "app03", "id01"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

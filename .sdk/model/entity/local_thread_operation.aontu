@@ -165,6 +165,7 @@ main: kit: entity: local_thread_operation: {
           r: {
             param: {
               id: "agent_id"
+              local_thread_id: "local_thread_id"
             }
           }
           rs: {
@@ -264,6 +265,7 @@ main: kit: entity: local_thread_operation: {
           r: {
             param: {
               id: "agent_id"
+              local_thread_id: "local_thread_id"
               operation_id: "id"
             }
           }

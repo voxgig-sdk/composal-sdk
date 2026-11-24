@@ -297,6 +297,12 @@ main: kit: entity: static_site_deployment: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -362,6 +368,12 @@ main: kit: entity: static_site_deployment: {
               "id"
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"
@@ -429,6 +441,12 @@ main: kit: entity: static_site_deployment: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -486,6 +504,11 @@ main: kit: entity: static_site_deployment: {
               "static_site_id"
             ]
           }
+          r: {
+            param: {
+              static_site_id: "static_site_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -540,6 +563,11 @@ main: kit: entity: static_site_deployment: {
             exist: [
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"
@@ -603,6 +631,12 @@ main: kit: entity: static_site_deployment: {
               "id"
               "static_site_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              static_site_id: "static_site_id"
+            }
           }
           rs: {
             kind: "json"

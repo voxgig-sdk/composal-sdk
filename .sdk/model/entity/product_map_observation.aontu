@@ -186,6 +186,7 @@ main: kit: entity: product_map_observation: {
           r: {
             param: {
               observation_id: "id"
+              project_id: "project_id"
             }
           }
           rs: {
@@ -363,6 +364,7 @@ main: kit: entity: product_map_observation: {
           r: {
             param: {
               observation_id: "id"
+              project_id: "project_id"
             }
           }
           rs: {

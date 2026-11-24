@@ -486,6 +486,12 @@ main: kit: entity: environment_exploration: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              environment_id: "environment_id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

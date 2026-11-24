@@ -43,6 +43,7 @@ main: kit: entity: preview_operation: {
           }
           r: {
             param: {
+              app_id: "app_id"
               id: "preview_id"
             }
           }

@@ -57,6 +57,12 @@ main: kit: entity: verify_app_domain: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

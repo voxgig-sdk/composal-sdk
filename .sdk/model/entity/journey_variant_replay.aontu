@@ -228,6 +228,7 @@ main: kit: entity: journey_variant_replay: {
           }
           r: {
             param: {
+              project_id: "project_id"
               variant_id: "journey_variant_id"
             }
           }

@@ -43,6 +43,11 @@ main: kit: entity: project_product_map: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -204,6 +209,11 @@ main: kit: entity: project_product_map: {
               "target"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -350,6 +360,11 @@ main: kit: entity: project_product_map: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -485,6 +500,11 @@ main: kit: entity: project_product_map: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -630,6 +650,11 @@ main: kit: entity: project_product_map: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -779,6 +804,11 @@ main: kit: entity: project_product_map: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -849,6 +879,11 @@ main: kit: entity: project_product_map: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"

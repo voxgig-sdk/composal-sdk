@@ -445,6 +445,12 @@ main: kit: entity: app_deployment: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -514,6 +520,12 @@ main: kit: entity: app_deployment: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -582,6 +594,12 @@ main: kit: entity: app_deployment: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -657,6 +675,11 @@ main: kit: entity: app_deployment: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -714,6 +737,11 @@ main: kit: entity: app_deployment: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -784,6 +812,7 @@ main: kit: entity: app_deployment: {
           }
           r: {
             param: {
+              app_id: "app_id"
               deployment_id: "id"
             }
           }
@@ -853,6 +882,12 @@ main: kit: entity: app_deployment: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -924,6 +959,12 @@ main: kit: entity: app_deployment: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -992,6 +1033,12 @@ main: kit: entity: app_deployment: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -1062,6 +1109,12 @@ main: kit: entity: app_deployment: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

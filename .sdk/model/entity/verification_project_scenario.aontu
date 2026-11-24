@@ -388,6 +388,12 @@ main: kit: entity: verification_project_scenario: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -474,6 +480,12 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -566,6 +578,11 @@ main: kit: entity: verification_project_scenario: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -639,6 +656,11 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -715,6 +737,11 @@ main: kit: entity: verification_project_scenario: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -789,6 +816,11 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -869,6 +901,12 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -952,6 +990,11 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"
@@ -1055,6 +1098,12 @@ main: kit: entity: verification_project_scenario: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -1156,6 +1205,12 @@ main: kit: entity: verification_project_scenario: {
               "organization_id"
               "project_id"
             ]
+          }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
           }
           rs: {
             kind: "json"

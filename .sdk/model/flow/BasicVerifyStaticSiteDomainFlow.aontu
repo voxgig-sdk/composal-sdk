@@ -12,6 +12,7 @@ main: kit: flow: BasicVerifyStaticSiteDomainFlow:
       }
 
       m: {
+        id: "id01",
         static_site_id: "static_site01"
       }
 

@@ -34,7 +34,7 @@ class VerifyStaticSiteDomainEntityTest < Minitest::Test
     setup = verify_static_site_domain_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    [].each do |_op|
+    ["create"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "verify_static_site_domain." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -47,18 +47,26 @@ class VerifyStaticSiteDomainEntityTest < Minitest::Test
     end
 
     if setup[:live]
-      skip("Live coverage incomplete: the flow has no step to run")
+      ["id01", "static_site01"].each do |_live_key|
+        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_VERIFY_STATIC_SITE_DOMAIN_ENTID")
+        end
+      end
     end
-
     client = setup[:client]
 
-    # Bootstrap entity data from existing test data.
-    verify_static_site_domain_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.verify_static_site_domain")))
-    verify_static_site_domain_ref01_data = nil
-    if verify_static_site_domain_ref01_data_raw.length > 0
-      verify_static_site_domain_ref01_data = Helpers.to_map(verify_static_site_domain_ref01_data_raw[0][1])
-    end
+    Runner.live_pace if setup[:live]
+    # CREATE
+    verify_static_site_domain_ref01_ent = client.VerifyStaticSiteDomain(nil)
+    verify_static_site_domain_ref01_data = Helpers.to_map(Vs.getprop(
+      Vs.getpath(setup[:data], "new.verify_static_site_domain"), "verify_static_site_domain_ref01"))
+    verify_static_site_domain_ref01_data["id"] = setup[:idmap]["id01"]
+    verify_static_site_domain_ref01_data["static_site_id"] = setup[:idmap]["static_site01"]
+
+    verify_static_site_domain_ref01_data_result = verify_static_site_domain_ref01_ent.create(verify_static_site_domain_ref01_data, nil)
+    verify_static_site_domain_ref01_data = Helpers.to_map(verify_static_site_domain_ref01_data_result.respond_to?(:data_get) ? verify_static_site_domain_ref01_data_result.data_get : verify_static_site_domain_ref01_data_result)
+    assert !verify_static_site_domain_ref01_data.nil?
+    assert !verify_static_site_domain_ref01_data["id"].nil?
 
   end
 end
@@ -77,7 +85,7 @@ def verify_static_site_domain_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03"],
+    ["verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03", "id01"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

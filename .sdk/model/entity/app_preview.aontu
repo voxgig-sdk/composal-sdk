@@ -149,6 +149,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -220,6 +226,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -293,6 +305,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -361,6 +379,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -432,6 +456,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -505,6 +535,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -576,6 +612,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -649,6 +691,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -716,6 +764,11 @@ main: kit: entity: app_preview: {
               "app_id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -773,6 +826,11 @@ main: kit: entity: app_preview: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -840,6 +898,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -904,6 +968,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -973,6 +1043,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -1032,6 +1108,11 @@ main: kit: entity: app_preview: {
             exist: [
               "app_id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+            }
           }
           rs: {
             kind: "json"
@@ -1112,6 +1193,12 @@ main: kit: entity: app_preview: {
               "id"
             ]
           }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -1180,6 +1267,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"
@@ -1250,6 +1343,12 @@ main: kit: entity: app_preview: {
               "app_id"
               "id"
             ]
+          }
+          r: {
+            param: {
+              app_id: "app_id"
+              id: "id"
+            }
           }
           rs: {
             kind: "json"

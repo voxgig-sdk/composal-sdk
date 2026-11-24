@@ -46,7 +46,7 @@ class TestVerifyStaticSiteDomainEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in []:
+        for _op in ["create"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "verify_static_site_domain." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -56,16 +56,23 @@ class TestVerifyStaticSiteDomainEntity:
             pytest.skip("Live coverage incomplete: verify_static_site_domain.create.0 excluded (GET-only live run: needs POST /api/v1/static_sites/{static_site_id}/domains/{id}/verify)")
 
         if setup["live"]:
-            pytest.skip("Live coverage incomplete: the flow has no step to run")
-
+            for _live_key in ["id01", "static_site01"]:
+                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_VERIFY_STATIC_SITE_DOMAIN_ENTID")
         client = setup["client"]
 
-        # Bootstrap entity data from existing test data.
-        verify_static_site_domain_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.verify_static_site_domain")))
-        verify_static_site_domain_ref01_data = None
-        if len(verify_static_site_domain_ref01_data_raw) > 0:
-            verify_static_site_domain_ref01_data = helpers.to_map(verify_static_site_domain_ref01_data_raw[0][1])
+        if setup["live"]:
+            runner.live_pace()
+        # CREATE
+        verify_static_site_domain_ref01_ent = client.VerifyStaticSiteDomain(None)
+        verify_static_site_domain_ref01_data = helpers.to_map(vs.getprop(
+            vs.getpath(setup["data"], "new.verify_static_site_domain"), "verify_static_site_domain_ref01"))
+        verify_static_site_domain_ref01_data["id"] = setup["idmap"]["id01"]
+        verify_static_site_domain_ref01_data["static_site_id"] = setup["idmap"]["static_site01"]
+
+        verify_static_site_domain_ref01_data = helpers.to_map(runner.entity_data(verify_static_site_domain_ref01_ent.create(verify_static_site_domain_ref01_data, None)))
+        assert verify_static_site_domain_ref01_data is not None
+        assert verify_static_site_domain_ref01_data["id"] is not None
 
 
 
@@ -85,7 +92,7 @@ def _verify_static_site_domain_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03"],
+        ["verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03", "id01"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

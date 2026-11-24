@@ -53,7 +53,7 @@ func TestVerifyStaticSiteDomainEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{} {
+		for _, _op := range []string{"create"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "verify_static_site_domain." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -69,19 +69,36 @@ func TestVerifyStaticSiteDomainEntity(t *testing.T) {
 		}
 
 		if setup.live {
-			t.Skip("Live coverage incomplete: the flow has no step to run")
-			return
+			for _, _liveKey := range []string{"id01", "static_site01"} {
+				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
+					liveMiss(t, verify_static_site_domainEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_VERIFY_STATIC_SITE_DOMAIN_ENTID", _liveKey)
+				}
+			}
 		}
+		client := setup.client
+		_ = client
 
-		// Bootstrap entity data from existing test data (no create step in flow).
-		verifyStaticSiteDomainRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.verify_static_site_domain")))
-		var verifyStaticSiteDomainRef01Data map[string]any
-		if len(verifyStaticSiteDomainRef01DataRaw) > 0 {
-			verifyStaticSiteDomainRef01Data = core.ToMapAny(verifyStaticSiteDomainRef01DataRaw[0][1])
+		if setup.live {
+			livePace()
 		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = verifyStaticSiteDomainRef01Data
+		// CREATE
+		verifyStaticSiteDomainRef01Ent := client.VerifyStaticSiteDomain(nil)
+		verifyStaticSiteDomainRef01Data := core.ToMapAny(vs.GetProp(
+			vs.GetPath(setup.data, []any{"new", "verify_static_site_domain"}), "verify_static_site_domain_ref01"))
+		verifyStaticSiteDomainRef01Data["id"] = setup.idmap["id01"]
+		verifyStaticSiteDomainRef01Data["static_site_id"] = setup.idmap["static_site01"]
+
+		verifyStaticSiteDomainRef01DataResult, err := verifyStaticSiteDomainRef01Ent.Create(verifyStaticSiteDomainRef01Data, nil)
+		if err != nil {
+			t.Fatalf("create failed: %v", err)
+		}
+		verifyStaticSiteDomainRef01Data = core.ToMapAny(entityData(verifyStaticSiteDomainRef01DataResult))
+		if verifyStaticSiteDomainRef01Data == nil {
+			t.Fatal("expected create result to be a map")
+		}
+		if verifyStaticSiteDomainRef01Data["id"] == nil {
+			t.Fatal("expected created entity to have an id")
+		}
 
 	})
 }
@@ -111,7 +128,7 @@ func verify_static_site_domainBasicSetup(extra map[string]any) *entityTestSetup 
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03"},
+		[]any{"verify_static_site_domain01", "verify_static_site_domain02", "verify_static_site_domain03", "static_site01", "static_site02", "static_site03", "id01"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

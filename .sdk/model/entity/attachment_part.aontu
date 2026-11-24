@@ -86,6 +86,7 @@ main: kit: entity: attachment_part: {
           }
           r: {
             param: {
+              attachment_id: "attachment_id"
               id: "agent_id"
               index: "id"
             }

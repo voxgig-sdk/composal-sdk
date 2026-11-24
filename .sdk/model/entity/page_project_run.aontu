@@ -184,6 +184,12 @@ main: kit: entity: page_project_run: {
               "project_id"
             ]
           }
+          r: {
+            param: {
+              id: "id"
+              project_id: "project_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"

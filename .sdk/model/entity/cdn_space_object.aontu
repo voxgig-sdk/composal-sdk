@@ -48,6 +48,11 @@ main: kit: entity: cdn_space_object: {
               "cdn_space_id"
             ]
           }
+          r: {
+            param: {
+              cdn_space_id: "cdn_space_id"
+            }
+          }
           rs: {
             kind: "json"
             media: "application/json"
@@ -113,6 +118,7 @@ main: kit: entity: cdn_space_object: {
           }
           r: {
             param: {
+              cdn_space_id: "cdn_space_id"
               path: "id"
             }
           }
@@ -184,6 +190,7 @@ main: kit: entity: cdn_space_object: {
           }
           r: {
             param: {
+              cdn_space_id: "cdn_space_id"
               path: "id"
             }
           }
@@ -245,6 +252,11 @@ main: kit: entity: cdn_space_object: {
             exist: [
               "cdn_space_id"
             ]
+          }
+          r: {
+            param: {
+              cdn_space_id: "cdn_space_id"
+            }
           }
           rs: {
             kind: "json"

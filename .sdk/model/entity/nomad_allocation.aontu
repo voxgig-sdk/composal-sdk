@@ -229,6 +229,7 @@ main: kit: entity: nomad_allocation: {
           r: {
             param: {
               allocation_id: "id"
+              app_id: "app_id"
             }
           }
           rs: {
