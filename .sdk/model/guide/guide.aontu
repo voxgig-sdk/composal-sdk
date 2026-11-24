@@ -45,7 +45,7 @@ guide: entity: {
   # admin_org
   admin_org: path: {
     "/api/v1/admin/organizations": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/admin/organizations/{org_slug}": {
@@ -318,6 +318,7 @@ guide: entity: {
   agent_app: path: {
     "/api/v1/organizations/{organization_id}/agent_apps": {
       op: list: method: GET
+      op: list: transform: res: "`body.items`"
     }
     "/api/v1/organizations/{organization_id}/agent_apps/{id}": {
       rename: param: "id": "id"
@@ -658,7 +659,7 @@ guide: entity: {
   agent_event: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/events": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -682,7 +683,7 @@ guide: entity: {
   # agent_integration
   agent_integration: path: {
     "/api/v1/organizations/{organization_id}/agent_integrations": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.connection`"
     }
@@ -961,7 +962,7 @@ guide: entity: {
   agent_repository: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment": {
@@ -1055,7 +1056,7 @@ guide: entity: {
       rename: param: "agent_session_id": "agent_session_id"
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}": {
@@ -1106,7 +1107,7 @@ guide: entity: {
   agent_setting: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/settings": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
       op: patch: method: PATCH
     }
   }
@@ -1147,8 +1148,9 @@ guide: entity: {
   # agent_skill
   agent_skill: path: {
     "/api/v1/organizations/{organization_id}/agent_skills": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
+      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/agent_skills/marketplace": {
       action: "marketplace": {}
@@ -1200,7 +1202,7 @@ guide: entity: {
   agent_subscription: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -1260,7 +1262,7 @@ guide: entity: {
   # agent_thread
   agent_thread: path: {
     "/api/v1/agent/threads": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/agent/threads/{id}": {
@@ -1298,6 +1300,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects": {
       rename: param: "id": "agent_id"
       op: list: method: GET
+      op: list: transform: res: "`body.verify_projects`"
       op: update: method: PUT
     }
   }
@@ -1315,7 +1318,7 @@ guide: entity: {
   # agent_web_preview
   agent_web_preview: path: {
     "/api/v1/agent_web_previews": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -1347,7 +1350,7 @@ guide: entity: {
   agent_workflow: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
       op: patch: method: PATCH
       op: create: method: POST
     }
@@ -1496,6 +1499,7 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/pages/agreements": {
       rename: param: "org_slug": "organization_id"
       op: list: method: GET
+      op: list: transform: res: "`body.agreements`"
     }
   }
 
@@ -1511,7 +1515,7 @@ guide: entity: {
     "/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events": {
       rename: param: "alert_rule_id": "alert_rule_id"
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}": {
@@ -1549,7 +1553,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs": {
       rename: param: "allocation_id": "allocation_id"
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -1609,7 +1613,7 @@ guide: entity: {
   # app_access_jwk
   app_access_jwk: path: {
     "/api/v1/app_access/jwks": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -1617,7 +1621,7 @@ guide: entity: {
   app_cdn: path: {
     "/api/v1/hosting/apps/{app_id}/cdns": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.cdn`"
     }
@@ -1679,7 +1683,7 @@ guide: entity: {
   app_config_variable: path: {
     "/api/v1/hosting/apps/{app_id}/config_variables": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.config_variable`"
     }
@@ -1711,7 +1715,7 @@ guide: entity: {
   app_data_resource: path: {
     "/api/v1/hosting/apps/{app_id}/data_resources": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.data_resource`"
     }
@@ -1769,7 +1773,7 @@ guide: entity: {
   app_deployment: path: {
     "/api/v1/hosting/apps/{app_id}/deployments": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
@@ -1873,7 +1877,7 @@ guide: entity: {
   app_environment: path: {
     "/api/v1/hosting/apps/{app_id}/environments": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.environment`"
     }
@@ -1939,7 +1943,7 @@ guide: entity: {
   app_preview: path: {
     "/api/v1/hosting/apps/{app_id}/previews": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.preview`"
     }
@@ -2024,7 +2028,7 @@ guide: entity: {
   app_preview_profile: path: {
     "/api/v1/hosting/apps/{app_id}/preview_profiles": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.profile`"
     }
@@ -2042,7 +2046,7 @@ guide: entity: {
   # app_run
   app_run: path: {
     "/api/v1/hosting/app_runs": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/app_runs/{id}": {
@@ -2100,7 +2104,7 @@ guide: entity: {
   app_service: path: {
     "/api/v1/hosting/apps/{app_id}/services": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.service`"
     }
@@ -2141,7 +2145,7 @@ guide: entity: {
   app_service_binding: path: {
     "/api/v1/hosting/apps/{app_id}/service_bindings": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/service_bindings/{id}": {
@@ -2191,7 +2195,7 @@ guide: entity: {
   app_storage_resource: path: {
     "/api/v1/hosting/apps/{app_id}/storage_resources": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.storage_resource`"
     }
@@ -2297,9 +2301,8 @@ guide: entity: {
   # artifact
   artifact: path: {
     "/api/v1/artifacts/artifacts": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
-      op: load: active: false
     }
     "/api/v1/artifacts/artifacts/{id}": {
       rename: param: "id": "id"
@@ -2351,7 +2354,7 @@ guide: entity: {
   # artifact_cache_namespace
   artifact_cache_namespace: path: {
     "/api/v1/artifacts/cache_namespaces": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/artifacts/cache_namespaces/{id}": {
@@ -2381,7 +2384,7 @@ guide: entity: {
   # artifact_image_repository
   artifact_image_repository: path: {
     "/api/v1/artifacts/image_repositories": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/artifacts/image_repositories/{id}": {
@@ -2416,7 +2419,7 @@ guide: entity: {
   # artifact_package_mirror
   artifact_package_mirror: path: {
     "/api/v1/artifacts/package_mirrors": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/artifacts/package_mirrors/{id}": {
@@ -2446,7 +2449,7 @@ guide: entity: {
   # artifact_retention_policy
   artifact_retention_policy: path: {
     "/api/v1/artifacts/retention_policies": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/artifacts/retention_policies/{id}": {
@@ -2580,7 +2583,7 @@ guide: entity: {
   # auth_registration_option
   auth_registration_option: path: {
     "/api/v1/auth/registration_options": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -2606,7 +2609,7 @@ guide: entity: {
   backend_runner_pool: path: {
     "/api/v1/bazel/backends/{backend_id}/runner_pools": {
       rename: param: "backend_id": "backend_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/bazel/backends/{backend_id}/runner_pools/{id}": {
@@ -2654,7 +2657,7 @@ guide: entity: {
   # bazel_backend
   bazel_backend: path: {
     "/api/v1/bazel/backends": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/bazel/backends/{id}": {
@@ -2872,6 +2875,7 @@ guide: entity: {
   binary: path: {
     "/api/v1/organizations/{organization_id}/verify/binaries": {
       op: list: method: GET
+      op: list: transform: res: "`body.binaries`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{id}": {
@@ -3036,7 +3040,7 @@ guide: entity: {
   cache_namespace_entry: path: {
     "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries": {
       rename: param: "cache_namespace_id": "cache_namespace_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}": {
@@ -3087,7 +3091,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments": {
       rename: param: "app_id": "app_id"
       rename: param: "cdn_id": "cdn_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}": {
@@ -3103,7 +3107,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
       rename: param: "app_id": "app_id"
       rename: param: "cdn_id": "cdn_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.hostname`"
     }
@@ -3139,7 +3143,7 @@ guide: entity: {
     }
     "/api/v1/organizations/{org_slug}/cdn_spaces": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/cdn_spaces/{cdn_space_id}/objects": active: false
@@ -3150,7 +3154,7 @@ guide: entity: {
   cdn_space_object: path: {
     "/api/v1/cdn_spaces/{cdn_space_id}/objects": {
       rename: param: "cdn_space_id": "cdn_space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: update: method: PUT
     }
     "/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}": {
@@ -3165,7 +3169,7 @@ guide: entity: {
   change: path: {
     "/api/v1/organizations/{org_slug}/changes": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcript_chat": active: false
   }
@@ -3430,7 +3434,7 @@ guide: entity: {
   ci_pipeline_run: path: {
     "/api/v1/ci/pipelines/{pipeline_id}/runs": {
       rename: param: "pipeline_id": "pipeline_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{id}": {
@@ -3490,9 +3494,8 @@ guide: entity: {
   # cli_release
   cli_release: path: {
     "/api/v1/cli_releases": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
-      op: load: active: false
     }
     "/api/v1/cli_releases/latest": {
       action: "latest": {}
@@ -3663,8 +3666,9 @@ guide: entity: {
   # deep_scan
   deep_scan: path: {
     "/api/v1/organizations/{organization_id}/verify/deep_scans": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
+      op: list: active: false
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}": {
       rename: param: "id": "id"
@@ -3697,6 +3701,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings": {
       rename: param: "id": "deep_scan_id"
       op: list: method: GET
+      op: list: transform: res: "`body.findings`"
     }
   }
 
@@ -3710,7 +3715,7 @@ guide: entity: {
   # deep_scan_mapped_flow
   deep_scan_mapped_flow: path: {
     "/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -3718,6 +3723,7 @@ guide: entity: {
   deep_scan_option: path: {
     "/api/v1/organizations/{organization_id}/verify/deep_scans/options": {
       op: list: method: GET
+      op: list: transform: res: "`body.environments`"
     }
   }
 
@@ -3780,7 +3786,7 @@ guide: entity: {
   deployment_detail: path: {
     "/api/v1/organizations/{org_slug}/pages/deployments/details": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -3977,7 +3983,7 @@ guide: entity: {
   # device_enterprise_relay
   device_enterprise_relay: path: {
     "/api/v1/spark/devices/enterprise_relays": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -4001,6 +4007,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants": {
       rename: param: "device_registration_id": "device_id"
       op: list: method: GET
+      op: list: transform: res: "`body.grants`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise": {
@@ -4181,6 +4188,7 @@ guide: entity: {
   dream: path: {
     "/api/v1/organizations/{organization_id}/verify/dreams": {
       op: list: method: GET
+      op: list: transform: res: "`body.dreams`"
     }
     "/api/v1/organizations/{organization_id}/verify/dreams/{id}": {
       rename: param: "id": "id"
@@ -4213,7 +4221,7 @@ guide: entity: {
   # environment
   environment: path: {
     "/api/v1/organizations/{organization_id}/verify/environments": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{id}": {
@@ -4312,7 +4320,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings": {
       rename: param: "app_id": "app_id"
       rename: param: "environment_id": "environment_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/copy": {
@@ -4367,7 +4375,7 @@ guide: entity: {
   # execution_desired_state
   execution_desired_state: path: {
     "/api/v1/execution/desired_states": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/execution/desired_states/{id}": {
@@ -4387,7 +4395,7 @@ guide: entity: {
   # execution_reconciler_tick
   execution_reconciler_tick: path: {
     "/api/v1/execution/reconciler_ticks": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/execution/reconciler_ticks/{id}": {
@@ -4399,7 +4407,7 @@ guide: entity: {
   # execution_release
   execution_release: path: {
     "/api/v1/execution/releases": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/execution/releases/{id}": {
@@ -4455,6 +4463,7 @@ guide: entity: {
   exploration: path: {
     "/api/v1/organizations/{organization_id}/verify/explorations": {
       op: list: method: GET
+      op: list: transform: res: "`body.explorations`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}": {
@@ -4672,7 +4681,7 @@ guide: entity: {
   # github_connection
   github_connection: path: {
     "/api/v1/organizations/{organization_id}/verify/github_connections": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -4895,7 +4904,7 @@ guide: entity: {
   hosting_app_domain: path: {
     "/api/v1/hosting/apps/{app_id}/domains": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
@@ -4948,6 +4957,7 @@ guide: entity: {
     "/api/v1/artifacts/image_repositories/{id}/tags": {
       rename: param: "id": "image_repository_id"
       op: list: method: GET
+      op: list: transform: res: "`body.tags`"
     }
   }
 
@@ -4963,7 +4973,7 @@ guide: entity: {
   # integration
   integration: path: {
     "/api/v1/organizations/{organization_id}/verification/integrations": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -5025,7 +5035,7 @@ guide: entity: {
       rename: param: "job_id": "job_id"
       rename: param: "pipeline_id": "pipeline_id"
       rename: param: "run_id": "run_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}": {
@@ -5044,7 +5054,7 @@ guide: entity: {
       rename: param: "job_id": "job_id"
       rename: param: "pipeline_id": "pipeline_id"
       rename: param: "run_id": "run_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}": {
@@ -5244,7 +5254,7 @@ guide: entity: {
     "/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks": {
       rename: param: "log_stream_id": "log_stream_id"
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}": {
@@ -5268,8 +5278,7 @@ guide: entity: {
   # marketing_setting
   marketing_setting: path: {
     "/api/v1/marketing_settings": {
-      op: list: method: GET
-      op: load: active: false
+      op: load: method: GET
     }
   }
 
@@ -5523,7 +5532,7 @@ guide: entity: {
   # metric_query
   metric_query: path: {
     "/api/v1/hosting/metrics/queries": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -5574,7 +5583,7 @@ guide: entity: {
   # networking_space
   networking_space: path: {
     "/api/v1/networking/spaces": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{id}": {
@@ -5632,7 +5641,7 @@ guide: entity: {
   node_lease: path: {
     "/api/v1/ci/nodes/{id}/leases": {
       rename: param: "id": "node_id"
-      op: list: method: GET
+      op: load: method: GET
     }
     "/api/v1/ci/nodes/{id}/leases/{lease_id}/claim": {
       action: "claim": {}
@@ -5679,7 +5688,7 @@ guide: entity: {
   nomad_log: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs": {
       rename: param: "app_id": "app_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -5697,7 +5706,7 @@ guide: entity: {
   # observability_clickhouse_cluster
   observability_clickhouse_cluster: path: {
     "/api/v1/observability/clickhouse_clusters": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/clickhouse_clusters/{id}": {
@@ -5732,7 +5741,7 @@ guide: entity: {
   # observability_quickwit_cluster
   observability_quickwit_cluster: path: {
     "/api/v1/observability/quickwit_clusters": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/quickwit_clusters/{id}": {
@@ -5767,7 +5776,7 @@ guide: entity: {
   # observability_space
   observability_space: path: {
     "/api/v1/observability/spaces": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/spaces/{id}": {
@@ -6183,7 +6192,7 @@ guide: entity: {
   organization_app: path: {
     "/api/v1/spark/organizations/{organization_id}/apps": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
     "/api/v1/spark/organizations/{organization_id}/apps/{name}/install": {
       action: "install": {}
@@ -6217,7 +6226,7 @@ guide: entity: {
   organization_identity_certificate: path: {
     "/api/v1/identity/organizations/{organization_id}/identity_certificates": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}": {
@@ -6275,7 +6284,7 @@ guide: entity: {
   organization_oidc_trust: path: {
     "/api/v1/identity/organizations/{organization_id}/oidc_trusts": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
@@ -6396,7 +6405,7 @@ guide: entity: {
   organization_service_account: path: {
     "/api/v1/identity/organizations/{organization_id}/service_accounts": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/service_accounts/{id}": {
@@ -6439,7 +6448,7 @@ guide: entity: {
   organization_site: path: {
     "/api/v1/spark/organizations/{organization_id}/sites": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/spark/organizations/{organization_id}/sites/{name}": {
@@ -6490,7 +6499,7 @@ guide: entity: {
   organization_workload_identity: path: {
     "/api/v1/identity/organizations/{organization_id}/workload_identities": {
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/workload_identities/token_exchange": {
@@ -6556,7 +6565,7 @@ guide: entity: {
   # page_agent
   page_agent: path: {
     "/api/v1/organizations/{organization_id}/agents/page": {
-      op: list: method: GET
+      op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/page/activity": {
       action: "activity": {}
@@ -6653,6 +6662,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas": {
       rename: param: "project_id": "project_id"
       op: list: method: GET
+      op: list: transform: res: "`body.personas`"
     }
   }
 
@@ -6661,6 +6671,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/runs": {
       rename: param: "project_id": "project_id"
       op: list: method: GET
+      op: list: transform: res: "`body.runs`"
     }
   }
 
@@ -6703,7 +6714,7 @@ guide: entity: {
   # pairing
   pairing: path: {
     "/api/v1/relay/pairings": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/relay/pairings/claim": {
@@ -6720,7 +6731,7 @@ guide: entity: {
   pairing_event: path: {
     "/api/v1/relay/pairings/{id}/events": {
       rename: param: "id": "pairing_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -6751,9 +6762,8 @@ guide: entity: {
   # personal_access_token
   personal_access_token: path: {
     "/api/v1/personal_access_tokens": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
-      op: load: active: false
     }
     "/api/v1/personal_access_tokens/{id}": {
       rename: param: "id": "id"
@@ -6766,7 +6776,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/previews/{id}/operations": {
       rename: param: "app_id": "app_id"
       rename: param: "id": "preview_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -6775,7 +6785,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings": {
       rename: param: "app_id": "app_id"
       rename: param: "preview_profile_id": "preview_profile_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}": {
@@ -6813,8 +6823,9 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals": {
       rename: param: "app_id": "app_id"
       rename: param: "id": "preview_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
+      op: list: active: false
     }
   }
 
@@ -7080,6 +7091,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures": {
       rename: param: "project_id": "project_id"
       op: list: method: GET
+      op: list: transform: res: "`body.fixtures`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures/{id}": {
@@ -7269,7 +7281,8 @@ guide: entity: {
   project_scenario_option: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options": {
       rename: param: "project_id": "project_id"
-      op: list: method: GET
+      op: load: method: GET
+      op: list: active: false
     }
   }
 
@@ -7288,7 +7301,7 @@ guide: entity: {
   project_setting: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings": {
       rename: param: "project_id": "project_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -7365,7 +7378,7 @@ guide: entity: {
   # pull_request_setting
   pull_request_setting: path: {
     "/api/v1/organizations/{organization_id}/verify/pull_request_settings": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_preview": {
@@ -7491,7 +7504,7 @@ guide: entity: {
   release_rollout: path: {
     "/api/v1/execution/releases/{release_id}/rollouts": {
       rename: param: "release_id": "release_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/execution/releases/{release_id}/rollouts/{id}": {
@@ -7598,7 +7611,7 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": {
@@ -7681,7 +7694,7 @@ guide: entity: {
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}": {
@@ -7965,7 +7978,7 @@ guide: entity: {
   # roder_code_repair
   roder_code_repair: path: {
     "/api/v1/agent/roder/code_repairs": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/agent/roder/code_repairs/{id}": {
@@ -7982,7 +7995,7 @@ guide: entity: {
   # roder_code_repair_setting
   roder_code_repair_setting: path: {
     "/api/v1/agent/roder/code_repair_settings": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8027,7 +8040,7 @@ guide: entity: {
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts": {
       rename: param: "pipeline_id": "pipeline_id"
       rename: param: "run_id": "run_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8037,7 +8050,7 @@ guide: entity: {
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs": {
       rename: param: "pipeline_id": "pipeline_id"
       rename: param: "run_id": "run_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{id}": {
@@ -8105,7 +8118,7 @@ guide: entity: {
     "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases": {
       rename: param: "runner_id": "runner_id"
       rename: param: "runner_pool_id": "runner_pool_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim": {
@@ -8153,7 +8166,7 @@ guide: entity: {
   runner_pool_runner: path: {
     "/api/v1/ci/runner_pools/{runner_pool_id}/runners": {
       rename: param: "runner_pool_id": "runner_pool_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
@@ -8175,7 +8188,7 @@ guide: entity: {
   runtime_instance_health_snapshot: path: {
     "/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots": {
       rename: param: "runtime_instance_id": "runtime_instance_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8183,7 +8196,7 @@ guide: entity: {
   # sandbox_integration
   sandbox_integration: path: {
     "/api/v1/organizations/{organization_id}/sandbox_integrations": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/sandbox_integrations/{id}": {
@@ -8245,7 +8258,7 @@ guide: entity: {
     "/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants": {
       rename: param: "organization_id": "organization_id"
       rename: param: "secret_id": "secret_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}": {
@@ -8285,7 +8298,7 @@ guide: entity: {
     "/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions": {
       rename: param: "organization_id": "organization_id"
       rename: param: "secret_id": "secret_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}": {
@@ -8318,7 +8331,7 @@ guide: entity: {
     "/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
       rename: param: "app_id": "app_id"
       rename: param: "service_id": "service_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
@@ -8336,7 +8349,7 @@ guide: entity: {
   setting: path: {
     "/api/v1/organizations/{org_slug}/pages/settings": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -8441,7 +8454,7 @@ guide: entity: {
   # signal_subscription
   signal_subscription: path: {
     "/api/v1/organizations/{organization_id}/signal_subscriptions": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/signal_subscriptions/{id}": {
@@ -8467,7 +8480,7 @@ guide: entity: {
     "/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys": {
       rename: param: "name": "site_id"
       rename: param: "organization_id": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}": {
@@ -8519,7 +8532,7 @@ guide: entity: {
   space_alert_rule: path: {
     "/api/v1/observability/spaces/{space_id}/alert_rules": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/spaces/{space_id}/alert_rules/{id}": {
@@ -8554,7 +8567,7 @@ guide: entity: {
   space_audit_event: path: {
     "/api/v1/observability/spaces/{space_id}/audit_events": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8563,7 +8576,7 @@ guide: entity: {
   space_dns_record: path: {
     "/api/v1/networking/spaces/{space_id}/dns_records": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/dns_records/config": {
@@ -8590,7 +8603,7 @@ guide: entity: {
   space_enrollment_token: path: {
     "/api/v1/networking/spaces/{space_id}/enrollment_tokens": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}": {
@@ -8613,7 +8626,7 @@ guide: entity: {
   space_gateway: path: {
     "/api/v1/networking/spaces/{space_id}/gateways": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/gateways/{id}": {
@@ -8648,7 +8661,7 @@ guide: entity: {
   space_group: path: {
     "/api/v1/networking/spaces/{space_id}/groups": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/groups/{id}": {
@@ -8664,7 +8677,7 @@ guide: entity: {
   space_group_membership: path: {
     "/api/v1/networking/spaces/{space_id}/group_memberships": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/group_memberships/{id}": {
@@ -8680,7 +8693,7 @@ guide: entity: {
   space_log_stream: path: {
     "/api/v1/observability/spaces/{space_id}/log_streams": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8689,7 +8702,7 @@ guide: entity: {
   space_metric_sery: path: {
     "/api/v1/observability/spaces/{space_id}/metric_series": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8698,7 +8711,7 @@ guide: entity: {
   space_otel_collector: path: {
     "/api/v1/observability/spaces/{space_id}/otel_collectors": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
@@ -8763,7 +8776,7 @@ guide: entity: {
   space_peer: path: {
     "/api/v1/networking/spaces/{space_id}/peers": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/peers/enroll": {
@@ -8809,7 +8822,7 @@ guide: entity: {
   space_peer_attachment: path: {
     "/api/v1/networking/spaces/{space_id}/peer_attachments": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/peer_attachments/{id}": {
@@ -8825,7 +8838,7 @@ guide: entity: {
   space_policy: path: {
     "/api/v1/networking/spaces/{space_id}/policies": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/policies/{id}": {
@@ -8860,7 +8873,7 @@ guide: entity: {
   space_segment: path: {
     "/api/v1/networking/spaces/{space_id}/segments": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/networking/spaces/{space_id}/segments/{id}": {
@@ -8877,7 +8890,7 @@ guide: entity: {
   space_trace_span: path: {
     "/api/v1/observability/spaces/{space_id}/trace_spans": {
       rename: param: "space_id": "space_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -8885,7 +8898,7 @@ guide: entity: {
   # spark
   spark: path: {
     "/api/v1/organizations/{organization_id}/sparks": {
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.organization`"
     }
@@ -8942,7 +8955,7 @@ guide: entity: {
   spark_agent_integration: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations": {
       rename: param: "id": "agent_id"
-      op: list: method: GET
+      op: load: method: GET
       op: create: method: POST
     }
   }
@@ -9003,6 +9016,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads": {
       rename: param: "id": "agent_id"
       op: list: method: GET
+      op: list: transform: res: "`body.threads`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive": {
@@ -9029,10 +9043,11 @@ guide: entity: {
   spark_credit: path: {
     "/api/v1/organizations/{org_slug}/spark_credits": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
       op: patch: method: PATCH
       op: create: method: POST
       op: update: method: PUT
+      op: list: active: false
     }
     "/api/v1/organizations/{org_slug}/spark_credits/daily_usage": {
       action: "daily_usage": {}
@@ -9054,7 +9069,7 @@ guide: entity: {
   spark_credit_usage_total: path: {
     "/api/v1/organizations/{org_slug}/spark_credits/usage_totals": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -9602,6 +9617,7 @@ guide: entity: {
       rename: param: "org_slug": "organization_id"
       rename: param: "repo_slug": "repo_id"
       op: list: method: GET
+      op: list: transform: res: "`body.target_branches`"
     }
     "/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues/{target}": {
       rename: param: "org_slug": "organization_id"
@@ -9677,7 +9693,7 @@ guide: entity: {
   vcs_setting: path: {
     "/api/v1/organizations/{org_slug}/pages/vcs_settings": {
       rename: param: "org_slug": "organization_id"
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
@@ -9871,7 +9887,7 @@ guide: entity: {
   # verify_email_verification
   verify_email_verification: path: {
     "/api/v1/email_verifications/verify": {
-      op: list: method: GET
+      op: load: method: GET
     }
   }
 
