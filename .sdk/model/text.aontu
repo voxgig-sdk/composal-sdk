@@ -48,7 +48,7 @@ for project in client.Project().list({"organization_id": org}):
     print(project.data_get().get("slug"), project.data_get().get("website_url"))
 \`\`\`
 
-Sending work to an agent, in TypeScript:
+Creating an agent, in TypeScript:
 
 \`\`\`ts
 import { ComposalSDK } from '@voxgig-sdk/composal-sdk'
@@ -59,15 +59,15 @@ const client = new ComposalSDK({
   feature: { idempotency: { active: true } },
 })
 const organization_id = process.env.COMPOSAL_ORGANIZATION ?? 'your-organization'
-const agent_id = process.env.COMPOSAL_AGENT_ID ?? 'YOUR_AGENT_ID'
 
-const input = await client.AgentInput().create({
+const agent = await client.Agent().create({
   organization_id,
-  agent_id,
-  conversation_id: 'main',
-  text: 'Summarise the pull requests merged yesterday.',
+  name: 'Release notes',
+  configuration: {
+    instructions: 'Each morning, summarise the pull requests merged the day before.',
+  },
 })
-console.log(input.data())
+console.log(agent.data())
 \`\`\`
 
 **Agents.** \`Agent\` create makes a persistent agent from a \`name\` and an optional
@@ -89,6 +89,12 @@ key to every write, which its own retries of that call reuse. To retry by hand a
 outcome was uncertain, pass the original key as \`idempotency_key\` (the SDK sends it as the
 header and never replaces it). An action that requires the header, such as \`Agent\` create
 with \`$action: 'browser_opened'\`, needs \`idempotency_key\` in the call to be selected.
+
+**Types.** Five request fields that Composal's definition makes optional, on four calls, are
+typed as required, among them \`browser_context\` and \`client_time\` on \`AgentInput\` create. Each is an object
+with required fields of its own, which this generation misreads as the field itself being
+required. TypeScript refuses a call without them and Python's type hints say the same; no SDK
+checks it at run time.
 
 **Files.** Twelve calls can answer with a file rather than JSON: images, recordings, archives,
 plain text and downloads, such as \`Evidence\` load with \`$action: 'download'\`. This generation
