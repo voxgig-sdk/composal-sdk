@@ -2740,26 +2740,6 @@ guide: entity: {
       op: load: transform: res: "`body.addons`"
       op: list: active: false
     }
-    "/api/v1/organizations/{organization_id}/billing/budget": {
-      action: "budget": {}
-      op: patch: method: PATCH
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/billing/contact": {
-      action: "contact": {}
-      op: patch: method: PATCH
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/billing/extra_spend": {
-      action: "extra_spend": {}
-      op: patch: method: PATCH
-      op: update: method: PUT
-    }
-    "/api/v1/organizations/{organization_id}/billing/subscription": {
-      action: "subscription": {}
-      op: patch: method: PATCH
-      op: update: method: PUT
-    }
     "/api/v1/organizations/{organization_id}/billing/usage": {
       action: "usage": {}
       op: load: method: GET
@@ -2777,10 +2757,34 @@ guide: entity: {
     }
   }
 
+  # billing_budget
+  billing_budget: path: {
+    "/api/v1/organizations/{organization_id}/billing/budget": {
+      op: patch: method: PATCH
+      op: update: method: PUT
+    }
+  }
+
   # billing_checkout_session
   billing_checkout_session: path: {
     "/api/v1/organizations/{organization_id}/billing/checkout_sessions": {
       op: create: method: POST
+    }
+  }
+
+  # billing_contact
+  billing_contact: path: {
+    "/api/v1/organizations/{organization_id}/billing/contact": {
+      op: patch: method: PATCH
+      op: update: method: PUT
+    }
+  }
+
+  # billing_extra_spend
+  billing_extra_spend: path: {
+    "/api/v1/organizations/{organization_id}/billing/extra_spend": {
+      op: patch: method: PATCH
+      op: update: method: PUT
     }
   }
 
@@ -2837,6 +2841,14 @@ guide: entity: {
       action: "payment_page": {}
       rename: param: "id": "id"
       op: load: method: GET
+    }
+  }
+
+  # billing_subscription
+  billing_subscription: path: {
+    "/api/v1/organizations/{organization_id}/billing/subscription": {
+      op: patch: method: PATCH
+      op: update: method: PUT
     }
   }
 

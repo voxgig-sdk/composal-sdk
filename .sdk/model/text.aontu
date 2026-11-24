@@ -104,7 +104,7 @@ agent's saved conversation, \`Agent\` load with \`$action: 'conversation'\`, hol
 Eight uploads take multipart form data or JSON; the SDK sends JSON.
 
 **Scope.** Composal's definition is generated from its application's routes and holds 2,008
-operations. This SDK covers every one a customer can call: 1,747 operations, as 551
+operations. This SDK covers every one a customer can call: 1,747 operations, as 555
 resources. It leaves out only the 38 that Composal marks internal, the 194 it marks deprecated
 (among them the \`/clawder\` paths, which \`/spark\` replaces), and the 29 that need a service
 credential rather than a personal access token.
