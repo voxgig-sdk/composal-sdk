@@ -1,0 +1,22 @@
+$kind: http-request
+id: c2d181ad-73f6-5738-9232-da6d88f83cdd
+description: |-
+  The `patch` operation of **me_email**.
+
+  SDK: `client.MeEmail().patch({ id: "example", account: true })`
+url: "{{base}}/api/v1/me/emails/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{me_email_id}}"
+    description: The me_email this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "account": true
+    }
+order: 4000

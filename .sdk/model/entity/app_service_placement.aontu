@@ -1,0 +1,336 @@
+# Entity: app_service_placement
+
+main: kit: entity: app_service_placement: {
+
+  alias: field: {}
+
+  fields: {
+    app_environment_id: {
+      h: "App Environment Id"
+      n: "app_environment_id"
+      r: true
+      t: "`$STRING`"
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    deployment_channel: {
+      h: "Deployment Channel"
+      n: "deployment_channel"
+      r: true
+      sh: "Preview-only override; null inherits the captured source channel."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hosted_app_id: {
+      h: "Hosted App Id"
+      n: "hosted_app_id"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    region_count: {
+      h: "Region Count"
+      n: "region_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    replicas_per_region: {
+      h: "Replicas Per Region"
+      n: "replicas_per_region"
+      r: true
+      t: "`$INTEGER`"
+    }
+    rollout_strategy: {
+      h: "Rollout Strategy"
+      n: "rollout_strategy"
+      r: true
+      t: "`$STRING`"
+    }
+    targets: {
+      h: "Targets"
+      n: "targets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    total_replicas: {
+      h: "Total Replicas"
+      n: "total_replicas"
+      r: true
+      t: "`$INTEGER`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "app_service_placement"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/service_placements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "existing"
+                or: "existing"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/service_placements"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "service_placements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.placements`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/service_placements/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/service_placements/{id}"
+          q: {
+            exist: [
+              "app_id"
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "service_placements"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.placement`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "app_environment_id"
+            "app_service_id"
+            "deployment_channel"
+            "expected_generation"
+            "mode"
+            "replicas_per_region"
+            "rollout_strategy"
+            "targets"
+          ]
+          co: {
+            id: "PUT /api/v1/hosting/apps/{app_id}/service_placements/configure"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/hosting/apps/{app_id}/service_placements/configure"
+          q: {
+            "$action": "configure"
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "service_placements"
+            }
+            {
+              lit: "configure"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.placement`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

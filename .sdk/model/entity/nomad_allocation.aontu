@@ -1,0 +1,281 @@
+# Entity: nomad_allocation
+
+main: kit: entity: nomad_allocation: {
+
+  alias: field: {}
+
+  fields: {
+    allocation_id: {
+      h: "Allocation Id"
+      n: "allocation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    client_status: {
+      h: "Client Status"
+      n: "client_status"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    create_time: {
+      h: "Create Time"
+      n: "create_time"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    datacenter: {
+      h: "Datacenter"
+      n: "datacenter"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    desired_description: {
+      h: "Desired Description"
+      n: "desired_description"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    desired_status: {
+      h: "Desired Status"
+      n: "desired_status"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    fetched_at: {
+      fo: "date-time"
+      h: "Fetched At"
+      n: "fetched_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    job_id: {
+      h: "Job Id"
+      n: "job_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    modify_time: {
+      h: "Modify Time"
+      n: "modify_time"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    namespace: {
+      h: "Namespace"
+      n: "namespace"
+      r: true
+      t: "`$STRING`"
+    }
+    node_id: {
+      h: "Node Id"
+      n: "node_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    node_name: {
+      h: "Node Name"
+      n: "node_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    resources: {
+      h: "Resources"
+      n: "resources"
+      r: true
+      t: "`$OBJECT`"
+    }
+    task_group: {
+      h: "Task Group"
+      n: "task_group"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    task_states: {
+      h: "Task States"
+      n: "task_states"
+      r: true
+      t: "`$ARRAY`"
+    }
+    verify_runner_images: {
+      h: "Verify Runner Images"
+      n: "verify_runner_images"
+      r: false
+      sh: "Public Verify image pins from tasks in this allocation's attached job group, not current app settings."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "nomad_allocation"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "allocation_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}"
+          q: {
+            exist: [
+              "app_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              allocation_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployment_dashboard"
+            }
+            {
+              lit: "nomad"
+            }
+            {
+              lit: "allocations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "2c185ad0-364e-58b4-b400-9e2e5539c8d3"
+description: |-
+  The `environment` action of **agent_repository**, a route of its `update` operation.
+
+  SDK: `client.AgentRepository().update({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "environment" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/repositories/:repository/environment"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_repository belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_repository belongs to.
+  - key: repository
+    value: "{{agent_repository_id}}"
+    description: The agent_repository this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "branch": "example"
+    }
+order: 3000

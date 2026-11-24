@@ -1,0 +1,22 @@
+# BasicDeepScanFlowFlow
+
+main: kit: flow: BasicDeepScanFlowFlow:
+{
+  entity: "deep_scan_flow",
+  kind: "basic",
+  name: "BasicDeepScanFlowFlow",
+  step: [
+    {
+      i: {
+        ref: "deep_scan_flow_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeepScanFlowFlow"
+}

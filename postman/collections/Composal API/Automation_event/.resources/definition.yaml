@@ -1,0 +1,25 @@
+$kind: collection
+id: "39b37922-44d9-52dc-80c5-0ce6eb404cf2"
+description: |-
+  The **automation_event** entity, which belongs to a organization and a agent. Its requests address one record by `{{automation_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_manage_events` | boolean | yes |  |
+  | `can_run` | boolean | yes |  |
+  | `can_schedule` | boolean | yes |  |
+  | `event_subscriptions` | array | yes |  |
+  | `event_triggers` | array | yes |  |
+  | `expected_revision` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `name` | string | yes |  |
+  | `revision` | integer | yes |  |
+  | `schedule` | any | yes |  |
+  | `schedules` | array | yes |  |
+  | `settings` | object |  |  |
+  | `subscription_key` | string | yes |  |
+  | `version` | object | yes |  |
+order: 73000

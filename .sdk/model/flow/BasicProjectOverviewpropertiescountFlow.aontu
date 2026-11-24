@@ -1,0 +1,33 @@
+# BasicProjectOverviewpropertiescountFlow
+
+main: kit: flow: BasicProjectOverviewpropertiescountFlow:
+{
+  entity: "project_overviewpropertiescount",
+  kind: "basic",
+  name: "BasicProjectOverviewpropertiescountFlow",
+  step: [
+    {
+      i: {
+        ref: "project_overviewpropertiescount_ref01",
+        srcdatavar: "project_overviewpropertiescount_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_overviewpropertiescount01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_overviewpropertiescount_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectOverviewpropertiescountFlow"
+}

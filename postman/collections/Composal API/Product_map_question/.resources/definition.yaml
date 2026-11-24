@@ -1,0 +1,24 @@
+$kind: collection
+id: c6dd7f59-5942-5071-91d6-5d5091d9db5a
+description: |-
+  The **product_map_question** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_question_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string |  |  |
+  | `area` | string |  |  |
+  | `before` | string |  |  |
+  | `claims` | array | yes |  |
+  | `evidence_truncated` | boolean | yes |  |
+  | `model` | string | yes |  |
+  | `persona_id` | string |  |  |
+  | `query` | string |  |  |
+  | `question` | string | yes |  |
+  | `reasoning_effort` | string | yes |  |
+  | `revision_id` | string |  |  |
+  | `scope` | object | yes |  |
+  | `since` | string |  |  |
+  | `state_id` | string |  |  |
+  | `status` | string | yes |  |
+  | `unknowns` | array | yes |  |
+order: 162000

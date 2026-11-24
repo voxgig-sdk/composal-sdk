@@ -1,0 +1,199 @@
+# Entity: github_connection
+
+main: kit: entity: github_connection: {
+
+  alias: field: {}
+
+  fields: {
+    accounts: {
+      h: "Accounts"
+      n: "accounts"
+      r: true
+      t: "`$ARRAY`"
+    }
+    github_app_installation_id: {
+      h: "Github App Installation Id"
+      n: "github_app_installation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    installations: {
+      h: "Installations"
+      n: "installations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "Project slug or public ID the repositories are added to."
+      t: "`$STRING`"
+    }
+    replace: {
+      h: "Replace"
+      n: "replace"
+      r: false
+      sh: "Make these the project's only repositories."
+      t: "`$BOOLEAN`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "github_connection"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "github_app_installation_id"
+            "project_id"
+            "replace"
+            "repositories"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/github_connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/github_connections"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "github_connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/github_connections"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "github_app_installation_id"
+                or: "github_app_installation_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/github_connections"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "github_connections"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

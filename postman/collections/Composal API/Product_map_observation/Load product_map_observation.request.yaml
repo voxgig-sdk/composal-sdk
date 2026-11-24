@@ -1,0 +1,43 @@
+$kind: http-request
+id: "716ad9ac-6624-54ed-a7e2-f3aac868d221"
+description: |-
+  The `load` operation of **product_map_observation**.
+
+  SDK: `client.ProductMapObservation().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/observations/:observation_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_observation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_observation belongs to.
+  - key: observation_id
+    value: "{{product_map_observation_id}}"
+    description: The product_map_observation this request addresses.
+order: 1000

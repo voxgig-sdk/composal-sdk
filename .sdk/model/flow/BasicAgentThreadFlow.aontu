@@ -1,0 +1,40 @@
+# BasicAgentThreadFlow
+
+main: kit: flow: BasicAgentThreadFlow:
+{
+  entity: "agent_thread",
+  kind: "basic",
+  name: "BasicAgentThreadFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_thread_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_thread_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentThreadFlow"
+}

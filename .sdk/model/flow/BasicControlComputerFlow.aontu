@@ -1,0 +1,48 @@
+# BasicControlComputerFlow
+
+main: kit: flow: BasicControlComputerFlow:
+{
+  entity: "control_computer",
+  kind: "basic",
+  name: "BasicControlComputerFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "control_computer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "control_computer_ref01",
+        srcdatavar: "control_computer_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-control_computer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicControlComputerFlow"
+}

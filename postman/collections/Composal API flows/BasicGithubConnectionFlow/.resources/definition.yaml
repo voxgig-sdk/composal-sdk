@@ -1,0 +1,4 @@
+$kind: collection
+id: "338345e1-c5b8-5858-9c5e-e16685c1ac57"
+description: "The `BasicGithubConnectionFlow` flow of **github_connection**."
+order: 102000

@@ -1,0 +1,67 @@
+# BasicCdnSpaceObjectFlow
+
+main: kit: flow: BasicCdnSpaceObjectFlow:
+{
+  entity: "cdn_space_object",
+  kind: "basic",
+  name: "BasicCdnSpaceObjectFlow",
+  step: [
+    {
+      m: {
+        cdn_space_id: "cdn_space01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cdn_space_object_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cdn_space_object_ref01",
+        srcdatavar: "cdn_space_object_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cdn_space_object_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cdn_space_object_ref01",
+        srcdatavar: "cdn_space_object_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        cdn_space_id: "cdn_space01",
+        id: "cdn_space_object01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cdn_space_object_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCdnSpaceObjectFlow"
+}

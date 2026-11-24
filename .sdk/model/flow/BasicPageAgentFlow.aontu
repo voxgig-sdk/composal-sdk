@@ -1,0 +1,60 @@
+# BasicPageAgentFlow
+
+main: kit: flow: BasicPageAgentFlow:
+{
+  entity: "page_agent",
+  kind: "basic",
+  name: "BasicPageAgentFlow",
+  step: [
+    {
+      i: {
+        ref: "page_agent_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "page_agent_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "page_agent_ref01",
+        srcdatavar: "page_agent_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "page_agent01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-page_agent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPageAgentFlow"
+}

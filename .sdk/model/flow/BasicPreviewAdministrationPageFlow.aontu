@@ -1,0 +1,26 @@
+# BasicPreviewAdministrationPageFlow
+
+main: kit: flow: BasicPreviewAdministrationPageFlow:
+{
+  entity: "preview_administration_page",
+  kind: "basic",
+  name: "BasicPreviewAdministrationPageFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "preview_administration_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPreviewAdministrationPageFlow"
+}

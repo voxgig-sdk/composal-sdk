@@ -1,0 +1,27 @@
+# BasicAgentToolFlow
+
+main: kit: flow: BasicAgentToolFlow:
+{
+  entity: "agent_tool",
+  kind: "basic",
+  name: "BasicAgentToolFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_tool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentToolFlow"
+}

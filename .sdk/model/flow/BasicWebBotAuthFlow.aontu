@@ -1,0 +1,18 @@
+# BasicWebBotAuthFlow
+
+main: kit: flow: BasicWebBotAuthFlow:
+{
+  entity: "web_bot_auth",
+  kind: "basic",
+  name: "BasicWebBotAuthFlow",
+  step: [
+    {
+      i: {
+        ref: "web_bot_auth_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWebBotAuthFlow"
+}

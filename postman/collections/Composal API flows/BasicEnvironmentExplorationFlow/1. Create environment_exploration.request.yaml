@@ -1,0 +1,75 @@
+$kind: http-request
+id: "31d23eac-a384-50f3-8979-58275b4be920"
+description: |-
+  The `create` operation of **environment_exploration**.
+
+  SDK: `client.EnvironmentExploration().create({ environment_id: "example", organization_id: "example", project_id: "example", goal: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/environments/:environment_id/explorations?project_id={{project_id}}"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_exploration belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this environment_exploration belongs to.
+  - key: environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_exploration belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "persona_id": "example",
+      "account_id": "example",
+      "goal": "example",
+      "max_seconds": 14400,
+      "max_testers": 40,
+      "concurrency": 20,
+      "idempotency_key": "example"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","project_id","organization_id","environment_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create environment_exploration: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body
+      pm.test("1. Create environment_exploration: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("environment_exploration_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

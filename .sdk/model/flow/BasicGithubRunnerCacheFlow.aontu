@@ -1,0 +1,18 @@
+# BasicGithubRunnerCacheFlow
+
+main: kit: flow: BasicGithubRunnerCacheFlow:
+{
+  entity: "github_runner_cache",
+  kind: "basic",
+  name: "BasicGithubRunnerCacheFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_cache_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubRunnerCacheFlow"
+}

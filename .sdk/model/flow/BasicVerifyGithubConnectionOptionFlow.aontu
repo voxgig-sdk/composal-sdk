@@ -1,0 +1,26 @@
+# BasicVerifyGithubConnectionOptionFlow
+
+main: kit: flow: BasicVerifyGithubConnectionOptionFlow:
+{
+  entity: "verify_github_connection_option",
+  kind: "basic",
+  name: "BasicVerifyGithubConnectionOptionFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_github_connection_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyGithubConnectionOptionFlow"
+}

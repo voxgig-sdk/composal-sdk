@@ -1,0 +1,206 @@
+# Entity: product_map_question
+
+main: kit: entity: product_map_question: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: false
+      t: "`$STRING`"
+    }
+    area: {
+      h: "Area"
+      n: "area"
+      r: false
+      t: "`$STRING`"
+    }
+    before: {
+      h: "Before"
+      n: "before"
+      r: false
+      t: "`$STRING`"
+    }
+    claims: {
+      h: "Claims"
+      n: "claims"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 11
+      }
+    }
+    evidence_truncated: {
+      h: "Evidence Truncated"
+      n: "evidence_truncated"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    model: {
+      h: "Model"
+      n: "model"
+      r: true
+      t: "`$STRING`"
+    }
+    persona_id: {
+      h: "Persona Id"
+      n: "persona_id"
+      r: false
+      t: "`$STRING`"
+    }
+    query: {
+      h: "Query"
+      n: "query"
+      r: false
+      t: "`$STRING`"
+    }
+    question: {
+      h: "Question"
+      n: "question"
+      r: true
+      t: "`$STRING`"
+    }
+    reasoning_effort: {
+      h: "Reasoning Effort"
+      n: "reasoning_effort"
+      r: true
+      t: "`$STRING`"
+    }
+    revision_id: {
+      h: "Revision Id"
+      n: "revision_id"
+      r: false
+      t: "`$STRING`"
+    }
+    scope: {
+      h: "Scope"
+      n: "scope"
+      r: true
+      t: "`$OBJECT`"
+    }
+    since: {
+      h: "Since"
+      n: "since"
+      r: false
+      t: "`$STRING`"
+    }
+    state_id: {
+      h: "State Id"
+      n: "state_id"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    unknowns: {
+      h: "Unknowns"
+      n: "unknowns"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "product_map_question"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "area"
+            "before"
+            "persona_id"
+            "query"
+            "question"
+            "revision_id"
+            "since"
+            "state_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/questions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/questions"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "product_map"
+            }
+            {
+              lit: "questions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

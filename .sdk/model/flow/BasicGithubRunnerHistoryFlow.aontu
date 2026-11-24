@@ -1,0 +1,26 @@
+# BasicGithubRunnerHistoryFlow
+
+main: kit: flow: BasicGithubRunnerHistoryFlow:
+{
+  entity: "github_runner_history",
+  kind: "basic",
+  name: "BasicGithubRunnerHistoryFlow",
+  step: [
+    {
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_runner_history_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubRunnerHistoryFlow"
+}

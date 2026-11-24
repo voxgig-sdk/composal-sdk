@@ -1,0 +1,28 @@
+$kind: http-request
+id: b5643ab2-2783-5359-82d8-84796b152f4a
+description: |-
+  The `update` operation of **agent_routine**.
+
+  SDK: `client.AgentRoutine().update({ agent_id: "example", id: "example", organization_id: "example", enabled: true })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/routines/:routine_id"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_routine belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_routine belongs to.
+  - key: routine_id
+    value: "{{agent_routine_id}}"
+    description: The agent_routine this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "enabled": true
+    }
+order: 2000

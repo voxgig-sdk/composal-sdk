@@ -1,0 +1,18 @@
+$kind: http-request
+id: "0f3f86d4-252c-56db-9a20-dcb04bcb0cc6"
+description: |-
+  The `active_organization` action of **me**, a route of its `update` operation.
+
+  SDK: `client.Me().update({ $action: "active_organization" })`
+url: "{{base}}/api/v1/me/active_organization"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "organization_id": "{{organization_id}}"
+    }
+order: 5000

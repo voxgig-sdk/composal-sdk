@@ -1,0 +1,34 @@
+$kind: http-request
+id: "6e58aa6a-8f56-5c70-a2e3-ada2e31d3a6f"
+description: |-
+  The `sharing` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "sharing" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/sharing"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "visibility": "private",
+      "revoke_access": true,
+      "team_role": "manager",
+      "keep_connections": [
+        {
+          "id": "example",
+          "generation": 1
+        }
+      ]
+    }
+order: 35000

@@ -1,0 +1,44 @@
+# BasicRepositoryImportSessionFlow
+
+main: kit: flow: BasicRepositoryImportSessionFlow:
+{
+  entity: "repository_import_session",
+  kind: "basic",
+  name: "BasicRepositoryImportSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_import_session_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "repository_import_session_ref01",
+        srcdatavar: "repository_import_session_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_import_session01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_import_session_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryImportSessionFlow"
+}

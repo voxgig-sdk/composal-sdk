@@ -1,0 +1,190 @@
+{
+  "existing": {
+    "app_cdn": {
+      "APP_CDN00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "cache_path_prefix": "s110",
+        "cache_settings_json": "s111",
+        "created_at": "s112",
+        "created_at_label": "s113",
+        "distribution_kind": "s114",
+        "edge_hostname": "s115",
+        "failure_message": "s116",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostnames": [],
+        "id": "APP_CDN00",
+        "last_deployed_at": "s11a",
+        "last_deployed_at_label": "s11b",
+        "last_purged_at": "s11c",
+        "last_purged_at_label": "s11d",
+        "last_synced_at": "s11e",
+        "last_synced_at_label": "s11f",
+        "name": "s120",
+        "origin_url": "s121",
+        "provisioned": true,
+        "routing_settings_json": "s123",
+        "security_settings_json": "s124",
+        "slug": "s125",
+        "status": "s126",
+        "updated_at": "s127",
+        "updated_at_label": "s128",
+        "app_id": "APP01"
+      },
+      "APP_CDN01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "cache_path_prefix": "s21e",
+        "cache_settings_json": "s21f",
+        "created_at": "s220",
+        "created_at_label": "s221",
+        "distribution_kind": "s222",
+        "edge_hostname": "s223",
+        "failure_message": "s224",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostnames": [],
+        "id": "APP_CDN01",
+        "last_deployed_at": "s228",
+        "last_deployed_at_label": "s229",
+        "last_purged_at": "s22a",
+        "last_purged_at_label": "s22b",
+        "last_synced_at": "s22c",
+        "last_synced_at_label": "s22d",
+        "name": "s22e",
+        "origin_url": "s22f",
+        "provisioned": true,
+        "routing_settings_json": "s231",
+        "security_settings_json": "s232",
+        "slug": "s233",
+        "status": "s234",
+        "updated_at": "s235",
+        "updated_at_label": "s236",
+        "app_id": "APP01"
+      },
+      "APP_CDN02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "cache_path_prefix": "s32c",
+        "cache_settings_json": "s32d",
+        "created_at": "s32e",
+        "created_at_label": "s32f",
+        "distribution_kind": "s330",
+        "edge_hostname": "s331",
+        "failure_message": "s332",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostnames": [],
+        "id": "APP_CDN02",
+        "last_deployed_at": "s336",
+        "last_deployed_at_label": "s337",
+        "last_purged_at": "s338",
+        "last_purged_at_label": "s339",
+        "last_synced_at": "s33a",
+        "last_synced_at_label": "s33b",
+        "name": "s33c",
+        "origin_url": "s33d",
+        "provisioned": true,
+        "routing_settings_json": "s33f",
+        "security_settings_json": "s340",
+        "slug": "s341",
+        "status": "s342",
+        "updated_at": "s343",
+        "updated_at_label": "s344",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_cdn": {
+      "app_cdn_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "cache_path_prefix": "s43a",
+        "cache_settings_json": "s43b",
+        "created_at": "s43c",
+        "created_at_label": "s43d",
+        "distribution_kind": "s43e",
+        "edge_hostname": "s43f",
+        "failure_message": "s440",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostnames": [],
+        "last_deployed_at": "s444",
+        "last_deployed_at_label": "s445",
+        "last_purged_at": "s446",
+        "last_purged_at_label": "s447",
+        "last_synced_at": "s448",
+        "last_synced_at_label": "s449",
+        "name": "s44a",
+        "origin_url": "s44b",
+        "provisioned": true,
+        "routing_settings_json": "s44d",
+        "security_settings_json": "s44e",
+        "slug": "s44f",
+        "status": "s450",
+        "updated_at": "s451",
+        "updated_at_label": "s452"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/provision": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/purge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{id}/sync": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/cdns": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/cdns": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/cdns/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/cdns/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/cdns/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/cdns/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

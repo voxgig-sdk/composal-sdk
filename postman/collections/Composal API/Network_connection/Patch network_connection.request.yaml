@@ -1,0 +1,31 @@
+$kind: http-request
+id: cfeb6bea-1cd6-5d00-93f8-40209fbcd009
+description: |-
+  The `patch` operation of **network_connection**.
+
+  SDK: `client.NetworkConnection().patch({ id: "example", organization_id: "example", aws_client_vpn_profile: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/network_connections/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this network_connection belongs to.
+  - key: id
+    value: "{{network_connection_id}}"
+    description: The network_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "provider": "tailscale",
+      "oauth_client_id": "example",
+      "oauth_client_secret": "example",
+      "aws_client_vpn_profile": "example",
+      "device_tag": "example",
+      "status": "active"
+    }
+order: 3000

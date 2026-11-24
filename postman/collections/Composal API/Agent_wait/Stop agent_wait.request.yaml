@@ -1,0 +1,25 @@
+$kind: http-request
+id: bd3fc040-6cf3-5d07-942e-85743da6b5e9
+description: |-
+  The `stop` action of **agent_wait**, a route of its `create` operation.
+
+  SDK: `client.AgentWait().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "stop" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/waits/:wait_id/stop"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_wait belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_wait belongs to.
+  - key: wait_id
+    value: "{{agent_wait_id}}"
+    description: The agent_wait this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "9b46a99d-f824-5bc9-b2be-594f62ebd2bb"
+description: |-
+  The `run` action of **workflow_trigger_skipped**, a route of its `create` operation.
+
+  SDK: `client.WorkflowTriggerSkipped().create({ "organization_id": "organization_id", "agent_id": "agent_id", "workflow_trigger_id": "workflow_trigger_id", "id": "ID", $action: "run" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id/skipped/:delivery_id/run"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this workflow_trigger_skipped belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this workflow_trigger_skipped belongs to.
+  - key: trigger_id
+    value: "{{workflow_trigger_id}}"
+    description: "Input: workflow_trigger_id."
+  - key: delivery_id
+    value: "{{workflow_trigger_skipped_id}}"
+    description: The workflow_trigger_skipped this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

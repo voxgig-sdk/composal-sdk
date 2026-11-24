@@ -1,0 +1,38 @@
+$kind: http-request
+id: "1662cf36-9e71-53da-a2c9-0eefee2d48a2"
+description: |-
+  The `create` operation of **cdn_hostname**.
+
+  SDK: `client.CdnHostname().create({ app_id: "example", cdn_id: "example", hostname: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/hostnames"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_hostname belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+body:
+  type: json
+  content: |-
+    {
+      "hostname": "example",
+      "force_ssl": true,
+      "tls_status": "pending",
+      "dns_status": "pending"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["hostname"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("cdn_hostname_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

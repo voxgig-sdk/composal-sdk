@@ -1,0 +1,18 @@
+# BasicCliLoginExchangeFlow
+
+main: kit: flow: BasicCliLoginExchangeFlow:
+{
+  entity: "cli_login_exchange",
+  kind: "basic",
+  name: "BasicCliLoginExchangeFlow",
+  step: [
+    {
+      i: {
+        ref: "cli_login_exchange_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCliLoginExchangeFlow"
+}

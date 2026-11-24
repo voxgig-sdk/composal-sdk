@@ -1,0 +1,28 @@
+$kind: http-request
+id: "8a28487f-1566-53de-b7e9-ac805981765d"
+description: |-
+  The `list` operation of **environment_test_account**.
+
+  SDK: `client.EnvironmentTestAccount().list({ environment_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/test_accounts"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_test_account belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_test_account belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["accounts"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("environment_test_account_id")) pm.collectionVariables.set("environment_test_account_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

@@ -1,0 +1,103 @@
+{
+  "existing": {
+    "agent_routine": {
+      "AGENT_ROUTINE00": {
+        "can_manage": true,
+        "consecutive_errors": 171,
+        "credit_wait": {},
+        "description": "sad",
+        "enabled": true,
+        "id": "AGENT_ROUTINE00",
+        "kind": "sb0",
+        "last_error": "sb1",
+        "last_run_at": "sb2",
+        "last_status": "sb3",
+        "managed": true,
+        "name": "sb5",
+        "next_run_at": "sb6",
+        "routine": {},
+        "schedule": {},
+        "schedule_label": "sb9",
+        "utility_model": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_ROUTINE01": {
+        "can_manage": true,
+        "consecutive_errors": 341,
+        "credit_wait": {},
+        "description": "s157",
+        "enabled": true,
+        "id": "AGENT_ROUTINE01",
+        "kind": "s15a",
+        "last_error": "s15b",
+        "last_run_at": "s15c",
+        "last_status": "s15d",
+        "managed": true,
+        "name": "s15f",
+        "next_run_at": "s160",
+        "routine": {},
+        "schedule": {},
+        "schedule_label": "s163",
+        "utility_model": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_ROUTINE02": {
+        "can_manage": true,
+        "consecutive_errors": 511,
+        "credit_wait": {},
+        "description": "s201",
+        "enabled": true,
+        "id": "AGENT_ROUTINE02",
+        "kind": "s204",
+        "last_error": "s205",
+        "last_run_at": "s206",
+        "last_status": "s207",
+        "managed": true,
+        "name": "s209",
+        "next_run_at": "s20a",
+        "routine": {},
+        "schedule": {},
+        "schedule_label": "s20d",
+        "utility_model": {},
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_routine": {
+      "agent_routine_ref01": {
+        "can_manage": true,
+        "consecutive_errors": 681,
+        "credit_wait": {},
+        "description": "s2ab",
+        "enabled": true,
+        "kind": "s2ae",
+        "last_error": "s2af",
+        "last_run_at": "s2b0",
+        "last_status": "s2b1",
+        "managed": true,
+        "name": "s2b3",
+        "next_run_at": "s2b4",
+        "routine": {},
+        "schedule": {},
+        "schedule_label": "s2b7",
+        "utility_model": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/routines": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/routines/{routine_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

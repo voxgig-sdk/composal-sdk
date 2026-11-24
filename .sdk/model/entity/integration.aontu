@@ -1,0 +1,101 @@
+# Entity: integration
+
+main: kit: entity: integration: {
+
+  alias: field: {}
+
+  fields: {
+    github: {
+      h: "Github"
+      n: "github"
+      r: true
+      t: "`$OBJECT`"
+    }
+    gitlab: {
+      h: "Gitlab"
+      n: "gitlab"
+      r: true
+      t: "`$OBJECT`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    slack: {
+      h: "Slack"
+      n: "slack"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "integration"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/integrations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/integrations"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "integrations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "project_overview_metric": {
+      "PROJECT_OVERVIEW_METRIC00": {
+        "counts": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_OVERVIEW_METRIC01": {
+        "counts": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_OVERVIEW_METRIC02": {
+        "counts": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_overview_metric": {
+      "project_overview_metric_ref01": {
+        "counts": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

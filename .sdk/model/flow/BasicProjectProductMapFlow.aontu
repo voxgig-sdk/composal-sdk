@@ -1,0 +1,46 @@
+# BasicProjectProductMapFlow
+
+main: kit: flow: BasicProjectProductMapFlow:
+{
+  entity: "project_product_map",
+  kind: "basic",
+  name: "BasicProjectProductMapFlow",
+  step: [
+    {
+      i: {
+        ref: "project_product_map_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "project_product_map_ref01",
+        srcdatavar: "project_product_map_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_product_map01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_product_map_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectProductMapFlow"
+}

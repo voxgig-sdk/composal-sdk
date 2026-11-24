@@ -1,0 +1,22 @@
+# BasicTranscriptSearchResultFlow
+
+main: kit: flow: BasicTranscriptSearchResultFlow:
+{
+  entity: "transcript_search_result",
+  kind: "basic",
+  name: "BasicTranscriptSearchResultFlow",
+  step: [
+    {
+      i: {
+        ref: "transcript_search_result_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicTranscriptSearchResultFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "5e9ca5e2-b183-56ef-8334-fc2fbcab93d6"
+description: |-
+  The `cancel` action of **static_site_deployment**, a route of its `create` operation.
+
+  SDK: `client.StaticSiteDeployment().create({ "static_site_id": "static_site_id", "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/deployments/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_deployment belongs to.
+  - key: id
+    value: "{{static_site_deployment_id}}"
+    description: The static_site_deployment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

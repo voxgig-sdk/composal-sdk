@@ -1,0 +1,23 @@
+# BasicAgentProvisioningFlow
+
+main: kit: flow: BasicAgentProvisioningFlow:
+{
+  entity: "agent_provisioning",
+  kind: "basic",
+  name: "BasicAgentProvisioningFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_provisioning_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentProvisioningFlow"
+}

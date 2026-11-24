@@ -1,0 +1,25 @@
+$kind: http-request
+id: "95e4c588-52c6-540c-9054-2b1a77107e53"
+description: |-
+  The `load` operation of **verification_project_run**.
+
+  SDK: `client.VerificationProjectRun().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: diagnostics
+    value: "true"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_run belongs to.
+  - key: id
+    value: "{{verification_project_run_id}}"
+    description: The verification_project_run this request addresses.
+order: 2000

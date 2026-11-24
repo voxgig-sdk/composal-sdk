@@ -1,0 +1,29 @@
+# BasicAdminFlow
+
+main: kit: flow: BasicAdminFlow:
+{
+  entity: "admin",
+  kind: "basic",
+  name: "BasicAdminFlow",
+  step: [
+    {
+      i: {
+        ref: "admin_ref01",
+        srcdatavar: "admin_ref01_data",
+        suffix: "_up0",
+        textfield: "deployment_usage_visibility"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-admin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAdminFlow"
+}

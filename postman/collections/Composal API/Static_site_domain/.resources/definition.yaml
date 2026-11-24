@@ -1,0 +1,28 @@
+$kind: collection
+id: ae8b3aeb-eff1-54fc-be18-93687370c38e
+description: |-
+  The **static_site_domain** entity, which belongs to a static_site. Its requests address one record by `{{static_site_domain_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `dns_mode` | string | yes |  |
+  | `dns_status` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `hostname` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `last_checked_at` | string | yes |  |
+  | `record_name` | string | yes |  |
+  | `record_type` | string | yes |  |
+  | `record_value` | string | yes |  |
+  | `redirect_to` | string | yes |  |
+  | `static_site_id` | string | yes |  |
+  | `target_kind` | string | yes |  |
+  | `tls_status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verification_status` | string | yes |  |
+order: 202000

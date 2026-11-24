@@ -1,0 +1,24 @@
+# BasicThreadWorkspaceFlow
+
+main: kit: flow: BasicThreadWorkspaceFlow:
+{
+  entity: "thread_workspace",
+  kind: "basic",
+  name: "BasicThreadWorkspaceFlow",
+  step: [
+    {
+      i: {
+        ref: "thread_workspace_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        workspace_id: "workspace01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicThreadWorkspaceFlow"
+}

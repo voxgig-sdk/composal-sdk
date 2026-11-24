@@ -1,0 +1,16 @@
+$kind: collection
+id: "91c281ca-4764-5d5b-83fc-e8fac8a18b07"
+description: |-
+  The **deep_scan_option** entity, which belongs to a organization. Its requests address one record by `{{deep_scan_option_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accounts` | array | yes |  |
+  | `deep_scan_defaults` | any |  |  |
+  | `flow_map` | object | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `personas` | array |  |  |
+  | `preview` | boolean |  |  |
+  | `target_url` | string | yes |  |
+order: 101000

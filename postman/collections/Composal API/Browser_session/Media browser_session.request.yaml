@@ -1,0 +1,18 @@
+$kind: http-request
+id: "49d8f813-767f-55e2-b4ed-64d5ffa432e8"
+description: |-
+  The `media` action of **browser_session**, a route of its `load` operation.
+
+  SDK: `client.BrowserSession().load({ "organization_id": "organization_id", "id": "ID", $action: "media" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/media"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this request addresses.
+order: 4000

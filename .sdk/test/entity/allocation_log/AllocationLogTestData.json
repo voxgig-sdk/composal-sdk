@@ -1,0 +1,72 @@
+{
+  "existing": {
+    "allocation_log": {
+      "ALLOCATION_LOG00": {
+        "allocation_id": "ALLOCATION01",
+        "environment": "s6f",
+        "fetched_at": "s70",
+        "location": "s71",
+        "logs": "s72",
+        "namespace": "s73",
+        "offset": 116,
+        "origin": "s75",
+        "service": "s76",
+        "task": "s77",
+        "type": "s78",
+        "app_id": "APP01"
+      },
+      "ALLOCATION_LOG01": {
+        "allocation_id": "ALLOCATION01",
+        "environment": "sdd",
+        "fetched_at": "sde",
+        "location": "sdf",
+        "logs": "se0",
+        "namespace": "se1",
+        "offset": 226,
+        "origin": "se3",
+        "service": "se4",
+        "task": "se5",
+        "type": "se6",
+        "app_id": "APP01"
+      },
+      "ALLOCATION_LOG02": {
+        "allocation_id": "ALLOCATION01",
+        "environment": "s14b",
+        "fetched_at": "s14c",
+        "location": "s14d",
+        "logs": "s14e",
+        "namespace": "s14f",
+        "offset": 336,
+        "origin": "s151",
+        "service": "s152",
+        "task": "s153",
+        "type": "s154",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "allocation_log": {
+      "allocation_log_ref01": {
+        "allocation_id": "ALLOCATION01",
+        "environment": "s1b9",
+        "fetched_at": "s1ba",
+        "location": "s1bb",
+        "logs": "s1bc",
+        "namespace": "s1bd",
+        "offset": 446,
+        "origin": "s1bf",
+        "service": "s1c0",
+        "task": "s1c1",
+        "type": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

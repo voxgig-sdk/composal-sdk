@@ -1,0 +1,1117 @@
+# Entity: verification_project_run
+
+main: kit: entity: verification_project_run: {
+
+  alias: field: {}
+
+  fields: {
+    approved_at: {
+      fo: "date-time"
+      h: "Approved At"
+      n: "approved_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    approved_digest: {
+      h: "Approved Digest"
+      n: "approved_digest"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    archived_at: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archived_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    available_tests: {
+      h: "Available Tests"
+      n: "available_tests"
+      r: true
+      t: "`$ARRAY`"
+    }
+    can_archive: {
+      h: "Can Archive"
+      n: "can_archive"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_restore: {
+      h: "Can Restore"
+      n: "can_restore"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_start_another_run: {
+      h: "Can Start Another Run"
+      n: "can_start_another_run"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    cleanup_state: {
+      h: "Cleanup State"
+      n: "cleanup_state"
+      r: true
+      t: "`$STRING`"
+    }
+    concurrency: {
+      h: "Concurrency"
+      n: "concurrency"
+      r: true
+      t: "`$INTEGER`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    creator_name: {
+      h: "Creator Name"
+      n: "creator_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    definition_mode: {
+      h: "Definition Mode"
+      n: "definition_mode"
+      r: true
+      t: "`$STRING`"
+    }
+    environment_id: {
+      h: "Environment Id"
+      n: "environment_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    lock_version: {
+      h: "Lock Version"
+      n: "lock_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: true
+      t: "`$INTEGER`"
+    }
+    outcome: {
+      h: "Outcome"
+      n: "outcome"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    plan_digest: {
+      h: "Plan Digest"
+      n: "plan_digest"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    preparation_error_code: {
+      h: "Preparation Error Code"
+      n: "preparation_error_code"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    progress: {
+      h: "Progress"
+      n: "progress"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      t: "`$STRING`"
+    }
+    pull_request: {
+      h: "Pull Request"
+      n: "pull_request"
+      r: true
+      t: "`$ANY`"
+    }
+    queued_at: {
+      fo: "date-time"
+      h: "Queued At"
+      n: "queued_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    run: {
+      h: "Run"
+      n: "run"
+      r: true
+      t: "`$OBJECT`"
+    }
+    run_plan_id: {
+      h: "Run Plan Id"
+      n: "run_plan_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    scenario_runs: {
+      h: "Scenario Runs"
+      n: "scenario_runs"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 2
+        depth: 11
+      }
+    }
+    source_run_id: {
+      h: "Source Run Id"
+      n: "source_run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source_versions: {
+      h: "Source Versions"
+      n: "source_versions"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$ARRAY`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    start_when_prepared: {
+      h: "Start When Prepared"
+      n: "start_when_prepared"
+      r: true
+      sh: "The run starts as soon as its browser plans are ready, without a review step."
+      t: "`$BOOLEAN`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    target_snapshot: {
+      h: "Target Snapshot"
+      n: "target_snapshot"
+      r: true
+      t: "`$OBJECT`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    verifier_preferences_snapshot: {
+      h: "Verifier Preferences Snapshot"
+      n: "verifier_preferences_snapshot"
+      r: true
+      sh: "Project guidance for human-readable verifier reports; core execution and evidence rules take precedence."
+      t: "`$OBJECT`"
+    }
+    web_path: {
+      h: "Web Path"
+      n: "web_path"
+      r: true
+      sh: "Path of the run's page in the web app, where it can be watched live."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "verification_project_run"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/archive"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/archive"
+          q: {
+            "$action": "archive"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "archive"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+        {
+          bf: [
+            "digest"
+            "idempotency_key"
+            "viewer_time_zone"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/launch"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/launch"
+          q: {
+            "$action": "launch"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "launch"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+        {
+          bf: [
+            "idempotency_key"
+            "mode"
+            "start_when_prepared"
+            "viewer_time_zone"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/rerun"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/rerun"
+          q: {
+            "$action": "rerun"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "rerun"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/restore"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/restore"
+          q: {
+            "$action": "restore"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "restore"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "concurrency"
+            "environment_id"
+            "idempotency_key"
+            "max_seconds"
+            "run_plan_id"
+            "run_plan_version"
+            "scenario_files"
+            "scenario_ids"
+            "start_when_prepared"
+            "viewer_time_zone"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/prepare"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/prepare"
+          q: {
+            "$action": "prepare"
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              lit: "prepare"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
+            req: "`reqdata`"
+            res: "`body.runs`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                explode: true
+                k: "query"
+                n: "diagnostic"
+                or: "diagnostics"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.run`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/card"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/card"
+          q: {
+            "$action": "card"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "card"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

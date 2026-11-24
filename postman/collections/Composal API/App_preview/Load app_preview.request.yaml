@@ -1,0 +1,18 @@
+$kind: http-request
+id: "43453bfa-d780-59ad-9804-720f712f9e8b"
+description: |-
+  The `load` operation of **app_preview**.
+
+  SDK: `client.AppPreview().load({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+order: 2000

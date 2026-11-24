@@ -1,0 +1,4 @@
+$kind: collection
+id: ba2d9ea0-ef5d-59e8-ae01-85123a82b44f
+description: "The `BasicAppServicePlacementFlow` flow of **app_service_placement**."
+order: 56000

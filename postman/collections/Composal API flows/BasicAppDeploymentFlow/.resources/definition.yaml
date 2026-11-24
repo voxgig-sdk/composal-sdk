@@ -1,0 +1,4 @@
+$kind: collection
+id: "10c64120-ccfc-55e9-82f7-9190c4a15244"
+description: "The `BasicAppDeploymentFlow` flow of **app_deployment**."
+order: 45000

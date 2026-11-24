@@ -1,0 +1,52 @@
+$kind: http-request
+id: "1f6b9792-f606-5ae2-80b7-b64cb144d6af"
+description: |-
+  The `product_map` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", $action: "product_map" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/product_map"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: after
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: compact
+    value: "false"
+    disabled: true
+  - key: include_connections
+    value: "true"
+    disabled: true
+  - key: journey_query
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 17000

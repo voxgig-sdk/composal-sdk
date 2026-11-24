@@ -1,0 +1,23 @@
+# BasicAgentRuntimeFlow
+
+main: kit: flow: BasicAgentRuntimeFlow:
+{
+  entity: "agent_runtime",
+  kind: "basic",
+  name: "BasicAgentRuntimeFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_runtime_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentRuntimeFlow"
+}

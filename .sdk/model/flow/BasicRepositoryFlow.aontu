@@ -1,0 +1,61 @@
+# BasicRepositoryFlow
+
+main: kit: flow: BasicRepositoryFlow:
+{
+  entity: "repository",
+  kind: "basic",
+  name: "BasicRepositoryFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_ref01"
+      }
+
+      m: {
+        repository: "repository01",
+        repository_import_session_id: "repository_import_session01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        repository_import_session_id: "repository_import_session01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repository_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repository_ref01",
+        srcdatavar: "repository_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryFlow"
+}

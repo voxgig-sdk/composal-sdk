@@ -1,0 +1,40 @@
+# BasicClawderSkillFlow
+
+main: kit: flow: BasicClawderSkillFlow:
+{
+  entity: "clawder_skill",
+  kind: "basic",
+  name: "BasicClawderSkillFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_skill_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_skill_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSkillFlow"
+}

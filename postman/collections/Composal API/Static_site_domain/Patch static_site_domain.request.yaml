@@ -1,0 +1,22 @@
+$kind: http-request
+id: fd02c08d-1644-5ba8-86a8-1a91aa4094fc
+description: |-
+  The `patch` operation of **static_site_domain**.
+
+  SDK: `client.StaticSiteDomain().patch({ id: "example", static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/domains/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_domain belongs to.
+  - key: id
+    value: "{{static_site_domain_id}}"
+    description: The static_site_domain this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

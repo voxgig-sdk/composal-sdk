@@ -1,0 +1,25 @@
+$kind: http-request
+id: be26e16f-1858-53e8-b3d3-7ca7078dec68
+description: |-
+  The `allocation` action of **deployment_dashboard_nomad**, a route of its `load` operation.
+
+  SDK: `client.DeploymentDashboardNomad().load({ "app_id": "app_id", $action: "allocation" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_dashboard/nomad/allocation"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment
+    value: ""
+    disabled: true
+  - key: location
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this deployment_dashboard_nomad belongs to.
+order: 1000

@@ -1,0 +1,179 @@
+# Entity: deep_scan_flow
+
+main: kit: entity: deep_scan_flow: {
+
+  alias: field: {}
+
+  fields: {
+    account_id: {
+      h: "Account Id"
+      n: "account_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    concurrency: {
+      h: "Concurrency"
+      n: "concurrency"
+      r: false
+      t: "`$INTEGER`"
+    }
+    environment_id: {
+      h: "Environment Id"
+      n: "environment_id"
+      r: false
+      t: "`$STRING`"
+    }
+    exploration_id: {
+      h: "Exploration Id"
+      n: "exploration_id"
+      r: false
+      t: "`$STRING`"
+    }
+    flow_names: {
+      h: "Flow Names"
+      n: "flow_names"
+      r: true
+      t: "`$ARRAY`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: false
+      t: "`$STRING`"
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    max_testers: {
+      h: "Max Testers"
+      n: "max_testers"
+      r: false
+      t: "`$INTEGER`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "deep_scan_flow"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "account_id"
+            "concurrency"
+            "environment_id"
+            "exploration_id"
+            "flow_names"
+            "idempotency_key"
+            "max_seconds"
+            "max_testers"
+            "note"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/deep_scans/flows"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/deep_scans/flows"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "deep_scans"
+            }
+            {
+              lit: "flows"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

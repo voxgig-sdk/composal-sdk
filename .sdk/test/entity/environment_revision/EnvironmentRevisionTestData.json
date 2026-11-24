@@ -1,0 +1,156 @@
+{
+  "existing": {
+    "environment_revision": {
+      "ENVIRONMENT_REVISION00": {
+        "allowed_origins": [],
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "blueprint": {},
+        "blueprint_json": {},
+        "cleanup_state": "s109",
+        "created_at": "s10a",
+        "digest": "s10b",
+        "dry_run": true,
+        "expires_at": "s10d",
+        "id": "ENVIRONMENT_REVISION00",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s110",
+        "resolved_manifest_json": {},
+        "retention_policy_json": {},
+        "revision": 275,
+        "revoked_at": "s114",
+        "runner_environment_revision_id": "RUNNER_ENVIRONMENT_REVISION01",
+        "safety_policy_json": {},
+        "schema_version": 279,
+        "source_metadata": {},
+        "source_metadata_json": {},
+        "status": "s11a",
+        "updated_at": "s11b",
+        "validation_json": {},
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "environment_id": "ENVIRONMENT01"
+      },
+      "ENVIRONMENT_REVISION01": {
+        "allowed_origins": [],
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "blueprint": {},
+        "blueprint_json": {},
+        "cleanup_state": "s20d",
+        "created_at": "s20e",
+        "digest": "s20f",
+        "dry_run": true,
+        "expires_at": "s211",
+        "id": "ENVIRONMENT_REVISION01",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s214",
+        "resolved_manifest_json": {},
+        "retention_policy_json": {},
+        "revision": 535,
+        "revoked_at": "s218",
+        "runner_environment_revision_id": "RUNNER_ENVIRONMENT_REVISION01",
+        "safety_policy_json": {},
+        "schema_version": 539,
+        "source_metadata": {},
+        "source_metadata_json": {},
+        "status": "s21e",
+        "updated_at": "s21f",
+        "validation_json": {},
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "environment_id": "ENVIRONMENT01"
+      },
+      "ENVIRONMENT_REVISION02": {
+        "allowed_origins": [],
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "blueprint": {},
+        "blueprint_json": {},
+        "cleanup_state": "s311",
+        "created_at": "s312",
+        "digest": "s313",
+        "dry_run": true,
+        "expires_at": "s315",
+        "id": "ENVIRONMENT_REVISION02",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s318",
+        "resolved_manifest_json": {},
+        "retention_policy_json": {},
+        "revision": 795,
+        "revoked_at": "s31c",
+        "runner_environment_revision_id": "RUNNER_ENVIRONMENT_REVISION01",
+        "safety_policy_json": {},
+        "schema_version": 799,
+        "source_metadata": {},
+        "source_metadata_json": {},
+        "status": "s322",
+        "updated_at": "s323",
+        "validation_json": {},
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "environment_id": "ENVIRONMENT01"
+      }
+    }
+  },
+  "new": {
+    "environment_revision": {
+      "environment_revision_ref01": {
+        "allowed_origins": [],
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_release_id": "APP_RELEASE01",
+        "blueprint": {},
+        "blueprint_json": {},
+        "cleanup_state": "s415",
+        "created_at": "s416",
+        "digest": "s417",
+        "dry_run": true,
+        "expires_at": "s419",
+        "organization_id": "ORGANIZATION01",
+        "ready_at": "s41c",
+        "resolved_manifest_json": {},
+        "retention_policy_json": {},
+        "revision": 1055,
+        "revoked_at": "s420",
+        "runner_environment_revision_id": "RUNNER_ENVIRONMENT_REVISION01",
+        "safety_policy_json": {},
+        "schema_version": 1059,
+        "source_metadata": {},
+        "source_metadata_json": {},
+        "status": "s426",
+        "updated_at": "s427",
+        "validation_json": {},
+        "verify_environment_id": "VERIFY_ENVIRONMENT01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/revoke": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

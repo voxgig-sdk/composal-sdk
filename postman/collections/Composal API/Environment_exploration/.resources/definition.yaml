@@ -1,0 +1,57 @@
+$kind: collection
+id: "4bcb07a2-6ed2-547d-b3a8-06a09fbd50b5"
+description: |-
+  The **environment_exploration** entity, which belongs to a organization and a project and a environment. Its requests address one record by `{{environment_exploration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string |  |  |
+  | `agent_filters` | object | yes |  |
+  | `agents` | array | yes |  |
+  | `can_continue` | boolean |  |  |
+  | `chat_messages` | array |  |  |
+  | `concurrency` | integer | yes |  |
+  | `covered_areas` | array | yes |  |
+  | `created_at` | string | yes |  |
+  | `deadline_at` | string | yes |  |
+  | `demo_project` | object | yes |  |
+  | `ended_early` | boolean | yes |  |
+  | `environment_id` | string | yes |  |
+  | `environment_name` | string | yes |  |
+  | `explorer_activity` | object | yes |  |
+  | `finding_count` | integer | yes |  |
+  | `findings` | array | yes |  |
+  | `findings_fix_prompt` | string | yes |  |
+  | `finished_at` | string |  |  |
+  | `goal` | string | yes |  |
+  | `huntable_flows` | array | yes |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string |  |  |
+  | `max_seconds` | integer | yes |  |
+  | `max_testers` | integer | yes |  |
+  | `mode` | string |  |  |
+  | `next_scan_improvements` | array | yes |  |
+  | `observed_at` | string |  |  |
+  | `onboarding` | boolean | yes |  |
+  | `paywalled` | boolean | yes |  |
+  | `permissions` | object | yes |  |
+  | `persona_id` | string |  |  |
+  | `priority_counts` | object | yes |  |
+  | `project_id` | string |  |  |
+  | `related_explorations` | array | yes |  |
+  | `report` | object | yes |  |
+  | `reproduction_of` | object | yes |  |
+  | `reproductions` | array | yes |  |
+  | `saves_scenarios` | boolean | yes |  |
+  | `scannable_flows` | array | yes |  |
+  | `scenario_generation` | object | yes |  |
+  | `sign_in_needs_answer` | boolean | yes |  |
+  | `sign_in_outcome` | string | yes |  |
+  | `sign_in_question` | string |  |  |
+  | `startup_retryable` | boolean |  |  |
+  | `status` | string | yes |  |
+  | `time_limit_reached` | boolean | yes |  |
+  | `title` | string |  |  |
+  | `unlock` | any | yes |  |
+  | `web_url` | string | yes |  |
+order: 111000

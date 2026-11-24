@@ -1,0 +1,101 @@
+# Entity: agent_provisioning
+
+main: kit: entity: agent_provisioning: {
+
+  alias: field: {}
+
+  name: "agent_provisioning"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "expected_version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/provisioning/retry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/provisioning/retry"
+          q: {
+            "$action": "retry"
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "provisioning"
+            }
+            {
+              lit: "retry"
+            }
+          ]
+          t: {
+            req: {
+              expected_version: "`reqdata.expected_version`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

@@ -1,0 +1,38 @@
+$kind: http-request
+id: b1cfe616-5597-5ecf-b411-fbe74aa3ffc0
+description: |-
+  The `create` operation of **agent_operation**.
+
+  SDK: `client.AgentOperation().create({ agent_id: "example", organization_id: "example", arguments: {}, key: "example", name: "example", requester_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/operations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_operation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_operation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "requester_id": "example",
+      "key": "example",
+      "name": "example",
+      "arguments": {}
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_operation_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

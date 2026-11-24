@@ -1,0 +1,18 @@
+$kind: http-request
+id: "2c848418-d5f7-5f6c-be3b-afa769800e72"
+description: |-
+  The `load` operation of **site_preview**.
+
+  SDK: `client.SitePreview().load({ organization_id: "example", url: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/site_preview?url={{site_preview_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: url
+    value: "{{site_preview_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this site_preview belongs to.
+order: 1000

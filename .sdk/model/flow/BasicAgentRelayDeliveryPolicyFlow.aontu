@@ -1,0 +1,58 @@
+# BasicAgentRelayDeliveryPolicyFlow
+
+main: kit: flow: BasicAgentRelayDeliveryPolicyFlow:
+{
+  entity: "agent_relay_delivery_policy",
+  kind: "basic",
+  name: "BasicAgentRelayDeliveryPolicyFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_relay_delivery_policy_ref01",
+        srcdatavar: "agent_relay_delivery_policy_ref01_data",
+        suffix: "_up0",
+        textfield: "next_cursor"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_relay_delivery_policy_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_relay_delivery_policy_ref01",
+        srcdatavar: "agent_relay_delivery_policy_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_relay_delivery_policy01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_relay_delivery_policy_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentRelayDeliveryPolicyFlow"
+}

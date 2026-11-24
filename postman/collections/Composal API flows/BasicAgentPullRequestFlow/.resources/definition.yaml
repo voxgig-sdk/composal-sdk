@@ -1,0 +1,4 @@
+$kind: collection
+id: ceed7b04-5032-5b89-834f-2602db3486e4
+description: "The `BasicAgentPullRequestFlow` flow of **agent_pull_request**."
+order: 18000

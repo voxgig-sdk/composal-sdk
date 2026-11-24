@@ -1,0 +1,73 @@
+# BasicBazelFlow
+
+main: kit: flow: BasicBazelFlow:
+{
+  entity: "bazel",
+  kind: "basic",
+  name: "BasicBazelFlow",
+  step: [
+    {
+      i: {
+        ref: "bazel_ref01"
+      }
+
+      m: {
+        backend_id: "backend01",
+        hash: "hash01",
+        kind: "kind01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "bazel_ref01",
+        srcdatavar: "bazel_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_ref01",
+        srcdatavar: "bazel_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-bazel_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "bazel_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "bazel01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicBazelFlow"
+}

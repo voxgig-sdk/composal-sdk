@@ -1,0 +1,35 @@
+# BasicMediaFileFlow
+
+main: kit: flow: BasicMediaFileFlow:
+{
+  entity: "media_file",
+  kind: "basic",
+  name: "BasicMediaFileFlow",
+  step: [
+    {
+      i: {
+        ref: "media_file_ref01",
+        srcdatavar: "media_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        id: "media_file01",
+        media_id: "media01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-media_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMediaFileFlow"
+}

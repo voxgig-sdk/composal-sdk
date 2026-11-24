@@ -1,0 +1,42 @@
+$kind: collection
+id: "576a41c9-2244-5a53-9f89-1e8a5e7f66e1"
+description: |-
+  A Verify project: an app whose user journeys Verify tests, with its environments, credentials, personas and scenarios.
+
+  The **project** entity, which belongs to a organization. Its requests address one record by `{{project_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `archived_at` | string | yes |  |
+  | `context` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `credentials` | array | yes |  |
+  | `demo` | boolean | yes |  |
+  | `documentation_urls` | array | yes |  |
+  | `environments` | array | yes |  |
+  | `execution_mode` | string | yes |  |
+  | `icon_url` | string | yes |  |
+  | `id` | string | yes |  |
+  | `identity_provider` | object | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `network_connections` | array | yes |  |
+  | `organization_id` | string | yes |  |
+  | `overview` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `personas` | array | yes |  |
+  | `project` | object | yes |  |
+  | `pull_request_options` | object | yes |  |
+  | `pull_requests` | array | yes |  |
+  | `purpose` | string | yes |  |
+  | `runs` | array | yes |  |
+  | `scenario_history` | object | yes |  |
+  | `scenario_states` | object | yes |  |
+  | `scenarios` | array | yes |  |
+  | `setup_required` | boolean |  |  |
+  | `slug` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verifier_preferences` | object | yes |  |
+  | `version` | integer | yes |  |
+  | `website_url` | string | yes |  |
+order: 94000

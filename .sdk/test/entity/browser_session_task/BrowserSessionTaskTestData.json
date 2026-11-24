@@ -1,0 +1,109 @@
+{
+  "existing": {
+    "browser_session_task": {
+      "BROWSER_SESSION_TASK00": {
+        "activity": "sb4",
+        "browser_session_id": "BROWSER_SESSION01",
+        "cancel_requested_at": "sb6",
+        "completed_at": "sb7",
+        "control_generation": "sb8",
+        "deadline_at": "sb9",
+        "effects_unknown": true,
+        "failure_code": "sbb",
+        "id": "BROWSER_SESSION_TASK00",
+        "idempotency_key": "sbd",
+        "instruction": "sbe",
+        "max_rounds": 191,
+        "max_seconds": 192,
+        "model_selection": {},
+        "outcome": "sc2",
+        "result": {},
+        "started_at": "sc4",
+        "status": "sc5",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_TASK01": {
+        "activity": "s168",
+        "browser_session_id": "BROWSER_SESSION01",
+        "cancel_requested_at": "s16a",
+        "completed_at": "s16b",
+        "control_generation": "s16c",
+        "deadline_at": "s16d",
+        "effects_unknown": true,
+        "failure_code": "s16f",
+        "id": "BROWSER_SESSION_TASK01",
+        "idempotency_key": "s171",
+        "instruction": "s172",
+        "max_rounds": 371,
+        "max_seconds": 372,
+        "model_selection": {},
+        "outcome": "s176",
+        "result": {},
+        "started_at": "s178",
+        "status": "s179",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_TASK02": {
+        "activity": "s21c",
+        "browser_session_id": "BROWSER_SESSION01",
+        "cancel_requested_at": "s21e",
+        "completed_at": "s21f",
+        "control_generation": "s220",
+        "deadline_at": "s221",
+        "effects_unknown": true,
+        "failure_code": "s223",
+        "id": "BROWSER_SESSION_TASK02",
+        "idempotency_key": "s225",
+        "instruction": "s226",
+        "max_rounds": 551,
+        "max_seconds": 552,
+        "model_selection": {},
+        "outcome": "s22a",
+        "result": {},
+        "started_at": "s22c",
+        "status": "s22d",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session_task": {
+      "browser_session_task_ref01": {
+        "activity": "s2d0",
+        "browser_session_id": "BROWSER_SESSION01",
+        "cancel_requested_at": "s2d2",
+        "completed_at": "s2d3",
+        "control_generation": "s2d4",
+        "deadline_at": "s2d5",
+        "effects_unknown": true,
+        "failure_code": "s2d7",
+        "idempotency_key": "s2d9",
+        "instruction": "s2da",
+        "max_rounds": 731,
+        "max_seconds": 732,
+        "model_selection": {},
+        "outcome": "s2de",
+        "result": {},
+        "started_at": "s2e0",
+        "status": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

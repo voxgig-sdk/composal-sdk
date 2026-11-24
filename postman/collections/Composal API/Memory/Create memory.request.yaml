@@ -1,0 +1,25 @@
+$kind: http-request
+id: "2339ea08-2f63-5b5e-b8c1-bd1361ad1c0c"
+description: |-
+  The `create` operation of **memory**.
+
+  SDK: `client.Memory().create({ organization_id: "example", finding: "example", title: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/memories"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this memory belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("memory_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

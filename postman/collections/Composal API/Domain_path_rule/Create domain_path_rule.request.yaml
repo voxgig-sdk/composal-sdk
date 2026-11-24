@@ -1,0 +1,37 @@
+$kind: http-request
+id: "5f042d88-1890-5ee8-a2d7-9b91623b06b4"
+description: |-
+  The `create` operation of **domain_path_rule**.
+
+  SDK: `client.DomainPathRule().create({ app_id: "example", domain_id: "example", app_service_id: "example", path_prefix: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:domain_id/path_rules"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this domain_path_rule belongs to.
+  - key: domain_id
+    value: "{{domain_id}}"
+    description: "Input: domain_id."
+body:
+  type: json
+  content: |-
+    {
+      "path_prefix": "example",
+      "app_service_id": "{{app_service_id}}",
+      "app_service_endpoint_id": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["path_rule"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("domain_path_rule_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

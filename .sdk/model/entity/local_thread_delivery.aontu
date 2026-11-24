@@ -1,0 +1,294 @@
+# Entity: local_thread_delivery
+
+main: kit: entity: local_thread_delivery: {
+
+  alias: field: {}
+
+  fields: {
+    decision: {
+      h: "Decision"
+      n: "decision"
+      r: true
+      t: "`$STRING`"
+    }
+    decision_pending: {
+      h: "Decision Pending"
+      n: "decision_pending"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    delivery: {
+      h: "Delivery"
+      n: "delivery"
+      r: true
+      t: "`$OBJECT`"
+    }
+    expected_version: {
+      h: "Expected Version"
+      n: "expected_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    policy: {
+      h: "Policy"
+      n: "policy"
+      r: true
+      t: "`$OBJECT`"
+    }
+    recovery_message: {
+      h: "Recovery Message"
+      n: "recovery_message"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "local_thread_delivery"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "delivery_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "local_thread_id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "expected_version"
+                or: "expected_version"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "local_thread_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              delivery_id: "id"
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "local_thread_id"
+            }
+            {
+              lit: "deliveries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "decision"
+            "expected_version"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "delivery_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "local_thread_id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "local_thread_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              delivery_id: "id"
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "local_thread_id"
+            }
+            {
+              lit: "deliveries"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

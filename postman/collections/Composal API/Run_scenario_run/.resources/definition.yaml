@@ -1,0 +1,9 @@
+$kind: collection
+id: "0b0f1148-e6c0-5bb4-a311-b4d3903ac0f7"
+description: |-
+  The **run_scenario_run** entity, which belongs to a organization and a project. Its requests address one record by `{{run_scenario_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 190000

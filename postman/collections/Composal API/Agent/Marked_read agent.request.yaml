@@ -1,0 +1,27 @@
+$kind: http-request
+id: b4d5a1e7-ce8e-599f-8601-ccdfee2d9bd5
+description: |-
+  The `marked_read` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "marked_read" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/marked_read"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "surface": "web",
+      "source": "mission_control"
+    }
+order: 23000

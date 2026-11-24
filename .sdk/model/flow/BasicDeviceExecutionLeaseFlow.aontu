@@ -1,0 +1,23 @@
+# BasicDeviceExecutionLeaseFlow
+
+main: kit: flow: BasicDeviceExecutionLeaseFlow:
+{
+  entity: "device_execution_lease",
+  kind: "basic",
+  name: "BasicDeviceExecutionLeaseFlow",
+  step: [
+    {
+      i: {
+        ref: "device_execution_lease_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceExecutionLeaseFlow"
+}

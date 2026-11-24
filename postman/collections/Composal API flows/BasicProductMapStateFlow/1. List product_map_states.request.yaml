@@ -1,0 +1,88 @@
+$kind: http-request
+id: f0f07623-efee-53ed-b933-519211cffa13
+description: |-
+  The `list` operation of **product_map_state**.
+
+  SDK: `client.ProductMapState().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/states"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: after
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_state belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_state belongs to.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. List product_map_states: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const recs = body?.["states"] || []
+      const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
+      if (null == pm.variables.get("product_map_state_ref01") && (true || "true" === String(pm.variables.get("getonly")).toLowerCase())) {
+        if (Array.isArray(recs) && null != recs[0]) {
+          pm.variables.set("product_map_state_ref01", String(at(recs[0], "id")))
+        }
+        else if (pm.response.code < 300) {
+          pm.variables.set("product_map_state_ref01__empty", "true")
+        }
+      }
+      if (null != pm.variables.get("product_map_state_ref01")) pm.test("1. List product_map_states: the record is listed", () => {
+        pm.expect(keys).to.include(String(pm.variables.get("product_map_state_ref01")))
+      })
+    language: text/javascript
+order: 1000

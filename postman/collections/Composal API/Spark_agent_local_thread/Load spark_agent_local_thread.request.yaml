@@ -1,0 +1,21 @@
+$kind: http-request
+id: "02ecf219-8049-5a95-975f-cac46f903da9"
+description: |-
+  The `load` operation of **spark_agent_local_thread**.
+
+  SDK: `client.SparkAgentLocalThread().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_local_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_local_thread belongs to.
+  - key: local_thread_id
+    value: "{{spark_agent_local_thread_id}}"
+    description: The spark_agent_local_thread this request addresses.
+order: 1000

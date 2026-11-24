@@ -1,0 +1,29 @@
+$kind: http-request
+id: "32820c2e-db53-5ac0-b4d8-915a530ee7e0"
+description: |-
+  The `as_you` action of **agent_slack**, a route of its `create` operation.
+
+  SDK: `client.AgentSlack().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "as_you" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/slack/as_you"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_slack belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_slack belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "action": "connect",
+      "callback": "app",
+      "confirm_before_sending": true,
+      "show_sent_using": true,
+      "mode": "bot"
+    }
+order: 2000

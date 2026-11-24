@@ -1,0 +1,9 @@
+$kind: collection
+id: faa4d2da-6ed6-58c4-bacb-7c7fbef1b5dd
+description: |-
+  The **agent_question** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_question_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 25000

@@ -1,0 +1,26 @@
+$kind: collection
+id: c728db26-b36a-5902-b326-213f91caae86
+description: |-
+  The **app_secret** entity, which belongs to a app. Its requests address one record by `{{app_secret_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `created_at` | string |  |  |
+  | `description` | string |  |  |
+  | `env_key` | string |  |  |
+  | `expose_to_build` | boolean |  |  |
+  | `has_value` | boolean |  |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `latest_version_number` | integer |  |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `rotation_policy` | string |  |  |
+  | `scope_kind` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string |  |  |
+  | `value` | string |  |  |
+  | `value_digest` | string |  |  |
+  | `value_kind` | string |  |  |
+order: 67000

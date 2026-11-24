@@ -1,0 +1,169 @@
+{
+  "existing": {
+    "me": {
+      "ME00": {
+        "active_organization": "sfa",
+        "analytics_distinct_id": "ANALYTICS_DISTINCT01",
+        "analytics_internal": true,
+        "api_base_url": "sfd",
+        "api_token": "sfe",
+        "app_promotion": {},
+        "commit_author_email": "s100",
+        "email": "s101",
+        "enabled_features": [],
+        "github_pr_user_authorization_connected": false,
+        "github_pr_user_authorization_login": "s104",
+        "github_prs_authored_by_change_author": false,
+        "id": "ME00",
+        "impersonation": "s107",
+        "name": "s108",
+        "next_path": "s109",
+        "onboarding": {},
+        "openai_sign_in_connected": false,
+        "openai_sign_in_enabled": true,
+        "organizations": [],
+        "pending_organization_invitation_count": 270,
+        "pending_organization_invitation_count_label": "s10f",
+        "picture_url": "s110",
+        "superadmin": false,
+        "time_zone": "s112"
+      },
+      "ME01": {
+        "active_organization": "s1f4",
+        "analytics_distinct_id": "ANALYTICS_DISTINCT01",
+        "analytics_internal": true,
+        "api_base_url": "s1f7",
+        "api_token": "s1f8",
+        "app_promotion": {},
+        "commit_author_email": "s1fa",
+        "email": "s1fb",
+        "enabled_features": [],
+        "github_pr_user_authorization_connected": false,
+        "github_pr_user_authorization_login": "s1fe",
+        "github_prs_authored_by_change_author": false,
+        "id": "ME01",
+        "impersonation": "s201",
+        "name": "s202",
+        "next_path": "s203",
+        "onboarding": {},
+        "openai_sign_in_connected": false,
+        "openai_sign_in_enabled": true,
+        "organizations": [],
+        "pending_organization_invitation_count": 520,
+        "pending_organization_invitation_count_label": "s209",
+        "picture_url": "s20a",
+        "superadmin": false,
+        "time_zone": "s20c"
+      },
+      "ME02": {
+        "active_organization": "s2ee",
+        "analytics_distinct_id": "ANALYTICS_DISTINCT01",
+        "analytics_internal": true,
+        "api_base_url": "s2f1",
+        "api_token": "s2f2",
+        "app_promotion": {},
+        "commit_author_email": "s2f4",
+        "email": "s2f5",
+        "enabled_features": [],
+        "github_pr_user_authorization_connected": false,
+        "github_pr_user_authorization_login": "s2f8",
+        "github_prs_authored_by_change_author": false,
+        "id": "ME02",
+        "impersonation": "s2fb",
+        "name": "s2fc",
+        "next_path": "s2fd",
+        "onboarding": {},
+        "openai_sign_in_connected": false,
+        "openai_sign_in_enabled": true,
+        "organizations": [],
+        "pending_organization_invitation_count": 770,
+        "pending_organization_invitation_count_label": "s303",
+        "picture_url": "s304",
+        "superadmin": false,
+        "time_zone": "s306"
+      }
+    }
+  },
+  "new": {
+    "me": {
+      "me_ref01": {
+        "active_organization": "s3e8",
+        "analytics_distinct_id": "ANALYTICS_DISTINCT01",
+        "analytics_internal": true,
+        "api_base_url": "s3eb",
+        "api_token": "s3ec",
+        "app_promotion": {},
+        "commit_author_email": "s3ee",
+        "email": "s3ef",
+        "enabled_features": [],
+        "github_pr_user_authorization_connected": false,
+        "github_pr_user_authorization_login": "s3f2",
+        "github_prs_authored_by_change_author": false,
+        "impersonation": "s3f5",
+        "name": "s3f6",
+        "next_path": "s3f7",
+        "onboarding": {},
+        "openai_sign_in_connected": false,
+        "openai_sign_in_enabled": true,
+        "organizations": [],
+        "pending_organization_invitation_count": 1020,
+        "pending_organization_invitation_count_label": "s3fd",
+        "picture_url": "s3fe",
+        "superadmin": false,
+        "time_zone": "s400"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/me/account_deletion": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/me/app_promotion": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/me": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/me/account_deletion": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/me/landing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/me/workspace_suggestion": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/me/profile_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/me": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/me/active_organization": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/me/profile_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

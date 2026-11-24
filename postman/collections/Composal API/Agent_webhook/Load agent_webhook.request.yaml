@@ -1,0 +1,21 @@
+$kind: http-request
+id: ea572554-4455-5e46-a492-4d2724ac1917
+description: |-
+  The `load` operation of **agent_webhook**.
+
+  SDK: `client.AgentWebhook().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/webhooks/:endpoint_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_webhook belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_webhook belongs to.
+  - key: endpoint_id
+    value: "{{agent_webhook_id}}"
+    description: The agent_webhook this request addresses.
+order: 1000

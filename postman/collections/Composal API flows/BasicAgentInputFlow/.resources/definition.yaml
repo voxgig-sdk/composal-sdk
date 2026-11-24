@@ -1,0 +1,4 @@
+$kind: collection
+id: c7d0d43d-c3d6-58bd-b601-255396f3d16e
+description: "The `BasicAgentInputFlow` flow of **agent_input**."
+order: 10000

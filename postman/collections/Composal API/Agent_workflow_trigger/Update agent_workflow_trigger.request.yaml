@@ -1,0 +1,30 @@
+$kind: http-request
+id: "30a7f149-6e66-523e-974a-47cad0710b59"
+description: |-
+  The `update` operation of **agent_workflow_trigger**.
+
+  SDK: `client.AgentWorkflowTrigger().update({ agent_id: "example", id: "example", organization_id: "example", daily_limit: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_trigger belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_trigger belongs to.
+  - key: trigger_id
+    value: "{{agent_workflow_trigger_id}}"
+    description: The agent_workflow_trigger this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "read_at": "example",
+      "daily_limit": 1,
+      "run_budget_usd": 1
+    }
+order: 3000

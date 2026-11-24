@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "run_schedule_option": {
+      "RUN_SCHEDULE_OPTION00": {
+        "id": "RUN_SCHEDULE_OPTION00",
+        "name": "s15",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "RUN_SCHEDULE_OPTION01": {
+        "id": "RUN_SCHEDULE_OPTION01",
+        "name": "s29",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "RUN_SCHEDULE_OPTION02": {
+        "id": "RUN_SCHEDULE_OPTION02",
+        "name": "s3d",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "run_schedule_option": {
+      "run_schedule_option_ref01": {
+        "name": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

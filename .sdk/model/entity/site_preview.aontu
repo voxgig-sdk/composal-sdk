@@ -1,0 +1,121 @@
+# Entity: site_preview
+
+main: kit: entity: site_preview: {
+
+  alias: field: {}
+
+  fields: {
+    icon_data_url: {
+      h: "Icon Data Url"
+      n: "icon_data_url"
+      r: true
+      sh: "The site's icon as a data: URL, up to 256 KB"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: true
+      sh: "The address as it will be saved"
+      t: "`$STRING`"
+    }
+  }
+
+  name: "site_preview"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/site_preview"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/site_preview"
+          q: {
+            exist: [
+              "organization_id"
+              "url"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "site_preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

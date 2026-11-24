@@ -1,0 +1,19 @@
+$kind: http-request
+id: "05c7fd56-0440-5638-abe5-496eed2b7ea7"
+description: |-
+  The `resend_verification` action of **me_email**, a route of its `create` operation.
+
+  SDK: `client.MeEmail().create({ "id": "ID", $action: "resend_verification" })`
+url: "{{base}}/api/v1/me/emails/:id/resend_verification"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{me_email_id}}"
+    description: The me_email this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -1,0 +1,26 @@
+# BasicVerifyRunSearchFlow
+
+main: kit: flow: BasicVerifyRunSearchFlow:
+{
+  entity: "verify_run_search",
+  kind: "basic",
+  name: "BasicVerifyRunSearchFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_run_search_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyRunSearchFlow"
+}

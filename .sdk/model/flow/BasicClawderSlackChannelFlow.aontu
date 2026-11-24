@@ -1,0 +1,27 @@
+# BasicClawderSlackChannelFlow
+
+main: kit: flow: BasicClawderSlackChannelFlow:
+{
+  entity: "clawder_slack_channel",
+  kind: "basic",
+  name: "BasicClawderSlackChannelFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_slack_channel_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSlackChannelFlow"
+}

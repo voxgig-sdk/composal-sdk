@@ -1,0 +1,25 @@
+$kind: http-request
+id: bbdc6daa-5540-53c5-a1d5-4def20b0dfab
+description: |-
+  The `redeploy` action of **app_deployment_operation**, a route of its `create` operation.
+
+  SDK: `client.AppDeploymentOperation().create({ "app_id": "app_id", "id": "ID", $action: "redeploy" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_operations/:operation_id/redeploy"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment_operation belongs to.
+  - key: operation_id
+    value: "{{app_deployment_operation_id}}"
+    description: The app_deployment_operation this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "idempotency_key": "example"
+    }
+order: 6000

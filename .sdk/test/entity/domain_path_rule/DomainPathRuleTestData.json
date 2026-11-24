@@ -1,0 +1,95 @@
+{
+  "existing": {
+    "domain_path_rule": {
+      "DOMAIN_PATH_RULE00": {
+        "action_kind": "s64",
+        "app_service_endpoint_id": "APP_SERVICE_ENDPOINT01",
+        "app_service_id": "APP_SERVICE01",
+        "backend_ref": "s67",
+        "created_at": "s68",
+        "id": "DOMAIN_PATH_RULE00",
+        "last_error": "s6a",
+        "path_prefix": "s6b",
+        "status": "s6c",
+        "updated_at": "s6d",
+        "app_id": "APP01",
+        "domain_id": "DOMAIN01"
+      },
+      "DOMAIN_PATH_RULE01": {
+        "action_kind": "sc8",
+        "app_service_endpoint_id": "APP_SERVICE_ENDPOINT01",
+        "app_service_id": "APP_SERVICE01",
+        "backend_ref": "scb",
+        "created_at": "scc",
+        "id": "DOMAIN_PATH_RULE01",
+        "last_error": "sce",
+        "path_prefix": "scf",
+        "status": "sd0",
+        "updated_at": "sd1",
+        "app_id": "APP01",
+        "domain_id": "DOMAIN01"
+      },
+      "DOMAIN_PATH_RULE02": {
+        "action_kind": "s12c",
+        "app_service_endpoint_id": "APP_SERVICE_ENDPOINT01",
+        "app_service_id": "APP_SERVICE01",
+        "backend_ref": "s12f",
+        "created_at": "s130",
+        "id": "DOMAIN_PATH_RULE02",
+        "last_error": "s132",
+        "path_prefix": "s133",
+        "status": "s134",
+        "updated_at": "s135",
+        "app_id": "APP01",
+        "domain_id": "DOMAIN01"
+      }
+    }
+  },
+  "new": {
+    "domain_path_rule": {
+      "domain_path_rule_ref01": {
+        "action_kind": "s190",
+        "app_service_endpoint_id": "APP_SERVICE_ENDPOINT01",
+        "app_service_id": "APP_SERVICE01",
+        "backend_ref": "s193",
+        "created_at": "s194",
+        "last_error": "s196",
+        "path_prefix": "s197",
+        "status": "s198",
+        "updated_at": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

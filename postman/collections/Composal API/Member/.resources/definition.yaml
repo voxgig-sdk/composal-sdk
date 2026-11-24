@@ -1,0 +1,29 @@
+$kind: collection
+id: "3fcceaae-e694-5e0c-9402-f3c1593c5c8d"
+description: |-
+  An organization's members: list them, or change or remove one.
+
+  The **member** entity, which belongs to a organization. Its requests address one record by `{{member_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accepted_at` | string | yes |  |
+  | `accepted_by_user` | any | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `email` | string | yes |  |
+  | `email_delivery_status` | string |  |  |
+  | `expires_at` | string | yes |  |
+  | `expires_at_label` | string | yes |  |
+  | `id` | string | yes |  |
+  | `invite_url` | string | yes |  |
+  | `invited_by_user` | any | yes |  |
+  | `is_self` | boolean | yes |  |
+  | `organization` | object | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `role` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+  | `user` | object | yes |  |
+order: 137000

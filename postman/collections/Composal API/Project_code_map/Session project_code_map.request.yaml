@@ -1,0 +1,26 @@
+$kind: http-request
+id: a6e9ea28-b88c-5711-a150-975474afe45d
+description: |-
+  The `session` action of **project_code_map**, a route of its `create` operation.
+
+  SDK: `client.ProjectCodeMap().create({ "organization_id": "organization_id", "project_id": "project_id", $action: "session" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/projects/:project_id/code_maps/session"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_code_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_code_map belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "repository_id": "example",
+      "ref": "example"
+    }
+order: 3000

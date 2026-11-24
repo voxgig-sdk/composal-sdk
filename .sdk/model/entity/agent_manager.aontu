@@ -1,0 +1,522 @@
+# Entity: agent_manager
+
+main: kit: entity: agent_manager: {
+
+  alias: field: {}
+
+  fields: {
+    attention: {
+      h: "Attention"
+      n: "attention"
+      r: true
+      sh: "Whether this agent waits on its viewer, decided from its provisioning, decisions awaiting an answer, the outcome of its last reported run and the model's verdict on its last reply (question when reply_triage is needs_you)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    avatar: {
+      h: "Avatar"
+      n: "avatar"
+      r: false
+      sh: "Emoji or up to two visible grapheme clusters, at most 64 UTF-8 bytes, without control or bidi override characters."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    can_delete: {
+      h: "Can Delete"
+      n: "can_delete"
+      r: false
+      sh: "Whether this viewer may delete this v2 agent."
+      t: "`$BOOLEAN`"
+    }
+    can_edit_configuration: {
+      h: "Can Edit Configuration"
+      n: "can_edit_configuration"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_manage_sharing: {
+      h: "Can Manage Sharing"
+      n: "can_manage_sharing"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    can_name_managers: {
+      h: "Can Name Managers"
+      n: "can_name_managers"
+      r: false
+      sh: "Whether the viewer may name managers now."
+      t: "`$BOOLEAN`"
+    }
+    can_queue_input: {
+      h: "Can Queue Input"
+      n: "can_queue_input"
+      r: false
+      sh: "Current V2 authority to admit a durable input independently of native readiness."
+      t: "`$BOOLEAN`"
+    }
+    can_reconcile_save: {
+      h: "Can Reconcile Save"
+      n: "can_reconcile_save"
+      r: true
+      sh: "May reconcile an identical previously accepted save; this does not authorize new configuration edits."
+      t: "`$BOOLEAN`"
+    }
+    configuration: {
+      h: "Configuration"
+      n: "configuration"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 5
+        count: 3
+        depth: 9
+      }
+    }
+    configuration_revision: {
+      h: "Configuration Revision"
+      n: "configuration_revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    configuration_version: {
+      h: "Configuration Version"
+      n: "configuration_version"
+      r: true
+      sh: "Opaque version token."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    control_connections_available: {
+      h: "Control Connections Available"
+      n: "control_connections_available"
+      r: false
+      sh: "Whether this viewer may manage their own external Control connections, including cleanup while the agent is paused."
+      t: "`$BOOLEAN`"
+    }
+    controlling_user_id: {
+      h: "Controlling User Id"
+      n: "controlling_user_id"
+      r: true
+      t: "`$STRING`"
+    }
+    coordination_available: {
+      h: "Coordination Available"
+      n: "coordination_available"
+      r: false
+      sh: "Durable task controls remain available even when native conversation history is unavailable."
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    direct_chat_available: {
+      h: "Direct Chat Available"
+      n: "direct_chat_available"
+      r: false
+      sh: "Advisory availability of direct V1 chat."
+      t: "`$BOOLEAN`"
+    }
+    has_unread_updates: {
+      h: "Has Unread Updates"
+      n: "has_unread_updates"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    last_reply_at: {
+      fo: "date-time"
+      h: "Last Reply At"
+      n: "last_reply_at"
+      r: true
+      sh: "When the agent's latest projected reply arrived, for grouping recent replies."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    lifecycle_actions: {
+      h: "Lifecycle Actions"
+      n: "lifecycle_actions"
+      r: true
+      sh: "Currently authorized lifecycle actions for the saved revision and observed state."
+      t: "`$ARRAY`"
+    }
+    lifecycle_version: {
+      h: "Lifecycle Version"
+      n: "lifecycle_version"
+      r: true
+      sh: "Opaque version token."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    local_agent_control_available: {
+      h: "Local Agent Control Available"
+      n: "local_agent_control_available"
+      r: false
+      sh: "Whether this organization exposes paired local coding-agent control."
+      t: "`$BOOLEAN`"
+    }
+    managers: {
+      h: "Managers"
+      n: "managers"
+      r: false
+      sh: "Teammates named as managers beside the owner."
+      t: "`$ARRAY`"
+    }
+    model_change_action: {
+      h: "Model Change Action"
+      n: "model_change_action"
+      r: false
+      sh: "Advisory composer action."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    persona: {
+      h: "Persona"
+      n: "persona"
+      r: false
+      t: "`$ANY`"
+    }
+    preview: {
+      h: "Preview"
+      n: "preview"
+      r: false
+      t: "`$ANY`"
+    }
+    preview_received_at: {
+      fo: "date-time"
+      h: "Preview Received At"
+      n: "preview_received_at"
+      r: false
+      sh: "When a newer canonical conversation preview was first projected."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    provisioning: {
+      h: "Provisioning"
+      n: "provisioning"
+      r: false
+      t: "`$ANY`"
+    }
+    reply_triage: {
+      h: "Reply Triage"
+      n: "reply_triage"
+      r: true
+      sh: "A model's verdict on the agent's latest reply, judged once when it arrived."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runtime_version: {
+      h: "Runtime Version"
+      n: "runtime_version"
+      r: false
+      sh: "Immutable execution runtime selected at creation."
+      t: "`$STRING`"
+    }
+    setup_pending: {
+      h: "Setup Pending"
+      n: "setup_pending"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    sharing_fixed: {
+      h: "Sharing Fixed"
+      n: "sharing_fixed"
+      r: false
+      sh: "Project agents have a fixed audience and cannot change visibility."
+      t: "`$BOOLEAN`"
+    }
+    sharing_version: {
+      h: "Sharing Version"
+      n: "sharing_version"
+      r: false
+      t: "`$INTEGER`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    team_role: {
+      h: "Team Role"
+      n: "team_role"
+      r: false
+      sh: "What teammates may do once the agent is shared with the team."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    url_slug: {
+      h: "Url Slug"
+      n: "url_slug"
+      r: false
+      sh: "Stable organization-scoped browser name for /ORG/agent/NAME."
+      t: "`$STRING`"
+    }
+    user_id: {
+      h: "User Id"
+      n: "user_id"
+      r: true
+      t: "`$STRING`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_manager"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "user_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/managers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/managers"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "managers"
+            }
+          ]
+          t: {
+            req: {
+              user_id: "`reqdata.user_id`"
+            }
+            res: "`body.agent`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/agents/{id}/managers/{user_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "user_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/managers/{user_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              user_id: "id"
+            }
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "managers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

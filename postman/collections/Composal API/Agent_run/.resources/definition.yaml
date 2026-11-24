@@ -1,0 +1,14 @@
+$kind: collection
+id: "7af00025-4930-52d4-a3bb-63d920693f10"
+description: |-
+  One run of an agent's work, with its status.
+
+  The **agent_run** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `error` | string |  |  |
+  | `id` | string |  |  |
+  | `run_id` | string | yes |  |
+  | `status` | string | yes |  |
+order: 29000

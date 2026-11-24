@@ -1,0 +1,9 @@
+$kind: collection
+id: cd4a8213-327c-51fe-bdd6-bdf997a2b794
+description: |-
+  The **app_service_binding** entity, which belongs to a app. Its requests address one record by `{{app_service_binding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 69000

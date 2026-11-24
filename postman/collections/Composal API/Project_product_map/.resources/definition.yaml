@@ -1,0 +1,8 @@
+$kind: collection
+id: cd5a97e5-59da-5ff6-a293-626c88bed961
+description: |-
+  The **project_product_map** entity, which belongs to a organization and a project. Its requests address one record by `{{project_product_map_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 173000

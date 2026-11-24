@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5c2ba8d4-20d8-5e9e-8afc-2f113a9b6140"
+description: |-
+  The `profile_image` action of **me**, a route of its `update` operation.
+
+  SDK: `client.Me().update({ $action: "profile_image" })`
+url: "{{base}}/api/v1/me/profile_image"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 8000

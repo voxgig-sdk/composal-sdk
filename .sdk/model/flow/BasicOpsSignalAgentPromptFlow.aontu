@@ -1,0 +1,33 @@
+# BasicOpsSignalAgentPromptFlow
+
+main: kit: flow: BasicOpsSignalAgentPromptFlow:
+{
+  entity: "ops_signal_agent_prompt",
+  kind: "basic",
+  name: "BasicOpsSignalAgentPromptFlow",
+  step: [
+    {
+      i: {
+        ref: "ops_signal_agent_prompt_ref01",
+        srcdatavar: "ops_signal_agent_prompt_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ops_signal_agent_prompt01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ops_signal_agent_prompt_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOpsSignalAgentPromptFlow"
+}

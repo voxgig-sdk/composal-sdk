@@ -1,0 +1,178 @@
+# Entity: connection_source
+
+main: kit: entity: connection_source: {
+
+  alias: field: {}
+
+  fields: {
+    device_id: {
+      h: "Device Id"
+      n: "device_id"
+      r: true
+      t: "`$STRING`"
+    }
+    device_name: {
+      h: "Device Name"
+      n: "device_name"
+      r: true
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    source_operation_id: {
+      h: "Source Operation Id"
+      n: "source_operation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "connection_source"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_relay_scope"
+                or: "X-Composal-Relay-Scope"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_requester_id"
+                or: "X-Composal-Requester-Id"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 30
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+              "x_composal_relay_scope"
+              "x_composal_requester_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "relay"
+            }
+            {
+              lit: "connections"
+            }
+            {
+              lit: "sources"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.sources`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

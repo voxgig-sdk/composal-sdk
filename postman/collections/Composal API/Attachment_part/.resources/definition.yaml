@@ -1,0 +1,9 @@
+$kind: collection
+id: "366566c5-5082-5e04-a9d2-896191578c15"
+description: |-
+  The **attachment_part** entity, which belongs to a organization and a agent. Its requests address one record by `{{attachment_part_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 72000

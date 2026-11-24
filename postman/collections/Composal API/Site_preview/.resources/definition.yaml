@@ -1,0 +1,11 @@
+$kind: collection
+id: e9b7693b-6464-52b9-bd54-437ae2acccb8
+description: |-
+  The **site_preview** entity, which belongs to a organization. Its requests address one record by `{{site_preview_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `icon_data_url` | string | yes |  |
+  | `title` | string | yes |  |
+  | `url` | string | yes |  |
+order: 198000

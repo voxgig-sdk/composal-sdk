@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "workflow_run_stop_notice": {
+      "WORKFLOW_RUN_STOP_NOTICE00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_run_id": "WORKFLOW_RUN01",
+        "id": "WORKFLOW_RUN_STOP_NOTICE00"
+      },
+      "WORKFLOW_RUN_STOP_NOTICE01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_run_id": "WORKFLOW_RUN01",
+        "id": "WORKFLOW_RUN_STOP_NOTICE01"
+      },
+      "WORKFLOW_RUN_STOP_NOTICE02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_run_id": "WORKFLOW_RUN01",
+        "id": "WORKFLOW_RUN_STOP_NOTICE02"
+      }
+    }
+  },
+  "new": {
+    "workflow_run_stop_notice": {
+      "workflow_run_stop_notice_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/stop_notice/dismissal": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

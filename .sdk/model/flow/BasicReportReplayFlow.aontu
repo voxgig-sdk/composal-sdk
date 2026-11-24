@@ -1,0 +1,34 @@
+# BasicReportReplayFlow
+
+main: kit: flow: BasicReportReplayFlow:
+{
+  entity: "report_replay",
+  kind: "basic",
+  name: "BasicReportReplayFlow",
+  step: [
+    {
+      i: {
+        ref: "report_replay_ref01",
+        srcdatavar: "report_replay_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        id: "report_replay01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-report_replay_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicReportReplayFlow"
+}

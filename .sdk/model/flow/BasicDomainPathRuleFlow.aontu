@@ -1,0 +1,124 @@
+# BasicDomainPathRuleFlow
+
+main: kit: flow: BasicDomainPathRuleFlow:
+{
+  entity: "domain_path_rule",
+  kind: "basic",
+  name: "BasicDomainPathRuleFlow",
+  step: [
+    {
+      i: {
+        ref: "domain_path_rule_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        domain_id: "domain01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01",
+        domain_id: "domain01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "domain_path_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        app_id: "app01",
+        domain_id: "domain01"
+      }
+
+      i: {
+        ref: "domain_path_rule_ref01",
+        srcdatavar: "domain_path_rule_ref01_data",
+        suffix: "_up0",
+        textfield: "action_kind"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-domain_path_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "domain_path_rule_ref01",
+        srcdatavar: "domain_path_rule_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        domain_id: "domain01",
+        id: "domain_path_rule01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-domain_path_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "domain_path_rule_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        app_id: "app01",
+        domain_id: "domain01",
+        id: "domain_path_rule01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        app_id: "app01",
+        domain_id: "domain01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "domain_path_rule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDomainPathRuleFlow"
+}

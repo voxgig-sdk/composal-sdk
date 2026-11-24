@@ -1,0 +1,433 @@
+# Entity: dream
+
+main: kit: entity: dream: {
+
+  alias: field: {}
+
+  fields: {
+    attention: {
+      h: "Attention"
+      n: "attention"
+      r: true
+      sh: "The dream skipped at least one run, which will not be retried"
+      t: "`$BOOLEAN`"
+    }
+    changes: {
+      h: "Changes"
+      n: "changes"
+      r: true
+      sh: "One page of changes when tab is changes; empty otherwise"
+      t: "`$ARRAY`"
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    counts: {
+      h: "Counts"
+      n: "counts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    dream: {
+      h: "Dream"
+      n: "dream"
+      r: true
+      t: "`$ANY`"
+    }
+    error_code: {
+      h: "Error Code"
+      n: "error_code"
+      r: true
+      sh: "Diagnostic code from the last failure, or from a dream that stopped early; not display copy, show reason instead"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Public id used in the dream's URL"
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    phase: {
+      h: "Phase"
+      n: "phase"
+      r: true
+      sh: "Where the dream is."
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: true
+      sh: "Plain-language explanation of the phase: the cause and what happens next."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    reviewed: {
+      h: "Reviewed"
+      n: "reviewed"
+      r: true
+      sh: "Finished runs and blocked executions reviewed, not counting skipped ones"
+      t: "`$INTEGER`"
+    }
+    reviewed_date: {
+      fo: "date"
+      h: "Reviewed Date"
+      n: "reviewed_date"
+      r: true
+      sh: "Local day whose finished runs it reviewed"
+      t: "`$STRING`"
+    }
+    runs: {
+      h: "Runs"
+      n: "runs"
+      r: true
+      sh: "One page of covered runs, reviewed or skipped, when tab is runs; empty otherwise"
+      t: "`$ARRAY`"
+    }
+    scope_name: {
+      h: "Scope Name"
+      n: "scope_name"
+      r: true
+      sh: "Project or unassigned environment name"
+      t: "`$STRING`"
+    }
+    skipped: {
+      h: "Skipped"
+      n: "skipped"
+      r: true
+      sh: "Runs skipped after repeated rejected review output"
+      t: "`$INTEGER`"
+    }
+    tab: {
+      h: "Tab"
+      n: "tab"
+      r: true
+      t: "`$STRING`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      r: true
+      sh: "Organization timezone the dream used"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dream"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/dreams/{id}/resume"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume"
+          q: {
+            "$action": "resume"
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "dreams"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "resume"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/dreams"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/dreams"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "dreams"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/dreams/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "changes"
+                explode: true
+                k: "query"
+                n: "tab"
+                or: "tab"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/dreams/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "dreams"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

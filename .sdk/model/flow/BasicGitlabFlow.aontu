@@ -1,0 +1,44 @@
+# BasicGitlabFlow
+
+main: kit: flow: BasicGitlabFlow:
+{
+  entity: "gitlab",
+  kind: "basic",
+  name: "BasicGitlabFlow",
+  step: [
+    {
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "gitlab_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "gitlab_ref01",
+        srcdatavar: "gitlab_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-gitlab_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGitlabFlow"
+}

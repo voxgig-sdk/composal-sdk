@@ -1,0 +1,4 @@
+$kind: collection
+id: e731cb43-ba81-5b87-8682-216e2a4084e6
+description: "The `BasicBrowserEgressCandidateFlow` flow of **browser_egress_candidate**."
+order: 62000

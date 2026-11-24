@@ -1,0 +1,27 @@
+$kind: http-request
+id: "5af78a84-1d9f-5a2f-b9f9-88d03cc97616"
+description: |-
+  The `update` operation of **agent_workflow**.
+
+  SDK: `client.AgentWorkflow().update({ agent_id: "example", organization_id: "example", expected_digest: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflows"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "path": "example",
+      "source": "example",
+      "expected_digest": "example"
+    }
+order: 3000

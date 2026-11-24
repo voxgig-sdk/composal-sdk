@@ -1,0 +1,25 @@
+$kind: collection
+id: f5716d01-4378-52d2-b494-41a8bd172702
+description: |-
+  The **product_map_journey_replay** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_journey_replay_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actor_id` | string | yes |  |
+  | `can_request_qualification` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `failure_code` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `id` | string | yes |  |
+  | `preparation_receipt` | object | yes |  |
+  | `qualification` | any | yes |  |
+  | `qualification_status` | string | yes |  |
+  | `replay_required` | boolean | yes |  |
+  | `review_reason` | string | yes |  |
+  | `run_id` | string | yes |  |
+  | `scenario_run_id` | string | yes |  |
+  | `source_digest` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `variant_id` | string | yes |  |
+order: 160000

@@ -1,0 +1,225 @@
+# Entity: agent_verify_project
+
+main: kit: entity: agent_verify_project: {
+
+  alias: field: {}
+
+  fields: {
+    available: {
+      h: "Available"
+      n: "available"
+      r: true
+      sh: "Whether Verify is on for the organization; hide Verify access when false."
+      t: "`$BOOLEAN`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      sh: "Whether the viewer can manage the agent and is a Verify admin."
+      t: "`$BOOLEAN`"
+    }
+    expected_version: {
+      h: "Expected Version"
+      n: "expected_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    project_choices: {
+      h: "Project Choices"
+      n: "project_choices"
+      r: true
+      sh: "Every granted project, then other Verify projects up to the choice limit."
+      t: "`$ARRAY`"
+    }
+    project_choices_truncated: {
+      h: "Project Choices Truncated"
+      n: "project_choices_truncated"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    verify_projects: {
+      h: "Verify Projects"
+      n: "verify_projects"
+      r: true
+      t: "`$ARRAY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "agent_verify_project"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "verify_projects"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "expected_version"
+            "verify_projects"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "verify_projects"
+            }
+          ]
+          t: {
+            req: {
+              expected_version: "`reqdata.expected_version`"
+              verify_projects: "`reqdata.verify_project`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

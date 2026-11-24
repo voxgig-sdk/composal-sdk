@@ -1,0 +1,8 @@
+$kind: collection
+id: e248e3d9-c92d-5323-9062-490f9aff843b
+description: |-
+  The **agent_sharing** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_sharing_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 32000

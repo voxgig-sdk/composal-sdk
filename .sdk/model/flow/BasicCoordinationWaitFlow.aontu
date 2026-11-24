@@ -1,0 +1,28 @@
+# BasicCoordinationWaitFlow
+
+main: kit: flow: BasicCoordinationWaitFlow:
+{
+  entity: "coordination_wait",
+  kind: "basic",
+  name: "BasicCoordinationWaitFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        coordination_id: "coordination01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "coordination_wait_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCoordinationWaitFlow"
+}

@@ -1,0 +1,28 @@
+# BasicVerifyBinaryLogFlow
+
+main: kit: flow: BasicVerifyBinaryLogFlow:
+{
+  entity: "verify_binary_log",
+  kind: "basic",
+  name: "BasicVerifyBinaryLogFlow",
+  step: [
+    {
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01",
+        version_id: "version01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_binary_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyBinaryLogFlow"
+}

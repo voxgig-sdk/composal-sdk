@@ -1,0 +1,33 @@
+# BasicVerifyDeepScanDocumentPageFlow
+
+main: kit: flow: BasicVerifyDeepScanDocumentPageFlow:
+{
+  entity: "verify_deep_scan_document_page",
+  kind: "basic",
+  name: "BasicVerifyDeepScanDocumentPageFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_deep_scan_document_page_ref01",
+        srcdatavar: "verify_deep_scan_document_page_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_deep_scan_document_page01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_deep_scan_document_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDeepScanDocumentPageFlow"
+}

@@ -1,0 +1,26 @@
+# BasicCatalogSelectorFlow
+
+main: kit: flow: BasicCatalogSelectorFlow:
+{
+  entity: "catalog_selector",
+  kind: "basic",
+  name: "BasicCatalogSelectorFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "catalog_selector_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCatalogSelectorFlow"
+}

@@ -1,0 +1,26 @@
+# BasicBillingUsageBreakdownFlow
+
+main: kit: flow: BasicBillingUsageBreakdownFlow:
+{
+  entity: "billing_usage_breakdown",
+  kind: "basic",
+  name: "BasicBillingUsageBreakdownFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "billing_usage_breakdown_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingUsageBreakdownFlow"
+}

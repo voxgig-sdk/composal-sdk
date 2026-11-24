@@ -1,0 +1,202 @@
+# Entity: agent_input
+
+main: kit: entity: agent_input: {
+
+  alias: field: {}
+
+  fields: {
+    attachment_ids: {
+      h: "Attachment Ids"
+      n: "attachment_ids"
+      r: false
+      sh: "Completed uploads from the attachments endpoint, in order."
+      t: "`$ARRAY`"
+    }
+    attachments: {
+      h: "Attachments"
+      n: "attachments"
+      r: false
+      t: "`$ARRAY`"
+    }
+    browser_context: {
+      h: "Browser Context"
+      n: "browser_context"
+      r: true
+      sh: "Advisory snapshot of the browser pane beside this conversation when the message was sent."
+      t: "`$OBJECT`"
+    }
+    client_time: {
+      h: "Client Time"
+      n: "client_time"
+      r: true
+      sh: "The sending app's IANA time zone and clock, so the agent answers in the person's local time."
+      t: "`$OBJECT`"
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: true
+      sh: "Main or a conversation identity returned by the agent thread list."
+      t: "`$STRING`"
+    }
+    model_policy: {
+      h: "Model Policy"
+      n: "model_policy"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    requester_membership_id: {
+      h: "Requester Membership Id"
+      n: "requester_membership_id"
+      r: false
+      sh: "Snapshot the membership supplied by conversation history for a NEW V1 input."
+      t: "`$STRING`"
+    }
+    speed: {
+      h: "Speed"
+      n: "speed"
+      r: false
+      sh: "Fast uses OpenAI priority processing for GPT models (2x price) or the quickest approved OpenRouter route."
+      t: "`$STRING`"
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "agent_input"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "attachment_ids"
+            "attachments"
+            "browser_context"
+            "client_time"
+            "conversation_id"
+            "model_policy"
+            "requester_membership_id"
+            "speed"
+            "text"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/inputs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_input_delivery"
+                or: "X-Composal-Input-Delivery"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "x_composal_requester_id"
+                or: "X-Composal-Requester-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs"
+          q: {
+            exist: [
+              "agent_id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "inputs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

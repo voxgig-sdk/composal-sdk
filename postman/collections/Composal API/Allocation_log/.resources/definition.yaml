@@ -1,0 +1,19 @@
+$kind: collection
+id: "5d10fff9-cadd-5963-9b4e-bff29f394da2"
+description: |-
+  The **allocation_log** entity, which belongs to a app. Its requests address one record by `{{allocation_log_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allocation_id` | string | yes |  |
+  | `environment` | string |  |  |
+  | `fetched_at` | string | yes |  |
+  | `location` | string |  |  |
+  | `logs` | string | yes |  |
+  | `namespace` | string | yes |  |
+  | `offset` | integer | yes |  |
+  | `origin` | string | yes |  |
+  | `service` | string |  |  |
+  | `task` | string | yes |  |
+  | `type` | string | yes |  |
+order: 53000

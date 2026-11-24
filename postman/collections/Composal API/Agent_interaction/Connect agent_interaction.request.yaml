@@ -1,0 +1,29 @@
+$kind: http-request
+id: "04260666-3708-565a-8917-0578ce0b675b"
+description: |-
+  The `connect` action of **agent_interaction**, a route of its `create` operation.
+
+  SDK: `client.AgentInteraction().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "connect" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/interactions/:request_id/connect"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_interaction belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_interaction belongs to.
+  - key: request_id
+    value: "{{agent_interaction_id}}"
+    description: The agent_interaction this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "expected_revision": 1
+    }
+order: 4000

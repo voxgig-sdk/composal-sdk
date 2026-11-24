@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "agent_manager_choice": {
+      "AGENT_MANAGER_CHOICE00": {
+        "id": "AGENT_MANAGER_CHOICE00",
+        "name": "s15",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_MANAGER_CHOICE01": {
+        "id": "AGENT_MANAGER_CHOICE01",
+        "name": "s29",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_MANAGER_CHOICE02": {
+        "id": "AGENT_MANAGER_CHOICE02",
+        "name": "s3d",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_manager_choice": {
+      "agent_manager_choice_ref01": {
+        "name": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/manager_choices": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

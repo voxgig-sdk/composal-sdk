@@ -1,0 +1,28 @@
+$kind: http-request
+id: c9797ac8-9b91-56b4-abd5-063582864578
+description: |-
+  The `remove` operation of **agent_write_permission**.
+
+  SDK: `client.AgentWritePermission().remove({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/write_permissions/:write_permission_id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_write_permission belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_write_permission belongs to.
+  - key: write_permission_id
+    value: "{{agent_write_permission_id}}"
+    description: The agent_write_permission this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("agent_write_permission_id")
+      }
+    language: text/javascript
+order: 2000

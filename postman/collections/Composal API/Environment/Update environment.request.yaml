@@ -1,0 +1,22 @@
+$kind: http-request
+id: "6193c080-a0cc-515a-8209-9dbcb5d0ae39"
+description: |-
+  The `update` operation of **environment**.
+
+  SDK: `client.Environment().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment belongs to.
+  - key: id
+    value: "{{environment_id}}"
+    description: The environment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

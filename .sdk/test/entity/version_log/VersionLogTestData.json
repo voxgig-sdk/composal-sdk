@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "version_log": {
+      "VERSION_LOG00": {
+        "base_image": "s6e",
+        "failure_phase": "s6f",
+        "id": "VERSION_LOG00",
+        "image_digest": "s71",
+        "image_reference": "s72",
+        "installer_version": "s73",
+        "ready_at": "s74",
+        "receipt": "s75",
+        "safe_error": "s76",
+        "started_at": "s77",
+        "status": "s78",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01",
+        "version_id": "VERSION01"
+      },
+      "VERSION_LOG01": {
+        "base_image": "sdc",
+        "failure_phase": "sdd",
+        "id": "VERSION_LOG01",
+        "image_digest": "sdf",
+        "image_reference": "se0",
+        "installer_version": "se1",
+        "ready_at": "se2",
+        "receipt": "se3",
+        "safe_error": "se4",
+        "started_at": "se5",
+        "status": "se6",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01",
+        "version_id": "VERSION01"
+      },
+      "VERSION_LOG02": {
+        "base_image": "s14a",
+        "failure_phase": "s14b",
+        "id": "VERSION_LOG02",
+        "image_digest": "s14d",
+        "image_reference": "s14e",
+        "installer_version": "s14f",
+        "ready_at": "s150",
+        "receipt": "s151",
+        "safe_error": "s152",
+        "started_at": "s153",
+        "status": "s154",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01",
+        "version_id": "VERSION01"
+      }
+    }
+  },
+  "new": {
+    "version_log": {
+      "version_log_ref01": {
+        "base_image": "s1b8",
+        "failure_phase": "s1b9",
+        "image_digest": "s1bb",
+        "image_reference": "s1bc",
+        "installer_version": "s1bd",
+        "ready_at": "s1be",
+        "receipt": "s1bf",
+        "safe_error": "s1c0",
+        "started_at": "s1c1",
+        "status": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

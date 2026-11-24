@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "connection_source": {
+      "CONNECTION_SOURCE00": {
+        "device_id": "DEVICE01",
+        "device_name": "s33",
+        "provider": "s34",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "title": "s36",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONNECTION_SOURCE01": {
+        "device_id": "DEVICE01",
+        "device_name": "s65",
+        "provider": "s66",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "title": "s68",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONNECTION_SOURCE02": {
+        "device_id": "DEVICE01",
+        "device_name": "s97",
+        "provider": "s98",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "title": "s9a",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "connection_source": {
+      "connection_source_ref01": {
+        "device_id": "DEVICE01",
+        "device_name": "sc9",
+        "provider": "sca",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "title": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/sources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

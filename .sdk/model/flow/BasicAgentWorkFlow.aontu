@@ -1,0 +1,24 @@
+# BasicAgentWorkFlow
+
+main: kit: flow: BasicAgentWorkFlow:
+{
+  entity: "agent_work",
+  kind: "basic",
+  name: "BasicAgentWorkFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_work_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        work_id: "work01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentWorkFlow"
+}

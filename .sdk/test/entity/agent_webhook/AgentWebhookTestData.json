@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "agent_webhook": {
+      "AGENT_WEBHOOK00": {
+        "action": "s64",
+        "connection": {},
+        "deliveries": [],
+        "event_types": [],
+        "expected_generation": 104,
+        "id": "AGENT_WEBHOOK00",
+        "max_events_per_day": 106,
+        "name": "s6b",
+        "purpose": "s6c",
+        "signing_key": "s6d",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WEBHOOK01": {
+        "action": "sc8",
+        "connection": {},
+        "deliveries": [],
+        "event_types": [],
+        "expected_generation": 204,
+        "id": "AGENT_WEBHOOK01",
+        "max_events_per_day": 206,
+        "name": "scf",
+        "purpose": "sd0",
+        "signing_key": "sd1",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WEBHOOK02": {
+        "action": "s12c",
+        "connection": {},
+        "deliveries": [],
+        "event_types": [],
+        "expected_generation": 304,
+        "id": "AGENT_WEBHOOK02",
+        "max_events_per_day": 306,
+        "name": "s133",
+        "purpose": "s134",
+        "signing_key": "s135",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_webhook": {
+      "agent_webhook_ref01": {
+        "action": "s190",
+        "connection": {},
+        "deliveries": [],
+        "event_types": [],
+        "expected_generation": 404,
+        "max_events_per_day": 406,
+        "name": "s197",
+        "purpose": "s198",
+        "signing_key": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks/{endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks/{endpoint_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

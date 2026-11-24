@@ -1,0 +1,18 @@
+$kind: collection
+id: "34afd70c-7c7e-5f92-b07a-646362baff42"
+description: |-
+  The **agent_control_flow** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_control_flow_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_cancel` | boolean | yes |  |
+  | `cancellation_requested` | boolean | yes |  |
+  | `device_name` | string | yes |  |
+  | `flow_id` | string | yes |  |
+  | `id` | string |  |  |
+  | `providers` | array | yes |  |
+  | `repair_of_flow_id` | string |  |  |
+  | `status_label` | string | yes |  |
+  | `step_count` | integer | yes |  |
+  | `title` | string | yes |  |
+order: 9000

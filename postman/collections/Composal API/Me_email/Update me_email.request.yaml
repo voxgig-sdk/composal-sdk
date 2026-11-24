@@ -1,0 +1,19 @@
+$kind: http-request
+id: dcc5adfb-2d60-5b2c-8072-76c02f873934
+description: |-
+  The `update` operation of **me_email**.
+
+  SDK: `client.MeEmail().update({ id: "example" })`
+url: "{{base}}/api/v1/me/emails/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{me_email_id}}"
+    description: The me_email this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

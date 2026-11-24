@@ -1,0 +1,25 @@
+$kind: http-request
+id: dcdaae90-499b-5336-be11-7c51eb18067c
+description: |-
+  The `complete` action of **agent_attachment**, a route of its `create` operation.
+
+  SDK: `client.AgentAttachment().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "complete" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/attachments/:attachment_id/complete"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_attachment belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_attachment belongs to.
+  - key: attachment_id
+    value: "{{agent_attachment_id}}"
+    description: The agent_attachment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

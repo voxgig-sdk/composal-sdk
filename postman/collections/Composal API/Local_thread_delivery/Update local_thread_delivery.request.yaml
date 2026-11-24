@@ -1,0 +1,32 @@
+$kind: http-request
+id: "8f89b341-7855-5769-92bf-1e85109f7353"
+description: |-
+  The `update` operation of **local_thread_delivery**.
+
+  SDK: `client.LocalThreadDelivery().update({ agent_id: "example", id: "example", local_thread_id: "example", organization_id: "example", decision: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/deliveries/:delivery_id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this local_thread_delivery belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this local_thread_delivery belongs to.
+  - key: local_thread_id
+    value: "{{local_thread_id}}"
+    description: "Input: local_thread_id."
+  - key: delivery_id
+    value: "{{local_thread_delivery_id}}"
+    description: The local_thread_delivery this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "decision": "approve"
+    }
+order: 2000

@@ -1,0 +1,133 @@
+{
+  "existing": {
+    "app_deployment_rollback": {
+      "APP_DEPLOYMENT_ROLLBACK00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_id": "APP01",
+        "app_service_id": "APP_SERVICE01",
+        "blockers": [],
+        "candidate_releases": [],
+        "confirmation_text": "sff",
+        "current_deployment": "s100",
+        "current_release": "s101",
+        "deployment": "s102",
+        "desired_state": "s103",
+        "environment": "s104",
+        "execution_allowed": false,
+        "force": true,
+        "idempotency_key": "s107",
+        "idempotent_reuse": true,
+        "location": "s109",
+        "operation": "s10a",
+        "reason": "s10b",
+        "rollback_release": "s10c",
+        "rollout": "s10d",
+        "service": "s10e",
+        "target_artifact_locator": "s10f",
+        "target_release": "s110",
+        "to": "s111",
+        "warnings": [],
+        "id": "APP_DEPLOYMENT_ROLLBACK00"
+      },
+      "APP_DEPLOYMENT_ROLLBACK01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_id": "APP01",
+        "app_service_id": "APP_SERVICE01",
+        "blockers": [],
+        "candidate_releases": [],
+        "confirmation_text": "s1f9",
+        "current_deployment": "s1fa",
+        "current_release": "s1fb",
+        "deployment": "s1fc",
+        "desired_state": "s1fd",
+        "environment": "s1fe",
+        "execution_allowed": false,
+        "force": true,
+        "idempotency_key": "s201",
+        "idempotent_reuse": true,
+        "location": "s203",
+        "operation": "s204",
+        "reason": "s205",
+        "rollback_release": "s206",
+        "rollout": "s207",
+        "service": "s208",
+        "target_artifact_locator": "s209",
+        "target_release": "s20a",
+        "to": "s20b",
+        "warnings": [],
+        "id": "APP_DEPLOYMENT_ROLLBACK01"
+      },
+      "APP_DEPLOYMENT_ROLLBACK02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_id": "APP01",
+        "app_service_id": "APP_SERVICE01",
+        "blockers": [],
+        "candidate_releases": [],
+        "confirmation_text": "s2f3",
+        "current_deployment": "s2f4",
+        "current_release": "s2f5",
+        "deployment": "s2f6",
+        "desired_state": "s2f7",
+        "environment": "s2f8",
+        "execution_allowed": false,
+        "force": true,
+        "idempotency_key": "s2fb",
+        "idempotent_reuse": true,
+        "location": "s2fd",
+        "operation": "s2fe",
+        "reason": "s2ff",
+        "rollback_release": "s300",
+        "rollout": "s301",
+        "service": "s302",
+        "target_artifact_locator": "s303",
+        "target_release": "s304",
+        "to": "s305",
+        "warnings": [],
+        "id": "APP_DEPLOYMENT_ROLLBACK02"
+      }
+    }
+  },
+  "new": {
+    "app_deployment_rollback": {
+      "app_deployment_rollback_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_id": "APP01",
+        "app_service_id": "APP_SERVICE01",
+        "blockers": [],
+        "candidate_releases": [],
+        "confirmation_text": "s3ed",
+        "current_deployment": "s3ee",
+        "current_release": "s3ef",
+        "deployment": "s3f0",
+        "desired_state": "s3f1",
+        "environment": "s3f2",
+        "execution_allowed": false,
+        "force": true,
+        "idempotency_key": "s3f5",
+        "idempotent_reuse": true,
+        "location": "s3f7",
+        "operation": "s3f8",
+        "reason": "s3f9",
+        "rollback_release": "s3fa",
+        "rollout": "s3fb",
+        "service": "s3fc",
+        "target_artifact_locator": "s3fd",
+        "target_release": "s3fe",
+        "to": "s3ff",
+        "warnings": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/deployment_rollbacks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/deployment_rollbacks/plan": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "browser_egress_candidate": {
+      "BROWSER_EGRESS_CANDIDATE00": {
+        "id": "BROWSER_EGRESS_CANDIDATE00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_EGRESS_CANDIDATE01": {
+        "id": "BROWSER_EGRESS_CANDIDATE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_EGRESS_CANDIDATE02": {
+        "id": "BROWSER_EGRESS_CANDIDATE02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_egress_candidate": {
+      "browser_egress_candidate_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/browser_egress/candidates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

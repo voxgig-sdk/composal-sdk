@@ -1,0 +1,22 @@
+$kind: http-request
+id: f3e89ac5-f9fc-5f77-a184-1ac0df5dc128
+description: |-
+  The `update` operation of **app_deployment**.
+
+  SDK: `client.AppDeployment().update({ app_id: "example", id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployments/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment belongs to.
+  - key: id
+    value: "{{app_deployment_id}}"
+    description: The app_deployment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

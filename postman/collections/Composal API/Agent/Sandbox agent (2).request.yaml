@@ -1,0 +1,26 @@
+$kind: http-request
+id: "2b910bf1-8f3d-5fe9-af79-c3e3731c2413"
+description: |-
+  The `sandbox` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "sandbox" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/sandbox"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "integration_id": "{{integration_id}}",
+      "expected_generation": 1
+    }
+order: 34000

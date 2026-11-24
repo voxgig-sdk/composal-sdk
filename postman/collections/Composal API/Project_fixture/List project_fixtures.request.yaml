@@ -1,0 +1,44 @@
+$kind: http-request
+id: "76864b11-5475-571d-8ffc-1ea53d444e7d"
+description: |-
+  The `list` operation of **project_fixture**.
+
+  SDK: `client.ProjectFixture().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/fixtures"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: credential_id
+    value: ""
+    disabled: true
+  - key: environment_id
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_fixture belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_fixture belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("project_fixture_id")) pm.collectionVariables.set("project_fixture_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

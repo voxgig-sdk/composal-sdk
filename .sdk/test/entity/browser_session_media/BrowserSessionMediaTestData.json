@@ -1,0 +1,83 @@
+{
+  "existing": {
+    "browser_session_media": {
+      "BROWSER_SESSION_MEDIA00": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "capture_omissions": "s8d",
+        "captured_at": "s8e",
+        "ended_at": "s8f",
+        "failure_code": "s90",
+        "files": [],
+        "frames": "s92",
+        "id": "BROWSER_SESSION_MEDIA00",
+        "kind": "s94",
+        "partial": false,
+        "retention_expires_at": "s96",
+        "source": "s97",
+        "status": "s98",
+        "stop_requested_at": "s99",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_MEDIA01": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "capture_omissions": "s119",
+        "captured_at": "s11a",
+        "ended_at": "s11b",
+        "failure_code": "s11c",
+        "files": [],
+        "frames": "s11e",
+        "id": "BROWSER_SESSION_MEDIA01",
+        "kind": "s120",
+        "partial": false,
+        "retention_expires_at": "s122",
+        "source": "s123",
+        "status": "s124",
+        "stop_requested_at": "s125",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_MEDIA02": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "capture_omissions": "s1a5",
+        "captured_at": "s1a6",
+        "ended_at": "s1a7",
+        "failure_code": "s1a8",
+        "files": [],
+        "frames": "s1aa",
+        "id": "BROWSER_SESSION_MEDIA02",
+        "kind": "s1ac",
+        "partial": false,
+        "retention_expires_at": "s1ae",
+        "source": "s1af",
+        "status": "s1b0",
+        "stop_requested_at": "s1b1",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session_media": {
+      "browser_session_media_ref01": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "capture_omissions": "s231",
+        "captured_at": "s232",
+        "ended_at": "s233",
+        "failure_code": "s234",
+        "files": [],
+        "frames": "s236",
+        "kind": "s238",
+        "partial": false,
+        "retention_expires_at": "s23a",
+        "source": "s23b",
+        "status": "s23c",
+        "stop_requested_at": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

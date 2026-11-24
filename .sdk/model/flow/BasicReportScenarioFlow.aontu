@@ -1,0 +1,23 @@
+# BasicReportScenarioFlow
+
+main: kit: flow: BasicReportScenarioFlow:
+{
+  entity: "report_scenario",
+  kind: "basic",
+  name: "BasicReportScenarioFlow",
+  step: [
+    {
+      i: {
+        ref: "report_scenario_ref01"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicReportScenarioFlow"
+}

@@ -1,0 +1,33 @@
+# BasicProjectOverviewActivityPageFlow
+
+main: kit: flow: BasicProjectOverviewActivityPageFlow:
+{
+  entity: "project_overview_activity_page",
+  kind: "basic",
+  name: "BasicProjectOverviewActivityPageFlow",
+  step: [
+    {
+      i: {
+        ref: "project_overview_activity_page_ref01",
+        srcdatavar: "project_overview_activity_page_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_overview_activity_page01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_overview_activity_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectOverviewActivityPageFlow"
+}

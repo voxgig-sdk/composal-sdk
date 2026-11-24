@@ -1,0 +1,23 @@
+# BasicClawderTranscriptionSessionFlow
+
+main: kit: flow: BasicClawderTranscriptionSessionFlow:
+{
+  entity: "clawder_transcription_session",
+  kind: "basic",
+  name: "BasicClawderTranscriptionSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_transcription_session_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClawderTranscriptionSessionFlow"
+}

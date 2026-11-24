@@ -1,0 +1,27 @@
+$kind: collection
+id: "4f2772bb-8f47-5e83-ab77-b042d392cf96"
+description: |-
+  An agent's scheduled routines and heartbeat: list them, or change one (pause or enable it).
+
+  The **agent_routine** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_routine_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `consecutive_errors` | integer | yes |  |
+  | `credit_wait` | object | yes |  |
+  | `description` | string | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `last_run_at` | string | yes |  |
+  | `last_status` | string | yes |  |
+  | `managed` | boolean | yes |  |
+  | `name` | string | yes |  |
+  | `next_run_at` | string | yes |  |
+  | `routine` | object | yes |  |
+  | `schedule` | object | yes |  |
+  | `schedule_label` | string | yes |  |
+  | `utility_model` | object | yes |  |
+order: 28000

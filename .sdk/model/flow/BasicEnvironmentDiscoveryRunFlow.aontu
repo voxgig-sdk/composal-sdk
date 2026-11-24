@@ -1,0 +1,47 @@
+# BasicEnvironmentDiscoveryRunFlow
+
+main: kit: flow: BasicEnvironmentDiscoveryRunFlow:
+{
+  entity: "environment_discovery_run",
+  kind: "basic",
+  name: "BasicEnvironmentDiscoveryRunFlow",
+  step: [
+    {
+      i: {
+        ref: "environment_discovery_run_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "environment_discovery_run_ref01",
+        srcdatavar: "environment_discovery_run_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        environment_id: "environment01",
+        id: "environment_discovery_run01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-environment_discovery_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEnvironmentDiscoveryRunFlow"
+}

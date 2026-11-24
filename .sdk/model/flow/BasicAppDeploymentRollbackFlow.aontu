@@ -1,0 +1,22 @@
+# BasicAppDeploymentRollbackFlow
+
+main: kit: flow: BasicAppDeploymentRollbackFlow:
+{
+  entity: "app_deployment_rollback",
+  kind: "basic",
+  name: "BasicAppDeploymentRollbackFlow",
+  step: [
+    {
+      i: {
+        ref: "app_deployment_rollback_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAppDeploymentRollbackFlow"
+}

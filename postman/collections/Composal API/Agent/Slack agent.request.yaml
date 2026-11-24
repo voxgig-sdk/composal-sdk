@@ -1,0 +1,33 @@
+$kind: http-request
+id: "08751164-d48c-55f6-8b0c-a60b512e7d88"
+description: |-
+  The `slack` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "slack" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/slack"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action": "connect",
+      "channel": "example",
+      "handle": "example",
+      "icon_emoji": "example",
+      "allow_slack_connect": true,
+      "reply_places": [
+        "direct_messages"
+      ]
+    }
+order: 36000

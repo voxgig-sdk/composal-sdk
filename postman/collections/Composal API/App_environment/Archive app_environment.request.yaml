@@ -1,0 +1,22 @@
+$kind: http-request
+id: a90670f5-c879-526a-8c60-21dd1b9f075f
+description: |-
+  The `archive` action of **app_environment**, a route of its `create` operation.
+
+  SDK: `client.AppEnvironment().create({ "app_id": "app_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/environments/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_environment belongs to.
+  - key: id
+    value: "{{app_environment_id}}"
+    description: The app_environment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

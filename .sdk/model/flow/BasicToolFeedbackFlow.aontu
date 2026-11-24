@@ -1,0 +1,45 @@
+# BasicToolFeedbackFlow
+
+main: kit: flow: BasicToolFeedbackFlow:
+{
+  entity: "tool_feedback",
+  kind: "basic",
+  name: "BasicToolFeedbackFlow",
+  step: [
+    {
+      i: {
+        ref: "tool_feedback_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "tool_feedback_ref01",
+        srcdatavar: "tool_feedback_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "tool_feedback01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-tool_feedback_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicToolFeedbackFlow"
+}

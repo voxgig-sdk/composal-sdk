@@ -1,0 +1,33 @@
+# BasicAgentSharingFlow
+
+main: kit: flow: BasicAgentSharingFlow:
+{
+  entity: "agent_sharing",
+  kind: "basic",
+  name: "BasicAgentSharingFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_sharing_ref01",
+        srcdatavar: "agent_sharing_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_sharing01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_sharing_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSharingFlow"
+}

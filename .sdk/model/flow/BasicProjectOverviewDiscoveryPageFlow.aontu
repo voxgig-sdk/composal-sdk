@@ -1,0 +1,33 @@
+# BasicProjectOverviewDiscoveryPageFlow
+
+main: kit: flow: BasicProjectOverviewDiscoveryPageFlow:
+{
+  entity: "project_overview_discovery_page",
+  kind: "basic",
+  name: "BasicProjectOverviewDiscoveryPageFlow",
+  step: [
+    {
+      i: {
+        ref: "project_overview_discovery_page_ref01",
+        srcdatavar: "project_overview_discovery_page_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_overview_discovery_page01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_overview_discovery_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectOverviewDiscoveryPageFlow"
+}

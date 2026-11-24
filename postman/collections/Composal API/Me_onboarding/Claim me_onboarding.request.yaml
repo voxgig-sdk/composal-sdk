@@ -1,0 +1,18 @@
+$kind: http-request
+id: "2706f3e0-9bab-51ca-b2e6-e51bb9d9fc45"
+description: |-
+  The `claim` action of **me_onboarding**, a route of its `create` operation.
+
+  SDK: `client.MeOnboarding().create({ $action: "claim" })`
+url: "{{base}}/api/v1/me/onboarding/claim"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "step": "subscription"
+    }
+order: 2000

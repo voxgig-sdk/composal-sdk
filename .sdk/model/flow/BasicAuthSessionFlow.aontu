@@ -1,0 +1,74 @@
+# BasicAuthSessionFlow
+
+main: kit: flow: BasicAuthSessionFlow:
+{
+  entity: "auth_session",
+  kind: "basic",
+  name: "BasicAuthSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "auth_session_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "auth_session_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "auth_session_ref01",
+        srcdatavar: "auth_session_ref01_data",
+        suffix: "_up0",
+        textfield: "analytics_distinct_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-auth_session_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "auth_session_ref01",
+        suffix: "_rm0"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "auth_session_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAuthSessionFlow"
+}

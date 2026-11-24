@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "deep_scan_mapped_flow": {
+      "DEEP_SCAN_MAPPED_FLOW00": {
+        "account_id": "ACCOUNT01",
+        "environment_id": "ENVIRONMENT01",
+        "flow_map": "s2a",
+        "revision_id": "REVISION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_MAPPED_FLOW01": {
+        "account_id": "ACCOUNT01",
+        "environment_id": "ENVIRONMENT01",
+        "flow_map": "s52",
+        "revision_id": "REVISION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_MAPPED_FLOW02": {
+        "account_id": "ACCOUNT01",
+        "environment_id": "ENVIRONMENT01",
+        "flow_map": "s7a",
+        "revision_id": "REVISION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deep_scan_mapped_flow": {
+      "deep_scan_mapped_flow_ref01": {
+        "account_id": "ACCOUNT01",
+        "environment_id": "ENVIRONMENT01",
+        "flow_map": "sa2",
+        "revision_id": "REVISION01"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

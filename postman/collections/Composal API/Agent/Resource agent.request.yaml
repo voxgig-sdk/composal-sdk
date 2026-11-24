@@ -1,0 +1,21 @@
+$kind: http-request
+id: bcc4f301-8f5e-59a5-b87d-b0e3967ed65f
+description: |-
+  The `resource` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", "uri": "uri", $action: "resource" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/resource?uri={{uri}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: uri
+    value: "{{uri}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 28000

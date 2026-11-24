@@ -1,0 +1,15 @@
+$kind: http-request
+id: "3392412e-535d-57d8-97ba-28efb7a2c168"
+description: |-
+  The `load` operation of **cdn_space**.
+
+  SDK: `client.CdnSpace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/cdn_spaces/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{cdn_space_id}}"
+    description: The cdn_space this request addresses.
+order: 2000

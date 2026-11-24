@@ -1,0 +1,21 @@
+$kind: collection
+id: e118d600-9dce-5579-97bc-8367c11f4a8f
+description: |-
+  The **verification_project_persona** entity, which belongs to a organization and a project. Its requests address one record by `{{verification_project_persona_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `access_mode` | string | yes |  |
+  | `archived_at` | string | yes |  |
+  | `capabilities` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `credential_id` | string | yes |  |
+  | `goals` | string | yes |  |
+  | `id` | string | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `role` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 206000

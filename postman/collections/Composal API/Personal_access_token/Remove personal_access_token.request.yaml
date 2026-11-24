@@ -1,0 +1,22 @@
+$kind: http-request
+id: cbf5634b-236a-5717-b5f2-a5cca4042c86
+description: |-
+  The `remove` operation of **personal_access_token**.
+
+  SDK: `client.PersonalAccessToken().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/personal_access_tokens/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{personal_access_token_id}}"
+    description: The personal_access_token this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("personal_access_token_id")
+      }
+    language: text/javascript
+order: 3000

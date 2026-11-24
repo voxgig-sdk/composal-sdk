@@ -1,0 +1,34 @@
+$kind: http-request
+id: "22c5f8b1-0fb1-5b80-b3f5-116ab6fc2546"
+description: |-
+  The `configure` action of **app_service_placement**, a route of its `update` operation.
+
+  SDK: `client.AppServicePlacement().update({ "app_id": "app_id", $action: "configure" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/service_placements/configure"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service_placement belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "app_service_id": "{{app_service_id}}",
+      "app_environment_id": "{{app_environment_id}}",
+      "expected_generation": 1,
+      "mode": "single_region",
+      "rollout_strategy": "health_gated",
+      "deployment_channel": "stable",
+      "replicas_per_region": 1,
+      "targets": [
+        {
+          "location_id": "example",
+          "enabled": true
+        }
+      ]
+    }
+order: 3000

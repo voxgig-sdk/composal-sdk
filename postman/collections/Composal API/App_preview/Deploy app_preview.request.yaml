@@ -1,0 +1,28 @@
+$kind: http-request
+id: db02eea5-7ede-5f40-9968-2ae6aeb48b1a
+description: |-
+  The `deploy` action of **app_preview**, a route of its `create` operation.
+
+  SDK: `client.AppPreview().create({ "app_id": "app_id", "id": "ID", $action: "deploy" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/deploy"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "app_service_ids": [
+        "example"
+      ],
+      "share_app_default_secrets": false
+    }
+order: 9000

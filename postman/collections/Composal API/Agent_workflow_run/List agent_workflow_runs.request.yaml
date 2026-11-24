@@ -1,0 +1,44 @@
+$kind: http-request
+id: "1a7c0526-531e-57e3-9168-7ea17d7d9f0a"
+description: |-
+  The `list` operation of **agent_workflow_run**.
+
+  SDK: `client.AgentWorkflowRun().list({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: automation_key
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: view
+    value: ""
+    disabled: true
+  - key: workflow_path
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_run belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["items"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_workflow_run_id")) pm.collectionVariables.set("agent_workflow_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

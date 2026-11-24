@@ -1,0 +1,96 @@
+# BasicVerifyPullRequestFlow
+
+main: kit: flow: BasicVerifyPullRequestFlow:
+{
+  entity: "verify_pull_request",
+  kind: "basic",
+  name: "BasicVerifyPullRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_pull_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_pull_request_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "verify_pull_request_ref01",
+        srcdatavar: "verify_pull_request_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_pull_request01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_pull_request_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "verify_pull_request_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "verify_pull_request01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "verify_pull_request_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyPullRequestFlow"
+}

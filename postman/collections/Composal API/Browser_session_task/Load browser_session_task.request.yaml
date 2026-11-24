@@ -1,0 +1,21 @@
+$kind: http-request
+id: "0f20b8e1-1257-5b67-b9ec-e7f90f69bcd4"
+description: |-
+  The `load` operation of **browser_session_task**.
+
+  SDK: `client.BrowserSessionTask().load({ browser_session_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/tasks/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_task belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_task belongs to.
+  - key: id
+    value: "{{browser_session_task_id}}"
+    description: The browser_session_task this request addresses.
+order: 1000

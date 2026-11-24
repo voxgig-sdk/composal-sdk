@@ -1,0 +1,21 @@
+$kind: http-request
+id: "38dca229-6d19-5c0c-b55d-4b68a90bfcca"
+description: |-
+  The `load` operation of **project_recording**.
+
+  SDK: `client.ProjectRecording().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/recordings/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_recording belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_recording belongs to.
+  - key: id
+    value: "{{project_recording_id}}"
+    description: The project_recording this request addresses.
+order: 1000

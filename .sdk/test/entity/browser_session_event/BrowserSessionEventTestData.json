@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "browser_session_event": {
+      "BROWSER_SESSION_EVENT00": {
+        "browser_task_id": "BROWSER_TASK01",
+        "created_at": "s3d",
+        "id": "BROWSER_SESSION_EVENT00",
+        "kind": "s3f",
+        "payload": {},
+        "source_sequence": "s41",
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_EVENT01": {
+        "browser_task_id": "BROWSER_TASK01",
+        "created_at": "s79",
+        "id": "BROWSER_SESSION_EVENT01",
+        "kind": "s7b",
+        "payload": {},
+        "source_sequence": "s7d",
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_EVENT02": {
+        "browser_task_id": "BROWSER_TASK01",
+        "created_at": "sb5",
+        "id": "BROWSER_SESSION_EVENT02",
+        "kind": "sb7",
+        "payload": {},
+        "source_sequence": "sb9",
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session_event": {
+      "browser_session_event_ref01": {
+        "browser_task_id": "BROWSER_TASK01",
+        "created_at": "sf1",
+        "kind": "sf3",
+        "payload": {},
+        "source_sequence": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

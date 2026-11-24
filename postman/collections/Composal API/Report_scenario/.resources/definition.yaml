@@ -1,0 +1,19 @@
+$kind: collection
+id: "9d7eb4b9-5d33-5151-a149-714c713f6e55"
+description: |-
+  The **report_scenario** entity, which belongs to a organization and a exploration. Its requests address one record by `{{report_scenario_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `environment_name` | string | yes |  |
+  | `goal` | string | yes |  |
+  | `id` | string | yes |  |
+  | `mode` | string | yes |  |
+  | `permissions` | object | yes |  |
+  | `project_id` | string | yes |  |
+  | `related_explorations` | array | yes |  |
+  | `report` | object | yes |  |
+  | `saves_scenarios` | boolean | yes |  |
+  | `scenario_generation` | object | yes |  |
+  | `status` | string | yes |  |
+order: 189000

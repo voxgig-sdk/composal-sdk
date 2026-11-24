@@ -1,0 +1,24 @@
+# BasicJourneyVariantReplayFlow
+
+main: kit: flow: BasicJourneyVariantReplayFlow:
+{
+  entity: "journey_variant_replay",
+  kind: "basic",
+  name: "BasicJourneyVariantReplayFlow",
+  step: [
+    {
+      i: {
+        ref: "journey_variant_replay_ref01"
+      }
+
+      m: {
+        journey_variant_id: "journey_variant01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicJourneyVariantReplayFlow"
+}

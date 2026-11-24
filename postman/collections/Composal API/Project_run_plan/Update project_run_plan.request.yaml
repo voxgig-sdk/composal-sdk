@@ -1,0 +1,49 @@
+$kind: http-request
+id: "9d46c4a9-ffd5-5bb8-89cf-c26912b9b83c"
+description: |-
+  The `update` operation of **project_run_plan**.
+
+  SDK: `client.ProjectRunPlan().update({ id: "example", organization_id: "example", project_id: "example", dependencies: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_plans/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_plan belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_plan belongs to.
+  - key: id
+    value: "{{project_run_plan_id}}"
+    description: The project_run_plan this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "nodes": [
+        {
+          "key": "example",
+          "scenario_id": "example"
+        }
+      ],
+      "dependencies": [
+        {
+          "from": "example",
+          "after_step": 1,
+          "to": "example",
+          "before_step": 1,
+          "name": "example"
+        }
+      ],
+      "identity_probe": {
+        "path": "example",
+        "subject_pointer": "example",
+        "email_pointer": "example"
+      },
+      "version": 1
+    }
+order: 4000

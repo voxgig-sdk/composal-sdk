@@ -1,0 +1,35 @@
+$kind: http-request
+id: "1731e038-3fee-5c4b-9ee9-3944ababf1da"
+description: |-
+  The `create` operation of **messaging_conversation_upload**.
+
+  SDK: `client.MessagingConversationUpload().create({ messaging_conversation_id: "example", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id/uploads"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this messaging_conversation_upload belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this messaging_conversation_upload belongs to.
+  - key: id
+    value: "{{messaging_conversation_id}}"
+    description: "Input: messaging_conversation_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("messaging_conversation_upload_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

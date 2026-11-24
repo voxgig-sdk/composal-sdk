@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "exploration_report": {
+      "EXPLORATION_REPORT00": {
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "EXPLORATION_REPORT00"
+      },
+      "EXPLORATION_REPORT01": {
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "EXPLORATION_REPORT01"
+      },
+      "EXPLORATION_REPORT02": {
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "EXPLORATION_REPORT02"
+      }
+    }
+  },
+  "new": {
+    "exploration_report": {
+      "exploration_report_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/document": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

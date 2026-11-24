@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_sharing": {
+      "AGENT_SHARING00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SHARING00"
+      },
+      "AGENT_SHARING01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SHARING01"
+      },
+      "AGENT_SHARING02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SHARING02"
+      }
+    }
+  },
+  "new": {
+    "agent_sharing": {
+      "agent_sharing_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/sharing/review": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

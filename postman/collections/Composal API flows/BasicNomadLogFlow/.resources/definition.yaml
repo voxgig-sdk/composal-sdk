@@ -1,0 +1,4 @@
+$kind: collection
+id: "2ea024bd-2426-53ca-98fd-2ed2bfb18f47"
+description: "The `BasicNomadLogFlow` flow of **nomad_log**."
+order: 124000

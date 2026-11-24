@@ -1,0 +1,14 @@
+$kind: collection
+id: "3261bb27-c6c4-5f21-ae84-61b6cb91f172"
+description: |-
+  The **subscription_model** entity, which belongs to a organization and a agent. Its requests address one record by `{{subscription_model_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `default_reasoning` | string |  |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `reasoning` | array |  |  |
+  | `speeds` | array |  |  |
+order: 203000

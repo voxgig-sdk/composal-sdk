@@ -1,0 +1,47 @@
+# BasicClawderWebhookSetupFlow
+
+main: kit: flow: BasicClawderWebhookSetupFlow:
+{
+  entity: "clawder_webhook_setup",
+  kind: "basic",
+  name: "BasicClawderWebhookSetupFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_webhook_setup_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "clawder_webhook_setup_ref01",
+        srcdatavar: "clawder_webhook_setup_ref01_data",
+        suffix: "_up0",
+        textfield: "action"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_webhook_setup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderWebhookSetupFlow"
+}

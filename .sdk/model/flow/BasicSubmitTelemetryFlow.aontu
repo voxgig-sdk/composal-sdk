@@ -1,0 +1,18 @@
+# BasicSubmitTelemetryFlow
+
+main: kit: flow: BasicSubmitTelemetryFlow:
+{
+  entity: "submit_telemetry",
+  kind: "basic",
+  name: "BasicSubmitTelemetryFlow",
+  step: [
+    {
+      i: {
+        ref: "submit_telemetry_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSubmitTelemetryFlow"
+}

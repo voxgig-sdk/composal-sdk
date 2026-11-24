@@ -1,0 +1,15 @@
+$kind: http-request
+id: "0b386115-ec25-5e2e-8846-93f2c5b0bc16"
+description: |-
+  The `load` operation of **organization**.
+
+  SDK: `client.Organization().load({ id: "example_id" })`
+url: "{{base}}/api/v1/organizations/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{organization_id}}"
+    description: The organization this request addresses.
+order: 2000

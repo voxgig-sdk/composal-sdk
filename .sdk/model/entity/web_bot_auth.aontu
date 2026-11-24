@@ -1,0 +1,75 @@
+# Entity: web_bot_auth
+
+main: kit: entity: web_bot_auth: {
+
+  alias: field: {}
+
+  fields: {
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: true
+      t: "`$STRING`"
+    }
+    origin: {
+      fo: "uri"
+      h: "Origin"
+      n: "origin"
+      r: true
+      t: "`$STRING`"
+    }
+    signatures: {
+      h: "Signatures"
+      n: "signatures"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "web_bot_auth"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "origin"
+          ]
+          co: {
+            id: "POST /api/v1/verify/web_bot_auth"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/verify/web_bot_auth"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "web_bot_auth"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

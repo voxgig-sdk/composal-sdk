@@ -1,0 +1,26 @@
+$kind: collection
+id: "9c6d8a40-aa0d-5fca-9df9-5230e9bddb84"
+description: |-
+  The **page** entity, which belongs to a organization. Its requests address one record by `{{page_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_runs` | array | yes |  |
+  | `checkout_required` | boolean | yes |  |
+  | `cli_signed_in_at` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `demo_project` | object | yes |  |
+  | `environments` | array | yes |  |
+  | `included_deep_scan` | boolean | yes |  |
+  | `onboarding_discovery` | any |  |  |
+  | `organization` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `project` | any | yes |  |
+  | `pull_request_launch_options` | array |  |  |
+  | `pull_requests` | array |  |  |
+  | `repositories` | array | yes |  |
+  | `runs` | array | yes |  |
+  | `runs_pagination` | object | yes |  |
+  | `suggested_app_url` | string | yes |  |
+  | `url_first_start` | boolean | yes |  |
+order: 146000

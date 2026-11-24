@@ -1,0 +1,10 @@
+$kind: collection
+id: "659fb4c7-0a78-5b41-a59d-e3de5db9adfe"
+description: |-
+  The **agent_manager_choice** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_manager_choice_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+order: 18000

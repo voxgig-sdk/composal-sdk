@@ -1,0 +1,31 @@
+$kind: http-request
+id: db983fe8-f65b-5612-bde4-e38d6c9037e8
+description: |-
+  The `load` operation of **exploration**.
+
+  SDK: `client.Exploration().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent_id
+    value: ""
+    disabled: true
+  - key: evidence
+    value: ""
+    disabled: true
+  - key: finding_id
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+order: 2000

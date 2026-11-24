@@ -1,0 +1,16 @@
+$kind: collection
+id: d0c9a427-dbda-55d0-a935-e21f77ec0716
+description: |-
+  The **agent_workflow** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_workflow_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `expected_digest` | string | yes |  |
+  | `path` | string | yes |  |
+  | `source` | string | yes |  |
+  | `template` | string | yes |  |
+  | `templates` | array | yes |  |
+  | `truncated` | boolean | yes |  |
+  | `workflows` | array | yes |  |
+order: 46000

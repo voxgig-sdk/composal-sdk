@@ -1,0 +1,25 @@
+$kind: http-request
+id: "69eb5d74-7291-5b95-9a15-a0e9e932ac8e"
+description: |-
+  The `remove` operation of **app_config_variable**.
+
+  SDK: `client.AppConfigVariable().remove({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/config_variables/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_config_variable belongs to.
+  - key: id
+    value: "{{app_config_variable_id}}"
+    description: The app_config_variable this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("app_config_variable_id")
+      }
+    language: text/javascript
+order: 8000

@@ -1,0 +1,11 @@
+$kind: collection
+id: "3ef43724-e553-581f-9981-253de94a8d2a"
+description: |-
+  The **scenario_run_lesson** entity, which belongs to a organization and a project. Its requests address one record by `{{scenario_run_lesson_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `finding` | string | yes |  |
+  | `title` | string |  |  |
+  | `workaround` | string | yes |  |
+order: 195000

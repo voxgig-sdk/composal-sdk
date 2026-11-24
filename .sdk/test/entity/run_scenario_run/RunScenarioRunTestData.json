@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "run_scenario_run": {
+      "RUN_SCENARIO_RUN00": {
+        "id": "RUN_SCENARIO_RUN00",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01"
+      },
+      "RUN_SCENARIO_RUN01": {
+        "id": "RUN_SCENARIO_RUN01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01"
+      },
+      "RUN_SCENARIO_RUN02": {
+        "id": "RUN_SCENARIO_RUN02",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01"
+      }
+    }
+  },
+  "new": {
+    "run_scenario_run": {
+      "run_scenario_run_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

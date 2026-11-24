@@ -1,0 +1,34 @@
+# BasicAttachmentPartFlow
+
+main: kit: flow: BasicAttachmentPartFlow:
+{
+  entity: "attachment_part",
+  kind: "basic",
+  name: "BasicAttachmentPartFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01",
+        attachment_id: "attachment01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "attachment_part_ref01",
+        srcdatavar: "attachment_part_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-attachment_part_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAttachmentPartFlow"
+}

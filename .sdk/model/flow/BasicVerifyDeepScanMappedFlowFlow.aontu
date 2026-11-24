@@ -1,0 +1,32 @@
+# BasicVerifyDeepScanMappedFlowFlow
+
+main: kit: flow: BasicVerifyDeepScanMappedFlowFlow:
+{
+  entity: "verify_deep_scan_mapped_flow",
+  kind: "basic",
+  name: "BasicVerifyDeepScanMappedFlowFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_deep_scan_mapped_flow_ref01",
+        srcdatavar: "verify_deep_scan_mapped_flow_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_deep_scan_mapped_flow01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_deep_scan_mapped_flow_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDeepScanMappedFlowFlow"
+}

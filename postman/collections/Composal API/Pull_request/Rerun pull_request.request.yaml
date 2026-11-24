@@ -1,0 +1,29 @@
+$kind: http-request
+id: "7a871b05-4814-5623-ac7e-35b2abe7fba3"
+description: |-
+  The `rerun` action of **pull_request**, a route of its `create` operation.
+
+  SDK: `client.PullRequest().create({ "organization_id": "organization_id", "id": "ID", $action: "rerun" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/:id/rerun"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pull_request belongs to.
+  - key: id
+    value: "{{pull_request_id}}"
+    description: The pull_request this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "idempotency_key": "example",
+      "head_sha": "example",
+      "scenario_ids": [
+        "example"
+      ]
+    }
+order: 6000

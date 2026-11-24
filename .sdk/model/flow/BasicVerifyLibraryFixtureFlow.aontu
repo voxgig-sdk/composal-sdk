@@ -1,0 +1,34 @@
+# BasicVerifyLibraryFixtureFlow
+
+main: kit: flow: BasicVerifyLibraryFixtureFlow:
+{
+  entity: "verify_library_fixture",
+  kind: "basic",
+  name: "BasicVerifyLibraryFixtureFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "verify_library_fixture_ref01",
+        srcdatavar: "verify_library_fixture_ref01_data",
+        suffix: "_up0",
+        textfield: "content_type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_library_fixture_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyLibraryFixtureFlow"
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "62687df5-95de-573b-8e54-bc4433ee570d"
+description: |-
+  The `load` operation of **memory**.
+
+  SDK: `client.Memory().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/memories/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment_id
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this memory belongs to.
+  - key: id
+    value: "{{memory_id}}"
+    description: The memory this request addresses.
+order: 2000

@@ -1,0 +1,4 @@
+$kind: collection
+id: "5eaf0ce2-f39c-5c2e-8558-61c1d5c4dadc"
+description: "The `BasicBrowserSessionControlFlow` flow of **browser_session_control**."
+order: 65000

@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "agent_setting": {
+      "AGENT_SETTING00": {
+        "can_manage": true,
+        "expected_version": "s29",
+        "instructions": "s2a",
+        "version": "s2b",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SETTING00"
+      },
+      "AGENT_SETTING01": {
+        "can_manage": true,
+        "expected_version": "s51",
+        "instructions": "s52",
+        "version": "s53",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SETTING01"
+      },
+      "AGENT_SETTING02": {
+        "can_manage": true,
+        "expected_version": "s79",
+        "instructions": "s7a",
+        "version": "s7b",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SETTING02"
+      }
+    }
+  },
+  "new": {
+    "agent_setting": {
+      "agent_setting_ref01": {
+        "can_manage": true,
+        "expected_version": "sa1",
+        "instructions": "sa2",
+        "version": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

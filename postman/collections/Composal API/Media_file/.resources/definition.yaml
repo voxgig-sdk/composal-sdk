@@ -1,0 +1,9 @@
+$kind: collection
+id: bd38f8f1-757f-54a8-8308-eaa1963d319d
+description: |-
+  The **media_file** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{media_file_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 136000

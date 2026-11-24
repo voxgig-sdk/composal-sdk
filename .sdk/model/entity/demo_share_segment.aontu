@@ -1,0 +1,118 @@
+# Entity: demo_share_segment
+
+main: kit: entity: demo_share_segment: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "demo_share_segment"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/verify/demo_shares/{token}/segments/{segment_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "demo_share_id"
+                or: "token"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "segment_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/verify/demo_shares/{token}/segments/{segment_id}"
+          q: {
+            exist: [
+              "demo_share_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              segment_id: "id"
+              token: "demo_share_id"
+            }
+          }
+          rs: {
+            alternatives: [
+              {
+                binary: true
+                kind: "raw"
+                media: "video/mp4"
+              }
+              {
+                binary: true
+                kind: "raw"
+                media: "video/webm"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "demo_shares"
+            }
+            {
+              var: "demo_share_id"
+            }
+            {
+              lit: "segments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.demo_share")]
+  ]
+
+}

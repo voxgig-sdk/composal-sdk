@@ -1,0 +1,34 @@
+# BasicRelayFileDownloadFlow
+
+main: kit: flow: BasicRelayFileDownloadFlow:
+{
+  entity: "relay_file_download",
+  kind: "basic",
+  name: "BasicRelayFileDownloadFlow",
+  step: [
+    {
+      i: {
+        ref: "relay_file_download_ref01",
+        srcdatavar: "relay_file_download_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "relay_file_download01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_file_download_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayFileDownloadFlow"
+}

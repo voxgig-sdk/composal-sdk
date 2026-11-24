@@ -1,0 +1,24 @@
+$kind: http-request
+id: "473cd602-5a76-565c-a912-09592e0a0968"
+description: |-
+  The `coordination` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", "conversation_id": "conversation_id", $action: "coordination" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/coordination?conversation_id={{conversation_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: "{{conversation_id}}"
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 11000

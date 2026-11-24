@@ -1,0 +1,35 @@
+# BasicAgentRelayDeliveryRecoveryFlow
+
+main: kit: flow: BasicAgentRelayDeliveryRecoveryFlow:
+{
+  entity: "agent_relay_delivery_recovery",
+  kind: "basic",
+  name: "BasicAgentRelayDeliveryRecoveryFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_relay_delivery_recovery_ref01",
+        srcdatavar: "agent_relay_delivery_recovery_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_relay_delivery_recovery01",
+        local_thread_id: "local_thread01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_relay_delivery_recovery_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentRelayDeliveryRecoveryFlow"
+}

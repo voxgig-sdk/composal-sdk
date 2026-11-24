@@ -1,0 +1,61 @@
+# BasicDeepScanFlow
+
+main: kit: flow: BasicDeepScanFlow:
+{
+  entity: "deep_scan",
+  kind: "basic",
+  name: "BasicDeepScanFlow",
+  step: [
+    {
+      i: {
+        ref: "deep_scan_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deep_scan_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "deep_scan_ref01",
+        srcdatavar: "deep_scan_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "deep_scan01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deep_scan_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeepScanFlow"
+}

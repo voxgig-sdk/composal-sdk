@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "scenario_run_lesson": {
+      "SCENARIO_RUN_LESSON00": {
+        "finding": "s1e",
+        "title": "s1f",
+        "workaround": "s20",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_LESSON00"
+      },
+      "SCENARIO_RUN_LESSON01": {
+        "finding": "s3c",
+        "title": "s3d",
+        "workaround": "s3e",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_LESSON01"
+      },
+      "SCENARIO_RUN_LESSON02": {
+        "finding": "s5a",
+        "title": "s5b",
+        "workaround": "s5c",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_LESSON02"
+      }
+    }
+  },
+  "new": {
+    "scenario_run_lesson": {
+      "scenario_run_lesson_ref01": {
+        "finding": "s78",
+        "title": "s79",
+        "workaround": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/lessons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

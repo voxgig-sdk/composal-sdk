@@ -1,0 +1,56 @@
+# BasicClawderGithubAccessFlow
+
+main: kit: flow: BasicClawderGithubAccessFlow:
+{
+  entity: "clawder_github_access",
+  kind: "basic",
+  name: "BasicClawderGithubAccessFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "clawder_github_access_ref01",
+        srcdatavar: "clawder_github_access_ref01_data",
+        suffix: "_up0",
+        textfield: "acting_as"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_github_access_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "clawder_github_access_ref01",
+        srcdatavar: "clawder_github_access_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "clawder_github_access01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_github_access_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderGithubAccessFlow"
+}

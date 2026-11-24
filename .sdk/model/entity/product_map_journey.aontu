@@ -1,0 +1,467 @@
+# Entity: product_map_journey
+
+main: kit: entity: product_map_journey: {
+
+  alias: field: {}
+
+  fields: {
+    default_variant_id: {
+      h: "Default Variant Id"
+      n: "default_variant_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    goal: {
+      h: "Goal"
+      n: "goal"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    journey: {
+      h: "Journey"
+      n: "journey"
+      r: true
+      t: "`$OBJECT`"
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    preview: {
+      h: "Preview"
+      n: "preview"
+      r: false
+      t: "`$ANY`"
+    }
+    scope: {
+      h: "Scope"
+      n: "scope"
+      r: true
+      t: "`$OBJECT`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    tree: {
+      h: "Tree"
+      n: "tree"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 7
+      }
+    }
+    tree_loaded: {
+      h: "Tree Loaded"
+      n: "tree_loaded"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    variant_count: {
+      h: "Variant Count"
+      n: "variant_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    variants: {
+      h: "Variants"
+      n: "variants"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "product_map_journey"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "account_id"
+                or: "account_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "area"
+                or: "area"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "before"
+                or: "before"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "include_coverage"
+                or: "include_coverage"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "journey_query"
+                or: "journey_query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "persona_id"
+                or: "persona_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "revision_id"
+                or: "revision_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "since"
+                or: "since"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "product_map"
+            }
+            {
+              lit: "journeys"
+            }
+          ]
+          t: {
+            page: {
+              cursor: "`body.next_cursor`"
+            }
+            req: "`reqdata`"
+            res: "`body.journeys`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys/{journey_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "journey_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "account_id"
+                or: "account_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "after"
+                or: "after"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "area"
+                or: "area"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "before"
+                or: "before"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                explode: true
+                k: "query"
+                n: "include_tree"
+                or: "include_tree"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "persona_id"
+                or: "persona_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "revision_id"
+                or: "revision_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "since"
+                or: "since"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "variant_id"
+                or: "variant_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys/{journey_id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              journey_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "product_map"
+            }
+            {
+              lit: "journeys"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

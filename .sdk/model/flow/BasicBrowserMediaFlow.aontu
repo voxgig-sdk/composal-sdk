@@ -1,0 +1,51 @@
+# BasicBrowserMediaFlow
+
+main: kit: flow: BasicBrowserMediaFlow:
+{
+  entity: "browser_media",
+  kind: "basic",
+  name: "BasicBrowserMediaFlow",
+  step: [
+    {
+      m: {
+        browser_session_id: "browser_session01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "browser_media_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "browser_media_ref01",
+        srcdatavar: "browser_media_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        id: "browser_media01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-browser_media_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBrowserMediaFlow"
+}

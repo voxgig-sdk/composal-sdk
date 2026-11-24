@@ -1,0 +1,32 @@
+# BasicWorkspaceActivityPageFlow
+
+main: kit: flow: BasicWorkspaceActivityPageFlow:
+{
+  entity: "workspace_activity_page",
+  kind: "basic",
+  name: "BasicWorkspaceActivityPageFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "workspace_activity_page_ref01",
+        srcdatavar: "workspace_activity_page_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-workspace_activity_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkspaceActivityPageFlow"
+}

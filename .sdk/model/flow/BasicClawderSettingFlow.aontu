@@ -1,0 +1,56 @@
+# BasicClawderSettingFlow
+
+main: kit: flow: BasicClawderSettingFlow:
+{
+  entity: "clawder_setting",
+  kind: "basic",
+  name: "BasicClawderSettingFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "clawder_setting_ref01",
+        srcdatavar: "clawder_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "expected_version"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "clawder_setting_ref01",
+        srcdatavar: "clawder_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "clawder_setting01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSettingFlow"
+}

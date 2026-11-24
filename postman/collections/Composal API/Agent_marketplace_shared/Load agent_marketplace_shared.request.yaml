@@ -1,0 +1,15 @@
+$kind: http-request
+id: "60c52a7f-ca73-51f7-8ca7-c079cdaf60e8"
+description: |-
+  The `load` operation of **agent_marketplace_shared**.
+
+  SDK: `client.AgentMarketplaceShared().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent_marketplace/shared/:share_token"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: share_token
+    value: "{{agent_marketplace_shared_id}}"
+    description: The agent_marketplace_shared this request addresses.
+order: 1000

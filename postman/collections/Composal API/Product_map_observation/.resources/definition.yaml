@@ -1,0 +1,16 @@
+$kind: collection
+id: d31bb1e2-26f2-5f5e-9385-78404d565709
+description: |-
+  The **product_map_observation** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_observation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `capture` | object | yes |  |
+  | `events` | array | yes |  |
+  | `evidence_id` | string | yes |  |
+  | `id` | string |  |  |
+  | `observation_id` | string | yes |  |
+  | `scope` | object | yes |  |
+  | `state` | any | yes |  |
+  | `status` | string | yes |  |
+order: 161000

@@ -1,0 +1,11 @@
+$kind: http-request
+id: "2185bf73-7d5d-5b2c-a0cf-31e6c65d8f92"
+description: |-
+  The `namespace` action of **registry**, a route of its `load` operation.
+
+  SDK: `client.Registry().load({ $action: "namespace" })`
+url: "{{base}}/api/v1/registry/namespace"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

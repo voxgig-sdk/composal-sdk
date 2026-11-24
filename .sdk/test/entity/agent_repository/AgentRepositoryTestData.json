@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "agent_repository": {
+      "AGENT_REPOSITORY00": {
+        "can_manage": true,
+        "environments": {},
+        "expected_version": 92,
+        "id": "AGENT_REPOSITORY00",
+        "repository_choices": [],
+        "repository_choices_error": "s5f",
+        "repository_choices_truncated": true,
+        "version": 97,
+        "work_repositories": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_REPOSITORY01": {
+        "can_manage": true,
+        "environments": {},
+        "expected_version": 182,
+        "id": "AGENT_REPOSITORY01",
+        "repository_choices": [],
+        "repository_choices_error": "sb9",
+        "repository_choices_truncated": true,
+        "version": 187,
+        "work_repositories": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_REPOSITORY02": {
+        "can_manage": true,
+        "environments": {},
+        "expected_version": 272,
+        "id": "AGENT_REPOSITORY02",
+        "repository_choices": [],
+        "repository_choices_error": "s113",
+        "repository_choices_truncated": true,
+        "version": 277,
+        "work_repositories": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_repository": {
+      "agent_repository_ref01": {
+        "can_manage": true,
+        "environments": {},
+        "expected_version": 362,
+        "repository_choices": [],
+        "repository_choices_error": "s16d",
+        "repository_choices_truncated": true,
+        "version": 367,
+        "work_repositories": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

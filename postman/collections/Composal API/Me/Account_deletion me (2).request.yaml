@@ -1,0 +1,18 @@
+$kind: http-request
+id: "6fd06738-6d50-53ed-ba33-bac52ffddd72"
+description: |-
+  The `account_deletion` action of **me**, a route of its `create` operation.
+
+  SDK: `client.Me().create({ $action: "account_deletion" })`
+url: "{{base}}/api/v1/me/account_deletion"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "confirmation": "example"
+    }
+order: 4000

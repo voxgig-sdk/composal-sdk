@@ -1,0 +1,118 @@
+# BasicStaticSiteDomainFlow
+
+main: kit: flow: BasicStaticSiteDomainFlow:
+{
+  entity: "static_site_domain",
+  kind: "basic",
+  name: "BasicStaticSiteDomainFlow",
+  step: [
+    {
+      i: {
+        ref: "static_site_domain_ref01"
+      }
+
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "static_site_domain_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        static_site_id: "static_site01"
+      }
+
+      i: {
+        ref: "static_site_domain_ref01",
+        srcdatavar: "static_site_domain_ref01_data",
+        suffix: "_up0",
+        textfield: "app_environment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-static_site_domain_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_domain_ref01",
+        srcdatavar: "static_site_domain_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "static_site_domain01",
+        static_site_id: "static_site01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-static_site_domain_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_domain_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "static_site_domain01",
+        static_site_id: "static_site01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "static_site_domain_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStaticSiteDomainFlow"
+}

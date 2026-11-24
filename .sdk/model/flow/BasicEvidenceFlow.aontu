@@ -1,0 +1,32 @@
+# BasicEvidenceFlow
+
+main: kit: flow: BasicEvidenceFlow:
+{
+  entity: "evidence",
+  kind: "basic",
+  name: "BasicEvidenceFlow",
+  step: [
+    {
+      i: {
+        ref: "evidence_ref01",
+        srcdatavar: "evidence_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "evidence01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-evidence_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEvidenceFlow"
+}

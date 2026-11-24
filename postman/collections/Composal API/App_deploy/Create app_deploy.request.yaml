@@ -1,0 +1,43 @@
+$kind: http-request
+id: "6ee9dfcc-4786-53e5-ab45-02c9d713302e"
+description: |-
+  The `create` operation of **app_deploy**.
+
+  SDK: `client.AppDeploy().create({ app_id: "example", image: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deploys"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deploy belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "image": "example",
+      "service": "example",
+      "app_service_id": "{{app_service_id}}",
+      "environment": "example",
+      "app_environment_id": "{{app_environment_id}}",
+      "region": "example",
+      "desired_instances": 1,
+      "command": "example",
+      "channel": "example",
+      "source_ref": "example",
+      "commit_sha": "example",
+      "rollout_predecessor": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_deploy_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

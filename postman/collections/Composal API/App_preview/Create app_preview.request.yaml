@@ -1,0 +1,37 @@
+$kind: http-request
+id: "216c491f-abda-58fc-abaf-02ba4bd06b0e"
+description: |-
+  The `create` operation of **app_preview**.
+
+  SDK: `client.AppPreview().create({ app_id: "example", app_preview_profile_id: "example", name: "example", slug: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "slug": "example",
+      "app_preview_profile_id": "{{app_preview_profile_id}}",
+      "source_ref": "example",
+      "change_number": "example",
+      "expected_patchset": 1
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["preview"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_preview_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

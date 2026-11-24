@@ -1,0 +1,26 @@
+$kind: collection
+id: "51d8c3cf-f2c0-5322-b972-916977de1af0"
+description: |-
+  The **browser_session_task** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_task_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `activity` | object |  |  |
+  | `browser_session_id` | string | yes |  |
+  | `cancel_requested_at` | string |  |  |
+  | `completed_at` | string |  |  |
+  | `control_generation` | integer |  |  |
+  | `deadline_at` | string | yes |  |
+  | `effects_unknown` | boolean | yes |  |
+  | `failure_code` | string |  |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string |  |  |
+  | `instruction` | string | yes |  |
+  | `max_rounds` | integer | yes |  |
+  | `max_seconds` | integer |  |  |
+  | `model_selection` | object | yes |  |
+  | `outcome` | string |  |  |
+  | `result` | object | yes |  |
+  | `started_at` | string |  |  |
+  | `status` | string | yes |  |
+order: 85000

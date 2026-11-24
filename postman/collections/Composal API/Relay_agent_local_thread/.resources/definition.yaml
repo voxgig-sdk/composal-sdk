@@ -1,0 +1,9 @@
+$kind: collection
+id: "07b297e3-ab18-5c7f-9bf4-12a9e91d3ee2"
+description: |-
+  The **relay_agent_local_thread** entity, which belongs to a organization and a agent. Its requests address one record by `{{relay_agent_local_thread_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 187000

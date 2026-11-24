@@ -1,0 +1,28 @@
+$kind: http-request
+id: fb26fd75-4771-53c2-a16b-44bb7bd7e724
+description: |-
+  The `remove` operation of **service_endpoint**.
+
+  SDK: `client.ServiceEndpoint().remove({ app_id: "example", id: "example_id", service_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services/:service_id/endpoints/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this service_endpoint belongs to.
+  - key: service_id
+    value: "{{service_id}}"
+    description: "Input: service_id."
+  - key: id
+    value: "{{service_endpoint_id}}"
+    description: The service_endpoint this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("service_endpoint_id")
+      }
+    language: text/javascript
+order: 6000

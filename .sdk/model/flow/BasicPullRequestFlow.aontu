@@ -1,0 +1,59 @@
+# BasicPullRequestFlow
+
+main: kit: flow: BasicPullRequestFlow:
+{
+  entity: "pull_request",
+  kind: "basic",
+  name: "BasicPullRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "pull_request_ref01",
+        srcdatavar: "pull_request_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "pull_request01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-pull_request_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "pull_request_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "pull_request01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicPullRequestFlow"
+}

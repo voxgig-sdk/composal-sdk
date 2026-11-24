@@ -1,0 +1,33 @@
+# BasicVcsTrunkTipFlow
+
+main: kit: flow: BasicVcsTrunkTipFlow:
+{
+  entity: "vcs_trunk_tip",
+  kind: "basic",
+  name: "BasicVcsTrunkTipFlow",
+  step: [
+    {
+      i: {
+        ref: "vcs_trunk_tip_ref01",
+        srcdatavar: "vcs_trunk_tip_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vcs_trunk_tip01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vcs_trunk_tip_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsTrunkTipFlow"
+}

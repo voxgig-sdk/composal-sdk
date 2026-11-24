@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "scenario_run_scenario_edit": {
+      "SCENARIO_RUN_SCENARIO_EDIT00": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_SCENARIO_EDIT00"
+      },
+      "SCENARIO_RUN_SCENARIO_EDIT01": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_SCENARIO_EDIT01"
+      },
+      "SCENARIO_RUN_SCENARIO_EDIT02": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "id": "SCENARIO_RUN_SCENARIO_EDIT02"
+      }
+    }
+  },
+  "new": {
+    "scenario_run_scenario_edit": {
+      "scenario_run_scenario_edit_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/suggest": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

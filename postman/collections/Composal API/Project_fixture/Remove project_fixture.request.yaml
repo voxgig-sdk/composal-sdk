@@ -1,0 +1,31 @@
+$kind: http-request
+id: "4832d518-5b58-5405-8ffa-aae03634aac9"
+description: |-
+  The `remove` operation of **project_fixture**.
+
+  SDK: `client.ProjectFixture().remove({ id: "example_id", organization_id: "example", project_id: "example", version: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/fixtures/:id?version={{version}}"
+method: DELETE
+headers:
+  Accept: application/json
+queryParams:
+  - key: version
+    value: "{{version}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_fixture belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_fixture belongs to.
+  - key: id
+    value: "{{project_fixture_id}}"
+    description: The project_fixture this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("project_fixture_id")
+      }
+    language: text/javascript
+order: 6000

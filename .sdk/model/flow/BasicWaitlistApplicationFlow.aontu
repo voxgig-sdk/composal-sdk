@@ -1,0 +1,18 @@
+# BasicWaitlistApplicationFlow
+
+main: kit: flow: BasicWaitlistApplicationFlow:
+{
+  entity: "waitlist_application",
+  kind: "basic",
+  name: "BasicWaitlistApplicationFlow",
+  step: [
+    {
+      i: {
+        ref: "waitlist_application_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWaitlistApplicationFlow"
+}

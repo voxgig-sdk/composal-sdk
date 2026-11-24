@@ -1,0 +1,40 @@
+$kind: http-request
+id: "388d0377-b92f-53c8-85a9-9de41486ecb7"
+description: |-
+  The `create` operation of **local_thread_operation**.
+
+  SDK: `client.LocalThreadOperation().create({ agent_id: "example", local_thread_id: "example", organization_id: "example", action: "example", arguments: {}, key: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/operations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this local_thread_operation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this local_thread_operation belongs to.
+  - key: local_thread_id
+    value: "{{local_thread_id}}"
+    description: "Input: local_thread_id."
+body:
+  type: json
+  content: |-
+    {
+      "key": "example",
+      "action": "threads.read",
+      "arguments": {}
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["operation"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("local_thread_operation_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

@@ -1,0 +1,27 @@
+# BasicAgentSessionTranscriptPageFlow
+
+main: kit: flow: BasicAgentSessionTranscriptPageFlow:
+{
+  entity: "agent_session_transcript_page",
+  kind: "basic",
+  name: "BasicAgentSessionTranscriptPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_session_transcript_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSessionTranscriptPageFlow"
+}

@@ -1,0 +1,13 @@
+$kind: collection
+id: ae500409-2511-5f61-a5b0-dd7068268d53
+description: |-
+  The **preview_profile_secret_binding** entity, which belongs to a app. Its requests address one record by `{{preview_profile_secret_binding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `env_key` | string | yes |  |
+  | `id` | string |  |  |
+  | `mode` | string |  |  |
+  | `secret_id` | string |  |  |
+  | `secret_version_id` | string |  |  |
+order: 155000

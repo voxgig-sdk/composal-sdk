@@ -1,0 +1,25 @@
+$kind: http-request
+id: cf730086-6a2a-5c90-b58b-9598c48ad660
+description: |-
+  The `list` operation of **app_service**.
+
+  SDK: `client.AppService().list({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("app_service_id")) pm.collectionVariables.set("app_service_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

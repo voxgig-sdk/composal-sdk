@@ -1,0 +1,32 @@
+$kind: http-request
+id: "7fb9d90b-94d4-5a19-92b3-e49b5b90ff6f"
+description: |-
+  The `list` operation of **deep_scan_option**.
+
+  SDK: `client.DeepScanOption().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/options"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment_query
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan_option belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("deep_scan_option_id")) pm.collectionVariables.set("deep_scan_option_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

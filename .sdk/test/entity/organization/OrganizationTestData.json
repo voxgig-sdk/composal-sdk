@@ -1,0 +1,140 @@
+{
+  "existing": {
+    "organization": {
+      "ORGANIZATION00": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "sf3",
+        "created_at_label": "sf4",
+        "github_prs_authored_by_change_author": false,
+        "google_workspace_domain": "sf6",
+        "id": "ORGANIZATION00",
+        "logo_url": "sf8",
+        "member_count": 249,
+        "name": "sfa",
+        "pending_invitation_count": 251,
+        "personal": true,
+        "repository_count": 253,
+        "role": "sfe",
+        "sandbox_region": "sff",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s101",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s104",
+        "updated_at": "s105",
+        "updated_at_label": "s106",
+        "verify_pr_scenario_writing_enabled": false
+      },
+      "ORGANIZATION01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s1e3",
+        "created_at_label": "s1e4",
+        "github_prs_authored_by_change_author": false,
+        "google_workspace_domain": "s1e6",
+        "id": "ORGANIZATION01",
+        "logo_url": "s1e8",
+        "member_count": 489,
+        "name": "s1ea",
+        "pending_invitation_count": 491,
+        "personal": true,
+        "repository_count": 493,
+        "role": "s1ee",
+        "sandbox_region": "s1ef",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s1f1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s1f4",
+        "updated_at": "s1f5",
+        "updated_at_label": "s1f6",
+        "verify_pr_scenario_writing_enabled": false
+      },
+      "ORGANIZATION02": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s2d3",
+        "created_at_label": "s2d4",
+        "github_prs_authored_by_change_author": false,
+        "google_workspace_domain": "s2d6",
+        "id": "ORGANIZATION02",
+        "logo_url": "s2d8",
+        "member_count": 729,
+        "name": "s2da",
+        "pending_invitation_count": 731,
+        "personal": true,
+        "repository_count": 733,
+        "role": "s2de",
+        "sandbox_region": "s2df",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s2e1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s2e4",
+        "updated_at": "s2e5",
+        "updated_at_label": "s2e6",
+        "verify_pr_scenario_writing_enabled": false
+      }
+    }
+  },
+  "new": {
+    "organization": {
+      "organization_ref01": {
+        "activated_products": [],
+        "agents_only": false,
+        "can_activate_products": true,
+        "created_at": "s3c3",
+        "created_at_label": "s3c4",
+        "github_prs_authored_by_change_author": false,
+        "google_workspace_domain": "s3c6",
+        "logo_url": "s3c8",
+        "member_count": 969,
+        "name": "s3ca",
+        "pending_invitation_count": 971,
+        "personal": true,
+        "repository_count": 973,
+        "role": "s3ce",
+        "sandbox_region": "s3cf",
+        "shared_agent_personal_accounts_enabled": true,
+        "slug": "s3d1",
+        "source_control_providers": [],
+        "source_ui_enabled": false,
+        "timezone": "s3d4",
+        "updated_at": "s3d5",
+        "updated_at_label": "s3d6",
+        "verify_pr_scenario_writing_enabled": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

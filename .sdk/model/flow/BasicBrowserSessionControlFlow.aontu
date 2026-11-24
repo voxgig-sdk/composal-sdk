@@ -1,0 +1,34 @@
+# BasicBrowserSessionControlFlow
+
+main: kit: flow: BasicBrowserSessionControlFlow:
+{
+  entity: "browser_session_control",
+  kind: "basic",
+  name: "BasicBrowserSessionControlFlow",
+  step: [
+    {
+      i: {
+        ref: "browser_session_control_ref01",
+        srcdatavar: "browser_session_control_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        id: "browser_session_control01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-browser_session_control_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBrowserSessionControlFlow"
+}

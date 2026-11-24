@@ -1,0 +1,127 @@
+{
+  "existing": {
+    "app_environment": {
+      "APP_ENVIRONMENT00": {
+        "auto_deploy": true,
+        "base_domain": "s97",
+        "branch_pattern": "s98",
+        "created_at": "s99",
+        "created_at_label": "s9a",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_ENVIRONMENT00",
+        "kind": "s9d",
+        "location": "s9e",
+        "location_id": "LOCATION01",
+        "name": "sa0",
+        "slug": "sa1",
+        "status": "sa2",
+        "updated_at": "sa3",
+        "updated_at_label": "sa4",
+        "app_id": "APP01"
+      },
+      "APP_ENVIRONMENT01": {
+        "auto_deploy": true,
+        "base_domain": "s12d",
+        "branch_pattern": "s12e",
+        "created_at": "s12f",
+        "created_at_label": "s130",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_ENVIRONMENT01",
+        "kind": "s133",
+        "location": "s134",
+        "location_id": "LOCATION01",
+        "name": "s136",
+        "slug": "s137",
+        "status": "s138",
+        "updated_at": "s139",
+        "updated_at_label": "s13a",
+        "app_id": "APP01"
+      },
+      "APP_ENVIRONMENT02": {
+        "auto_deploy": true,
+        "base_domain": "s1c3",
+        "branch_pattern": "s1c4",
+        "created_at": "s1c5",
+        "created_at_label": "s1c6",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_ENVIRONMENT02",
+        "kind": "s1c9",
+        "location": "s1ca",
+        "location_id": "LOCATION01",
+        "name": "s1cc",
+        "slug": "s1cd",
+        "status": "s1ce",
+        "updated_at": "s1cf",
+        "updated_at_label": "s1d0",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_environment": {
+      "app_environment_ref01": {
+        "auto_deploy": true,
+        "base_domain": "s259",
+        "branch_pattern": "s25a",
+        "created_at": "s25b",
+        "created_at_label": "s25c",
+        "hosted_app_id": "HOSTED_APP01",
+        "kind": "s25f",
+        "location": "s260",
+        "location_id": "LOCATION01",
+        "name": "s262",
+        "slug": "s263",
+        "status": "s264",
+        "updated_at": "s265",
+        "updated_at_label": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/environments/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/environments/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/environments/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

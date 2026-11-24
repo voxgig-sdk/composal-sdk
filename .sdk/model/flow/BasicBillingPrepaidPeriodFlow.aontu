@@ -1,0 +1,33 @@
+# BasicBillingPrepaidPeriodFlow
+
+main: kit: flow: BasicBillingPrepaidPeriodFlow:
+{
+  entity: "billing_prepaid_period",
+  kind: "basic",
+  name: "BasicBillingPrepaidPeriodFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_prepaid_period_ref01",
+        srcdatavar: "billing_prepaid_period_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "billing_prepaid_period01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_prepaid_period_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingPrepaidPeriodFlow"
+}

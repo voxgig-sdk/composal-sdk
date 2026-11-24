@@ -1,0 +1,22 @@
+# BasicImageRepositoryContractFlow
+
+main: kit: flow: BasicImageRepositoryContractFlow:
+{
+  entity: "image_repository_contract",
+  kind: "basic",
+  name: "BasicImageRepositoryContractFlow",
+  step: [
+    {
+      i: {
+        ref: "image_repository_contract_ref01"
+      }
+
+      m: {
+        image_repository_id: "image_repository01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicImageRepositoryContractFlow"
+}

@@ -1,0 +1,38 @@
+$kind: http-request
+id: c2b26ce2-13e4-5e83-9e23-2a8174845868
+description: |-
+  The `patch` operation of **project_fixture**.
+
+  SDK: `client.ProjectFixture().patch({ id: "example", organization_id: "example", project_id: "example", credential_ids: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/fixtures/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_fixture belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_fixture belongs to.
+  - key: id
+    value: "{{project_fixture_id}}"
+    description: The project_fixture this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1,
+      "name": "example",
+      "persona_ids": [
+        "example"
+      ],
+      "credential_ids": [
+        "example"
+      ],
+      "environment_ids": [
+        "example"
+      ]
+    }
+order: 5000

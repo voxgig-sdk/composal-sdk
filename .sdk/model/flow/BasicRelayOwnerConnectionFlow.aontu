@@ -1,0 +1,64 @@
+# BasicRelayOwnerConnectionFlow
+
+main: kit: flow: BasicRelayOwnerConnectionFlow:
+{
+  entity: "relay_owner_connection",
+  kind: "basic",
+  name: "BasicRelayOwnerConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "relay_owner_connection_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "relay_owner_connection_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "relay_owner_connection_ref01",
+        srcdatavar: "relay_owner_connection_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "relay_owner_connection01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_owner_connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayOwnerConnectionFlow"
+}

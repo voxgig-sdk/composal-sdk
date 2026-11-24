@@ -1,0 +1,18 @@
+$kind: http-request
+id: "2d435efc-410a-58c0-b0e5-4946f4253a1b"
+description: |-
+  The `summary` action of **agent_workflow_run**, a route of its `load` operation.
+
+  SDK: `client.AgentWorkflowRun().load({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "summary" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs/summary"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_run belongs to.
+order: 7000

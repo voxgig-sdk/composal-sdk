@@ -1,0 +1,28 @@
+$kind: http-request
+id: "86c14c43-da1c-5d9a-af14-8d4eee49d8af"
+description: |-
+  The `snooze` action of **agent_thread**, a route of its `create` operation.
+
+  SDK: `client.AgentThread().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "snooze" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads/:thread_id/snooze"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_thread belongs to.
+  - key: thread_id
+    value: "{{agent_thread_id}}"
+    description: The agent_thread this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "snoozed_until": "2026-01-01T00:00:00Z"
+    }
+order: 5000

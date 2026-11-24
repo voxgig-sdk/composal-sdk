@@ -1,0 +1,15 @@
+$kind: collection
+id: f1e481c3-3cc6-5a19-b827-4a78328dddf6
+description: |-
+  The **agent_pull_request** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_pull_request_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `owners` | array | yes |  |
+  | `repository` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `url` | string | yes |  |
+order: 24000

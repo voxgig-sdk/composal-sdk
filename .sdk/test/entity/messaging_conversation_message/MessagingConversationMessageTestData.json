@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "messaging_conversation_message": {
+      "MESSAGING_CONVERSATION_MESSAGE00": {
+        "attachment_limit": 140,
+        "attachment_max_bytes": 141,
+        "client_operation_id": "CLIENT_OPERATION01",
+        "content": "s8f",
+        "id": "MESSAGING_CONVERSATION_MESSAGE00",
+        "media": {},
+        "media_upload_ids": [],
+        "messages": [],
+        "reply_to": "s94",
+        "retry_attachment": false,
+        "send_blocked_reason": "s96",
+        "send_disposition": "s97",
+        "send_error": "s98",
+        "send_style": "s99",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "MESSAGING_CONVERSATION_MESSAGE01": {
+        "attachment_limit": 280,
+        "attachment_max_bytes": 281,
+        "client_operation_id": "CLIENT_OPERATION01",
+        "content": "s11b",
+        "id": "MESSAGING_CONVERSATION_MESSAGE01",
+        "media": {},
+        "media_upload_ids": [],
+        "messages": [],
+        "reply_to": "s120",
+        "retry_attachment": false,
+        "send_blocked_reason": "s122",
+        "send_disposition": "s123",
+        "send_error": "s124",
+        "send_style": "s125",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "MESSAGING_CONVERSATION_MESSAGE02": {
+        "attachment_limit": 420,
+        "attachment_max_bytes": 421,
+        "client_operation_id": "CLIENT_OPERATION01",
+        "content": "s1a7",
+        "id": "MESSAGING_CONVERSATION_MESSAGE02",
+        "media": {},
+        "media_upload_ids": [],
+        "messages": [],
+        "reply_to": "s1ac",
+        "retry_attachment": false,
+        "send_blocked_reason": "s1ae",
+        "send_disposition": "s1af",
+        "send_error": "s1b0",
+        "send_style": "s1b1",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "messaging_conversation_message": {
+      "messaging_conversation_message_ref01": {
+        "attachment_limit": 560,
+        "attachment_max_bytes": 561,
+        "client_operation_id": "CLIENT_OPERATION01",
+        "content": "s233",
+        "media": {},
+        "media_upload_ids": [],
+        "messages": [],
+        "reply_to": "s238",
+        "retry_attachment": false,
+        "send_blocked_reason": "s23a",
+        "send_disposition": "s23b",
+        "send_error": "s23c",
+        "send_style": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

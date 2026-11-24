@@ -1,0 +1,38 @@
+# BasicImageRepositoryFlow
+
+main: kit: flow: BasicImageRepositoryFlow:
+{
+  entity: "image_repository",
+  kind: "basic",
+  name: "BasicImageRepositoryFlow",
+  step: [
+    {
+      i: {
+        ref: "image_repository_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "image_repository_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImageRepositoryFlow"
+}

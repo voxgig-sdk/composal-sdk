@@ -1,0 +1,15 @@
+$kind: http-request
+id: "38ec80fb-fd7e-5d91-b46b-4d0c8b558f6d"
+description: |-
+  The `preview` action of **merge_request**, a route of its `create` operation.
+
+  SDK: `client.MergeRequest().create({ "organization_id": "organization_id", $action: "preview" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/merge_requests/preview"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this merge_request belongs to.
+order: 3000

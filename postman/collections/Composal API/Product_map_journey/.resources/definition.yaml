@@ -1,0 +1,20 @@
+$kind: collection
+id: "9ab7596c-8881-50d5-a42c-e6104880680c"
+description: |-
+  The **product_map_journey** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_journey_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `default_variant_id` | string |  |  |
+  | `goal` | string | yes |  |
+  | `id` | string | yes |  |
+  | `journey` | object | yes |  |
+  | `next_cursor` | string | yes |  |
+  | `preview` | any |  |  |
+  | `scope` | object | yes |  |
+  | `title` | string | yes |  |
+  | `tree` | object | yes |  |
+  | `tree_loaded` | boolean |  |  |
+  | `variant_count` | integer | yes |  |
+  | `variants` | array | yes |  |
+order: 159000

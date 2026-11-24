@@ -1,0 +1,4 @@
+$kind: collection
+id: "7ec68c08-58b7-57dc-8a08-5e2d9055c4d9"
+description: "The `BasicProjectOverviewPullRequestFlow` flow of **project_overview_pull_request**."
+order: 150000

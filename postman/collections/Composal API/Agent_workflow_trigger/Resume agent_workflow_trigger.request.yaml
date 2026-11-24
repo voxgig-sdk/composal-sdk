@@ -1,0 +1,25 @@
+$kind: http-request
+id: "97da1e69-5a4a-5176-9ba9-21d1391f1079"
+description: |-
+  The `resume` action of **agent_workflow_trigger**, a route of its `update` operation.
+
+  SDK: `client.AgentWorkflowTrigger().update({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "resume" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id/resume"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_trigger belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_trigger belongs to.
+  - key: trigger_id
+    value: "{{agent_workflow_trigger_id}}"
+    description: The agent_workflow_trigger this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

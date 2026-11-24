@@ -1,0 +1,58 @@
+# BasicRelayOwnerConnectionDetailFlow
+
+main: kit: flow: BasicRelayOwnerConnectionDetailFlow:
+{
+  entity: "relay_owner_connection_detail",
+  kind: "basic",
+  name: "BasicRelayOwnerConnectionDetailFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "relay_owner_connection_detail_ref01",
+        srcdatavar: "relay_owner_connection_detail_ref01_data",
+        suffix: "_up0",
+        textfield: "agent_card_url"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_owner_connection_detail_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "relay_owner_connection_detail_ref01",
+        srcdatavar: "relay_owner_connection_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "relay_owner_connection_detail01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-relay_owner_connection_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayOwnerConnectionDetailFlow"
+}

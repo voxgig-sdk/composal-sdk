@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_question": {
+      "AGENT_QUESTION00": {
+        "id": "AGENT_QUESTION00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_QUESTION01": {
+        "id": "AGENT_QUESTION01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_QUESTION02": {
+        "id": "AGENT_QUESTION02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_question": {
+      "agent_question_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

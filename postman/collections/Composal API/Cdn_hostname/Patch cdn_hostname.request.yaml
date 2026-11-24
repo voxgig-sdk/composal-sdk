@@ -1,0 +1,25 @@
+$kind: http-request
+id: be77e6e8-a067-5130-949d-77082306d566
+description: |-
+  The `patch` operation of **cdn_hostname**.
+
+  SDK: `client.CdnHostname().patch({ app_id: "example", cdn_id: "example", id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/hostnames/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_hostname belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+  - key: id
+    value: "{{cdn_hostname_id}}"
+    description: The cdn_hostname this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

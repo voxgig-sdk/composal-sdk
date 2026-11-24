@@ -1,0 +1,23 @@
+# BasicVerifyBinaryVersionRegistrationFlow
+
+main: kit: flow: BasicVerifyBinaryVersionRegistrationFlow:
+{
+  entity: "verify_binary_version_registration",
+  kind: "basic",
+  name: "BasicVerifyBinaryVersionRegistrationFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_binary_version_registration_ref01"
+      }
+
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyBinaryVersionRegistrationFlow"
+}

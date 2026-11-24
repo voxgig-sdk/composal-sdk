@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "project_product_map": {
+      "PROJECT_PRODUCT_MAP00": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PRODUCT_MAP00"
+      },
+      "PROJECT_PRODUCT_MAP01": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PRODUCT_MAP01"
+      },
+      "PROJECT_PRODUCT_MAP02": {
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_PRODUCT_MAP02"
+      }
+    }
+  },
+  "new": {
+    "project_product_map": {
+      "project_product_map_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/frontier": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/version": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

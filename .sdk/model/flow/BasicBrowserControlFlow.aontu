@@ -1,0 +1,34 @@
+# BasicBrowserControlFlow
+
+main: kit: flow: BasicBrowserControlFlow:
+{
+  entity: "browser_control",
+  kind: "basic",
+  name: "BasicBrowserControlFlow",
+  step: [
+    {
+      i: {
+        ref: "browser_control_ref01",
+        srcdatavar: "browser_control_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        id: "browser_control01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-browser_control_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBrowserControlFlow"
+}

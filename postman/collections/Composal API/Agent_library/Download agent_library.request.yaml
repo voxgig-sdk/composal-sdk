@@ -1,0 +1,21 @@
+$kind: http-request
+id: "0db0a140-32a3-5b3e-93f3-2b43b0d2cacd"
+description: |-
+  The `download` action of **agent_library**, a route of its `load` operation.
+
+  SDK: `client.AgentLibrary().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "download" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/library/:artifact_id/download"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_library belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_library belongs to.
+  - key: artifact_id
+    value: "{{agent_library_id}}"
+    description: The agent_library this request addresses.
+order: 1000

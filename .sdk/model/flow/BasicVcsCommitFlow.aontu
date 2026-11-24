@@ -1,0 +1,51 @@
+# BasicVcsCommitFlow
+
+main: kit: flow: BasicVcsCommitFlow:
+{
+  entity: "vcs_commit",
+  kind: "basic",
+  name: "BasicVcsCommitFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_commit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "vcs_commit_ref01",
+        srcdatavar: "vcs_commit_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vcs_commit01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vcs_commit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsCommitFlow"
+}

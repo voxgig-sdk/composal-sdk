@@ -1,0 +1,30 @@
+$kind: http-request
+id: "8129bd90-d004-557c-8d6a-90825c8d8eb1"
+description: |-
+  The `setup` action of **agent_connection**, a route of its `create` operation.
+
+  SDK: `client.AgentConnection().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", "x_composal_relay_scope": "x_composal_relay_scope", "x_composal_requester_id": "x_composal_requester_id", $action: "setup" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/:connection_id/setup"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_connection belongs to.
+  - key: connection_id
+    value: "{{agent_connection_id}}"
+    description: The agent_connection this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_generation": 1
+    }
+order: 6000

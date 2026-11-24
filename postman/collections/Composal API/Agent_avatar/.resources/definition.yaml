@@ -1,0 +1,8 @@
+$kind: collection
+id: "4d72c413-ea0a-58d6-a39a-877023cdbbc1"
+description: |-
+  The **agent_avatar** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_avatar_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 5000

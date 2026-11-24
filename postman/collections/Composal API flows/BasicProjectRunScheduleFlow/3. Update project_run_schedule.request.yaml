@@ -1,0 +1,77 @@
+$kind: http-request
+id: "5e446cfe-d611-55ea-b73a-01d3a9d17f4f"
+description: |-
+  The `update` operation of **project_run_schedule**.
+
+  SDK: `client.ProjectRunSchedule().update({ id: "example", organization_id: "example", project_id: "example", credential_ids: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_schedules/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_schedule belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_schedule belongs to.
+  - key: id
+    value: "{{project_run_schedule_ref01}}"
+    description: The project_run_schedule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "state": "active",
+      "time_of_day": "example",
+      "time_zone": "example",
+      "credential_ids": {},
+      "environment_id": "{{environment_id}}",
+      "notification_channel": "email",
+      "slack_subscription_id": "example",
+      "version": 1,
+      "selection_mode": "all",
+      "labels": [
+        "example"
+      ],
+      "cron_expression": "Mark01-project_run_schedule_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id","project_run_schedule_ref01","environment_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update project_run_schedule: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update project_run_schedule: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("project_run_schedule_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("project_run_schedule_ref01_marked", "Mark01-project_run_schedule_ref01")
+    language: text/javascript
+order: 3000

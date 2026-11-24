@@ -1,0 +1,98 @@
+{
+  "existing": {
+    "product_map_question": {
+      "PRODUCT_MAP_QUESTION00": {
+        "account_id": "ACCOUNT01",
+        "area": "sa1",
+        "before": "sa2",
+        "claims": [],
+        "evidence_truncated": true,
+        "model": "sa5",
+        "persona_id": "PERSONA01",
+        "query": "sa7",
+        "question": "sa8",
+        "reasoning_effort": "sa9",
+        "revision_id": "REVISION01",
+        "scope": {},
+        "since": "sac",
+        "state_id": "STATE01",
+        "status": "sae",
+        "unknowns": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_QUESTION00"
+      },
+      "PRODUCT_MAP_QUESTION01": {
+        "account_id": "ACCOUNT01",
+        "area": "s141",
+        "before": "s142",
+        "claims": [],
+        "evidence_truncated": true,
+        "model": "s145",
+        "persona_id": "PERSONA01",
+        "query": "s147",
+        "question": "s148",
+        "reasoning_effort": "s149",
+        "revision_id": "REVISION01",
+        "scope": {},
+        "since": "s14c",
+        "state_id": "STATE01",
+        "status": "s14e",
+        "unknowns": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_QUESTION01"
+      },
+      "PRODUCT_MAP_QUESTION02": {
+        "account_id": "ACCOUNT01",
+        "area": "s1e1",
+        "before": "s1e2",
+        "claims": [],
+        "evidence_truncated": true,
+        "model": "s1e5",
+        "persona_id": "PERSONA01",
+        "query": "s1e7",
+        "question": "s1e8",
+        "reasoning_effort": "s1e9",
+        "revision_id": "REVISION01",
+        "scope": {},
+        "since": "s1ec",
+        "state_id": "STATE01",
+        "status": "s1ee",
+        "unknowns": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_QUESTION02"
+      }
+    }
+  },
+  "new": {
+    "product_map_question": {
+      "product_map_question_ref01": {
+        "account_id": "ACCOUNT01",
+        "area": "s281",
+        "before": "s282",
+        "claims": [],
+        "evidence_truncated": true,
+        "model": "s285",
+        "persona_id": "PERSONA01",
+        "query": "s287",
+        "question": "s288",
+        "reasoning_effort": "s289",
+        "revision_id": "REVISION01",
+        "scope": {},
+        "since": "s28c",
+        "state_id": "STATE01",
+        "status": "s28e",
+        "unknowns": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/questions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

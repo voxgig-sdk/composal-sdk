@@ -1,0 +1,27 @@
+# BasicProductMapSearchFlow
+
+main: kit: flow: BasicProductMapSearchFlow:
+{
+  entity: "product_map_search",
+  kind: "basic",
+  name: "BasicProductMapSearchFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "product_map_search_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductMapSearchFlow"
+}

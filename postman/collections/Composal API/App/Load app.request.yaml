@@ -1,0 +1,15 @@
+$kind: http-request
+id: c0acad23-e637-586e-adca-492fe7c982d5
+description: |-
+  The `load` operation of **app**.
+
+  SDK: `client.App().load({ id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{app_id}}"
+    description: The app this request addresses.
+order: 2000

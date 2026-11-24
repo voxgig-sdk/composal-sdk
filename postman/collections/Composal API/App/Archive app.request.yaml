@@ -1,0 +1,19 @@
+$kind: http-request
+id: "62a12dbf-1be8-5fa2-9373-5b62ee52c382"
+description: |-
+  The `archive` action of **app**, a route of its `create` operation.
+
+  SDK: `client.App().create({ "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/hosting/apps/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{app_id}}"
+    description: The app this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

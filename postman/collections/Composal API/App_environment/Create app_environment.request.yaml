@@ -1,0 +1,39 @@
+$kind: http-request
+id: "449fae5f-c304-5f86-8e3f-53d8fc046bcf"
+description: |-
+  The `create` operation of **app_environment**.
+
+  SDK: `client.AppEnvironment().create({ app_id: "example", auto_deploy: true, kind: "example", location_id: "example", name: "example", slug: "example", status: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/environments"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_environment belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "slug": "example",
+      "name": "example",
+      "kind": "production",
+      "status": "active",
+      "location_id": "{{location_id}}",
+      "branch_pattern": "example",
+      "base_domain": "example",
+      "auto_deploy": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["environment"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_environment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "local_thread_delivery": {
+      "LOCAL_THREAD_DELIVERY00": {
+        "decision": "s46",
+        "decision_pending": false,
+        "delivery": {},
+        "expected_version": 73,
+        "id": "LOCAL_THREAD_DELIVERY00",
+        "policy": {},
+        "recovery_message": "s4c",
+        "agent_id": "AGENT01",
+        "local_thread_id": "LOCAL_THREAD01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOCAL_THREAD_DELIVERY01": {
+        "decision": "s8c",
+        "decision_pending": false,
+        "delivery": {},
+        "expected_version": 143,
+        "id": "LOCAL_THREAD_DELIVERY01",
+        "policy": {},
+        "recovery_message": "s92",
+        "agent_id": "AGENT01",
+        "local_thread_id": "LOCAL_THREAD01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "LOCAL_THREAD_DELIVERY02": {
+        "decision": "sd2",
+        "decision_pending": false,
+        "delivery": {},
+        "expected_version": 213,
+        "id": "LOCAL_THREAD_DELIVERY02",
+        "policy": {},
+        "recovery_message": "sd8",
+        "agent_id": "AGENT01",
+        "local_thread_id": "LOCAL_THREAD01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "local_thread_delivery": {
+      "local_thread_delivery_ref01": {
+        "decision": "s118",
+        "decision_pending": false,
+        "delivery": {},
+        "expected_version": 283,
+        "policy": {},
+        "recovery_message": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

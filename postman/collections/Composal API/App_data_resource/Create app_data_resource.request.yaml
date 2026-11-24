@@ -1,0 +1,41 @@
+$kind: http-request
+id: "89716690-e343-5387-b5e4-7a6f0b709910"
+description: |-
+  The `create` operation of **app_data_resource**.
+
+  SDK: `client.AppDataResource().create({ app_id: "example", engine: "example", kind: "example", name: "example", slug: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "app_environment_id": "{{app_environment_id}}",
+      "slug": "example",
+      "name": "example",
+      "kind": "database",
+      "engine": "postgres",
+      "version": "example",
+      "plan": "example",
+      "region": "example",
+      "storage_gb": 1,
+      "high_availability": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["data_resource"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_data_resource_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

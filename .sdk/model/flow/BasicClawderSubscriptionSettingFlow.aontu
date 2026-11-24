@@ -1,0 +1,46 @@
+# BasicClawderSubscriptionSettingFlow
+
+main: kit: flow: BasicClawderSubscriptionSettingFlow:
+{
+  entity: "clawder_subscription_setting",
+  kind: "basic",
+  name: "BasicClawderSubscriptionSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_subscription_setting_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "clawder_subscription_setting_ref01",
+        srcdatavar: "clawder_subscription_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "clawder_subscription_setting01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_subscription_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSubscriptionSettingFlow"
+}

@@ -1,0 +1,101 @@
+{
+  "existing": {
+    "automation_event": {
+      "AUTOMATION_EVENT00": {
+        "action": "saa",
+        "can_manage": false,
+        "can_manage_events": true,
+        "can_run": false,
+        "can_schedule": true,
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": "sb1",
+        "id": "AUTOMATION_EVENT00",
+        "key": "sb3",
+        "name": "sb4",
+        "revision": 181,
+        "schedule": "sb6",
+        "schedules": [],
+        "settings": {},
+        "subscription_key": "sb9",
+        "version": {},
+        "agent_id": "AGENT01",
+        "automation_id": "AUTOMATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AUTOMATION_EVENT01": {
+        "action": "s154",
+        "can_manage": false,
+        "can_manage_events": true,
+        "can_run": false,
+        "can_schedule": true,
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": "s15b",
+        "id": "AUTOMATION_EVENT01",
+        "key": "s15d",
+        "name": "s15e",
+        "revision": 351,
+        "schedule": "s160",
+        "schedules": [],
+        "settings": {},
+        "subscription_key": "s163",
+        "version": {},
+        "agent_id": "AGENT01",
+        "automation_id": "AUTOMATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AUTOMATION_EVENT02": {
+        "action": "s1fe",
+        "can_manage": false,
+        "can_manage_events": true,
+        "can_run": false,
+        "can_schedule": true,
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": "s205",
+        "id": "AUTOMATION_EVENT02",
+        "key": "s207",
+        "name": "s208",
+        "revision": 521,
+        "schedule": "s20a",
+        "schedules": [],
+        "settings": {},
+        "subscription_key": "s20d",
+        "version": {},
+        "agent_id": "AGENT01",
+        "automation_id": "AUTOMATION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "automation_event": {
+      "automation_event_ref01": {
+        "action": "s2a8",
+        "can_manage": false,
+        "can_manage_events": true,
+        "can_run": false,
+        "can_schedule": true,
+        "event_subscriptions": [],
+        "event_triggers": [],
+        "expected_revision": "s2af",
+        "key": "s2b1",
+        "name": "s2b2",
+        "revision": 691,
+        "schedule": "s2b4",
+        "schedules": [],
+        "settings": {},
+        "subscription_key": "s2b7",
+        "version": {}
+      }
+    }
+  },
+  "requests": {
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/events": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

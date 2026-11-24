@@ -1,0 +1,137 @@
+# Entity: me_onboarding
+
+main: kit: entity: me_onboarding: {
+
+  alias: field: {}
+
+  name: "me_onboarding"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/me/onboarding/call"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/onboarding/call"
+          q: {
+            "$action": "call"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "onboarding"
+            }
+            {
+              lit: "call"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "step"
+          ]
+          co: {
+            id: "POST /api/v1/me/onboarding/claim"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/onboarding/claim"
+          q: {
+            "$action": "claim"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "onboarding"
+            }
+            {
+              lit: "claim"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/me/onboarding/dismiss"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/onboarding/dismiss"
+          q: {
+            "$action": "dismiss"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "onboarding"
+            }
+            {
+              lit: "dismiss"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

@@ -1,0 +1,8 @@
+$kind: collection
+id: b86e9a14-18ed-599f-b802-4c33966a94d1
+description: |-
+  The **agent_computer** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_computer_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 7000

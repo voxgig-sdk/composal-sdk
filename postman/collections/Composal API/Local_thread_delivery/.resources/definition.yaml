@@ -1,0 +1,15 @@
+$kind: collection
+id: ddd2c300-279a-5b1c-82ee-af60cc45d56c
+description: |-
+  The **local_thread_delivery** entity, which belongs to a organization and a agent. Its requests address one record by `{{local_thread_delivery_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `decision` | string | yes |  |
+  | `decision_pending` | boolean | yes |  |
+  | `delivery` | object | yes |  |
+  | `expected_version` | integer | yes |  |
+  | `id` | string |  |  |
+  | `policy` | object | yes |  |
+  | `recovery_message` | string | yes |  |
+order: 130000

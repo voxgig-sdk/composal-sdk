@@ -1,0 +1,41 @@
+$kind: http-request
+id: "28f04393-7424-56f2-92de-fa06d7820c2c"
+description: |-
+  The `list` operation of **agent**.
+
+  SDK: `client.Agent().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: "30"
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: runtime_version
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["agents"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_id")) pm.collectionVariables.set("agent_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

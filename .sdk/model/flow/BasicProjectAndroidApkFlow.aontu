@@ -1,0 +1,23 @@
+# BasicProjectAndroidApkFlow
+
+main: kit: flow: BasicProjectAndroidApkFlow:
+{
+  entity: "project_android_apk",
+  kind: "basic",
+  name: "BasicProjectAndroidApkFlow",
+  step: [
+    {
+      i: {
+        ref: "project_android_apk_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectAndroidApkFlow"
+}

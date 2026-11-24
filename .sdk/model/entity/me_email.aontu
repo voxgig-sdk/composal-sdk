@@ -1,0 +1,415 @@
+# Entity: me_email
+
+main: kit: entity: me_email: {
+
+  alias: field: {}
+
+  fields: {
+    account: {
+      h: "Account"
+      n: "account"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_delete: {
+      h: "Can Delete"
+      n: "can_delete"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_resend_verification: {
+      h: "Can Resend Verification"
+      n: "can_resend_verification"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_set_account: {
+      h: "Can Set Account"
+      n: "can_set_account"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_set_commit_author: {
+      h: "Can Set Commit Author"
+      n: "can_set_commit_author"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    commit_author: {
+      h: "Commit Author"
+      n: "commit_author"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: true
+      t: "`$STRING`"
+    }
+    emails: {
+      h: "Emails"
+      n: "emails"
+      r: true
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      t: "`$STRING`"
+    }
+    verification_status: {
+      h: "Verification Status"
+      n: "verification_status"
+      r: true
+      t: "`$STRING`"
+    }
+    verified: {
+      h: "Verified"
+      n: "verified"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "me_email"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/me/emails/{id}/resend_verification"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/me/emails/{id}/resend_verification"
+          q: {
+            "$action": "resend_verification"
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "resend_verification"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "email"
+          ]
+          co: {
+            id: "POST /api/v1/me/emails"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/emails"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/me/emails"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/me/emails"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.emails`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "account"
+            "commit_author"
+          ]
+          co: {
+            id: "PATCH /api/v1/me/emails/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/me/emails/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/me/emails/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/me/emails/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/me/emails/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/me/emails/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "emails"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

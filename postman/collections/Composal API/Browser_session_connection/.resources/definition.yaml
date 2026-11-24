@@ -1,0 +1,10 @@
+$kind: collection
+id: "95802ce5-b0c3-535d-89b7-db4ad41101e8"
+description: |-
+  The **browser_session_connection** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `generation` | integer | yes |  |
+  | `idempotency_key` | string |  |  |
+order: 79000

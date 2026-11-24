@@ -1,0 +1,11 @@
+$kind: http-request
+id: "985ff504-b4fb-517b-89b6-8327ba20a102"
+description: |-
+  The `workspace_suggestion` action of **me**, a route of its `load` operation.
+
+  SDK: `client.Me().load({ $action: "workspace_suggestion" })`
+url: "{{base}}/api/v1/me/workspace_suggestion"
+method: GET
+headers:
+  Accept: application/json
+order: 9000

@@ -1,0 +1,127 @@
+{
+  "existing": {
+    "finding": {
+      "FINDING00": {
+        "confidence": "sdc",
+        "created_at": "sdd",
+        "deferred_until": "sde",
+        "finding": {},
+        "fingerprint": "se0",
+        "first_seen_at": "se1",
+        "id": "FINDING00",
+        "last_seen_at": "se3",
+        "locked": true,
+        "occurrence_count": 229,
+        "organization_id": "ORGANIZATION01",
+        "permissions": {},
+        "reason": "se8",
+        "reported_occurrence": "se9",
+        "repository_id": "REPOSITORY01",
+        "safe_summary": "seb",
+        "scenario_occurrences": [],
+        "severity": "sed",
+        "status": "see",
+        "title": "sef",
+        "updated_at": "sf0",
+        "verification": "sf1"
+      },
+      "FINDING01": {
+        "confidence": "s1b8",
+        "created_at": "s1b9",
+        "deferred_until": "s1ba",
+        "finding": {},
+        "fingerprint": "s1bc",
+        "first_seen_at": "s1bd",
+        "id": "FINDING01",
+        "last_seen_at": "s1bf",
+        "locked": true,
+        "occurrence_count": 449,
+        "organization_id": "ORGANIZATION01",
+        "permissions": {},
+        "reason": "s1c4",
+        "reported_occurrence": "s1c5",
+        "repository_id": "REPOSITORY01",
+        "safe_summary": "s1c7",
+        "scenario_occurrences": [],
+        "severity": "s1c9",
+        "status": "s1ca",
+        "title": "s1cb",
+        "updated_at": "s1cc",
+        "verification": "s1cd"
+      },
+      "FINDING02": {
+        "confidence": "s294",
+        "created_at": "s295",
+        "deferred_until": "s296",
+        "finding": {},
+        "fingerprint": "s298",
+        "first_seen_at": "s299",
+        "id": "FINDING02",
+        "last_seen_at": "s29b",
+        "locked": true,
+        "occurrence_count": 669,
+        "organization_id": "ORGANIZATION01",
+        "permissions": {},
+        "reason": "s2a0",
+        "reported_occurrence": "s2a1",
+        "repository_id": "REPOSITORY01",
+        "safe_summary": "s2a3",
+        "scenario_occurrences": [],
+        "severity": "s2a5",
+        "status": "s2a6",
+        "title": "s2a7",
+        "updated_at": "s2a8",
+        "verification": "s2a9"
+      }
+    }
+  },
+  "new": {
+    "finding": {
+      "finding_ref01": {
+        "confidence": "s370",
+        "created_at": "s371",
+        "deferred_until": "s372",
+        "finding": {},
+        "fingerprint": "s374",
+        "first_seen_at": "s375",
+        "last_seen_at": "s377",
+        "locked": true,
+        "occurrence_count": 889,
+        "organization_id": "ORGANIZATION01",
+        "permissions": {},
+        "reason": "s37c",
+        "reported_occurrence": "s37d",
+        "repository_id": "REPOSITORY01",
+        "safe_summary": "s37f",
+        "scenario_occurrences": [],
+        "severity": "s381",
+        "status": "s382",
+        "title": "s383",
+        "updated_at": "s384",
+        "verification": "s385"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/findings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/findings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verify/findings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verify/findings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

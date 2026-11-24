@@ -1,0 +1,25 @@
+# BasicScenarioEditContentFlow
+
+main: kit: flow: BasicScenarioEditContentFlow:
+{
+  entity: "scenario_edit_content",
+  kind: "basic",
+  name: "BasicScenarioEditContentFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_edit_content_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01",
+        scenario_run_id: "scenario_run01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScenarioEditContentFlow"
+}

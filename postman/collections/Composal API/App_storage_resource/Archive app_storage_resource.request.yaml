@@ -1,0 +1,25 @@
+$kind: http-request
+id: "74dcfea2-2938-51a9-ba58-1edf4f4c0344"
+description: |-
+  The `archive` action of **app_storage_resource**, a route of its `create` operation.
+
+  SDK: `client.AppStorageResource().create({ "app_id": "app_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_storage_resource belongs to.
+  - key: id
+    value: "{{app_storage_resource_id}}"
+    description: The app_storage_resource this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "confirm": "archive"
+    }
+order: 6000

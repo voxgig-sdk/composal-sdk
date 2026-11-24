@@ -1,0 +1,27 @@
+# BasicVerifyExplorationProgressFlow
+
+main: kit: flow: BasicVerifyExplorationProgressFlow:
+{
+  entity: "verify_exploration_progress",
+  kind: "basic",
+  name: "BasicVerifyExplorationProgressFlow",
+  step: [
+    {
+      m: {
+        exploration_id: "exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_exploration_progress_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyExplorationProgressFlow"
+}

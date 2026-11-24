@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "environment_first_run": {
+      "ENVIRONMENT_FIRST_RUN00": {
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ENVIRONMENT_FIRST_RUN00"
+      },
+      "ENVIRONMENT_FIRST_RUN01": {
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ENVIRONMENT_FIRST_RUN01"
+      },
+      "ENVIRONMENT_FIRST_RUN02": {
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "ENVIRONMENT_FIRST_RUN02"
+      }
+    }
+  },
+  "new": {
+    "environment_first_run": {
+      "environment_first_run_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/test_user": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "project_scenario_option": {
+      "PROJECT_SCENARIO_OPTION00": {
+        "environments": [],
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "schedule_options": "s56",
+        "schedules": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SCENARIO_OPTION01": {
+        "environments": [],
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "schedule_options": "sa6",
+        "schedules": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SCENARIO_OPTION02": {
+        "environments": [],
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "schedule_options": "sf6",
+        "schedules": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_scenario_option": {
+      "project_scenario_option_ref01": {
+        "environments": [],
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "schedule_options": "s146",
+        "schedules": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

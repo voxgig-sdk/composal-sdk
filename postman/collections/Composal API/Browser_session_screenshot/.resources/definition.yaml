@@ -1,0 +1,10 @@
+$kind: collection
+id: "28ea3398-8fab-5865-9873-503af339b10a"
+description: |-
+  The **browser_session_screenshot** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_screenshot_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `idempotency_key` | string |  |  |
+  | `wait` | boolean |  |  |
+order: 84000

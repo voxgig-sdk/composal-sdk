@@ -1,0 +1,33 @@
+# BasicVerifyFirstRunFlow
+
+main: kit: flow: BasicVerifyFirstRunFlow:
+{
+  entity: "verify_first_run",
+  kind: "basic",
+  name: "BasicVerifyFirstRunFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_first_run_ref01",
+        srcdatavar: "verify_first_run_ref01_data",
+        suffix: "_up0",
+        textfield: "account_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_first_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyFirstRunFlow"
+}

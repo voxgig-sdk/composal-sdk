@@ -1,0 +1,118 @@
+# BasicAppDeploymentFlow
+
+main: kit: flow: BasicAppDeploymentFlow:
+{
+  entity: "app_deployment",
+  kind: "basic",
+  name: "BasicAppDeploymentFlow",
+  step: [
+    {
+      i: {
+        ref: "app_deployment_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_deployment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        app_id: "app01"
+      }
+
+      i: {
+        ref: "app_deployment_ref01",
+        srcdatavar: "app_deployment_ref01_data",
+        suffix: "_up0",
+        textfield: "app_environment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_deployment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_deployment_ref01",
+        srcdatavar: "app_deployment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_deployment01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_deployment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_deployment_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_deployment01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "app_deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppDeploymentFlow"
+}

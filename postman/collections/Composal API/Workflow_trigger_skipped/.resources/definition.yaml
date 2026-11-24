@@ -1,0 +1,9 @@
+$kind: collection
+id: d78922a4-0e8a-58ec-acdf-667a7a70fdce
+description: |-
+  The **workflow_trigger_skipped** entity, which belongs to a organization and a agent. Its requests address one record by `{{workflow_trigger_skipped_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 216000

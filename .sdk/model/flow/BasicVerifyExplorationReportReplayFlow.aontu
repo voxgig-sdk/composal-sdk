@@ -1,0 +1,34 @@
+# BasicVerifyExplorationReportReplayFlow
+
+main: kit: flow: BasicVerifyExplorationReportReplayFlow:
+{
+  entity: "verify_exploration_report_replay",
+  kind: "basic",
+  name: "BasicVerifyExplorationReportReplayFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_exploration_report_replay_ref01",
+        srcdatavar: "verify_exploration_report_replay_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        id: "verify_exploration_report_replay01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_exploration_report_replay_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyExplorationReportReplayFlow"
+}

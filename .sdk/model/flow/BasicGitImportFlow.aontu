@@ -1,0 +1,44 @@
+# BasicGitImportFlow
+
+main: kit: flow: BasicGitImportFlow:
+{
+  entity: "git_import",
+  kind: "basic",
+  name: "BasicGitImportFlow",
+  step: [
+    {
+      i: {
+        ref: "git_import_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "git_import_ref01",
+        srcdatavar: "git_import_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "git_import01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-git_import_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGitImportFlow"
+}

@@ -1,0 +1,62 @@
+# BasicOpsSignalFlow
+
+main: kit: flow: BasicOpsSignalFlow:
+{
+  entity: "ops_signal",
+  kind: "basic",
+  name: "BasicOpsSignalFlow",
+  step: [
+    {
+      i: {
+        ref: "ops_signal_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        signal_id: "signal01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ops_signal_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ops_signal_ref01",
+        srcdatavar: "ops_signal_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "ops_signal01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ops_signal_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOpsSignalFlow"
+}

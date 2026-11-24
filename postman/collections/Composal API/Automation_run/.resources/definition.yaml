@@ -1,0 +1,44 @@
+$kind: collection
+id: fd6ee094-2236-5ce8-aca2-2227e73edff4
+description: |-
+  The **automation_run** entity, which belongs to a organization and a agent. Its requests address one record by `{{automation_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `automation` | object | yes |  |
+  | `budget_seconds` | integer | yes |  |
+  | `budget_usd` | number | yes |  |
+  | `can_answer` | boolean | yes |  |
+  | `can_approve` | boolean | yes |  |
+  | `can_dismiss` | boolean | yes |  |
+  | `checkpoint` | object | yes |  |
+  | `conversation_id` | string | yes |  |
+  | `decision_history` | object | yes |  |
+  | `error` | string | yes |  |
+  | `finished_at` | string | yes |  |
+  | `flow_steps` | array | yes |  |
+  | `id` | string | yes |  |
+  | `input` | object | yes |  |
+  | `needs_you` | boolean | yes |  |
+  | `note` | string | yes |  |
+  | `nothing_to_do_reason` | string | yes |  |
+  | `request_id` | string | yes |  |
+  | `resume_count` | integer | yes |  |
+  | `retry_step_id` | string | yes |  |
+  | `running_seconds` | integer | yes |  |
+  | `source` | string | yes |  |
+  | `spent_tokens` | integer | yes |  |
+  | `spent_usd` | number | yes |  |
+  | `stalled` | boolean | yes |  |
+  | `started_at` | string | yes |  |
+  | `started_by` | object | yes |  |
+  | `status` | string | yes |  |
+  | `step_count` | integer | yes |  |
+  | `steps` | array | yes |  |
+  | `trigger_id` | string | yes |  |
+  | `version_id` | string | yes |  |
+  | `wake_at` | string | yes |  |
+  | `workflow_digest` | string | yes |  |
+  | `workflow_path` | string | yes |  |
+order: 74000

@@ -1,0 +1,34 @@
+$kind: collection
+id: "7abe1c7c-fbf9-5c70-8b95-f9510a6cbbef"
+description: |-
+  An agent's conversations: list or start one, or archive, compact or snooze it (actions).
+
+  The **agent_thread** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_thread_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `archived_count` | integer |  |  |
+  | `can_create` | boolean | yes |  |
+  | `execution` | any |  |  |
+  | `first_input` | any |  |  |
+  | `first_input_key` | string |  |  |
+  | `first_input_requester_membership_id` | string |  |  |
+  | `id` | string |  |  |
+  | `inherit_context` | boolean |  |  |
+  | `local_activities` | object | yes |  |
+  | `local_archived_count` | integer | yes |  |
+  | `local_next_cursor` | string | yes |  |
+  | `local_scope_key` | string | yes |  |
+  | `local_status_pending` | boolean | yes |  |
+  | `local_threads` | array | yes |  |
+  | `main_thread_id` | string | yes |  |
+  | `message` | string |  |  |
+  | `next_cursor` | string | yes |  |
+  | `parent_conversation_id` | string |  |  |
+  | `requester_membership_id` | string |  |  |
+  | `selected_thread` | any | yes |  |
+  | `thread` | object | yes |  |
+  | `threads` | array | yes |  |
+  | `title` | string |  |  |
+  | `total_archived_count` | integer | yes |  |
+order: 40000

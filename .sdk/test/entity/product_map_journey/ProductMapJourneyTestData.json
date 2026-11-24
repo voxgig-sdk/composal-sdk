@@ -1,0 +1,83 @@
+{
+  "existing": {
+    "product_map_journey": {
+      "PRODUCT_MAP_JOURNEY00": {
+        "default_variant_id": "DEFAULT_VARIANT01",
+        "goal": "s79",
+        "id": "PRODUCT_MAP_JOURNEY00",
+        "journey": {},
+        "next_cursor": "s7c",
+        "preview": "s7d",
+        "scope": {},
+        "title": "s7f",
+        "tree": {},
+        "tree_loaded": false,
+        "variant_count": 130,
+        "variants": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_JOURNEY01": {
+        "default_variant_id": "DEFAULT_VARIANT01",
+        "goal": "sf1",
+        "id": "PRODUCT_MAP_JOURNEY01",
+        "journey": {},
+        "next_cursor": "sf4",
+        "preview": "sf5",
+        "scope": {},
+        "title": "sf7",
+        "tree": {},
+        "tree_loaded": false,
+        "variant_count": 250,
+        "variants": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_JOURNEY02": {
+        "default_variant_id": "DEFAULT_VARIANT01",
+        "goal": "s169",
+        "id": "PRODUCT_MAP_JOURNEY02",
+        "journey": {},
+        "next_cursor": "s16c",
+        "preview": "s16d",
+        "scope": {},
+        "title": "s16f",
+        "tree": {},
+        "tree_loaded": false,
+        "variant_count": 370,
+        "variants": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "product_map_journey": {
+      "product_map_journey_ref01": {
+        "default_variant_id": "DEFAULT_VARIANT01",
+        "goal": "s1e1",
+        "journey": {},
+        "next_cursor": "s1e4",
+        "preview": "s1e5",
+        "scope": {},
+        "title": "s1e7",
+        "tree": {},
+        "tree_loaded": false,
+        "variant_count": 490,
+        "variants": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys/{journey_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+$kind: collection
+id: "1755d404-72fc-56f4-862b-0093c0150f11"
+description: |-
+  The **agent_verify_project** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_verify_project_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available` | boolean | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `expected_version` | integer | yes |  |
+  | `project_choices` | array | yes |  |
+  | `project_choices_truncated` | boolean | yes |  |
+  | `verify_projects` | array | yes |  |
+  | `version` | integer | yes |  |
+order: 42000

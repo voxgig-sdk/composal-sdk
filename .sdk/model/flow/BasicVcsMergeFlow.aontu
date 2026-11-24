@@ -1,0 +1,23 @@
+# BasicVcsMergeFlow
+
+main: kit: flow: BasicVcsMergeFlow:
+{
+  entity: "vcs_merge",
+  kind: "basic",
+  name: "BasicVcsMergeFlow",
+  step: [
+    {
+      i: {
+        ref: "vcs_merge_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVcsMergeFlow"
+}

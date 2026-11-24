@@ -1,0 +1,79 @@
+# BasicCinFlow
+
+main: kit: flow: BasicCinFlow:
+{
+  entity: "cin",
+  kind: "basic",
+  name: "BasicCinFlow",
+  step: [
+    {
+      i: {
+        ref: "cin_ref01"
+      }
+
+      m: {
+        job_id: "job01",
+        node_id: "node01",
+        pipeline_id: "pipeline01",
+        run_id: "run01",
+        runner_pool_id: "runner_pool01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cin_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cin_ref01",
+        srcdatavar: "cin_ref01_data",
+        suffix: "_up0",
+        textfield: "architecture"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cin_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cin_ref01",
+        srcdatavar: "cin_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "cin01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cin_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCinFlow"
+}

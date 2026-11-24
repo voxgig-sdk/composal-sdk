@@ -1,0 +1,22 @@
+$kind: collection
+id: e0f29153-13c7-5787-bab2-e2a5de31e866
+description: |-
+  The **connection_request** entity, which belongs to a organization and a agent. Its requests address one record by `{{connection_request_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_card_url` | string | yes |  |
+  | `auth_scheme` | string | yes |  |
+  | `can_configure` | boolean | yes |  |
+  | `can_disconnect` | boolean | yes |  |
+  | `can_setup` | boolean | yes |  |
+  | `error_code` | string | yes |  |
+  | `generation` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `remote_agent` | string | yes |  |
+  | `retired_at` | string | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `source_operation_id` | string | yes |  |
+  | `state` | string | yes |  |
+order: 91000

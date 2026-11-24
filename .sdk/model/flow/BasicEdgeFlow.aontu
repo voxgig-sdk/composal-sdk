@@ -1,0 +1,28 @@
+# BasicEdgeFlow
+
+main: kit: flow: BasicEdgeFlow:
+{
+  entity: "edge",
+  kind: "basic",
+  name: "BasicEdgeFlow",
+  step: [
+    {
+      i: {
+        ref: "edge_ref01",
+        srcdatavar: "edge_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-edge_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEdgeFlow"
+}

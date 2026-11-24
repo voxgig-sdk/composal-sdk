@@ -1,0 +1,23 @@
+# BasicScenarioFileImportFlow
+
+main: kit: flow: BasicScenarioFileImportFlow:
+{
+  entity: "scenario_file_import",
+  kind: "basic",
+  name: "BasicScenarioFileImportFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_file_import_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScenarioFileImportFlow"
+}

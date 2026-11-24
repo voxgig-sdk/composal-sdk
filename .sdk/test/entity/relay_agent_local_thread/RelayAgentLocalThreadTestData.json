@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "relay_agent_local_thread": {
+      "RELAY_AGENT_LOCAL_THREAD00": {
+        "id": "RELAY_AGENT_LOCAL_THREAD00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RELAY_AGENT_LOCAL_THREAD01": {
+        "id": "RELAY_AGENT_LOCAL_THREAD01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RELAY_AGENT_LOCAL_THREAD02": {
+        "id": "RELAY_AGENT_LOCAL_THREAD02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "relay_agent_local_thread": {
+      "relay_agent_local_thread_ref01": {}
+    }
+  },
+  "requests": {
+    "DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

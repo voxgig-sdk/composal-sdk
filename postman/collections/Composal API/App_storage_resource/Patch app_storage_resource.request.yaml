@@ -1,0 +1,22 @@
+$kind: http-request
+id: bb6bfc34-b4a8-55bf-b258-417ef6f14bf9
+description: |-
+  The `patch` operation of **app_storage_resource**.
+
+  SDK: `client.AppStorageResource().patch({ app_id: "example", id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_storage_resource belongs to.
+  - key: id
+    value: "{{app_storage_resource_id}}"
+    description: The app_storage_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

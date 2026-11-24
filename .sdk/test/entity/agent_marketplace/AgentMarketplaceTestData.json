@@ -1,0 +1,212 @@
+{
+  "existing": {
+    "agent_marketplace": {
+      "AGENT_MARKETPLACE00": {
+        "bundle": {},
+        "can_manage": false,
+        "catalog_key": "s160",
+        "categories": [],
+        "category": "s162",
+        "counts": {},
+        "created_at": "s164",
+        "expected_version": 357,
+        "explainer": "s166",
+        "featured": false,
+        "from_composal": true,
+        "id": "AGENT_MARKETPLACE00",
+        "installs_count": 362,
+        "instructions": "s16b",
+        "integration_toolkits": [],
+        "integrations": [],
+        "listing": "s16e",
+        "listings": [],
+        "memories": [],
+        "name": "s171",
+        "next_page": "s172",
+        "organization_name": "s173",
+        "page_apps": [],
+        "publisher_avatar_url": "s175",
+        "publisher_name": "s176",
+        "sections": [],
+        "share_token": "s178",
+        "skills": [],
+        "slug": "s17a",
+        "source_agent_id": "SOURCE_AGENT01",
+        "summary": "s17c",
+        "updated_at": "s17d",
+        "version": 382,
+        "viewer": {},
+        "visibility": "s180",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_MARKETPLACE01": {
+        "bundle": {},
+        "can_manage": false,
+        "catalog_key": "s2be",
+        "categories": [],
+        "category": "s2c0",
+        "counts": {},
+        "created_at": "s2c2",
+        "expected_version": 707,
+        "explainer": "s2c4",
+        "featured": false,
+        "from_composal": true,
+        "id": "AGENT_MARKETPLACE01",
+        "installs_count": 712,
+        "instructions": "s2c9",
+        "integration_toolkits": [],
+        "integrations": [],
+        "listing": "s2cc",
+        "listings": [],
+        "memories": [],
+        "name": "s2cf",
+        "next_page": "s2d0",
+        "organization_name": "s2d1",
+        "page_apps": [],
+        "publisher_avatar_url": "s2d3",
+        "publisher_name": "s2d4",
+        "sections": [],
+        "share_token": "s2d6",
+        "skills": [],
+        "slug": "s2d8",
+        "source_agent_id": "SOURCE_AGENT01",
+        "summary": "s2da",
+        "updated_at": "s2db",
+        "version": 732,
+        "viewer": {},
+        "visibility": "s2de",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_MARKETPLACE02": {
+        "bundle": {},
+        "can_manage": false,
+        "catalog_key": "s41c",
+        "categories": [],
+        "category": "s41e",
+        "counts": {},
+        "created_at": "s420",
+        "expected_version": 1057,
+        "explainer": "s422",
+        "featured": false,
+        "from_composal": true,
+        "id": "AGENT_MARKETPLACE02",
+        "installs_count": 1062,
+        "instructions": "s427",
+        "integration_toolkits": [],
+        "integrations": [],
+        "listing": "s42a",
+        "listings": [],
+        "memories": [],
+        "name": "s42d",
+        "next_page": "s42e",
+        "organization_name": "s42f",
+        "page_apps": [],
+        "publisher_avatar_url": "s431",
+        "publisher_name": "s432",
+        "sections": [],
+        "share_token": "s434",
+        "skills": [],
+        "slug": "s436",
+        "source_agent_id": "SOURCE_AGENT01",
+        "summary": "s438",
+        "updated_at": "s439",
+        "version": 1082,
+        "viewer": {},
+        "visibility": "s43c",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_marketplace": {
+      "agent_marketplace_ref01": {
+        "bundle": {},
+        "can_manage": false,
+        "catalog_key": "s57a",
+        "categories": [],
+        "category": "s57c",
+        "counts": {},
+        "created_at": "s57e",
+        "expected_version": 1407,
+        "explainer": "s580",
+        "featured": false,
+        "from_composal": true,
+        "installs_count": 1412,
+        "instructions": "s585",
+        "integration_toolkits": [],
+        "integrations": [],
+        "listing": "s588",
+        "listings": [],
+        "memories": [],
+        "name": "s58b",
+        "next_page": "s58c",
+        "organization_name": "s58d",
+        "page_apps": [],
+        "publisher_avatar_url": "s58f",
+        "publisher_name": "s590",
+        "sections": [],
+        "share_token": "s592",
+        "skills": [],
+        "slug": "s594",
+        "source_agent_id": "SOURCE_AGENT01",
+        "summary": "s596",
+        "updated_at": "s597",
+        "version": 1432,
+        "viewer": {},
+        "visibility": "s59a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agent_marketplace/{id}/install": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agent_marketplace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent_marketplace/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_marketplace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_marketplace/draft": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/agent_marketplace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

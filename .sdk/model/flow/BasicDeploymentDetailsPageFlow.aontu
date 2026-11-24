@@ -1,0 +1,26 @@
+# BasicDeploymentDetailsPageFlow
+
+main: kit: flow: BasicDeploymentDetailsPageFlow:
+{
+  entity: "deployment_details_page",
+  kind: "basic",
+  name: "BasicDeploymentDetailsPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_details_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentDetailsPageFlow"
+}

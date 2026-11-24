@@ -1,0 +1,208 @@
+{
+  "existing": {
+    "app_deployment": {
+      "APP_DEPLOYMENT00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "app_service_placement_id": "APP_SERVICE_PLACEMENT01",
+        "artifact_locator": "s157",
+        "build_role": "s158",
+        "commit_sha": "s159",
+        "created_at": "s15a",
+        "created_at_label": "s15b",
+        "creator_user_id": "CREATOR_USER01",
+        "deployed_url": "s15d",
+        "display_id": "DISPLAY01",
+        "failure_message": "s15f",
+        "finished_at": "s160",
+        "finished_at_label": "s161",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DEPLOYMENT00",
+        "idempotency_key": "s164",
+        "is_rollback": false,
+        "location": "s166",
+        "location_id": "LOCATION01",
+        "number": 360,
+        "operation_key": "s169",
+        "organization_id": "ORGANIZATION01",
+        "rollback_reason": "s16b",
+        "rollback_source_deployment_id": "ROLLBACK_SOURCE_DEPLOYMENT01",
+        "rollback_source_release_id": "ROLLBACK_SOURCE_RELEASE01",
+        "rollback_target_release_id": "ROLLBACK_TARGET_RELEASE01",
+        "source_ref": "s16f",
+        "started_at": "s170",
+        "started_at_label": "s171",
+        "status": "s172",
+        "trigger_kind": "s173",
+        "updated_at": "s174",
+        "updated_at_label": "s175",
+        "app_id": "APP01"
+      },
+      "APP_DEPLOYMENT01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "app_service_placement_id": "APP_SERVICE_PLACEMENT01",
+        "artifact_locator": "s2ab",
+        "build_role": "s2ac",
+        "commit_sha": "s2ad",
+        "created_at": "s2ae",
+        "created_at_label": "s2af",
+        "creator_user_id": "CREATOR_USER01",
+        "deployed_url": "s2b1",
+        "display_id": "DISPLAY01",
+        "failure_message": "s2b3",
+        "finished_at": "s2b4",
+        "finished_at_label": "s2b5",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DEPLOYMENT01",
+        "idempotency_key": "s2b8",
+        "is_rollback": false,
+        "location": "s2ba",
+        "location_id": "LOCATION01",
+        "number": 700,
+        "operation_key": "s2bd",
+        "organization_id": "ORGANIZATION01",
+        "rollback_reason": "s2bf",
+        "rollback_source_deployment_id": "ROLLBACK_SOURCE_DEPLOYMENT01",
+        "rollback_source_release_id": "ROLLBACK_SOURCE_RELEASE01",
+        "rollback_target_release_id": "ROLLBACK_TARGET_RELEASE01",
+        "source_ref": "s2c3",
+        "started_at": "s2c4",
+        "started_at_label": "s2c5",
+        "status": "s2c6",
+        "trigger_kind": "s2c7",
+        "updated_at": "s2c8",
+        "updated_at_label": "s2c9",
+        "app_id": "APP01"
+      },
+      "APP_DEPLOYMENT02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "app_service_placement_id": "APP_SERVICE_PLACEMENT01",
+        "artifact_locator": "s3ff",
+        "build_role": "s400",
+        "commit_sha": "s401",
+        "created_at": "s402",
+        "created_at_label": "s403",
+        "creator_user_id": "CREATOR_USER01",
+        "deployed_url": "s405",
+        "display_id": "DISPLAY01",
+        "failure_message": "s407",
+        "finished_at": "s408",
+        "finished_at_label": "s409",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DEPLOYMENT02",
+        "idempotency_key": "s40c",
+        "is_rollback": false,
+        "location": "s40e",
+        "location_id": "LOCATION01",
+        "number": 1040,
+        "operation_key": "s411",
+        "organization_id": "ORGANIZATION01",
+        "rollback_reason": "s413",
+        "rollback_source_deployment_id": "ROLLBACK_SOURCE_DEPLOYMENT01",
+        "rollback_source_release_id": "ROLLBACK_SOURCE_RELEASE01",
+        "rollback_target_release_id": "ROLLBACK_TARGET_RELEASE01",
+        "source_ref": "s417",
+        "started_at": "s418",
+        "started_at_label": "s419",
+        "status": "s41a",
+        "trigger_kind": "s41b",
+        "updated_at": "s41c",
+        "updated_at_label": "s41d",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_deployment": {
+      "app_deployment_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "app_service_placement_id": "APP_SERVICE_PLACEMENT01",
+        "artifact_locator": "s553",
+        "build_role": "s554",
+        "commit_sha": "s555",
+        "created_at": "s556",
+        "created_at_label": "s557",
+        "creator_user_id": "CREATOR_USER01",
+        "deployed_url": "s559",
+        "display_id": "DISPLAY01",
+        "failure_message": "s55b",
+        "finished_at": "s55c",
+        "finished_at_label": "s55d",
+        "hosted_app_id": "HOSTED_APP01",
+        "idempotency_key": "s560",
+        "is_rollback": false,
+        "location": "s562",
+        "location_id": "LOCATION01",
+        "number": 1380,
+        "operation_key": "s565",
+        "organization_id": "ORGANIZATION01",
+        "rollback_reason": "s567",
+        "rollback_source_deployment_id": "ROLLBACK_SOURCE_DEPLOYMENT01",
+        "rollback_source_release_id": "ROLLBACK_SOURCE_RELEASE01",
+        "rollback_target_release_id": "ROLLBACK_TARGET_RELEASE01",
+        "source_ref": "s56b",
+        "started_at": "s56c",
+        "started_at_label": "s56d",
+        "status": "s56e",
+        "trigger_kind": "s56f",
+        "updated_at": "s570",
+        "updated_at_label": "s571"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/deployments/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/deployments/{id}/fail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/deployments/{id}/succeed": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/deployments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/deployments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_library": {
+      "AGENT_LIBRARY00": {
+        "id": "AGENT_LIBRARY00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_LIBRARY01": {
+        "id": "AGENT_LIBRARY01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_LIBRARY02": {
+        "id": "AGENT_LIBRARY02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_library": {
+      "agent_library_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/library/{artifact_id}/download": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

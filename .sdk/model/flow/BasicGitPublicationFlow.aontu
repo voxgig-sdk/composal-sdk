@@ -1,0 +1,23 @@
+# BasicGitPublicationFlow
+
+main: kit: flow: BasicGitPublicationFlow:
+{
+  entity: "git_publication",
+  kind: "basic",
+  name: "BasicGitPublicationFlow",
+  step: [
+    {
+      i: {
+        ref: "git_publication_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGitPublicationFlow"
+}

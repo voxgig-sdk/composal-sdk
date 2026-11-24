@@ -1,0 +1,18 @@
+$kind: collection
+id: d3ad628f-3ae6-5e16-bdf0-2ddb8764fb0a
+description: |-
+  The **app_preview_profile** entity, which belongs to a app. Its requests address one record by `{{app_preview_profile_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `automatic` | boolean |  |  |
+  | `configuration` | object |  |  |
+  | `created_at` | string |  |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `source_environment_id` | string | yes |  |
+  | `ttl_days` | integer |  |  |
+  | `updated_at` | string |  |  |
+order: 65000

@@ -1,0 +1,1088 @@
+{
+  point: "warning"
+  note: "list GET /.well-known/agent-card.json reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/agent/swarms/{id}/live reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/agent/swarms/{id}/live/replay reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/agent/swarms/{swarm_id}/tasks/{task_id}/activity reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/agent_marketplace reads `body.featured` and drops `listings`, `sections`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/artifacts/image_repositories/{id}/tags reads its whole body, an object holding no list of records: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks reads `body.log_chunks` and drops `steps`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/hosting/apps/{app_id}/deployment_dashboard reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/hosting/apps/{app_id}/previews/administration_index reads `body.binding_sources` and drops `previews`, `profiles`, `resource_services`, `source_environments`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/hosting/apps/{app_id}/previews/{id}/administration reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/me reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/github_runner_history reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/gitlab reads `body.connections` and drops `integrations`, `projects`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/agent_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/agreements reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/billing reads `body.addons`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/architecture reads `body.connections` and drops `data_resources`, `deploy_targets`, `environments`, `locations`, `service_views`, `storage_resources`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/details reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/feed reads `body.deploy_targets` and drops `operations`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/logs reads `body.allocations` and drops `deploy_targets`, `lines`, `log_services`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/metrics reads `body.deploy_targets` and drops `service_views`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/deployments/settings reads `body.available_locations` and drops `cdn_deployments`, `cdns`, `config_variables`, `deploy_targets`, `domains`, `environments`, `locations`, `services`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/members reads `body.invitations` and drops `members`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/now reads `body.needs_attention` and drops `recently_landed`, `shipping_now`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/pull_zones reads `body.apps` and drops `cdn_deployments`, `cdns`, `environments`, `services`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/repository_import reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/sessions reads `body.sessions`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/sites reads `body.deployments` and drops `domains`, `sites`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/vcs_nodes reads `body.github_installations` and drops `github_runner_pools`, `github_runner_private_links`, `github_runner_repositories`, `pool_catalogs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/vcs_settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/pages/workspace_activity reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules reads `body.code_rules`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access reads `body.catalog` and drops `tokens`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions reads `body.action_runs` and drops `github_ci_repositories`, `github_ci_runner_pools`, `github_installations`, `github_runner_private_links`, `pipelines`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings reads `body.access_tokens` and drops `bookmark_protection_events`, `bookmark_protection_rules`, `github_installations`, `required_check_candidates`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame reads `body.revisions`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/branches reads `body.branches`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/browser/tree reads `body.synced_spaces`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes reads `body.changes` and drops `stacks`, `ungrouped`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/diff reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/ci reads `body.checks` and drops `history`, `retryable_runs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits reads `body.branches` and drops `commits`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues reads its whole body, an object holding no list of records: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/spark_credits reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_apps reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_connections reads `body.catalog` and drops `connections`, `custom_connections`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_connections/{agent_connection_id}/trigger_subscriptions reads `body.catalog` and drops `subscriptions`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_connections/{id}/custody reads `body.events`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_integrations/github reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_marketplace reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agent_skills reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/page/roster reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder reads `body.pending_inputs` and drops `messages`, `stopped_runs`, `waiting_runs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/debug reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/relay/inspection reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/run_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/sandbox reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/threads reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/clawder/verify_projects reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections reads `body.connections`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/teammates reads `body.agents` and drops `browsers`, `integrations`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/billing reads `body.addons`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/billing/invoices reads `body.invoices`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/billing/usage/breakdown reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/github_onboarding reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/import_branch_policy reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/members reads `body.invitations` and drops `members`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/pages/nodes reads `body.github_installations` and drops `github_runner_pools`, `github_runner_private_links`, `github_runner_repositories`, `pool_catalogs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/sandbox_integrations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/directory reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/credentials reads `body.credentials` and drops `latest_sign_in_checks`, `sign_in_check_apps`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/environment reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/findings reads `body.findings` and drops `priority_options`, `run_options`, `state_options`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/persona reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison reads `body.accounts` and drops `revisions`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/recorder reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/runs reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario reads `body.environments` and drops `inherited_fixtures`, `personas`, `scenario_revisions`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_editor reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios reads `body.environments` and drops `personas`, `scenarios`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}/identity_history reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans reads `body.environments` and drops `plans`, `scenarios`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/lookup reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options reads `body.credentials` and drops `environments`, `slack_channels`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit reads its whole body, an object holding no list of records: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/binaries reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/bug_hunts/options reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/options reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/dreams reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/explorations reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report reads `body.related_explorations`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/github_connections reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/knowledge reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/memories reads `body.memories`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/page reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps reads `body.repositories`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/pull_request_settings reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/pull_requests/lookup reads `body.available_tests` and drops `findings`, `runs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/organizations/{organization_id}/verify/run_updates reads `body.pull_requests` and drops `active_runs`, `environments`, `pull_request_launch_options`, `repositories`, `runs`: declare the one it reads in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /api/v1/transcripts reads `body.sessions`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Authorization` of POST /api/v1/organizations/{organization_id}/docker_builder_gateway/admit ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Authorization` of POST /api/v1/organizations/{organization_id}/docker_builder_gateway/authorize ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_avatar has no route of its own, only the action generate, retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_avatar"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_computer has no route of its own, only the action connect, egress, start, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_computer"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_control_flow has no route of its own, only the action cancel, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_control_flow"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_coordination has no route of its own, only the action stop, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_coordination"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_interaction has no route of its own, only the action cancel, connect, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_interaction"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_marketplace_shared has no route of its own, only the action install, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_marketplace_shared"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_mission_control has no route of its own, only the action feedback, relevance, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_mission_control"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_provisioning has no route of its own, only the action retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_provisioning"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_question has no route of its own, only the action answer, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_question"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_runtime has no route of its own, only the action reset, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_runtime"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_slack has no route of its own, only the action app, as_you, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_slack"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_terminal has no route of its own, only the action connect, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_terminal"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_wait has no route of its own, only the action stop, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_wait"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_work has no route of its own, only the action handled, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_work"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_workflow_proposal has no route of its own, only the action revise, save, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_workflow_proposal"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=agent_workflow_run has no route of its own, only the action answer, approve, dismiss, retry, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "agent_workflow_run"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=dream has no route of its own, only the action resume, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "dream"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=environment_first_run has no route of its own, only the action start, test_user, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "environment_first_run"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=exploration_report has no route of its own, only the action refresh, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "exploration_report"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=me has no route of its own, only the action account_deletion, app_promotion, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "me"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=me_onboarding has no route of its own, only the action call, claim, dismiss, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "me_onboarding"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=page_agent has no route of its own, only the action activity, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "page_agent"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=product_map_journey_replay has no route of its own, only the action qualification, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "product_map_journey_replay"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=project_product_map has no route of its own, only the action overview, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "project_product_map"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=registry_v2 has no route of its own, only the action authorize, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "registry_v2"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=scenario_run_scenario_edit has no route of its own, only the action run, suggest, validate, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "scenario_run_scenario_edit"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=verification_project_run has no route of its own, only the action archive, cancel, launch, prepare, rerun, restore, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "verification_project_run"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=workflow_run_stop_notice has no route of its own, only the action dismissal, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "workflow_run_stop_notice"
+  op: "create"
+}
+
+
+{
+  point: "warning"
+  note: "Create on entity=workflow_trigger_skipped has no route of its own, only the action run, so a create must name it with $action. Set the route's op in the guide if it is not a create."
+  entity: "workflow_trigger_skipped"
+  op: "create"
+}

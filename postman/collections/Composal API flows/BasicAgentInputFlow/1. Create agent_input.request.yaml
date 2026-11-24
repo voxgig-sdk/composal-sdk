@@ -1,0 +1,101 @@
+$kind: http-request
+id: "0d7c05eb-5126-5116-9c3b-256a988a2f1b"
+description: |-
+  The `create` operation of **agent_input**.
+
+  SDK: `client.AgentInput().create({ agent_id: "example", organization_id: "example", browser_context: {}, client_time: {}, conversation_id: "example", text: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/inputs"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_input belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_input belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "requester_membership_id": "example",
+      "text": "example",
+      "browser_context": {
+        "view": "local",
+        "active_tab": {
+          "location": "local",
+          "title": "example",
+          "url": "example",
+          "target_id": "example"
+        },
+        "tabs": [
+          {
+            "location": "local",
+            "title": "example",
+            "url": "example",
+            "target_id": "example"
+          }
+        ]
+      },
+      "client_time": {
+        "time_zone": "example",
+        "at": "2026-01-01T00:00:00Z"
+      },
+      "model_policy": {
+        "mode": "platform_default"
+      },
+      "speed": "regular",
+      "attachments": [
+        {
+          "fileName": "example",
+          "mimeType": "example",
+          "content": "example"
+        }
+      ],
+      "attachment_ids": [
+        "example"
+      ]
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","agent_id","idempotency_key"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create agent_input: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body
+      pm.test("1. Create agent_input: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("agent_input_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

@@ -1,0 +1,84 @@
+{
+  "existing": {
+    "project_code_map": {
+      "PROJECT_CODE_MAP00": {
+        "can_scan": true,
+        "commit_sha": "s6f",
+        "configured": true,
+        "error_code": "s71",
+        "id": "PROJECT_CODE_MAP00",
+        "name": "s73",
+        "ref": "s74",
+        "repository_id": "REPOSITORY01",
+        "revision": {},
+        "slug": "s77",
+        "status": "s78",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_CODE_MAP01": {
+        "can_scan": true,
+        "commit_sha": "sdd",
+        "configured": true,
+        "error_code": "sdf",
+        "id": "PROJECT_CODE_MAP01",
+        "name": "se1",
+        "ref": "se2",
+        "repository_id": "REPOSITORY01",
+        "revision": {},
+        "slug": "se5",
+        "status": "se6",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_CODE_MAP02": {
+        "can_scan": true,
+        "commit_sha": "s14b",
+        "configured": true,
+        "error_code": "s14d",
+        "id": "PROJECT_CODE_MAP02",
+        "name": "s14f",
+        "ref": "s150",
+        "repository_id": "REPOSITORY01",
+        "revision": {},
+        "slug": "s153",
+        "status": "s154",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_code_map": {
+      "project_code_map_ref01": {
+        "can_scan": true,
+        "commit_sha": "s1b9",
+        "configured": true,
+        "error_code": "s1bb",
+        "name": "s1bd",
+        "ref": "s1be",
+        "repository_id": "REPOSITORY01",
+        "revision": {},
+        "slug": "s1c1",
+        "status": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps/session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

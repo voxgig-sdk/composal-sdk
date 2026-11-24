@@ -1,0 +1,61 @@
+# BasicStaticSiteDeploymentFlow
+
+main: kit: flow: BasicStaticSiteDeploymentFlow:
+{
+  entity: "static_site_deployment",
+  kind: "basic",
+  name: "BasicStaticSiteDeploymentFlow",
+  step: [
+    {
+      i: {
+        ref: "static_site_deployment_ref01"
+      }
+
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "static_site_deployment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_deployment_ref01",
+        srcdatavar: "static_site_deployment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "static_site_deployment01",
+        static_site_id: "static_site01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-static_site_deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStaticSiteDeploymentFlow"
+}

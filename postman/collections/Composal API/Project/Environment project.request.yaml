@@ -1,0 +1,21 @@
+$kind: http-request
+id: a3d98bfe-f104-53fb-ac81-64da720203b5
+description: |-
+  The `environment` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", "environment_id": "environment_id", $action: "environment" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/environment?environment_id={{environment_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment_id
+    value: "{{environment_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 8000

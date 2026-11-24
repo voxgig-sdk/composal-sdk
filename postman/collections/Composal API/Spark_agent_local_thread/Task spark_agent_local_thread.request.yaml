@@ -1,0 +1,28 @@
+$kind: http-request
+id: "14e39c55-c9ac-5b93-8454-85d928f84ad0"
+description: |-
+  The `task` action of **spark_agent_local_thread**, a route of its `load` operation.
+
+  SDK: `client.SparkAgentLocalThread().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "task" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/task"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_local_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_local_thread belongs to.
+  - key: local_thread_id
+    value: "{{spark_agent_local_thread_id}}"
+    description: The spark_agent_local_thread this request addresses.
+order: 5000

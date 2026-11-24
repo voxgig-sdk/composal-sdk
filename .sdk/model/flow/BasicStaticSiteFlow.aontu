@@ -1,0 +1,112 @@
+# BasicStaticSiteFlow
+
+main: kit: flow: BasicStaticSiteFlow:
+{
+  entity: "static_site",
+  kind: "basic",
+  name: "BasicStaticSiteFlow",
+  step: [
+    {
+      i: {
+        ref: "static_site_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "static_site_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_ref01",
+        srcdatavar: "static_site_ref01_data",
+        suffix: "_up0",
+        textfield: "active_deployment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-static_site_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_ref01",
+        srcdatavar: "static_site_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "static_site01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-static_site_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "static_site_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "static_site01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "static_site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicStaticSiteFlow"
+}

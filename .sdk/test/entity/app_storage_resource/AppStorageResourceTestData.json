@@ -1,0 +1,156 @@
+{
+  "existing": {
+    "app_storage_resource": {
+      "APP_STORAGE_RESOURCE00": {
+        "access_mode": "sd2",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "attachment": "sd4",
+        "capacity_gb": "sd5",
+        "capacity_label": "sd6",
+        "created_at": "sd7",
+        "ephemeral": true,
+        "external_volume_id": "EXTERNAL_VOLUME01",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_STORAGE_RESOURCE00",
+        "kind": "sdc",
+        "location_code": "sdd",
+        "location_id": "LOCATION01",
+        "mount_path": "sdf",
+        "name": "se0",
+        "provider": "se1",
+        "provider_error": "se2",
+        "region": "se3",
+        "slug": "se4",
+        "status": "se5",
+        "updated_at": "se6",
+        "app_id": "APP01"
+      },
+      "APP_STORAGE_RESOURCE01": {
+        "access_mode": "s1a4",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "attachment": "s1a6",
+        "capacity_gb": "s1a7",
+        "capacity_label": "s1a8",
+        "created_at": "s1a9",
+        "ephemeral": true,
+        "external_volume_id": "EXTERNAL_VOLUME01",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_STORAGE_RESOURCE01",
+        "kind": "s1ae",
+        "location_code": "s1af",
+        "location_id": "LOCATION01",
+        "mount_path": "s1b1",
+        "name": "s1b2",
+        "provider": "s1b3",
+        "provider_error": "s1b4",
+        "region": "s1b5",
+        "slug": "s1b6",
+        "status": "s1b7",
+        "updated_at": "s1b8",
+        "app_id": "APP01"
+      },
+      "APP_STORAGE_RESOURCE02": {
+        "access_mode": "s276",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "attachment": "s278",
+        "capacity_gb": "s279",
+        "capacity_label": "s27a",
+        "created_at": "s27b",
+        "ephemeral": true,
+        "external_volume_id": "EXTERNAL_VOLUME01",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_STORAGE_RESOURCE02",
+        "kind": "s280",
+        "location_code": "s281",
+        "location_id": "LOCATION01",
+        "mount_path": "s283",
+        "name": "s284",
+        "provider": "s285",
+        "provider_error": "s286",
+        "region": "s287",
+        "slug": "s288",
+        "status": "s289",
+        "updated_at": "s28a",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_storage_resource": {
+      "app_storage_resource_ref01": {
+        "access_mode": "s348",
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "attachment": "s34a",
+        "capacity_gb": "s34b",
+        "capacity_label": "s34c",
+        "created_at": "s34d",
+        "ephemeral": true,
+        "external_volume_id": "EXTERNAL_VOLUME01",
+        "hosted_app_id": "HOSTED_APP01",
+        "kind": "s352",
+        "location_code": "s353",
+        "location_id": "LOCATION01",
+        "mount_path": "s355",
+        "name": "s356",
+        "provider": "s357",
+        "provider_error": "s358",
+        "region": "s359",
+        "slug": "s35a",
+        "status": "s35b",
+        "updated_at": "s35c"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/issue_access_key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/suspend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/storage_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/storage_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

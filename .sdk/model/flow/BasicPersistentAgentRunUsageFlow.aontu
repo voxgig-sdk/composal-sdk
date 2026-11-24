@@ -1,0 +1,27 @@
+# BasicPersistentAgentRunUsageFlow
+
+main: kit: flow: BasicPersistentAgentRunUsageFlow:
+{
+  entity: "persistent_agent_run_usage",
+  kind: "basic",
+  name: "BasicPersistentAgentRunUsageFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "persistent_agent_run_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentRunUsageFlow"
+}

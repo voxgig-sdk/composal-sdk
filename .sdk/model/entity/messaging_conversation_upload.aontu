@@ -1,0 +1,139 @@
+# Entity: messaging_conversation_upload
+
+main: kit: entity: messaging_conversation_upload: {
+
+  alias: field: {}
+
+  fields: {
+    attachment: {
+      h: "Attachment"
+      n: "attachment"
+      r: true
+      t: "`$OBJECT`"
+    }
+    upload_id: {
+      h: "Upload Id"
+      n: "upload_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "messaging_conversation_upload"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "messaging_conversation_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads"
+          q: {
+            exist: [
+              "messaging_conversation_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "messaging_conversation_id"
+            }
+          }
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    binary: true
+                    name: "file"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "messaging_conversations"
+            }
+            {
+              var: "messaging_conversation_id"
+            }
+            {
+              lit: "uploads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

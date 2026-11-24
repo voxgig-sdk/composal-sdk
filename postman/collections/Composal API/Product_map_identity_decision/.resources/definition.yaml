@@ -1,0 +1,12 @@
+$kind: collection
+id: "22a0ad71-b834-525b-8044-eebd6733d922"
+description: |-
+  The **product_map_identity_decision** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_identity_decision_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `observations` | array | yes |  |
+  | `operation` | string | yes |  |
+  | `reason` | string | yes |  |
+  | `target` | object | yes |  |
+order: 158000

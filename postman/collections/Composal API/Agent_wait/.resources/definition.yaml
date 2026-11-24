@@ -1,0 +1,9 @@
+$kind: collection
+id: f275bc4d-3912-5115-b7c9-00466b54aa8b
+description: |-
+  The **agent_wait** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_wait_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 43000

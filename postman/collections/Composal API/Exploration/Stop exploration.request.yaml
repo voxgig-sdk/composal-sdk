@@ -1,0 +1,26 @@
+$kind: http-request
+id: e62dc9ab-517e-52d4-b236-f81ad9838986
+description: |-
+  The `stop` action of **exploration**, a route of its `create` operation.
+
+  SDK: `client.Exploration().create({ "organization_id": "organization_id", "id": "ID", $action: "stop" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/stop"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 10000

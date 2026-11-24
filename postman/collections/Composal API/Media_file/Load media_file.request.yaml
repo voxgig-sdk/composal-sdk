@@ -1,0 +1,28 @@
+$kind: http-request
+id: "7111fcc3-e771-52fa-ab4e-2448f6dfbf5d"
+description: |-
+  The `load` operation of **media_file**.
+
+  SDK: `client.MediaFile().load({ browser_session_id: "example", id: "example_id", media_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/media/:id/files/:file_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: inline
+    value: "false"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this media_file belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this media_file belongs to.
+  - key: id
+    value: "{{media_id}}"
+    description: "Input: media_id."
+  - key: file_id
+    value: "{{media_file_id}}"
+    description: The media_file this request addresses.
+order: 1000

@@ -1,0 +1,68 @@
+{
+  "existing": {
+    "environment_test_account": {
+      "ENVIRONMENT_TEST_ACCOUNT00": {
+        "configured": true,
+        "credentials": [],
+        "id": "ENVIRONMENT_TEST_ACCOUNT00",
+        "persona": "s49",
+        "revision_id": "REVISION01",
+        "role": "s4b",
+        "tenant": "s4c",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ENVIRONMENT_TEST_ACCOUNT01": {
+        "configured": true,
+        "credentials": [],
+        "id": "ENVIRONMENT_TEST_ACCOUNT01",
+        "persona": "s8f",
+        "revision_id": "REVISION01",
+        "role": "s91",
+        "tenant": "s92",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ENVIRONMENT_TEST_ACCOUNT02": {
+        "configured": true,
+        "credentials": [],
+        "id": "ENVIRONMENT_TEST_ACCOUNT02",
+        "persona": "sd5",
+        "revision_id": "REVISION01",
+        "role": "sd7",
+        "tenant": "sd8",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "environment_test_account": {
+      "environment_test_account_ref01": {
+        "configured": true,
+        "credentials": [],
+        "persona": "s11b",
+        "revision_id": "REVISION01",
+        "role": "s11d",
+        "tenant": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

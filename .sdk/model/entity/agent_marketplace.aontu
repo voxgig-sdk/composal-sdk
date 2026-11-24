@@ -1,0 +1,1002 @@
+# Entity: agent_marketplace
+
+main: kit: entity: agent_marketplace: {
+
+  alias: field: {}
+
+  fields: {
+    bundle: {
+      h: "Bundle"
+      n: "bundle"
+      r: true
+      t: "`$OBJECT`"
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    catalog_key: {
+      h: "Catalog Key"
+      n: "catalog_key"
+      r: true
+      sh: "Stable key of a Composal listing, which names its character; null for other listings."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    categories: {
+      h: "Categories"
+      n: "categories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    category: {
+      h: "Category"
+      n: "category"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    counts: {
+      h: "Counts"
+      n: "counts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    expected_version: {
+      h: "Expected Version"
+      n: "expected_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    explainer: {
+      h: "Explainer"
+      n: "explainer"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The listing's public write-up in Markdown."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    featured: {
+      h: "Featured"
+      n: "featured"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    from_composal: {
+      h: "From Composal"
+      n: "from_composal"
+      r: true
+      sh: "One of Composal's ready-made listings."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    installs_count: {
+      h: "Installs Count"
+      n: "installs_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    instructions: {
+      h: "Instructions"
+      n: "instructions"
+      r: true
+      t: "`$STRING`"
+    }
+    integration_toolkits: {
+      h: "Integration Toolkits"
+      n: "integration_toolkits"
+      r: true
+      t: "`$ARRAY`"
+    }
+    integrations: {
+      h: "Integrations"
+      n: "integrations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    listing: {
+      h: "Listing"
+      n: "listing"
+      r: true
+      t: "`$ANY`"
+    }
+    listings: {
+      h: "Listings"
+      n: "listings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    memories: {
+      h: "Memories"
+      n: "memories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    next_page: {
+      h: "Next Page"
+      n: "next_page"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    organization_name: {
+      h: "Organization Name"
+      n: "organization_name"
+      r: true
+      t: "`$STRING`"
+    }
+    page_apps: {
+      h: "Page Apps"
+      n: "page_apps"
+      r: true
+      t: "`$ARRAY`"
+    }
+    publisher_avatar_url: {
+      h: "Publisher Avatar Url"
+      n: "publisher_avatar_url"
+      r: true
+      sh: "The publisher's own profile picture; null for Composal's listings and publishers without one."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    publisher_name: {
+      h: "Publisher Name"
+      n: "publisher_name"
+      r: true
+      sh: "\"Composal\" on listings Composal publishes."
+      t: "`$STRING`"
+    }
+    sections: {
+      h: "Sections"
+      n: "sections"
+      r: true
+      t: "`$ARRAY`"
+    }
+    share_token: {
+      h: "Share Token"
+      n: "share_token"
+      r: true
+      sh: "Present only for people who manage the listing."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    skills: {
+      h: "Skills"
+      n: "skills"
+      r: true
+      t: "`$ARRAY`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      sh: "Readable, permanent address segment: /marketplace/<slug>."
+      t: "`$STRING`"
+    }
+    source_agent_id: {
+      h: "Source Agent Id"
+      n: "source_agent_id"
+      r: false
+      sh: "The V2 agent this listing was published from."
+      t: "`$STRING`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    viewer: {
+      h: "Viewer"
+      n: "viewer"
+      r: true
+      sh: "Who a public marketplace response was read for."
+      t: "`$OBJECT`"
+    }
+    visibility: {
+      h: "Visibility"
+      n: "visibility"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_marketplace"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_marketplace/{id}/install"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/{id}/install"
+          q: {
+            "$action": "install"
+            exist: [
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "install"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.install`"
+          }
+        }
+        {
+          bf: [
+            "bundle"
+            "category"
+            "explainer"
+            "name"
+            "source_agent_id"
+            "summary"
+            "visibility"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agent_marketplace"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.listing`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.listing`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/agent_marketplace/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/agent_marketplace/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_marketplace"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agent_marketplace/draft"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "agent_id"
+                or: "agent_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "listing_id"
+                or: "listing_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/draft"
+          q: {
+            "$action": "draft"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              lit: "draft"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.page_app_choices`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/agent_marketplace"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "category"
+                or: "category"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "q"
+                or: "q"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/agent_marketplace"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.featured`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "bundle"
+            "category"
+            "expected_version"
+            "explainer"
+            "name"
+            "summary"
+            "visibility"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.listing`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agent_marketplace/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agent_marketplace"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

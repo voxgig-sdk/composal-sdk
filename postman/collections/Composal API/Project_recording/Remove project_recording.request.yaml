@@ -1,0 +1,28 @@
+$kind: http-request
+id: a5ee1907-5282-5eb6-bb61-24facca995d0
+description: |-
+  The `remove` operation of **project_recording**.
+
+  SDK: `client.ProjectRecording().remove({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/recordings/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_recording belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_recording belongs to.
+  - key: id
+    value: "{{project_recording_id}}"
+    description: The project_recording this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("project_recording_id")
+      }
+    language: text/javascript
+order: 5000

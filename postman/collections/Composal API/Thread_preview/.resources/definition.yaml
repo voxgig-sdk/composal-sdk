@@ -1,0 +1,11 @@
+$kind: collection
+id: cf0f24c5-464c-5239-83e2-8b98a5b5f00e
+description: |-
+  The **thread_preview** entity, which belongs to a organization and a agent. Its requests address one record by `{{thread_preview_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `expires_at` | string | yes |  |
+  | `port` | integer | yes |  |
+  | `url` | string | yes |  |
+order: 204000

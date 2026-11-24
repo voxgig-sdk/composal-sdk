@@ -1,0 +1,15 @@
+$kind: collection
+id: "340c3930-6779-502a-9d51-689becd5292e"
+description: |-
+  The **agent_write_permission** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_write_permission_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account` | string | yes |  |
+  | `granted_at` | string | yes |  |
+  | `granted_by` | string | yes |  |
+  | `id` | string | yes |  |
+  | `in_effect` | boolean | yes |  |
+  | `last_used_at` | string | yes |  |
+  | `tool` | string | yes |  |
+order: 51000

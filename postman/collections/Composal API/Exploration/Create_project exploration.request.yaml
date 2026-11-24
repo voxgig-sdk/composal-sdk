@@ -1,0 +1,30 @@
+$kind: http-request
+id: "1efe4a45-61c4-5590-b597-4393c30d053e"
+description: |-
+  The `create_project` action of **exploration**, a route of its `create` operation.
+
+  SDK: `client.Exploration().create({ "organization_id": "organization_id", "id": "ID", $action: "create_project" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/create_project"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "agent_id": "{{agent_id}}",
+      "check_index": 1
+    }
+order: 4000

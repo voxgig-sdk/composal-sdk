@@ -1,0 +1,28 @@
+$kind: http-request
+id: a4563be5-7f87-514d-8377-31f8f319cdd4
+description: |-
+  The `archive` action of **verification_project_scenario**, a route of its `create` operation.
+
+  SDK: `client.VerificationProjectScenario().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+  - key: id
+    value: "{{verification_project_scenario_id}}"
+    description: The verification_project_scenario this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1
+    }
+order: 6000

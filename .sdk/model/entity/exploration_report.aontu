@@ -1,0 +1,206 @@
+# Entity: exploration_report
+
+main: kit: entity: exploration_report: {
+
+  alias: field: {}
+
+  name: "exploration_report"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "source_ids"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/refresh"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "exploration_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/refresh"
+          q: {
+            "$action": "refresh"
+            exist: [
+              "exploration_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "exploration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "explorations"
+            }
+            {
+              var: "exploration_id"
+            }
+            {
+              lit: "report"
+            }
+            {
+              lit: "refresh"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/document"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "exploration_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/document"
+          q: {
+            "$action": "document"
+            exist: [
+              "exploration_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "exploration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "explorations"
+            }
+            {
+              var: "exploration_id"
+            }
+            {
+              lit: "report"
+            }
+            {
+              lit: "document"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.exploration")]
+  ]
+
+}

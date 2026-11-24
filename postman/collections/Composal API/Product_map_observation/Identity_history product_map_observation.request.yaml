@@ -1,0 +1,49 @@
+$kind: http-request
+id: "92e26728-9c46-5d6f-838c-178660974f2d"
+description: |-
+  The `identity_history` action of **product_map_observation**, a route of its `load` operation.
+
+  SDK: `client.ProductMapObservation().load({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "identity_history" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/observations/:observation_id/identity_history"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: decisions_before
+    value: ""
+    disabled: true
+  - key: interpretations_before
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_observation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_observation belongs to.
+  - key: observation_id
+    value: "{{product_map_observation_id}}"
+    description: The product_map_observation this request addresses.
+order: 2000

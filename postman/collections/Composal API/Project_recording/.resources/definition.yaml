@@ -1,0 +1,21 @@
+$kind: collection
+id: a0803303-7651-5526-900e-5fc4d50efc92
+description: |-
+  The **project_recording** entity, which belongs to a organization and a project. Its requests address one record by `{{project_recording_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `draft` | any | yes |  |
+  | `environment_id` | string | yes |  |
+  | `error` | string | yes |  |
+  | `event_count` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `persona_id` | string | yes |  |
+  | `phase` | string | yes |  |
+  | `signed_in_during_recording` | boolean | yes |  |
+  | `start_path` | string |  |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 174000

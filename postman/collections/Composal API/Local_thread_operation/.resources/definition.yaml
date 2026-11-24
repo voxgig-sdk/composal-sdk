@@ -1,0 +1,23 @@
+$kind: collection
+id: "1f102c0a-ef1a-5ae3-8ba8-856110bbadbe"
+description: |-
+  The **local_thread_operation** entity, which belongs to a organization and a agent. Its requests address one record by `{{local_thread_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `arguments` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `delivery` | object | yes |  |
+  | `device_id` | string | yes |  |
+  | `diagnostic_code` | string |  |  |
+  | `end` | object | yes |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `references` | object | yes |  |
+  | `result` | any | yes |  |
+  | `result_expired` | boolean | yes |  |
+  | `state` | string | yes |  |
+order: 131000

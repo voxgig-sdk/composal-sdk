@@ -1,0 +1,431 @@
+# Entity: browser_session_task
+
+main: kit: entity: browser_session_task: {
+
+  alias: field: {}
+
+  fields: {
+    activity: {
+      h: "Activity"
+      n: "activity"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    browser_session_id: {
+      h: "Browser Session Id"
+      n: "browser_session_id"
+      r: true
+      t: "`$STRING`"
+    }
+    cancel_requested_at: {
+      fo: "date-time"
+      h: "Cancel Requested At"
+      n: "cancel_requested_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    control_generation: {
+      h: "Control Generation"
+      n: "control_generation"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    deadline_at: {
+      fo: "date-time"
+      h: "Deadline At"
+      n: "deadline_at"
+      r: true
+      t: "`$STRING`"
+    }
+    effects_unknown: {
+      h: "Effects Unknown"
+      n: "effects_unknown"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: false
+      t: "`$STRING`"
+    }
+    instruction: {
+      h: "Instruction"
+      n: "instruction"
+      r: true
+      t: "`$STRING`"
+    }
+    max_rounds: {
+      h: "Max Rounds"
+      n: "max_rounds"
+      op: {
+        create: {
+          req: false
+          type: "`$INTEGER`"
+        }
+      }
+      r: true
+      t: "`$INTEGER`"
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    model_selection: {
+      h: "Model Selection"
+      n: "model_selection"
+      r: true
+      t: "`$OBJECT`"
+    }
+    outcome: {
+      h: "Outcome"
+      n: "outcome"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      t: "`$OBJECT`"
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "browser_session_task"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "browser_session_id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "browser_session_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "browser_session_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "idempotency_key"
+            "instruction"
+            "max_rounds"
+            "max_seconds"
+            "outcome"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "browser_session_id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks"
+          q: {
+            exist: [
+              "browser_session_id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "browser_session_id"
+            }
+            {
+              lit: "tasks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "browser_session_id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}"
+          q: {
+            exist: [
+              "browser_session_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "browser_session_id"
+            }
+            {
+              lit: "tasks"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.browser_session")]
+  ]
+
+}

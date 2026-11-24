@@ -1,0 +1,18 @@
+$kind: collection
+id: "9d80ec71-11be-53d2-b57e-8a51690dd210"
+description: |-
+  The **network_connection** entity, which belongs to a organization. Its requests address one record by `{{network_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `aws_client_vpn_profile` | string |  |  |
+  | `created_at` | string | yes |  |
+  | `device_tag` | string |  |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `oauth_client_id` | string |  |  |
+  | `oauth_client_secret` | string |  |  |
+  | `provider` | string |  |  |
+  | `status` | string |  |  |
+  | `updated_at` | string | yes |  |
+order: 143000

@@ -1,0 +1,30 @@
+$kind: collection
+id: a9583034-eec7-51f9-93ab-56a3783e96d7
+description: |-
+  The **pages_project_credential** entity, which belongs to a organization and a project. Its requests address one record by `{{pages_project_credential_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_authentication` | object |  |  |
+  | `composal_address` | string | yes |  |
+  | `configured` | boolean | yes |  |
+  | `credential_keys` | object | yes |  |
+  | `description` | string | yes |  |
+  | `email_link_auth_origins` | array | yes |  |
+  | `has_inbox` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `identity_provider` | object | yes |  |
+  | `instructions` | string | yes |  |
+  | `login_method` | string | yes |  |
+  | `login_url` | string | yes |  |
+  | `managed` | boolean | yes |  |
+  | `mfa_enabled` | boolean | yes |  |
+  | `name` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `provider_guidance` | string | yes |  |
+  | `sign_in_verified` | boolean | yes |  |
+  | `sign_in_verified_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `username` | string | yes |  |
+order: 149000

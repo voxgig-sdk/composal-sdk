@@ -1,0 +1,9 @@
+$kind: collection
+id: "795a92dc-c538-5fa1-bf44-0173a60153d2"
+description: |-
+  The **agent_work** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_work_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 45000

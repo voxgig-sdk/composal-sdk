@@ -1,0 +1,36 @@
+# BasicComSiteAccessFlow
+
+main: kit: flow: BasicComSiteAccessFlow:
+{
+  entity: "com_site_access",
+  kind: "basic",
+  name: "BasicComSiteAccessFlow",
+  step: [
+    {
+      i: {
+        ref: "com_site_access_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "com_site_access_ref01",
+        srcdatavar: "com_site_access_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-com_site_access_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicComSiteAccessFlow"
+}

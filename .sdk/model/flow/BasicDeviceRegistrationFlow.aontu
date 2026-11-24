@@ -1,0 +1,46 @@
+# BasicDeviceRegistrationFlow
+
+main: kit: flow: BasicDeviceRegistrationFlow:
+{
+  entity: "device_registration",
+  kind: "basic",
+  name: "BasicDeviceRegistrationFlow",
+  step: [
+    {
+      i: {
+        ref: "device_registration_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        pairing_id: "pairing01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "device_registration_ref01",
+        srcdatavar: "device_registration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "device_registration01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-device_registration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceRegistrationFlow"
+}

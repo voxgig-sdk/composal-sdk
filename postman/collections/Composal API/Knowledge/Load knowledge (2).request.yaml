@@ -1,0 +1,22 @@
+$kind: http-request
+id: fca00e16-ed4b-56f5-ba65-8de0a139b7c6
+description: |-
+  The `load` operation of **knowledge**.
+
+  SDK: `client.Knowledge().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/knowledge"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this knowledge belongs to.
+order: 2000

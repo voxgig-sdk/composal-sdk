@@ -1,0 +1,26 @@
+# BasicPersistentAgentsWorkspacePageFlow
+
+main: kit: flow: BasicPersistentAgentsWorkspacePageFlow:
+{
+  entity: "persistent_agents_workspace_page",
+  kind: "basic",
+  name: "BasicPersistentAgentsWorkspacePageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "persistent_agents_workspace_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentsWorkspacePageFlow"
+}

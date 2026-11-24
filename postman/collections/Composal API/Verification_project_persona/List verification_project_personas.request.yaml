@@ -1,0 +1,28 @@
+$kind: http-request
+id: a1a78a8d-a762-5f5b-924c-d2587f3d1531
+description: |-
+  The `list` operation of **verification_project_persona**.
+
+  SDK: `client.VerificationProjectPersona().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/personas"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_persona belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_persona belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["personas"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("verification_project_persona_id")) pm.collectionVariables.set("verification_project_persona_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

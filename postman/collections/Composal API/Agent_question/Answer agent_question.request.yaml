@@ -1,0 +1,29 @@
+$kind: http-request
+id: ebb46622-1c51-5571-8698-b7f53e319ffa
+description: |-
+  The `answer` action of **agent_question**, a route of its `create` operation.
+
+  SDK: `client.AgentQuestion().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "answer" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/questions/:question_id/answer"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_question belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_question belongs to.
+  - key: question_id
+    value: "{{agent_question_id}}"
+    description: The agent_question this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "answers": {}
+    }
+order: 1000

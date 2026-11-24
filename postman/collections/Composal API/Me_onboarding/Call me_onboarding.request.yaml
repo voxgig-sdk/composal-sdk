@@ -1,0 +1,15 @@
+$kind: http-request
+id: "38d31578-2f86-5a55-95c4-9bb37b90c357"
+description: |-
+  The `call` action of **me_onboarding**, a route of its `create` operation.
+
+  SDK: `client.MeOnboarding().create({ $action: "call" })`
+url: "{{base}}/api/v1/me/onboarding/call"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 1000

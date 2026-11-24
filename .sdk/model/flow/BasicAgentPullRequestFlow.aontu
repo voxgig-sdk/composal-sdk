@@ -1,0 +1,27 @@
+# BasicAgentPullRequestFlow
+
+main: kit: flow: BasicAgentPullRequestFlow:
+{
+  entity: "agent_pull_request",
+  kind: "basic",
+  name: "BasicAgentPullRequestFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_pull_request_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentPullRequestFlow"
+}

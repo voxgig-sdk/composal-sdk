@@ -1,0 +1,132 @@
+{
+  "existing": {
+    "knowledge": {
+      "KNOWLEDGE00": {
+        "content_digest": "sc8",
+        "content_json": {},
+        "document": {},
+        "documents": [],
+        "dreaming": {},
+        "expected_digest": "scd",
+        "history": [],
+        "id": "KNOWLEDGE00",
+        "kind": "sd0",
+        "markdown": "sd1",
+        "observed_at": "sd2",
+        "organization": {},
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "project_name": "sd6",
+        "projects": [],
+        "selected_project_id": "SELECTED_PROJECT01",
+        "source": {},
+        "title": "sda",
+        "total": 219,
+        "organization_id": "ORGANIZATION01"
+      },
+      "KNOWLEDGE01": {
+        "content_digest": "s190",
+        "content_json": {},
+        "document": {},
+        "documents": [],
+        "dreaming": {},
+        "expected_digest": "s195",
+        "history": [],
+        "id": "KNOWLEDGE01",
+        "kind": "s198",
+        "markdown": "s199",
+        "observed_at": "s19a",
+        "organization": {},
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "project_name": "s19e",
+        "projects": [],
+        "selected_project_id": "SELECTED_PROJECT01",
+        "source": {},
+        "title": "s1a2",
+        "total": 419,
+        "organization_id": "ORGANIZATION01"
+      },
+      "KNOWLEDGE02": {
+        "content_digest": "s258",
+        "content_json": {},
+        "document": {},
+        "documents": [],
+        "dreaming": {},
+        "expected_digest": "s25d",
+        "history": [],
+        "id": "KNOWLEDGE02",
+        "kind": "s260",
+        "markdown": "s261",
+        "observed_at": "s262",
+        "organization": {},
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "project_name": "s266",
+        "projects": [],
+        "selected_project_id": "SELECTED_PROJECT01",
+        "source": {},
+        "title": "s26a",
+        "total": 619,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "knowledge": {
+      "knowledge_ref01": {
+        "content_digest": "s320",
+        "content_json": {},
+        "document": {},
+        "documents": [],
+        "dreaming": {},
+        "expected_digest": "s325",
+        "history": [],
+        "kind": "s328",
+        "markdown": "s329",
+        "observed_at": "s32a",
+        "organization": {},
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "project_name": "s32e",
+        "projects": [],
+        "selected_project_id": "SELECTED_PROJECT01",
+        "source": {},
+        "title": "s332",
+        "total": 819
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/knowledge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/knowledge": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# BasicAgentInputFlow
+
+main: kit: flow: BasicAgentInputFlow:
+{
+  entity: "agent_input",
+  kind: "basic",
+  name: "BasicAgentInputFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_input_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentInputFlow"
+}

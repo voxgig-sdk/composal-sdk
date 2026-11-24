@@ -1,0 +1,11 @@
+import { ComposalEntityBase } from '../ComposalEntityBase';
+import type { ComposalSDK } from '../ComposalSDK';
+import type { Control } from '../types';
+import type { AgentSubscription, AgentSubscriptionListMatch, AgentSubscriptionCreateData } from '../ComposalTypes';
+declare class AgentSubscriptionEntity extends ComposalEntityBase<AgentSubscription> {
+    constructor(client: ComposalSDK, entopts: any);
+    make(this: AgentSubscriptionEntity): AgentSubscriptionEntity;
+    list(this: any, reqmatch?: AgentSubscriptionListMatch, ctrl?: Control): Promise<AgentSubscriptionEntity[]>;
+    create(this: any, reqdata?: AgentSubscriptionCreateData, ctrl?: Control): Promise<AgentSubscriptionEntity>;
+}
+export { AgentSubscriptionEntity };

@@ -1,0 +1,28 @@
+$kind: http-request
+id: aa6f0010-a7b4-524b-8c14-beb1fe2ef1c7
+description: |-
+  The `stop` action of **agent_coordination**, a route of its `create` operation.
+
+  SDK: `client.AgentCoordination().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "stop" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/coordination/:task_id/stop"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_coordination belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_coordination belongs to.
+  - key: task_id
+    value: "{{agent_coordination_id}}"
+    description: The agent_coordination this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "include_source": true
+    }
+order: 1000

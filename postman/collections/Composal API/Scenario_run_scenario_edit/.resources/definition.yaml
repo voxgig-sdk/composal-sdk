@@ -1,0 +1,8 @@
+$kind: collection
+id: "18e36590-5fb4-5d01-93b7-26c6f7e4ddd3"
+description: |-
+  The **scenario_run_scenario_edit** entity, which belongs to a organization and a project. Its requests address one record by `{{scenario_run_scenario_edit_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 196000

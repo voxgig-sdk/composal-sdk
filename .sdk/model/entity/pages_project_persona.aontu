@@ -1,0 +1,137 @@
+# Entity: pages_project_persona
+
+main: kit: entity: pages_project_persona: {
+
+  alias: field: {}
+
+  fields: {
+    active_count: {
+      h: "Active Count"
+      n: "active_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    credentials: {
+      h: "Credentials"
+      n: "credentials"
+      r: true
+      t: "`$ARRAY`"
+    }
+    needs_attention_count: {
+      h: "Needs Attention Count"
+      n: "needs_attention_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    persona_states: {
+      h: "Persona States"
+      n: "persona_states"
+      r: true
+      sh: "Scenarios by the state of their latest execution."
+      t: "`$OBJECT`"
+    }
+    personas: {
+      h: "Personas"
+      n: "personas"
+      r: true
+      t: "`$ARRAY`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "pages_project_persona"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "personas"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

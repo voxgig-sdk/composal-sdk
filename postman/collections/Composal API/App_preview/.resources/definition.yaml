@@ -1,0 +1,23 @@
+$kind: collection
+id: bcd6fad2-c340-51a0-8bcc-4ba0973649a3
+description: |-
+  The **app_preview** entity, which belongs to a app. Its requests address one record by `{{app_preview_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `access` | string |  |  |
+  | `app_preview_profile_id` | string | yes |  |
+  | `change_number` | string |  |  |
+  | `expected_generation` | integer |  |  |
+  | `expected_patchset` | integer |  |  |
+  | `expires_at` | string |  |  |
+  | `id` | string |  |  |
+  | `name` | string | yes |  |
+  | `resource_overrides` | object |  |  |
+  | `retained` | boolean |  |  |
+  | `shared_data_binding_ids` | array |  |  |
+  | `shared_service_binding_ids` | array |  |  |
+  | `slug` | string | yes |  |
+  | `source_ref` | string |  |  |
+  | `storage_binding_resources` | object |  |  |
+order: 64000

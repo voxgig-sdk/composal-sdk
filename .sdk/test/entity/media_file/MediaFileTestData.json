@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "media_file": {
+      "MEDIA_FILE00": {
+        "id": "MEDIA_FILE00",
+        "browser_session_id": "BROWSER_SESSION01",
+        "media_id": "MEDIA01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEDIA_FILE01": {
+        "id": "MEDIA_FILE01",
+        "browser_session_id": "BROWSER_SESSION01",
+        "media_id": "MEDIA01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEDIA_FILE02": {
+        "id": "MEDIA_FILE02",
+        "browser_session_id": "BROWSER_SESSION01",
+        "media_id": "MEDIA01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "media_file": {
+      "media_file_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}/files/{file_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

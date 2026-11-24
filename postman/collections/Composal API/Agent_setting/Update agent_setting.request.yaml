@@ -1,0 +1,26 @@
+$kind: http-request
+id: a1f2cbf2-79df-53c2-902b-82e4cc1b77f7
+description: |-
+  The `update` operation of **agent_setting**.
+
+  SDK: `client.AgentSetting().update({ agent_id: "example", organization_id: "example", expected_version: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/settings"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_setting belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "instructions": "example",
+      "expected_version": "example"
+    }
+order: 2000

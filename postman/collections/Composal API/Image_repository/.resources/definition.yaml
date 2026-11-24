@@ -1,0 +1,25 @@
+$kind: collection
+id: "9d8fd1b9-81a4-5004-bb50-186648fb022f"
+description: |-
+  A container image repository in the organization's registry: list or create one.
+
+  The **image_repository** entity, which belongs to a organization. Its requests address one record by `{{image_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `auth_configured` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `provider_kind` | string | yes |  |
+  | `registry_auth_token` | string |  |  |
+  | `repository_path` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+  | `visibility` | string | yes |  |
+order: 124000

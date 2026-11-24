@@ -1,0 +1,33 @@
+$kind: collection
+id: af2ebf1b-44d2-5bc8-ad01-2fb6b285ab12
+description: |-
+  The **binary_version** entity, which belongs to a organization and a binary. Its requests address one record by `{{binary_version_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `arch` | any |  |  |
+  | `cancelable` | boolean | yes |  |
+  | `configuration` | object | yes |  |
+  | `configuration_digest` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `deletable` | boolean | yes |  |
+  | `download_secret` | string |  |  |
+  | `download_url` | string | yes |  |
+  | `environment_uses` | array | yes |  |
+  | `executable` | string |  |  |
+  | `format` | any |  |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string | yes |  |
+  | `launch_args` | array |  |  |
+  | `operation` | object | yes |  |
+  | `package_sha256` | string | yes |  |
+  | `package_size` | integer | yes |  |
+  | `permissions` | object | yes |  |
+  | `platform` | any |  |  |
+  | `preparations` | array | yes |  |
+  | `retryable` | boolean | yes |  |
+  | `sha256` | string |  |  |
+  | `status` | string | yes |  |
+  | `version` | object | yes |  |
+  | `window_title` | string |  |  |
+order: 76000

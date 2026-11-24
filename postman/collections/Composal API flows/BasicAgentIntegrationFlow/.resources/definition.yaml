@@ -1,0 +1,4 @@
+$kind: collection
+id: "79be6c22-8000-551d-9370-553411398713"
+description: "The `BasicAgentIntegrationFlow` flow of **agent_integration**."
+order: 11000

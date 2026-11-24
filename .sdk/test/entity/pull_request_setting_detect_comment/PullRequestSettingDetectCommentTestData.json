@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "pull_request_setting_detect_comment": {
+      "PULL_REQUEST_SETTING_DETECT_COMMENT00": {
+        "bots": [],
+        "deployment": "s6f",
+        "example_url": "s70",
+        "imessage_comment_prefix": "s71",
+        "imessage_number": "s72",
+        "kind": "s73",
+        "link_pattern": "s74",
+        "project_id": "PROJECT01",
+        "provider": "s76",
+        "repository_id": "REPOSITORY01",
+        "request_number": 120,
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_DETECT_COMMENT00"
+      },
+      "PULL_REQUEST_SETTING_DETECT_COMMENT01": {
+        "bots": [],
+        "deployment": "sdd",
+        "example_url": "sde",
+        "imessage_comment_prefix": "sdf",
+        "imessage_number": "se0",
+        "kind": "se1",
+        "link_pattern": "se2",
+        "project_id": "PROJECT01",
+        "provider": "se4",
+        "repository_id": "REPOSITORY01",
+        "request_number": 230,
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_DETECT_COMMENT01"
+      },
+      "PULL_REQUEST_SETTING_DETECT_COMMENT02": {
+        "bots": [],
+        "deployment": "s14b",
+        "example_url": "s14c",
+        "imessage_comment_prefix": "s14d",
+        "imessage_number": "s14e",
+        "kind": "s14f",
+        "link_pattern": "s150",
+        "project_id": "PROJECT01",
+        "provider": "s152",
+        "repository_id": "REPOSITORY01",
+        "request_number": 340,
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_DETECT_COMMENT02"
+      }
+    }
+  },
+  "new": {
+    "pull_request_setting_detect_comment": {
+      "pull_request_setting_detect_comment_ref01": {
+        "bots": [],
+        "deployment": "s1b9",
+        "example_url": "s1ba",
+        "imessage_comment_prefix": "s1bb",
+        "imessage_number": "s1bc",
+        "kind": "s1bd",
+        "link_pattern": "s1be",
+        "project_id": "PROJECT01",
+        "provider": "s1c0",
+        "repository_id": "REPOSITORY01",
+        "request_number": 450
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

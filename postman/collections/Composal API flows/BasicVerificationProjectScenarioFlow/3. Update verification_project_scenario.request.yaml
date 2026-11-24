@@ -1,0 +1,115 @@
+$kind: http-request
+id: "56e13780-c37d-5f19-8ac1-272dfededf94"
+description: |-
+  The `update` operation of **verification_project_scenario**.
+
+  SDK: `client.VerificationProjectScenario().update({ id: "example", organization_id: "example", project_id: "example", actors: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+  - key: id
+    value: "{{verification_project_scenario_ref01}}"
+    description: The verification_project_scenario this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "persona_id": "example",
+      "actors": {},
+      "primary_actor": "example",
+      "identity_probe": {
+        "path": "example",
+        "subject_pointer": "example",
+        "email_pointer": "example"
+      },
+      "labels": [
+        "example"
+      ],
+      "fixtures": [
+        {
+          "name": "example",
+          "sha256": "example",
+          "content_type": "example"
+        }
+      ],
+      "starting_conditions": "example",
+      "allowed_actions": "Mark01-verification_project_scenario_ref01",
+      "steps": [
+        "example"
+      ],
+      "cleanup": [
+        "example"
+      ],
+      "outcomes": [
+        "example"
+      ],
+      "version": 1,
+      "dependencies": [
+        {
+          "scenario_id": "example",
+          "after_step": 1,
+          "before_step": 1,
+          "name": "example"
+        }
+      ],
+      "on": {
+        "schedule": [
+          {
+            "cron": "example",
+            "timezone": "example",
+            "environment": "example"
+          }
+        ]
+      },
+      "if": "example",
+      "triggers": [
+        "example"
+      ]
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id","verification_project_scenario_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update verification_project_scenario: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update verification_project_scenario: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("verification_project_scenario_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("verification_project_scenario_ref01_marked", "Mark01-verification_project_scenario_ref01")
+    language: text/javascript
+order: 3000

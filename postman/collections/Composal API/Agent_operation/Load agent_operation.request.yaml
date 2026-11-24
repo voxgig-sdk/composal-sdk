@@ -1,0 +1,21 @@
+$kind: http-request
+id: a67fb11a-1946-57b2-ac39-8fdb6d9b2221
+description: |-
+  The `load` operation of **agent_operation**.
+
+  SDK: `client.AgentOperation().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/operations/:operation_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_operation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_operation belongs to.
+  - key: operation_id
+    value: "{{agent_operation_id}}"
+    description: The agent_operation this request addresses.
+order: 1000

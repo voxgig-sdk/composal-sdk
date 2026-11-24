@@ -1,0 +1,627 @@
+# Entity: browser_session
+
+main: kit: entity: browser_session: {
+
+  alias: field: {}
+
+  fields: {
+    active_task_id: {
+      h: "Active Task Id"
+      n: "active_task_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    authentication_status: {
+      h: "Authentication Status"
+      n: "authentication_status"
+      r: true
+      sh: "Session readiness alone does not confirm application sign-in."
+      t: "`$STRING`"
+    }
+    authentication_task_id: {
+      h: "Authentication Task Id"
+      n: "authentication_task_id"
+      r: false
+      sh: "Automatic sign-in task; read its status and result separately from browser readiness."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    cdp_url: {
+      h: "Cdp Url"
+      n: "cdp_url"
+      r: false
+      sh: "Admin-only full browser CDP bearer capability for the current external control generation."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    closed_at: {
+      fo: "date-time"
+      h: "Closed At"
+      n: "closed_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    closure_basis: {
+      h: "Closure Basis"
+      n: "closure_basis"
+      r: false
+      sh: "Provider deletion is a conservative closure bound when the worker cannot report its stop time."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    control_generation: {
+      h: "Control Generation"
+      n: "control_generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    controller: {
+      h: "Controller"
+      n: "controller"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    credential_id: {
+      h: "Credential Id"
+      n: "credential_id"
+      r: false
+      sh: "Optional configured credential public ID within the selected project."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environment_id: {
+      h: "Environment Id"
+      n: "environment_id"
+      r: false
+      sh: "Optional ready website environment slug or public ID within the selected project."
+      t: "`$STRING`"
+    }
+    environment_revision_id: {
+      h: "Environment Revision Id"
+      n: "environment_revision_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: true
+      t: "`$STRING`"
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: false
+      t: "`$STRING`"
+    }
+    initial_url: {
+      h: "Initial Url"
+      n: "initial_url"
+      r: true
+      t: "`$STRING`"
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    pending_control_id: {
+      h: "Pending Control Id"
+      n: "pending_control_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: false
+      sh: "Optional project slug or public ID."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    reconciled_at: {
+      fo: "date-time"
+      h: "Reconciled At"
+      n: "reconciled_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    url: {
+      h: "Url"
+      n: "url"
+      r: false
+      sh: "Initial HTTP or HTTPS URL; defaults to the selected environment or project URL, otherwise a blank page."
+      t: "`$STRING`"
+    }
+    viewer: {
+      h: "Viewer"
+      n: "viewer"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "browser_session"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "controller"
+            "generation"
+            "idempotency_key"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/control"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/control"
+          q: {
+            "$action": "control"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              browser_session_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "control"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "controller"
+            "credential_id"
+            "environment_id"
+            "idempotency_key"
+            "max_seconds"
+            "project_id"
+            "url"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/browser_sessions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media"
+          q: {
+            "$action": "media"
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              browser_session_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "media"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/browser_sessions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/browser_sessions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{id}"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

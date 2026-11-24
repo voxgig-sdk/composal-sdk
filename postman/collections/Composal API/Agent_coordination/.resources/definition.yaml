@@ -1,0 +1,9 @@
+$kind: collection
+id: "61dd1887-30d9-5c44-9ffc-b79064489389"
+description: |-
+  The **agent_coordination** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_coordination_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 10000

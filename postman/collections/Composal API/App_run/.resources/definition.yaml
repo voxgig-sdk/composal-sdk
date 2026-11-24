@@ -1,0 +1,10 @@
+$kind: collection
+id: d8c048b6-098b-5de6-9990-33ec38773175
+description: |-
+  The **app_run** entity. Its requests address one record by `{{app_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `image` | string |  |  |
+order: 66000

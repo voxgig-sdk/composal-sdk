@@ -1,0 +1,71 @@
+# BasicEnvironmentRevisionFlow
+
+main: kit: flow: BasicEnvironmentRevisionFlow:
+{
+  entity: "environment_revision",
+  kind: "basic",
+  name: "BasicEnvironmentRevisionFlow",
+  step: [
+    {
+      i: {
+        ref: "environment_revision_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "environment_revision_ref01",
+        srcdatavar: "environment_revision_ref01_data",
+        suffix: "_up0",
+        textfield: "app_environment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-environment_revision_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "environment_revision_ref01",
+        srcdatavar: "environment_revision_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        environment_id: "environment01",
+        id: "environment_revision01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-environment_revision_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEnvironmentRevisionFlow"
+}

@@ -1,0 +1,15 @@
+$kind: collection
+id: "8c08e434-3715-5189-a151-c7ebe36110b9"
+description: |-
+  The **pages_project_persona** entity, which belongs to a organization and a project. Its requests address one record by `{{pages_project_persona_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_count` | integer | yes |  |
+  | `credentials` | array | yes |  |
+  | `needs_attention_count` | integer | yes |  |
+  | `permissions` | object | yes |  |
+  | `persona_states` | object | yes |  |
+  | `personas` | array | yes |  |
+  | `project` | object | yes |  |
+order: 150000

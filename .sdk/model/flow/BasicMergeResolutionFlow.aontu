@@ -1,0 +1,18 @@
+# BasicMergeResolutionFlow
+
+main: kit: flow: BasicMergeResolutionFlow:
+{
+  entity: "merge_resolution",
+  kind: "basic",
+  name: "BasicMergeResolutionFlow",
+  step: [
+    {
+      i: {
+        ref: "merge_resolution_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMergeResolutionFlow"
+}

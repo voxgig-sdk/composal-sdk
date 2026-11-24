@@ -1,0 +1,4 @@
+$kind: collection
+id: "97b819fc-6f95-5a9b-a559-e7c232907f33"
+description: "The `BasicAgentEmailFlow` flow of **agent_email**."
+order: 8000

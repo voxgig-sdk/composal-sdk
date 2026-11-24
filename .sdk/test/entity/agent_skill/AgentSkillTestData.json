@@ -1,0 +1,75 @@
+{
+  "existing": {
+    "agent_skill": {
+      "AGENT_SKILL00": {
+        "available": true,
+        "can_configure": false,
+        "can_manage": true,
+        "configuration_state": "s5d",
+        "description": "s5e",
+        "enabled": false,
+        "name": "s60",
+        "skills": [],
+        "version": "s62",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SKILL00"
+      },
+      "AGENT_SKILL01": {
+        "available": true,
+        "can_configure": false,
+        "can_manage": true,
+        "configuration_state": "sb7",
+        "description": "sb8",
+        "enabled": false,
+        "name": "sba",
+        "skills": [],
+        "version": "sbc",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SKILL01"
+      },
+      "AGENT_SKILL02": {
+        "available": true,
+        "can_configure": false,
+        "can_manage": true,
+        "configuration_state": "s111",
+        "description": "s112",
+        "enabled": false,
+        "name": "s114",
+        "skills": [],
+        "version": "s116",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SKILL02"
+      }
+    }
+  },
+  "new": {
+    "agent_skill": {
+      "agent_skill_ref01": {
+        "available": true,
+        "can_configure": false,
+        "can_manage": true,
+        "configuration_state": "s16b",
+        "description": "s16c",
+        "enabled": false,
+        "name": "s16e",
+        "skills": [],
+        "version": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/skills": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/skills": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,397 @@
+{
+  "existing": {
+    "agent": {
+      "AGENT00": {
+        "attention": "s1a4",
+        "avatar": "s1a5",
+        "can_delete": true,
+        "can_edit_configuration": false,
+        "can_manage": true,
+        "can_manage_sharing": false,
+        "can_name_managers": true,
+        "can_queue_input": false,
+        "can_reconcile_save": true,
+        "configuration": "s1ad",
+        "configuration_revision": 430,
+        "configuration_version": "s1af",
+        "control_connections_available": true,
+        "controlling_user_id": "CONTROLLING_USER01",
+        "coordination_available": true,
+        "created_at": "s1b3",
+        "direct_chat_available": true,
+        "has_unread_updates": false,
+        "id": "AGENT00",
+        "last_reply_at": "s1b7",
+        "lifecycle_actions": [],
+        "lifecycle_version": "s1b9",
+        "local_agent_control_available": true,
+        "managers": [],
+        "model_change_action": "s1bc",
+        "name": "s1bd",
+        "organization_id": "ORGANIZATION01",
+        "persona": "s1bf",
+        "preview": "s1c0",
+        "preview_received_at": "s1c1",
+        "provisioning": "s1c2",
+        "reply_triage": "s1c3",
+        "runtime_version": "s1c4",
+        "setup_pending": false,
+        "sharing_fixed": true,
+        "sharing_version": 455,
+        "slug": "s1c8",
+        "status": "s1c9",
+        "team_role": "s1ca",
+        "updated_at": "s1cb",
+        "url_slug": "s1cc",
+        "visibility": "s1cd"
+      },
+      "AGENT01": {
+        "attention": "s348",
+        "avatar": "s349",
+        "can_delete": true,
+        "can_edit_configuration": false,
+        "can_manage": true,
+        "can_manage_sharing": false,
+        "can_name_managers": true,
+        "can_queue_input": false,
+        "can_reconcile_save": true,
+        "configuration": "s351",
+        "configuration_revision": 850,
+        "configuration_version": "s353",
+        "control_connections_available": true,
+        "controlling_user_id": "CONTROLLING_USER01",
+        "coordination_available": true,
+        "created_at": "s357",
+        "direct_chat_available": true,
+        "has_unread_updates": false,
+        "id": "AGENT01",
+        "last_reply_at": "s35b",
+        "lifecycle_actions": [],
+        "lifecycle_version": "s35d",
+        "local_agent_control_available": true,
+        "managers": [],
+        "model_change_action": "s360",
+        "name": "s361",
+        "organization_id": "ORGANIZATION01",
+        "persona": "s363",
+        "preview": "s364",
+        "preview_received_at": "s365",
+        "provisioning": "s366",
+        "reply_triage": "s367",
+        "runtime_version": "s368",
+        "setup_pending": false,
+        "sharing_fixed": true,
+        "sharing_version": 875,
+        "slug": "s36c",
+        "status": "s36d",
+        "team_role": "s36e",
+        "updated_at": "s36f",
+        "url_slug": "s370",
+        "visibility": "s371"
+      },
+      "AGENT02": {
+        "attention": "s4ec",
+        "avatar": "s4ed",
+        "can_delete": true,
+        "can_edit_configuration": false,
+        "can_manage": true,
+        "can_manage_sharing": false,
+        "can_name_managers": true,
+        "can_queue_input": false,
+        "can_reconcile_save": true,
+        "configuration": "s4f5",
+        "configuration_revision": 1270,
+        "configuration_version": "s4f7",
+        "control_connections_available": true,
+        "controlling_user_id": "CONTROLLING_USER01",
+        "coordination_available": true,
+        "created_at": "s4fb",
+        "direct_chat_available": true,
+        "has_unread_updates": false,
+        "id": "AGENT02",
+        "last_reply_at": "s4ff",
+        "lifecycle_actions": [],
+        "lifecycle_version": "s501",
+        "local_agent_control_available": true,
+        "managers": [],
+        "model_change_action": "s504",
+        "name": "s505",
+        "organization_id": "ORGANIZATION01",
+        "persona": "s507",
+        "preview": "s508",
+        "preview_received_at": "s509",
+        "provisioning": "s50a",
+        "reply_triage": "s50b",
+        "runtime_version": "s50c",
+        "setup_pending": false,
+        "sharing_fixed": true,
+        "sharing_version": 1295,
+        "slug": "s510",
+        "status": "s511",
+        "team_role": "s512",
+        "updated_at": "s513",
+        "url_slug": "s514",
+        "visibility": "s515"
+      }
+    }
+  },
+  "new": {
+    "agent": {
+      "agent_ref01": {
+        "attention": "s690",
+        "avatar": "s691",
+        "can_delete": true,
+        "can_edit_configuration": false,
+        "can_manage": true,
+        "can_manage_sharing": false,
+        "can_name_managers": true,
+        "can_queue_input": false,
+        "can_reconcile_save": true,
+        "configuration": "s699",
+        "configuration_revision": 1690,
+        "configuration_version": "s69b",
+        "control_connections_available": true,
+        "controlling_user_id": "CONTROLLING_USER01",
+        "coordination_available": true,
+        "created_at": "s69f",
+        "direct_chat_available": true,
+        "has_unread_updates": false,
+        "last_reply_at": "s6a3",
+        "lifecycle_actions": [],
+        "lifecycle_version": "s6a5",
+        "local_agent_control_available": true,
+        "managers": [],
+        "model_change_action": "s6a8",
+        "name": "s6a9",
+        "organization_id": "ORGANIZATION01",
+        "persona": "s6ab",
+        "preview": "s6ac",
+        "preview_received_at": "s6ad",
+        "provisioning": "s6ae",
+        "reply_triage": "s6af",
+        "runtime_version": "s6b0",
+        "setup_pending": false,
+        "sharing_fixed": true,
+        "sharing_version": 1715,
+        "slug": "s6b4",
+        "status": "s6b5",
+        "team_role": "s6b6",
+        "updated_at": "s6b7",
+        "url_slug": "s6b8",
+        "visibility": "s6b9"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/marked_read": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/call_session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/warm": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/message_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/avatar": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/coordination": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/compute": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/debug": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/environment": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/github_access": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/library": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/usage": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agents/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/environment": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/github_access": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/model": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/rename": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/roster_position": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/sharing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: a4f28508-0e88-541d-b004-35dc41ddba15
+description: |-
+  The `patch` operation of **member**.
+
+  SDK: `client.Member().patch({ id: "example", organization_id: "example", role: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/members/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this member belongs to.
+  - key: id
+    value: "{{member_id}}"
+    description: The member this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "role": "owner"
+    }
+order: 3000

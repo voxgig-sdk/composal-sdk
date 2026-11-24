@@ -1,0 +1,44 @@
+$kind: http-request
+id: "93cfe8df-c9fe-57df-8951-cbd5daaf005d"
+description: |-
+  The `path` action of **project_product_map**, a route of its `load` operation.
+
+  SDK: `client.ProjectProductMap().load({ "organization_id": "organization_id", "project_id": "project_id", "source": "source", "target": "target", $action: "path" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/path?source={{source}}&target={{target}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+  - key: source
+    value: "{{source}}"
+  - key: target
+    value: "{{target}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_product_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_product_map belongs to.
+order: 6000

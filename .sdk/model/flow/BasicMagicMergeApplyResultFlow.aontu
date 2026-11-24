@@ -1,0 +1,24 @@
+# BasicMagicMergeApplyResultFlow
+
+main: kit: flow: BasicMagicMergeApplyResultFlow:
+{
+  entity: "magic_merge_apply_result",
+  kind: "basic",
+  name: "BasicMagicMergeApplyResultFlow",
+  step: [
+    {
+      i: {
+        ref: "magic_merge_apply_result_ref01"
+      }
+
+      m: {
+        number: "number01",
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMagicMergeApplyResultFlow"
+}

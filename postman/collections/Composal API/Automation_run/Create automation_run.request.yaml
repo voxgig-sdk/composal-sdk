@@ -1,0 +1,40 @@
+$kind: http-request
+id: "5a513c8b-5d20-5952-a87b-89c4431a5954"
+description: |-
+  The `create` operation of **automation_run**.
+
+  SDK: `client.AutomationRun().create({ agent_id: "example", automation_id: "example", organization_id: "example", input: {}, request_id: "example", version_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations/:automation_key/runs"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this automation_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this automation_run belongs to.
+  - key: automation_key
+    value: "{{automation_id}}"
+    description: "Input: automation_id."
+body:
+  type: json
+  content: |-
+    {
+      "version_id": "example",
+      "request_id": "00000000-0000-4000-8000-000000000000",
+      "input": {}
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("automation_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

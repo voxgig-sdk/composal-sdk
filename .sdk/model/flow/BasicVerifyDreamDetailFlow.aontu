@@ -1,0 +1,23 @@
+# BasicVerifyDreamDetailFlow
+
+main: kit: flow: BasicVerifyDreamDetailFlow:
+{
+  entity: "verify_dream_detail",
+  kind: "basic",
+  name: "BasicVerifyDreamDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_dream_detail_ref01"
+      }
+
+      m: {
+        dream_id: "dream01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyDreamDetailFlow"
+}

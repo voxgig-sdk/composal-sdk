@@ -1,0 +1,32 @@
+$kind: http-request
+id: d1a53923-f86b-5583-bfe8-906aafd8b185
+description: |-
+  The `create` operation of **cdn_deployment**.
+
+  SDK: `client.CdnDeployment().create({ app_id: "example", cdn_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/deployments"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_deployment belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("cdn_deployment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

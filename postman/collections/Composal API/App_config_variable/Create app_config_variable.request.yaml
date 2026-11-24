@@ -1,0 +1,39 @@
+$kind: http-request
+id: "2c862274-4009-5967-9050-f7ef93aa580e"
+description: |-
+  The `create` operation of **app_config_variable**.
+
+  SDK: `client.AppConfigVariable().create({ app_id: "example", exposed_to_build: true, key: "example", scope_kind: "example", value_kind: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/config_variables"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_config_variable belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "app_environment_id": "{{app_environment_id}}",
+      "app_service_id": "{{app_service_id}}",
+      "scope_kind": "app",
+      "key": "example",
+      "value": "example",
+      "value_kind": "plain",
+      "description": "example",
+      "exposed_to_build": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["config_variable"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_config_variable_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

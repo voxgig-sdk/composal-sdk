@@ -1,0 +1,183 @@
+# Entity: browser_session_control
+
+main: kit: entity: browser_session_control: {
+
+  alias: field: {}
+
+  fields: {
+    browser_session_id: {
+      h: "Browser Session Id"
+      n: "browser_session_id"
+      r: true
+      t: "`$STRING`"
+    }
+    completed_at: {
+      fo: "date-time"
+      h: "Completed At"
+      n: "completed_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    completed_generation: {
+      h: "Completed Generation"
+      n: "completed_generation"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    connection: {
+      h: "Connection"
+      n: "connection"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    requested_controller: {
+      h: "Requested Controller"
+      n: "requested_controller"
+      r: true
+      t: "`$STRING`"
+    }
+    requested_generation: {
+      h: "Requested Generation"
+      n: "requested_generation"
+      r: true
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "browser_session_control"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/controls/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "browser_session_id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/controls/{id}"
+          q: {
+            exist: [
+              "browser_session_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "browser_session_id"
+            }
+            {
+              lit: "controls"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.browser_session")]
+  ]
+
+}

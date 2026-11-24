@@ -1,0 +1,31 @@
+$kind: collection
+id: "7bc39cb8-baf7-52a1-b2ff-60595874ac83"
+description: |-
+  The **agent_integration** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_integration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_counts` | object | yes |  |
+  | `accounts_path` | string | yes |  |
+  | `added_toolkits` | array | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_manage_organization` | boolean | yes |  |
+  | `catalog` | array | yes |  |
+  | `connect_as` | string | yes |  |
+  | `connect_as_by_toolkit` | object | yes |  |
+  | `connected_counts` | object | yes |  |
+  | `connection_id` | string | yes |  |
+  | `connections` | array | yes |  |
+  | `email` | object | yes |  |
+  | `enabled` | boolean | yes |  |
+  | `enabled_toolkits` | array | yes |  |
+  | `generation` | integer | yes |  |
+  | `pagination` | object | yes |  |
+  | `pending_counts` | object | yes |  |
+  | `personal_creation_key_supported` | boolean |  |  |
+  | `private_agent` | boolean | yes |  |
+  | `shared_agent_personal_accounts_enabled` | boolean | yes |  |
+  | `slack` | object | yes |  |
+  | `webhook_connections` | array | yes |  |
+  | `webhooks_available` | boolean | yes |  |
+order: 14000

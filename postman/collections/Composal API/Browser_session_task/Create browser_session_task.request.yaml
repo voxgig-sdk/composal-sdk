@@ -1,0 +1,39 @@
+$kind: http-request
+id: "7ae2fd0e-ab88-53db-b6f0-3f053910cf4c"
+description: |-
+  The `create` operation of **browser_session_task**.
+
+  SDK: `client.BrowserSessionTask().create({ browser_session_id: "example", organization_id: "example", instruction: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/tasks"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_task belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_task belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "instruction": "example",
+      "outcome": "example",
+      "max_seconds": 120,
+      "max_rounds": 100,
+      "idempotency_key": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("browser_session_task_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

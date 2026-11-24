@@ -1,0 +1,59 @@
+$kind: http-request
+id: "44c913b2-c543-5fe9-b095-013b36c58f67"
+description: |-
+  The `load` operation of **product_map_journey_replay**.
+
+  SDK: `client.ProductMapJourneyReplay().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/journey_replays/:replay_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_journey_replay belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_journey_replay belongs to.
+  - key: replay_id
+    value: "{{product_map_journey_replay_id}}"
+    description: The product_map_journey_replay this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id","product_map_journey_replay_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Load product_map_journey_replay: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-product_map_journey_replay_ref01" === pm.variables.get("product_map_journey_replay_ref01_marked")) pm.test("1. Load product_map_journey_replay: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-product_map_journey_replay_ref01")
+      })
+      pm.test("1. Load product_map_journey_replay: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("product_map_journey_replay_id")))
+      })
+    language: text/javascript
+order: 1000

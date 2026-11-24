@@ -1,0 +1,36 @@
+$kind: collection
+id: bd282af9-f164-5252-b910-70adaacec122
+description: |-
+  The **agent_marketplace_shared** entity, which belongs to a organization. Its requests address one record by `{{agent_marketplace_shared_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `catalog_key` | string | yes |  |
+  | `category` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `explainer` | string | yes |  |
+  | `featured` | boolean | yes |  |
+  | `from_composal` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `installs_count` | integer | yes |  |
+  | `instructions` | string | yes |  |
+  | `integration_toolkits` | array | yes |  |
+  | `integrations` | array | yes |  |
+  | `listing` | any | yes |  |
+  | `memories` | array | yes |  |
+  | `name` | string | yes |  |
+  | `organization_name` | string | yes |  |
+  | `page_apps` | array | yes |  |
+  | `publisher_avatar_url` | string | yes |  |
+  | `publisher_name` | string | yes |  |
+  | `share_token` | string | yes |  |
+  | `skills` | array | yes |  |
+  | `slug` | string | yes |  |
+  | `summary` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | integer | yes |  |
+  | `viewer` | object | yes |  |
+  | `visibility` | string | yes |  |
+order: 20000

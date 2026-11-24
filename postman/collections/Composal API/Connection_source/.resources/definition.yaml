@@ -1,0 +1,13 @@
+$kind: collection
+id: "345b0864-c233-5912-bd2d-874d70e63ce8"
+description: |-
+  The **connection_source** entity, which belongs to a organization and a agent. Its requests address one record by `{{connection_source_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `device_id` | string | yes |  |
+  | `device_name` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `source_operation_id` | string | yes |  |
+  | `title` | string | yes |  |
+order: 92000

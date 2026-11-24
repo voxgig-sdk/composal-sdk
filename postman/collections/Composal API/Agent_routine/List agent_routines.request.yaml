@@ -1,0 +1,32 @@
+$kind: http-request
+id: "4bc0d2c0-1755-5cef-a3ae-3428bded932b"
+description: |-
+  The `list` operation of **agent_routine**.
+
+  SDK: `client.AgentRoutine().list({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/routines"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_routine belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_routine belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["routines"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_routine_id")) pm.collectionVariables.set("agent_routine_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

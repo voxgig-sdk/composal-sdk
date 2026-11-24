@@ -1,0 +1,24 @@
+# BasicDeviceBrowserOperationClaimFlow
+
+main: kit: flow: BasicDeviceBrowserOperationClaimFlow:
+{
+  entity: "device_browser_operation_claim",
+  kind: "basic",
+  name: "BasicDeviceBrowserOperationClaimFlow",
+  step: [
+    {
+      i: {
+        ref: "device_browser_operation_claim_ref01"
+      }
+
+      m: {
+        browser_operation_id: "browser_operation01",
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceBrowserOperationClaimFlow"
+}

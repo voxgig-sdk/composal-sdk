@@ -1,0 +1,36 @@
+$kind: http-request
+id: c6569800-9ecf-5c35-8118-610fd26b3b43
+description: |-
+  The `create` operation of **project_code_map**.
+
+  SDK: `client.ProjectCodeMap().create({ organization_id: "example", project_id: "example", repository_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/projects/:project_id/code_maps"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_code_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_code_map belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "repository_id": "example",
+      "ref": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("project_code_map_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

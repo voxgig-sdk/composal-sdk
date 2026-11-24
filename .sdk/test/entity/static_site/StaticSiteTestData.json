@@ -1,0 +1,142 @@
+{
+  "existing": {
+    "static_site": {
+      "STATIC_SITE00": {
+        "active_deployment_id": "ACTIVE_DEPLOYMENT01",
+        "cdn_hostname": "sdd",
+        "cdn_url": "sde",
+        "cname_target": "sdf",
+        "created_at": "se0",
+        "default_url": "se1",
+        "description": "se2",
+        "error_document": "se3",
+        "failure_message": "se4",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "STATIC_SITE00",
+        "index_document": "se7",
+        "name": "se8",
+        "organization_id": "ORGANIZATION01",
+        "provisioned": true,
+        "provisioned_at": "seb",
+        "region": "sec",
+        "replication_regions": [],
+        "repository_id": "REPOSITORY01",
+        "slug": "sef",
+        "status": "sf0",
+        "updated_at": "sf1"
+      },
+      "STATIC_SITE01": {
+        "active_deployment_id": "ACTIVE_DEPLOYMENT01",
+        "cdn_hostname": "s1b9",
+        "cdn_url": "s1ba",
+        "cname_target": "s1bb",
+        "created_at": "s1bc",
+        "default_url": "s1bd",
+        "description": "s1be",
+        "error_document": "s1bf",
+        "failure_message": "s1c0",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "STATIC_SITE01",
+        "index_document": "s1c3",
+        "name": "s1c4",
+        "organization_id": "ORGANIZATION01",
+        "provisioned": true,
+        "provisioned_at": "s1c7",
+        "region": "s1c8",
+        "replication_regions": [],
+        "repository_id": "REPOSITORY01",
+        "slug": "s1cb",
+        "status": "s1cc",
+        "updated_at": "s1cd"
+      },
+      "STATIC_SITE02": {
+        "active_deployment_id": "ACTIVE_DEPLOYMENT01",
+        "cdn_hostname": "s295",
+        "cdn_url": "s296",
+        "cname_target": "s297",
+        "created_at": "s298",
+        "default_url": "s299",
+        "description": "s29a",
+        "error_document": "s29b",
+        "failure_message": "s29c",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "STATIC_SITE02",
+        "index_document": "s29f",
+        "name": "s2a0",
+        "organization_id": "ORGANIZATION01",
+        "provisioned": true,
+        "provisioned_at": "s2a3",
+        "region": "s2a4",
+        "replication_regions": [],
+        "repository_id": "REPOSITORY01",
+        "slug": "s2a7",
+        "status": "s2a8",
+        "updated_at": "s2a9"
+      }
+    }
+  },
+  "new": {
+    "static_site": {
+      "static_site_ref01": {
+        "active_deployment_id": "ACTIVE_DEPLOYMENT01",
+        "cdn_hostname": "s371",
+        "cdn_url": "s372",
+        "cname_target": "s373",
+        "created_at": "s374",
+        "default_url": "s375",
+        "description": "s376",
+        "error_document": "s377",
+        "failure_message": "s378",
+        "hosted_app_id": "HOSTED_APP01",
+        "index_document": "s37b",
+        "name": "s37c",
+        "organization_id": "ORGANIZATION01",
+        "provisioned": true,
+        "provisioned_at": "s37f",
+        "region": "s380",
+        "replication_regions": [],
+        "repository_id": "REPOSITORY01",
+        "slug": "s383",
+        "status": "s384",
+        "updated_at": "s385"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/static_sites/{id}/provision": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/static_sites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/static_sites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/static_sites/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/static_sites/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/static_sites/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/static_sites/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

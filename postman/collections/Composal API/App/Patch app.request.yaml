@@ -1,0 +1,29 @@
+$kind: http-request
+id: "49f82afd-76c6-5c01-8c1b-b1b03b169d24"
+description: |-
+  The `patch` operation of **app**.
+
+  SDK: `client.App().patch({ id: "example", description: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{app_id}}"
+    description: The app this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "organization_id": "{{organization_id}}",
+      "repository_id": "example",
+      "slug": "example",
+      "name": "example",
+      "description": "example",
+      "root_path": "example",
+      "framework": "example",
+      "status": "draft"
+    }
+order: 5000

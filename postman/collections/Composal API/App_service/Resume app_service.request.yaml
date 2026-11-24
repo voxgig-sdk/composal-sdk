@@ -1,0 +1,22 @@
+$kind: http-request
+id: "3b90b095-fa17-5ece-a7ea-87904c0ca565"
+description: |-
+  The `resume` action of **app_service**, a route of its `create` operation.
+
+  SDK: `client.AppService().create({ "app_id": "app_id", "id": "ID", $action: "resume" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services/:id/resume"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service belongs to.
+  - key: id
+    value: "{{app_service_id}}"
+    description: The app_service this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

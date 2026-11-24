@@ -1,0 +1,32 @@
+{
+  "existing": {
+    "catalog_selector": {
+      "CATALOG_SELECTOR00": {
+        "app": {},
+        "app_id": "APP01"
+      },
+      "CATALOG_SELECTOR01": {
+        "app": {},
+        "app_id": "APP01"
+      },
+      "CATALOG_SELECTOR02": {
+        "app": {},
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "catalog_selector": {
+      "catalog_selector_ref01": {
+        "app": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/catalog/selectors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

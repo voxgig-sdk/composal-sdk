@@ -1,0 +1,24 @@
+$kind: http-request
+id: "16998c24-ada7-5f39-b241-66d085020705"
+description: |-
+  The `output` action of **workflow_run_step**, a route of its `load` operation.
+
+  SDK: `client.WorkflowRunStep().load({ "organization_id": "organization_id", "agent_id": "agent_id", "workflow_run_id": "workflow_run_id", "id": "ID", $action: "output" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs/:run_id/steps/:step_id/output"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this workflow_run_step belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this workflow_run_step belongs to.
+  - key: run_id
+    value: "{{workflow_run_id}}"
+    description: "Input: workflow_run_id."
+  - key: step_id
+    value: "{{workflow_run_step_id}}"
+    description: The workflow_run_step this request addresses.
+order: 1000

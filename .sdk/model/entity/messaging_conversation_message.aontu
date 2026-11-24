@@ -1,0 +1,335 @@
+# Entity: messaging_conversation_message
+
+main: kit: entity: messaging_conversation_message: {
+
+  alias: field: {}
+
+  fields: {
+    attachment_limit: {
+      h: "Attachment Limit"
+      n: "attachment_limit"
+      r: true
+      t: "`$INTEGER`"
+    }
+    attachment_max_bytes: {
+      h: "Attachment Max Bytes"
+      n: "attachment_max_bytes"
+      r: true
+      t: "`$INTEGER`"
+    }
+    client_operation_id: {
+      h: "Client Operation Id"
+      n: "client_operation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    content: {
+      h: "Content"
+      n: "content"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    media: {
+      h: "Media"
+      n: "media"
+      r: true
+      t: "`$OBJECT`"
+    }
+    media_upload_ids: {
+      h: "Media Upload Ids"
+      n: "media_upload_ids"
+      r: false
+      sh: "Ordered staged upload IDs; six on Photon, one on Sendblue."
+      t: "`$ARRAY`"
+    }
+    messages: {
+      h: "Messages"
+      n: "messages"
+      r: true
+      t: "`$ARRAY`"
+    }
+    reply_to: {
+      h: "Reply To"
+      n: "reply_to"
+      r: false
+      sh: "Public ID of a visible message"
+      t: "`$STRING`"
+    }
+    retry_attachment: {
+      h: "Retry Attachment"
+      n: "retry_attachment"
+      r: false
+      sh: "Retry an already recorded attachment when its file bytes are no longer on this page."
+      t: "`$BOOLEAN`"
+    }
+    send_blocked_reason: {
+      h: "Send Blocked Reason"
+      n: "send_blocked_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    send_disposition: {
+      h: "Send Disposition"
+      n: "send_disposition"
+      r: false
+      t: "`$STRING`"
+    }
+    send_error: {
+      h: "Send Error"
+      n: "send_error"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    send_style: {
+      h: "Send Style"
+      n: "send_style"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "messaging_conversation_message"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "reaction"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "message_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "messaging_conversation_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction"
+          q: {
+            "$action": "reaction"
+            exist: [
+              "id"
+              "messaging_conversation_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "messaging_conversation_id"
+              message_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "messaging_conversations"
+            }
+            {
+              var: "messaging_conversation_id"
+            }
+            {
+              lit: "messages"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "reaction"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "client_operation_id"
+            "content"
+            "media"
+            "media_upload_ids"
+            "reply_to"
+            "retry_attachment"
+            "send_style"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "messaging_conversation_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages"
+          q: {
+            exist: [
+              "messaging_conversation_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "messaging_conversation_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "messaging_conversations"
+            }
+            {
+              var: "messaging_conversation_id"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

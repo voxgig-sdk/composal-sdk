@@ -1,0 +1,26 @@
+# BasicVerifyBinaryDirectoryFlow
+
+main: kit: flow: BasicVerifyBinaryDirectoryFlow:
+{
+  entity: "verify_binary_directory",
+  kind: "basic",
+  name: "BasicVerifyBinaryDirectoryFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_binary_directory_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyBinaryDirectoryFlow"
+}

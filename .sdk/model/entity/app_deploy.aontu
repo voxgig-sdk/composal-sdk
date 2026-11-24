@@ -1,0 +1,166 @@
+# Entity: app_deploy
+
+main: kit: entity: app_deploy: {
+
+  alias: field: {}
+
+  fields: {
+    app_environment_id: {
+      h: "App Environment Id"
+      n: "app_environment_id"
+      r: false
+      t: "`$STRING`"
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: false
+      t: "`$STRING`"
+    }
+    channel: {
+      h: "Channel"
+      n: "channel"
+      r: false
+      t: "`$STRING`"
+    }
+    command: {
+      h: "Command"
+      n: "command"
+      r: false
+      t: "`$STRING`"
+    }
+    commit_sha: {
+      h: "Commit Sha"
+      n: "commit_sha"
+      r: false
+      t: "`$STRING`"
+    }
+    desired_instances: {
+      h: "Desired Instances"
+      n: "desired_instances"
+      r: false
+      t: "`$INTEGER`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: false
+      sh: "Environment slug or public ID, all, or existing."
+      t: "`$STRING`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: true
+      t: "`$STRING`"
+    }
+    region: {
+      h: "Region"
+      n: "region"
+      r: false
+      t: "`$STRING`"
+    }
+    rollout_predecessor: {
+      h: "Rollout Predecessor"
+      n: "rollout_predecessor"
+      r: false
+      sh: "Public deployment operation ID from the same app that must succeed before this rollout starts."
+      t: "`$STRING`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: false
+      sh: "Service slug or public ID; required unless app_service_id is supplied."
+      t: "`$STRING`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "app_deploy"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "app_environment_id"
+            "app_service_id"
+            "channel"
+            "command"
+            "commit_sha"
+            "desired_instances"
+            "environment"
+            "image"
+            "region"
+            "rollout_predecessor"
+            "service"
+            "source_ref"
+          ]
+          co: {
+            id: "POST /api/v1/hosting/apps/{app_id}/deploys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/hosting/apps/{app_id}/deploys"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deploys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

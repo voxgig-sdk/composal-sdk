@@ -1,0 +1,75 @@
+$kind: http-request
+id: "339d6ad4-b384-54cb-bb3f-4934e37bb7f3"
+description: |-
+  The `update` operation of **project_fixture**.
+
+  SDK: `client.ProjectFixture().update({ id: "example", organization_id: "example", project_id: "example", credential_ids: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/fixtures/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_fixture belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_fixture belongs to.
+  - key: id
+    value: "{{project_fixture_ref01}}"
+    description: The project_fixture this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1,
+      "name": "example",
+      "persona_ids": [
+        "example"
+      ],
+      "credential_ids": [
+        "example"
+      ],
+      "environment_ids": [
+        "example"
+      ],
+      "content_type": "Mark01-project_fixture_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id","project_fixture_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update project_fixture: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update project_fixture: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("project_fixture_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("project_fixture_ref01_marked", "Mark01-project_fixture_ref01")
+    language: text/javascript
+order: 3000

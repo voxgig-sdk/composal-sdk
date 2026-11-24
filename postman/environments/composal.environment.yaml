@@ -1,0 +1,137 @@
+name: composal
+values:
+  - key: base
+    value: https://api.composal.com
+    enabled: true
+  - key: apikey
+    value: ""
+    enabled: true
+  - key: idempotency_key
+    value: ""
+    enabled: true
+  - key: version
+    value: ""
+    enabled: true
+  - key: conversation_id
+    value: ""
+    enabled: true
+  - key: view
+    value: ""
+    enabled: true
+  - key: index
+    value: ""
+    enabled: true
+  - key: message_id
+    value: ""
+    enabled: true
+  - key: uri
+    value: ""
+    enabled: true
+  - key: x_composal_relay_scope
+    value: ""
+    enabled: true
+  - key: x_composal_requester_id
+    value: ""
+    enabled: true
+  - key: change
+    value: ""
+    enabled: true
+  - key: expected_generation
+    value: ""
+    enabled: true
+  - key: allocation_id
+    value: ""
+    enabled: true
+  - key: attachment_id
+    value: ""
+    enabled: true
+  - key: automation_id
+    value: ""
+    enabled: true
+  - key: cdn_id
+    value: ""
+    enabled: true
+  - key: coordination_id
+    value: ""
+    enabled: true
+  - key: persona_id
+    value: ""
+    enabled: true
+  - key: scenario_id
+    value: ""
+    enabled: true
+  - key: credential_id
+    value: ""
+    enabled: true
+  - key: data_resource_id
+    value: ""
+    enabled: true
+  - key: deployment_id
+    value: ""
+    enabled: true
+  - key: domain_id
+    value: ""
+    enabled: true
+  - key: scenario_run_id
+    value: ""
+    enabled: true
+  - key: interaction_id
+    value: ""
+    enabled: true
+  - key: journey_variant_id
+    value: ""
+    enabled: true
+  - key: local_thread_id
+    value: ""
+    enabled: true
+  - key: media_id
+    value: ""
+    enabled: true
+  - key: messaging_conversation_id
+    value: ""
+    enabled: true
+  - key: preview_id
+    value: ""
+    enabled: true
+  - key: preview_profile_id
+    value: ""
+    enabled: true
+  - key: compare_revision_id
+    value: ""
+    enabled: true
+  - key: source
+    value: ""
+    enabled: true
+  - key: target
+    value: ""
+    enabled: true
+  - key: name
+    value: ""
+    enabled: true
+  - key: number
+    value: ""
+    enabled: true
+  - key: source_repository
+    value: ""
+    enabled: true
+  - key: run_id
+    value: ""
+    enabled: true
+  - key: service_id
+    value: ""
+    enabled: true
+  - key: profile_id
+    value: ""
+    enabled: true
+  - key: thread_id
+    value: ""
+    enabled: true
+  - key: version_id
+    value: ""
+    enabled: true
+  - key: workflow_run_id
+    value: ""
+    enabled: true
+  - key: workflow_trigger_id
+    value: ""
+    enabled: true

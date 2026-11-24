@@ -1,0 +1,28 @@
+# BasicAgentWebSourcePreviewFlow
+
+main: kit: flow: BasicAgentWebSourcePreviewFlow:
+{
+  entity: "agent_web_source_preview",
+  kind: "basic",
+  name: "BasicAgentWebSourcePreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_web_source_preview_ref01",
+        srcdatavar: "agent_web_source_preview_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_web_source_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWebSourcePreviewFlow"
+}

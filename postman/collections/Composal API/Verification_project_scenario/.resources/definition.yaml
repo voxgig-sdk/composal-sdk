@@ -1,0 +1,36 @@
+$kind: collection
+id: de5d1753-b715-53a6-b2eb-f58ea1ad1a00
+description: |-
+  A user journey Verify tests in a project: list, write, import or export them.
+
+  The **verification_project_scenario** entity, which belongs to a organization and a project. Its requests address one record by `{{verification_project_scenario_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actors` | object |  |  |
+  | `allowed_actions` | string | yes |  |
+  | `archived_at` | string | yes |  |
+  | `cleanup` | array |  |  |
+  | `created_at` | string | yes |  |
+  | `dependencies` | array | yes |  |
+  | `fixtures` | array |  |  |
+  | `health` | object | yes |  |
+  | `id` | string | yes |  |
+  | `identity_probe` | any |  |  |
+  | `if` | string |  |  |
+  | `labels` | array | yes |  |
+  | `last_revision` | any | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `on` | any |  |  |
+  | `outcomes` | array | yes |  |
+  | `persona_id` | string | yes |  |
+  | `primary_actor` | string |  |  |
+  | `project_id` | string | yes |  |
+  | `selectable_for_run` | boolean | yes |  |
+  | `starting_conditions` | string | yes |  |
+  | `steps` | array | yes |  |
+  | `triggers` | array | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 208000

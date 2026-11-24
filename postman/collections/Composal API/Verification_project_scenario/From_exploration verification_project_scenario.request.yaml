@@ -1,0 +1,28 @@
+$kind: http-request
+id: "86427e58-de92-5a86-b960-27082450e582"
+description: |-
+  The `from_exploration` action of **verification_project_scenario**, a route of its `create` operation.
+
+  SDK: `client.VerificationProjectScenario().create({ "organization_id": "organization_id", "project_id": "project_id", $action: "from_exploration" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios/from_exploration"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "exploration_id": "{{exploration_id}}",
+      "agent_id": "{{agent_id}}",
+      "check_index": 1,
+      "persona_id": "example"
+    }
+order: 9000

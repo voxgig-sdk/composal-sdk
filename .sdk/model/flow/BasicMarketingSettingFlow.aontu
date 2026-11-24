@@ -1,0 +1,28 @@
+# BasicMarketingSettingFlow
+
+main: kit: flow: BasicMarketingSettingFlow:
+{
+  entity: "marketing_setting",
+  kind: "basic",
+  name: "BasicMarketingSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "marketing_setting_ref01",
+        srcdatavar: "marketing_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-marketing_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMarketingSettingFlow"
+}

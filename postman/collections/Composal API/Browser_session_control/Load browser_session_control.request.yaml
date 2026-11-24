@@ -1,0 +1,21 @@
+$kind: http-request
+id: "97e3d383-177f-5915-90a5-0e4b22b78500"
+description: |-
+  The `load` operation of **browser_session_control**.
+
+  SDK: `client.BrowserSessionControl().load({ browser_session_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/controls/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_control belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_control belongs to.
+  - key: id
+    value: "{{browser_session_control_id}}"
+    description: The browser_session_control this request addresses.
+order: 1000

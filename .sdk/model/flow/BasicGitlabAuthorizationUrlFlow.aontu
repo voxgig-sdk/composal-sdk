@@ -1,0 +1,22 @@
+# BasicGitlabAuthorizationUrlFlow
+
+main: kit: flow: BasicGitlabAuthorizationUrlFlow:
+{
+  entity: "gitlab_authorization_url",
+  kind: "basic",
+  name: "BasicGitlabAuthorizationUrlFlow",
+  step: [
+    {
+      i: {
+        ref: "gitlab_authorization_url_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGitlabAuthorizationUrlFlow"
+}

@@ -1,0 +1,36 @@
+$kind: http-request
+id: b19defbc-b927-5d75-9730-ef47d9ffbd0c
+description: |-
+  The `patch` operation of **app_preview**.
+
+  SDK: `client.AppPreview().patch({ app_id: "example", id: "example", access: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "access": "org_members",
+      "retained": true,
+      "expires_at": "example",
+      "expected_generation": 1,
+      "storage_binding_resources": {},
+      "shared_data_binding_ids": [
+        "example"
+      ],
+      "shared_service_binding_ids": [
+        "example"
+      ],
+      "resource_overrides": {}
+    }
+order: 5000

@@ -1,0 +1,38 @@
+$kind: http-request
+id: "4c2620d7-1928-5d43-b84e-314d0327ff98"
+description: |-
+  The `create` operation of **browser_session**.
+
+  SDK: `client.BrowserSession().create({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "idempotency_key": "example",
+      "project_id": "{{project_id}}",
+      "environment_id": "{{environment_id}}",
+      "credential_id": "example",
+      "url": "example",
+      "max_seconds": 900,
+      "controller": "idle"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("browser_session_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

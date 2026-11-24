@@ -1,0 +1,4 @@
+$kind: collection
+id: d7424452-a144-5ee0-bbb3-9c17a89c653e
+description: "The `BasicNomadAllocationFlow` flow of **nomad_allocation**."
+order: 123000

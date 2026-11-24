@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "scenario_revision": {
+      "SCENARIO_REVISION00": {
+        "action": "s50",
+        "batch": "s51",
+        "created_at": "s52",
+        "definition": {},
+        "id": "SCENARIO_REVISION00",
+        "source": "s55",
+        "user": "s56",
+        "version": 87,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "scenario_id": "SCENARIO01"
+      },
+      "SCENARIO_REVISION01": {
+        "action": "sa0",
+        "batch": "sa1",
+        "created_at": "sa2",
+        "definition": {},
+        "id": "SCENARIO_REVISION01",
+        "source": "sa5",
+        "user": "sa6",
+        "version": 167,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "scenario_id": "SCENARIO01"
+      },
+      "SCENARIO_REVISION02": {
+        "action": "sf0",
+        "batch": "sf1",
+        "created_at": "sf2",
+        "definition": {},
+        "id": "SCENARIO_REVISION02",
+        "source": "sf5",
+        "user": "sf6",
+        "version": 247,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "scenario_id": "SCENARIO01"
+      }
+    }
+  },
+  "new": {
+    "scenario_revision": {
+      "scenario_revision_ref01": {
+        "action": "s140",
+        "batch": "s141",
+        "created_at": "s142",
+        "definition": {},
+        "source": "s145",
+        "user": "s146",
+        "version": 327
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

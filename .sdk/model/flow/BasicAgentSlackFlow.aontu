@@ -1,0 +1,23 @@
+# BasicAgentSlackFlow
+
+main: kit: flow: BasicAgentSlackFlow:
+{
+  entity: "agent_slack",
+  kind: "basic",
+  name: "BasicAgentSlackFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_slack_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentSlackFlow"
+}

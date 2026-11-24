@@ -1,0 +1,36 @@
+$kind: http-request
+id: "7c955c08-570a-55dd-ab8e-517f59aefe95"
+description: |-
+  The `create` operation of **browser_session_screenshot**.
+
+  SDK: `client.BrowserSessionScreenshot().create({ browser_session_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/screenshots"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_screenshot belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_screenshot belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "idempotency_key": "example",
+      "wait": false
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("browser_session_screenshot_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

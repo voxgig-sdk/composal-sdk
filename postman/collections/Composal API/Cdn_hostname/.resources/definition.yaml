@@ -1,0 +1,17 @@
+$kind: collection
+id: d194c97a-bba2-54b2-b4a0-b6940b8267b8
+description: |-
+  The **cdn_hostname** entity, which belongs to a app. Its requests address one record by `{{cdn_hostname_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_cdn_distribution_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `dns_status` | string | yes |  |
+  | `force_ssl` | boolean | yes |  |
+  | `hostname` | string | yes |  |
+  | `id` | string | yes |  |
+  | `provider_hostname_id` | string | yes |  |
+  | `tls_status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 88000

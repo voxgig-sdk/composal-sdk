@@ -1,0 +1,22 @@
+# BasicPullRequestSettingDetectCommentFlow
+
+main: kit: flow: BasicPullRequestSettingDetectCommentFlow:
+{
+  entity: "pull_request_setting_detect_comment",
+  kind: "basic",
+  name: "BasicPullRequestSettingDetectCommentFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_request_setting_detect_comment_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPullRequestSettingDetectCommentFlow"
+}

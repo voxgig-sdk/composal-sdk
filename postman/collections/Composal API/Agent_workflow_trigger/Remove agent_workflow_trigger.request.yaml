@@ -1,0 +1,28 @@
+$kind: http-request
+id: f9ced211-6640-51b6-a085-b5bb46e2e7bc
+description: |-
+  The `remove` operation of **agent_workflow_trigger**.
+
+  SDK: `client.AgentWorkflowTrigger().remove({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_trigger belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_trigger belongs to.
+  - key: trigger_id
+    value: "{{agent_workflow_trigger_id}}"
+    description: The agent_workflow_trigger this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("agent_workflow_trigger_id")
+      }
+    language: text/javascript
+order: 9000

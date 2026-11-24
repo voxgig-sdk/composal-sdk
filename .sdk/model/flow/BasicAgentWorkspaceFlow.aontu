@@ -1,0 +1,51 @@
+# BasicAgentWorkspaceFlow
+
+main: kit: flow: BasicAgentWorkspaceFlow:
+{
+  entity: "agent_workspace",
+  kind: "basic",
+  name: "BasicAgentWorkspaceFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_workspace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_workspace_ref01",
+        srcdatavar: "agent_workspace_ref01_data",
+        suffix: "_up0",
+        textfield: "action"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_workspace_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWorkspaceFlow"
+}

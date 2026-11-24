@@ -1,0 +1,51 @@
+$kind: collection
+id: "38ebf9b4-1b5c-57de-b6e2-dfc5b9af82f1"
+description: |-
+  The **app_deployment_operation** entity, which belongs to a app. Its requests address one record by `{{app_deployment_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app` | object | yes |  |
+  | `app_environment_id` | string |  |  |
+  | `app_service_id` | string |  |  |
+  | `app_service_placement_id` | string |  |  |
+  | `artifact_locator` | string | yes |  |
+  | `build_duration_seconds` | integer | yes |  |
+  | `build_source` | object | yes |  |
+  | `build_status` | string | yes |  |
+  | `children` | array | yes |  |
+  | `ci_pipeline_id` | string | yes |  |
+  | `ci_pipeline_run_id` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `creator` | object | yes |  |
+  | `deployed_url` | string | yes |  |
+  | `duration_seconds` | integer | yes |  |
+  | `environment` | object | yes |  |
+  | `failure_message` | string |  |  |
+  | `finished_at` | string |  |  |
+  | `history_kind` | string | yes |  |
+  | `history_reason` | string | yes |  |
+  | `id` | string | yes |  |
+  | `is_live` | boolean | yes |  |
+  | `is_rollback` | boolean | yes |  |
+  | `live_region_count` | integer | yes |  |
+  | `location_id` | string |  |  |
+  | `number` | integer | yes |  |
+  | `placement` | object | yes |  |
+  | `region_count` | integer | yes |  |
+  | `replicas_per_region` | integer | yes |  |
+  | `rollback_reason` | string | yes |  |
+  | `rollback_source_release_id` | string | yes |  |
+  | `rollback_target_release_id` | string | yes |  |
+  | `rollout_predecessor_id` | string | yes |  |
+  | `rollout_status` | string | yes |  |
+  | `rollout_strategy` | string | yes |  |
+  | `service` | object | yes |  |
+  | `source_ref` | string | yes |  |
+  | `started_at` | string |  |  |
+  | `status` | string | yes |  |
+  | `total_replicas` | integer | yes |  |
+  | `trigger_kind` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 59000

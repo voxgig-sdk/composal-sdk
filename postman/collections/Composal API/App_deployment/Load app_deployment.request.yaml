@@ -1,0 +1,18 @@
+$kind: http-request
+id: e93ccfb2-07d3-5181-9a44-7424441e00b7
+description: |-
+  The `load` operation of **app_deployment**.
+
+  SDK: `client.AppDeployment().load({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployments/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment belongs to.
+  - key: id
+    value: "{{app_deployment_id}}"
+    description: The app_deployment this request addresses.
+order: 2000

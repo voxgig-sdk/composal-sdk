@@ -1,0 +1,71 @@
+{
+  "existing": {
+    "agent_workspace": {
+      "AGENT_WORKSPACE00": {
+        "action": "s5a",
+        "can_delete": false,
+        "can_keep": true,
+        "cleanup_after": "s5d",
+        "created_at": "s5e",
+        "id": "AGENT_WORKSPACE00",
+        "name": "s60",
+        "reason": "s61",
+        "state": "s62",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKSPACE01": {
+        "action": "sb4",
+        "can_delete": false,
+        "can_keep": true,
+        "cleanup_after": "sb7",
+        "created_at": "sb8",
+        "id": "AGENT_WORKSPACE01",
+        "name": "sba",
+        "reason": "sbb",
+        "state": "sbc",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKSPACE02": {
+        "action": "s10e",
+        "can_delete": false,
+        "can_keep": true,
+        "cleanup_after": "s111",
+        "created_at": "s112",
+        "id": "AGENT_WORKSPACE02",
+        "name": "s114",
+        "reason": "s115",
+        "state": "s116",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_workspace": {
+      "agent_workspace_ref01": {
+        "action": "s168",
+        "can_delete": false,
+        "can_keep": true,
+        "cleanup_after": "s16b",
+        "created_at": "s16c",
+        "name": "s16e",
+        "reason": "s16f",
+        "state": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workspaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workspaces/{workspace_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

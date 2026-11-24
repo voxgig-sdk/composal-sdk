@@ -1,0 +1,18 @@
+# BasicAppPromotionFlow
+
+main: kit: flow: BasicAppPromotionFlow:
+{
+  entity: "app_promotion",
+  kind: "basic",
+  name: "BasicAppPromotionFlow",
+  step: [
+    {
+      i: {
+        ref: "app_promotion_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAppPromotionFlow"
+}

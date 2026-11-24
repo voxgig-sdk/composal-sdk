@@ -1,0 +1,157 @@
+{
+  "existing": {
+    "project_environment": {
+      "PROJECT_ENVIRONMENT00": {
+        "allowed_actions": "sfa",
+        "allowed_origins": [],
+        "archived_at": "sfc",
+        "base_url": "sfd",
+        "base_url_changeable": true,
+        "binary": "sff",
+        "conversation_only_messaging": true,
+        "created_at": "s101",
+        "desktop": "s102",
+        "execution_mode": "s103",
+        "id": "PROJECT_ENVIRONMENT00",
+        "imessage_number": "s105",
+        "kind": "s106",
+        "lock_version": 263,
+        "messaging_conversation": "s108",
+        "messaging_problem": "s109",
+        "messaging_source": "s10a",
+        "messaging_tester_number": "s10b",
+        "name": "s10c",
+        "project_id": "PROJECT01",
+        "pull_request": "s10e",
+        "source_branch": "s10f",
+        "updated_at": "s110",
+        "verify_network_connection_id": "VERIFY_NETWORK_CONNECTION01",
+        "version": 274,
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_ENVIRONMENT01": {
+        "allowed_actions": "s1f4",
+        "allowed_origins": [],
+        "archived_at": "s1f6",
+        "base_url": "s1f7",
+        "base_url_changeable": true,
+        "binary": "s1f9",
+        "conversation_only_messaging": true,
+        "created_at": "s1fb",
+        "desktop": "s1fc",
+        "execution_mode": "s1fd",
+        "id": "PROJECT_ENVIRONMENT01",
+        "imessage_number": "s1ff",
+        "kind": "s200",
+        "lock_version": 513,
+        "messaging_conversation": "s202",
+        "messaging_problem": "s203",
+        "messaging_source": "s204",
+        "messaging_tester_number": "s205",
+        "name": "s206",
+        "project_id": "PROJECT01",
+        "pull_request": "s208",
+        "source_branch": "s209",
+        "updated_at": "s20a",
+        "verify_network_connection_id": "VERIFY_NETWORK_CONNECTION01",
+        "version": 524,
+        "organization_id": "ORGANIZATION01"
+      },
+      "PROJECT_ENVIRONMENT02": {
+        "allowed_actions": "s2ee",
+        "allowed_origins": [],
+        "archived_at": "s2f0",
+        "base_url": "s2f1",
+        "base_url_changeable": true,
+        "binary": "s2f3",
+        "conversation_only_messaging": true,
+        "created_at": "s2f5",
+        "desktop": "s2f6",
+        "execution_mode": "s2f7",
+        "id": "PROJECT_ENVIRONMENT02",
+        "imessage_number": "s2f9",
+        "kind": "s2fa",
+        "lock_version": 763,
+        "messaging_conversation": "s2fc",
+        "messaging_problem": "s2fd",
+        "messaging_source": "s2fe",
+        "messaging_tester_number": "s2ff",
+        "name": "s300",
+        "project_id": "PROJECT01",
+        "pull_request": "s302",
+        "source_branch": "s303",
+        "updated_at": "s304",
+        "verify_network_connection_id": "VERIFY_NETWORK_CONNECTION01",
+        "version": 774,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "project_environment": {
+      "project_environment_ref01": {
+        "allowed_actions": "s3e8",
+        "allowed_origins": [],
+        "archived_at": "s3ea",
+        "base_url": "s3eb",
+        "base_url_changeable": true,
+        "binary": "s3ed",
+        "conversation_only_messaging": true,
+        "created_at": "s3ef",
+        "desktop": "s3f0",
+        "execution_mode": "s3f1",
+        "imessage_number": "s3f3",
+        "kind": "s3f4",
+        "lock_version": 1013,
+        "messaging_conversation": "s3f6",
+        "messaging_problem": "s3f7",
+        "messaging_source": "s3f8",
+        "messaging_tester_number": "s3f9",
+        "name": "s3fa",
+        "project_id": "PROJECT01",
+        "pull_request": "s3fc",
+        "source_branch": "s3fd",
+        "updated_at": "s3fe",
+        "verify_network_connection_id": "VERIFY_NETWORK_CONNECTION01",
+        "version": 1024
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/directory": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

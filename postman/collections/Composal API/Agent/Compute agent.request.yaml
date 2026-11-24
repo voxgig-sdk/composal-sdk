@@ -1,0 +1,25 @@
+$kind: http-request
+id: d23998bc-8150-50b4-81d6-6e6b05056b60
+description: |-
+  The `compute` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "compute" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/compute"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 8000

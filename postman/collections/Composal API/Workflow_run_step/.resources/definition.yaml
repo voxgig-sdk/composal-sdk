@@ -1,0 +1,9 @@
+$kind: collection
+id: ca116f82-a543-503c-b61f-911a56af1d0f
+description: |-
+  The **workflow_run_step** entity, which belongs to a organization and a agent. Its requests address one record by `{{workflow_run_step_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 214000

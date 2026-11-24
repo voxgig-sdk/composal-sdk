@@ -1,0 +1,9 @@
+# BasicRelayAgentLocalThreadFlow
+
+main: kit: flow: BasicRelayAgentLocalThreadFlow:
+{
+  entity: "relay_agent_local_thread",
+  kind: "basic",
+  name: "BasicRelayAgentLocalThreadFlow",
+  "key$": "BasicRelayAgentLocalThreadFlow"
+}

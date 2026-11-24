@@ -1,0 +1,271 @@
+# Entity: page
+
+main: kit: entity: page: {
+
+  alias: field: {}
+
+  fields: {
+    active_runs: {
+      h: "Active Runs"
+      n: "active_runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    checkout_required: {
+      h: "Checkout Required"
+      n: "checkout_required"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    cli_signed_in_at: {
+      fo: "date-time"
+      h: "Cli Signed In At"
+      n: "cli_signed_in_at"
+      r: true
+      sh: "When the signed-in user last finished a CLI sign-in for this organization, so agent setup can show the CLI is connected."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    counts: {
+      h: "Counts"
+      n: "counts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    demo_project: {
+      h: "Demo Project"
+      n: "demo_project"
+      r: true
+      sh: "The workspace's copy of the demo project, which setup offers as example data."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    included_deep_scan: {
+      h: "Included Deep Scan"
+      n: "included_deep_scan"
+      r: true
+      sh: "Whether a new app gets the signed-in user's included Deep Scan (verify_onboarding_deep_scan) once it has a test account, so setup asks for one right after the app."
+      t: "`$BOOLEAN`"
+    }
+    onboarding_discovery: {
+      h: "Onboarding Discovery"
+      n: "onboarding_discovery"
+      r: false
+      t: "`$ANY`"
+    }
+    organization: {
+      h: "Organization"
+      n: "organization"
+      r: true
+      t: "`$OBJECT`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      sh: "The project the page is limited to, or null for the whole organization."
+      t: "`$ANY`"
+    }
+    pull_request_launch_options: {
+      h: "Pull Request Launch Options"
+      n: "pull_request_launch_options"
+      r: false
+      t: "`$ARRAY`"
+    }
+    pull_requests: {
+      h: "Pull Requests"
+      n: "pull_requests"
+      r: false
+      t: "`$ARRAY`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runs: {
+      h: "Runs"
+      n: "runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    runs_pagination: {
+      h: "Runs Pagination"
+      n: "runs_pagination"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    suggested_app_url: {
+      h: "Suggested App Url"
+      n: "suggested_app_url"
+      r: true
+      sh: "The URL first-run setup prefills for a new app, from the workspace's project website or the signed-in user's work email domain."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    url_first_start: {
+      h: "Url First Start"
+      n: "url_first_start"
+      r: true
+      sh: "Whether setup opens on the URL-first screen, which saves the app and asks for test access next."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  name: "page"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/page"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "section"
+                or: "section"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "verify_environment_id"
+                or: "verify_environment_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/page"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "page"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

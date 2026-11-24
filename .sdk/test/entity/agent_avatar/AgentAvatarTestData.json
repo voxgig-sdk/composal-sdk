@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "agent_avatar": {
+      "AGENT_AVATAR00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_AVATAR00"
+      },
+      "AGENT_AVATAR01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_AVATAR01"
+      },
+      "AGENT_AVATAR02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_AVATAR02"
+      }
+    }
+  },
+  "new": {
+    "agent_avatar": {
+      "agent_avatar_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/generate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/avatar/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/avatar/configuration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

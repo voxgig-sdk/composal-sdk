@@ -1,0 +1,28 @@
+$kind: http-request
+id: "7e718e8e-192b-5887-98ac-b1a78bb68215"
+description: |-
+  The `archive` action of **project_run_plan**, a route of its `create` operation.
+
+  SDK: `client.ProjectRunPlan().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_plans/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_plan belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_plan belongs to.
+  - key: id
+    value: "{{project_run_plan_id}}"
+    description: The project_run_plan this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1
+    }
+order: 6000

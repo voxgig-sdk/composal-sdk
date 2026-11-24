@@ -1,0 +1,30 @@
+# BasicGithubAppFlow
+
+main: kit: flow: BasicGithubAppFlow:
+{
+  entity: "github_app",
+  kind: "basic",
+  name: "BasicGithubAppFlow",
+  step: [
+    {
+      i: {
+        ref: "github_app_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "github_app_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGithubAppFlow"
+}

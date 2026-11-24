@@ -1,0 +1,14 @@
+$kind: collection
+id: d433ce7a-15eb-5e0b-9cf8-f1771471473c
+description: |-
+  The **coordination_wait** entity, which belongs to a organization and a agent. Its requests address one record by `{{coordination_wait_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_stop` | boolean | yes |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `status` | string | yes |  |
+  | `stop_state` | string | yes |  |
+  | `wake_outcome` | string | yes |  |
+order: 93000

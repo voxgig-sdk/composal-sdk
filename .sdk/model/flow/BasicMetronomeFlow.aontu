@@ -1,0 +1,18 @@
+# BasicMetronomeFlow
+
+main: kit: flow: BasicMetronomeFlow:
+{
+  entity: "metronome",
+  kind: "basic",
+  name: "BasicMetronomeFlow",
+  step: [
+    {
+      i: {
+        ref: "metronome_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMetronomeFlow"
+}

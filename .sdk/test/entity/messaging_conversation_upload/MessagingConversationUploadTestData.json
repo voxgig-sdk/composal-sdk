@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "messaging_conversation_upload": {
+      "MESSAGING_CONVERSATION_UPLOAD00": {
+        "attachment": {},
+        "upload_id": "UPLOAD01",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "MESSAGING_CONVERSATION_UPLOAD00"
+      },
+      "MESSAGING_CONVERSATION_UPLOAD01": {
+        "attachment": {},
+        "upload_id": "UPLOAD01",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "MESSAGING_CONVERSATION_UPLOAD01"
+      },
+      "MESSAGING_CONVERSATION_UPLOAD02": {
+        "attachment": {},
+        "upload_id": "UPLOAD01",
+        "messaging_conversation_id": "MESSAGING_CONVERSATION01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "MESSAGING_CONVERSATION_UPLOAD02"
+      }
+    }
+  },
+  "new": {
+    "messaging_conversation_upload": {
+      "messaging_conversation_upload_ref01": {
+        "attachment": {},
+        "upload_id": "UPLOAD01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

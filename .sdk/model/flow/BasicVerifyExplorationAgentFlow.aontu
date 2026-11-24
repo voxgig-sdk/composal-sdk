@@ -1,0 +1,27 @@
+# BasicVerifyExplorationAgentFlow
+
+main: kit: flow: BasicVerifyExplorationAgentFlow:
+{
+  entity: "verify_exploration_agent",
+  kind: "basic",
+  name: "BasicVerifyExplorationAgentFlow",
+  step: [
+    {
+      m: {
+        deep_scan_id: "deep_scan01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_exploration_agent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyExplorationAgentFlow"
+}

@@ -1,0 +1,100 @@
+# BasicBinaryVersionFlow
+
+main: kit: flow: BasicBinaryVersionFlow:
+{
+  entity: "binary_version",
+  kind: "basic",
+  name: "BasicBinaryVersionFlow",
+  step: [
+    {
+      i: {
+        ref: "binary_version_ref01"
+      }
+
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "binary_version_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "binary_version_ref01",
+        srcdatavar: "binary_version_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        binary_id: "binary01",
+        id: "binary_version01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-binary_version_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "binary_version_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        binary_id: "binary01",
+        id: "binary_version01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "binary_version_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBinaryVersionFlow"
+}

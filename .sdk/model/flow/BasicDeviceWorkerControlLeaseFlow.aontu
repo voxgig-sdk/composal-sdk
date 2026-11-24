@@ -1,0 +1,23 @@
+# BasicDeviceWorkerControlLeaseFlow
+
+main: kit: flow: BasicDeviceWorkerControlLeaseFlow:
+{
+  entity: "device_worker_control_lease",
+  kind: "basic",
+  name: "BasicDeviceWorkerControlLeaseFlow",
+  step: [
+    {
+      i: {
+        ref: "device_worker_control_lease_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceWorkerControlLeaseFlow"
+}

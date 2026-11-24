@@ -1,0 +1,17 @@
+$kind: collection
+id: "182e6691-e6f9-5269-9985-bd8f281caf05"
+description: |-
+  The **project_scenario_row** entity, which belongs to a organization and a project. Its requests address one record by `{{project_scenario_row_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actor_count` | integer | yes |  |
+  | `dependency_count` | integer | yes |  |
+  | `health` | object | yes |  |
+  | `id` | string | yes |  |
+  | `labels` | array | yes |  |
+  | `name` | string | yes |  |
+  | `persona_id` | string | yes |  |
+  | `selectable_for_run` | boolean | yes |  |
+  | `step_count` | integer | yes |  |
+order: 178000

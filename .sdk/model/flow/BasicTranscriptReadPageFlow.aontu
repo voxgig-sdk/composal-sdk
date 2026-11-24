@@ -1,0 +1,22 @@
+# BasicTranscriptReadPageFlow
+
+main: kit: flow: BasicTranscriptReadPageFlow:
+{
+  entity: "transcript_read_page",
+  kind: "basic",
+  name: "BasicTranscriptReadPageFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "transcript_read_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTranscriptReadPageFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "608e569b-4d10-52db-8f8d-c743fc3be5c5"
+description: |-
+  The `review_source` action of **app_preview**, a route of its `create` operation.
+
+  SDK: `client.AppPreview().create({ "app_id": "app_id", "id": "ID", $action: "review_source" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/review_source"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 14000

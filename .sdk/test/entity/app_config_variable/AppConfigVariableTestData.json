@@ -1,0 +1,114 @@
+{
+  "existing": {
+    "app_config_variable": {
+      "APP_CONFIG_VARIABLE00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s84",
+        "description": "s85",
+        "exposed_to_build": true,
+        "has_value": false,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_CONFIG_VARIABLE00",
+        "key": "s8a",
+        "scope_kind": "s8b",
+        "updated_at": "s8c",
+        "value": "s8d",
+        "value_kind": "s8e",
+        "app_id": "APP01"
+      },
+      "APP_CONFIG_VARIABLE01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s106",
+        "description": "s107",
+        "exposed_to_build": true,
+        "has_value": false,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_CONFIG_VARIABLE01",
+        "key": "s10c",
+        "scope_kind": "s10d",
+        "updated_at": "s10e",
+        "value": "s10f",
+        "value_kind": "s110",
+        "app_id": "APP01"
+      },
+      "APP_CONFIG_VARIABLE02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s188",
+        "description": "s189",
+        "exposed_to_build": true,
+        "has_value": false,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_CONFIG_VARIABLE02",
+        "key": "s18e",
+        "scope_kind": "s18f",
+        "updated_at": "s190",
+        "value": "s191",
+        "value_kind": "s192",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_config_variable": {
+      "app_config_variable_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s20a",
+        "description": "s20b",
+        "exposed_to_build": true,
+        "has_value": false,
+        "hosted_app_id": "HOSTED_APP01",
+        "key": "s210",
+        "scope_kind": "s211",
+        "updated_at": "s212",
+        "value": "s213",
+        "value_kind": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/disable": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/rotate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/config_variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/config_variables": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

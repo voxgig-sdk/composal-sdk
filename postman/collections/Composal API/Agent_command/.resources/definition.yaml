@@ -1,0 +1,13 @@
+$kind: collection
+id: f89fdbf3-e61f-5f65-87e0-3426809e3f18
+description: |-
+  The **agent_command** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_command_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `description` | string | yes |  |
+  | `display_name` | string | yes |  |
+  | `name` | string | yes |  |
+  | `skill_model_visible` | boolean | yes |  |
+  | `source` | string | yes |  |
+order: 6000

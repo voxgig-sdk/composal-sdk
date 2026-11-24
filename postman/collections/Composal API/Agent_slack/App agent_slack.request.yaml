@@ -1,0 +1,28 @@
+$kind: http-request
+id: "8cdb887d-f3b7-587a-be1c-36f5c437512a"
+description: |-
+  The `app` action of **agent_slack**, a route of its `create` operation.
+
+  SDK: `client.AgentSlack().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "app" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/slack/app"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_slack belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_slack belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "action": "prepare",
+      "bot_token": "example",
+      "signing_secret": "example",
+      "expected_version": 1
+    }
+order: 1000

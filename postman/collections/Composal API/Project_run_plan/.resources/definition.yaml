@@ -1,0 +1,22 @@
+$kind: collection
+id: "4dec5423-024d-512f-8881-c29ff5cddf6a"
+description: |-
+  The **project_run_plan** entity, which belongs to a organization and a project. Its requests address one record by `{{project_run_plan_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `archived_at` | string | yes |  |
+  | `base_url` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `dependencies` | array | yes |  |
+  | `id` | string | yes |  |
+  | `identity_probe` | object | yes |  |
+  | `kind` | string | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `nodes` | array | yes |  |
+  | `preview` | any | yes |  |
+  | `project_id` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 175000

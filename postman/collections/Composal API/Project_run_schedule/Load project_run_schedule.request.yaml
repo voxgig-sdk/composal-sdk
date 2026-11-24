@@ -1,0 +1,21 @@
+$kind: http-request
+id: ac61da60-5035-5ee7-ac61-f74417b67e0c
+description: |-
+  The `load` operation of **project_run_schedule**.
+
+  SDK: `client.ProjectRunSchedule().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_schedules/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_schedule belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_schedule belongs to.
+  - key: id
+    value: "{{project_run_schedule_id}}"
+    description: The project_run_schedule this request addresses.
+order: 2000

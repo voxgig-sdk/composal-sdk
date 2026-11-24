@@ -1,0 +1,516 @@
+# Entity: organization
+
+main: kit: entity: organization: {
+
+  alias: field: {}
+
+  fields: {
+    activated_products: {
+      h: "Activated Products"
+      n: "activated_products"
+      r: true
+      sh: "Products this organization has activated (PRD 144)."
+      t: "`$ARRAY`"
+    }
+    agents_only: {
+      h: "Agents Only"
+      n: "agents_only"
+      r: false
+      sh: "Whether this organization uses the agents-only interface; older responses may omit this value."
+      t: "`$BOOLEAN`"
+    }
+    can_activate_products: {
+      h: "Can Activate Products"
+      n: "can_activate_products"
+      r: true
+      sh: "Whether the current user may activate a product for this organization: the organization-admin rule the activation endpoint enforces."
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at_label: {
+      h: "Created At Label"
+      n: "created_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_prs_authored_by_change_author: {
+      h: "Github Prs Authored By Change Author"
+      n: "github_prs_authored_by_change_author"
+      op: {
+        patch: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    google_workspace_domain: {
+      h: "Google Workspace Domain"
+      n: "google_workspace_domain"
+      r: false
+      sh: "Owners can approve their verified Google Workspace domain, or send null to disable automatic joining."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    logo_url: {
+      h: "Logo Url"
+      n: "logo_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    member_count: {
+      h: "Member Count"
+      n: "member_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    pending_invitation_count: {
+      h: "Pending Invitation Count"
+      n: "pending_invitation_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    personal: {
+      h: "Personal"
+      n: "personal"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    repository_count: {
+      h: "Repository Count"
+      n: "repository_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    role: {
+      h: "Role"
+      n: "role"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    sandbox_region: {
+      h: "Sandbox Region"
+      n: "sandbox_region"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    shared_agent_personal_accounts_enabled: {
+      h: "Shared Agent Personal Accounts Enabled"
+      n: "shared_agent_personal_accounts_enabled"
+      r: false
+      sh: "Whether a shared agent may use one person's account for everyone who chats with it."
+      t: "`$BOOLEAN`"
+    }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      op: {
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$STRING`"
+    }
+    source_control_providers: {
+      h: "Source Control Providers"
+      n: "source_control_providers"
+      r: false
+      sh: "Connected source control providers for this organization."
+      t: "`$ARRAY`"
+    }
+    source_ui_enabled: {
+      h: "Source Ui Enabled"
+      n: "source_ui_enabled"
+      r: false
+      sh: "Organization-scoped Source workspace rollout; missing values mean disabled."
+      t: "`$BOOLEAN`"
+    }
+    timezone: {
+      h: "Timezone"
+      n: "timezone"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+        patch: {
+          req: false
+          type: "`$STRING`"
+        }
+        update: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "Default IANA timezone for organization-local schedules such as nightly dreaming."
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at_label: {
+      h: "Updated At Label"
+      n: "updated_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    verify_pr_scenario_writing_enabled: {
+      h: "Verify Pr Scenario Writing Enabled"
+      n: "verify_pr_scenario_writing_enabled"
+      op: {
+        patch: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+        update: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "organization"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "name"
+            "slug"
+            "timezone"
+          ]
+          co: {
+            id: "POST /api/v1/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organizations`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+    patch: {
+      name: "patch"
+      points: [
+        {
+          bf: [
+            "github_prs_authored_by_change_author"
+            "google_workspace_domain"
+            "name"
+            "sandbox_region"
+            "shared_agent_personal_accounts_enabled"
+            "slug"
+            "timezone"
+            "verify_pr_scenario_writing_enabled"
+          ]
+          co: {
+            id: "PATCH /api/v1/organizations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/api/v1/organizations/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "github_prs_authored_by_change_author"
+            "google_workspace_domain"
+            "name"
+            "sandbox_region"
+            "shared_agent_personal_accounts_enabled"
+            "slug"
+            "timezone"
+            "verify_pr_scenario_writing_enabled"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.organization`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

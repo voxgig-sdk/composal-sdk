@@ -1,0 +1,118 @@
+# BasicAppStorageResourceFlow
+
+main: kit: flow: BasicAppStorageResourceFlow:
+{
+  entity: "app_storage_resource",
+  kind: "basic",
+  name: "BasicAppStorageResourceFlow",
+  step: [
+    {
+      i: {
+        ref: "app_storage_resource_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_storage_resource_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        app_id: "app01"
+      }
+
+      i: {
+        ref: "app_storage_resource_ref01",
+        srcdatavar: "app_storage_resource_ref01_data",
+        suffix: "_up0",
+        textfield: "access_mode"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_storage_resource_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_storage_resource_ref01",
+        srcdatavar: "app_storage_resource_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_storage_resource01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_storage_resource_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_storage_resource_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_storage_resource01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "app_storage_resource_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppStorageResourceFlow"
+}

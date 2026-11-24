@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "subscription_model": {
+      "SUBSCRIPTION_MODEL00": {
+        "default_reasoning": "s3c",
+        "id": "SUBSCRIPTION_MODEL00",
+        "name": "s3e",
+        "provider": "s3f",
+        "reasoning": [],
+        "speeds": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SUBSCRIPTION_MODEL01": {
+        "default_reasoning": "s78",
+        "id": "SUBSCRIPTION_MODEL01",
+        "name": "s7a",
+        "provider": "s7b",
+        "reasoning": [],
+        "speeds": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SUBSCRIPTION_MODEL02": {
+        "default_reasoning": "sb4",
+        "id": "SUBSCRIPTION_MODEL02",
+        "name": "sb6",
+        "provider": "sb7",
+        "reasoning": [],
+        "speeds": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "subscription_model": {
+      "subscription_model_ref01": {
+        "default_reasoning": "sf0",
+        "name": "sf2",
+        "provider": "sf3",
+        "reasoning": [],
+        "speeds": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions/models": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

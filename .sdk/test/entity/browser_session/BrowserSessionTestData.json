@@ -1,0 +1,143 @@
+{
+  "existing": {
+    "browser_session": {
+      "BROWSER_SESSION00": {
+        "active_task_id": "ACTIVE_TASK01",
+        "authentication_status": "sf1",
+        "authentication_task_id": "AUTHENTICATION_TASK01",
+        "cdp_url": "sf3",
+        "closed_at": "sf4",
+        "closure_basis": "sf5",
+        "control_generation": 246,
+        "controller": "sf7",
+        "credential_id": "CREDENTIAL01",
+        "environment_id": "ENVIRONMENT01",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "expires_at": "sfb",
+        "failure_code": "sfc",
+        "id": "BROWSER_SESSION00",
+        "idempotency_key": "sfe",
+        "initial_url": "sff",
+        "max_seconds": 256,
+        "pending_control_id": "PENDING_CONTROL01",
+        "project_id": "PROJECT01",
+        "reconciled_at": "s103",
+        "started_at": "s104",
+        "status": "s105",
+        "url": "s106",
+        "viewer": "s107",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION01": {
+        "active_task_id": "ACTIVE_TASK01",
+        "authentication_status": "s1e1",
+        "authentication_task_id": "AUTHENTICATION_TASK01",
+        "cdp_url": "s1e3",
+        "closed_at": "s1e4",
+        "closure_basis": "s1e5",
+        "control_generation": 486,
+        "controller": "s1e7",
+        "credential_id": "CREDENTIAL01",
+        "environment_id": "ENVIRONMENT01",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "expires_at": "s1eb",
+        "failure_code": "s1ec",
+        "id": "BROWSER_SESSION01",
+        "idempotency_key": "s1ee",
+        "initial_url": "s1ef",
+        "max_seconds": 496,
+        "pending_control_id": "PENDING_CONTROL01",
+        "project_id": "PROJECT01",
+        "reconciled_at": "s1f3",
+        "started_at": "s1f4",
+        "status": "s1f5",
+        "url": "s1f6",
+        "viewer": "s1f7",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION02": {
+        "active_task_id": "ACTIVE_TASK01",
+        "authentication_status": "s2d1",
+        "authentication_task_id": "AUTHENTICATION_TASK01",
+        "cdp_url": "s2d3",
+        "closed_at": "s2d4",
+        "closure_basis": "s2d5",
+        "control_generation": 726,
+        "controller": "s2d7",
+        "credential_id": "CREDENTIAL01",
+        "environment_id": "ENVIRONMENT01",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "expires_at": "s2db",
+        "failure_code": "s2dc",
+        "id": "BROWSER_SESSION02",
+        "idempotency_key": "s2de",
+        "initial_url": "s2df",
+        "max_seconds": 736,
+        "pending_control_id": "PENDING_CONTROL01",
+        "project_id": "PROJECT01",
+        "reconciled_at": "s2e3",
+        "started_at": "s2e4",
+        "status": "s2e5",
+        "url": "s2e6",
+        "viewer": "s2e7",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session": {
+      "browser_session_ref01": {
+        "active_task_id": "ACTIVE_TASK01",
+        "authentication_status": "s3c1",
+        "authentication_task_id": "AUTHENTICATION_TASK01",
+        "cdp_url": "s3c3",
+        "closed_at": "s3c4",
+        "closure_basis": "s3c5",
+        "control_generation": 966,
+        "controller": "s3c7",
+        "credential_id": "CREDENTIAL01",
+        "environment_id": "ENVIRONMENT01",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "expires_at": "s3cb",
+        "failure_code": "s3cc",
+        "idempotency_key": "s3ce",
+        "initial_url": "s3cf",
+        "max_seconds": 976,
+        "pending_control_id": "PENDING_CONTROL01",
+        "project_id": "PROJECT01",
+        "reconciled_at": "s3d3",
+        "started_at": "s3d4",
+        "status": "s3d5",
+        "url": "s3d6",
+        "viewer": "s3d7"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/control": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/browser_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/browser_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

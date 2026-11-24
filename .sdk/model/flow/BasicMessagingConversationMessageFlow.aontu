@@ -1,0 +1,24 @@
+# BasicMessagingConversationMessageFlow
+
+main: kit: flow: BasicMessagingConversationMessageFlow:
+{
+  entity: "messaging_conversation_message",
+  kind: "basic",
+  name: "BasicMessagingConversationMessageFlow",
+  step: [
+    {
+      i: {
+        ref: "messaging_conversation_message_ref01"
+      }
+
+      m: {
+        messaging_conversation_id: "messaging_conversation01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMessagingConversationMessageFlow"
+}

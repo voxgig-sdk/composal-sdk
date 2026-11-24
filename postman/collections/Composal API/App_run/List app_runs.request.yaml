@@ -1,0 +1,21 @@
+$kind: http-request
+id: "13fab887-dd54-55c4-9389-b599a62ef278"
+description: |-
+  The `list` operation of **app_run**.
+
+  SDK: `client.AppRun().list()`
+url: "{{base}}/api/v1/hosting/app_runs"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("app_run_id")) pm.collectionVariables.set("app_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

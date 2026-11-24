@@ -1,0 +1,155 @@
+{
+  "existing": {
+    "binary_version": {
+      "BINARY_VERSION00": {
+        "arch": "sfa",
+        "cancelable": false,
+        "configuration": {},
+        "configuration_digest": "sfd",
+        "created_at": "sfe",
+        "deletable": false,
+        "download_secret": "s100",
+        "download_url": "s101",
+        "environment_uses": [],
+        "executable": "s103",
+        "format": "s104",
+        "id": "BINARY_VERSION00",
+        "idempotency_key": "s106",
+        "launch_args": [],
+        "operation": {},
+        "package_sha256": "s109",
+        "package_size": "s10a",
+        "permissions": {},
+        "platform": "s10c",
+        "preparations": [],
+        "retryable": true,
+        "sha256": "s10f",
+        "status": "s110",
+        "version": {},
+        "window_title": "s112",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BINARY_VERSION01": {
+        "arch": "s1f4",
+        "cancelable": false,
+        "configuration": {},
+        "configuration_digest": "s1f7",
+        "created_at": "s1f8",
+        "deletable": false,
+        "download_secret": "s1fa",
+        "download_url": "s1fb",
+        "environment_uses": [],
+        "executable": "s1fd",
+        "format": "s1fe",
+        "id": "BINARY_VERSION01",
+        "idempotency_key": "s200",
+        "launch_args": [],
+        "operation": {},
+        "package_sha256": "s203",
+        "package_size": "s204",
+        "permissions": {},
+        "platform": "s206",
+        "preparations": [],
+        "retryable": true,
+        "sha256": "s209",
+        "status": "s20a",
+        "version": {},
+        "window_title": "s20c",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BINARY_VERSION02": {
+        "arch": "s2ee",
+        "cancelable": false,
+        "configuration": {},
+        "configuration_digest": "s2f1",
+        "created_at": "s2f2",
+        "deletable": false,
+        "download_secret": "s2f4",
+        "download_url": "s2f5",
+        "environment_uses": [],
+        "executable": "s2f7",
+        "format": "s2f8",
+        "id": "BINARY_VERSION02",
+        "idempotency_key": "s2fa",
+        "launch_args": [],
+        "operation": {},
+        "package_sha256": "s2fd",
+        "package_size": "s2fe",
+        "permissions": {},
+        "platform": "s300",
+        "preparations": [],
+        "retryable": true,
+        "sha256": "s303",
+        "status": "s304",
+        "version": {},
+        "window_title": "s306",
+        "binary_id": "BINARY01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "binary_version": {
+      "binary_version_ref01": {
+        "arch": "s3e8",
+        "cancelable": false,
+        "configuration": {},
+        "configuration_digest": "s3eb",
+        "created_at": "s3ec",
+        "deletable": false,
+        "download_secret": "s3ee",
+        "download_url": "s3ef",
+        "environment_uses": [],
+        "executable": "s3f1",
+        "format": "s3f2",
+        "idempotency_key": "s3f4",
+        "launch_args": [],
+        "operation": {},
+        "package_sha256": "s3f7",
+        "package_size": "s3f8",
+        "permissions": {},
+        "platform": "s3fa",
+        "preparations": [],
+        "retryable": true,
+        "sha256": "s3fd",
+        "status": "s3fe",
+        "version": {},
+        "window_title": "s400"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

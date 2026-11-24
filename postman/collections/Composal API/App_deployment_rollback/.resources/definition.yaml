@@ -1,0 +1,33 @@
+$kind: collection
+id: "76c9578f-04a1-5852-be66-e6a67745b92c"
+description: |-
+  The **app_deployment_rollback** entity, which belongs to a app. Its requests address one record by `{{app_deployment_rollback_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string |  |  |
+  | `app_id` | string | yes |  |
+  | `app_service_id` | string |  |  |
+  | `blockers` | array | yes |  |
+  | `candidate_releases` | array | yes |  |
+  | `confirmation_text` | string | yes |  |
+  | `current_deployment` | any | yes |  |
+  | `current_release` | any | yes |  |
+  | `deployment` | any | yes |  |
+  | `desired_state` | any | yes |  |
+  | `environment` | any | yes |  |
+  | `execution_allowed` | boolean | yes |  |
+  | `force` | boolean | yes |  |
+  | `idempotency_key` | string |  |  |
+  | `idempotent_reuse` | boolean | yes |  |
+  | `location` | any | yes |  |
+  | `operation` | any | yes |  |
+  | `reason` | string | yes |  |
+  | `rollback_release` | any | yes |  |
+  | `rollout` | any | yes |  |
+  | `service` | any | yes |  |
+  | `target_artifact_locator` | string | yes |  |
+  | `target_release` | any | yes |  |
+  | `to` | string |  |  |
+  | `warnings` | array | yes |  |
+order: 60000

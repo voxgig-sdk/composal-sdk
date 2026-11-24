@@ -1,0 +1,19 @@
+$kind: http-request
+id: "8773005a-f9db-5e54-a1e1-5cfa9ae8afe5"
+description: |-
+  The `activate` action of **app**, a route of its `create` operation.
+
+  SDK: `client.App().create({ "id": "ID", $action: "activate" })`
+url: "{{base}}/api/v1/hosting/apps/:id/activate"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{app_id}}"
+    description: The app this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

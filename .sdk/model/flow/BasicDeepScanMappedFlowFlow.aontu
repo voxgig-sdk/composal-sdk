@@ -1,0 +1,26 @@
+# BasicDeepScanMappedFlowFlow
+
+main: kit: flow: BasicDeepScanMappedFlowFlow:
+{
+  entity: "deep_scan_mapped_flow",
+  kind: "basic",
+  name: "BasicDeepScanMappedFlowFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deep_scan_mapped_flow_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeepScanMappedFlowFlow"
+}

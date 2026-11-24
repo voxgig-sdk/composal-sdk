@@ -1,0 +1,124 @@
+{
+  "existing": {
+    "project_messaging_conversation": {
+      "PROJECT_MESSAGING_CONVERSATION00": {
+        "assistant_number": "sa0",
+        "attachment_limit": 161,
+        "attachment_max_bytes": 162,
+        "environment_name": "sa3",
+        "id": "PROJECT_MESSAGING_CONVERSATION00",
+        "leased": false,
+        "messages": [],
+        "reconciled_at": "sa7",
+        "retirable": true,
+        "seeded": false,
+        "send_blocked_reason": "saa",
+        "send_disposition": "sab",
+        "send_error": "sac",
+        "tester_number": "sad",
+        "unknown_send": true,
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_MESSAGING_CONVERSATION01": {
+        "assistant_number": "s140",
+        "attachment_limit": 321,
+        "attachment_max_bytes": 322,
+        "environment_name": "s143",
+        "id": "PROJECT_MESSAGING_CONVERSATION01",
+        "leased": false,
+        "messages": [],
+        "reconciled_at": "s147",
+        "retirable": true,
+        "seeded": false,
+        "send_blocked_reason": "s14a",
+        "send_disposition": "s14b",
+        "send_error": "s14c",
+        "tester_number": "s14d",
+        "unknown_send": true,
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_MESSAGING_CONVERSATION02": {
+        "assistant_number": "s1e0",
+        "attachment_limit": 481,
+        "attachment_max_bytes": 482,
+        "environment_name": "s1e3",
+        "id": "PROJECT_MESSAGING_CONVERSATION02",
+        "leased": false,
+        "messages": [],
+        "reconciled_at": "s1e7",
+        "retirable": true,
+        "seeded": false,
+        "send_blocked_reason": "s1ea",
+        "send_disposition": "s1eb",
+        "send_error": "s1ec",
+        "tester_number": "s1ed",
+        "unknown_send": true,
+        "verify_environment_id": "VERIFY_ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_messaging_conversation": {
+      "project_messaging_conversation_ref01": {
+        "assistant_number": "s280",
+        "attachment_limit": 641,
+        "attachment_max_bytes": 642,
+        "environment_name": "s283",
+        "leased": false,
+        "messages": [],
+        "reconciled_at": "s287",
+        "retirable": true,
+        "seeded": false,
+        "send_blocked_reason": "s28a",
+        "send_disposition": "s28b",
+        "send_error": "s28c",
+        "tester_number": "s28d",
+        "unknown_send": true,
+        "verify_environment_id": "VERIFY_ENVIRONMENT01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/mark_read": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/retire": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/typing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+# BasicPersistentAgentClawderCompactedFlow
+
+main: kit: flow: BasicPersistentAgentClawderCompactedFlow:
+{
+  entity: "persistent_agent_clawder_compacted",
+  kind: "basic",
+  name: "BasicPersistentAgentClawderCompactedFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_clawder_compacted_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        thread_id: "thread01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPersistentAgentClawderCompactedFlow"
+}

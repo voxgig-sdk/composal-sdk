@@ -1,0 +1,19 @@
+$kind: http-request
+id: a5c96632-56fb-512f-bb1d-7db59c878b8a
+description: |-
+  The `update` operation of **cdn_space**.
+
+  SDK: `client.CdnSpace().update({ id: "example" })`
+url: "{{base}}/api/v1/cdn_spaces/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{cdn_space_id}}"
+    description: The cdn_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

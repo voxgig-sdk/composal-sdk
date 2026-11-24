@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "project_setting": {
+      "PROJECT_SETTING00": {
+        "available_messaging_environments": [],
+        "messaging_conversations": [],
+        "messaging_enabled": true,
+        "permissions": {},
+        "project": {},
+        "tester_numbers": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SETTING01": {
+        "available_messaging_environments": [],
+        "messaging_conversations": [],
+        "messaging_enabled": true,
+        "permissions": {},
+        "project": {},
+        "tester_numbers": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SETTING02": {
+        "available_messaging_environments": [],
+        "messaging_conversations": [],
+        "messaging_enabled": true,
+        "permissions": {},
+        "project": {},
+        "tester_numbers": [],
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_setting": {
+      "project_setting_ref01": {
+        "available_messaging_environments": [],
+        "messaging_conversations": [],
+        "messaging_enabled": true,
+        "permissions": {},
+        "project": {},
+        "tester_numbers": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

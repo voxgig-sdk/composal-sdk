@@ -1,0 +1,26 @@
+$kind: http-request
+id: "22f77dea-bdf5-5b81-8a73-52be9bc719be"
+description: |-
+  The `stop` action of **deep_scan**, a route of its `create` operation.
+
+  SDK: `client.DeepScan().create({ "organization_id": "organization_id", "id": "ID", $action: "stop" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/:id/stop"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan belongs to.
+  - key: id
+    value: "{{deep_scan_id}}"
+    description: The deep_scan this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

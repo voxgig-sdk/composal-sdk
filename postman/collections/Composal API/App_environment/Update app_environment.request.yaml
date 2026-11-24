@@ -1,0 +1,32 @@
+$kind: http-request
+id: "4f20acab-24d9-5824-aeb6-3840d97b3242"
+description: |-
+  The `update` operation of **app_environment**.
+
+  SDK: `client.AppEnvironment().update({ app_id: "example", id: "example", auto_deploy: true })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/environments/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_environment belongs to.
+  - key: id
+    value: "{{app_environment_id}}"
+    description: The app_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "slug": "example",
+      "name": "example",
+      "kind": "production",
+      "status": "active",
+      "location_id": "{{location_id}}",
+      "branch_pattern": "example",
+      "base_domain": "example",
+      "auto_deploy": true
+    }
+order: 4000

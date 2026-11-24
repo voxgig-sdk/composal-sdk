@@ -1,0 +1,22 @@
+$kind: http-request
+id: dcc2f309-3896-570b-9a85-7b38680d7cb1
+description: |-
+  The `cancel` action of **app_deployment**, a route of its `create` operation.
+
+  SDK: `client.AppDeployment().create({ "app_id": "app_id", "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployments/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment belongs to.
+  - key: id
+    value: "{{app_deployment_id}}"
+    description: The app_deployment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

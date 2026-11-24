@@ -1,0 +1,27 @@
+$kind: http-request
+id: "6952b832-7a6a-539f-a80d-5dafb428a85c"
+description: |-
+  The `patch` operation of **knowledge**.
+
+  SDK: `client.Knowledge().patch({ id: "example", organization_id: "example", expected_digest: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/knowledge/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this knowledge belongs to.
+  - key: id
+    value: "{{knowledge_id}}"
+    description: The knowledge this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "title": "example",
+      "markdown": "example",
+      "expected_digest": "example"
+    }
+order: 5000

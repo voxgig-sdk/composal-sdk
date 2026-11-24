@@ -1,0 +1,26 @@
+# BasicDesktopLocalInferenceModelFlow
+
+main: kit: flow: BasicDesktopLocalInferenceModelFlow:
+{
+  entity: "desktop_local_inference_model",
+  kind: "basic",
+  name: "BasicDesktopLocalInferenceModelFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "desktop_local_inference_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDesktopLocalInferenceModelFlow"
+}

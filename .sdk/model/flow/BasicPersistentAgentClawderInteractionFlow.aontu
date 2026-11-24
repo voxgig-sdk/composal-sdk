@@ -1,0 +1,48 @@
+# BasicPersistentAgentClawderInteractionFlow
+
+main: kit: flow: BasicPersistentAgentClawderInteractionFlow:
+{
+  entity: "persistent_agent_clawder_interaction",
+  kind: "basic",
+  name: "BasicPersistentAgentClawderInteractionFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_clawder_interaction_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        interaction_id: "interaction01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "persistent_agent_clawder_interaction_ref01",
+        srcdatavar: "persistent_agent_clawder_interaction_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "persistent_agent_clawder_interaction01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persistent_agent_clawder_interaction_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentClawderInteractionFlow"
+}

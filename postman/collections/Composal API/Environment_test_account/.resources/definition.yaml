@@ -1,0 +1,15 @@
+$kind: collection
+id: "96d00943-0f06-5cda-a687-2ac89ca93e65"
+description: |-
+  The **environment_test_account** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_test_account_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `configured` | boolean | yes |  |
+  | `credentials` | array | yes |  |
+  | `id` | string |  |  |
+  | `persona` | string | yes |  |
+  | `revision_id` | string | yes |  |
+  | `role` | string | yes |  |
+  | `tenant` | string | yes |  |
+order: 115000

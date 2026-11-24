@@ -1,0 +1,25 @@
+$kind: http-request
+id: fc9b1a4e-33c6-5c68-a2fe-e35f44482b0a
+description: |-
+  The `cancel` action of **agent_control_flow**, a route of its `create` operation.
+
+  SDK: `client.AgentControlFlow().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/control_flows/:flow_id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_control_flow belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_control_flow belongs to.
+  - key: flow_id
+    value: "{{agent_control_flow_id}}"
+    description: The agent_control_flow this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

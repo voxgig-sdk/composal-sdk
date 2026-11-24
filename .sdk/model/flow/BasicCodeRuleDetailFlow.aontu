@@ -1,0 +1,33 @@
+# BasicCodeRuleDetailFlow
+
+main: kit: flow: BasicCodeRuleDetailFlow:
+{
+  entity: "code_rule_detail",
+  kind: "basic",
+  name: "BasicCodeRuleDetailFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      i: {
+        ref: "code_rule_detail_ref01",
+        srcdatavar: "code_rule_detail_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-code_rule_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCodeRuleDetailFlow"
+}

@@ -1,0 +1,24 @@
+$kind: http-request
+id: "0cec4db1-c4de-5764-9f49-95922b13c174"
+description: |-
+  The `avatar` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", "version": "version", $action: "avatar" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/avatar?version={{version}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: asset
+    value: ""
+    disabled: true
+  - key: version
+    value: "{{version}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 5000

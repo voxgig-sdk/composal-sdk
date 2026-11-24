@@ -1,0 +1,32 @@
+# BasicDeploymentDashboardNomadFlow
+
+main: kit: flow: BasicDeploymentDashboardNomadFlow:
+{
+  entity: "deployment_dashboard_nomad",
+  kind: "basic",
+  name: "BasicDeploymentDashboardNomadFlow",
+  step: [
+    {
+      i: {
+        ref: "deployment_dashboard_nomad_ref01",
+        srcdatavar: "deployment_dashboard_nomad_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "deployment_dashboard_nomad01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deployment_dashboard_nomad_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentDashboardNomadFlow"
+}

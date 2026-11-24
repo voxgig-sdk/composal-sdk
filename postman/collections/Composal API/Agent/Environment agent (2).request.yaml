@@ -1,0 +1,28 @@
+$kind: http-request
+id: "00183be3-26a0-5424-ac0e-b76000606871"
+description: |-
+  The `environment` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "environment" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/environment"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "value": "example",
+      "expected_version": 1,
+      "setup_only": true
+    }
+order: 15000

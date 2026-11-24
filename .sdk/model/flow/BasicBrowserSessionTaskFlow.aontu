@@ -1,0 +1,47 @@
+# BasicBrowserSessionTaskFlow
+
+main: kit: flow: BasicBrowserSessionTaskFlow:
+{
+  entity: "browser_session_task",
+  kind: "basic",
+  name: "BasicBrowserSessionTaskFlow",
+  step: [
+    {
+      i: {
+        ref: "browser_session_task_ref01"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "browser_session_task_ref01",
+        srcdatavar: "browser_session_task_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        id: "browser_session_task01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-browser_session_task_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBrowserSessionTaskFlow"
+}

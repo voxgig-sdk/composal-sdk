@@ -1,0 +1,21 @@
+$kind: http-request
+id: "9dfb14c2-d666-5952-b500-fa11b419d80a"
+description: |-
+  The `load` operation of **agent_file**.
+
+  SDK: `client.AgentFile().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/files/:file_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_file belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_file belongs to.
+  - key: file_id
+    value: "{{agent_file_id}}"
+    description: The agent_file this request addresses.
+order: 1000

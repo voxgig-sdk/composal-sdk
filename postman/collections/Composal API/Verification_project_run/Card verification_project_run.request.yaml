@@ -1,0 +1,21 @@
+$kind: http-request
+id: "6ad3cb2c-5325-5d64-b721-dc7af1320225"
+description: |-
+  The `card` action of **verification_project_run**, a route of its `load` operation.
+
+  SDK: `client.VerificationProjectRun().load({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "card" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/card"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_run belongs to.
+  - key: id
+    value: "{{verification_project_run_id}}"
+    description: The verification_project_run this request addresses.
+order: 5000

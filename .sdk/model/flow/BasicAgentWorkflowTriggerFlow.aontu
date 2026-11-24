@@ -1,0 +1,75 @@
+# BasicAgentWorkflowTriggerFlow
+
+main: kit: flow: BasicAgentWorkflowTriggerFlow:
+{
+  entity: "agent_workflow_trigger",
+  kind: "basic",
+  name: "BasicAgentWorkflowTriggerFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_workflow_trigger_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_workflow_trigger_ref01",
+        srcdatavar: "agent_workflow_trigger_ref01_data",
+        suffix: "_up0",
+        textfield: "day_resets_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_workflow_trigger_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_workflow_trigger_ref01",
+        srcdatavar: "agent_workflow_trigger_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_workflow_trigger01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_workflow_trigger_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWorkflowTriggerFlow"
+}

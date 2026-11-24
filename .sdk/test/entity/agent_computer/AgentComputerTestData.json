@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "agent_computer": {
+      "AGENT_COMPUTER00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_COMPUTER00"
+      },
+      "AGENT_COMPUTER01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_COMPUTER01"
+      },
+      "AGENT_COMPUTER02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_COMPUTER02"
+      }
+    }
+  },
+  "new": {
+    "agent_computer": {
+      "agent_computer_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/computer/connect": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/computer/egress": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/computer/start": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/computer/frame": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

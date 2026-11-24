@@ -1,0 +1,11 @@
+$kind: collection
+id: "996e5977-63bc-5fe9-872c-62804d3339f5"
+description: |-
+  The **agent_tool** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_tool_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `description` | string |  |  |
+  | `inputSchema` | object | yes |  |
+  | `name` | string | yes |  |
+order: 41000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "2b08761a-e216-5e21-af81-926371dc5fa2"
+description: |-
+  The `load` operation of **evidence**.
+
+  SDK: `client.Evidence().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/evidence/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this evidence belongs to.
+  - key: id
+    value: "{{evidence_id}}"
+    description: The evidence this request addresses.
+order: 1000

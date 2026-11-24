@@ -1,0 +1,64 @@
+# BasicCdnDeploymentFlow
+
+main: kit: flow: BasicCdnDeploymentFlow:
+{
+  entity: "cdn_deployment",
+  kind: "basic",
+  name: "BasicCdnDeploymentFlow",
+  step: [
+    {
+      i: {
+        ref: "cdn_deployment_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cdn_deployment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cdn_deployment_ref01",
+        srcdatavar: "cdn_deployment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01",
+        id: "cdn_deployment01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cdn_deployment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCdnDeploymentFlow"
+}

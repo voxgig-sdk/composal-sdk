@@ -1,0 +1,50 @@
+$kind: collection
+id: "14910e2c-82ae-50aa-9229-a20966ea88ec"
+description: |-
+  The **app_service** entity, which belongs to a app. Its requests address one record by `{{app_service_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `auto_deploy` | boolean | yes |  |
+  | `bindings` | array | yes |  |
+  | `build_command` | string | yes |  |
+  | `cpu_label` | string | yes |  |
+  | `cpu_mhz` | integer | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `deploy_paths` | array | yes |  |
+  | `desired_instances` | integer | yes |  |
+  | `disk_label` | string | yes |  |
+  | `disk_mb` | integer | yes |  |
+  | `effective_deploy_paths` | array | yes |  |
+  | `healthcheck_path` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `internal_port` | integer | yes |  |
+  | `kind` | string | yes |  |
+  | `memory_label` | string | yes |  |
+  | `memory_max_label` | string | yes |  |
+  | `memory_max_mb` | integer | yes |  |
+  | `memory_mb` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `nomad_constraints_json` | string | yes |  |
+  | `nomad_kill_timeout_seconds` | integer | yes |  |
+  | `nomad_namespace` | string | yes |  |
+  | `nomad_region` | string | yes |  |
+  | `nomad_shutdown_delay_seconds` | integer | yes |  |
+  | `nomad_ulimits_json` | string | yes |  |
+  | `nomad_update_strategy_json` | string | yes |  |
+  | `prestart_command` | string | yes |  |
+  | `publicly_accessible` | boolean | yes |  |
+  | `release_command` | string | yes |  |
+  | `repo_source_path` | string | yes |  |
+  | `runtime` | string | yes |  |
+  | `runtime_adapter_kind` | string | yes |  |
+  | `runtime_adapter_settings_json` | string | yes |  |
+  | `schedule` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `source_path` | string | yes |  |
+  | `start_command` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+order: 68000

@@ -1,0 +1,30 @@
+$kind: http-request
+id: "32634439-4326-5767-aca0-dad3d78f9d6b"
+description: |-
+  The `plan` action of **app_deployment_rollback**, a route of its `create` operation.
+
+  SDK: `client.AppDeploymentRollback().create({ "app_id": "app_id", $action: "plan" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_rollbacks/plan"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment_rollback belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "app_service_id": "{{app_service_id}}",
+      "service": "example",
+      "app_environment_id": "{{app_environment_id}}",
+      "environment": "example",
+      "to": "example",
+      "deployment": "example",
+      "reason": "example",
+      "force": true,
+      "idempotency_key": "example"
+    }
+order: 2000

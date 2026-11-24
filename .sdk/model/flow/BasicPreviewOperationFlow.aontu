@@ -1,0 +1,27 @@
+# BasicPreviewOperationFlow
+
+main: kit: flow: BasicPreviewOperationFlow:
+{
+  entity: "preview_operation",
+  kind: "basic",
+  name: "BasicPreviewOperationFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01",
+        preview_id: "preview01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "preview_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPreviewOperationFlow"
+}

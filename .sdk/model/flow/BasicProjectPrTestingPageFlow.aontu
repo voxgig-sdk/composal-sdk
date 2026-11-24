@@ -1,0 +1,33 @@
+# BasicProjectPrTestingPageFlow
+
+main: kit: flow: BasicProjectPrTestingPageFlow:
+{
+  entity: "project_pr_testing_page",
+  kind: "basic",
+  name: "BasicProjectPrTestingPageFlow",
+  step: [
+    {
+      i: {
+        ref: "project_pr_testing_page_ref01",
+        srcdatavar: "project_pr_testing_page_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_pr_testing_page01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_pr_testing_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectPrTestingPageFlow"
+}

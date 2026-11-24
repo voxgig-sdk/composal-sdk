@@ -1,0 +1,28 @@
+$kind: http-request
+id: "705508ab-dcf1-539b-87fc-7e6e4009318b"
+description: |-
+  The `archive` action of **project_environment**, a route of its `create` operation.
+
+  SDK: `client.ProjectEnvironment().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/environments/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_environment belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_environment belongs to.
+  - key: id
+    value: "{{project_environment_id}}"
+    description: The project_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1
+    }
+order: 6000

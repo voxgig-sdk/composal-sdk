@@ -1,0 +1,21 @@
+$kind: http-request
+id: "989f131d-57dd-5b66-a4a7-da5bac50c89b"
+description: |-
+  The `load` operation of **environment_revision**.
+
+  SDK: `client.EnvironmentRevision().load({ environment_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/revisions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_revision belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_revision belongs to.
+  - key: id
+    value: "{{environment_revision_id}}"
+    description: The environment_revision this request addresses.
+order: 1000

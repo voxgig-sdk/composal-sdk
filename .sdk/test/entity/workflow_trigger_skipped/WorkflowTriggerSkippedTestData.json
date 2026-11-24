@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "workflow_trigger_skipped": {
+      "WORKFLOW_TRIGGER_SKIPPED00": {
+        "id": "WORKFLOW_TRIGGER_SKIPPED00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_trigger_id": "WORKFLOW_TRIGGER01"
+      },
+      "WORKFLOW_TRIGGER_SKIPPED01": {
+        "id": "WORKFLOW_TRIGGER_SKIPPED01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_trigger_id": "WORKFLOW_TRIGGER01"
+      },
+      "WORKFLOW_TRIGGER_SKIPPED02": {
+        "id": "WORKFLOW_TRIGGER_SKIPPED02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "workflow_trigger_id": "WORKFLOW_TRIGGER01"
+      }
+    }
+  },
+  "new": {
+    "workflow_trigger_skipped": {
+      "workflow_trigger_skipped_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped/{delivery_id}/run": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

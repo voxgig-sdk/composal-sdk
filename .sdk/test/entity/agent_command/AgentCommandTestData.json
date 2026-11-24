@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "agent_command": {
+      "AGENT_COMMAND00": {
+        "description": "s32",
+        "display_name": "s33",
+        "name": "s34",
+        "skill_model_visible": false,
+        "source": "s36",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_COMMAND01": {
+        "description": "s64",
+        "display_name": "s65",
+        "name": "s66",
+        "skill_model_visible": false,
+        "source": "s68",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_COMMAND02": {
+        "description": "s96",
+        "display_name": "s97",
+        "name": "s98",
+        "skill_model_visible": false,
+        "source": "s9a",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_command": {
+      "agent_command_ref01": {
+        "description": "sc8",
+        "display_name": "sc9",
+        "name": "sca",
+        "skill_model_visible": false,
+        "source": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/commands": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

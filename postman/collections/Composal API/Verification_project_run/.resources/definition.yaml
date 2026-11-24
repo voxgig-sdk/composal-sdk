@@ -1,0 +1,47 @@
+$kind: collection
+id: d890d6b3-94ae-5d55-b916-4ba35d5ae014
+description: |-
+  A Verify run of a project: list or read runs, launch, cancel or rerun one (actions).
+
+  The **verification_project_run** entity, which belongs to a organization and a project. Its requests address one record by `{{verification_project_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `approved_at` | string | yes |  |
+  | `approved_digest` | string | yes |  |
+  | `archived_at` | string | yes |  |
+  | `available_tests` | array | yes |  |
+  | `can_archive` | boolean | yes |  |
+  | `can_restore` | boolean | yes |  |
+  | `can_start_another_run` | boolean | yes |  |
+  | `cleanup_state` | string | yes |  |
+  | `concurrency` | integer | yes |  |
+  | `created_at` | string | yes |  |
+  | `creator_name` | string | yes |  |
+  | `definition_mode` | string | yes |  |
+  | `environment_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `max_seconds` | integer | yes |  |
+  | `outcome` | string | yes |  |
+  | `permissions` | object | yes |  |
+  | `plan_digest` | string | yes |  |
+  | `preparation_error_code` | string | yes |  |
+  | `progress` | object | yes |  |
+  | `project` | object | yes |  |
+  | `project_id` | string | yes |  |
+  | `pull_request` | any | yes |  |
+  | `queued_at` | string | yes |  |
+  | `run` | object | yes |  |
+  | `run_plan_id` | string |  |  |
+  | `scenario_runs` | array | yes |  |
+  | `source_run_id` | string | yes |  |
+  | `source_versions` | array | yes |  |
+  | `start_when_prepared` | boolean | yes |  |
+  | `state` | string | yes |  |
+  | `target_snapshot` | object | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verifier_preferences_snapshot` | object | yes |  |
+  | `web_path` | string | yes |  |
+order: 207000

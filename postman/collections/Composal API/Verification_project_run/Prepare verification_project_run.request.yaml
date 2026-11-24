@@ -1,0 +1,86 @@
+$kind: http-request
+id: da932a04-b113-50bb-b55b-d280ddd7bd53
+description: |-
+  The `prepare` action of **verification_project_run**, a route of its `create` operation.
+
+  SDK: `client.VerificationProjectRun().create({ "organization_id": "organization_id", "project_id": "project_id", $action: "prepare" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/prepare"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_run belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "viewer_time_zone": "example",
+      "environment_id": "{{environment_id}}",
+      "scenario_ids": [
+        "example"
+      ],
+      "scenario_files": [
+        {
+          "$schema": "https://composal.ai/schema/verify/v1/scenario.json",
+          "id": "example",
+          "key": "example",
+          "version": 1,
+          "name": "example",
+          "persona": "example",
+          "labels": [
+            "example"
+          ],
+          "fixtures": [
+            {
+              "path": "example",
+              "name": "example",
+              "content_type": "example"
+            }
+          ],
+          "fixture_hashes": {},
+          "allowed_actions": "read_only",
+          "starting_conditions": "example",
+          "actors": {},
+          "primary_actor": "example",
+          "identity_probe": {
+            "path": "example",
+            "subject_pointer": "example",
+            "email_pointer": "example"
+          },
+          "steps": [
+            "example"
+          ],
+          "outcomes": [
+            "example"
+          ],
+          "path": "example",
+          "dependencies": [
+            {
+              "after_step": 1,
+              "before_step": 1,
+              "name": "example"
+            }
+          ],
+          "on": {
+            "schedule": []
+          },
+          "if": "example",
+          "triggers": [
+            "example"
+          ]
+        }
+      ],
+      "idempotency_key": "example",
+      "concurrency": 1,
+      "max_seconds": 1,
+      "start_when_prepared": true,
+      "run_plan_id": "example",
+      "run_plan_version": 1
+    }
+order: 7000

@@ -1,0 +1,97 @@
+{
+  "existing": {
+    "me_email": {
+      "ME_EMAIL00": {
+        "account": true,
+        "can_delete": false,
+        "can_resend_verification": true,
+        "can_set_account": false,
+        "can_set_commit_author": true,
+        "commit_author": false,
+        "email": "s7e",
+        "emails": [],
+        "id": "ME_EMAIL00",
+        "message": "s81",
+        "verification_status": "s82",
+        "verified": false
+      },
+      "ME_EMAIL01": {
+        "account": true,
+        "can_delete": false,
+        "can_resend_verification": true,
+        "can_set_account": false,
+        "can_set_commit_author": true,
+        "commit_author": false,
+        "email": "sf6",
+        "emails": [],
+        "id": "ME_EMAIL01",
+        "message": "sf9",
+        "verification_status": "sfa",
+        "verified": false
+      },
+      "ME_EMAIL02": {
+        "account": true,
+        "can_delete": false,
+        "can_resend_verification": true,
+        "can_set_account": false,
+        "can_set_commit_author": true,
+        "commit_author": false,
+        "email": "s16e",
+        "emails": [],
+        "id": "ME_EMAIL02",
+        "message": "s171",
+        "verification_status": "s172",
+        "verified": false
+      }
+    }
+  },
+  "new": {
+    "me_email": {
+      "me_email_ref01": {
+        "account": true,
+        "can_delete": false,
+        "can_resend_verification": true,
+        "can_set_account": false,
+        "can_set_commit_author": true,
+        "commit_author": false,
+        "email": "s1e6",
+        "emails": [],
+        "message": "s1e9",
+        "verification_status": "s1ea",
+        "verified": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/me/emails/{id}/resend_verification": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/me/emails": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/me/emails": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/me/emails/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/me/emails/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/me/emails/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

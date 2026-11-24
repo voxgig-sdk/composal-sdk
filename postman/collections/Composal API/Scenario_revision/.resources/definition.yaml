@@ -1,0 +1,16 @@
+$kind: collection
+id: "6cb5674d-b5cb-5fb7-9413-22f11bb21bfe"
+description: |-
+  The **scenario_revision** entity, which belongs to a organization and a project. Its requests address one record by `{{scenario_revision_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `batch` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `definition` | object | yes |  |
+  | `id` | string | yes |  |
+  | `source` | string | yes |  |
+  | `user` | any | yes |  |
+  | `version` | integer | yes |  |
+order: 194000

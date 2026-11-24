@@ -1,0 +1,26 @@
+# BasicVerifyKnowledgePageFlow
+
+main: kit: flow: BasicVerifyKnowledgePageFlow:
+{
+  entity: "verify_knowledge_page",
+  kind: "basic",
+  name: "BasicVerifyKnowledgePageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_knowledge_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyKnowledgePageFlow"
+}

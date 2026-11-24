@@ -1,0 +1,24 @@
+$kind: http-request
+id: "7a7168d0-69d7-582b-ac38-5559b1f7e938"
+description: |-
+  The `activity` action of **page_agent**, a route of its `create` operation.
+
+  SDK: `client.PageAgent().create({ "organization_id": "organization_id", $action: "activity" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/page/activity"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_agent belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "agent_ids": [
+        "example"
+      ]
+    }
+order: 2000

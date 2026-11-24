@@ -1,0 +1,26 @@
+# BasicWorkspaceActivityFlow
+
+main: kit: flow: BasicWorkspaceActivityFlow:
+{
+  entity: "workspace_activity",
+  kind: "basic",
+  name: "BasicWorkspaceActivityFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "workspace_activity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkspaceActivityFlow"
+}

@@ -1,0 +1,18 @@
+# BasicAgentRoderSessionFlow
+
+main: kit: flow: BasicAgentRoderSessionFlow:
+{
+  entity: "agent_roder_session",
+  kind: "basic",
+  name: "BasicAgentRoderSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_roder_session_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentRoderSessionFlow"
+}

@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "network_connection": {
+      "NETWORK_CONNECTION00": {
+        "aws_client_vpn_profile": "s64",
+        "created_at": "s65",
+        "device_tag": "s66",
+        "id": "NETWORK_CONNECTION00",
+        "name": "s68",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s6a",
+        "provider": "s6b",
+        "status": "s6c",
+        "updated_at": "s6d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "NETWORK_CONNECTION01": {
+        "aws_client_vpn_profile": "sc8",
+        "created_at": "sc9",
+        "device_tag": "sca",
+        "id": "NETWORK_CONNECTION01",
+        "name": "scc",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "sce",
+        "provider": "scf",
+        "status": "sd0",
+        "updated_at": "sd1",
+        "organization_id": "ORGANIZATION01"
+      },
+      "NETWORK_CONNECTION02": {
+        "aws_client_vpn_profile": "s12c",
+        "created_at": "s12d",
+        "device_tag": "s12e",
+        "id": "NETWORK_CONNECTION02",
+        "name": "s130",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s132",
+        "provider": "s133",
+        "status": "s134",
+        "updated_at": "s135",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "network_connection": {
+      "network_connection_ref01": {
+        "aws_client_vpn_profile": "s190",
+        "created_at": "s191",
+        "device_tag": "s192",
+        "name": "s194",
+        "oauth_client_id": "OAUTH_CLIENT01",
+        "oauth_client_secret": "s196",
+        "provider": "s197",
+        "status": "s198",
+        "updated_at": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/network_connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verify/network_connections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verify/network_connections/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

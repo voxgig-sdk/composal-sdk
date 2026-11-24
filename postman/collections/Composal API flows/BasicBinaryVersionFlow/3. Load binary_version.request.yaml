@@ -1,0 +1,62 @@
+$kind: http-request
+id: eef86fb3-9873-50a7-b6e8-674370564cab
+description: |-
+  The `load` operation of **binary_version**.
+
+  SDK: `client.BinaryVersion().load({ binary_id: "example", id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/binaries/:binary_id/versions/:id?project_id={{project_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this binary_version belongs to.
+  - key: binary_id
+    value: "{{binary_id}}"
+    description: The binary this binary_version belongs to.
+  - key: id
+    value: "{{binary_version_ref01}}"
+    description: The binary_version this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","project_id","organization_id","binary_id","binary_version_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Load binary_version: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-binary_version_ref01" === pm.variables.get("binary_version_ref01_marked")) pm.test("3. Load binary_version: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-binary_version_ref01")
+      })
+      pm.test("3. Load binary_version: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("binary_version_ref01")))
+      })
+    language: text/javascript
+order: 3000

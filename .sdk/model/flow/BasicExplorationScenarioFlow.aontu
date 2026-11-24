@@ -1,0 +1,23 @@
+# BasicExplorationScenarioFlow
+
+main: kit: flow: BasicExplorationScenarioFlow:
+{
+  entity: "exploration_scenario",
+  kind: "basic",
+  name: "BasicExplorationScenarioFlow",
+  step: [
+    {
+      i: {
+        ref: "exploration_scenario_ref01"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicExplorationScenarioFlow"
+}

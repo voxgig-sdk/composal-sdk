@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "attachment_part": {
+      "ATTACHMENT_PART00": {
+        "id": "ATTACHMENT_PART00",
+        "agent_id": "AGENT01",
+        "attachment_id": "ATTACHMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ATTACHMENT_PART01": {
+        "id": "ATTACHMENT_PART01",
+        "agent_id": "AGENT01",
+        "attachment_id": "ATTACHMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ATTACHMENT_PART02": {
+        "id": "ATTACHMENT_PART02",
+        "agent_id": "AGENT01",
+        "attachment_id": "ATTACHMENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "attachment_part": {
+      "attachment_part_ref01": {}
+    }
+  },
+  "requests": {
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicVerifyAppDomainFlow
+
+main: kit: flow: BasicVerifyAppDomainFlow:
+{
+  entity: "verify_app_domain",
+  kind: "basic",
+  name: "BasicVerifyAppDomainFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_app_domain_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyAppDomainFlow"
+}

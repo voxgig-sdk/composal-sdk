@@ -1,0 +1,55 @@
+$kind: http-request
+id: "6c4d8a32-7671-550f-9c54-df223af98849"
+description: |-
+  The `create` operation of **project_run_plan**.
+
+  SDK: `client.ProjectRunPlan().create({ organization_id: "example", project_id: "example", dependencies: [], identity_probe: {}, name: "example", nodes: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_plans"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_plan belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_plan belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "nodes": [
+        {
+          "key": "example",
+          "scenario_id": "example"
+        }
+      ],
+      "dependencies": [
+        {
+          "from": "example",
+          "after_step": 1,
+          "to": "example",
+          "before_step": 1,
+          "name": "example"
+        }
+      ],
+      "identity_probe": {
+        "path": "example",
+        "subject_pointer": "example",
+        "email_pointer": "example"
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("project_run_plan_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

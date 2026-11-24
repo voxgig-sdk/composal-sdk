@@ -1,0 +1,21 @@
+$kind: http-request
+id: df3eae9e-f948-5dab-a766-adb7adfacaae
+description: |-
+  The `load` operation of **agent_workflow_proposal**.
+
+  SDK: `client.AgentWorkflowProposal().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_proposals/:proposal"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_proposal belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_proposal belongs to.
+  - key: proposal
+    value: "{{agent_workflow_proposal_id}}"
+    description: The agent_workflow_proposal this request addresses.
+order: 1000

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "9421eae0-ed36-5b28-8202-d412475721e8"
+description: |-
+  The `handled` action of **agent_work**, a route of its `create` operation.
+
+  SDK: `client.AgentWork().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "handled" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/work/:work_id/handled"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_work belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_work belongs to.
+  - key: work_id
+    value: "{{agent_work_id}}"
+    description: The agent_work this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "revision": 1
+    }
+order: 1000

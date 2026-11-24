@@ -1,0 +1,176 @@
+{
+  "existing": {
+    "verification_project_scenario": {
+      "VERIFICATION_PROJECT_SCENARIO00": {
+        "actors": {},
+        "allowed_actions": "s105",
+        "archived_at": "s106",
+        "cleanup": [],
+        "created_at": "s108",
+        "dependencies": [],
+        "fixtures": [],
+        "health": {},
+        "id": "VERIFICATION_PROJECT_SCENARIO00",
+        "identity_probe": "s10d",
+        "if": "s10e",
+        "labels": [],
+        "last_revision": "s110",
+        "lock_version": 273,
+        "name": "s112",
+        "on": "s113",
+        "outcomes": [],
+        "persona_id": "PERSONA01",
+        "primary_actor": "s116",
+        "project_id": "PROJECT01",
+        "selectable_for_run": true,
+        "starting_conditions": "s119",
+        "steps": [],
+        "triggers": [],
+        "updated_at": "s11c",
+        "version": 285,
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFICATION_PROJECT_SCENARIO01": {
+        "actors": {},
+        "allowed_actions": "s209",
+        "archived_at": "s20a",
+        "cleanup": [],
+        "created_at": "s20c",
+        "dependencies": [],
+        "fixtures": [],
+        "health": {},
+        "id": "VERIFICATION_PROJECT_SCENARIO01",
+        "identity_probe": "s211",
+        "if": "s212",
+        "labels": [],
+        "last_revision": "s214",
+        "lock_version": 533,
+        "name": "s216",
+        "on": "s217",
+        "outcomes": [],
+        "persona_id": "PERSONA01",
+        "primary_actor": "s21a",
+        "project_id": "PROJECT01",
+        "selectable_for_run": true,
+        "starting_conditions": "s21d",
+        "steps": [],
+        "triggers": [],
+        "updated_at": "s220",
+        "version": 545,
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFICATION_PROJECT_SCENARIO02": {
+        "actors": {},
+        "allowed_actions": "s30d",
+        "archived_at": "s30e",
+        "cleanup": [],
+        "created_at": "s310",
+        "dependencies": [],
+        "fixtures": [],
+        "health": {},
+        "id": "VERIFICATION_PROJECT_SCENARIO02",
+        "identity_probe": "s315",
+        "if": "s316",
+        "labels": [],
+        "last_revision": "s318",
+        "lock_version": 793,
+        "name": "s31a",
+        "on": "s31b",
+        "outcomes": [],
+        "persona_id": "PERSONA01",
+        "primary_actor": "s31e",
+        "project_id": "PROJECT01",
+        "selectable_for_run": true,
+        "starting_conditions": "s321",
+        "steps": [],
+        "triggers": [],
+        "updated_at": "s324",
+        "version": 805,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "verification_project_scenario": {
+      "verification_project_scenario_ref01": {
+        "actors": {},
+        "allowed_actions": "s411",
+        "archived_at": "s412",
+        "cleanup": [],
+        "created_at": "s414",
+        "dependencies": [],
+        "fixtures": [],
+        "health": {},
+        "identity_probe": "s419",
+        "if": "s41a",
+        "labels": [],
+        "last_revision": "s41c",
+        "lock_version": 1053,
+        "name": "s41e",
+        "on": "s41f",
+        "outcomes": [],
+        "persona_id": "PERSONA01",
+        "primary_actor": "s422",
+        "project_id": "PROJECT01",
+        "selectable_for_run": true,
+        "starting_conditions": "s425",
+        "steps": [],
+        "triggers": [],
+        "updated_at": "s428",
+        "version": 1065
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/duplicate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/from_exploration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/import": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/export": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+# BasicAgentRelayDeliveryReceiptFlow
+
+main: kit: flow: BasicAgentRelayDeliveryReceiptFlow:
+{
+  entity: "agent_relay_delivery_receipt",
+  kind: "basic",
+  name: "BasicAgentRelayDeliveryReceiptFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01",
+        local_thread_id: "local_thread01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_relay_delivery_receipt_ref01",
+        srcdatavar: "agent_relay_delivery_receipt_ref01_data",
+        suffix: "_up0",
+        textfield: "decision"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_relay_delivery_receipt_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentRelayDeliveryReceiptFlow"
+}

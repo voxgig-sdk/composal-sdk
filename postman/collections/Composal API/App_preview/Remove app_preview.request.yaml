@@ -1,0 +1,25 @@
+$kind: http-request
+id: "358875e8-de62-5da7-a785-29c86404ec0c"
+description: |-
+  The `remove` operation of **app_preview**.
+
+  SDK: `client.AppPreview().remove({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("app_preview_id")
+      }
+    language: text/javascript
+order: 17000

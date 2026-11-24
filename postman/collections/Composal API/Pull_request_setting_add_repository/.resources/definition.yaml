@@ -1,0 +1,11 @@
+$kind: collection
+id: "8658ddb3-cdef-5984-ac7f-7f5662d13bb0"
+description: |-
+  The **pull_request_setting_add_repository** entity, which belongs to a organization. Its requests address one record by `{{pull_request_setting_add_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `project_id` | string | yes |  |
+  | `replace` | boolean |  |  |
+  | `repositories` | array | yes |  |
+order: 182000

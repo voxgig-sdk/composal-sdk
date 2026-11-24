@@ -1,0 +1,24 @@
+# BasicAutomationRunFlow
+
+main: kit: flow: BasicAutomationRunFlow:
+{
+  entity: "automation_run",
+  kind: "basic",
+  name: "BasicAutomationRunFlow",
+  step: [
+    {
+      i: {
+        ref: "automation_run_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        automation_id: "automation01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAutomationRunFlow"
+}

@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "project_scenario_row": {
+      "PROJECT_SCENARIO_ROW00": {
+        "actor_count": 90,
+        "dependency_count": 91,
+        "health": {},
+        "id": "PROJECT_SCENARIO_ROW00",
+        "labels": [],
+        "name": "s5f",
+        "persona_id": "PERSONA01",
+        "selectable_for_run": false,
+        "step_count": 98,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SCENARIO_ROW01": {
+        "actor_count": 180,
+        "dependency_count": 181,
+        "health": {},
+        "id": "PROJECT_SCENARIO_ROW01",
+        "labels": [],
+        "name": "sb9",
+        "persona_id": "PERSONA01",
+        "selectable_for_run": false,
+        "step_count": 188,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_SCENARIO_ROW02": {
+        "actor_count": 270,
+        "dependency_count": 271,
+        "health": {},
+        "id": "PROJECT_SCENARIO_ROW02",
+        "labels": [],
+        "name": "s113",
+        "persona_id": "PERSONA01",
+        "selectable_for_run": false,
+        "step_count": 278,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_scenario_row": {
+      "project_scenario_row_ref01": {
+        "actor_count": 360,
+        "dependency_count": 361,
+        "health": {},
+        "labels": [],
+        "name": "s16d",
+        "persona_id": "PERSONA01",
+        "selectable_for_run": false,
+        "step_count": 368
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

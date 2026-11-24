@@ -1,0 +1,62 @@
+{
+  "existing": {
+    "agent_site": {
+      "AGENT_SITE00": {
+        "deployed_at": "s50",
+        "deployments_count": 81,
+        "hostname": "s52",
+        "https": "s53",
+        "id": "AGENT_SITE00",
+        "name": "s55",
+        "url": "s56",
+        "visibility": "s57",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_SITE01": {
+        "deployed_at": "sa0",
+        "deployments_count": 161,
+        "hostname": "sa2",
+        "https": "sa3",
+        "id": "AGENT_SITE01",
+        "name": "sa5",
+        "url": "sa6",
+        "visibility": "sa7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_SITE02": {
+        "deployed_at": "sf0",
+        "deployments_count": 241,
+        "hostname": "sf2",
+        "https": "sf3",
+        "id": "AGENT_SITE02",
+        "name": "sf5",
+        "url": "sf6",
+        "visibility": "sf7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_site": {
+      "agent_site_ref01": {
+        "deployed_at": "s140",
+        "deployments_count": 321,
+        "hostname": "s142",
+        "https": "s143",
+        "name": "s145",
+        "url": "s146",
+        "visibility": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/sites": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

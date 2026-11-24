@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "agent_control_flow": {
+      "AGENT_CONTROL_FLOW00": {
+        "can_cancel": true,
+        "cancellation_requested": false,
+        "device_name": "s66",
+        "flow_id": "FLOW01",
+        "id": "AGENT_CONTROL_FLOW00",
+        "providers": [],
+        "repair_of_flow_id": "REPAIR_OF_FLOW01",
+        "status_label": "s6b",
+        "step_count": 108,
+        "title": "s6d",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONTROL_FLOW01": {
+        "can_cancel": true,
+        "cancellation_requested": false,
+        "device_name": "sca",
+        "flow_id": "FLOW01",
+        "id": "AGENT_CONTROL_FLOW01",
+        "providers": [],
+        "repair_of_flow_id": "REPAIR_OF_FLOW01",
+        "status_label": "scf",
+        "step_count": 208,
+        "title": "sd1",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_CONTROL_FLOW02": {
+        "can_cancel": true,
+        "cancellation_requested": false,
+        "device_name": "s12e",
+        "flow_id": "FLOW01",
+        "id": "AGENT_CONTROL_FLOW02",
+        "providers": [],
+        "repair_of_flow_id": "REPAIR_OF_FLOW01",
+        "status_label": "s133",
+        "step_count": 308,
+        "title": "s135",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_control_flow": {
+      "agent_control_flow_ref01": {
+        "can_cancel": true,
+        "cancellation_requested": false,
+        "device_name": "s192",
+        "flow_id": "FLOW01",
+        "providers": [],
+        "repair_of_flow_id": "REPAIR_OF_FLOW01",
+        "status_label": "s197",
+        "step_count": 408,
+        "title": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/control_flows/{flow_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/control_flows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/control_flows/{flow_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

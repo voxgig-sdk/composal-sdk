@@ -1,0 +1,23 @@
+# BasicEnvironmentDetailFlow
+
+main: kit: flow: BasicEnvironmentDetailFlow:
+{
+  entity: "environment_detail",
+  kind: "basic",
+  name: "BasicEnvironmentDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "environment_detail_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicEnvironmentDetailFlow"
+}

@@ -1,0 +1,23 @@
+$kind: http-request
+id: "4f30f0ea-b315-54b8-ae5a-72b140320549"
+description: |-
+  The `load` operation of **connection_request**.
+
+  SDK: `client.ConnectionRequest().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections/requests/:request_key"
+method: GET
+headers:
+  Accept: application/json
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this connection_request belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this connection_request belongs to.
+  - key: request_key
+    value: "{{connection_request_id}}"
+    description: The connection_request this request addresses.
+order: 1000

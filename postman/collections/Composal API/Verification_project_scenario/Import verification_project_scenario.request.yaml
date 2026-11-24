@@ -1,0 +1,76 @@
+$kind: http-request
+id: fc1f35bf-b27f-5db2-8b6b-d80429bc44d3
+description: |-
+  The `import` action of **verification_project_scenario**, a route of its `create` operation.
+
+  SDK: `client.VerificationProjectScenario().create({ "organization_id": "organization_id", "project_id": "project_id", $action: "import" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios/import"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "dry_run": false,
+      "scenarios": [
+        {
+          "$schema": "https://composal.ai/schema/verify/v1/scenario.json",
+          "id": "example",
+          "key": "example",
+          "version": 1,
+          "name": "example",
+          "persona": "example",
+          "labels": [
+            "example"
+          ],
+          "fixtures": [
+            {
+              "path": "example",
+              "name": "example",
+              "content_type": "example"
+            }
+          ],
+          "fixture_hashes": {},
+          "allowed_actions": "read_only",
+          "starting_conditions": "example",
+          "actors": {},
+          "primary_actor": "example",
+          "identity_probe": {
+            "path": "example",
+            "subject_pointer": "example",
+            "email_pointer": "example"
+          },
+          "steps": [
+            "example"
+          ],
+          "outcomes": [
+            "example"
+          ],
+          "path": "example",
+          "dependencies": [
+            {
+              "after_step": 1,
+              "before_step": 1,
+              "name": "example"
+            }
+          ],
+          "on": {
+            "schedule": []
+          },
+          "if": "example",
+          "triggers": [
+            "example"
+          ]
+        }
+      ]
+    }
+order: 10000

@@ -1,0 +1,22 @@
+# BasicPortalSessionFlow
+
+main: kit: flow: BasicPortalSessionFlow:
+{
+  entity: "portal_session",
+  kind: "basic",
+  name: "BasicPortalSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "portal_session_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPortalSessionFlow"
+}

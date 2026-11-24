@@ -1,0 +1,54 @@
+$kind: http-request
+id: "4e512d29-10d9-5868-a151-d3142b39da25"
+description: |-
+  The `remove` operation of **static_site_domain**.
+
+  SDK: `client.StaticSiteDomain().remove({ id: "example_id", static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/domains/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_domain belongs to.
+  - key: id
+    value: "{{static_site_domain_ref01}}"
+    description: The static_site_domain this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","static_site_id","static_site_domain_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("5. Remove static_site_domain: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if (pm.response.code < 300) {
+        pm.variables.set("static_site_domain_ref01_removed", String(pm.variables.get("static_site_domain_ref01")))
+        pm.variables.unset("static_site_domain_ref01")
+      }
+    language: text/javascript
+order: 5000

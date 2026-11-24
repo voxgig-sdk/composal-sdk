@@ -1,0 +1,46 @@
+$kind: http-request
+id: "2b7fff39-4221-59b9-b536-cec3f5558b35"
+description: |-
+  The `create` operation of **project_run_schedule**.
+
+  SDK: `client.ProjectRunSchedule().create({ organization_id: "example", project_id: "example", credential_ids: {}, environment_id: "example", labels: [], name: "example", selection_mode: "example", state: "example", time_of_day: "example", time_zone: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_schedules"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_schedule belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_schedule belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "state": "active",
+      "time_of_day": "example",
+      "time_zone": "example",
+      "credential_ids": {},
+      "environment_id": "{{environment_id}}",
+      "notification_channel": "email",
+      "slack_subscription_id": "example",
+      "selection_mode": "all",
+      "labels": [
+        "example"
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("project_run_schedule_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

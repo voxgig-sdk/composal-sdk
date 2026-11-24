@@ -1,0 +1,71 @@
+# BasicAgentWebhookFlow
+
+main: kit: flow: BasicAgentWebhookFlow:
+{
+  entity: "agent_webhook",
+  kind: "basic",
+  name: "BasicAgentWebhookFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_webhook_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_webhook_ref01",
+        srcdatavar: "agent_webhook_ref01_data",
+        suffix: "_up0",
+        textfield: "action"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_webhook_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_webhook_ref01",
+        srcdatavar: "agent_webhook_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_webhook01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_webhook_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWebhookFlow"
+}

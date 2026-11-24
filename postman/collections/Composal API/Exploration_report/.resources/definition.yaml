@@ -1,0 +1,8 @@
+$kind: collection
+id: c989a314-c3e3-5cd0-a273-dfc55d819686
+description: |-
+  The **exploration_report** entity, which belongs to a organization and a exploration. Its requests address one record by `{{exploration_report_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 119000

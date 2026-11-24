@@ -1,0 +1,34 @@
+# BasicDeviceFolderListingFlow
+
+main: kit: flow: BasicDeviceFolderListingFlow:
+{
+  entity: "device_folder_listing",
+  kind: "basic",
+  name: "BasicDeviceFolderListingFlow",
+  step: [
+    {
+      i: {
+        ref: "device_folder_listing_ref01",
+        srcdatavar: "device_folder_listing_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        device_id: "device01",
+        id: "device_folder_listing01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-device_folder_listing_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceFolderListingFlow"
+}

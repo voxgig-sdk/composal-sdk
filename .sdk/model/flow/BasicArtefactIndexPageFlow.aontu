@@ -1,0 +1,26 @@
+# BasicArtefactIndexPageFlow
+
+main: kit: flow: BasicArtefactIndexPageFlow:
+{
+  entity: "artefact_index_page",
+  kind: "basic",
+  name: "BasicArtefactIndexPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artefact_index_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArtefactIndexPageFlow"
+}

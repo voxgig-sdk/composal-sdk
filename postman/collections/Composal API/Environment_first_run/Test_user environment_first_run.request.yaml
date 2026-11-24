@@ -1,0 +1,22 @@
+$kind: http-request
+id: "1e0a3797-1831-5891-8778-6e4014c88d69"
+description: |-
+  The `test_user` action of **environment_first_run**, a route of its `create` operation.
+
+  SDK: `client.EnvironmentFirstRun().create({ "organization_id": "organization_id", "environment_id": "environment_id", $action: "test_user" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/first_run/test_user"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_first_run belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_first_run belongs to.
+body:
+  type: json
+  content: "{}"
+order: 2000

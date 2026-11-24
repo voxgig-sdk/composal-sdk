@@ -1,0 +1,35 @@
+$kind: http-request
+id: "1752c8de-5df5-560b-a09e-a8ff3ebc2df1"
+description: |-
+  The `patch` operation of **app_cdn**.
+
+  SDK: `client.AppCdn().patch({ app_id: "example", id: "example", app_environment_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+  - key: id
+    value: "{{app_cdn_id}}"
+    description: The app_cdn this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "app_environment_id": "{{app_environment_id}}",
+      "app_service_id": "{{app_service_id}}",
+      "slug": "example",
+      "name": "example",
+      "distribution_kind": "pull_zone",
+      "status": "draft",
+      "origin_url": "https://example.com",
+      "cache_path_prefix": "example",
+      "cache_settings_json": "example",
+      "security_settings_json": "example",
+      "routing_settings_json": "example"
+    }
+order: 5000

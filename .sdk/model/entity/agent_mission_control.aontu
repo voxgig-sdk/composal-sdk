@@ -1,0 +1,152 @@
+# Entity: agent_mission_control
+
+main: kit: entity: agent_mission_control: {
+
+  alias: field: {}
+
+  name: "agent_mission_control"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "action"
+            "agent_id"
+            "at"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/mission_control/feedback"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/mission_control/feedback"
+          q: {
+            "$action": "feedback"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              lit: "mission_control"
+            }
+            {
+              lit: "feedback"
+            }
+          ]
+          t: {
+            req: {
+              action: "`reqdata.action`"
+              agent_id: "`reqdata.agent_id`"
+              at: "`reqdata.at`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "agent_ids"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/mission_control/relevance"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/mission_control/relevance"
+          q: {
+            "$action": "relevance"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              lit: "mission_control"
+            }
+            {
+              lit: "relevance"
+            }
+          ]
+          t: {
+            req: {
+              agent_ids: "`reqdata.agent_id`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

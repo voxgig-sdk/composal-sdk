@@ -1,0 +1,645 @@
+# Entity: static_site_deployment
+
+main: kit: entity: static_site_deployment: {
+
+  alias: field: {}
+
+  fields: {
+    activated_at: {
+      fo: "date-time"
+      h: "Activated At"
+      n: "activated_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    activated_at_label: {
+      h: "Activated At Label"
+      n: "activated_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    commit_sha: {
+      h: "Commit Sha"
+      n: "commit_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at_label: {
+      h: "Created At Label"
+      n: "created_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    creator_user_id: {
+      h: "Creator User Id"
+      n: "creator_user_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    deploy_slug: {
+      h: "Deploy Slug"
+      n: "deploy_slug"
+      r: true
+      t: "`$STRING`"
+    }
+    failure_message: {
+      h: "Failure Message"
+      n: "failure_message"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    file_count: {
+      h: "File Count"
+      n: "file_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    file_count_label: {
+      h: "File Count Label"
+      n: "file_count_label"
+      r: true
+      t: "`$STRING`"
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    finished_at_label: {
+      h: "Finished At Label"
+      n: "finished_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    is_active: {
+      h: "Is Active"
+      n: "is_active"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    source_ref: {
+      h: "Source Ref"
+      n: "source_ref"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    started_at_label: {
+      h: "Started At Label"
+      n: "started_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    static_site_id: {
+      h: "Static Site Id"
+      n: "static_site_id"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    total_bytes: {
+      h: "Total Bytes"
+      n: "total_bytes"
+      r: true
+      t: "`$INTEGER`"
+    }
+    total_bytes_label: {
+      h: "Total Bytes Label"
+      n: "total_bytes_label"
+      r: true
+      t: "`$STRING`"
+    }
+    trigger_kind: {
+      h: "Trigger Kind"
+      n: "trigger_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at_label: {
+      h: "Updated At Label"
+      n: "updated_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    uploaded_at: {
+      fo: "date-time"
+      h: "Uploaded At"
+      n: "uploaded_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    uploaded_at_label: {
+      h: "Uploaded At Label"
+      n: "uploaded_at_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "static_site_deployment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{static_site_id}/deployments/{id}/activate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{static_site_id}/deployments/{id}/activate"
+          q: {
+            "$action": "activate"
+            exist: [
+              "id"
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "activate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployment`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{static_site_id}/deployments/{id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{static_site_id}/deployments/{id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "id"
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{static_site_id}/deployments/{id}/finalize"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{static_site_id}/deployments/{id}/finalize"
+          q: {
+            "$action": "finalize"
+            exist: [
+              "id"
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "finalize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{static_site_id}/deployments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{static_site_id}/deployments"
+          q: {
+            exist: [
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/static_sites/{static_site_id}/deployments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/static_sites/{static_site_id}/deployments"
+          q: {
+            exist: [
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deployments`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/static_sites/{static_site_id}/deployments/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/static_sites/{static_site_id}/deployments/{id}"
+          q: {
+            exist: [
+              "id"
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.static_site")]
+  ]
+
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: cfd7959b-c24e-53b1-8b90-af20122c0e71
+description: |-
+  The `archive` action of **project**, a route of its `create` operation.
+
+  SDK: `client.Project().create({ "organization_id": "organization_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "version": 1
+    }
+order: 6000

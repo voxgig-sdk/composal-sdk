@@ -1,0 +1,26 @@
+# BasicImageRepositoryTagFlow
+
+main: kit: flow: BasicImageRepositoryTagFlow:
+{
+  entity: "image_repository_tag",
+  kind: "basic",
+  name: "BasicImageRepositoryTagFlow",
+  step: [
+    {
+      m: {
+        image_repository_id: "image_repository01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "image_repository_tag_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicImageRepositoryTagFlow"
+}

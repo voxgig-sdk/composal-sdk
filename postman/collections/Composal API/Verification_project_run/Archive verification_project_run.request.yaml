@@ -1,0 +1,25 @@
+$kind: http-request
+id: "218869d0-7fb7-58ba-9440-280801363217"
+description: |-
+  The `archive` action of **verification_project_run**, a route of its `create` operation.
+
+  SDK: `client.VerificationProjectRun().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_run belongs to.
+  - key: id
+    value: "{{verification_project_run_id}}"
+    description: The verification_project_run this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

@@ -1,0 +1,759 @@
+# Entity: binary_version
+
+main: kit: entity: binary_version: {
+
+  alias: field: {}
+
+  fields: {
+    arch: {
+      h: "Arch"
+      n: "arch"
+      r: false
+      t: "`$ANY`"
+    }
+    cancelable: {
+      h: "Cancelable"
+      n: "cancelable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    configuration: {
+      h: "Configuration"
+      n: "configuration"
+      r: true
+      t: "`$OBJECT`"
+    }
+    configuration_digest: {
+      h: "Configuration Digest"
+      n: "configuration_digest"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    deletable: {
+      h: "Deletable"
+      n: "deletable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    download_secret: {
+      h: "Download Secret"
+      n: "download_secret"
+      r: false
+      t: "`$STRING`"
+    }
+    download_url: {
+      h: "Download Url"
+      n: "download_url"
+      r: true
+      t: "`$STRING`"
+    }
+    environment_uses: {
+      h: "Environment Uses"
+      n: "environment_uses"
+      r: true
+      t: "`$ARRAY`"
+    }
+    executable: {
+      h: "Executable"
+      n: "executable"
+      r: false
+      t: "`$STRING`"
+    }
+    format: {
+      h: "Format"
+      n: "format"
+      r: false
+      t: "`$ANY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: true
+      t: "`$STRING`"
+    }
+    launch_args: {
+      h: "Launch Args"
+      n: "launch_args"
+      r: false
+      t: "`$ARRAY`"
+    }
+    operation: {
+      h: "Operation"
+      n: "operation"
+      r: true
+      t: "`$OBJECT`"
+    }
+    package_sha256: {
+      h: "Package Sha256"
+      n: "package_sha256"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    package_size: {
+      h: "Package Size"
+      n: "package_size"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      t: "`$ANY`"
+    }
+    preparations: {
+      h: "Preparations"
+      n: "preparations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    retryable: {
+      h: "Retryable"
+      n: "retryable"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    sha256: {
+      h: "Sha256"
+      n: "sha256"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      t: "`$OBJECT`"
+    }
+    window_title: {
+      h: "Window Title"
+      n: "window_title"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "binary_version"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "binary_id"
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/retry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/retry"
+          q: {
+            "$action": "retry"
+            exist: [
+              "binary_id"
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "retry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "arch"
+            "download_secret"
+            "download_url"
+            "executable"
+            "format"
+            "idempotency_key"
+            "launch_args"
+            "platform"
+            "sha256"
+            "window_title"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions"
+          q: {
+            exist: [
+              "binary_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions"
+          q: {
+            exist: [
+              "binary_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
+            req: "`reqdata`"
+            res: "`body.versions`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}"
+          q: {
+            exist: [
+              "binary_id"
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}"
+          q: {
+            exist: [
+              "binary_id"
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.binary")]
+  ]
+
+}

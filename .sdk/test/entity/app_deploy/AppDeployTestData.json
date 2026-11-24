@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "app_deploy": {
+      "APP_DEPLOY00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "channel": "s7a",
+        "command": "s7b",
+        "commit_sha": "s7c",
+        "desired_instances": 125,
+        "environment": "s7e",
+        "image": "s7f",
+        "region": "s80",
+        "rollout_predecessor": "s81",
+        "service": "s82",
+        "source_ref": "s83",
+        "app_id": "APP01",
+        "id": "APP_DEPLOY00"
+      },
+      "APP_DEPLOY01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "channel": "sf2",
+        "command": "sf3",
+        "commit_sha": "sf4",
+        "desired_instances": 245,
+        "environment": "sf6",
+        "image": "sf7",
+        "region": "sf8",
+        "rollout_predecessor": "sf9",
+        "service": "sfa",
+        "source_ref": "sfb",
+        "app_id": "APP01",
+        "id": "APP_DEPLOY01"
+      },
+      "APP_DEPLOY02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "channel": "s16a",
+        "command": "s16b",
+        "commit_sha": "s16c",
+        "desired_instances": 365,
+        "environment": "s16e",
+        "image": "s16f",
+        "region": "s170",
+        "rollout_predecessor": "s171",
+        "service": "s172",
+        "source_ref": "s173",
+        "app_id": "APP01",
+        "id": "APP_DEPLOY02"
+      }
+    }
+  },
+  "new": {
+    "app_deploy": {
+      "app_deploy_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "channel": "s1e2",
+        "command": "s1e3",
+        "commit_sha": "s1e4",
+        "desired_instances": 485,
+        "environment": "s1e6",
+        "image": "s1e7",
+        "region": "s1e8",
+        "rollout_predecessor": "s1e9",
+        "service": "s1ea",
+        "source_ref": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/deploys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

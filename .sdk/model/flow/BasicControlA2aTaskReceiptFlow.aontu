@@ -1,0 +1,18 @@
+# BasicControlA2aTaskReceiptFlow
+
+main: kit: flow: BasicControlA2aTaskReceiptFlow:
+{
+  entity: "control_a2a_task_receipt",
+  kind: "basic",
+  name: "BasicControlA2aTaskReceiptFlow",
+  step: [
+    {
+      i: {
+        ref: "control_a2a_task_receipt_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicControlA2aTaskReceiptFlow"
+}

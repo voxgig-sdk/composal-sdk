@@ -1,0 +1,33 @@
+# BasicSessionFlow
+
+main: kit: flow: BasicSessionFlow:
+{
+  entity: "session",
+  kind: "basic",
+  name: "BasicSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "session_ref01",
+        srcdatavar: "session_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "session01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-session_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSessionFlow"
+}

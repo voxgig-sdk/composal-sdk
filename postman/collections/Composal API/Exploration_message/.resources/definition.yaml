@@ -1,0 +1,55 @@
+$kind: collection
+id: "66e2cb7c-5817-5381-9884-a64b296926af"
+description: |-
+  The **exploration_message** entity, which belongs to a organization and a exploration. Its requests address one record by `{{exploration_message_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_filters` | object | yes |  |
+  | `agents` | array | yes |  |
+  | `can_continue` | boolean |  |  |
+  | `chat_messages` | array |  |  |
+  | `concurrency` | integer | yes |  |
+  | `covered_areas` | array | yes |  |
+  | `created_at` | string | yes |  |
+  | `deadline_at` | string | yes |  |
+  | `demo_project` | object | yes |  |
+  | `ended_early` | boolean | yes |  |
+  | `environment_id` | string | yes |  |
+  | `environment_name` | string | yes |  |
+  | `explorer_activity` | object | yes |  |
+  | `finding_count` | integer | yes |  |
+  | `findings` | array | yes |  |
+  | `findings_fix_prompt` | string | yes |  |
+  | `finished_at` | string |  |  |
+  | `goal` | string | yes |  |
+  | `huntable_flows` | array | yes |  |
+  | `id` | string | yes |  |
+  | `max_seconds` | integer | yes |  |
+  | `max_testers` | integer | yes |  |
+  | `mode` | string |  |  |
+  | `next_scan_improvements` | array | yes |  |
+  | `observed_at` | string |  |  |
+  | `onboarding` | boolean | yes |  |
+  | `paywalled` | boolean | yes |  |
+  | `permissions` | object | yes |  |
+  | `priority_counts` | object | yes |  |
+  | `project_id` | string |  |  |
+  | `related_explorations` | array | yes |  |
+  | `report` | object | yes |  |
+  | `reproduction_of` | object | yes |  |
+  | `reproductions` | array | yes |  |
+  | `saves_scenarios` | boolean | yes |  |
+  | `scannable_flows` | array | yes |  |
+  | `scenario_generation` | object | yes |  |
+  | `sign_in_needs_answer` | boolean | yes |  |
+  | `sign_in_outcome` | string | yes |  |
+  | `sign_in_question` | string |  |  |
+  | `startup_retryable` | boolean |  |  |
+  | `status` | string | yes |  |
+  | `text` | string | yes |  |
+  | `time_limit_reached` | boolean | yes |  |
+  | `title` | string |  |  |
+  | `unlock` | any | yes |  |
+  | `web_url` | string | yes |  |
+order: 118000

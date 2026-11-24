@@ -1,0 +1,34 @@
+$kind: http-request
+id: "9e221f58-a266-5649-8b08-3f02c33c995f"
+description: |-
+  The `restore` action of **app_data_resource**, a route of its `create` operation.
+
+  SDK: `client.AppDataResource().create({ "app_id": "app_id", "id": "ID", $action: "restore" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources/:id/restore"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+  - key: id
+    value: "{{app_data_resource_id}}"
+    description: The app_data_resource this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "app_environment_id": "{{app_environment_id}}",
+      "slug": "example",
+      "name": "example",
+      "branch_name": "example",
+      "backup_id": "example",
+      "restore_point": "example",
+      "plan": "example",
+      "region": "example",
+      "storage_gb": 1,
+      "high_availability": true
+    }
+order: 8000

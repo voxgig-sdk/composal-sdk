@@ -1,0 +1,26 @@
+# BasicPersistentAgentRosterFlow
+
+main: kit: flow: BasicPersistentAgentRosterFlow:
+{
+  entity: "persistent_agent_roster",
+  kind: "basic",
+  name: "BasicPersistentAgentRosterFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "persistent_agent_roster_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentRosterFlow"
+}

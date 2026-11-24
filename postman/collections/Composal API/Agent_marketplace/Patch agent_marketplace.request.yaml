@@ -1,0 +1,55 @@
+$kind: http-request
+id: "7e4c9e34-674e-5f90-87f6-de098685ac66"
+description: |-
+  The `patch` operation of **agent_marketplace**.
+
+  SDK: `client.AgentMarketplace().patch({ id: "example", organization_id: "example", bundle: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_marketplace/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_marketplace belongs to.
+  - key: id
+    value: "{{agent_marketplace_id}}"
+    description: The agent_marketplace this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "name": "example",
+      "summary": "example",
+      "explainer": "example",
+      "category": "example",
+      "visibility": "organization",
+      "bundle": {
+        "instructions": "example",
+        "page_apps": [
+          {
+            "source_site_id": "example",
+            "revision": "example"
+          }
+        ],
+        "memories": [
+          "example"
+        ],
+        "skills": [
+          {
+            "name": "example",
+            "description": "example",
+            "body": "example"
+          }
+        ],
+        "integrations": [
+          {
+            "toolkit": "example",
+            "reason": "example"
+          }
+        ]
+      }
+    }
+order: 7000

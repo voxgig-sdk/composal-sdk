@@ -1,0 +1,27 @@
+# BasicProjectFixturesPageFlow
+
+main: kit: flow: BasicProjectFixturesPageFlow:
+{
+  entity: "project_fixtures_page",
+  kind: "basic",
+  name: "BasicProjectFixturesPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_fixtures_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectFixturesPageFlow"
+}

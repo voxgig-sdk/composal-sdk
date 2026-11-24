@@ -1,0 +1,51 @@
+# BasicEnvironmentTestAccountFlow
+
+main: kit: flow: BasicEnvironmentTestAccountFlow:
+{
+  entity: "environment_test_account",
+  kind: "basic",
+  name: "BasicEnvironmentTestAccountFlow",
+  step: [
+    {
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "environment_test_account_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "environment_test_account_ref01",
+        srcdatavar: "environment_test_account_ref01_data",
+        suffix: "_up0",
+        textfield: "persona"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-environment_test_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicEnvironmentTestAccountFlow"
+}

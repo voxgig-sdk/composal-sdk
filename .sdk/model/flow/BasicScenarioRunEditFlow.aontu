@@ -1,0 +1,54 @@
+# BasicScenarioRunEditFlow
+
+main: kit: flow: BasicScenarioRunEditFlow:
+{
+  entity: "scenario_run_edit",
+  kind: "basic",
+  name: "BasicScenarioRunEditFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01",
+        scenario_run_id: "scenario_run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "scenario_run_edit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01"
+      }
+
+      i: {
+        ref: "scenario_run_edit_ref01",
+        srcdatavar: "scenario_run_edit_ref01_data",
+        suffix: "_up0",
+        textfield: "run_unavailable_reason"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-scenario_run_edit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicScenarioRunEditFlow"
+}

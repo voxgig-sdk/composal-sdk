@@ -1,0 +1,35 @@
+# BasicWorkflowRunStepFlow
+
+main: kit: flow: BasicWorkflowRunStepFlow:
+{
+  entity: "workflow_run_step",
+  kind: "basic",
+  name: "BasicWorkflowRunStepFlow",
+  step: [
+    {
+      i: {
+        ref: "workflow_run_step_ref01",
+        srcdatavar: "workflow_run_step_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "workflow_run_step01",
+        organization_id: "organization01",
+        workflow_run_id: "workflow_run01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-workflow_run_step_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicWorkflowRunStepFlow"
+}

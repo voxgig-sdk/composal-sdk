@@ -1,0 +1,82 @@
+# BasicVerifyKnowledgeDocumentFlow
+
+main: kit: flow: BasicVerifyKnowledgeDocumentFlow:
+{
+  entity: "verify_knowledge_document",
+  kind: "basic",
+  name: "BasicVerifyKnowledgeDocumentFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_knowledge_document_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_knowledge_document_ref01",
+        srcdatavar: "verify_knowledge_document_ref01_data",
+        suffix: "_up0",
+        textfield: "content_digest"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_knowledge_document_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "verify_knowledge_document_ref01",
+        srcdatavar: "verify_knowledge_document_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_knowledge_document01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_knowledge_document_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "verify_knowledge_document_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "verify_knowledge_document01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicVerifyKnowledgeDocumentFlow"
+}

@@ -1,0 +1,12 @@
+$kind: collection
+id: "2108fefb-b797-59df-9e27-53cc073190e8"
+description: |-
+  The **agent_attachment** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_attachment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `byte_size` | integer | yes |  |
+  | `content_type` | string | yes |  |
+  | `file_name` | string | yes |  |
+  | `id` | string |  |  |
+order: 3000

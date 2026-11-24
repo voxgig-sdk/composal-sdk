@@ -1,0 +1,9 @@
+$kind: collection
+id: "0de28489-6939-5154-ab0a-f88720f579ec"
+description: |-
+  The **cdn_deployment** entity, which belongs to a app. Its requests address one record by `{{cdn_deployment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 87000

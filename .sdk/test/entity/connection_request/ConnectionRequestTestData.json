@@ -1,0 +1,86 @@
+{
+  "existing": {
+    "connection_request": {
+      "CONNECTION_REQUEST00": {
+        "agent_card_url": "s8c",
+        "auth_scheme": "s8d",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "error_code": "s91",
+        "generation": 146,
+        "id": "CONNECTION_REQUEST00",
+        "name": "s94",
+        "remote_agent": "s95",
+        "retired_at": "s96",
+        "revoked_at": "s97",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s99",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONNECTION_REQUEST01": {
+        "agent_card_url": "s118",
+        "auth_scheme": "s119",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "error_code": "s11d",
+        "generation": 286,
+        "id": "CONNECTION_REQUEST01",
+        "name": "s120",
+        "remote_agent": "s121",
+        "retired_at": "s122",
+        "revoked_at": "s123",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s125",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CONNECTION_REQUEST02": {
+        "agent_card_url": "s1a4",
+        "auth_scheme": "s1a5",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "error_code": "s1a9",
+        "generation": 426,
+        "id": "CONNECTION_REQUEST02",
+        "name": "s1ac",
+        "remote_agent": "s1ad",
+        "retired_at": "s1ae",
+        "revoked_at": "s1af",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s1b1",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "connection_request": {
+      "connection_request_ref01": {
+        "agent_card_url": "s230",
+        "auth_scheme": "s231",
+        "can_configure": true,
+        "can_disconnect": false,
+        "can_setup": true,
+        "error_code": "s235",
+        "generation": 566,
+        "name": "s238",
+        "remote_agent": "s239",
+        "retired_at": "s23a",
+        "revoked_at": "s23b",
+        "source_operation_id": "SOURCE_OPERATION01",
+        "state": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections/requests/{request_key}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,27 @@
+# BasicAgentAutomationSummaryFlow
+
+main: kit: flow: BasicAgentAutomationSummaryFlow:
+{
+  entity: "agent_automation_summary",
+  kind: "basic",
+  name: "BasicAgentAutomationSummaryFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_automation_summary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentAutomationSummaryFlow"
+}

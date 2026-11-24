@@ -1,0 +1,27 @@
+# BasicProjectPersonasPageFlow
+
+main: kit: flow: BasicProjectPersonasPageFlow:
+{
+  entity: "project_personas_page",
+  kind: "basic",
+  name: "BasicProjectPersonasPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_personas_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectPersonasPageFlow"
+}

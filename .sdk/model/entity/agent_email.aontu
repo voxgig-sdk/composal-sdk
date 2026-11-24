@@ -1,0 +1,210 @@
+# Entity: agent_email
+
+main: kit: entity: agent_email: {
+
+  alias: field: {}
+
+  fields: {
+    delivery: {
+      h: "Delivery"
+      n: "delivery"
+      r: true
+      sh: "What SES reported for mail the agent sent; null for received mail"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    direction: {
+      h: "Direction"
+      n: "direction"
+      r: true
+      sh: "inbound: mail the agent received; outbound: mail it sent"
+      t: "`$STRING`"
+    }
+    from: {
+      h: "From"
+      n: "from"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    preview: {
+      h: "Preview"
+      n: "preview"
+      r: false
+      t: "`$STRING`"
+    }
+    received_at: {
+      fo: "date-time"
+      h: "Received At"
+      n: "received_at"
+      r: true
+      t: "`$STRING`"
+    }
+    recipient_tag: {
+      h: "Recipient Tag"
+      n: "recipient_tag"
+      r: true
+      sh: "The +tag the sender used, if any"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    spam: {
+      h: "Spam"
+      n: "spam"
+      r: true
+      sh: "SES judged it spam"
+      t: "`$BOOLEAN`"
+    }
+    subject: {
+      h: "Subject"
+      n: "subject"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    text: {
+      h: "Text"
+      n: "text"
+      r: true
+      sh: "From, To, Subject and Date headers, a blank line, then the body as plain text"
+      t: "`$STRING`"
+    }
+    to: {
+      h: "To"
+      n: "to"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_email"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "message_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "message_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              message_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "email"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

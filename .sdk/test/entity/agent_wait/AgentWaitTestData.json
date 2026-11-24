@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_wait": {
+      "AGENT_WAIT00": {
+        "id": "AGENT_WAIT00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WAIT01": {
+        "id": "AGENT_WAIT01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WAIT02": {
+        "id": "AGENT_WAIT02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_wait": {
+      "agent_wait_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# BasicBillingPrepaidPurchaseFlow
+
+main: kit: flow: BasicBillingPrepaidPurchaseFlow:
+{
+  entity: "billing_prepaid_purchase",
+  kind: "basic",
+  name: "BasicBillingPrepaidPurchaseFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_prepaid_purchase_ref01",
+        srcdatavar: "billing_prepaid_purchase_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "billing_prepaid_purchase01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_prepaid_purchase_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingPrepaidPurchaseFlow"
+}

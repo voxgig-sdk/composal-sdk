@@ -1,0 +1,22 @@
+# BasicAgentSkillPreviewFlow
+
+main: kit: flow: BasicAgentSkillPreviewFlow:
+{
+  entity: "agent_skill_preview",
+  kind: "basic",
+  name: "BasicAgentSkillPreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_skill_preview_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentSkillPreviewFlow"
+}

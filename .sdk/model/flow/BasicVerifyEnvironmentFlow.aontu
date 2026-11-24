@@ -1,0 +1,45 @@
+# BasicVerifyEnvironmentFlow
+
+main: kit: flow: BasicVerifyEnvironmentFlow:
+{
+  entity: "verify_environment",
+  kind: "basic",
+  name: "BasicVerifyEnvironmentFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_environment_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_environment_ref01",
+        srcdatavar: "verify_environment_ref01_data",
+        suffix: "_up0",
+        textfield: "active_revision_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_environment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyEnvironmentFlow"
+}

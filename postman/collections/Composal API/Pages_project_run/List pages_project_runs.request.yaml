@@ -1,0 +1,47 @@
+$kind: http-request
+id: c7206802-1e57-5cd5-98d0-282ef5db6bdf
+description: |-
+  The `list` operation of **pages_project_run**.
+
+  SDK: `client.PagesProjectRun().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/runs"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment_id
+    value: ""
+    disabled: true
+  - key: environment_query
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+  - key: trigger
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pages_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this pages_project_run belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("pages_project_run_id")) pm.collectionVariables.set("pages_project_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

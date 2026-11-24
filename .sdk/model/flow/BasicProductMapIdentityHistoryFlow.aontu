@@ -1,0 +1,28 @@
+# BasicProductMapIdentityHistoryFlow
+
+main: kit: flow: BasicProductMapIdentityHistoryFlow:
+{
+  entity: "product_map_identity_history",
+  kind: "basic",
+  name: "BasicProductMapIdentityHistoryFlow",
+  step: [
+    {
+      m: {
+        observation_id: "observation01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "product_map_identity_history_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductMapIdentityHistoryFlow"
+}

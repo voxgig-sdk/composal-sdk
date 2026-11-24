@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "project_ios_app": {
+      "PROJECT_IOS_APP00": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s66",
+        "image": "s67",
+        "ios": {},
+        "launch_command": "s69",
+        "managed_binary": {},
+        "platform": "s6b",
+        "provider": "s6c",
+        "setup_command": "s6d",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_IOS_APP00"
+      },
+      "PROJECT_IOS_APP01": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "sca",
+        "image": "scb",
+        "ios": {},
+        "launch_command": "scd",
+        "managed_binary": {},
+        "platform": "scf",
+        "provider": "sd0",
+        "setup_command": "sd1",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_IOS_APP01"
+      },
+      "PROJECT_IOS_APP02": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s12e",
+        "image": "s12f",
+        "ios": {},
+        "launch_command": "s131",
+        "managed_binary": {},
+        "platform": "s133",
+        "provider": "s134",
+        "setup_command": "s135",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_IOS_APP02"
+      }
+    }
+  },
+  "new": {
+    "project_ios_app": {
+      "project_ios_app_ref01": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s192",
+        "image": "s193",
+        "ios": {},
+        "launch_command": "s195",
+        "managed_binary": {},
+        "platform": "s197",
+        "provider": "s198",
+        "setup_command": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/ios_apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

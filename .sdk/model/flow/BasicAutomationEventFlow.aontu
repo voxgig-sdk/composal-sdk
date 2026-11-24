@@ -1,0 +1,34 @@
+# BasicAutomationEventFlow
+
+main: kit: flow: BasicAutomationEventFlow:
+{
+  entity: "automation_event",
+  kind: "basic",
+  name: "BasicAutomationEventFlow",
+  step: [
+    {
+      d: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "automation_event_ref01",
+        srcdatavar: "automation_event_ref01_data",
+        suffix: "_up0",
+        textfield: "action"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-automation_event_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAutomationEventFlow"
+}

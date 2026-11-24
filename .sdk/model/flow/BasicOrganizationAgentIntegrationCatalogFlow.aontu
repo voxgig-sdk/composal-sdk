@@ -1,0 +1,26 @@
+# BasicOrganizationAgentIntegrationCatalogFlow
+
+main: kit: flow: BasicOrganizationAgentIntegrationCatalogFlow:
+{
+  entity: "organization_agent_integration_catalog",
+  kind: "basic",
+  name: "BasicOrganizationAgentIntegrationCatalogFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_agent_integration_catalog_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationAgentIntegrationCatalogFlow"
+}

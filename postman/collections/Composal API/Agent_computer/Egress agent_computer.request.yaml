@@ -1,0 +1,25 @@
+$kind: http-request
+id: "16e4b70e-8b75-57d6-b99c-0037ea193d9c"
+description: |-
+  The `egress` action of **agent_computer**, a route of its `create` operation.
+
+  SDK: `client.AgentComputer().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "egress" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/computer/egress"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_computer belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_computer belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "prepare": true
+    }
+order: 2000

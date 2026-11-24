@@ -1,0 +1,18 @@
+$kind: http-request
+id: "3722b3be-0cf2-542d-af23-d7112d669a15"
+description: |-
+  The `header` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", $action: "header" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/header"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 9000

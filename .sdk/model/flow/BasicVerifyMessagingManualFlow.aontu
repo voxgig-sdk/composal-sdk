@@ -1,0 +1,48 @@
+# BasicVerifyMessagingManualFlow
+
+main: kit: flow: BasicVerifyMessagingManualFlow:
+{
+  entity: "verify_messaging_manual",
+  kind: "basic",
+  name: "BasicVerifyMessagingManualFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_messaging_manual_ref01"
+      }
+
+      m: {
+        messaging_conversation_id: "messaging_conversation01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_messaging_manual_ref01",
+        srcdatavar: "verify_messaging_manual_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_messaging_manual01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_messaging_manual_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyMessagingManualFlow"
+}

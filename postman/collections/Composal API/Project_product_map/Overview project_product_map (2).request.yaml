@@ -1,0 +1,22 @@
+$kind: http-request
+id: c1f14a6e-8c5a-5ff2-946a-5497a6188262
+description: |-
+  The `overview` action of **project_product_map**, a route of its `create` operation.
+
+  SDK: `client.ProjectProductMap().create({ "organization_id": "organization_id", "project_id": "project_id", $action: "overview" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/overview"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_product_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_product_map belongs to.
+body:
+  type: json
+  content: "{}"
+order: 5000

@@ -1,0 +1,49 @@
+# BasicAgentVerifyProjectFlow
+
+main: kit: flow: BasicAgentVerifyProjectFlow:
+{
+  entity: "agent_verify_project",
+  kind: "basic",
+  name: "BasicAgentVerifyProjectFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_verify_project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_verify_project_ref01",
+        srcdatavar: "agent_verify_project_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_verify_project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentVerifyProjectFlow"
+}

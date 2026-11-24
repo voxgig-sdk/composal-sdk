@@ -1,0 +1,65 @@
+$kind: http-request
+id: e6a708b6-b44e-5a3e-92be-b66b41b4a2a2
+description: |-
+  The `create` operation of **project_messaging_conversation**.
+
+  SDK: `client.ProjectMessagingConversation().create({ organization_id: "example", project_id: "example", assistant_number: "example", tester_number: "example", verify_environment_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_messaging_conversation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_messaging_conversation belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "tester_number": "example",
+      "assistant_number": "example",
+      "verify_environment_id": "example"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create project_messaging_conversation: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body
+      pm.test("1. Create project_messaging_conversation: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("project_messaging_conversation_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

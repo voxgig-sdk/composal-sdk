@@ -1,0 +1,23 @@
+# BasicExplorationMessageFlow
+
+main: kit: flow: BasicExplorationMessageFlow:
+{
+  entity: "exploration_message",
+  kind: "basic",
+  name: "BasicExplorationMessageFlow",
+  step: [
+    {
+      i: {
+        ref: "exploration_message_ref01"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicExplorationMessageFlow"
+}

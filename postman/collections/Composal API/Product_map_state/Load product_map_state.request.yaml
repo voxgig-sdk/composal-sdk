@@ -1,0 +1,49 @@
+$kind: http-request
+id: c45788c0-6eed-5a61-8789-b9ebe2ead876
+description: |-
+  The `load` operation of **product_map_state**.
+
+  SDK: `client.ProductMapState().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/states/:state_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: include_connections
+    value: "true"
+    disabled: true
+  - key: observation_id
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_state belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_state belongs to.
+  - key: state_id
+    value: "{{product_map_state_id}}"
+    description: The product_map_state this request addresses.
+order: 2000

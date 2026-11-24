@@ -1,0 +1,27 @@
+# BasicVcsBlameFlow
+
+main: kit: flow: BasicVcsBlameFlow:
+{
+  entity: "vcs_blame",
+  kind: "basic",
+  name: "BasicVcsBlameFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_blame_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsBlameFlow"
+}

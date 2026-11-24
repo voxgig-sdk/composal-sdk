@@ -1,0 +1,18 @@
+# BasicRegistryV2Flow
+
+main: kit: flow: BasicRegistryV2Flow:
+{
+  entity: "registry_v2",
+  kind: "basic",
+  name: "BasicRegistryV2Flow",
+  step: [
+    {
+      i: {
+        ref: "registry_v2_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRegistryV2Flow"
+}

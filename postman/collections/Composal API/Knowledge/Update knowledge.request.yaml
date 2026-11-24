@@ -1,0 +1,22 @@
+$kind: http-request
+id: "93582468-1e3f-5da0-b041-36ee218c2cab"
+description: |-
+  The `update` operation of **knowledge**.
+
+  SDK: `client.Knowledge().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/knowledge/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this knowledge belongs to.
+  - key: id
+    value: "{{knowledge_id}}"
+    description: The knowledge this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

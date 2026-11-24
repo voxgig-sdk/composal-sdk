@@ -1,0 +1,8 @@
+$kind: collection
+id: c0cd99e8-bd4e-5450-9acc-795b6ee15482
+description: |-
+  The **registry_v2** entity. Its requests address one record by `{{registry_v2_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 186000

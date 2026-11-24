@@ -1,0 +1,36 @@
+# BasicVerifyCodeRepairFlow
+
+main: kit: flow: BasicVerifyCodeRepairFlow:
+{
+  entity: "verify_code_repair",
+  kind: "basic",
+  name: "BasicVerifyCodeRepairFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_code_repair_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_code_repair_ref01",
+        srcdatavar: "verify_code_repair_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_code_repair_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyCodeRepairFlow"
+}

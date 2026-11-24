@@ -1,0 +1,25 @@
+# BasicScenarioRunScenarioEditFlow
+
+main: kit: flow: BasicScenarioRunScenarioEditFlow:
+{
+  entity: "scenario_run_scenario_edit",
+  kind: "basic",
+  name: "BasicScenarioRunScenarioEditFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_run_scenario_edit_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01",
+        scenario_run_id: "scenario_run01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScenarioRunScenarioEditFlow"
+}

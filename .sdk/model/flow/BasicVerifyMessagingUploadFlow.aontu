@@ -1,0 +1,22 @@
+# BasicVerifyMessagingUploadFlow
+
+main: kit: flow: BasicVerifyMessagingUploadFlow:
+{
+  entity: "verify_messaging_upload",
+  kind: "basic",
+  name: "BasicVerifyMessagingUploadFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_messaging_upload_ref01"
+      }
+
+      m: {
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyMessagingUploadFlow"
+}

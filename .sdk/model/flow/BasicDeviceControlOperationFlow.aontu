@@ -1,0 +1,33 @@
+# BasicDeviceControlOperationFlow
+
+main: kit: flow: BasicDeviceControlOperationFlow:
+{
+  entity: "device_control_operation",
+  kind: "basic",
+  name: "BasicDeviceControlOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "device_control_operation_ref01",
+        srcdatavar: "device_control_operation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "device_control_operation01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-device_control_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceControlOperationFlow"
+}

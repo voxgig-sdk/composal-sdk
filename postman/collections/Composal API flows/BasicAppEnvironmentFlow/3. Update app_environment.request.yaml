@@ -1,0 +1,68 @@
+$kind: http-request
+id: "8ec38f77-0812-531b-9515-0c08cb777b4c"
+description: |-
+  The `update` operation of **app_environment**.
+
+  SDK: `client.AppEnvironment().update({ app_id: "example", id: "example", auto_deploy: true })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/environments/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_environment belongs to.
+  - key: id
+    value: "{{app_environment_ref01}}"
+    description: The app_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "slug": "example",
+      "name": "example",
+      "kind": "production",
+      "status": "active",
+      "location_id": "{{location_id}}",
+      "branch_pattern": "example",
+      "base_domain": "Mark01-app_environment_ref01",
+      "auto_deploy": true
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","app_id","app_environment_ref01","location_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update app_environment: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update app_environment: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["environment"], "id"))).to.eql(String(pm.variables.get("app_environment_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("app_environment_ref01_marked", "Mark01-app_environment_ref01")
+    language: text/javascript
+order: 3000

@@ -1,0 +1,47 @@
+# BasicAgentOperationFlow
+
+main: kit: flow: BasicAgentOperationFlow:
+{
+  entity: "agent_operation",
+  kind: "basic",
+  name: "BasicAgentOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_operation_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "agent_operation_ref01",
+        srcdatavar: "agent_operation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_operation01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_operation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentOperationFlow"
+}

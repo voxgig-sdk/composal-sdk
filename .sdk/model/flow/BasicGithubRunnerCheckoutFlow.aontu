@@ -1,0 +1,18 @@
+# BasicGithubRunnerCheckoutFlow
+
+main: kit: flow: BasicGithubRunnerCheckoutFlow:
+{
+  entity: "github_runner_checkout",
+  kind: "basic",
+  name: "BasicGithubRunnerCheckoutFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_checkout_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubRunnerCheckoutFlow"
+}

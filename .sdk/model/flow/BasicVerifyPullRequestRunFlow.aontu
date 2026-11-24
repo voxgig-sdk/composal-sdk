@@ -1,0 +1,22 @@
+# BasicVerifyPullRequestRunFlow
+
+main: kit: flow: BasicVerifyPullRequestRunFlow:
+{
+  entity: "verify_pull_request_run",
+  kind: "basic",
+  name: "BasicVerifyPullRequestRunFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_pull_request_run_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyPullRequestRunFlow"
+}

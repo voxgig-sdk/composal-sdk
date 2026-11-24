@@ -1,0 +1,502 @@
+# Entity: agent_workflow_proposal
+
+main: kit: entity: agent_workflow_proposal: {
+
+  alias: field: {}
+
+  fields: {
+    agent_steps: {
+      h: "Agent Steps"
+      n: "agent_steps"
+      r: true
+      sh: "The model and reasoning the workflow's agent steps share."
+      t: "`$OBJECT`"
+    }
+    base_digest: {
+      h: "Base Digest"
+      n: "base_digest"
+      r: true
+      sh: "The saved workflow this proposal changes; null for a new workflow."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    can_manage: {
+      h: "Can Manage"
+      n: "can_manage"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_revise: {
+      h: "Can Revise"
+      n: "can_revise"
+      r: true
+      sh: "The viewer can choose the model and reasoning of the agent steps now, before saving."
+      t: "`$BOOLEAN`"
+    }
+    can_save: {
+      h: "Can Save"
+      n: "can_save"
+      r: true
+      sh: "The viewer can save this proposal now: they manage the agent, and it is unsaved, current and passes its checks."
+      t: "`$BOOLEAN`"
+    }
+    can_set_trigger: {
+      h: "Can Set Trigger"
+      n: "can_set_trigger"
+      r: true
+      sh: "Saved as proposed with nothing starting it, so saving again sets its trigger."
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    definition: {
+      h: "Definition"
+      n: "definition"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    digest: {
+      h: "Digest"
+      n: "digest"
+      r: true
+      sh: "Names the reviewed version, its source and trigger; send it to save this version."
+      t: "`$STRING`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: true
+      sh: "Why the proposal no longer passes its checks, such as a model this agent no longer has."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    model_choices: {
+      h: "Model Choices"
+      n: "model_choices"
+      r: false
+      sh: "Models the viewer may choose for the agent steps before saving."
+      t: "`$ARRAY`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    native_rows: {
+      h: "Native Rows"
+      n: "native_rows"
+      r: false
+      t: "`$ARRAY`"
+    }
+    path: {
+      h: "Path"
+      n: "path"
+      r: true
+      t: "`$STRING`"
+    }
+    pipeline_checkpoints: {
+      h: "Pipeline Checkpoints"
+      n: "pipeline_checkpoints"
+      r: true
+      t: "`$OBJECT`"
+    }
+    pipeline_commands: {
+      h: "Pipeline Commands"
+      n: "pipeline_commands"
+      r: true
+      t: "`$OBJECT`"
+    }
+    reasoning_choices: {
+      h: "Reasoning Choices"
+      n: "reasoning_choices"
+      r: false
+      sh: "Reasoning levels the viewer may choose for the agent steps; none uses the agent's default."
+      t: "`$ARRAY`"
+    }
+    runs_on_earlier_version: {
+      h: "Runs On Earlier Version"
+      n: "runs_on_earlier_version"
+      r: true
+      sh: "Runs already going when this save replaced the file, which finish on the version they started with; only in the reply to that save."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    saved: {
+      h: "Saved"
+      n: "saved"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    stale: {
+      h: "Stale"
+      n: "stale"
+      r: true
+      sh: "The workflow changed since the proposal, so it cannot be saved."
+      t: "`$BOOLEAN`"
+    }
+    starts: {
+      h: "Starts"
+      n: "starts"
+      r: true
+      sh: "What starts the workflow without a chat turn; saving the proposal sets this trigger."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    trigger_error: {
+      h: "Trigger Error"
+      n: "trigger_error"
+      r: true
+      sh: "Why the save could not set the trigger; only in the reply to that save."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_workflow_proposal"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "digest"
+            "model"
+            "reasoning"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/revise"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "proposal"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/revise"
+          q: {
+            "$action": "revise"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              proposal: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_proposals"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "revise"
+            }
+          ]
+          t: {
+            req: {
+              digest: "`reqdata.digest`"
+              model: "`reqdata.model`"
+              reasoning: "`reqdata.reasoning`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "digest"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/save"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "proposal"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/save"
+          q: {
+            "$action": "save"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              proposal: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_proposals"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "save"
+            }
+          ]
+          t: {
+            req: {
+              digest: "`reqdata.digest`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "proposal"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              proposal: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_proposals"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

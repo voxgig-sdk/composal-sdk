@@ -1,0 +1,44 @@
+$kind: http-request
+id: "47f9437b-3b82-595e-9dcb-520d20af570a"
+description: |-
+  The `create` operation of **app_preview_profile**.
+
+  SDK: `client.AppPreviewProfile().create({ app_id: "example", name: "example", slug: "example", source_environment_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/preview_profiles"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview_profile belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "slug": "example",
+      "source_environment_id": "example",
+      "ttl_days": 1,
+      "automatic": true,
+      "configuration": {
+        "variables": {},
+        "build_variables": {},
+        "required_keys": [
+          "example"
+        ],
+        "service_resources": {}
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["profile"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("app_preview_profile_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

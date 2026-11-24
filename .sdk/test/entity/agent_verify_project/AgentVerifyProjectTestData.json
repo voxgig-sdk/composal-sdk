@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "agent_verify_project": {
+      "AGENT_VERIFY_PROJECT00": {
+        "available": true,
+        "can_manage": false,
+        "expected_version": 72,
+        "project_choices": [],
+        "project_choices_truncated": true,
+        "verify_projects": [],
+        "version": 76,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_VERIFY_PROJECT00"
+      },
+      "AGENT_VERIFY_PROJECT01": {
+        "available": true,
+        "can_manage": false,
+        "expected_version": 142,
+        "project_choices": [],
+        "project_choices_truncated": true,
+        "verify_projects": [],
+        "version": 146,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_VERIFY_PROJECT01"
+      },
+      "AGENT_VERIFY_PROJECT02": {
+        "available": true,
+        "can_manage": false,
+        "expected_version": 212,
+        "project_choices": [],
+        "project_choices_truncated": true,
+        "verify_projects": [],
+        "version": 216,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_VERIFY_PROJECT02"
+      }
+    }
+  },
+  "new": {
+    "agent_verify_project": {
+      "agent_verify_project_ref01": {
+        "available": true,
+        "can_manage": false,
+        "expected_version": 282,
+        "project_choices": [],
+        "project_choices_truncated": true,
+        "verify_projects": [],
+        "version": 286
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "78e3922e-f393-58af-8935-a74ce5607bbe"
+description: |-
+  The `load` operation of **agent_marketplace**.
+
+  SDK: `client.AgentMarketplace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent_marketplace/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{agent_marketplace_id}}"
+    description: The agent_marketplace this request addresses.
+order: 1000

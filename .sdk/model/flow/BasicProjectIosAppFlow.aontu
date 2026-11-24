@@ -1,0 +1,23 @@
+# BasicProjectIosAppFlow
+
+main: kit: flow: BasicProjectIosAppFlow:
+{
+  entity: "project_ios_app",
+  kind: "basic",
+  name: "BasicProjectIosAppFlow",
+  step: [
+    {
+      i: {
+        ref: "project_ios_app_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectIosAppFlow"
+}

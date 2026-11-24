@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "me_onboarding": {
+      "ME_ONBOARDING00": {
+        "id": "ME_ONBOARDING00"
+      },
+      "ME_ONBOARDING01": {
+        "id": "ME_ONBOARDING01"
+      },
+      "ME_ONBOARDING02": {
+        "id": "ME_ONBOARDING02"
+      }
+    }
+  },
+  "new": {
+    "me_onboarding": {
+      "me_onboarding_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/me/onboarding/call": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/me/onboarding/claim": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/me/onboarding/dismiss": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

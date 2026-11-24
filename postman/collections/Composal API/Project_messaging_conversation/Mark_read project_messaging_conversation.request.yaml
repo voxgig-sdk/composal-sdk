@@ -1,0 +1,25 @@
+$kind: http-request
+id: "1df56c97-a7ba-5f3e-a0bd-6943eee44c55"
+description: |-
+  The `mark_read` action of **project_messaging_conversation**, a route of its `create` operation.
+
+  SDK: `client.ProjectMessagingConversation().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "mark_read" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id/mark_read"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_messaging_conversation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_messaging_conversation belongs to.
+  - key: id
+    value: "{{project_messaging_conversation_id}}"
+    description: The project_messaging_conversation this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

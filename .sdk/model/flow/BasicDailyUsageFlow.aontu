@@ -1,0 +1,26 @@
+# BasicDailyUsageFlow
+
+main: kit: flow: BasicDailyUsageFlow:
+{
+  entity: "daily_usage",
+  kind: "basic",
+  name: "BasicDailyUsageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "daily_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDailyUsageFlow"
+}

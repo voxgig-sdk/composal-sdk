@@ -1,0 +1,236 @@
+# Entity: browser_session_media
+
+main: kit: entity: browser_session_media: {
+
+  alias: field: {}
+
+  fields: {
+    browser_session_id: {
+      h: "Browser Session Id"
+      n: "browser_session_id"
+      r: true
+      t: "`$STRING`"
+    }
+    capture_omissions: {
+      h: "Capture Omissions"
+      n: "capture_omissions"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    captured_at: {
+      fo: "date-time"
+      h: "Captured At"
+      n: "captured_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    ended_at: {
+      fo: "date-time"
+      h: "Ended At"
+      n: "ended_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    files: {
+      h: "Files"
+      n: "files"
+      r: true
+      t: "`$ARRAY`"
+    }
+    frames: {
+      h: "Frames"
+      n: "frames"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    partial: {
+      h: "Partial"
+      n: "partial"
+      r: true
+      sh: "Retained footage has a capture failure or reported omissions."
+      t: "`$BOOLEAN`"
+    }
+    retention_expires_at: {
+      fo: "date-time"
+      h: "Retention Expires At"
+      n: "retention_expires_at"
+      r: true
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: false
+      sh: "Screenshot provenance."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    stop_requested_at: {
+      fo: "date-time"
+      h: "Stop Requested At"
+      n: "stop_requested_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "browser_session_media"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "browser_session_id"
+                or: "browser_session_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}"
+          q: {
+            exist: [
+              "browser_session_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "browser_sessions"
+            }
+            {
+              var: "browser_session_id"
+            }
+            {
+              lit: "media"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.browser_session")]
+  ]
+
+}

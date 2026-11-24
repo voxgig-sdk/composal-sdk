@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "agent_runtime": {
+      "AGENT_RUNTIME00": {
+        "available_profiles": [],
+        "can_manage": false,
+        "can_reset": true,
+        "image": "s71",
+        "memory_mb": "s72",
+        "platform": "s73",
+        "profile": "s74",
+        "provider": "s75",
+        "state": "s76",
+        "version": "s77",
+        "volume": "s78",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_RUNTIME00"
+      },
+      "AGENT_RUNTIME01": {
+        "available_profiles": [],
+        "can_manage": false,
+        "can_reset": true,
+        "image": "sdf",
+        "memory_mb": "se0",
+        "platform": "se1",
+        "profile": "se2",
+        "provider": "se3",
+        "state": "se4",
+        "version": "se5",
+        "volume": "se6",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_RUNTIME01"
+      },
+      "AGENT_RUNTIME02": {
+        "available_profiles": [],
+        "can_manage": false,
+        "can_reset": true,
+        "image": "s14d",
+        "memory_mb": "s14e",
+        "platform": "s14f",
+        "profile": "s150",
+        "provider": "s151",
+        "state": "s152",
+        "version": "s153",
+        "volume": "s154",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_RUNTIME02"
+      }
+    }
+  },
+  "new": {
+    "agent_runtime": {
+      "agent_runtime_ref01": {
+        "available_profiles": [],
+        "can_manage": false,
+        "can_reset": true,
+        "image": "s1bb",
+        "memory_mb": "s1bc",
+        "platform": "s1bd",
+        "profile": "s1be",
+        "provider": "s1bf",
+        "state": "s1c0",
+        "version": "s1c1",
+        "volume": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

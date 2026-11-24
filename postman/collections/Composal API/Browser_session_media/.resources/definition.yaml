@@ -1,0 +1,22 @@
+$kind: collection
+id: e0197adf-87f8-56d6-ba6c-1be896baf2da
+description: |-
+  The **browser_session_media** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_media_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_session_id` | string | yes |  |
+  | `capture_omissions` | object |  |  |
+  | `captured_at` | string |  |  |
+  | `ended_at` | string |  |  |
+  | `failure_code` | string |  |  |
+  | `files` | array | yes |  |
+  | `frames` | integer |  |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `partial` | boolean | yes |  |
+  | `retention_expires_at` | string | yes |  |
+  | `source` | object |  |  |
+  | `status` | string | yes |  |
+  | `stop_requested_at` | string |  |  |
+order: 82000

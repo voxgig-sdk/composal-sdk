@@ -1,0 +1,25 @@
+$kind: http-request
+id: "78134084-d0c3-51c9-b2be-87f6550855ba"
+description: |-
+  The `update` operation of **environment_test_account**.
+
+  SDK: `client.EnvironmentTestAccount().update({ environment_id: "example", id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/test_accounts/:persona"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_test_account belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_test_account belongs to.
+  - key: persona
+    value: "{{environment_test_account_id}}"
+    description: The environment_test_account this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

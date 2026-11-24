@@ -1,0 +1,23 @@
+# BasicRepositoryCodeMapFlow
+
+main: kit: flow: BasicRepositoryCodeMapFlow:
+{
+  entity: "repository_code_map",
+  kind: "basic",
+  name: "BasicRepositoryCodeMapFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_code_map_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRepositoryCodeMapFlow"
+}

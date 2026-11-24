@@ -1,0 +1,18 @@
+$kind: http-request
+id: "84a5ee8b-0522-5c84-8f21-debedafe99d3"
+description: |-
+  The `load` operation of **agent_marketplace**.
+
+  SDK: `client.AgentMarketplace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_marketplace/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_marketplace belongs to.
+  - key: id
+    value: "{{agent_marketplace_id}}"
+    description: The agent_marketplace this request addresses.
+order: 2000

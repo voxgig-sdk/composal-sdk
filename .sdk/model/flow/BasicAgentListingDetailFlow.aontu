@@ -1,0 +1,82 @@
+# BasicAgentListingDetailFlow
+
+main: kit: flow: BasicAgentListingDetailFlow:
+{
+  entity: "agent_listing_detail",
+  kind: "basic",
+  name: "BasicAgentListingDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_listing_detail_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_listing_detail_ref01",
+        srcdatavar: "agent_listing_detail_ref01_data",
+        suffix: "_up0",
+        textfield: "catalog_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_listing_detail_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_listing_detail_ref01",
+        srcdatavar: "agent_listing_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_listing_detail01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_listing_detail_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_listing_detail_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "agent_listing_detail01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAgentListingDetailFlow"
+}

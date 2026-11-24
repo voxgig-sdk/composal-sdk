@@ -1,0 +1,21 @@
+$kind: http-request
+id: "03c07fc6-7920-58c1-ab96-c0bf31e90a0f"
+description: |-
+  The `load` operation of **service_endpoint**.
+
+  SDK: `client.ServiceEndpoint().load({ app_id: "example", id: "example_id", service_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services/:service_id/endpoints/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this service_endpoint belongs to.
+  - key: service_id
+    value: "{{service_id}}"
+    description: "Input: service_id."
+  - key: id
+    value: "{{service_endpoint_id}}"
+    description: The service_endpoint this request addresses.
+order: 2000

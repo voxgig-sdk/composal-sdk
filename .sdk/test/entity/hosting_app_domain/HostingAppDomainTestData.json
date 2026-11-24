@@ -1,0 +1,154 @@
+{
+  "existing": {
+    "hosting_app_domain": {
+      "HOSTING_APP_DOMAIN00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "certificate": "se8",
+        "created_at": "se9",
+        "dns_mode": "sea",
+        "dns_status": "seb",
+        "failure_message": "sec",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "see",
+        "id": "HOSTING_APP_DOMAIN00",
+        "kind": "sf0",
+        "last_checked_at": "sf1",
+        "path_rules": [],
+        "record_name": "sf3",
+        "record_type": "sf4",
+        "record_value": "sf5",
+        "redirect_to": "sf6",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "sf8",
+        "tls_status": "sf9",
+        "updated_at": "sfa",
+        "verification_record": "sfb",
+        "verification_status": "sfc",
+        "app_id": "APP01"
+      },
+      "HOSTING_APP_DOMAIN01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "certificate": "s1ce",
+        "created_at": "s1cf",
+        "dns_mode": "s1d0",
+        "dns_status": "s1d1",
+        "failure_message": "s1d2",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s1d4",
+        "id": "HOSTING_APP_DOMAIN01",
+        "kind": "s1d6",
+        "last_checked_at": "s1d7",
+        "path_rules": [],
+        "record_name": "s1d9",
+        "record_type": "s1da",
+        "record_value": "s1db",
+        "redirect_to": "s1dc",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s1de",
+        "tls_status": "s1df",
+        "updated_at": "s1e0",
+        "verification_record": "s1e1",
+        "verification_status": "s1e2",
+        "app_id": "APP01"
+      },
+      "HOSTING_APP_DOMAIN02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "certificate": "s2b4",
+        "created_at": "s2b5",
+        "dns_mode": "s2b6",
+        "dns_status": "s2b7",
+        "failure_message": "s2b8",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s2ba",
+        "id": "HOSTING_APP_DOMAIN02",
+        "kind": "s2bc",
+        "last_checked_at": "s2bd",
+        "path_rules": [],
+        "record_name": "s2bf",
+        "record_type": "s2c0",
+        "record_value": "s2c1",
+        "redirect_to": "s2c2",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s2c4",
+        "tls_status": "s2c5",
+        "updated_at": "s2c6",
+        "verification_record": "s2c7",
+        "verification_status": "s2c8",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "hosting_app_domain": {
+      "hosting_app_domain_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "certificate": "s39a",
+        "created_at": "s39b",
+        "dns_mode": "s39c",
+        "dns_status": "s39d",
+        "failure_message": "s39e",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s3a0",
+        "kind": "s3a2",
+        "last_checked_at": "s3a3",
+        "path_rules": [],
+        "record_name": "s3a5",
+        "record_type": "s3a6",
+        "record_value": "s3a7",
+        "redirect_to": "s3a8",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s3aa",
+        "tls_status": "s3ab",
+        "updated_at": "s3ac",
+        "verification_record": "s3ad",
+        "verification_status": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/domains/{id}/enable": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/domains": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/domains/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/domains/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/domains/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/domains/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

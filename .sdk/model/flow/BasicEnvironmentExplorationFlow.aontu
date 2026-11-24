@@ -1,0 +1,24 @@
+# BasicEnvironmentExplorationFlow
+
+main: kit: flow: BasicEnvironmentExplorationFlow:
+{
+  entity: "environment_exploration",
+  kind: "basic",
+  name: "BasicEnvironmentExplorationFlow",
+  step: [
+    {
+      i: {
+        ref: "environment_exploration_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicEnvironmentExplorationFlow"
+}

@@ -1,0 +1,18 @@
+$kind: http-request
+id: cfe4a782-7839-55fd-8714-eccae0c9b40e
+description: |-
+  The `app_promotion` action of **me**, a route of its `create` operation.
+
+  SDK: `client.Me().create({ $action: "app_promotion" })`
+url: "{{base}}/api/v1/me/app_promotion"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "action_name": "desktop_installed"
+    }
+order: 6000

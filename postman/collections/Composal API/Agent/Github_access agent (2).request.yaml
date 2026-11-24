@@ -1,0 +1,25 @@
+$kind: http-request
+id: f09158b2-1047-5765-97c3-4a129da97092
+description: |-
+  The `github_access` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "github_access" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/github_access"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "github_access": "app"
+    }
+order: 17000

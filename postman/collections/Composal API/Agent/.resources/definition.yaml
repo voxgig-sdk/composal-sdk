@@ -1,0 +1,52 @@
+$kind: collection
+id: d9950960-0694-5cc3-8be2-f2e9cf4ddc53
+description: |-
+  A persistent agent: list, create, read or delete one, rename it, change who can see it, and read its conversation, usage and runtime (actions).
+
+  The **agent** entity, which belongs to a organization. Its requests address one record by `{{agent_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attention` | string | yes |  |
+  | `avatar` | string |  |  |
+  | `can_delete` | boolean |  |  |
+  | `can_edit_configuration` | boolean | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_manage_sharing` | boolean |  |  |
+  | `can_name_managers` | boolean |  |  |
+  | `can_queue_input` | boolean |  |  |
+  | `can_reconcile_save` | boolean | yes |  |
+  | `configuration` | any | yes |  |
+  | `configuration_revision` | integer | yes |  |
+  | `configuration_version` | string | yes |  |
+  | `control_connections_available` | boolean |  |  |
+  | `controlling_user_id` | string | yes |  |
+  | `coordination_available` | boolean |  |  |
+  | `created_at` | string | yes |  |
+  | `direct_chat_available` | boolean |  |  |
+  | `has_unread_updates` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `last_reply_at` | string | yes |  |
+  | `lifecycle_actions` | array | yes |  |
+  | `lifecycle_version` | string | yes |  |
+  | `local_agent_control_available` | boolean |  |  |
+  | `managers` | array |  |  |
+  | `model_change_action` | string |  |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `persona` | any |  |  |
+  | `preview` | any |  |  |
+  | `preview_received_at` | string |  |  |
+  | `provisioning` | any |  |  |
+  | `reply_triage` | object | yes |  |
+  | `runtime_version` | string |  |  |
+  | `setup_pending` | boolean | yes |  |
+  | `sharing_fixed` | boolean |  |  |
+  | `sharing_version` | integer |  |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `team_role` | string |  |  |
+  | `updated_at` | string | yes |  |
+  | `url_slug` | string |  |  |
+  | `visibility` | string |  |  |
+order: 2000

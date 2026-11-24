@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "deep_scan_finding": {
+      "DEEP_SCAN_FINDING00": {
+        "finding_count": 180,
+        "finding_ids": [],
+        "findings": [],
+        "findings_fix_prompt": "sb7",
+        "free_findings_pending": true,
+        "id": "DEEP_SCAN_FINDING00",
+        "mode": "sba",
+        "permissions": {},
+        "priority": "sbc",
+        "priority_counts": {},
+        "project_id": "PROJECT01",
+        "reproduction_of": "sbf",
+        "reproductions": [],
+        "reruns_available": false,
+        "status": "sc2",
+        "title": "sc3",
+        "unlock": {},
+        "web_url": "sc5",
+        "deep_scan_id": "DEEP_SCAN01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_FINDING01": {
+        "finding_count": 360,
+        "finding_ids": [],
+        "findings": [],
+        "findings_fix_prompt": "s16b",
+        "free_findings_pending": true,
+        "id": "DEEP_SCAN_FINDING01",
+        "mode": "s16e",
+        "permissions": {},
+        "priority": "s170",
+        "priority_counts": {},
+        "project_id": "PROJECT01",
+        "reproduction_of": "s173",
+        "reproductions": [],
+        "reruns_available": false,
+        "status": "s176",
+        "title": "s177",
+        "unlock": {},
+        "web_url": "s179",
+        "deep_scan_id": "DEEP_SCAN01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_FINDING02": {
+        "finding_count": 540,
+        "finding_ids": [],
+        "findings": [],
+        "findings_fix_prompt": "s21f",
+        "free_findings_pending": true,
+        "id": "DEEP_SCAN_FINDING02",
+        "mode": "s222",
+        "permissions": {},
+        "priority": "s224",
+        "priority_counts": {},
+        "project_id": "PROJECT01",
+        "reproduction_of": "s227",
+        "reproductions": [],
+        "reruns_available": false,
+        "status": "s22a",
+        "title": "s22b",
+        "unlock": {},
+        "web_url": "s22d",
+        "deep_scan_id": "DEEP_SCAN01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deep_scan_finding": {
+      "deep_scan_finding_ref01": {
+        "finding_count": 720,
+        "finding_ids": [],
+        "findings": [],
+        "findings_fix_prompt": "s2d3",
+        "free_findings_pending": true,
+        "mode": "s2d6",
+        "permissions": {},
+        "priority": "s2d8",
+        "priority_counts": {},
+        "project_id": "PROJECT01",
+        "reproduction_of": "s2db",
+        "reproductions": [],
+        "reruns_available": false,
+        "status": "s2de",
+        "title": "s2df",
+        "unlock": {},
+        "web_url": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

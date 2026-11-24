@@ -1,0 +1,33 @@
+$kind: http-request
+id: b55b0564-0c92-5dcf-8cc0-70af3d583150
+description: |-
+  The `run` action of **scenario_run_scenario_edit**, a route of its `create` operation.
+
+  SDK: `client.ScenarioRunScenarioEdit().create({ "organization_id": "organization_id", "project_id": "project_id", "run_id": "run_id", "scenario_run_id": "scenario_run_id", $action: "run" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/scenario_runs/:scenario_run_id/scenario_edit/run"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this scenario_run_scenario_edit belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this scenario_run_scenario_edit belongs to.
+  - key: id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: scenario_run_id
+    value: "{{scenario_run_id}}"
+    description: "Input: scenario_run_id."
+body:
+  type: json
+  content: |-
+    {
+      "version": 1,
+      "idempotency_key": "example",
+      "viewer_time_zone": "example"
+    }
+order: 1000

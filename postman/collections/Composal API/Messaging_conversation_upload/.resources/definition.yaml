@@ -1,0 +1,10 @@
+$kind: collection
+id: "4cfce056-4254-501d-a96a-3f785b48fddf"
+description: |-
+  The **messaging_conversation_upload** entity, which belongs to a organization and a project. Its requests address one record by `{{messaging_conversation_upload_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attachment` | object | yes |  |
+  | `upload_id` | string | yes |  |
+order: 141000

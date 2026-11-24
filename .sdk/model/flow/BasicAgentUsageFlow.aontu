@@ -1,0 +1,49 @@
+# BasicAgentUsageFlow
+
+main: kit: flow: BasicAgentUsageFlow:
+{
+  entity: "agent_usage",
+  kind: "basic",
+  name: "BasicAgentUsageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_usage_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_usage_ref01",
+        srcdatavar: "agent_usage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_usage01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentUsageFlow"
+}

@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "pages_project_scenario": {
+      "PAGES_PROJECT_SCENARIO00": {
+        "base_url": "s28",
+        "id": "PAGES_PROJECT_SCENARIO00",
+        "kind": "s2a",
+        "name": "s2b",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PAGES_PROJECT_SCENARIO01": {
+        "base_url": "s50",
+        "id": "PAGES_PROJECT_SCENARIO01",
+        "kind": "s52",
+        "name": "s53",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PAGES_PROJECT_SCENARIO02": {
+        "base_url": "s78",
+        "id": "PAGES_PROJECT_SCENARIO02",
+        "kind": "s7a",
+        "name": "s7b",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "pages_project_scenario": {
+      "pages_project_scenario_ref01": {
+        "base_url": "sa0",
+        "kind": "sa2",
+        "name": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

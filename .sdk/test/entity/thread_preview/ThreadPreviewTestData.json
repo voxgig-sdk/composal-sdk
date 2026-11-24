@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "thread_preview": {
+      "THREAD_PREVIEW00": {
+        "expires_at": "s1e",
+        "port": 31,
+        "url": "s20",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "thread_id": "THREAD01",
+        "id": "THREAD_PREVIEW00"
+      },
+      "THREAD_PREVIEW01": {
+        "expires_at": "s3c",
+        "port": 61,
+        "url": "s3e",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "thread_id": "THREAD01",
+        "id": "THREAD_PREVIEW01"
+      },
+      "THREAD_PREVIEW02": {
+        "expires_at": "s5a",
+        "port": 91,
+        "url": "s5c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "thread_id": "THREAD01",
+        "id": "THREAD_PREVIEW02"
+      }
+    }
+  },
+  "new": {
+    "thread_preview": {
+      "thread_preview_ref01": {
+        "expires_at": "s78",
+        "port": 121,
+        "url": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

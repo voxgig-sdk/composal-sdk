@@ -1,0 +1,597 @@
+# Entity: me
+
+main: kit: entity: me: {
+
+  alias: field: {}
+
+  fields: {
+    active_organization: {
+      h: "Active Organization"
+      n: "active_organization"
+      r: true
+      t: "`$ANY`"
+    }
+    analytics_distinct_id: {
+      h: "Analytics Distinct Id"
+      n: "analytics_distinct_id"
+      r: false
+      t: "`$STRING`"
+    }
+    analytics_internal: {
+      h: "Analytics Internal"
+      n: "analytics_internal"
+      r: true
+      sh: "Staff, team or test account; its product analytics are marked internal."
+      t: "`$BOOLEAN`"
+    }
+    api_base_url: {
+      fo: "uri"
+      h: "Api Base Url"
+      n: "api_base_url"
+      r: false
+      t: "`$STRING`"
+    }
+    api_token: {
+      h: "Api Token"
+      n: "api_token"
+      r: false
+      t: "`$STRING`"
+    }
+    app_promotion: {
+      h: "App Promotion"
+      n: "app_promotion"
+      r: true
+      t: "`$OBJECT`"
+    }
+    commit_author_email: {
+      fo: "email"
+      h: "Commit Author Email"
+      n: "commit_author_email"
+      r: true
+      t: "`$STRING`"
+    }
+    email: {
+      fo: "email"
+      h: "Email"
+      n: "email"
+      r: true
+      t: "`$STRING`"
+    }
+    enabled_features: {
+      h: "Enabled Features"
+      n: "enabled_features"
+      r: true
+      t: "`$ARRAY`"
+    }
+    github_pr_user_authorization_connected: {
+      h: "Github Pr User Authorization Connected"
+      n: "github_pr_user_authorization_connected"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    github_pr_user_authorization_login: {
+      h: "Github Pr User Authorization Login"
+      n: "github_pr_user_authorization_login"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    github_prs_authored_by_change_author: {
+      h: "Github Prs Authored By Change Author"
+      n: "github_prs_authored_by_change_author"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    impersonation: {
+      h: "Impersonation"
+      n: "impersonation"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    next_path: {
+      h: "Next Path"
+      n: "next_path"
+      r: false
+      sh: "Present on a sign-in that created the person's first workspace; its setup page, where they go next."
+      t: "`$STRING`"
+    }
+    onboarding: {
+      h: "Onboarding"
+      n: "onboarding"
+      r: true
+      sh: "V2 agent onboarding progress."
+      t: "`$OBJECT`"
+    }
+    openai_sign_in_connected: {
+      h: "Openai Sign In Connected"
+      n: "openai_sign_in_connected"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    openai_sign_in_enabled: {
+      h: "Openai Sign In Enabled"
+      n: "openai_sign_in_enabled"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    organizations: {
+      h: "Organizations"
+      n: "organizations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    pending_organization_invitation_count: {
+      h: "Pending Organization Invitation Count"
+      n: "pending_organization_invitation_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    pending_organization_invitation_count_label: {
+      h: "Pending Organization Invitation Count Label"
+      n: "pending_organization_invitation_count_label"
+      r: true
+      t: "`$STRING`"
+    }
+    picture_url: {
+      h: "Picture Url"
+      n: "picture_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    superadmin: {
+      h: "Superadmin"
+      n: "superadmin"
+      r: false
+      sh: "Present and true only for Composal staff superadmins, not while impersonating."
+      t: "`$BOOLEAN`"
+    }
+    time_zone: {
+      h: "Time Zone"
+      n: "time_zone"
+      r: false
+      sh: "The IANA zone the person chose for their agents' replies; null follows their app."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "me"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "confirmation"
+          ]
+          co: {
+            id: "POST /api/v1/me/account_deletion"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/account_deletion"
+          q: {
+            "$action": "account_deletion"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "account_deletion"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "action_name"
+          ]
+          co: {
+            id: "POST /api/v1/me/app_promotion"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/me/app_promotion"
+          q: {
+            "$action": "app_promotion"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "app_promotion"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/me"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/me"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/me/account_deletion"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/me/account_deletion"
+          q: {
+            "$action": "account_deletion"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "account_deletion"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.request`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/me/landing"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "organization_slug"
+                or: "organization_slug"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/me/landing"
+          q: {
+            "$action": "landing"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "landing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/me/workspace_suggestion"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/me/workspace_suggestion"
+          q: {
+            "$action": "workspace_suggestion"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "workspace_suggestion"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /api/v1/me/profile_image"
+            source: "openapi3"
+            version: 2
+          }
+          m: "DELETE"
+          o: "/api/v1/me/profile_image"
+          q: {
+            "$action": "profile_image"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "profile_image"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PATCH /api/v1/me"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PATCH"
+          o: "/api/v1/me"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "organization_id"
+          ]
+          co: {
+            id: "PUT /api/v1/me/active_organization"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/api/v1/me/active_organization"
+          q: {
+            "$action": "active_organization"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "active_organization"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.active_organization`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/me/profile_image"
+            source: "openapi3"
+            version: 2
+          }
+          m: "PUT"
+          o: "/api/v1/me/profile_image"
+          q: {
+            "$action": "profile_image"
+          }
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    binary: true
+                    name: "image"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "me"
+            }
+            {
+              lit: "profile_image"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

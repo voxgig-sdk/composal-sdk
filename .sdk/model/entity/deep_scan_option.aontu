@@ -1,0 +1,168 @@
+# Entity: deep_scan_option
+
+main: kit: entity: deep_scan_option: {
+
+  alias: field: {}
+
+  fields: {
+    accounts: {
+      h: "Accounts"
+      n: "accounts"
+      r: true
+      t: "`$ARRAY`"
+    }
+    deep_scan_defaults: {
+      h: "Deep Scan Defaults"
+      n: "deep_scan_defaults"
+      r: false
+      sh: "The team a signed-out Deep Scan of this environment gets without budgets."
+      t: "`$ANY`"
+    }
+    flow_map: {
+      h: "Flow Map"
+      n: "flow_map"
+      r: true
+      sh: "Flows from the newest discovery; null until discovery has recorded some."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
+    personas: {
+      h: "Personas"
+      n: "personas"
+      r: false
+      t: "`$ARRAY`"
+    }
+    preview: {
+      h: "Preview"
+      n: "preview"
+      r: false
+      sh: "A short-lived pull request or branch deployment, listed after configured environments."
+      t: "`$BOOLEAN`"
+    }
+    target_url: {
+      h: "Target Url"
+      n: "target_url"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "deep_scan_option"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/deep_scans/options"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "environment_query"
+                or: "environment_query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/deep_scans/options"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "deep_scans"
+            }
+            {
+              lit: "options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

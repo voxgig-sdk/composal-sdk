@@ -1,0 +1,25 @@
+$kind: http-request
+id: "0226a4ed-6ff4-57cd-88d4-f8dcc57ca9ab"
+description: |-
+  The `lifecycle` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", $action: "lifecycle" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/lifecycle"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "heartbeat_enabled": true
+    }
+order: 22000

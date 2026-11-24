@@ -1,0 +1,19 @@
+$kind: collection
+id: "7ba6e448-2487-5d94-a994-69b42c6d34f7"
+description: |-
+  The **agent_email** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_email_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `delivery` | string | yes |  |
+  | `direction` | string | yes |  |
+  | `from` | string | yes |  |
+  | `id` | string | yes |  |
+  | `preview` | string |  |  |
+  | `received_at` | string | yes |  |
+  | `recipient_tag` | string | yes |  |
+  | `spam` | boolean | yes |  |
+  | `subject` | string | yes |  |
+  | `text` | string | yes |  |
+  | `to` | array | yes |  |
+order: 11000

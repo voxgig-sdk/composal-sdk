@@ -1,0 +1,17 @@
+$kind: collection
+id: "1abf47a4-97a3-5c22-b471-494644d9295a"
+description: |-
+  The **agent_workspace** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_workspace_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `can_delete` | boolean | yes |  |
+  | `can_keep` | boolean | yes |  |
+  | `cleanup_after` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `reason` | string | yes |  |
+  | `state` | string | yes |  |
+order: 50000

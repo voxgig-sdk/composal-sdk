@@ -1,0 +1,40 @@
+# BasicPreviewSharingApprovalFlow
+
+main: kit: flow: BasicPreviewSharingApprovalFlow:
+{
+  entity: "preview_sharing_approval",
+  kind: "basic",
+  name: "BasicPreviewSharingApprovalFlow",
+  step: [
+    {
+      i: {
+        ref: "preview_sharing_approval_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        preview_id: "preview01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01",
+        preview_id: "preview01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "preview_sharing_approval_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPreviewSharingApprovalFlow"
+}

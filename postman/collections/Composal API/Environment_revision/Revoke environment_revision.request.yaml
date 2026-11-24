@@ -1,0 +1,26 @@
+$kind: http-request
+id: "276c6224-ac8d-5f27-81da-421b37c29076"
+description: |-
+  The `revoke` action of **environment_revision**, a route of its `create` operation.
+
+  SDK: `client.EnvironmentRevision().create({ "organization_id": "organization_id", "environment_id": "environment_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "revoke" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/revisions/:id/revoke"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_revision belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_revision belongs to.
+  - key: id
+    value: "{{environment_revision_id}}"
+    description: The environment_revision this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

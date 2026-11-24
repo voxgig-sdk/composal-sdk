@@ -1,0 +1,28 @@
+$kind: http-request
+id: "2e64c80e-bb0c-55c4-97c6-7edecfb1ea3f"
+description: |-
+  The `list` operation of **agent_verify_project**.
+
+  SDK: `client.AgentVerifyProject().list({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/verify_projects"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_verify_project belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_verify_project belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_verify_project_id")) pm.collectionVariables.set("agent_verify_project_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

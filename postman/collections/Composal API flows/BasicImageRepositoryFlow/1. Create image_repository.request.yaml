@@ -1,0 +1,67 @@
+$kind: http-request
+id: cb0e6808-ee53-5fb6-9158-7b1a556b1b4f
+description: |-
+  The `create` operation of **image_repository**.
+
+  SDK: `client.ImageRepository().create({ organization_id: "example", name: "example", slug: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/image_repositories"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this image_repository belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "hosted_app_id": "example",
+      "slug": "example",
+      "name": "example",
+      "provider_kind": "oci",
+      "repository_path": "example",
+      "visibility": "private",
+      "status": "active",
+      "registry_auth_token": "example"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create image_repository: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body?.["image_repository"]
+      pm.test("1. Create image_repository: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("image_repository_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

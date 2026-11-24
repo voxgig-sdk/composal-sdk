@@ -1,0 +1,46 @@
+# BasicAgentAvatarFlow
+
+main: kit: flow: BasicAgentAvatarFlow:
+{
+  entity: "agent_avatar",
+  kind: "basic",
+  name: "BasicAgentAvatarFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_avatar_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "agent_avatar_ref01",
+        srcdatavar: "agent_avatar_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_avatar01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_avatar_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentAvatarFlow"
+}

@@ -1,0 +1,8 @@
+$kind: collection
+id: "48a94208-7651-53c6-a430-fe7b183081b7"
+description: |-
+  The **agent_slack** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_slack_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 35000

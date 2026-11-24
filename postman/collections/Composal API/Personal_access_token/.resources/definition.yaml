@@ -1,0 +1,11 @@
+$kind: collection
+id: badf13c9-7b60-5acf-8e43-e8a3fd04cbf0
+description: |-
+  The calling user's personal access tokens: list, create or revoke one.
+
+  The **personal_access_token** entity. Its requests address one record by `{{personal_access_token_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 153000

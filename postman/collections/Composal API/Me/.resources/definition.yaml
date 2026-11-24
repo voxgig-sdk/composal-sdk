@@ -1,0 +1,35 @@
+$kind: collection
+id: "77ebc8c1-f253-5340-be82-3ae2fb8c454a"
+description: |-
+  The calling user: read or change the profile, choose the active organization, or request account deletion (actions).
+
+  The **me** entity. Its requests address one record by `{{me_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_organization` | any | yes |  |
+  | `analytics_distinct_id` | string |  |  |
+  | `analytics_internal` | boolean | yes |  |
+  | `api_base_url` | string |  |  |
+  | `api_token` | string |  |  |
+  | `app_promotion` | object | yes |  |
+  | `commit_author_email` | string | yes |  |
+  | `email` | string | yes |  |
+  | `enabled_features` | array | yes |  |
+  | `github_pr_user_authorization_connected` | boolean | yes |  |
+  | `github_pr_user_authorization_login` | string | yes |  |
+  | `github_prs_authored_by_change_author` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `impersonation` | object | yes |  |
+  | `name` | string | yes |  |
+  | `next_path` | string |  |  |
+  | `onboarding` | object | yes |  |
+  | `openai_sign_in_connected` | boolean |  |  |
+  | `openai_sign_in_enabled` | boolean |  |  |
+  | `organizations` | array | yes |  |
+  | `pending_organization_invitation_count` | integer | yes |  |
+  | `pending_organization_invitation_count_label` | string | yes |  |
+  | `picture_url` | string | yes |  |
+  | `superadmin` | boolean |  |  |
+  | `time_zone` | string |  |  |
+order: 133000

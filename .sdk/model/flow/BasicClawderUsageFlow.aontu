@@ -1,0 +1,33 @@
+# BasicClawderUsageFlow
+
+main: kit: flow: BasicClawderUsageFlow:
+{
+  entity: "clawder_usage",
+  kind: "basic",
+  name: "BasicClawderUsageFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_usage_ref01",
+        srcdatavar: "clawder_usage_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "clawder_usage01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_usage_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderUsageFlow"
+}

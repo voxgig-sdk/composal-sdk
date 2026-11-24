@@ -1,0 +1,13 @@
+$kind: collection
+id: "07081a16-fb0b-54b3-8f08-a72d05a0c1e2"
+description: |-
+  The **agent_teammate** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_teammate_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `avatar` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `persona` | any |  |  |
+  | `slug` | string | yes |  |
+order: 38000

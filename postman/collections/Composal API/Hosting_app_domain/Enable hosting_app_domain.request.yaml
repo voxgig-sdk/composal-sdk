@@ -1,0 +1,22 @@
+$kind: http-request
+id: fe5b03c0-7d2e-54f1-9e63-a989701a5043
+description: |-
+  The `enable` action of **hosting_app_domain**, a route of its `create` operation.
+
+  SDK: `client.HostingAppDomain().create({ "app_id": "app_id", "id": "ID", $action: "enable" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:id/enable"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this hosting_app_domain belongs to.
+  - key: id
+    value: "{{hosting_app_domain_id}}"
+    description: The hosting_app_domain this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

@@ -1,0 +1,94 @@
+# Entity: deployment_file
+
+main: kit: entity: deployment_file: {
+
+  alias: field: {}
+
+  name: "deployment_file"
+  op: {
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "PUT /api/v1/static_sites/{static_site_id}/deployments/{id}/files"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deployment_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/static_sites/{static_site_id}/deployments/{id}/files"
+          q: {
+            exist: [
+              "deployment_id"
+              "static_site_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "deployment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "deployments"
+            }
+            {
+              var: "deployment_id"
+            }
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.static_site")]
+  ]
+
+}

@@ -1,0 +1,26 @@
+# BasicAgentGithubIntegrationFlow
+
+main: kit: flow: BasicAgentGithubIntegrationFlow:
+{
+  entity: "agent_github_integration",
+  kind: "basic",
+  name: "BasicAgentGithubIntegrationFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_github_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentGithubIntegrationFlow"
+}

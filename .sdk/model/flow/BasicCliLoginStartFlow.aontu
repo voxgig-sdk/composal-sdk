@@ -1,0 +1,18 @@
+# BasicCliLoginStartFlow
+
+main: kit: flow: BasicCliLoginStartFlow:
+{
+  entity: "cli_login_start",
+  kind: "basic",
+  name: "BasicCliLoginStartFlow",
+  step: [
+    {
+      i: {
+        ref: "cli_login_start_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCliLoginStartFlow"
+}

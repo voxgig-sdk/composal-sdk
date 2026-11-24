@@ -1,0 +1,26 @@
+$kind: http-request
+id: d72202cd-3e53-5c67-b630-1b214f6fcfcf
+description: |-
+  The `sync` action of **app_cdn**, a route of its `create` operation.
+
+  SDK: `client.AppCdn().create({ "app_id": "app_id", "id": "ID", $action: "sync" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:id/sync"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+  - key: id
+    value: "{{app_cdn_id}}"
+    description: The app_cdn this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "source_ref": "example",
+      "commit_sha": "example"
+    }
+order: 11000

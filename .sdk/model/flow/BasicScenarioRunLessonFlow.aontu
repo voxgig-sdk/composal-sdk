@@ -1,0 +1,25 @@
+# BasicScenarioRunLessonFlow
+
+main: kit: flow: BasicScenarioRunLessonFlow:
+{
+  entity: "scenario_run_lesson",
+  kind: "basic",
+  name: "BasicScenarioRunLessonFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_run_lesson_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01",
+        scenario_run_id: "scenario_run01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScenarioRunLessonFlow"
+}

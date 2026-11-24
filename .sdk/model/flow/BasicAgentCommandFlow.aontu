@@ -1,0 +1,27 @@
+# BasicAgentCommandFlow
+
+main: kit: flow: BasicAgentCommandFlow:
+{
+  entity: "agent_command",
+  kind: "basic",
+  name: "BasicAgentCommandFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_command_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentCommandFlow"
+}

@@ -1,0 +1,23 @@
+# BasicDockerBuilderSessionIssuedFlow
+
+main: kit: flow: BasicDockerBuilderSessionIssuedFlow:
+{
+  entity: "docker_builder_session_issued",
+  kind: "basic",
+  name: "BasicDockerBuilderSessionIssuedFlow",
+  step: [
+    {
+      i: {
+        ref: "docker_builder_session_issued_ref01"
+      }
+
+      m: {
+        docker_builder_id: "docker_builder01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDockerBuilderSessionIssuedFlow"
+}

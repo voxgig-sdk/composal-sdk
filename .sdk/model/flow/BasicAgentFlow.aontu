@@ -1,0 +1,118 @@
+# BasicAgentFlow
+
+main: kit: flow: BasicAgentFlow:
+{
+  entity: "agent",
+  kind: "basic",
+  name: "BasicAgentFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_ref01",
+        srcdatavar: "agent_ref01_data",
+        suffix: "_up0",
+        textfield: "attention"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_ref01",
+        srcdatavar: "agent_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "agent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentFlow"
+}

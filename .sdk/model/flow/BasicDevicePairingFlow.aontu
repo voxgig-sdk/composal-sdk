@@ -1,0 +1,22 @@
+# BasicDevicePairingFlow
+
+main: kit: flow: BasicDevicePairingFlow:
+{
+  entity: "device_pairing",
+  kind: "basic",
+  name: "BasicDevicePairingFlow",
+  step: [
+    {
+      i: {
+        ref: "device_pairing_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDevicePairingFlow"
+}

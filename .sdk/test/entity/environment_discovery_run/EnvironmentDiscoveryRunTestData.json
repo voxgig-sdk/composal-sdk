@@ -1,0 +1,80 @@
+{
+  "existing": {
+    "environment_discovery_run": {
+      "ENVIRONMENT_DISCOVERY_RUN00": {
+        "account_id": "ACCOUNT01",
+        "deadline_at": "s65",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "evidence": [],
+        "failure_code": "s68",
+        "id": "ENVIRONMENT_DISCOVERY_RUN00",
+        "queued_at": "s6a",
+        "recording": {},
+        "result": "s6c",
+        "status": "s6d",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ENVIRONMENT_DISCOVERY_RUN01": {
+        "account_id": "ACCOUNT01",
+        "deadline_at": "sc9",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "evidence": [],
+        "failure_code": "scc",
+        "id": "ENVIRONMENT_DISCOVERY_RUN01",
+        "queued_at": "sce",
+        "recording": {},
+        "result": "sd0",
+        "status": "sd1",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "ENVIRONMENT_DISCOVERY_RUN02": {
+        "account_id": "ACCOUNT01",
+        "deadline_at": "s12d",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "evidence": [],
+        "failure_code": "s130",
+        "id": "ENVIRONMENT_DISCOVERY_RUN02",
+        "queued_at": "s132",
+        "recording": {},
+        "result": "s134",
+        "status": "s135",
+        "environment_id": "ENVIRONMENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "environment_discovery_run": {
+      "environment_discovery_run_ref01": {
+        "account_id": "ACCOUNT01",
+        "deadline_at": "s191",
+        "environment_revision_id": "ENVIRONMENT_REVISION01",
+        "evidence": [],
+        "failure_code": "s194",
+        "queued_at": "s196",
+        "recording": {},
+        "result": "s198",
+        "status": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

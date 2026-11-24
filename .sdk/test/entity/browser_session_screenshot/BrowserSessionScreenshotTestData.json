@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "browser_session_screenshot": {
+      "BROWSER_SESSION_SCREENSHOT00": {
+        "idempotency_key": "s14",
+        "wait": false,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "BROWSER_SESSION_SCREENSHOT00"
+      },
+      "BROWSER_SESSION_SCREENSHOT01": {
+        "idempotency_key": "s28",
+        "wait": false,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "BROWSER_SESSION_SCREENSHOT01"
+      },
+      "BROWSER_SESSION_SCREENSHOT02": {
+        "idempotency_key": "s3c",
+        "wait": false,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "BROWSER_SESSION_SCREENSHOT02"
+      }
+    }
+  },
+  "new": {
+    "browser_session_screenshot": {
+      "browser_session_screenshot_ref01": {
+        "idempotency_key": "s50",
+        "wait": false
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/screenshots": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

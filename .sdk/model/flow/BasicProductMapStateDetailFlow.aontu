@@ -1,0 +1,34 @@
+# BasicProductMapStateDetailFlow
+
+main: kit: flow: BasicProductMapStateDetailFlow:
+{
+  entity: "product_map_state_detail",
+  kind: "basic",
+  name: "BasicProductMapStateDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "product_map_state_detail_ref01",
+        srcdatavar: "product_map_state_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "product_map_state_detail01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-product_map_state_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductMapStateDetailFlow"
+}

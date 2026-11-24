@@ -1,0 +1,10 @@
+$kind: collection
+id: "9cd2ad1d-996f-54a8-bd6a-0edb60bbf16f"
+description: |-
+  The **agent_interaction** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_interaction_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+  | `interactions` | array | yes |  |
+order: 15000

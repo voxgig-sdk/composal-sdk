@@ -1,0 +1,45 @@
+# BasicVerifyNetworkConnectionFlow
+
+main: kit: flow: BasicVerifyNetworkConnectionFlow:
+{
+  entity: "verify_network_connection",
+  kind: "basic",
+  name: "BasicVerifyNetworkConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_network_connection_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_network_connection_ref01",
+        srcdatavar: "verify_network_connection_ref01_data",
+        suffix: "_up0",
+        textfield: "aws_client_vpn_profile"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_network_connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyNetworkConnectionFlow"
+}

@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "agent_pull_request": {
+      "AGENT_PULL_REQUEST00": {
+        "id": "AGENT_PULL_REQUEST00",
+        "number": 71,
+        "owners": [],
+        "repository": "s49",
+        "status": "s4a",
+        "title": "s4b",
+        "url": "s4c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_PULL_REQUEST01": {
+        "id": "AGENT_PULL_REQUEST01",
+        "number": 141,
+        "owners": [],
+        "repository": "s8f",
+        "status": "s90",
+        "title": "s91",
+        "url": "s92",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_PULL_REQUEST02": {
+        "id": "AGENT_PULL_REQUEST02",
+        "number": 211,
+        "owners": [],
+        "repository": "sd5",
+        "status": "sd6",
+        "title": "sd7",
+        "url": "sd8",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_pull_request": {
+      "agent_pull_request_ref01": {
+        "number": 281,
+        "owners": [],
+        "repository": "s11b",
+        "status": "s11c",
+        "title": "s11d",
+        "url": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/pull_requests": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

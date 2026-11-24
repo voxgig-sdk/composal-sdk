@@ -1,0 +1,22 @@
+# BasicAdminInvitationResultFlow
+
+main: kit: flow: BasicAdminInvitationResultFlow:
+{
+  entity: "admin_invitation_result",
+  kind: "basic",
+  name: "BasicAdminInvitationResultFlow",
+  step: [
+    {
+      i: {
+        ref: "admin_invitation_result_ref01"
+      }
+
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAdminInvitationResultFlow"
+}

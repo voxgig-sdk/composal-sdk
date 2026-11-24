@@ -1,0 +1,20 @@
+$kind: collection
+id: b589145b-7a2b-5ff1-ba04-0ac80a3b73ea
+description: |-
+  The **me_email** entity. Its requests address one record by `{{me_email_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account` | boolean | yes |  |
+  | `can_delete` | boolean | yes |  |
+  | `can_resend_verification` | boolean | yes |  |
+  | `can_set_account` | boolean | yes |  |
+  | `can_set_commit_author` | boolean | yes |  |
+  | `commit_author` | boolean | yes |  |
+  | `email` | string | yes |  |
+  | `emails` | array | yes |  |
+  | `id` | string | yes |  |
+  | `message` | string |  |  |
+  | `verification_status` | string | yes |  |
+  | `verified` | boolean | yes |  |
+order: 134000

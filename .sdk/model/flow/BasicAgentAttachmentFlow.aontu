@@ -1,0 +1,23 @@
+# BasicAgentAttachmentFlow
+
+main: kit: flow: BasicAgentAttachmentFlow:
+{
+  entity: "agent_attachment",
+  kind: "basic",
+  name: "BasicAgentAttachmentFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_attachment_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentAttachmentFlow"
+}

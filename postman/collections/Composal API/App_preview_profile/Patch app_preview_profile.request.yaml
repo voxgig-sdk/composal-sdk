@@ -1,0 +1,37 @@
+$kind: http-request
+id: c25ec427-89cc-5d56-b566-e9b6cbc49ca5
+description: |-
+  The `patch` operation of **app_preview_profile**.
+
+  SDK: `client.AppPreviewProfile().patch({ app_id: "example", id: "example", automatic: true })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/preview_profiles/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview_profile belongs to.
+  - key: id
+    value: "{{app_preview_profile_id}}"
+    description: The app_preview_profile this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "slug": "example",
+      "source_environment_id": "example",
+      "ttl_days": 1,
+      "automatic": true,
+      "configuration": {
+        "variables": {},
+        "build_variables": {},
+        "required_keys": [
+          "example"
+        ],
+        "service_resources": {}
+      }
+    }
+order: 5000

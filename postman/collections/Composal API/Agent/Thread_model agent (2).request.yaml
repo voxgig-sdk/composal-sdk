@@ -1,0 +1,26 @@
+$kind: http-request
+id: "50999ed7-ec43-564c-8b6f-2d62d2e9caeb"
+description: |-
+  The `thread_model` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "thread_model" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/thread_model"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "model": "example"
+    }
+order: 38000

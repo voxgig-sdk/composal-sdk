@@ -1,0 +1,45 @@
+$kind: http-request
+id: a6aa5ff8-2306-5d6e-acd7-1b286c65bf78
+description: |-
+  The `create` operation of **agent_thread**.
+
+  SDK: `client.AgentThread().create({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_thread belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "title": "example",
+      "message": "example",
+      "requester_membership_id": "example",
+      "execution": {
+        "kind": "example",
+        "device_id": "example",
+        "path": "example"
+      },
+      "parent_conversation_id": "example",
+      "inherit_context": true
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_thread_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

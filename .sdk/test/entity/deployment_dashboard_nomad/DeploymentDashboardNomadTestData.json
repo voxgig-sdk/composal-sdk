@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "deployment_dashboard_nomad": {
+      "DEPLOYMENT_DASHBOARD_NOMAD00": {
+        "app_id": "APP01",
+        "id": "DEPLOYMENT_DASHBOARD_NOMAD00"
+      },
+      "DEPLOYMENT_DASHBOARD_NOMAD01": {
+        "app_id": "APP01",
+        "id": "DEPLOYMENT_DASHBOARD_NOMAD01"
+      },
+      "DEPLOYMENT_DASHBOARD_NOMAD02": {
+        "app_id": "APP01",
+        "id": "DEPLOYMENT_DASHBOARD_NOMAD02"
+      }
+    }
+  },
+  "new": {
+    "deployment_dashboard_nomad": {
+      "deployment_dashboard_nomad_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

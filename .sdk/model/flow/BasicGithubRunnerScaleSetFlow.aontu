@@ -1,0 +1,18 @@
+# BasicGithubRunnerScaleSetFlow
+
+main: kit: flow: BasicGithubRunnerScaleSetFlow:
+{
+  entity: "github_runner_scale_set",
+  kind: "basic",
+  name: "BasicGithubRunnerScaleSetFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_scale_set_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubRunnerScaleSetFlow"
+}

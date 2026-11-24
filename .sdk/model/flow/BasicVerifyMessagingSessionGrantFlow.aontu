@@ -1,0 +1,24 @@
+# BasicVerifyMessagingSessionGrantFlow
+
+main: kit: flow: BasicVerifyMessagingSessionGrantFlow:
+{
+  entity: "verify_messaging_session_grant",
+  kind: "basic",
+  name: "BasicVerifyMessagingSessionGrantFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_messaging_session_grant_ref01"
+      }
+
+      m: {
+        leas_id: "leas01",
+        swarm_id: "swarm01",
+        task_id: "task01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyMessagingSessionGrantFlow"
+}

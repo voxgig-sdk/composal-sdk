@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "verify_browser_session": {
+      "VERIFY_BROWSER_SESSION00": {
+        "account_id": "ACCOUNT01",
+        "expires_at": "s5b",
+        "id": "VERIFY_BROWSER_SESSION00",
+        "name": "s5d",
+        "origin": "s5e",
+        "project_id": "PROJECT01",
+        "status": "s60",
+        "url": "s61",
+        "viewer_url": "s62",
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFY_BROWSER_SESSION01": {
+        "account_id": "ACCOUNT01",
+        "expires_at": "sb5",
+        "id": "VERIFY_BROWSER_SESSION01",
+        "name": "sb7",
+        "origin": "sb8",
+        "project_id": "PROJECT01",
+        "status": "sba",
+        "url": "sbb",
+        "viewer_url": "sbc",
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFY_BROWSER_SESSION02": {
+        "account_id": "ACCOUNT01",
+        "expires_at": "s10f",
+        "id": "VERIFY_BROWSER_SESSION02",
+        "name": "s111",
+        "origin": "s112",
+        "project_id": "PROJECT01",
+        "status": "s114",
+        "url": "s115",
+        "viewer_url": "s116",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "verify_browser_session": {
+      "verify_browser_session_ref01": {
+        "account_id": "ACCOUNT01",
+        "expires_at": "s169",
+        "name": "s16b",
+        "origin": "s16c",
+        "project_id": "PROJECT01",
+        "status": "s16e",
+        "url": "s16f",
+        "viewer_url": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/browser_sessions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

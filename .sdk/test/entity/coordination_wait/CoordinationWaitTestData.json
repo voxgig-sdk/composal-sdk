@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "coordination_wait": {
+      "COORDINATION_WAIT00": {
+        "can_stop": true,
+        "expires_at": "s3d",
+        "id": "COORDINATION_WAIT00",
+        "status": "s3f",
+        "stop_state": "s40",
+        "wake_outcome": "s41",
+        "agent_id": "AGENT01",
+        "coordination_id": "COORDINATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "COORDINATION_WAIT01": {
+        "can_stop": true,
+        "expires_at": "s79",
+        "id": "COORDINATION_WAIT01",
+        "status": "s7b",
+        "stop_state": "s7c",
+        "wake_outcome": "s7d",
+        "agent_id": "AGENT01",
+        "coordination_id": "COORDINATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "COORDINATION_WAIT02": {
+        "can_stop": true,
+        "expires_at": "sb5",
+        "id": "COORDINATION_WAIT02",
+        "status": "sb7",
+        "stop_state": "sb8",
+        "wake_outcome": "sb9",
+        "agent_id": "AGENT01",
+        "coordination_id": "COORDINATION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "coordination_wait": {
+      "coordination_wait_ref01": {
+        "can_stop": true,
+        "expires_at": "sf1",
+        "status": "sf3",
+        "stop_state": "sf4",
+        "wake_outcome": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/waits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

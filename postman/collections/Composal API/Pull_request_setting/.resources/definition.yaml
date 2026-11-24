@@ -1,0 +1,67 @@
+$kind: collection
+id: "54ab4b30-c810-5259-9658-da95f8d57a00"
+description: |-
+  The **pull_request_setting** entity, which belongs to a organization. Its requests address one record by `{{pull_request_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_preview_profile_id` | string |  |  |
+  | `app_service_id` | string |  |  |
+  | `bots` | array | yes |  |
+  | `browser_options_available` | boolean | yes |  |
+  | `ci_preview` | object | yes |  |
+  | `concurrency` | integer |  |  |
+  | `configured_repository` | any | yes |  |
+  | `demo_videos` | boolean | yes |  |
+  | `demo_videos_enabled` | boolean |  |  |
+  | `deployment` | string | yes |  |
+  | `deployment_environment` | string |  |  |
+  | `enabled` | boolean | yes |  |
+  | `environment` | string | yes |  |
+  | `environments` | array | yes |  |
+  | `github_check_enabled` | boolean |  |  |
+  | `hosting_presets` | array | yes |  |
+  | `id` | string | yes |  |
+  | `imessage_comment_prefix` | string | yes |  |
+  | `imessage_number` | string | yes |  |
+  | `imessage_number_source` | string | yes |  |
+  | `limits` | object | yes |  |
+  | `link_pattern` | string | yes |  |
+  | `links` | string | yes |  |
+  | `max_seconds` | integer |  |  |
+  | `messaging_enabled` | boolean | yes |  |
+  | `messaging_tester_number` | string | yes |  |
+  | `non_product_paths` | array |  |  |
+  | `permissions` | object | yes |  |
+  | `pr_check` | boolean | yes |  |
+  | `preview_access` | string |  |  |
+  | `preview_comment_authors` | array |  |  |
+  | `preview_comment_pattern` | string |  |  |
+  | `preview_comment_wildcard` | string | yes |  |
+  | `preview_profile` | string | yes |  |
+  | `preview_profiles` | array | yes |  |
+  | `previews` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `project_repositories` | array | yes |  |
+  | `provider` | string | yes |  |
+  | `repositories` | array | yes |  |
+  | `repository` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `repository_kind` | string | yes |  |
+  | `selected_repository` | any | yes |  |
+  | `service` | string | yes |  |
+  | `settings` | array | yes |  |
+  | `setup` | any | yes |  |
+  | `setup_defaults` | object | yes |  |
+  | `source_repository` | string | yes |  |
+  | `target_mode` | string | yes |  |
+  | `tester_numbers` | array | yes |  |
+  | `trigger_label` | string | yes |  |
+  | `trigger_on_comment` | boolean |  |  |
+  | `trigger_on_label` | boolean |  |  |
+  | `trigger_on_push` | boolean |  |  |
+  | `trigger_on_ready` | boolean |  |  |
+  | `triggers` | object | yes |  |
+  | `verify_environment_id` | string | yes |  |
+  | `write_scenarios` | boolean | yes |  |
+order: 181000

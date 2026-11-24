@@ -1,0 +1,224 @@
+# Entity: nomad_log
+
+main: kit: entity: nomad_log: {
+
+  alias: field: {}
+
+  fields: {
+    allocation_id: {
+      h: "Allocation Id"
+      n: "allocation_id"
+      r: true
+      t: "`$STRING`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: false
+      t: "`$STRING`"
+    }
+    fetched_at: {
+      fo: "date-time"
+      h: "Fetched At"
+      n: "fetched_at"
+      r: true
+      t: "`$STRING`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    logs: {
+      h: "Logs"
+      n: "logs"
+      r: true
+      t: "`$STRING`"
+    }
+    namespace: {
+      h: "Namespace"
+      n: "namespace"
+      r: true
+      t: "`$STRING`"
+    }
+    offset: {
+      h: "Offset"
+      n: "offset"
+      r: true
+      t: "`$INTEGER`"
+    }
+    origin: {
+      h: "Origin"
+      n: "origin"
+      r: true
+      t: "`$STRING`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: false
+      t: "`$STRING`"
+    }
+    task: {
+      h: "Task"
+      n: "task"
+      r: true
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "nomad_log"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "environment"
+                or: "environment"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "location"
+                or: "location"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 65536
+                explode: true
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "end"
+                explode: true
+                k: "query"
+                n: "origin"
+                or: "origin"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "service"
+                or: "service"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "task"
+                or: "task"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "stdout"
+                explode: true
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployment_dashboard"
+            }
+            {
+              lit: "nomad"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

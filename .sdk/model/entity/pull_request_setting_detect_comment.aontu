@@ -1,0 +1,163 @@
+# Entity: pull_request_setting_detect_comment
+
+main: kit: entity: pull_request_setting_detect_comment: {
+
+  alias: field: {}
+
+  fields: {
+    bots: {
+      h: "Bots"
+      n: "bots"
+      r: false
+      sh: "The bots answer"
+      t: "`$ARRAY`"
+    }
+    deployment: {
+      h: "Deployment"
+      n: "deployment"
+      r: false
+      sh: "The deployment answer"
+      t: "`$STRING`"
+    }
+    example_url: {
+      h: "Example Url"
+      n: "example_url"
+      r: false
+      t: "`$STRING`"
+    }
+    imessage_comment_prefix: {
+      h: "Imessage Comment Prefix"
+      n: "imessage_comment_prefix"
+      r: false
+      t: "`$STRING`"
+    }
+    imessage_number: {
+      h: "Imessage Number"
+      n: "imessage_number"
+      r: false
+      sh: "International destination number; blank or null clears it on an added environment."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    link_pattern: {
+      h: "Link Pattern"
+      n: "link_pattern"
+      r: false
+      sh: "The link_pattern answer"
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      sh: "Project slug or ID."
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      sh: "Who builds the previews, such as Vercel or GitLab"
+      t: "`$STRING`"
+    }
+    repository_id: {
+      h: "Repository Id"
+      n: "repository_id"
+      r: false
+      sh: "Repository slug, ID or owner/name."
+      t: "`$STRING`"
+    }
+    request_number: {
+      h: "Request Number"
+      n: "request_number"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "pull_request_setting_detect_comment"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "project_id"
+            "repository_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "pull_request_settings"
+            }
+            {
+              lit: "detect_comments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

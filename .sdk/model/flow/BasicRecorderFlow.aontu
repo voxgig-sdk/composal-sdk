@@ -1,0 +1,32 @@
+# BasicRecorderFlow
+
+main: kit: flow: BasicRecorderFlow:
+{
+  entity: "recorder",
+  kind: "basic",
+  name: "BasicRecorderFlow",
+  step: [
+    {
+      i: {
+        ref: "recorder_ref01",
+        srcdatavar: "recorder_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "recorder01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-recorder_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRecorderFlow"
+}

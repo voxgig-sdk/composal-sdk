@@ -1,0 +1,14 @@
+$kind: collection
+id: "299ae920-7908-5c63-8542-23cdc555edd8"
+description: |-
+  The **pages_project_run** entity, which belongs to a organization and a project. Its requests address one record by `{{pages_project_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `environment_query` | string | yes |  |
+  | `environments` | array | yes |  |
+  | `environments_has_more` | boolean | yes |  |
+  | `pagination` | object | yes |  |
+  | `runs` | array | yes |  |
+  | `selected_environment` | any | yes |  |
+order: 151000

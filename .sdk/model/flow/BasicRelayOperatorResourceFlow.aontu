@@ -1,0 +1,27 @@
+# BasicRelayOperatorResourceFlow
+
+main: kit: flow: BasicRelayOperatorResourceFlow:
+{
+  entity: "relay_operator_resource",
+  kind: "basic",
+  name: "BasicRelayOperatorResourceFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "relay_operator_resource_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayOperatorResourceFlow"
+}

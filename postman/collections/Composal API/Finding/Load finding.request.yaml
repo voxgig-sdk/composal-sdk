@@ -1,0 +1,25 @@
+$kind: http-request
+id: "2a7bc089-e121-5cfe-a593-278f3265e6bf"
+description: |-
+  The `load` operation of **finding**.
+
+  SDK: `client.Finding().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/findings/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: repository_id
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this finding belongs to.
+  - key: id
+    value: "{{finding_id}}"
+    description: The finding this request addresses.
+order: 2000

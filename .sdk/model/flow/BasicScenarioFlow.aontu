@@ -1,0 +1,88 @@
+# BasicScenarioFlow
+
+main: kit: flow: BasicScenarioFlow:
+{
+  entity: "scenario",
+  kind: "basic",
+  name: "BasicScenarioFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "scenario_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "scenario_ref01",
+        srcdatavar: "scenario_ref01_data",
+        suffix: "_up0",
+        textfield: "allowed_actions"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-scenario_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "scenario_ref01",
+        srcdatavar: "scenario_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "scenario01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-scenario_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicScenarioFlow"
+}

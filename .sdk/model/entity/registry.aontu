@@ -1,0 +1,55 @@
+# Entity: registry
+
+main: kit: entity: registry: {
+
+  alias: field: {}
+
+  name: "registry"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/registry/namespace"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/registry/namespace"
+          q: {
+            "$action": "namespace"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "namespace"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

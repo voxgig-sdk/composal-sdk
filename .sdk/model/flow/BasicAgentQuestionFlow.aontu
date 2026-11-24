@@ -1,0 +1,24 @@
+# BasicAgentQuestionFlow
+
+main: kit: flow: BasicAgentQuestionFlow:
+{
+  entity: "agent_question",
+  kind: "basic",
+  name: "BasicAgentQuestionFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_question_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        question_id: "question01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentQuestionFlow"
+}

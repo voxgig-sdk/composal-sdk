@@ -1,0 +1,25 @@
+$kind: http-request
+id: "64f4febb-0255-5ab2-8252-86251bc3b108"
+description: |-
+  The `remove` operation of **member**.
+
+  SDK: `client.Member().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/members/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this member belongs to.
+  - key: id
+    value: "{{member_id}}"
+    description: The member this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("member_id")
+      }
+    language: text/javascript
+order: 4000

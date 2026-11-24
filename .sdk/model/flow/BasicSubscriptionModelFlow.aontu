@@ -1,0 +1,27 @@
+# BasicSubscriptionModelFlow
+
+main: kit: flow: BasicSubscriptionModelFlow:
+{
+  entity: "subscription_model",
+  kind: "basic",
+  name: "BasicSubscriptionModelFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "subscription_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubscriptionModelFlow"
+}

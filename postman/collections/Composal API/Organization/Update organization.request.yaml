@@ -1,0 +1,29 @@
+$kind: http-request
+id: "986d8537-6e62-5321-b53e-b918ff2b51bd"
+description: |-
+  The `update` operation of **organization**.
+
+  SDK: `client.Organization().update({ id: "example", github_prs_authored_by_change_author: true })`
+url: "{{base}}/api/v1/organizations/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{organization_id}}"
+    description: The organization this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "google_workspace_domain": "example",
+      "sandbox_region": "us-was-1",
+      "slug": "example",
+      "name": "example",
+      "timezone": "example",
+      "github_prs_authored_by_change_author": true,
+      "verify_pr_scenario_writing_enabled": true,
+      "shared_agent_personal_accounts_enabled": true
+    }
+order: 4000

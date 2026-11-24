@@ -1,0 +1,28 @@
+$kind: http-request
+id: "9ceb384a-691d-5cea-a0d7-30ff99d6c2e5"
+description: |-
+  The `finish` action of **project_recording**, a route of its `create` operation.
+
+  SDK: `client.ProjectRecording().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "finish" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/recordings/:id/finish"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_recording belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_recording belongs to.
+  - key: id
+    value: "{{project_recording_id}}"
+    description: The project_recording this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "outcome_hint": "example"
+    }
+order: 3000

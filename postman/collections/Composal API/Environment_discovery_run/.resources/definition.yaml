@@ -1,0 +1,18 @@
+$kind: collection
+id: "14c3cb75-068d-5ce7-88a7-1cfccb274c88"
+description: |-
+  The **environment_discovery_run** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_discovery_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string | yes |  |
+  | `deadline_at` | string | yes |  |
+  | `environment_revision_id` | string | yes |  |
+  | `evidence` | array |  |  |
+  | `failure_code` | string | yes |  |
+  | `id` | string | yes |  |
+  | `queued_at` | string | yes |  |
+  | `recording` | object | yes |  |
+  | `result` | object | yes |  |
+  | `status` | string | yes |  |
+order: 110000

@@ -1,0 +1,23 @@
+# BasicDeviceGrantFlow
+
+main: kit: flow: BasicDeviceGrantFlow:
+{
+  entity: "device_grant",
+  kind: "basic",
+  name: "BasicDeviceGrantFlow",
+  step: [
+    {
+      i: {
+        ref: "device_grant_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceGrantFlow"
+}

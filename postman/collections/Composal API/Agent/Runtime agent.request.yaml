@@ -1,0 +1,18 @@
+$kind: http-request
+id: ce3b750e-8795-53fc-b2e7-92e995ecee94
+description: |-
+  The `runtime` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "runtime" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/runtime"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 31000

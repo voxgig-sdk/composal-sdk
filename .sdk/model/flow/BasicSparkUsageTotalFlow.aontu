@@ -1,0 +1,32 @@
+# BasicSparkUsageTotalFlow
+
+main: kit: flow: BasicSparkUsageTotalFlow:
+{
+  entity: "spark_usage_total",
+  kind: "basic",
+  name: "BasicSparkUsageTotalFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_usage_total_ref01",
+        srcdatavar: "spark_usage_total_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "spark_usage_total01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_usage_total_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkUsageTotalFlow"
+}

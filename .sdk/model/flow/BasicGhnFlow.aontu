@@ -1,0 +1,35 @@
+# BasicGhnFlow
+
+main: kit: flow: BasicGhnFlow:
+{
+  entity: "ghn",
+  kind: "basic",
+  name: "BasicGhnFlow",
+  step: [
+    {
+      i: {
+        ref: "ghn_ref01",
+        srcdatavar: "ghn_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        github_owner: "github_owner01",
+        github_repo: "github_repo01",
+        id: "ghn01",
+        org_slug: "org_slug01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ghn_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicGhnFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: ba2a5afa-4d4e-50b2-8a08-d1b385e0ba65
+description: |-
+  The `issue_access_key` action of **app_storage_resource**, a route of its `create` operation.
+
+  SDK: `client.AppStorageResource().create({ "app_id": "app_id", "id": "ID", $action: "issue_access_key" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources/:id/issue_access_key"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_storage_resource belongs to.
+  - key: id
+    value: "{{app_storage_resource_id}}"
+    description: The app_storage_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

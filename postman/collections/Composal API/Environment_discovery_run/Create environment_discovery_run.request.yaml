@@ -1,0 +1,36 @@
+$kind: http-request
+id: "58599068-0771-5ff4-ab42-e70cc1a4f1a3"
+description: |-
+  The `create` operation of **environment_discovery_run**.
+
+  SDK: `client.EnvironmentDiscoveryRun().create({ environment_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/discovery_runs"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_discovery_run belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_discovery_run belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "account_id": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("environment_discovery_run_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

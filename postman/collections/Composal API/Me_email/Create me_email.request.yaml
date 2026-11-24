@@ -1,0 +1,28 @@
+$kind: http-request
+id: "7486fb0e-cdc1-541f-b0d0-2aeb30dbdae6"
+description: |-
+  The `create` operation of **me_email**.
+
+  SDK: `client.MeEmail().create({ email: "example" })`
+url: "{{base}}/api/v1/me/emails"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "email": "user@example.com"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("me_email_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

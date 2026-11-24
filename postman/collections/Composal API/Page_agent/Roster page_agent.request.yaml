@@ -1,0 +1,31 @@
+$kind: http-request
+id: aa3dd556-ea46-5a87-abe9-7dd69b20b09d
+description: |-
+  The `roster` action of **page_agent**, a route of its `load` operation.
+
+  SDK: `client.PageAgent().load({ "organization_id": "organization_id", $action: "roster" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/page/roster"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent
+    value: ""
+    disabled: true
+  - key: agent_search
+    value: ""
+    disabled: true
+  - key: agent_visibility
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_agent belongs to.
+order: 3000

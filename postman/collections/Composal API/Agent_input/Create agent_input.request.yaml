@@ -1,0 +1,73 @@
+$kind: http-request
+id: "777cb17c-d2b3-5742-8ef8-a38078e04304"
+description: |-
+  The `create` operation of **agent_input**.
+
+  SDK: `client.AgentInput().create({ agent_id: "example", organization_id: "example", browser_context: {}, client_time: {}, conversation_id: "example", text: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/inputs"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_input belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_input belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "requester_membership_id": "example",
+      "text": "example",
+      "browser_context": {
+        "view": "local",
+        "active_tab": {
+          "location": "local",
+          "title": "example",
+          "url": "example",
+          "target_id": "example"
+        },
+        "tabs": [
+          {
+            "location": "local",
+            "title": "example",
+            "url": "example",
+            "target_id": "example"
+          }
+        ]
+      },
+      "client_time": {
+        "time_zone": "example",
+        "at": "2026-01-01T00:00:00Z"
+      },
+      "model_policy": {
+        "mode": "platform_default"
+      },
+      "speed": "regular",
+      "attachments": [
+        {
+          "fileName": "example",
+          "mimeType": "example",
+          "content": "example"
+        }
+      ],
+      "attachment_ids": [
+        "example"
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_input_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

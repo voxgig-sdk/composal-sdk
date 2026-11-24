@@ -1,0 +1,22 @@
+# BasicAppDeployFlow
+
+main: kit: flow: BasicAppDeployFlow:
+{
+  entity: "app_deploy",
+  kind: "basic",
+  name: "BasicAppDeployFlow",
+  step: [
+    {
+      i: {
+        ref: "app_deploy_ref01"
+      }
+
+      m: {
+        app_id: "app01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAppDeployFlow"
+}

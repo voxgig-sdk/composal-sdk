@@ -1,0 +1,78 @@
+$kind: http-request
+id: "101fca8d-91a3-5efc-bfad-809617183cbb"
+description: |-
+  The `create` operation of **product_map_identity_decision**.
+
+  SDK: `client.ProductMapIdentityDecision().create({ organization_id: "example", project_id: "example", observations: [], operation: "example", reason: "example", target: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/identity_decisions"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_identity_decision belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_identity_decision belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "operation": "merge",
+      "reason": "example",
+      "observations": [
+        {
+          "observation_id": "example",
+          "state_id": "example",
+          "interpretation_id": "example",
+          "identity_decision_id": "example"
+        }
+      ],
+      "target": {
+        "observation_id": "example",
+        "state_id": "example",
+        "interpretation_id": "example",
+        "identity_decision_id": "example"
+      }
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("1. Create product_map_identity_decision: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const made = body
+      pm.test("1. Create product_map_identity_decision: the record carries its key", () => {
+        pm.expect(made, "record").to.be.an("object")
+        pm.expect(at(made, "id"), "id").to.exist
+      })
+      if (null != made && null != at(made, "id")) pm.variables.set("product_map_identity_decision_ref01", String(at(made, "id")))
+    language: text/javascript
+order: 1000

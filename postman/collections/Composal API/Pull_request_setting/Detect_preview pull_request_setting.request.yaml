@@ -1,0 +1,23 @@
+$kind: http-request
+id: "6ed94509-9dd9-5b02-aacb-e655684e2baa"
+description: |-
+  The `detect_preview` action of **pull_request_setting**, a route of its `create` operation.
+
+  SDK: `client.PullRequestSetting().create({ "organization_id": "organization_id", $action: "detect_preview" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_request_settings/detect_preview"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pull_request_setting belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "project_id": "{{project_id}}",
+      "repository_id": "example"
+    }
+order: 3000

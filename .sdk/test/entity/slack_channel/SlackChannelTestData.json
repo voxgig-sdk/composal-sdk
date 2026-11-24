@@ -1,0 +1,54 @@
+{
+  "existing": {
+    "slack_channel": {
+      "SLACK_CHANNEL00": {
+        "id": "SLACK_CHANNEL00",
+        "is_member": false,
+        "is_private": true,
+        "is_slack_connect": false,
+        "name": "s40",
+        "published": false,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SLACK_CHANNEL01": {
+        "id": "SLACK_CHANNEL01",
+        "is_member": false,
+        "is_private": true,
+        "is_slack_connect": false,
+        "name": "s7c",
+        "published": false,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "SLACK_CHANNEL02": {
+        "id": "SLACK_CHANNEL02",
+        "is_member": false,
+        "is_private": true,
+        "is_slack_connect": false,
+        "name": "sb8",
+        "published": false,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "slack_channel": {
+      "slack_channel_ref01": {
+        "is_member": false,
+        "is_private": true,
+        "is_slack_connect": false,
+        "name": "sf4",
+        "published": false
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

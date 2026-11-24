@@ -1,0 +1,34 @@
+# BasicClawderAgentEmailMessageFlow
+
+main: kit: flow: BasicClawderAgentEmailMessageFlow:
+{
+  entity: "clawder_agent_email_message",
+  kind: "basic",
+  name: "BasicClawderAgentEmailMessageFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_agent_email_message_ref01",
+        srcdatavar: "clawder_agent_email_message_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "clawder_agent_email_message01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_agent_email_message_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderAgentEmailMessageFlow"
+}

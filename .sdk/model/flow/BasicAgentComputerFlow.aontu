@@ -1,0 +1,46 @@
+# BasicAgentComputerFlow
+
+main: kit: flow: BasicAgentComputerFlow:
+{
+  entity: "agent_computer",
+  kind: "basic",
+  name: "BasicAgentComputerFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_computer_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "agent_computer_ref01",
+        srcdatavar: "agent_computer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_computer01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_computer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentComputerFlow"
+}

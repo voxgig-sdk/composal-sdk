@@ -1,0 +1,118 @@
+{
+  "existing": {
+    "member": {
+      "MEMBER00": {
+        "accepted_at": "sbe",
+        "accepted_by_user": "sbf",
+        "created_at": "sc0",
+        "created_at_label": "sc1",
+        "email": "sc2",
+        "email_delivery_status": "sc3",
+        "expires_at": "sc4",
+        "expires_at_label": "sc5",
+        "id": "MEMBER00",
+        "invite_url": "sc7",
+        "invited_by_user": "sc8",
+        "is_self": false,
+        "organization": {},
+        "revoked_at": "scb",
+        "role": "scc",
+        "status": "scd",
+        "updated_at": "sce",
+        "updated_at_label": "scf",
+        "user": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEMBER01": {
+        "accepted_at": "s17c",
+        "accepted_by_user": "s17d",
+        "created_at": "s17e",
+        "created_at_label": "s17f",
+        "email": "s180",
+        "email_delivery_status": "s181",
+        "expires_at": "s182",
+        "expires_at_label": "s183",
+        "id": "MEMBER01",
+        "invite_url": "s185",
+        "invited_by_user": "s186",
+        "is_self": false,
+        "organization": {},
+        "revoked_at": "s189",
+        "role": "s18a",
+        "status": "s18b",
+        "updated_at": "s18c",
+        "updated_at_label": "s18d",
+        "user": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEMBER02": {
+        "accepted_at": "s23a",
+        "accepted_by_user": "s23b",
+        "created_at": "s23c",
+        "created_at_label": "s23d",
+        "email": "s23e",
+        "email_delivery_status": "s23f",
+        "expires_at": "s240",
+        "expires_at_label": "s241",
+        "id": "MEMBER02",
+        "invite_url": "s243",
+        "invited_by_user": "s244",
+        "is_self": false,
+        "organization": {},
+        "revoked_at": "s247",
+        "role": "s248",
+        "status": "s249",
+        "updated_at": "s24a",
+        "updated_at_label": "s24b",
+        "user": {},
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "member": {
+      "member_ref01": {
+        "accepted_at": "s2f8",
+        "accepted_by_user": "s2f9",
+        "created_at": "s2fa",
+        "created_at_label": "s2fb",
+        "email": "s2fc",
+        "email_delivery_status": "s2fd",
+        "expires_at": "s2fe",
+        "expires_at_label": "s2ff",
+        "invite_url": "s301",
+        "invited_by_user": "s302",
+        "is_self": false,
+        "organization": {},
+        "revoked_at": "s305",
+        "role": "s306",
+        "status": "s307",
+        "updated_at": "s308",
+        "updated_at_label": "s309",
+        "user": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/members": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/members/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/members/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/members/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

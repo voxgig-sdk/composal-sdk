@@ -1,0 +1,22 @@
+$kind: http-request
+id: "8b612d60-9b20-5c70-ba68-151d194775e4"
+description: |-
+  The `usage` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "usage" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/usage"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 40000

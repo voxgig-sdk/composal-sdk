@@ -1,0 +1,45 @@
+# BasicNetworkConnectionFlow
+
+main: kit: flow: BasicNetworkConnectionFlow:
+{
+  entity: "network_connection",
+  kind: "basic",
+  name: "BasicNetworkConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "network_connection_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "network_connection_ref01",
+        srcdatavar: "network_connection_ref01_data",
+        suffix: "_up0",
+        textfield: "aws_client_vpn_profile"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-network_connection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNetworkConnectionFlow"
+}

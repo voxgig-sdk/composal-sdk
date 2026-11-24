@@ -1,0 +1,58 @@
+{
+  "existing": {
+    "service_endpoint": {
+      "SERVICE_ENDPOINT00": {
+        "id": "SERVICE_ENDPOINT00",
+        "app_id": "APP01",
+        "service_id": "SERVICE01"
+      },
+      "SERVICE_ENDPOINT01": {
+        "id": "SERVICE_ENDPOINT01",
+        "app_id": "APP01",
+        "service_id": "SERVICE01"
+      },
+      "SERVICE_ENDPOINT02": {
+        "id": "SERVICE_ENDPOINT02",
+        "app_id": "APP01",
+        "service_id": "SERVICE01"
+      }
+    }
+  },
+  "new": {
+    "service_endpoint": {
+      "service_endpoint_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

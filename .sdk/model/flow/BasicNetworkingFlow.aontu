@@ -1,0 +1,71 @@
+# BasicNetworkingFlow
+
+main: kit: flow: BasicNetworkingFlow:
+{
+  entity: "networking",
+  kind: "basic",
+  name: "BasicNetworkingFlow",
+  step: [
+    {
+      i: {
+        ref: "networking_ref01"
+      }
+
+      m: {
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "networking_ref01",
+        srcdatavar: "networking_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-networking_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "networking_ref01",
+        srcdatavar: "networking_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-networking_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "networking_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "networking01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicNetworkingFlow"
+}

@@ -1,0 +1,33 @@
+# BasicMissionControlCardFlow
+
+main: kit: flow: BasicMissionControlCardFlow:
+{
+  entity: "mission_control_card",
+  kind: "basic",
+  name: "BasicMissionControlCardFlow",
+  step: [
+    {
+      i: {
+        ref: "mission_control_card_ref01",
+        srcdatavar: "mission_control_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "mission_control_card01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-mission_control_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMissionControlCardFlow"
+}

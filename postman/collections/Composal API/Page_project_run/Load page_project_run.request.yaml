@@ -1,0 +1,31 @@
+$kind: http-request
+id: "92a47fdb-62d7-53c6-9e0c-911ed35b01b3"
+description: |-
+  The `load` operation of **page_project_run**.
+
+  SDK: `client.PageProjectRun().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: browser
+    value: ""
+    disabled: true
+  - key: details
+    value: "true"
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_project_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this page_project_run belongs to.
+  - key: id
+    value: "{{page_project_run_id}}"
+    description: The page_project_run this request addresses.
+order: 1000

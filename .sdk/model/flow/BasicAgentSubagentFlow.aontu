@@ -1,0 +1,27 @@
+# BasicAgentSubagentFlow
+
+main: kit: flow: BasicAgentSubagentFlow:
+{
+  entity: "agent_subagent",
+  kind: "basic",
+  name: "BasicAgentSubagentFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_subagent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSubagentFlow"
+}

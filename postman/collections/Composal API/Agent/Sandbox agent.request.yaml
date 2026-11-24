@@ -1,0 +1,18 @@
+$kind: http-request
+id: "60ad922a-b18f-5e0f-b236-61d994264d2a"
+description: |-
+  The `sandbox` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "sandbox" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/sandbox"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 33000

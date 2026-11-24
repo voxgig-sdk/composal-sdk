@@ -1,0 +1,23 @@
+# BasicGithubRequiredCheckSnapshotFlow
+
+main: kit: flow: BasicGithubRequiredCheckSnapshotFlow:
+{
+  entity: "github_required_check_snapshot",
+  kind: "basic",
+  name: "BasicGithubRequiredCheckSnapshotFlow",
+  step: [
+    {
+      i: {
+        ref: "github_required_check_snapshot_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubRequiredCheckSnapshotFlow"
+}

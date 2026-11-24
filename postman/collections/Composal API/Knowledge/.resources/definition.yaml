@@ -1,0 +1,28 @@
+$kind: collection
+id: "4eb0b619-207b-5dc7-93dc-90db7c77c8fa"
+description: |-
+  The **knowledge** entity, which belongs to a organization. Its requests address one record by `{{knowledge_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `content_digest` | string | yes |  |
+  | `content_json` | object | yes |  |
+  | `document` | object | yes |  |
+  | `documents` | array | yes |  |
+  | `dreaming` | object | yes |  |
+  | `expected_digest` | string | yes |  |
+  | `history` | array | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `markdown` | string | yes |  |
+  | `observed_at` | string | yes |  |
+  | `organization` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `project_id` | string | yes |  |
+  | `project_name` | string | yes |  |
+  | `projects` | array | yes |  |
+  | `selected_project_id` | string | yes |  |
+  | `source` | object | yes |  |
+  | `title` | string | yes |  |
+  | `total` | integer | yes |  |
+order: 129000

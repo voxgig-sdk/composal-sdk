@@ -1,0 +1,27 @@
+# BasicVerifyDeepScanContextFlow
+
+main: kit: flow: BasicVerifyDeepScanContextFlow:
+{
+  entity: "verify_deep_scan_context",
+  kind: "basic",
+  name: "BasicVerifyDeepScanContextFlow",
+  step: [
+    {
+      m: {
+        deep_scan_id: "deep_scan01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_deep_scan_context_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDeepScanContextFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: a37bba90-ce92-5fe5-90c4-601e0f3b9be0
+description: |-
+  The `remove` operation of **app**.
+
+  SDK: `client.App().remove({ id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{app_id}}"
+    description: The app this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("app_id")
+      }
+    language: text/javascript
+order: 10000

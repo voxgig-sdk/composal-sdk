@@ -1,0 +1,23 @@
+# BasicClawderCallSessionFlow
+
+main: kit: flow: BasicClawderCallSessionFlow:
+{
+  entity: "clawder_call_session",
+  kind: "basic",
+  name: "BasicClawderCallSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_call_session_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClawderCallSessionFlow"
+}

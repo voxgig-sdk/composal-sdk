@@ -1,0 +1,45 @@
+# BasicMergeRequestFlow
+
+main: kit: flow: BasicMergeRequestFlow:
+{
+  entity: "merge_request",
+  kind: "basic",
+  name: "BasicMergeRequestFlow",
+  step: [
+    {
+      i: {
+        ref: "merge_request_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "merge_request_ref01",
+        srcdatavar: "merge_request_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "merge_request01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-merge_request_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMergeRequestFlow"
+}

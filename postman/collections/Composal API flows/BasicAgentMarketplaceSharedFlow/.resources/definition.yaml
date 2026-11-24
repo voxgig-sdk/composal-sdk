@@ -1,0 +1,4 @@
+$kind: collection
+id: b9f838b2-59f9-5fd0-8f04-605bb0ab9c5b
+description: "The `BasicAgentMarketplaceSharedFlow` flow of **agent_marketplace_shared**."
+order: 16000

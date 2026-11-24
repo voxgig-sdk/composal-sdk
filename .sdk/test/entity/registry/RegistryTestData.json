@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "registry": {
+      "REGISTRY00": {
+        "id": "REGISTRY00"
+      },
+      "REGISTRY01": {
+        "id": "REGISTRY01"
+      },
+      "REGISTRY02": {
+        "id": "REGISTRY02"
+      }
+    }
+  },
+  "new": {
+    "registry": {
+      "registry_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/registry/namespace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

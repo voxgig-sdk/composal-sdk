@@ -1,0 +1,136 @@
+{
+  "existing": {
+    "project_run_schedule": {
+      "PROJECT_RUN_SCHEDULE00": {
+        "credential_ids": {},
+        "cron_expression": "sbf",
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "sc1",
+        "history": [],
+        "id": "PROJECT_RUN_SCHEDULE00",
+        "labels": [],
+        "lock_version": 197,
+        "name": "sc6",
+        "next_run_at": "sc7",
+        "notification_channel": "sc8",
+        "scenario_count": 201,
+        "selection_mode": "sca",
+        "slack_subscription_id": "SLACK_SUBSCRIPTION01",
+        "source_scenario_id": "SOURCE_SCENARIO01",
+        "state": "scd",
+        "time_of_day": "sce",
+        "time_zone": "scf",
+        "version": 208,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_RUN_SCHEDULE01": {
+        "credential_ids": {},
+        "cron_expression": "s17d",
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s17f",
+        "history": [],
+        "id": "PROJECT_RUN_SCHEDULE01",
+        "labels": [],
+        "lock_version": 387,
+        "name": "s184",
+        "next_run_at": "s185",
+        "notification_channel": "s186",
+        "scenario_count": 391,
+        "selection_mode": "s188",
+        "slack_subscription_id": "SLACK_SUBSCRIPTION01",
+        "source_scenario_id": "SOURCE_SCENARIO01",
+        "state": "s18b",
+        "time_of_day": "s18c",
+        "time_zone": "s18d",
+        "version": 398,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_RUN_SCHEDULE02": {
+        "credential_ids": {},
+        "cron_expression": "s23b",
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s23d",
+        "history": [],
+        "id": "PROJECT_RUN_SCHEDULE02",
+        "labels": [],
+        "lock_version": 577,
+        "name": "s242",
+        "next_run_at": "s243",
+        "notification_channel": "s244",
+        "scenario_count": 581,
+        "selection_mode": "s246",
+        "slack_subscription_id": "SLACK_SUBSCRIPTION01",
+        "source_scenario_id": "SOURCE_SCENARIO01",
+        "state": "s249",
+        "time_of_day": "s24a",
+        "time_zone": "s24b",
+        "version": 588,
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_run_schedule": {
+      "project_run_schedule_ref01": {
+        "credential_ids": {},
+        "cron_expression": "s2f9",
+        "environment_id": "ENVIRONMENT01",
+        "environment_name": "s2fb",
+        "history": [],
+        "labels": [],
+        "lock_version": 767,
+        "name": "s300",
+        "next_run_at": "s301",
+        "notification_channel": "s302",
+        "scenario_count": 771,
+        "selection_mode": "s304",
+        "slack_subscription_id": "SLACK_SUBSCRIPTION01",
+        "source_scenario_id": "SOURCE_SCENARIO01",
+        "state": "s307",
+        "time_of_day": "s308",
+        "time_zone": "s309",
+        "version": 778
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/preview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/lookup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

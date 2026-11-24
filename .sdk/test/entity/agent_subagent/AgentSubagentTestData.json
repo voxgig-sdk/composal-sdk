@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "agent_subagent": {
+      "AGENT_SUBAGENT00": {
+        "active": true,
+        "attention": "s79",
+        "ended_at": "s7a",
+        "id": "AGENT_SUBAGENT00",
+        "model": "s7c",
+        "parent_id": "PARENT01",
+        "preview": "s7e",
+        "started_at": "s7f",
+        "state": "s80",
+        "status": "s81",
+        "title": "s82",
+        "updated_at": "s83",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_SUBAGENT01": {
+        "active": true,
+        "attention": "sf1",
+        "ended_at": "sf2",
+        "id": "AGENT_SUBAGENT01",
+        "model": "sf4",
+        "parent_id": "PARENT01",
+        "preview": "sf6",
+        "started_at": "sf7",
+        "state": "sf8",
+        "status": "sf9",
+        "title": "sfa",
+        "updated_at": "sfb",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_SUBAGENT02": {
+        "active": true,
+        "attention": "s169",
+        "ended_at": "s16a",
+        "id": "AGENT_SUBAGENT02",
+        "model": "s16c",
+        "parent_id": "PARENT01",
+        "preview": "s16e",
+        "started_at": "s16f",
+        "state": "s170",
+        "status": "s171",
+        "title": "s172",
+        "updated_at": "s173",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_subagent": {
+      "agent_subagent_ref01": {
+        "active": true,
+        "attention": "s1e1",
+        "ended_at": "s1e2",
+        "model": "s1e4",
+        "parent_id": "PARENT01",
+        "preview": "s1e6",
+        "started_at": "s1e7",
+        "state": "s1e8",
+        "status": "s1e9",
+        "title": "s1ea",
+        "updated_at": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subagents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

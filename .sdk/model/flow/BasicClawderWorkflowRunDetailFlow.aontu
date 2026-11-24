@@ -1,0 +1,48 @@
+# BasicClawderWorkflowRunDetailFlow
+
+main: kit: flow: BasicClawderWorkflowRunDetailFlow:
+{
+  entity: "clawder_workflow_run_detail",
+  kind: "basic",
+  name: "BasicClawderWorkflowRunDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_workflow_run_detail_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "clawder_workflow_run_detail_ref01",
+        srcdatavar: "clawder_workflow_run_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "clawder_workflow_run_detail01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_workflow_run_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderWorkflowRunDetailFlow"
+}

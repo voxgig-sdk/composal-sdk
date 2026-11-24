@@ -1,0 +1,28 @@
+# BasicScenarioRevisionFlow
+
+main: kit: flow: BasicScenarioRevisionFlow:
+{
+  entity: "scenario_revision",
+  kind: "basic",
+  name: "BasicScenarioRevisionFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        scenario_id: "scenario01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "scenario_revision_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicScenarioRevisionFlow"
+}

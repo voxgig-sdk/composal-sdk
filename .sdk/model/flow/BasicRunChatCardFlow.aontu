@@ -1,0 +1,34 @@
+# BasicRunChatCardFlow
+
+main: kit: flow: BasicRunChatCardFlow:
+{
+  entity: "run_chat_card",
+  kind: "basic",
+  name: "BasicRunChatCardFlow",
+  step: [
+    {
+      i: {
+        ref: "run_chat_card_ref01",
+        srcdatavar: "run_chat_card_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "run_chat_card01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-run_chat_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunChatCardFlow"
+}

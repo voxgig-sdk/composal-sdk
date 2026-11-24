@@ -1,0 +1,28 @@
+# BasicVersionLogFlow
+
+main: kit: flow: BasicVersionLogFlow:
+{
+  entity: "version_log",
+  kind: "basic",
+  name: "BasicVersionLogFlow",
+  step: [
+    {
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01",
+        version_id: "version01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "version_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVersionLogFlow"
+}

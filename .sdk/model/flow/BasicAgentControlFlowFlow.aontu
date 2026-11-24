@@ -1,0 +1,65 @@
+# BasicAgentControlFlowFlow
+
+main: kit: flow: BasicAgentControlFlowFlow:
+{
+  entity: "agent_control_flow",
+  kind: "basic",
+  name: "BasicAgentControlFlowFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_control_flow_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        flow_id: "flow01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_control_flow_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_control_flow_ref01",
+        srcdatavar: "agent_control_flow_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_control_flow01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_control_flow_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentControlFlowFlow"
+}

@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "product_map_observation": {
+      "PRODUCT_MAP_OBSERVATION00": {
+        "capture": {},
+        "events": [],
+        "evidence_id": "EVIDENCE01",
+        "id": "PRODUCT_MAP_OBSERVATION00",
+        "observation_id": "OBSERVATION01",
+        "scope": {},
+        "state": "s56",
+        "status": "s57",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_OBSERVATION01": {
+        "capture": {},
+        "events": [],
+        "evidence_id": "EVIDENCE01",
+        "id": "PRODUCT_MAP_OBSERVATION01",
+        "observation_id": "OBSERVATION01",
+        "scope": {},
+        "state": "sa6",
+        "status": "sa7",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_OBSERVATION02": {
+        "capture": {},
+        "events": [],
+        "evidence_id": "EVIDENCE01",
+        "id": "PRODUCT_MAP_OBSERVATION02",
+        "observation_id": "OBSERVATION01",
+        "scope": {},
+        "state": "sf6",
+        "status": "sf7",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "product_map_observation": {
+      "product_map_observation_ref01": {
+        "capture": {},
+        "events": [],
+        "evidence_id": "EVIDENCE01",
+        "observation_id": "OBSERVATION01",
+        "scope": {},
+        "state": "s146",
+        "status": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}/identity_history": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,124 @@
+# BasicCodeRuleFlow
+
+main: kit: flow: BasicCodeRuleFlow:
+{
+  entity: "code_rule",
+  kind: "basic",
+  name: "BasicCodeRuleFlow",
+  step: [
+    {
+      i: {
+        ref: "code_rule_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "code_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      i: {
+        ref: "code_rule_ref01",
+        srcdatavar: "code_rule_ref01_data",
+        suffix: "_up0",
+        textfield: "created_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-code_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "code_rule_ref01",
+        srcdatavar: "code_rule_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "code_rule01",
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-code_rule_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "code_rule_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "code_rule01",
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_slug: "repo_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "code_rule_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCodeRuleFlow"
+}

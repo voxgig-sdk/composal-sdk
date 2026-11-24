@@ -1,0 +1,26 @@
+$kind: http-request
+id: bb301344-20bc-57cb-9aff-92961c1febd7
+description: |-
+  The `update_revision` action of **app_preview**, a route of its `create` operation.
+
+  SDK: `client.AppPreview().create({ "app_id": "app_id", "id": "ID", $action: "update_revision" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/update_revision"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+  - key: id
+    value: "{{app_preview_id}}"
+    description: The app_preview this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "source_ref": "example",
+      "expected_generation": 1
+    }
+order: 16000

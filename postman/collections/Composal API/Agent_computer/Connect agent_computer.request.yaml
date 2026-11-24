@@ -1,0 +1,22 @@
+$kind: http-request
+id: "54a22e8d-5a96-55d4-8492-2c17565a0f7d"
+description: |-
+  The `connect` action of **agent_computer**, a route of its `create` operation.
+
+  SDK: `client.AgentComputer().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "connect" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/computer/connect"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_computer belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_computer belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

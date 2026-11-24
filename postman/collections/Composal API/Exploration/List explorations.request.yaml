@@ -1,0 +1,35 @@
+$kind: http-request
+id: "629a2ad4-06be-5118-b8fc-da8409c1af33"
+description: |-
+  The `list` operation of **exploration**.
+
+  SDK: `client.Exploration().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: launch
+    value: ""
+    disabled: true
+  - key: page
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("exploration_id")) pm.collectionVariables.set("exploration_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

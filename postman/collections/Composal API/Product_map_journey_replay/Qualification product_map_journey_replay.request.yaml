@@ -1,0 +1,25 @@
+$kind: http-request
+id: ed1a3933-1a42-5f8e-9ffc-f824b9270092
+description: |-
+  The `qualification` action of **product_map_journey_replay**, a route of its `create` operation.
+
+  SDK: `client.ProductMapJourneyReplay().create({ "organization_id": "organization_id", "project_id": "project_id", "id": "ID", $action: "qualification" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/journey_replays/:replay_id/qualification"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this product_map_journey_replay belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this product_map_journey_replay belongs to.
+  - key: replay_id
+    value: "{{product_map_journey_replay_id}}"
+    description: The product_map_journey_replay this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

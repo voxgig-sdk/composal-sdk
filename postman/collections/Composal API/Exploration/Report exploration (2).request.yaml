@@ -1,0 +1,31 @@
+$kind: http-request
+id: f55e9342-399e-53bb-9584-0918946e3b22
+description: |-
+  The `report` action of **exploration**, a route of its `create` operation.
+
+  SDK: `client.Exploration().create({ "organization_id": "organization_id", "id": "ID", $action: "report" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/report"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "source_ids": [
+        "example"
+      ]
+    }
+order: 7000

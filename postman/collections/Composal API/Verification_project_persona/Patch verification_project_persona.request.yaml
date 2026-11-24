@@ -1,0 +1,34 @@
+$kind: http-request
+id: "5cd8f18d-c7fd-5136-a62d-ed6e1047001e"
+description: |-
+  The `patch` operation of **verification_project_persona**.
+
+  SDK: `client.VerificationProjectPersona().patch({ id: "example", organization_id: "example", project_id: "example", access_mode: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/personas/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_persona belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_persona belongs to.
+  - key: id
+    value: "{{verification_project_persona_id}}"
+    description: The verification_project_persona this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "role": "example",
+      "goals": "example",
+      "capabilities": "example",
+      "credential_id": "example",
+      "access_mode": "anonymous",
+      "version": 1
+    }
+order: 5000

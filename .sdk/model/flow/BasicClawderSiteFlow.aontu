@@ -1,0 +1,27 @@
+# BasicClawderSiteFlow
+
+main: kit: flow: BasicClawderSiteFlow:
+{
+  entity: "clawder_site",
+  kind: "basic",
+  name: "BasicClawderSiteFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSiteFlow"
+}

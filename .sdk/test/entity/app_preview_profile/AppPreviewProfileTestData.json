@@ -1,0 +1,92 @@
+{
+  "existing": {
+    "app_preview_profile": {
+      "APP_PREVIEW_PROFILE00": {
+        "automatic": true,
+        "configuration": {},
+        "created_at": "s66",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_PREVIEW_PROFILE00",
+        "name": "s69",
+        "slug": "s6a",
+        "source_environment_id": "SOURCE_ENVIRONMENT01",
+        "ttl_days": 108,
+        "updated_at": "s6d",
+        "app_id": "APP01"
+      },
+      "APP_PREVIEW_PROFILE01": {
+        "automatic": true,
+        "configuration": {},
+        "created_at": "sca",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_PREVIEW_PROFILE01",
+        "name": "scd",
+        "slug": "sce",
+        "source_environment_id": "SOURCE_ENVIRONMENT01",
+        "ttl_days": 208,
+        "updated_at": "sd1",
+        "app_id": "APP01"
+      },
+      "APP_PREVIEW_PROFILE02": {
+        "automatic": true,
+        "configuration": {},
+        "created_at": "s12e",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_PREVIEW_PROFILE02",
+        "name": "s131",
+        "slug": "s132",
+        "source_environment_id": "SOURCE_ENVIRONMENT01",
+        "ttl_days": 308,
+        "updated_at": "s135",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_preview_profile": {
+      "app_preview_profile_ref01": {
+        "automatic": true,
+        "configuration": {},
+        "created_at": "s192",
+        "hosted_app_id": "HOSTED_APP01",
+        "name": "s195",
+        "slug": "s196",
+        "source_environment_id": "SOURCE_ENVIRONMENT01",
+        "ttl_days": 408,
+        "updated_at": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/preview_profiles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/preview_profiles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/preview_profiles/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/preview_profiles/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

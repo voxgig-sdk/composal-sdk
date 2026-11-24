@@ -1,0 +1,167 @@
+{
+  "existing": {
+    "app_preview": {
+      "APP_PREVIEW00": {
+        "access": "s96",
+        "app_preview_profile_id": "APP_PREVIEW_PROFILE01",
+        "change_number": "s98",
+        "expected_generation": 153,
+        "expected_patchset": 154,
+        "expires_at": "s9b",
+        "id": "APP_PREVIEW00",
+        "name": "s9d",
+        "resource_overrides": {},
+        "retained": false,
+        "shared_data_binding_ids": [],
+        "shared_service_binding_ids": [],
+        "slug": "sa2",
+        "source_ref": "sa3",
+        "storage_binding_resources": {},
+        "app_id": "APP01"
+      },
+      "APP_PREVIEW01": {
+        "access": "s12c",
+        "app_preview_profile_id": "APP_PREVIEW_PROFILE01",
+        "change_number": "s12e",
+        "expected_generation": 303,
+        "expected_patchset": 304,
+        "expires_at": "s131",
+        "id": "APP_PREVIEW01",
+        "name": "s133",
+        "resource_overrides": {},
+        "retained": false,
+        "shared_data_binding_ids": [],
+        "shared_service_binding_ids": [],
+        "slug": "s138",
+        "source_ref": "s139",
+        "storage_binding_resources": {},
+        "app_id": "APP01"
+      },
+      "APP_PREVIEW02": {
+        "access": "s1c2",
+        "app_preview_profile_id": "APP_PREVIEW_PROFILE01",
+        "change_number": "s1c4",
+        "expected_generation": 453,
+        "expected_patchset": 454,
+        "expires_at": "s1c7",
+        "id": "APP_PREVIEW02",
+        "name": "s1c9",
+        "resource_overrides": {},
+        "retained": false,
+        "shared_data_binding_ids": [],
+        "shared_service_binding_ids": [],
+        "slug": "s1ce",
+        "source_ref": "s1cf",
+        "storage_binding_resources": {},
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_preview": {
+      "app_preview_ref01": {
+        "access": "s258",
+        "app_preview_profile_id": "APP_PREVIEW_PROFILE01",
+        "change_number": "s25a",
+        "expected_generation": 603,
+        "expected_patchset": 604,
+        "expires_at": "s25d",
+        "name": "s25f",
+        "resource_overrides": {},
+        "retained": false,
+        "shared_data_binding_ids": [],
+        "shared_service_binding_ids": [],
+        "slug": "s264",
+        "source_ref": "s265",
+        "storage_binding_resources": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/deploy": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/expire": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/refresh_source": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/review_source": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews/{id}/update_revision": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/previews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/previews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/previews/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/previews/{id}/administration": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/previews/administration_index": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/previews/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/previews/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/previews/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

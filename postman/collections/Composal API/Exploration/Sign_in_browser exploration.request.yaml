@@ -1,0 +1,22 @@
+$kind: http-request
+id: "0efa6603-f0fc-5577-8bb4-d3d373a17cb1"
+description: |-
+  The `sign_in_browser` action of **exploration**, a route of its `load` operation.
+
+  SDK: `client.Exploration().load({ "organization_id": "organization_id", "id": "ID", $action: "sign_in_browser" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/sign_in_browser"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+order: 9000

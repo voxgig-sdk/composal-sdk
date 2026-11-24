@@ -1,0 +1,22 @@
+# BasicDockerBuilderGatewayCompletionFlow
+
+main: kit: flow: BasicDockerBuilderGatewayCompletionFlow:
+{
+  entity: "docker_builder_gateway_completion",
+  kind: "basic",
+  name: "BasicDockerBuilderGatewayCompletionFlow",
+  step: [
+    {
+      i: {
+        ref: "docker_builder_gateway_completion_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDockerBuilderGatewayCompletionFlow"
+}

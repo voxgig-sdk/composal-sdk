@@ -1,0 +1,77 @@
+# BasicAgentMarketplaceFlow
+
+main: kit: flow: BasicAgentMarketplaceFlow:
+{
+  entity: "agent_marketplace",
+  kind: "basic",
+  name: "BasicAgentMarketplaceFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_marketplace_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_marketplace_ref01",
+        srcdatavar: "agent_marketplace_ref01_data",
+        suffix: "_up0",
+        textfield: "catalog_key"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_marketplace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_marketplace_ref01",
+        srcdatavar: "agent_marketplace_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_marketplace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_marketplace_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "agent_marketplace01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAgentMarketplaceFlow"
+}

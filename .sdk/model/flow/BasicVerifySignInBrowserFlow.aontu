@@ -1,0 +1,33 @@
+# BasicVerifySignInBrowserFlow
+
+main: kit: flow: BasicVerifySignInBrowserFlow:
+{
+  entity: "verify_sign_in_browser",
+  kind: "basic",
+  name: "BasicVerifySignInBrowserFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_sign_in_browser_ref01",
+        srcdatavar: "verify_sign_in_browser_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_sign_in_browser01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_sign_in_browser_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifySignInBrowserFlow"
+}

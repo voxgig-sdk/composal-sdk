@@ -1,0 +1,22 @@
+# BasicTranscriptFlow
+
+main: kit: flow: BasicTranscriptFlow:
+{
+  entity: "transcript",
+  kind: "basic",
+  name: "BasicTranscriptFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "transcript_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTranscriptFlow"
+}

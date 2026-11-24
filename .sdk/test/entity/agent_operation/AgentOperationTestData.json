@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "agent_operation": {
+      "AGENT_OPERATION00": {
+        "arguments": {},
+        "id": "AGENT_OPERATION00",
+        "key": "s52",
+        "name": "s53",
+        "operation": {},
+        "participant": "s55",
+        "requester_id": "REQUESTER01",
+        "scope_key": "s57",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_OPERATION01": {
+        "arguments": {},
+        "id": "AGENT_OPERATION01",
+        "key": "sa2",
+        "name": "sa3",
+        "operation": {},
+        "participant": "sa5",
+        "requester_id": "REQUESTER01",
+        "scope_key": "sa7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_OPERATION02": {
+        "arguments": {},
+        "id": "AGENT_OPERATION02",
+        "key": "sf2",
+        "name": "sf3",
+        "operation": {},
+        "participant": "sf5",
+        "requester_id": "REQUESTER01",
+        "scope_key": "sf7",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_operation": {
+      "agent_operation_ref01": {
+        "arguments": {},
+        "key": "s142",
+        "name": "s143",
+        "operation": {},
+        "participant": "s145",
+        "requester_id": "REQUESTER01",
+        "scope_key": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/operations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/operations/{operation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

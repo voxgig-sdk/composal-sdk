@@ -1,0 +1,277 @@
+# Entity: verify_static_site_domain
+
+main: kit: entity: verify_static_site_domain: {
+
+  alias: field: {}
+
+  fields: {
+    app_environment_id: {
+      h: "App Environment Id"
+      n: "app_environment_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    dns_mode: {
+      h: "Dns Mode"
+      n: "dns_mode"
+      r: true
+      t: "`$STRING`"
+    }
+    dns_status: {
+      h: "Dns Status"
+      n: "dns_status"
+      r: true
+      t: "`$STRING`"
+    }
+    failure_message: {
+      h: "Failure Message"
+      n: "failure_message"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hosted_app_id: {
+      h: "Hosted App Id"
+      n: "hosted_app_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    hostname: {
+      h: "Hostname"
+      n: "hostname"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    kind: {
+      h: "Kind"
+      n: "kind"
+      r: true
+      t: "`$STRING`"
+    }
+    last_checked_at: {
+      fo: "date-time"
+      h: "Last Checked At"
+      n: "last_checked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    record_name: {
+      h: "Record Name"
+      n: "record_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    record_type: {
+      h: "Record Type"
+      n: "record_type"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    record_value: {
+      h: "Record Value"
+      n: "record_value"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    redirect_to: {
+      h: "Redirect To"
+      n: "redirect_to"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    static_site_id: {
+      h: "Static Site Id"
+      n: "static_site_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    target_kind: {
+      h: "Target Kind"
+      n: "target_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    tls_status: {
+      h: "Tls Status"
+      n: "tls_status"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    verification_status: {
+      h: "Verification Status"
+      n: "verification_status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "verify_static_site_domain"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/static_sites/{static_site_id}/domains/{id}/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "static_site_id"
+                or: "static_site_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/static_sites/{static_site_id}/domains/{id}/verify"
+          q: {
+            exist: [
+              "id"
+              "static_site_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "static_sites"
+            }
+            {
+              var: "static_site_id"
+            }
+            {
+              lit: "domains"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.domain`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.static_site")]
+  ]
+
+}

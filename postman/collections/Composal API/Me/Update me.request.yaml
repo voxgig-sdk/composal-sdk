@@ -1,0 +1,15 @@
+$kind: http-request
+id: "403d1a2c-4ae5-5bb7-8c3e-5296b6ceb7ad"
+description: |-
+  The `update` operation of **me**.
+
+  SDK: `client.Me().update({  })`
+url: "{{base}}/api/v1/me"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 2000

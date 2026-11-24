@@ -1,0 +1,9 @@
+$kind: collection
+id: "2a94fc1f-3f04-5d32-8d3c-baa8e2676c81"
+description: |-
+  The **catalog_selector** entity, which belongs to a app. Its requests address one record by `{{catalog_selector_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app` | object | yes |  |
+order: 86000

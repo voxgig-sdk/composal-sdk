@@ -1,0 +1,35 @@
+$kind: http-request
+id: bbe6df42-7131-5c15-987b-b1a7e866a998
+description: |-
+  The `patch` operation of **finding**.
+
+  SDK: `client.Finding().patch({ id: "example", organization_id: "example", deferred_until: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/findings/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+queryParams:
+  - key: repository_id
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this finding belongs to.
+  - key: id
+    value: "{{finding_id}}"
+    description: The finding this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "status": "open",
+      "reason": "example",
+      "deferred_until": "2026-01-01T00:00:00Z"
+    }
+order: 4000

@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_provisioning": {
+      "AGENT_PROVISIONING00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_PROVISIONING00"
+      },
+      "AGENT_PROVISIONING01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_PROVISIONING01"
+      },
+      "AGENT_PROVISIONING02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_PROVISIONING02"
+      }
+    }
+  },
+  "new": {
+    "agent_provisioning": {
+      "agent_provisioning_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/provisioning/retry": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

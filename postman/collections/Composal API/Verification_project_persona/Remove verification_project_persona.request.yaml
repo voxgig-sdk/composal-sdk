@@ -1,0 +1,28 @@
+$kind: http-request
+id: "66bd1864-b849-560f-a23a-1277140dff52"
+description: |-
+  The `remove` operation of **verification_project_persona**.
+
+  SDK: `client.VerificationProjectPersona().remove({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/personas/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_persona belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_persona belongs to.
+  - key: id
+    value: "{{verification_project_persona_id}}"
+    description: The verification_project_persona this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("verification_project_persona_id")
+      }
+    language: text/javascript
+order: 7000

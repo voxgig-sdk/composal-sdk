@@ -1,0 +1,18 @@
+$kind: collection
+id: d484d92f-f731-528e-93c0-40e2afb7bccf
+description: |-
+  The **agent_webhook** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_webhook_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `connection` | object | yes |  |
+  | `deliveries` | array | yes |  |
+  | `event_types` | array | yes |  |
+  | `expected_generation` | integer | yes |  |
+  | `id` | string |  |  |
+  | `max_events_per_day` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `purpose` | string | yes |  |
+  | `signing_key` | string | yes |  |
+order: 44000

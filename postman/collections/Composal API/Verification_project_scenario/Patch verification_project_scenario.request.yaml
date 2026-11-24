@@ -1,0 +1,79 @@
+$kind: http-request
+id: "82f2bc2a-44d1-5951-b61a-9f336b055a9c"
+description: |-
+  The `patch` operation of **verification_project_scenario**.
+
+  SDK: `client.VerificationProjectScenario().patch({ id: "example", organization_id: "example", project_id: "example", actors: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+  - key: id
+    value: "{{verification_project_scenario_id}}"
+    description: The verification_project_scenario this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "persona_id": "example",
+      "actors": {},
+      "primary_actor": "example",
+      "identity_probe": {
+        "path": "example",
+        "subject_pointer": "example",
+        "email_pointer": "example"
+      },
+      "labels": [
+        "example"
+      ],
+      "fixtures": [
+        {
+          "name": "example",
+          "sha256": "example",
+          "content_type": "example"
+        }
+      ],
+      "starting_conditions": "example",
+      "allowed_actions": "read_only",
+      "steps": [
+        "example"
+      ],
+      "cleanup": [
+        "example"
+      ],
+      "outcomes": [
+        "example"
+      ],
+      "version": 1,
+      "dependencies": [
+        {
+          "scenario_id": "example",
+          "after_step": 1,
+          "before_step": 1,
+          "name": "example"
+        }
+      ],
+      "on": {
+        "schedule": [
+          {
+            "cron": "example",
+            "timezone": "example",
+            "environment": "example"
+          }
+        ]
+      },
+      "if": "example",
+      "triggers": [
+        "example"
+      ]
+    }
+order: 5000

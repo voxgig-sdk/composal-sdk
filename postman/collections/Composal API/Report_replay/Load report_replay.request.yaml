@@ -1,0 +1,28 @@
+$kind: http-request
+id: "0d088628-c1d6-5c91-a717-c1cf361e3d09"
+description: |-
+  The `load` operation of **report_replay**.
+
+  SDK: `client.ReportReplay().load({ exploration_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/report/replay/:agent_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: generated_at
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this report_replay belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this report_replay belongs to.
+  - key: agent_id
+    value: "{{report_replay_id}}"
+    description: The report_replay this request addresses.
+order: 1000

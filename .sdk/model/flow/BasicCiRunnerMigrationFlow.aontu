@@ -1,0 +1,38 @@
+# BasicCiRunnerMigrationFlow
+
+main: kit: flow: BasicCiRunnerMigrationFlow:
+{
+  entity: "ci_runner_migration",
+  kind: "basic",
+  name: "BasicCiRunnerMigrationFlow",
+  step: [
+    {
+      i: {
+        ref: "ci_runner_migration_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ci_runner_migration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCiRunnerMigrationFlow"
+}

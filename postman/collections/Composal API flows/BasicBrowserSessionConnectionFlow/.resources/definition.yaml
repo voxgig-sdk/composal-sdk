@@ -1,0 +1,4 @@
+$kind: collection
+id: "499c4592-5280-510b-b779-889d86470a7d"
+description: "The `BasicBrowserSessionConnectionFlow` flow of **browser_session_connection**."
+order: 64000

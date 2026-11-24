@@ -1,0 +1,84 @@
+# BasicProjectFlow
+
+main: kit: flow: BasicProjectFlow:
+{
+  entity: "project",
+  kind: "basic",
+  name: "BasicProjectFlow",
+  step: [
+    {
+      i: {
+        ref: "project_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "project_ref01",
+        srcdatavar: "project_ref01_data",
+        suffix: "_up0",
+        textfield: "archived_at"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "project_ref01",
+        srcdatavar: "project_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectFlow"
+}

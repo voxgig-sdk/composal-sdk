@@ -1,0 +1,26 @@
+# BasicRunUpdateFlow
+
+main: kit: flow: BasicRunUpdateFlow:
+{
+  entity: "run_update",
+  kind: "basic",
+  name: "BasicRunUpdateFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "run_update_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunUpdateFlow"
+}

@@ -1,0 +1,28 @@
+$kind: http-request
+id: "3e94696d-b909-54b1-ab8b-f1e6b00f992c"
+description: |-
+  The `dismiss` action of **agent_workflow_run**, a route of its `create` operation.
+
+  SDK: `client.AgentWorkflowRun().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "dismiss" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs/:run_id/dismiss"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_run belongs to.
+  - key: run_id
+    value: "{{agent_workflow_run_id}}"
+    description: The agent_workflow_run this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "question_at": "2026-01-01T00:00:00Z"
+    }
+order: 5000

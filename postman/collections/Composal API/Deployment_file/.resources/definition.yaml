@@ -1,0 +1,8 @@
+$kind: collection
+id: a35643db-0fa4-50e5-8946-edd4521a65d2
+description: |-
+  The **deployment_file** entity, which belongs to a static_site. Its requests address one record by `{{deployment_file_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 106000

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "43a8f84e-8131-5606-b8ef-c0441eb0839e"
+description: |-
+  The `library` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "library" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/library"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 20000

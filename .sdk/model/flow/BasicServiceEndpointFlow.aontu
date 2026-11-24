@@ -1,0 +1,123 @@
+# BasicServiceEndpointFlow
+
+main: kit: flow: BasicServiceEndpointFlow:
+{
+  entity: "service_endpoint",
+  kind: "basic",
+  name: "BasicServiceEndpointFlow",
+  step: [
+    {
+      i: {
+        ref: "service_endpoint_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        service_id: "service01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01",
+        service_id: "service01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "service_endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        app_id: "app01",
+        service_id: "service01"
+      }
+
+      i: {
+        ref: "service_endpoint_ref01",
+        srcdatavar: "service_endpoint_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-service_endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "service_endpoint_ref01",
+        srcdatavar: "service_endpoint_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "service_endpoint01",
+        service_id: "service01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-service_endpoint_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "service_endpoint_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "service_endpoint01",
+        service_id: "service01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        app_id: "app01",
+        service_id: "service01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "service_endpoint_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicServiceEndpointFlow"
+}

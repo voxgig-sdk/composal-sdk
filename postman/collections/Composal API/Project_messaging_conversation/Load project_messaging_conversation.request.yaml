@@ -1,0 +1,21 @@
+$kind: http-request
+id: c689950d-6efb-5f29-b5c4-5eec468d843a
+description: |-
+  The `load` operation of **project_messaging_conversation**.
+
+  SDK: `client.ProjectMessagingConversation().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_messaging_conversation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_messaging_conversation belongs to.
+  - key: id
+    value: "{{project_messaging_conversation_id}}"
+    description: The project_messaging_conversation this request addresses.
+order: 1000

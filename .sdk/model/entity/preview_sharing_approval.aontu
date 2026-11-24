@@ -1,0 +1,277 @@
+# Entity: preview_sharing_approval
+
+main: kit: entity: preview_sharing_approval: {
+
+  alias: field: {}
+
+  fields: {
+    approved_build_keys: {
+      h: "Approved Build Keys"
+      n: "approved_build_keys"
+      r: true
+      t: "`$ARRAY`"
+    }
+    approved_build_secrets: {
+      h: "Approved Build Secrets"
+      n: "approved_build_secrets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    approved_default_configuration: {
+      h: "Approved Default Configuration"
+      n: "approved_default_configuration"
+      r: true
+      t: "`$ARRAY`"
+    }
+    approved_default_secrets: {
+      h: "Approved Default Secrets"
+      n: "approved_default_secrets"
+      r: true
+      t: "`$ARRAY`"
+    }
+    approved_source_keys: {
+      h: "Approved Source Keys"
+      n: "approved_source_keys"
+      r: true
+      t: "`$ARRAY`"
+    }
+    build_keys: {
+      h: "Build Keys"
+      n: "build_keys"
+      r: false
+      t: "`$ARRAY`"
+    }
+    build_secrets: {
+      h: "Build Secrets"
+      n: "build_secrets"
+      op: {
+        list: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      t: "`$ARRAY`"
+    }
+    default_configuration: {
+      h: "Default Configuration"
+      n: "default_configuration"
+      op: {
+        list: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      t: "`$ARRAY`"
+    }
+    default_secrets: {
+      h: "Default Secrets"
+      n: "default_secrets"
+      op: {
+        list: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      t: "`$ARRAY`"
+    }
+    services: {
+      h: "Services"
+      n: "services"
+      r: true
+      t: "`$ARRAY`"
+    }
+    snapshot_version: {
+      h: "Snapshot Version"
+      n: "snapshot_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    source_keys: {
+      h: "Source Keys"
+      n: "source_keys"
+      op: {
+        list: {
+          req: true
+          type: "`$ARRAY`"
+        }
+      }
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "preview_sharing_approval"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "build_keys"
+            "build_secrets"
+            "default_configuration"
+            "default_secrets"
+            "snapshot_version"
+            "source_keys"
+          ]
+          co: {
+            id: "POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "preview_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals"
+          q: {
+            exist: [
+              "app_id"
+              "preview_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "preview_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "previews"
+            }
+            {
+              var: "preview_id"
+            }
+            {
+              lit: "sharing_approvals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "preview_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals"
+          q: {
+            exist: [
+              "app_id"
+              "preview_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "preview_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "previews"
+            }
+            {
+              var: "preview_id"
+            }
+            {
+              lit: "sharing_approvals"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

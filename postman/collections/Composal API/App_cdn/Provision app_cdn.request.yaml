@@ -1,0 +1,26 @@
+$kind: http-request
+id: "0a4fbd33-8b51-5c80-ad2c-6fe278616a1c"
+description: |-
+  The `provision` action of **app_cdn**, a route of its `create` operation.
+
+  SDK: `client.AppCdn().create({ "app_id": "app_id", "id": "ID", $action: "provision" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:id/provision"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+  - key: id
+    value: "{{app_cdn_id}}"
+    description: The app_cdn this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "source_ref": "example",
+      "commit_sha": "example"
+    }
+order: 8000

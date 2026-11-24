@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "web_bot_auth": {
+      "WEB_BOT_AUTH00": {
+        "expires_at": "s1e",
+        "origin": "s1f",
+        "signatures": [],
+        "id": "WEB_BOT_AUTH00"
+      },
+      "WEB_BOT_AUTH01": {
+        "expires_at": "s3c",
+        "origin": "s3d",
+        "signatures": [],
+        "id": "WEB_BOT_AUTH01"
+      },
+      "WEB_BOT_AUTH02": {
+        "expires_at": "s5a",
+        "origin": "s5b",
+        "signatures": [],
+        "id": "WEB_BOT_AUTH02"
+      }
+    }
+  },
+  "new": {
+    "web_bot_auth": {
+      "web_bot_auth_ref01": {
+        "expires_at": "s78",
+        "origin": "s79",
+        "signatures": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/verify/web_bot_auth": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

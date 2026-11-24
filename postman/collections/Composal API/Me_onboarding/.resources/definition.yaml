@@ -1,0 +1,8 @@
+$kind: collection
+id: a81c5d69-e96c-5752-b805-e2a72c7f9d48
+description: |-
+  The **me_onboarding** entity. Its requests address one record by `{{me_onboarding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 135000

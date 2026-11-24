@@ -1,0 +1,27 @@
+# BasicProductMapComparisonFlow
+
+main: kit: flow: BasicProductMapComparisonFlow:
+{
+  entity: "product_map_comparison",
+  kind: "basic",
+  name: "BasicProductMapComparisonFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "product_map_comparison_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductMapComparisonFlow"
+}

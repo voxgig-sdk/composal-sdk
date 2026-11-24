@@ -1,0 +1,168 @@
+# Entity: project_android_apk
+
+main: kit: entity: project_android_apk: {
+
+  alias: field: {}
+
+  fields: {
+    android: {
+      h: "Android"
+      n: "android"
+      r: true
+      t: "`$OBJECT`"
+    }
+    artifact_paths: {
+      h: "Artifact Paths"
+      n: "artifact_paths"
+      r: false
+      t: "`$ARRAY`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: true
+      t: "`$STRING`"
+    }
+    image: {
+      h: "Image"
+      n: "image"
+      r: true
+      t: "`$STRING`"
+    }
+    ios: {
+      h: "Ios"
+      n: "ios"
+      r: true
+      t: "`$OBJECT`"
+    }
+    launch_command: {
+      h: "Launch Command"
+      n: "launch_command"
+      r: false
+      t: "`$STRING`"
+    }
+    managed_binary: {
+      h: "Managed Binary"
+      n: "managed_binary"
+      r: true
+      t: "`$OBJECT`"
+    }
+    platform: {
+      h: "Platform"
+      n: "platform"
+      r: false
+      t: "`$STRING`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: false
+      t: "`$STRING`"
+    }
+    setup_command: {
+      h: "Setup Command"
+      n: "setup_command"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "project_android_apk"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/android_apks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/android_apks"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rb: {
+            alternatives: [
+              {
+                fields: [
+                  {
+                    binary: true
+                    name: "apk"
+                  }
+                ]
+                kind: "multipart"
+                media: "multipart/form-data"
+              }
+            ]
+            kind: "json"
+            media: "application/json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "android_apks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

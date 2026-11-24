@@ -1,0 +1,8 @@
+$kind: collection
+id: "01087f2d-9041-5ef7-a9c2-635a77e5a48d"
+description: |-
+  The **agent_terminal** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_terminal_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 39000

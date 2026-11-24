@@ -1,0 +1,4 @@
+$kind: collection
+id: b2d68b87-cbfd-5fd0-9fff-156b85af1bad
+description: "The `BasicAgentSkillFlow` flow of **agent_skill**."
+order: 25000

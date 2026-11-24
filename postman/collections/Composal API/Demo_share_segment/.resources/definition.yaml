@@ -1,0 +1,9 @@
+$kind: collection
+id: "27ea1cf9-0e1d-51ee-a7c9-ae4fa5405010"
+description: |-
+  The **demo_share_segment** entity, which belongs to a demo_share. Its requests address one record by `{{demo_share_segment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 103000

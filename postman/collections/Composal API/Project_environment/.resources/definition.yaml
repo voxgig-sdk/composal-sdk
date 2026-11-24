@@ -1,0 +1,33 @@
+$kind: collection
+id: d2cc7deb-a837-57d4-aee1-ad2764211db6
+description: |-
+  The **project_environment** entity, which belongs to a organization and a project. Its requests address one record by `{{project_environment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allowed_actions` | string | yes |  |
+  | `allowed_origins` | array | yes |  |
+  | `archived_at` | string | yes |  |
+  | `base_url` | string | yes |  |
+  | `base_url_changeable` | boolean | yes |  |
+  | `binary` | string |  |  |
+  | `conversation_only_messaging` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `desktop` | object | yes |  |
+  | `execution_mode` | string | yes |  |
+  | `id` | string | yes |  |
+  | `imessage_number` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `messaging_conversation` | any | yes |  |
+  | `messaging_problem` | string | yes |  |
+  | `messaging_source` | any | yes |  |
+  | `messaging_tester_number` | string | yes |  |
+  | `name` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `pull_request` | object | yes |  |
+  | `source_branch` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verify_network_connection_id` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 166000

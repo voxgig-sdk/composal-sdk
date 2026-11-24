@@ -1,0 +1,15 @@
+$kind: http-request
+id: b72e4059-2cd6-5332-8f4f-4c3b15006409
+description: |-
+  The `load` operation of **demo_share**.
+
+  SDK: `client.DemoShare().load({ id: "example_id" })`
+url: "{{base}}/api/v1/verify/demo_shares/:token"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: token
+    value: "{{demo_share_id}}"
+    description: The demo_share this request addresses.
+order: 1000

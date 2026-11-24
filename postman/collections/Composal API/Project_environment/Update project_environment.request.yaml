@@ -1,0 +1,39 @@
+$kind: http-request
+id: "0beefbe1-108a-5bfa-9d10-f1f0c4c1240d"
+description: |-
+  The `update` operation of **project_environment**.
+
+  SDK: `client.ProjectEnvironment().update({ id: "example", organization_id: "example", project_id: "example", allowed_actions: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/environments/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_environment belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_environment belongs to.
+  - key: id
+    value: "{{project_environment_id}}"
+    description: The project_environment this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "kind": "production",
+      "base_url": "https://example.com",
+      "allowed_origins": [
+        "https://example.com"
+      ],
+      "allowed_actions": "read_only",
+      "verify_network_connection_id": "example",
+      "version": 1,
+      "binary": "example",
+      "imessage_number": "example",
+      "messaging_tester_number": "example"
+    }
+order: 4000

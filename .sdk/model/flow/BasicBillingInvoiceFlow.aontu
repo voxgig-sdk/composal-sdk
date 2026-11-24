@@ -1,0 +1,26 @@
+# BasicBillingInvoiceFlow
+
+main: kit: flow: BasicBillingInvoiceFlow:
+{
+  entity: "billing_invoice",
+  kind: "basic",
+  name: "BasicBillingInvoiceFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "billing_invoice_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingInvoiceFlow"
+}

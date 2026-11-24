@@ -1,0 +1,22 @@
+$kind: http-request
+id: "121401ef-f943-55ee-81e4-c924c5d224c9"
+description: |-
+  The `update` operation of **network_connection**.
+
+  SDK: `client.NetworkConnection().update({ id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/network_connections/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this network_connection belongs to.
+  - key: id
+    value: "{{network_connection_id}}"
+    description: The network_connection this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 2000

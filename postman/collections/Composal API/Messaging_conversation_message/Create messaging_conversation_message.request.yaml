@@ -1,0 +1,50 @@
+$kind: http-request
+id: "3c4931e1-a5f2-5424-87bb-c9a3fcd05e20"
+description: |-
+  The `create` operation of **messaging_conversation_message**.
+
+  SDK: `client.MessagingConversationMessage().create({ messaging_conversation_id: "example", organization_id: "example", project_id: "example", client_operation_id: "example", content: "example", media: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id/messages"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this messaging_conversation_message belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this messaging_conversation_message belongs to.
+  - key: id
+    value: "{{messaging_conversation_id}}"
+    description: "Input: messaging_conversation_id."
+body:
+  type: json
+  content: |-
+    {
+      "client_operation_id": "example",
+      "content": "example",
+      "media": {
+        "name": "example",
+        "content_type": "example",
+        "data": "example"
+      },
+      "media_upload_ids": [
+        "example"
+      ],
+      "retry_attachment": true,
+      "reply_to": "example",
+      "send_style": "celebration"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("messaging_conversation_message_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

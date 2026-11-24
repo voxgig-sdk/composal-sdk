@@ -1,0 +1,22 @@
+# BasicDockerBuilderGatewayConnectionFlow
+
+main: kit: flow: BasicDockerBuilderGatewayConnectionFlow:
+{
+  entity: "docker_builder_gateway_connection",
+  kind: "basic",
+  name: "BasicDockerBuilderGatewayConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "docker_builder_gateway_connection_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDockerBuilderGatewayConnectionFlow"
+}

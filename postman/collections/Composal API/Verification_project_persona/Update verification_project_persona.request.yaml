@@ -1,0 +1,34 @@
+$kind: http-request
+id: "3b8b22e6-17bc-5cb0-a587-3627a770f0af"
+description: |-
+  The `update` operation of **verification_project_persona**.
+
+  SDK: `client.VerificationProjectPersona().update({ id: "example", organization_id: "example", project_id: "example", access_mode: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/personas/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_persona belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_persona belongs to.
+  - key: id
+    value: "{{verification_project_persona_id}}"
+    description: The verification_project_persona this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "role": "example",
+      "goals": "example",
+      "capabilities": "example",
+      "credential_id": "example",
+      "access_mode": "anonymous",
+      "version": 1
+    }
+order: 4000

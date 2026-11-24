@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "registry_v2": {
+      "REGISTRY_V200": {
+        "id": "REGISTRY_V200"
+      },
+      "REGISTRY_V201": {
+        "id": "REGISTRY_V201"
+      },
+      "REGISTRY_V202": {
+        "id": "REGISTRY_V202"
+      }
+    }
+  },
+  "new": {
+    "registry_v2": {
+      "registry_v2_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/registry/v2/authorize": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,21 @@
+$kind: http-request
+id: "55537fa8-aa33-58aa-b815-0b918a256bc8"
+description: |-
+  The `load` operation of **project_run_plan**.
+
+  SDK: `client.ProjectRunPlan().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_plans/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_plan belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_plan belongs to.
+  - key: id
+    value: "{{project_run_plan_id}}"
+    description: The project_run_plan this request addresses.
+order: 2000

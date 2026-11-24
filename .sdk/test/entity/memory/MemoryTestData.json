@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "memory": {
+      "MEMORY00": {
+        "confidence": "s96",
+        "created_at": "s97",
+        "environment_id": "ENVIRONMENT01",
+        "finding": "s99",
+        "history": [],
+        "id": "MEMORY00",
+        "indexed_at": "s9c",
+        "memory": {},
+        "project_id": "PROJECT01",
+        "response": "s9f",
+        "scope": {},
+        "source": {},
+        "tags": [],
+        "title": "sa3",
+        "workaround": "sa4",
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEMORY01": {
+        "confidence": "s12c",
+        "created_at": "s12d",
+        "environment_id": "ENVIRONMENT01",
+        "finding": "s12f",
+        "history": [],
+        "id": "MEMORY01",
+        "indexed_at": "s132",
+        "memory": {},
+        "project_id": "PROJECT01",
+        "response": "s135",
+        "scope": {},
+        "source": {},
+        "tags": [],
+        "title": "s139",
+        "workaround": "s13a",
+        "organization_id": "ORGANIZATION01"
+      },
+      "MEMORY02": {
+        "confidence": "s1c2",
+        "created_at": "s1c3",
+        "environment_id": "ENVIRONMENT01",
+        "finding": "s1c5",
+        "history": [],
+        "id": "MEMORY02",
+        "indexed_at": "s1c8",
+        "memory": {},
+        "project_id": "PROJECT01",
+        "response": "s1cb",
+        "scope": {},
+        "source": {},
+        "tags": [],
+        "title": "s1cf",
+        "workaround": "s1d0",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "memory": {
+      "memory_ref01": {
+        "confidence": "s258",
+        "created_at": "s259",
+        "environment_id": "ENVIRONMENT01",
+        "finding": "s25b",
+        "history": [],
+        "indexed_at": "s25e",
+        "memory": {},
+        "project_id": "PROJECT01",
+        "response": "s261",
+        "scope": {},
+        "source": {},
+        "tags": [],
+        "title": "s265",
+        "workaround": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/memories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/memories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/memories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verify/memories/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

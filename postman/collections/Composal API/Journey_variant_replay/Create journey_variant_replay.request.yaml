@@ -1,0 +1,42 @@
+$kind: http-request
+id: "92d0ab9a-18e3-5c62-a72a-dfcc7ca7147f"
+description: |-
+  The `create` operation of **journey_variant_replay**.
+
+  SDK: `client.JourneyVariantReplay().create({ journey_variant_id: "example", organization_id: "example", project_id: "example", idempotency_key: "example", review_reason: "example", scenario_file: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/journey_variants/:variant_id/replays"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this journey_variant_replay belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this journey_variant_replay belongs to.
+  - key: variant_id
+    value: "{{journey_variant_id}}"
+    description: "Input: journey_variant_id."
+body:
+  type: json
+  content: |-
+    {
+      "scenario_file": {},
+      "review_reason": "example",
+      "idempotency_key": "example",
+      "actor_id": "example",
+      "max_seconds": 600
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("journey_variant_replay_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

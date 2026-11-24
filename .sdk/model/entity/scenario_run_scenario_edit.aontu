@@ -1,0 +1,352 @@
+# Entity: scenario_run_scenario_edit
+
+main: kit: entity: scenario_run_scenario_edit: {
+
+  alias: field: {}
+
+  name: "scenario_run_scenario_edit"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "idempotency_key"
+            "version"
+            "viewer_time_zone"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "scenario_run_id"
+                or: "scenario_run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run"
+          q: {
+            "$action": "run"
+            exist: [
+              "organization_id"
+              "project_id"
+              "run_id"
+              "scenario_run_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "scenario_runs"
+            }
+            {
+              var: "scenario_run_id"
+            }
+            {
+              lit: "scenario_edit"
+            }
+            {
+              lit: "run"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "outcomes"
+            "prompt"
+            "steps"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/suggest"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "scenario_run_id"
+                or: "scenario_run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/suggest"
+          q: {
+            "$action": "suggest"
+            exist: [
+              "organization_id"
+              "project_id"
+              "run_id"
+              "scenario_run_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "scenario_runs"
+            }
+            {
+              var: "scenario_run_id"
+            }
+            {
+              lit: "scenario_edit"
+            }
+            {
+              lit: "suggest"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "outcomes"
+            "steps"
+            "version"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/validate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "scenario_run_id"
+                or: "scenario_run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/validate"
+          q: {
+            "$action": "validate"
+            exist: [
+              "organization_id"
+              "project_id"
+              "run_id"
+              "scenario_run_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "scenario_runs"
+            }
+            {
+              var: "scenario_run_id"
+            }
+            {
+              lit: "scenario_edit"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

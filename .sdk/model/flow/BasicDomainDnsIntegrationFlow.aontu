@@ -1,0 +1,22 @@
+# BasicDomainDnsIntegrationFlow
+
+main: kit: flow: BasicDomainDnsIntegrationFlow:
+{
+  entity: "domain_dns_integration",
+  kind: "basic",
+  name: "BasicDomainDnsIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "domain_dns_integration_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDomainDnsIntegrationFlow"
+}

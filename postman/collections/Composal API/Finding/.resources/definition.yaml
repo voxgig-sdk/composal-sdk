@@ -1,0 +1,32 @@
+$kind: collection
+id: "3c8755f5-716e-5ea0-ba56-e923fbbaadf4"
+description: |-
+  A problem Verify found: list, read or update findings.
+
+  The **finding** entity, which belongs to a organization. Its requests address one record by `{{finding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `confidence` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `deferred_until` | string |  |  |
+  | `finding` | object | yes |  |
+  | `fingerprint` | string | yes |  |
+  | `first_seen_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_seen_at` | string | yes |  |
+  | `locked` | boolean | yes |  |
+  | `occurrence_count` | integer | yes |  |
+  | `organization_id` | string | yes |  |
+  | `permissions` | object | yes |  |
+  | `reason` | string |  |  |
+  | `reported_occurrence` | object | yes |  |
+  | `repository_id` | string | yes |  |
+  | `safe_summary` | string | yes |  |
+  | `scenario_occurrences` | array |  |  |
+  | `severity` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verification` | any | yes |  |
+order: 121000

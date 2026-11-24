@@ -1,0 +1,129 @@
+# Entity: product_map_identity_decision
+
+main: kit: entity: product_map_identity_decision: {
+
+  alias: field: {}
+
+  fields: {
+    observations: {
+      h: "Observations"
+      n: "observations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    operation: {
+      h: "Operation"
+      n: "operation"
+      r: true
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: true
+      t: "`$STRING`"
+    }
+    target: {
+      h: "Target"
+      n: "target"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "product_map_identity_decision"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "observations"
+            "operation"
+            "reason"
+            "target"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/identity_decisions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/identity_decisions"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "product_map"
+            }
+            {
+              lit: "identity_decisions"
+            }
+          ]
+          t: {
+            req: {
+              observations: "`reqdata.observation`"
+              operation: "`reqdata.operation`"
+              reason: "`reqdata.reason`"
+              target: "`reqdata.target`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

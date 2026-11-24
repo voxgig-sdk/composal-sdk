@@ -1,0 +1,51 @@
+{
+  "existing": {
+    "agent_attachment": {
+      "AGENT_ATTACHMENT00": {
+        "byte_size": 40,
+        "content_type": "s29",
+        "file_name": "s2a",
+        "id": "AGENT_ATTACHMENT00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_ATTACHMENT01": {
+        "byte_size": 80,
+        "content_type": "s51",
+        "file_name": "s52",
+        "id": "AGENT_ATTACHMENT01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_ATTACHMENT02": {
+        "byte_size": 120,
+        "content_type": "s79",
+        "file_name": "s7a",
+        "id": "AGENT_ATTACHMENT02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_attachment": {
+      "agent_attachment_ref01": {
+        "byte_size": 160,
+        "content_type": "sa1",
+        "file_name": "sa2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/complete": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/attachments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

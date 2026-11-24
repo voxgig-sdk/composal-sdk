@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "app_location": {
+      "APP_LOCATION00": {
+        "code": "s46",
+        "created_at": "s47",
+        "id": "APP_LOCATION00",
+        "location_id": "LOCATION01",
+        "name": "s4a",
+        "nomad_datacenter": "s4b",
+        "updated_at": "s4c",
+        "app_id": "APP01"
+      },
+      "APP_LOCATION01": {
+        "code": "s8c",
+        "created_at": "s8d",
+        "id": "APP_LOCATION01",
+        "location_id": "LOCATION01",
+        "name": "s90",
+        "nomad_datacenter": "s91",
+        "updated_at": "s92",
+        "app_id": "APP01"
+      },
+      "APP_LOCATION02": {
+        "code": "sd2",
+        "created_at": "sd3",
+        "id": "APP_LOCATION02",
+        "location_id": "LOCATION01",
+        "name": "sd6",
+        "nomad_datacenter": "sd7",
+        "updated_at": "sd8",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_location": {
+      "app_location_ref01": {
+        "code": "s118",
+        "created_at": "s119",
+        "location_id": "LOCATION01",
+        "name": "s11c",
+        "nomad_datacenter": "s11d",
+        "updated_at": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/locations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/locations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/locations/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

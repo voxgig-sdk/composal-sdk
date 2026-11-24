@@ -1,0 +1,19 @@
+$kind: collection
+id: c0f29e07-f936-5550-80cb-0b8a3f2bc37b
+description: |-
+  The **version_log** entity, which belongs to a organization and a binary. Its requests address one record by `{{version_log_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_image` | string | yes |  |
+  | `failure_phase` | string | yes |  |
+  | `id` | string | yes |  |
+  | `image_digest` | string | yes |  |
+  | `image_reference` | string | yes |  |
+  | `installer_version` | string | yes |  |
+  | `ready_at` | string | yes |  |
+  | `receipt` | object | yes |  |
+  | `safe_error` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `status` | string | yes |  |
+order: 212000

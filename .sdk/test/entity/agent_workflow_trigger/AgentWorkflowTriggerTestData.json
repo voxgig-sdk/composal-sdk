@@ -1,0 +1,170 @@
+{
+  "existing": {
+    "agent_workflow_trigger": {
+      "AGENT_WORKFLOW_TRIGGER00": {
+        "budget": "sfa",
+        "can_manage": false,
+        "can_pause": true,
+        "can_resume": false,
+        "can_review": true,
+        "daily_limit": "sff",
+        "day_resets_at": "s100",
+        "id": "AGENT_WORKFLOW_TRIGGER00",
+        "kind": "s102",
+        "next_due_at": "s103",
+        "pause_cause": "s104",
+        "paused": false,
+        "read_at": "s106",
+        "run_budget_usd": "s107",
+        "schedule": "s108",
+        "settings_changed_at": "s109",
+        "skipped_today": 266,
+        "stale_at": "s10b",
+        "stale_reason": "s10c",
+        "starts": "s10d",
+        "subscription_id": "SUBSCRIPTION01",
+        "time_zone": "s10f",
+        "today_count": "s110",
+        "trigger": {},
+        "workflow_path": "s112",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKFLOW_TRIGGER01": {
+        "budget": "s1f4",
+        "can_manage": false,
+        "can_pause": true,
+        "can_resume": false,
+        "can_review": true,
+        "daily_limit": "s1f9",
+        "day_resets_at": "s1fa",
+        "id": "AGENT_WORKFLOW_TRIGGER01",
+        "kind": "s1fc",
+        "next_due_at": "s1fd",
+        "pause_cause": "s1fe",
+        "paused": false,
+        "read_at": "s200",
+        "run_budget_usd": "s201",
+        "schedule": "s202",
+        "settings_changed_at": "s203",
+        "skipped_today": 516,
+        "stale_at": "s205",
+        "stale_reason": "s206",
+        "starts": "s207",
+        "subscription_id": "SUBSCRIPTION01",
+        "time_zone": "s209",
+        "today_count": "s20a",
+        "trigger": {},
+        "workflow_path": "s20c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKFLOW_TRIGGER02": {
+        "budget": "s2ee",
+        "can_manage": false,
+        "can_pause": true,
+        "can_resume": false,
+        "can_review": true,
+        "daily_limit": "s2f3",
+        "day_resets_at": "s2f4",
+        "id": "AGENT_WORKFLOW_TRIGGER02",
+        "kind": "s2f6",
+        "next_due_at": "s2f7",
+        "pause_cause": "s2f8",
+        "paused": false,
+        "read_at": "s2fa",
+        "run_budget_usd": "s2fb",
+        "schedule": "s2fc",
+        "settings_changed_at": "s2fd",
+        "skipped_today": 766,
+        "stale_at": "s2ff",
+        "stale_reason": "s300",
+        "starts": "s301",
+        "subscription_id": "SUBSCRIPTION01",
+        "time_zone": "s303",
+        "today_count": "s304",
+        "trigger": {},
+        "workflow_path": "s306",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_workflow_trigger": {
+      "agent_workflow_trigger_ref01": {
+        "budget": "s3e8",
+        "can_manage": false,
+        "can_pause": true,
+        "can_resume": false,
+        "can_review": true,
+        "daily_limit": "s3ed",
+        "day_resets_at": "s3ee",
+        "kind": "s3f0",
+        "next_due_at": "s3f1",
+        "pause_cause": "s3f2",
+        "paused": false,
+        "read_at": "s3f4",
+        "run_budget_usd": "s3f5",
+        "schedule": "s3f6",
+        "settings_changed_at": "s3f7",
+        "skipped_today": 1016,
+        "stale_at": "s3f9",
+        "stale_reason": "s3fa",
+        "starts": "s3fb",
+        "subscription_id": "SUBSCRIPTION01",
+        "time_zone": "s3fd",
+        "today_count": "s3fe",
+        "trigger": {},
+        "workflow_path": "s400"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/review": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/skipped": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/pause": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers/{trigger_id}/review": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

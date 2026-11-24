@@ -1,0 +1,9 @@
+$kind: collection
+id: e73eecc2-49a4-5ed8-b829-90c113bc2a17
+description: |-
+  The **verify_app_domain** entity, which belongs to a app. Its requests address one record by `{{verify_app_domain_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 209000

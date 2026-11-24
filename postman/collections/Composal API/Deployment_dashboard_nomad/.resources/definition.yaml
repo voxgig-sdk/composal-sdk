@@ -1,0 +1,8 @@
+$kind: collection
+id: aaf8dda8-df78-5b21-821e-f5f45ed5faef
+description: |-
+  The **deployment_dashboard_nomad** entity, which belongs to a app. Its requests address one record by `{{deployment_dashboard_nomad_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 104000

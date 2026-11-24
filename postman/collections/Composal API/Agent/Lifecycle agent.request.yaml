@@ -1,0 +1,18 @@
+$kind: http-request
+id: "81757cb2-dee6-5001-bb22-732494475b8b"
+description: |-
+  The `lifecycle` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "lifecycle" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/lifecycle"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 21000

@@ -1,0 +1,149 @@
+{
+  "existing": {
+    "app_data_resource": {
+      "APP_DATA_RESOURCE00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "created_at": "sb5",
+        "engine": "sb6",
+        "failure_message": "sb7",
+        "high_availability": true,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DATA_RESOURCE00",
+        "kind": "sbb",
+        "name": "sbc",
+        "plan": "sbd",
+        "provider_metadata": {},
+        "region": "sbf",
+        "slug": "sc0",
+        "status": "sc1",
+        "storage_gb": "sc2",
+        "storage_label": "sc3",
+        "updated_at": "sc4",
+        "version": "sc5",
+        "app_id": "APP01"
+      },
+      "APP_DATA_RESOURCE01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "created_at": "s169",
+        "engine": "s16a",
+        "failure_message": "s16b",
+        "high_availability": true,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DATA_RESOURCE01",
+        "kind": "s16f",
+        "name": "s170",
+        "plan": "s171",
+        "provider_metadata": {},
+        "region": "s173",
+        "slug": "s174",
+        "status": "s175",
+        "storage_gb": "s176",
+        "storage_label": "s177",
+        "updated_at": "s178",
+        "version": "s179",
+        "app_id": "APP01"
+      },
+      "APP_DATA_RESOURCE02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "created_at": "s21d",
+        "engine": "s21e",
+        "failure_message": "s21f",
+        "high_availability": true,
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_DATA_RESOURCE02",
+        "kind": "s223",
+        "name": "s224",
+        "plan": "s225",
+        "provider_metadata": {},
+        "region": "s227",
+        "slug": "s228",
+        "status": "s229",
+        "storage_gb": "s22a",
+        "storage_label": "s22b",
+        "updated_at": "s22c",
+        "version": "s22d",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_data_resource": {
+      "app_data_resource_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "created_at": "s2d1",
+        "engine": "s2d2",
+        "failure_message": "s2d3",
+        "high_availability": true,
+        "hosted_app_id": "HOSTED_APP01",
+        "kind": "s2d7",
+        "name": "s2d8",
+        "plan": "s2d9",
+        "provider_metadata": {},
+        "region": "s2db",
+        "slug": "s2dc",
+        "status": "s2dd",
+        "storage_gb": "s2de",
+        "storage_label": "s2df",
+        "updated_at": "s2e0",
+        "version": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/refresh": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/restore": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/suspend": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{app_id}/data_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/data_resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/data_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/data_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/data_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/data_resources/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

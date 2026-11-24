@@ -1,0 +1,58 @@
+$kind: http-request
+id: fa1cc6b8-7239-5db2-88d5-08a5f8557197
+description: |-
+  The `create` operation of **interaction_response**.
+
+  SDK: `client.InteractionResponse().create({ agent_id: "example", interaction_id: "example", organization_id: "example", answer: {}, conversation_id: "example", expected_revision: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/interactions/:request_id/responses"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this interaction_response belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this interaction_response belongs to.
+  - key: request_id
+    value: "{{interaction_id}}"
+    description: "Input: interaction_id."
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "expected_revision": 1,
+      "answer": {
+        "confirmed": true,
+        "selected_skills": [
+          "example"
+        ],
+        "action": "example",
+        "always_allow": true,
+        "choices": [
+          "example"
+        ],
+        "values": {},
+        "items": [
+          {
+            "id": "example",
+            "values": {}
+          }
+        ]
+      }
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("interaction_response_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

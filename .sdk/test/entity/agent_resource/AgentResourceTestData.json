@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "agent_resource": {
+      "AGENT_RESOURCE00": {
+        "name": "s14",
+        "uri": "s15",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RESOURCE01": {
+        "name": "s28",
+        "uri": "s29",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RESOURCE02": {
+        "name": "s3c",
+        "uri": "s3d",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_resource": {
+      "agent_resource_ref01": {
+        "name": "s50",
+        "uri": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

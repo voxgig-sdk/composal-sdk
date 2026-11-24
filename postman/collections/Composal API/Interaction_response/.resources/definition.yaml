@@ -1,0 +1,11 @@
+$kind: collection
+id: ffade19a-1326-5528-9a98-4197104b24cc
+description: |-
+  The **interaction_response** entity, which belongs to a organization and a agent. Its requests address one record by `{{interaction_response_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `answer` | object | yes |  |
+  | `conversation_id` | string | yes |  |
+  | `expected_revision` | integer | yes |  |
+order: 126000

@@ -1,0 +1,21 @@
+$kind: http-request
+id: "5f5de3ec-a35c-5f51-be3f-be93a5cb20aa"
+description: |-
+  The `review` action of **agent_workflow_trigger**, a route of its `load` operation.
+
+  SDK: `client.AgentWorkflowTrigger().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "review" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id/review"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_trigger belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_trigger belongs to.
+  - key: trigger_id
+    value: "{{agent_workflow_trigger_id}}"
+    description: The agent_workflow_trigger this request addresses.
+order: 6000

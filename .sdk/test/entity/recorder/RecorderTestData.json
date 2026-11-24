@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "recorder": {
+      "RECORDER00": {
+        "id": "RECORDER00",
+        "name": "s1f",
+        "slug": "s20",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RECORDER01": {
+        "id": "RECORDER01",
+        "name": "s3d",
+        "slug": "s3e",
+        "organization_id": "ORGANIZATION01"
+      },
+      "RECORDER02": {
+        "id": "RECORDER02",
+        "name": "s5b",
+        "slug": "s5c",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "recorder": {
+      "recorder_ref01": {
+        "name": "s79",
+        "slug": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/recorder": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

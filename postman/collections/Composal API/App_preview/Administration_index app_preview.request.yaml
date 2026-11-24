@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5d422862-3f8c-5ec5-8288-40be59f29d1d"
+description: |-
+  The `administration_index` action of **app_preview**, a route of its `load` operation.
+
+  SDK: `client.AppPreview().load({ "app_id": "app_id", $action: "administration_index" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/administration_index"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview belongs to.
+order: 7000

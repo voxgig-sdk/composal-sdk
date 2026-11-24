@@ -1,0 +1,23 @@
+# BasicClawderComputerConnectionFlow
+
+main: kit: flow: BasicClawderComputerConnectionFlow:
+{
+  entity: "clawder_computer_connection",
+  kind: "basic",
+  name: "BasicClawderComputerConnectionFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_computer_connection_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClawderComputerConnectionFlow"
+}

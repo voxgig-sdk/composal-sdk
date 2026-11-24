@@ -1,0 +1,237 @@
+# Entity: page_project_run
+
+main: kit: entity: page_project_run: {
+
+  alias: field: {}
+
+  fields: {
+    available_tests: {
+      h: "Available Tests"
+      n: "available_tests"
+      r: true
+      t: "`$ARRAY`"
+    }
+    fix_scenario_count: {
+      h: "Fix Scenario Count"
+      n: "fix_scenario_count"
+      r: true
+      sh: "How many scenarios the agent handoff covers, including those on other pages."
+      t: "`$INTEGER`"
+    }
+    fix_scenarios: {
+      h: "Fix Scenarios"
+      n: "fix_scenarios"
+      r: true
+      sh: "The fixable scenarios an agent handoff covers."
+      t: "`$ARRAY`"
+    }
+    fixable_count: {
+      h: "Fixable Count"
+      n: "fixable_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    preparation_reason: {
+      h: "Preparation Reason"
+      n: "preparation_reason"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+    run: {
+      h: "Run"
+      n: "run"
+      r: true
+      t: "`$OBJECT`"
+    }
+    scenario_runs: {
+      h: "Scenario Runs"
+      n: "scenario_runs"
+      r: true
+      t: "`$ARRAY`"
+    }
+    selected_scenario_run: {
+      h: "Selected Scenario Run"
+      n: "selected_scenario_run"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 2
+        depth: 12
+      }
+    }
+    web_path: {
+      h: "Web Path"
+      n: "web_path"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "page_project_run"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "browser"
+                or: "browser"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: true
+                explode: true
+                k: "query"
+                n: "detail"
+                or: "details"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page"
+          q: {
+            exist: [
+              "id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "page"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

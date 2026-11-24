@@ -1,0 +1,22 @@
+# BasicOpsSignalBulkAckResultFlow
+
+main: kit: flow: BasicOpsSignalBulkAckResultFlow:
+{
+  entity: "ops_signal_bulk_ack_result",
+  kind: "basic",
+  name: "BasicOpsSignalBulkAckResultFlow",
+  step: [
+    {
+      i: {
+        ref: "ops_signal_bulk_ack_result_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOpsSignalBulkAckResultFlow"
+}

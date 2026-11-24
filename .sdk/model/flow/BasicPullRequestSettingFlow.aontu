@@ -1,0 +1,38 @@
+# BasicPullRequestSettingFlow
+
+main: kit: flow: BasicPullRequestSettingFlow:
+{
+  entity: "pull_request_setting",
+  kind: "basic",
+  name: "BasicPullRequestSettingFlow",
+  step: [
+    {
+      i: {
+        ref: "pull_request_setting_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pull_request_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPullRequestSettingFlow"
+}

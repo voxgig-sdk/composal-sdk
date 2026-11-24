@@ -1,0 +1,28 @@
+$kind: http-request
+id: "179421c7-ffaa-5948-af9b-9333eba67f91"
+description: |-
+  The `update` operation of **agent_workspace**.
+
+  SDK: `client.AgentWorkspace().update({ agent_id: "example", id: "example", organization_id: "example", action: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workspaces/:workspace_id"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workspace belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workspace belongs to.
+  - key: workspace_id
+    value: "{{agent_workspace_id}}"
+    description: The agent_workspace this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action": "keep"
+    }
+order: 2000

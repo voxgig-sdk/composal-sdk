@@ -1,0 +1,4 @@
+$kind: collection
+id: "5ead33f0-5b31-5cb7-86a6-0fce3f519bed"
+description: "The `BasicAgentToolFlow` flow of **agent_tool**."
+order: 30000

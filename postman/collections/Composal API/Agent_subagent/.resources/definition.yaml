@@ -1,0 +1,20 @@
+$kind: collection
+id: b873030c-ed65-52d3-adbe-005a755392dc
+description: |-
+  The **agent_subagent** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_subagent_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active` | boolean | yes |  |
+  | `attention` | object | yes |  |
+  | `ended_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `model` | string | yes |  |
+  | `parent_id` | string | yes |  |
+  | `preview` | string | yes |  |
+  | `started_at` | string | yes |  |
+  | `state` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 36000

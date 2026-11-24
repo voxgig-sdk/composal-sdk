@@ -1,0 +1,30 @@
+$kind: http-request
+id: "003587df-77af-5f25-abaa-2133834ce263"
+description: |-
+  The `retry` action of **agent_avatar**, a route of its `create` operation.
+
+  SDK: `client.AgentAvatar().create({ "organization_id": "organization_id", "agent_id": "agent_id", "idempotency_key": "idempotency_key", $action: "retry" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/avatar/retry"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+queryParams:
+  - key: style_catalog
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_avatar belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_avatar belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "expected_generation": "example"
+    }
+order: 3000

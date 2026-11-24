@@ -1,0 +1,27 @@
+# BasicClawderSubagentFlow
+
+main: kit: flow: BasicClawderSubagentFlow:
+{
+  entity: "clawder_subagent",
+  kind: "basic",
+  name: "BasicClawderSubagentFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_subagent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderSubagentFlow"
+}

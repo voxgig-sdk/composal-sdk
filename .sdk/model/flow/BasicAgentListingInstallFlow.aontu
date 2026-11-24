@@ -1,0 +1,23 @@
+# BasicAgentListingInstallFlow
+
+main: kit: flow: BasicAgentListingInstallFlow:
+{
+  entity: "agent_listing_install",
+  kind: "basic",
+  name: "BasicAgentListingInstallFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_listing_install_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        share_token: "share_token01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentListingInstallFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: e96050c0-c576-5e1a-b622-9b63808ee540
+description: |-
+  The `icon_image` action of **project**, a route of its `update` operation.
+
+  SDK: `client.Project().update({ "organization_id": "organization_id", "id": "ID", $action: "icon_image" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:id/icon_image"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 10000

@@ -1,0 +1,8 @@
+$kind: collection
+id: "952e296d-83b4-54d4-ab50-ffdae1128892"
+description: |-
+  The **agent_subscription** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_subscription_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 37000

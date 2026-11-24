@@ -1,0 +1,50 @@
+# BasicAgentSandboxSettingFlow
+
+main: kit: flow: BasicAgentSandboxSettingFlow:
+{
+  entity: "agent_sandbox_setting",
+  kind: "basic",
+  name: "BasicAgentSandboxSettingFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_sandbox_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_sandbox_setting_ref01",
+        srcdatavar: "agent_sandbox_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "integration_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_sandbox_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSandboxSettingFlow"
+}

@@ -1,0 +1,26 @@
+$kind: collection
+id: "025211d8-0984-510f-b661-2a2c79f56c8f"
+description: |-
+  The **app_data_resource** entity, which belongs to a app. Its requests address one record by `{{app_data_resource_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `engine` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `high_availability` | boolean | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `name` | string | yes |  |
+  | `plan` | string | yes |  |
+  | `provider_metadata` | object | yes |  |
+  | `region` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `storage_gb` | integer | yes |  |
+  | `storage_label` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | string | yes |  |
+order: 56000

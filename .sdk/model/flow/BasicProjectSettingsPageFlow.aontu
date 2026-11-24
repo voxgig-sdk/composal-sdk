@@ -1,0 +1,27 @@
+# BasicProjectSettingsPageFlow
+
+main: kit: flow: BasicProjectSettingsPageFlow:
+{
+  entity: "project_settings_page",
+  kind: "basic",
+  name: "BasicProjectSettingsPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_settings_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectSettingsPageFlow"
+}

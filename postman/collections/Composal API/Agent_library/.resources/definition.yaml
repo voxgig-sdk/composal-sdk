@@ -1,0 +1,9 @@
+$kind: collection
+id: dee706f5-b166-5ea4-9b4f-b9f788078147
+description: |-
+  The **agent_library** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_library_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 16000

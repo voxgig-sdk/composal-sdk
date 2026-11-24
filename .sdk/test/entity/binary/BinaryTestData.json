@@ -1,0 +1,146 @@
+{
+  "existing": {
+    "binary": {
+      "BINARY00": {
+        "accepts_versions": true,
+        "arch": "s105",
+        "archived_at": "s106",
+        "binary": {},
+        "created_at": "s108",
+        "download_secret": "s109",
+        "download_url": "s10a",
+        "executable": "s10b",
+        "format": "s10c",
+        "id": "BINARY00",
+        "idempotency_key": "s10e",
+        "latest_version": "s10f",
+        "launch_args": [],
+        "name": "s111",
+        "needs_refresh": true,
+        "operation": {},
+        "pagination": {},
+        "permissions": {},
+        "platform": "s116",
+        "project_id": "PROJECT01",
+        "sha256": "s118",
+        "slug": "s119",
+        "version": {},
+        "version_defaults": "s11b",
+        "versions": [],
+        "window_title": "s11d",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BINARY01": {
+        "accepts_versions": true,
+        "arch": "s209",
+        "archived_at": "s20a",
+        "binary": {},
+        "created_at": "s20c",
+        "download_secret": "s20d",
+        "download_url": "s20e",
+        "executable": "s20f",
+        "format": "s210",
+        "id": "BINARY01",
+        "idempotency_key": "s212",
+        "latest_version": "s213",
+        "launch_args": [],
+        "name": "s215",
+        "needs_refresh": true,
+        "operation": {},
+        "pagination": {},
+        "permissions": {},
+        "platform": "s21a",
+        "project_id": "PROJECT01",
+        "sha256": "s21c",
+        "slug": "s21d",
+        "version": {},
+        "version_defaults": "s21f",
+        "versions": [],
+        "window_title": "s221",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BINARY02": {
+        "accepts_versions": true,
+        "arch": "s30d",
+        "archived_at": "s30e",
+        "binary": {},
+        "created_at": "s310",
+        "download_secret": "s311",
+        "download_url": "s312",
+        "executable": "s313",
+        "format": "s314",
+        "id": "BINARY02",
+        "idempotency_key": "s316",
+        "latest_version": "s317",
+        "launch_args": [],
+        "name": "s319",
+        "needs_refresh": true,
+        "operation": {},
+        "pagination": {},
+        "permissions": {},
+        "platform": "s31e",
+        "project_id": "PROJECT01",
+        "sha256": "s320",
+        "slug": "s321",
+        "version": {},
+        "version_defaults": "s323",
+        "versions": [],
+        "window_title": "s325",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "binary": {
+      "binary_ref01": {
+        "accepts_versions": true,
+        "arch": "s411",
+        "archived_at": "s412",
+        "binary": {},
+        "created_at": "s414",
+        "download_secret": "s415",
+        "download_url": "s416",
+        "executable": "s417",
+        "format": "s418",
+        "idempotency_key": "s41a",
+        "latest_version": "s41b",
+        "launch_args": [],
+        "name": "s41d",
+        "needs_refresh": true,
+        "operation": {},
+        "pagination": {},
+        "permissions": {},
+        "platform": "s422",
+        "project_id": "PROJECT01",
+        "sha256": "s424",
+        "slug": "s425",
+        "version": {},
+        "version_defaults": "s427",
+        "versions": [],
+        "window_title": "s429"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/binaries/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verify/binaries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/binaries": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/binaries/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

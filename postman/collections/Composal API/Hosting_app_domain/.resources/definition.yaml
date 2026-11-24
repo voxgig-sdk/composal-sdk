@@ -1,0 +1,31 @@
+$kind: collection
+id: "87e5666b-f028-51de-b814-fd91c915fc08"
+description: |-
+  The **hosting_app_domain** entity, which belongs to a app. Its requests address one record by `{{hosting_app_domain_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `certificate` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `dns_mode` | string | yes |  |
+  | `dns_status` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `hostname` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `last_checked_at` | string | yes |  |
+  | `path_rules` | array | yes |  |
+  | `record_name` | string | yes |  |
+  | `record_type` | string | yes |  |
+  | `record_value` | string | yes |  |
+  | `redirect_to` | string | yes |  |
+  | `static_site_id` | string | yes |  |
+  | `target_kind` | string | yes |  |
+  | `tls_status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `verification_record` | object | yes |  |
+  | `verification_status` | string | yes |  |
+order: 123000

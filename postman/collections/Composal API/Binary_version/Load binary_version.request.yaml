@@ -1,0 +1,24 @@
+$kind: http-request
+id: "4fb65ea2-0ae1-5fc9-9374-30daa44a7490"
+description: |-
+  The `load` operation of **binary_version**.
+
+  SDK: `client.BinaryVersion().load({ binary_id: "example", id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/binaries/:binary_id/versions/:id?project_id={{project_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this binary_version belongs to.
+  - key: binary_id
+    value: "{{binary_id}}"
+    description: The binary this binary_version belongs to.
+  - key: id
+    value: "{{binary_version_id}}"
+    description: The binary_version this request addresses.
+order: 2000

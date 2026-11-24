@@ -1,0 +1,32 @@
+# BasicSitePreviewFlow
+
+main: kit: flow: BasicSitePreviewFlow:
+{
+  entity: "site_preview",
+  kind: "basic",
+  name: "BasicSitePreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "site_preview_ref01",
+        srcdatavar: "site_preview_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "site_preview01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-site_preview_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSitePreviewFlow"
+}

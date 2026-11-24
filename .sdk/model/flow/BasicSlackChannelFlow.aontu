@@ -1,0 +1,27 @@
+# BasicSlackChannelFlow
+
+main: kit: flow: BasicSlackChannelFlow:
+{
+  entity: "slack_channel",
+  kind: "basic",
+  name: "BasicSlackChannelFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "slack_channel_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSlackChannelFlow"
+}

@@ -1,0 +1,34 @@
+$kind: collection
+id: "44b62b5f-e956-5a45-baa7-62afeb98f9fc"
+description: |-
+  The **binary** entity, which belongs to a organization. Its requests address one record by `{{binary_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accepts_versions` | boolean | yes |  |
+  | `arch` | any |  |  |
+  | `archived_at` | string | yes |  |
+  | `binary` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `download_secret` | string |  |  |
+  | `download_url` | string | yes |  |
+  | `executable` | string | yes |  |
+  | `format` | any | yes |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string | yes |  |
+  | `latest_version` | any | yes |  |
+  | `launch_args` | array |  |  |
+  | `name` | string | yes |  |
+  | `needs_refresh` | boolean | yes |  |
+  | `operation` | object | yes |  |
+  | `pagination` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `platform` | any |  |  |
+  | `project_id` | string | yes |  |
+  | `sha256` | string |  |  |
+  | `slug` | string | yes |  |
+  | `version` | object | yes |  |
+  | `version_defaults` | any |  |  |
+  | `versions` | array | yes |  |
+  | `window_title` | string | yes |  |
+order: 75000

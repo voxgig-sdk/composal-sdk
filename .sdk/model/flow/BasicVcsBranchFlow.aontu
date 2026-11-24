@@ -1,0 +1,40 @@
+# BasicVcsBranchFlow
+
+main: kit: flow: BasicVcsBranchFlow:
+{
+  entity: "vcs_branch",
+  kind: "basic",
+  name: "BasicVcsBranchFlow",
+  step: [
+    {
+      i: {
+        ref: "vcs_branch_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_branch_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsBranchFlow"
+}

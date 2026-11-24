@@ -1,0 +1,18 @@
+$kind: http-request
+id: "4519d761-715a-570c-b484-07f798c26073"
+description: |-
+  The `load` operation of **nomad_allocation**.
+
+  SDK: `client.NomadAllocation().load({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_dashboard/nomad/allocations/:allocation_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this nomad_allocation belongs to.
+  - key: allocation_id
+    value: "{{nomad_allocation_id}}"
+    description: The nomad_allocation this request addresses.
+order: 1000

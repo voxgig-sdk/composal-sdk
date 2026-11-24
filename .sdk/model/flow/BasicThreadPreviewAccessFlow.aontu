@@ -1,0 +1,36 @@
+# BasicThreadPreviewAccessFlow
+
+main: kit: flow: BasicThreadPreviewAccessFlow:
+{
+  entity: "thread_preview_access",
+  kind: "basic",
+  name: "BasicThreadPreviewAccessFlow",
+  step: [
+    {
+      i: {
+        ref: "thread_preview_access_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "thread_preview_access_ref01",
+        srcdatavar: "thread_preview_access_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-thread_preview_access_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicThreadPreviewAccessFlow"
+}

@@ -1,0 +1,27 @@
+# BasicDeviceGrantListFlow
+
+main: kit: flow: BasicDeviceGrantListFlow:
+{
+  entity: "device_grant_list",
+  kind: "basic",
+  name: "BasicDeviceGrantListFlow",
+  step: [
+    {
+      m: {
+        device_registration_id: "device_registration01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "device_grant_list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceGrantListFlow"
+}

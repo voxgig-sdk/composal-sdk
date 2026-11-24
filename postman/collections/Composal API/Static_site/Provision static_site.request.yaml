@@ -1,0 +1,19 @@
+$kind: http-request
+id: "4b629a50-cb9a-5238-844d-590f6e5f085e"
+description: |-
+  The `provision` action of **static_site**, a route of its `create` operation.
+
+  SDK: `client.StaticSite().create({ "id": "ID", $action: "provision" })`
+url: "{{base}}/api/v1/static_sites/:id/provision"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{static_site_id}}"
+    description: The static_site this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

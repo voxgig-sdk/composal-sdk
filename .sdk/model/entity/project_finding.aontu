@@ -1,0 +1,244 @@
+# Entity: project_finding
+
+main: kit: entity: project_finding: {
+
+  alias: field: {}
+
+  fields: {
+    deferred_until: {
+      fo: "date-time"
+      h: "Deferred Until"
+      n: "deferred_until"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environment_name: {
+      h: "Environment Name"
+      n: "environment_name"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    last_seen_at: {
+      fo: "date-time"
+      h: "Last Seen At"
+      n: "last_seen_at"
+      r: true
+      t: "`$STRING`"
+    }
+    locked: {
+      h: "Locked"
+      n: "locked"
+      r: true
+      sh: "True for a locked finding of the workspace's included scan before it pays."
+      t: "`$BOOLEAN`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
+      r: true
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      sh: "The workflow that produced the finding"
+      t: "`$STRING`"
+    }
+    source_title: {
+      h: "Source Title"
+      n: "source_title"
+      r: true
+      sh: "The scenario, Discovery or Deep Scan that produced the finding"
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    verification: {
+      h: "Verification"
+      n: "verification"
+      r: true
+      sh: "Whether a model that did not report the finding, and for a P0 or P1 Deep Scan finding an independent rerun, confirmed it."
+      t: "`$ANY`"
+    }
+    web_path: {
+      h: "Web Path"
+      n: "web_path"
+      r: true
+      sh: "Where the finding is reviewed within its source"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "project_finding"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/findings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "priority"
+                or: "priority"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "query"
+                or: "query"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "run_id"
+                or: "run_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source"
+                or: "source"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "state"
+                or: "state"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/findings"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "findings"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
+            req: "`reqdata`"
+            res: "`body.findings`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

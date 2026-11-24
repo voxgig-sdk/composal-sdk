@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "agent_run": {
+      "AGENT_RUN00": {
+        "error": "s28",
+        "id": "AGENT_RUN00",
+        "run_id": "RUN01",
+        "status": "s2b",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RUN01": {
+        "error": "s50",
+        "id": "AGENT_RUN01",
+        "run_id": "RUN01",
+        "status": "s53",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_RUN02": {
+        "error": "s78",
+        "id": "AGENT_RUN02",
+        "run_id": "RUN01",
+        "status": "s7b",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_run": {
+      "agent_run_ref01": {
+        "error": "sa0",
+        "run_id": "RUN01",
+        "status": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/runs/{run_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

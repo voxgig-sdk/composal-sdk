@@ -1,0 +1,45 @@
+$kind: collection
+id: "9666152f-6be0-5d1a-a744-70ee3fc1210a"
+description: |-
+  Agent listings in the organization's marketplace: browse them, publish, change or remove one, or install one (action).
+
+  The **agent_marketplace** entity, which belongs to a organization. Its requests address one record by `{{agent_marketplace_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `bundle` | object | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `catalog_key` | string | yes |  |
+  | `categories` | array | yes |  |
+  | `category` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `created_at` | string | yes |  |
+  | `expected_version` | integer | yes |  |
+  | `explainer` | string | yes |  |
+  | `featured` | boolean | yes |  |
+  | `from_composal` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `installs_count` | integer | yes |  |
+  | `instructions` | string | yes |  |
+  | `integration_toolkits` | array | yes |  |
+  | `integrations` | array | yes |  |
+  | `listing` | any | yes |  |
+  | `listings` | array | yes |  |
+  | `memories` | array | yes |  |
+  | `name` | string | yes |  |
+  | `next_page` | integer | yes |  |
+  | `organization_name` | string | yes |  |
+  | `page_apps` | array | yes |  |
+  | `publisher_avatar_url` | string | yes |  |
+  | `publisher_name` | string | yes |  |
+  | `sections` | array | yes |  |
+  | `share_token` | string | yes |  |
+  | `skills` | array | yes |  |
+  | `slug` | string | yes |  |
+  | `source_agent_id` | string |  |  |
+  | `summary` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `version` | integer | yes |  |
+  | `viewer` | object | yes |  |
+  | `visibility` | string | yes |  |
+order: 19000

@@ -1,0 +1,46 @@
+# BasicPersistentAgentClawderLifecycleFlow
+
+main: kit: flow: BasicPersistentAgentClawderLifecycleFlow:
+{
+  entity: "persistent_agent_clawder_lifecycle",
+  kind: "basic",
+  name: "BasicPersistentAgentClawderLifecycleFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_clawder_lifecycle_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "persistent_agent_clawder_lifecycle_ref01",
+        srcdatavar: "persistent_agent_clawder_lifecycle_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "persistent_agent_clawder_lifecycle01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persistent_agent_clawder_lifecycle_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentClawderLifecycleFlow"
+}

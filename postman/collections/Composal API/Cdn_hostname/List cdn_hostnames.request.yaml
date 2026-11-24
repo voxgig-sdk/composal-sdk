@@ -1,0 +1,28 @@
+$kind: http-request
+id: ccbf6f42-c44c-5231-ad75-46f4e76080d2
+description: |-
+  The `list` operation of **cdn_hostname**.
+
+  SDK: `client.CdnHostname().list({ app_id: "example", cdn_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/hostnames"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_hostname belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("cdn_hostname_id")) pm.collectionVariables.set("cdn_hostname_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

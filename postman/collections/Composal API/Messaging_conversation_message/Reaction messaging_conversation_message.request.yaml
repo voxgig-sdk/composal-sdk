@@ -1,0 +1,31 @@
+$kind: http-request
+id: "9cb393a2-6756-5b8f-832e-65f47ef5f6da"
+description: |-
+  The `reaction` action of **messaging_conversation_message**, a route of its `create` operation.
+
+  SDK: `client.MessagingConversationMessage().create({ "organization_id": "organization_id", "project_id": "project_id", "messaging_conversation_id": "messaging_conversation_id", "id": "ID", $action: "reaction" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id/messages/:message_id/reaction"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this messaging_conversation_message belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this messaging_conversation_message belongs to.
+  - key: id
+    value: "{{messaging_conversation_id}}"
+    description: "Input: messaging_conversation_id."
+  - key: message_id
+    value: "{{messaging_conversation_message_id}}"
+    description: The messaging_conversation_message this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "reaction": "example"
+    }
+order: 2000

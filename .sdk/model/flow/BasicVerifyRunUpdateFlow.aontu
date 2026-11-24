@@ -1,0 +1,26 @@
+# BasicVerifyRunUpdateFlow
+
+main: kit: flow: BasicVerifyRunUpdateFlow:
+{
+  entity: "verify_run_update",
+  kind: "basic",
+  name: "BasicVerifyRunUpdateFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_run_update_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyRunUpdateFlow"
+}

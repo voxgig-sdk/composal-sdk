@@ -1,0 +1,61 @@
+# BasicBinaryFlow
+
+main: kit: flow: BasicBinaryFlow:
+{
+  entity: "binary",
+  kind: "basic",
+  name: "BasicBinaryFlow",
+  step: [
+    {
+      i: {
+        ref: "binary_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "binary_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "binary_ref01",
+        srcdatavar: "binary_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-binary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBinaryFlow"
+}

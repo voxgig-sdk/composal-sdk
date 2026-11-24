@@ -1,0 +1,30 @@
+$kind: http-request
+id: "1bad1a82-2b62-50d4-8dae-001da2709b57"
+description: |-
+  The `patch` operation of **domain_path_rule**.
+
+  SDK: `client.DomainPathRule().patch({ app_id: "example", domain_id: "example", id: "example", app_service_endpoint_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:domain_id/path_rules/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this domain_path_rule belongs to.
+  - key: domain_id
+    value: "{{domain_id}}"
+    description: "Input: domain_id."
+  - key: id
+    value: "{{domain_path_rule_id}}"
+    description: The domain_path_rule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "path_prefix": "example",
+      "app_service_id": "{{app_service_id}}",
+      "app_service_endpoint_id": "example"
+    }
+order: 5000

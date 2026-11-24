@@ -1,0 +1,27 @@
+# BasicProjectEnvironmentDirectoryFlow
+
+main: kit: flow: BasicProjectEnvironmentDirectoryFlow:
+{
+  entity: "project_environment_directory",
+  kind: "basic",
+  name: "BasicProjectEnvironmentDirectoryFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_environment_directory_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectEnvironmentDirectoryFlow"
+}

@@ -1,0 +1,31 @@
+$kind: collection
+id: "898fc237-fd1e-51ce-89b0-e5b5bfa8d120"
+description: |-
+  The **agent_workflow_proposal** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_workflow_proposal_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_steps` | object | yes |  |
+  | `base_digest` | string | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_revise` | boolean | yes |  |
+  | `can_save` | boolean | yes |  |
+  | `can_set_trigger` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `definition` | object | yes |  |
+  | `digest` | string | yes |  |
+  | `error` | string | yes |  |
+  | `id` | string | yes |  |
+  | `model_choices` | array |  |  |
+  | `name` | string | yes |  |
+  | `native_rows` | array |  |  |
+  | `path` | string | yes |  |
+  | `pipeline_checkpoints` | object | yes |  |
+  | `pipeline_commands` | object | yes |  |
+  | `reasoning_choices` | array |  |  |
+  | `runs_on_earlier_version` | integer | yes |  |
+  | `saved` | object | yes |  |
+  | `stale` | boolean | yes |  |
+  | `starts` | object | yes |  |
+  | `trigger_error` | string | yes |  |
+order: 47000

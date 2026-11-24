@@ -1,0 +1,24 @@
+$kind: http-request
+id: "6cf73d75-4c54-5c07-b988-0be2981e9fd7"
+description: |-
+  The `relevance` action of **agent_mission_control**, a route of its `create` operation.
+
+  SDK: `client.AgentMissionControl().create({ "organization_id": "organization_id", $action: "relevance" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/mission_control/relevance"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_mission_control belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "agent_ids": [
+        "example"
+      ]
+    }
+order: 2000

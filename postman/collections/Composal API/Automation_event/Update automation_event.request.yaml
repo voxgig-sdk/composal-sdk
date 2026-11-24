@@ -1,0 +1,41 @@
+$kind: http-request
+id: fbf3b0cb-7901-50fb-81f7-925010e4e236
+description: |-
+  The `update` operation of **automation_event**.
+
+  SDK: `client.AutomationEvent().update({ agent_id: "example", automation_id: "example", organization_id: "example", action: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations/:automation_key/events"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this automation_event belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this automation_event belongs to.
+  - key: automation_key
+    value: "{{automation_id}}"
+    description: "Input: automation_id."
+body:
+  type: json
+  content: |-
+    {
+      "action": "save",
+      "expected_revision": "example",
+      "settings": {
+        "version_id": "example",
+        "input": {},
+        "budgets": {
+          "run_budget_usd": 1,
+          "run_budget_seconds": 1,
+          "budget_usd": 1,
+          "budget_period": "example"
+        },
+        "daily_limit": 1
+      },
+      "subscription_key": "example"
+    }
+order: 1000

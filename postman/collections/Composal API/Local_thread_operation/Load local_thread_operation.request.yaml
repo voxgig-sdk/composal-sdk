@@ -1,0 +1,21 @@
+$kind: http-request
+id: b497e2d6-6572-56c5-9a91-76188366dd11
+description: |-
+  The `load` operation of **local_thread_operation**.
+
+  SDK: `client.LocalThreadOperation().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/operations/:operation_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this local_thread_operation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this local_thread_operation belongs to.
+  - key: operation_id
+    value: "{{local_thread_operation_id}}"
+    description: The local_thread_operation this request addresses.
+order: 1000

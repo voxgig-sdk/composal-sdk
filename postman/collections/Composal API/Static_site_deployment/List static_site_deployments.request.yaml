@@ -1,0 +1,25 @@
+$kind: http-request
+id: "2f9111df-c5bf-591d-9b88-50629a83f25b"
+description: |-
+  The `list` operation of **static_site_deployment**.
+
+  SDK: `client.StaticSiteDeployment().list({ static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/deployments"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_deployment belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["deployments"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("static_site_deployment_id")) pm.collectionVariables.set("static_site_deployment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

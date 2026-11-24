@@ -1,0 +1,109 @@
+{
+  "existing": {
+    "dream": {
+      "DREAM00": {
+        "attention": true,
+        "changes": [],
+        "completed_at": "sb6",
+        "counts": {},
+        "dream": "sb8",
+        "error_code": "sb9",
+        "id": "DREAM00",
+        "pagination": {},
+        "permissions": {},
+        "phase": "sbd",
+        "reason": "sbe",
+        "reviewed": 191,
+        "reviewed_date": "sc0",
+        "runs": [],
+        "scope_name": "sc2",
+        "skipped": 195,
+        "tab": "sc4",
+        "timezone": "sc5",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DREAM01": {
+        "attention": true,
+        "changes": [],
+        "completed_at": "s16a",
+        "counts": {},
+        "dream": "s16c",
+        "error_code": "s16d",
+        "id": "DREAM01",
+        "pagination": {},
+        "permissions": {},
+        "phase": "s171",
+        "reason": "s172",
+        "reviewed": 371,
+        "reviewed_date": "s174",
+        "runs": [],
+        "scope_name": "s176",
+        "skipped": 375,
+        "tab": "s178",
+        "timezone": "s179",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DREAM02": {
+        "attention": true,
+        "changes": [],
+        "completed_at": "s21e",
+        "counts": {},
+        "dream": "s220",
+        "error_code": "s221",
+        "id": "DREAM02",
+        "pagination": {},
+        "permissions": {},
+        "phase": "s225",
+        "reason": "s226",
+        "reviewed": 551,
+        "reviewed_date": "s228",
+        "runs": [],
+        "scope_name": "s22a",
+        "skipped": 555,
+        "tab": "s22c",
+        "timezone": "s22d",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "dream": {
+      "dream_ref01": {
+        "attention": true,
+        "changes": [],
+        "completed_at": "s2d2",
+        "counts": {},
+        "dream": "s2d4",
+        "error_code": "s2d5",
+        "pagination": {},
+        "permissions": {},
+        "phase": "s2d9",
+        "reason": "s2da",
+        "reviewed": 731,
+        "reviewed_date": "s2dc",
+        "runs": [],
+        "scope_name": "s2de",
+        "skipped": 735,
+        "tab": "s2e0",
+        "timezone": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/dreams/{id}/resume": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/dreams": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/dreams/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

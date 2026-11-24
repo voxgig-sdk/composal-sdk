@@ -1,0 +1,23 @@
+$kind: collection
+id: "990b6cc6-0138-5cee-aec9-64f618ca73c1"
+description: |-
+  The **memory** entity, which belongs to a organization. Its requests address one record by `{{memory_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `confidence` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `environment_id` | string |  |  |
+  | `finding` | string | yes |  |
+  | `history` | array | yes |  |
+  | `id` | string | yes |  |
+  | `indexed_at` | string | yes |  |
+  | `memory` | object | yes |  |
+  | `project_id` | string |  |  |
+  | `response` | string |  |  |
+  | `scope` | object | yes |  |
+  | `source` | object | yes |  |
+  | `tags` | array |  |  |
+  | `title` | string | yes |  |
+  | `workaround` | string |  |  |
+order: 138000

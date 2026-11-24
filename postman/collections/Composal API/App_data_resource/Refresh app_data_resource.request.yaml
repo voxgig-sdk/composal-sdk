@@ -1,0 +1,22 @@
+$kind: http-request
+id: c02b6c59-4c6e-5961-82db-fa1f4ff8336c
+description: |-
+  The `refresh` action of **app_data_resource**, a route of its `create` operation.
+
+  SDK: `client.AppDataResource().create({ "app_id": "app_id", "id": "ID", $action: "refresh" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources/:id/refresh"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+  - key: id
+    value: "{{app_data_resource_id}}"
+    description: The app_data_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

@@ -1,0 +1,8 @@
+$kind: collection
+id: c7222de6-90a3-5db7-bac1-9a9c80305143
+description: |-
+  The **agent_mission_control** entity, which belongs to a organization. Its requests address one record by `{{agent_mission_control_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 21000

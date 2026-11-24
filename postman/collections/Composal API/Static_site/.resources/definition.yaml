@@ -1,0 +1,32 @@
+$kind: collection
+id: "3fe513d8-48f2-5ef1-9ced-02cbb99a7a3c"
+description: |-
+  A static site hosted by Composal: list, create, read, change or remove one.
+
+  The **static_site** entity, which belongs to a organization. Its requests address one record by `{{static_site_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_deployment_id` | string | yes |  |
+  | `cdn_hostname` | string | yes |  |
+  | `cdn_url` | string | yes |  |
+  | `cname_target` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `default_url` | string | yes |  |
+  | `description` | string | yes |  |
+  | `error_document` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `index_document` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `provisioned` | boolean | yes |  |
+  | `provisioned_at` | string | yes |  |
+  | `region` | string | yes |  |
+  | `replication_regions` | array | yes |  |
+  | `repository_id` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 105000

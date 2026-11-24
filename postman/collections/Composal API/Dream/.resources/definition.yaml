@@ -1,0 +1,26 @@
+$kind: collection
+id: "0a87b1b1-3803-5d5d-b71f-538972942db1"
+description: |-
+  The **dream** entity, which belongs to a organization. Its requests address one record by `{{dream_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attention` | boolean | yes |  |
+  | `changes` | array | yes |  |
+  | `completed_at` | string | yes |  |
+  | `counts` | object | yes |  |
+  | `dream` | any | yes |  |
+  | `error_code` | string | yes |  |
+  | `id` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `phase` | string | yes |  |
+  | `reason` | string | yes |  |
+  | `reviewed` | integer | yes |  |
+  | `reviewed_date` | string | yes |  |
+  | `runs` | array | yes |  |
+  | `scope_name` | string | yes |  |
+  | `skipped` | integer | yes |  |
+  | `tab` | string | yes |  |
+  | `timezone` | string | yes |  |
+order: 108000

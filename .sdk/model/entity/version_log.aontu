@@ -1,0 +1,235 @@
+# Entity: version_log
+
+main: kit: entity: version_log: {
+
+  alias: field: {}
+
+  fields: {
+    base_image: {
+      h: "Base Image"
+      n: "base_image"
+      r: true
+      t: "`$STRING`"
+    }
+    failure_phase: {
+      h: "Failure Phase"
+      n: "failure_phase"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    image_digest: {
+      h: "Image Digest"
+      n: "image_digest"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    image_reference: {
+      h: "Image Reference"
+      n: "image_reference"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    installer_version: {
+      h: "Installer Version"
+      n: "installer_version"
+      r: true
+      t: "`$STRING`"
+    }
+    ready_at: {
+      h: "Ready At"
+      n: "ready_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    receipt: {
+      h: "Receipt"
+      n: "receipt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    safe_error: {
+      h: "Safe Error"
+      n: "safe_error"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    started_at: {
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "version_log"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "binary_id"
+                or: "binary_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "version_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs"
+          q: {
+            exist: [
+              "binary_id"
+              "organization_id"
+              "project_id"
+              "version_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "version_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "binaries"
+            }
+            {
+              var: "binary_id"
+            }
+            {
+              lit: "versions"
+            }
+            {
+              var: "version_id"
+            }
+            {
+              lit: "logs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.operations`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.binary")]
+  ]
+
+}

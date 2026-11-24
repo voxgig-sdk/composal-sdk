@@ -1,0 +1,26 @@
+# BasicAgentSwarmLiveReplayPageFlow
+
+main: kit: flow: BasicAgentSwarmLiveReplayPageFlow:
+{
+  entity: "agent_swarm_live_replay_page",
+  kind: "basic",
+  name: "BasicAgentSwarmLiveReplayPageFlow",
+  step: [
+    {
+      m: {
+        swarm_id: "swarm01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_swarm_live_replay_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSwarmLiveReplayPageFlow"
+}

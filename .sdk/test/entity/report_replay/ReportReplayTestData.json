@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "report_replay": {
+      "REPORT_REPLAY00": {
+        "agent_id": "AGENT01",
+        "generated_at": "s33",
+        "id": "REPORT_REPLAY00",
+        "recording": {},
+        "replay_steps": [],
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPORT_REPLAY01": {
+        "agent_id": "AGENT01",
+        "generated_at": "s65",
+        "id": "REPORT_REPLAY01",
+        "recording": {},
+        "replay_steps": [],
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPORT_REPLAY02": {
+        "agent_id": "AGENT01",
+        "generated_at": "s97",
+        "id": "REPORT_REPLAY02",
+        "recording": {},
+        "replay_steps": [],
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "report_replay": {
+      "report_replay_ref01": {
+        "agent_id": "AGENT01",
+        "generated_at": "sc9",
+        "recording": {},
+        "replay_steps": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/replay/{agent_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

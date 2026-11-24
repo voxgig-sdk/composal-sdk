@@ -1,0 +1,26 @@
+# BasicOrganizationPreviewsPageFlow
+
+main: kit: flow: BasicOrganizationPreviewsPageFlow:
+{
+  entity: "organization_previews_page",
+  kind: "basic",
+  name: "BasicOrganizationPreviewsPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_previews_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationPreviewsPageFlow"
+}

@@ -1,0 +1,15 @@
+$kind: http-request
+id: b0d9e671-fd70-5397-b998-358307f238ff
+description: |-
+  The `load` operation of **recorder**.
+
+  SDK: `client.Recorder().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/recorder"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this recorder belongs to.
+order: 1000

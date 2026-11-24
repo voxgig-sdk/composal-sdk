@@ -1,0 +1,25 @@
+$kind: http-request
+id: a455d1f3-c805-5b36-9daf-1669cff7bf82
+description: |-
+  The `remove` operation of **verify_browser_session**.
+
+  SDK: `client.VerifyBrowserSession().remove({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/browser_sessions/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_browser_session belongs to.
+  - key: id
+    value: "{{verify_browser_session_id}}"
+    description: The verify_browser_session this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("verify_browser_session_id")
+      }
+    language: text/javascript
+order: 4000

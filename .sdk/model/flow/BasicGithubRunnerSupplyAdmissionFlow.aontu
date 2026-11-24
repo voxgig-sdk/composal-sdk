@@ -1,0 +1,18 @@
+# BasicGithubRunnerSupplyAdmissionFlow
+
+main: kit: flow: BasicGithubRunnerSupplyAdmissionFlow:
+{
+  entity: "github_runner_supply_admission",
+  kind: "basic",
+  name: "BasicGithubRunnerSupplyAdmissionFlow",
+  step: [
+    {
+      i: {
+        ref: "github_runner_supply_admission_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubRunnerSupplyAdmissionFlow"
+}

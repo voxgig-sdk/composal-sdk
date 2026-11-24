@@ -1,0 +1,104 @@
+# Entity: pull_request_setting_add_repository
+
+main: kit: entity: pull_request_setting_add_repository: {
+
+  alias: field: {}
+
+  fields: {
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      t: "`$STRING`"
+    }
+    replace: {
+      h: "Replace"
+      n: "replace"
+      r: false
+      sh: "Make these the project's only repositories."
+      t: "`$BOOLEAN`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "pull_request_setting_add_repository"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "project_id"
+            "replace"
+            "repositories"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "pull_request_settings"
+            }
+            {
+              lit: "add_repositories"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

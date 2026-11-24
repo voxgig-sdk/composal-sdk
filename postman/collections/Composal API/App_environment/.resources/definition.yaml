@@ -1,0 +1,25 @@
+$kind: collection
+id: f2e62737-da3b-53e2-b9c0-f5b60a734b56
+description: |-
+  A hosted app's environments: list, create, read, change, pause, resume, archive or remove one.
+
+  The **app_environment** entity, which belongs to a app. Its requests address one record by `{{app_environment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `auto_deploy` | boolean | yes |  |
+  | `base_domain` | string | yes |  |
+  | `branch_pattern` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `location` | any | yes |  |
+  | `location_id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+order: 61000

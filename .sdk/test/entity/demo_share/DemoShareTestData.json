@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "demo_share": {
+      "DEMO_SHARE00": {
+        "head_sha": "s28",
+        "id": "DEMO_SHARE00",
+        "recording": {},
+        "summary": "s2b"
+      },
+      "DEMO_SHARE01": {
+        "head_sha": "s50",
+        "id": "DEMO_SHARE01",
+        "recording": {},
+        "summary": "s53"
+      },
+      "DEMO_SHARE02": {
+        "head_sha": "s78",
+        "id": "DEMO_SHARE02",
+        "recording": {},
+        "summary": "s7b"
+      }
+    }
+  },
+  "new": {
+    "demo_share": {
+      "demo_share_ref01": {
+        "head_sha": "sa0",
+        "recording": {},
+        "summary": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/verify/demo_shares/{token}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/verify/demo_shares/{token}/thumbnail": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

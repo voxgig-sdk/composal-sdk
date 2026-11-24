@@ -1,0 +1,28 @@
+$kind: http-request
+id: bcda6901-f514-52c9-8953-8b13b0d2a628
+description: |-
+  The `runtime` action of **agent**, a route of its `update` operation.
+
+  SDK: `client.Agent().update({ "organization_id": "organization_id", "id": "ID", $action: "runtime" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/runtime"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": "example",
+      "memory_mb": 1,
+      "profile": "development",
+      "acknowledge_reset": true
+    }
+order: 32000

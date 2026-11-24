@@ -1,0 +1,28 @@
+# BasicVcsChangeDiffFlow
+
+main: kit: flow: BasicVcsChangeDiffFlow:
+{
+  entity: "vcs_change_diff",
+  kind: "basic",
+  name: "BasicVcsChangeDiffFlow",
+  step: [
+    {
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_change_diff_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsChangeDiffFlow"
+}

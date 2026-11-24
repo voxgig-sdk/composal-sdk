@@ -1,0 +1,8 @@
+$kind: collection
+id: beb08055-7d89-561c-9a71-8026afaf4c3a
+description: |-
+  The **agent_provisioning** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_provisioning_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 23000

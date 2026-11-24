@@ -1,0 +1,9 @@
+$kind: collection
+id: "9b60dbf6-7c89-5bb7-ab5c-d506ade684f1"
+description: |-
+  The **browser_egress_candidate** entity, which belongs to a organization. Its requests address one record by `{{browser_egress_candidate_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+order: 77000

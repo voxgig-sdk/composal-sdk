@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "cdn_hostname": {
+      "CDN_HOSTNAME00": {
+        "app_cdn_distribution_id": "APP_CDN_DISTRIBUTION01",
+        "created_at": "s5b",
+        "dns_status": "s5c",
+        "force_ssl": false,
+        "hostname": "s5e",
+        "id": "CDN_HOSTNAME00",
+        "provider_hostname_id": "PROVIDER_HOSTNAME01",
+        "tls_status": "s61",
+        "updated_at": "s62",
+        "app_id": "APP01",
+        "cdn_id": "CDN01"
+      },
+      "CDN_HOSTNAME01": {
+        "app_cdn_distribution_id": "APP_CDN_DISTRIBUTION01",
+        "created_at": "sb5",
+        "dns_status": "sb6",
+        "force_ssl": false,
+        "hostname": "sb8",
+        "id": "CDN_HOSTNAME01",
+        "provider_hostname_id": "PROVIDER_HOSTNAME01",
+        "tls_status": "sbb",
+        "updated_at": "sbc",
+        "app_id": "APP01",
+        "cdn_id": "CDN01"
+      },
+      "CDN_HOSTNAME02": {
+        "app_cdn_distribution_id": "APP_CDN_DISTRIBUTION01",
+        "created_at": "s10f",
+        "dns_status": "s110",
+        "force_ssl": false,
+        "hostname": "s112",
+        "id": "CDN_HOSTNAME02",
+        "provider_hostname_id": "PROVIDER_HOSTNAME01",
+        "tls_status": "s115",
+        "updated_at": "s116",
+        "app_id": "APP01",
+        "cdn_id": "CDN01"
+      }
+    }
+  },
+  "new": {
+    "cdn_hostname": {
+      "cdn_hostname_ref01": {
+        "app_cdn_distribution_id": "APP_CDN_DISTRIBUTION01",
+        "created_at": "s169",
+        "dns_status": "s16a",
+        "force_ssl": false,
+        "hostname": "s16c",
+        "provider_hostname_id": "PROVIDER_HOSTNAME01",
+        "tls_status": "s16f",
+        "updated_at": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

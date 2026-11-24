@@ -1,0 +1,72 @@
+<?php
+declare(strict_types=1);
+
+// Composal SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+ComposalUtility::setRegistrar(function (ComposalUtility $u): void {
+    $u->clean = [ComposalClean::class, 'call'];
+    $u->clean_add = [ComposalClean::class, 'add'];
+    $u->clean_explain = [ComposalDone::class, 'clean_explain'];
+    $u->done = [ComposalDone::class, 'call'];
+    $u->make_error = [ComposalMakeError::class, 'call'];
+    $u->feature_add = [ComposalFeatureAdd::class, 'call'];
+    $u->feature_hook = [ComposalFeatureHook::class, 'call'];
+    $u->feature_init = [ComposalFeatureInit::class, 'call'];
+    $u->fetcher = [ComposalFetcher::class, 'call'];
+    $u->make_fetch_def = [ComposalMakeFetchDef::class, 'call'];
+    $u->make_context = [ComposalMakeContext::class, 'call'];
+    $u->make_options = [ComposalMakeOptions::class, 'call'];
+    $u->make_request = [ComposalMakeRequest::class, 'call'];
+    $u->make_response = [ComposalMakeResponse::class, 'call'];
+    $u->make_result = [ComposalMakeResult::class, 'call'];
+    $u->make_point = [ComposalMakePoint::class, 'call'];
+    $u->make_spec = [ComposalMakeSpec::class, 'call'];
+    $u->make_url = [ComposalMakeUrl::class, 'call'];
+    $u->param = [ComposalParam::class, 'call'];
+    $u->prepare_auth = [ComposalPrepareAuth::class, 'call'];
+    $u->prepare_body = [ComposalPrepareBody::class, 'call'];
+    $u->prepare_headers = [ComposalPrepareHeaders::class, 'call'];
+    $u->prepare_method = [ComposalPrepareMethod::class, 'call'];
+    $u->prepare_params = [ComposalPrepareParams::class, 'call'];
+    $u->prepare_path = [ComposalPreparePath::class, 'call'];
+    $u->prepare_query = [ComposalPrepareQuery::class, 'call'];
+    $u->graphql_body = [ComposalGraphql::class, 'body'];
+    $u->graphql_errors = [ComposalGraphql::class, 'errors'];
+    $u->result_basic = [ComposalResultBasic::class, 'call'];
+    $u->result_body = [ComposalResultBody::class, 'call'];
+    $u->result_headers = [ComposalResultHeaders::class, 'call'];
+    $u->transform_request = [ComposalTransformRequest::class, 'call'];
+    $u->transform_response = [ComposalTransformResponse::class, 'call'];
+});

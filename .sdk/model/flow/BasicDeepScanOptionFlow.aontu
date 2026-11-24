@@ -1,0 +1,26 @@
+# BasicDeepScanOptionFlow
+
+main: kit: flow: BasicDeepScanOptionFlow:
+{
+  entity: "deep_scan_option",
+  kind: "basic",
+  name: "BasicDeepScanOptionFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deep_scan_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeepScanOptionFlow"
+}

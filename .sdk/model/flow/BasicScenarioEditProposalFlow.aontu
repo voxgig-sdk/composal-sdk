@@ -1,0 +1,25 @@
+# BasicScenarioEditProposalFlow
+
+main: kit: flow: BasicScenarioEditProposalFlow:
+{
+  entity: "scenario_edit_proposal",
+  kind: "basic",
+  name: "BasicScenarioEditProposalFlow",
+  step: [
+    {
+      i: {
+        ref: "scenario_edit_proposal_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01",
+        scenario_run_id: "scenario_run01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScenarioEditProposalFlow"
+}

@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "report_scenario": {
+      "REPORT_SCENARIO00": {
+        "environment_name": "s6e",
+        "goal": "s6f",
+        "id": "REPORT_SCENARIO00",
+        "mode": "s71",
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "related_explorations": [],
+        "report": {},
+        "saves_scenarios": true,
+        "scenario_generation": {},
+        "status": "s78",
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPORT_SCENARIO01": {
+        "environment_name": "sdc",
+        "goal": "sdd",
+        "id": "REPORT_SCENARIO01",
+        "mode": "sdf",
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "related_explorations": [],
+        "report": {},
+        "saves_scenarios": true,
+        "scenario_generation": {},
+        "status": "se6",
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "REPORT_SCENARIO02": {
+        "environment_name": "s14a",
+        "goal": "s14b",
+        "id": "REPORT_SCENARIO02",
+        "mode": "s14d",
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "related_explorations": [],
+        "report": {},
+        "saves_scenarios": true,
+        "scenario_generation": {},
+        "status": "s154",
+        "exploration_id": "EXPLORATION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "report_scenario": {
+      "report_scenario_ref01": {
+        "environment_name": "s1b8",
+        "goal": "s1b9",
+        "mode": "s1bb",
+        "permissions": {},
+        "project_id": "PROJECT01",
+        "related_explorations": [],
+        "report": {},
+        "saves_scenarios": true,
+        "scenario_generation": {},
+        "status": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

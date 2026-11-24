@@ -1,0 +1,31 @@
+$kind: http-request
+id: "756200d5-50d2-50be-8d09-a2c65a4d9e4d"
+description: |-
+  The `list` operation of **subscription_model**.
+
+  SDK: `client.SubscriptionModel().list({ agent_id: "example", organization_id: "example", profile_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/subscriptions/models?profile_id={{profile_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: profile_id
+    value: "{{profile_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this subscription_model belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this subscription_model belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["models"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("subscription_model_id")) pm.collectionVariables.set("subscription_model_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

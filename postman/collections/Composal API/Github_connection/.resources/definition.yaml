@@ -1,0 +1,14 @@
+$kind: collection
+id: f34a37e7-a622-5024-8f86-6203084463aa
+description: |-
+  The **github_connection** entity, which belongs to a organization. Its requests address one record by `{{github_connection_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `accounts` | array | yes |  |
+  | `github_app_installation_id` | string | yes |  |
+  | `installations` | array | yes |  |
+  | `project_id` | string |  |  |
+  | `replace` | boolean |  |  |
+  | `repositories` | array | yes |  |
+order: 122000

@@ -1,0 +1,27 @@
+# BasicAllocationLogFlow
+
+main: kit: flow: BasicAllocationLogFlow:
+{
+  entity: "allocation_log",
+  kind: "basic",
+  name: "BasicAllocationLogFlow",
+  step: [
+    {
+      m: {
+        allocation_id: "allocation01",
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "allocation_log_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAllocationLogFlow"
+}

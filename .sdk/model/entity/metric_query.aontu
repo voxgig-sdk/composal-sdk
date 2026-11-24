@@ -1,0 +1,55 @@
+# Entity: metric_query
+
+main: kit: entity: metric_query: {
+
+  alias: field: {}
+
+  name: "metric_query"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/metrics/queries"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/hosting/metrics/queries"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "metrics"
+            }
+            {
+              lit: "queries"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

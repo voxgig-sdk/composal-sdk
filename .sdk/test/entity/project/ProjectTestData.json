@@ -1,0 +1,252 @@
+{
+  "existing": {
+    "project": {
+      "PROJECT00": {
+        "archived_at": "s140",
+        "context": "s141",
+        "created_at": "s142",
+        "credentials": [],
+        "demo": true,
+        "documentation_urls": [],
+        "environments": [],
+        "execution_mode": "s147",
+        "icon_url": "s148",
+        "id": "PROJECT00",
+        "identity_provider": {},
+        "lock_version": 331,
+        "name": "s14c",
+        "network_connections": [],
+        "organization_id": "ORGANIZATION01",
+        "overview": {},
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "pull_request_options": {},
+        "pull_requests": [],
+        "purpose": "s155",
+        "runs": [],
+        "scenario_history": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "setup_required": true,
+        "slug": "s15b",
+        "updated_at": "s15c",
+        "verifier_preferences": {},
+        "version": 350,
+        "website_url": "s15f"
+      },
+      "PROJECT01": {
+        "archived_at": "s280",
+        "context": "s281",
+        "created_at": "s282",
+        "credentials": [],
+        "demo": true,
+        "documentation_urls": [],
+        "environments": [],
+        "execution_mode": "s287",
+        "icon_url": "s288",
+        "id": "PROJECT01",
+        "identity_provider": {},
+        "lock_version": 651,
+        "name": "s28c",
+        "network_connections": [],
+        "organization_id": "ORGANIZATION01",
+        "overview": {},
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "pull_request_options": {},
+        "pull_requests": [],
+        "purpose": "s295",
+        "runs": [],
+        "scenario_history": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "setup_required": true,
+        "slug": "s29b",
+        "updated_at": "s29c",
+        "verifier_preferences": {},
+        "version": 670,
+        "website_url": "s29f"
+      },
+      "PROJECT02": {
+        "archived_at": "s3c0",
+        "context": "s3c1",
+        "created_at": "s3c2",
+        "credentials": [],
+        "demo": true,
+        "documentation_urls": [],
+        "environments": [],
+        "execution_mode": "s3c7",
+        "icon_url": "s3c8",
+        "id": "PROJECT02",
+        "identity_provider": {},
+        "lock_version": 971,
+        "name": "s3cc",
+        "network_connections": [],
+        "organization_id": "ORGANIZATION01",
+        "overview": {},
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "pull_request_options": {},
+        "pull_requests": [],
+        "purpose": "s3d5",
+        "runs": [],
+        "scenario_history": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "setup_required": true,
+        "slug": "s3db",
+        "updated_at": "s3dc",
+        "verifier_preferences": {},
+        "version": 990,
+        "website_url": "s3df"
+      }
+    }
+  },
+  "new": {
+    "project": {
+      "project_ref01": {
+        "archived_at": "s500",
+        "context": "s501",
+        "created_at": "s502",
+        "credentials": [],
+        "demo": true,
+        "documentation_urls": [],
+        "environments": [],
+        "execution_mode": "s507",
+        "icon_url": "s508",
+        "identity_provider": {},
+        "lock_version": 1291,
+        "name": "s50c",
+        "network_connections": [],
+        "organization_id": "ORGANIZATION01",
+        "overview": {},
+        "permissions": {},
+        "personas": [],
+        "project": {},
+        "pull_request_options": {},
+        "pull_requests": [],
+        "purpose": "s515",
+        "runs": [],
+        "scenario_history": {},
+        "scenario_states": {},
+        "scenarios": [],
+        "setup_required": true,
+        "slug": "s51b",
+        "updated_at": "s51c",
+        "verifier_preferences": {},
+        "version": 1310,
+        "website_url": "s51f"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/discovery": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/environment": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/persona": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/header": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_discovery": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_history": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/pr_testing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/product_map_comparison": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/recorder": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_editor": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{id}/icon_image": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

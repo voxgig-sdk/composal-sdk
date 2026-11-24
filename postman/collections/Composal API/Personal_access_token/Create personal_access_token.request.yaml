@@ -1,0 +1,25 @@
+$kind: http-request
+id: "29cd74a6-3daa-5f41-97a8-50ffda21e04c"
+description: |-
+  The `create` operation of **personal_access_token**.
+
+  SDK: `client.PersonalAccessToken().create({  })`
+url: "{{base}}/api/v1/personal_access_tokens"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("personal_access_token_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

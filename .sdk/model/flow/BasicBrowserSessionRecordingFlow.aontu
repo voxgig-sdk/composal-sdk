@@ -1,0 +1,23 @@
+# BasicBrowserSessionRecordingFlow
+
+main: kit: flow: BasicBrowserSessionRecordingFlow:
+{
+  entity: "browser_session_recording",
+  kind: "basic",
+  name: "BasicBrowserSessionRecordingFlow",
+  step: [
+    {
+      i: {
+        ref: "browser_session_recording_ref01"
+      }
+
+      m: {
+        browser_session_id: "browser_session01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBrowserSessionRecordingFlow"
+}

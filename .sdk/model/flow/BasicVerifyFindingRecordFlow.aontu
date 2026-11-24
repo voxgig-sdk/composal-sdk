@@ -1,0 +1,49 @@
+# BasicVerifyFindingRecordFlow
+
+main: kit: flow: BasicVerifyFindingRecordFlow:
+{
+  entity: "verify_finding_record",
+  kind: "basic",
+  name: "BasicVerifyFindingRecordFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_finding_record_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_finding_record_ref01",
+        srcdatavar: "verify_finding_record_ref01_data",
+        suffix: "_up0",
+        textfield: "confidence"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_finding_record_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyFindingRecordFlow"
+}

@@ -1,0 +1,32 @@
+$kind: http-request
+id: "6cccae98-8313-5f66-a849-1be1c412f6f5"
+description: |-
+  The `list` operation of **github_connection**.
+
+  SDK: `client.GithubConnection().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/github_connections"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: github_app_installation_id
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_connection belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("github_connection_id")) pm.collectionVariables.set("github_connection_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

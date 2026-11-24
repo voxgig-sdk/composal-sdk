@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "site_preview": {
+      "SITE_PREVIEW00": {
+        "icon_data_url": "s1e",
+        "title": "s1f",
+        "url": "s20",
+        "organization_id": "ORGANIZATION01",
+        "id": "SITE_PREVIEW00"
+      },
+      "SITE_PREVIEW01": {
+        "icon_data_url": "s3c",
+        "title": "s3d",
+        "url": "s3e",
+        "organization_id": "ORGANIZATION01",
+        "id": "SITE_PREVIEW01"
+      },
+      "SITE_PREVIEW02": {
+        "icon_data_url": "s5a",
+        "title": "s5b",
+        "url": "s5c",
+        "organization_id": "ORGANIZATION01",
+        "id": "SITE_PREVIEW02"
+      }
+    }
+  },
+  "new": {
+    "site_preview": {
+      "site_preview_ref01": {
+        "icon_data_url": "s78",
+        "title": "s79",
+        "url": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/site_preview": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

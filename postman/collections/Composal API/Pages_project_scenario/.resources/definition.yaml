@@ -1,0 +1,12 @@
+$kind: collection
+id: ba55f48b-20bc-53e6-81a7-e31ed5cb7411
+description: |-
+  The **pages_project_scenario** entity, which belongs to a organization and a project. Its requests address one record by `{{pages_project_scenario_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_url` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `name` | string | yes |  |
+order: 152000

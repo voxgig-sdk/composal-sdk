@@ -1,0 +1,57 @@
+# BasicRepositoryAccessFlow
+
+main: kit: flow: BasicRepositoryAccessFlow:
+{
+  entity: "repository_access",
+  kind: "basic",
+  name: "BasicRepositoryAccessFlow",
+  step: [
+    {
+      i: {
+        ref: "repository_access_ref01"
+      }
+
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "repository_access_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "repository_access_ref01",
+        srcdatavar: "repository_access_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "repository_access01",
+        org_slug: "org_slug01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-repository_access_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRepositoryAccessFlow"
+}

@@ -1,0 +1,24 @@
+# BasicAgentSessionRoderHandoffFlow
+
+main: kit: flow: BasicAgentSessionRoderHandoffFlow:
+{
+  entity: "agent_session_roder_handoff",
+  kind: "basic",
+  name: "BasicAgentSessionRoderHandoffFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_session_roder_handoff_ref01"
+      }
+
+      m: {
+        agent_session_id: "agent_session01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentSessionRoderHandoffFlow"
+}

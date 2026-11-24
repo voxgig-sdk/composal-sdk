@@ -1,0 +1,46 @@
+$kind: http-request
+id: "24815fe7-fe8d-5e42-a80c-18f7cb0f4c12"
+description: |-
+  The `schedule` action of **agent_automation**, a route of its `update` operation.
+
+  SDK: `client.AgentAutomation().update({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "schedule" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/automations/:automation_key/schedule"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_automation belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_automation belongs to.
+  - key: automation_key
+    value: "{{agent_automation_id}}"
+    description: The agent_automation this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action": "save",
+      "expected_revision": "example",
+      "settings": {
+        "version_id": "example",
+        "schedule": {
+          "type": "interval",
+          "seconds": 1,
+          "anchor": "example"
+        },
+        "input": {},
+        "conversation_id": "example",
+        "budgets": {
+          "run_budget_usd": 1,
+          "run_budget_seconds": 1,
+          "budget_usd": 1,
+          "budget_period": "example"
+        }
+      },
+      "schedule_key": "example"
+    }
+order: 4000

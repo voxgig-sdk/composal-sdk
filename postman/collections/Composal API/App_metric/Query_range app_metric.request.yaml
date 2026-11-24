@@ -1,0 +1,15 @@
+$kind: http-request
+id: "10e7222d-73dc-52cf-98c8-fb17975e446b"
+description: |-
+  The `query_range` action of **app_metric**, a route of its `load` operation.
+
+  SDK: `client.AppMetric().load({ "app_id": "app_id", $action: "query_range" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/metrics/query_range"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_metric belongs to.
+order: 1000

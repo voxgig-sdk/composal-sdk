@@ -1,0 +1,26 @@
+# BasicVerifyDeepScanOptionFlow
+
+main: kit: flow: BasicVerifyDeepScanOptionFlow:
+{
+  entity: "verify_deep_scan_option",
+  kind: "basic",
+  name: "BasicVerifyDeepScanOptionFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_deep_scan_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDeepScanOptionFlow"
+}

@@ -1,0 +1,755 @@
+# Entity: spark_agent_local_thread
+
+main: kit: entity: spark_agent_local_thread: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: true
+      t: "`$STRING`"
+    }
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      sh: "Archived on its computer: hidden from the active list and shown with the archived threads."
+      t: "`$BOOLEAN`"
+    }
+    can_archive: {
+      h: "Can Archive"
+      n: "can_archive"
+      r: true
+      sh: "This requester can archive or restore it, and the computer's Desktop supports archiving."
+      t: "`$BOOLEAN`"
+    }
+    can_disconnect_relay: {
+      h: "Can Disconnect Relay"
+      n: "can_disconnect_relay"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    can_end: {
+      h: "Can End"
+      n: "can_end"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_interrupt: {
+      h: "Can Interrupt"
+      n: "can_interrupt"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_send: {
+      h: "Can Send"
+      n: "can_send"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    delivery: {
+      h: "Delivery"
+      n: "delivery"
+      r: true
+      sh: "Present while a request waits on an offline computer and after it expires unclaimed: whether the computer is checking for requests and when it last did."
+      t: "`$OBJECT`"
+    }
+    device_id: {
+      h: "Device Id"
+      n: "device_id"
+      r: true
+      t: "`$STRING`"
+    }
+    device_name: {
+      h: "Device Name"
+      n: "device_name"
+      r: true
+      t: "`$STRING`"
+    }
+    diagnostic_code: {
+      h: "Diagnostic Code"
+      n: "diagnostic_code"
+      r: false
+      sh: "Approved product error code retained after copied diagnostics expire."
+      t: "`$STRING`"
+    }
+    end: {
+      h: "End"
+      n: "end"
+      r: true
+      t: "`$ANY`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: true
+      t: "`$STRING`"
+    }
+    full_title: {
+      h: "Full Title"
+      n: "full_title"
+      r: true
+      sh: "The native name or first prompt in full, for a tooltip."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: true
+      t: "`$STRING`"
+    }
+    last_activity_at: {
+      fo: "date-time"
+      h: "Last Activity At"
+      n: "last_activity_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    native_thread_id: {
+      h: "Native Thread Id"
+      n: "native_thread_id"
+      r: true
+      t: "`$STRING`"
+    }
+    parent_conversation_id: {
+      h: "Parent Conversation Id"
+      n: "parent_conversation_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    references: {
+      h: "References"
+      n: "references"
+      r: true
+      t: "`$OBJECT`"
+    }
+    relay_disconnected_at: {
+      fo: "date-time"
+      h: "Relay Disconnected At"
+      n: "relay_disconnected_at"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    relay_participant: {
+      h: "Relay Participant"
+      n: "relay_participant"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 3
+      }
+    }
+    result: {
+      h: "Result"
+      n: "result"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 10
+        count: 1
+        depth: 2
+      }
+    }
+    result_expired: {
+      h: "Result Expired"
+      n: "result_expired"
+      r: true
+      sh: "Private cached prompts/results expire after one hour; intent digests and native references remain as replay fences."
+      t: "`$BOOLEAN`"
+    }
+    result_schema: {
+      h: "Result Schema"
+      n: "result_schema"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$BOOLEAN`"
+        ]
+      ]
+    }
+    section: {
+      h: "Section"
+      n: "section"
+      r: true
+      sh: "Server-assigned section in the ordered computer thread directory."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      sh: "What the native thread is doing."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    task_configured: {
+      h: "Task Configured"
+      n: "task_configured"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    thread_id: {
+      h: "Thread Id"
+      n: "thread_id"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      sh: "Short title: the native name, or the first prompt's first line without the agent's task preamble."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "spark_agent_local_thread"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "device_id"
+            "key"
+            "provider"
+            "result_schema"
+            "thread_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.operation`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              local_thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.thread`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/delivery_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/delivery_policy"
+          q: {
+            "$action": "delivery_policy"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              local_thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "delivery_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/task"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/task"
+          q: {
+            "$action": "task"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              local_thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "task"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.task`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "allowed_senders"
+            "ask_first"
+            "expected_version"
+            "reply_with_final_answer"
+            "restricted"
+          ]
+          co: {
+            id: "PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/delivery_policy"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "local_thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/delivery_policy"
+          q: {
+            "$action": "delivery_policy"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              local_thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "local_threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "delivery_policy"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.policy`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

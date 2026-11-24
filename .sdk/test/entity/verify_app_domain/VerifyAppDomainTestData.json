@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "verify_app_domain": {
+      "VERIFY_APP_DOMAIN00": {
+        "id": "VERIFY_APP_DOMAIN00",
+        "app_id": "APP01"
+      },
+      "VERIFY_APP_DOMAIN01": {
+        "id": "VERIFY_APP_DOMAIN01",
+        "app_id": "APP01"
+      },
+      "VERIFY_APP_DOMAIN02": {
+        "id": "VERIFY_APP_DOMAIN02",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "verify_app_domain": {
+      "verify_app_domain_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{app_id}/domains/{id}/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

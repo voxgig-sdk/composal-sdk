@@ -1,0 +1,26 @@
+$kind: collection
+id: "6c36e69f-5405-5046-b4a7-f76afae88012"
+description: |-
+  The **nomad_allocation** entity, which belongs to a app. Its requests address one record by `{{nomad_allocation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allocation_id` | string | yes |  |
+  | `client_status` | string | yes |  |
+  | `create_time` | string | yes |  |
+  | `datacenter` | string | yes |  |
+  | `desired_description` | string | yes |  |
+  | `desired_status` | string | yes |  |
+  | `fetched_at` | string | yes |  |
+  | `id` | string |  |  |
+  | `job_id` | string | yes |  |
+  | `modify_time` | string | yes |  |
+  | `name` | string | yes |  |
+  | `namespace` | string | yes |  |
+  | `node_id` | string | yes |  |
+  | `node_name` | string | yes |  |
+  | `resources` | object | yes |  |
+  | `task_group` | string | yes |  |
+  | `task_states` | array | yes |  |
+  | `verify_runner_images` | array |  |  |
+order: 144000

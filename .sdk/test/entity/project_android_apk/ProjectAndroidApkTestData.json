@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "project_android_apk": {
+      "PROJECT_ANDROID_APK00": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s66",
+        "image": "s67",
+        "ios": {},
+        "launch_command": "s69",
+        "managed_binary": {},
+        "platform": "s6b",
+        "provider": "s6c",
+        "setup_command": "s6d",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_ANDROID_APK00"
+      },
+      "PROJECT_ANDROID_APK01": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "sca",
+        "image": "scb",
+        "ios": {},
+        "launch_command": "scd",
+        "managed_binary": {},
+        "platform": "scf",
+        "provider": "sd0",
+        "setup_command": "sd1",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_ANDROID_APK01"
+      },
+      "PROJECT_ANDROID_APK02": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s12e",
+        "image": "s12f",
+        "ios": {},
+        "launch_command": "s131",
+        "managed_binary": {},
+        "platform": "s133",
+        "provider": "s134",
+        "setup_command": "s135",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PROJECT_ANDROID_APK02"
+      }
+    }
+  },
+  "new": {
+    "project_android_apk": {
+      "project_android_apk_ref01": {
+        "android": {},
+        "artifact_paths": [],
+        "description": "s192",
+        "image": "s193",
+        "ios": {},
+        "launch_command": "s195",
+        "managed_binary": {},
+        "platform": "s197",
+        "provider": "s198",
+        "setup_command": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/android_apks": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

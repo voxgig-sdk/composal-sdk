@@ -1,0 +1,22 @@
+$kind: http-request
+id: "5b5a3192-535e-5709-aaf3-a99b7d5927ef"
+description: |-
+  The `provision` action of **static_site_domain**, a route of its `create` operation.
+
+  SDK: `client.StaticSiteDomain().create({ "static_site_id": "static_site_id", "id": "ID", $action: "provision" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/domains/:id/provision"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_domain belongs to.
+  - key: id
+    value: "{{static_site_domain_id}}"
+    description: The static_site_domain this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

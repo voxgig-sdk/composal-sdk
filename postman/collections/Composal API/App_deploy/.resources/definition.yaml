@@ -1,0 +1,20 @@
+$kind: collection
+id: "14928fc9-544e-5b1c-b467-0c32f67db4ab"
+description: |-
+  The **app_deploy** entity, which belongs to a app. Its requests address one record by `{{app_deploy_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string |  |  |
+  | `app_service_id` | string |  |  |
+  | `channel` | string |  |  |
+  | `command` | string |  |  |
+  | `commit_sha` | string |  |  |
+  | `desired_instances` | integer |  |  |
+  | `environment` | string |  |  |
+  | `image` | string | yes |  |
+  | `region` | string |  |  |
+  | `rollout_predecessor` | string |  |  |
+  | `service` | string |  |  |
+  | `source_ref` | string |  |  |
+order: 57000

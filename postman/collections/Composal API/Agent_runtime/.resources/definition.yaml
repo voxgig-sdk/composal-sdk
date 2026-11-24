@@ -1,0 +1,19 @@
+$kind: collection
+id: "560e762a-ba93-53b8-a642-9e5c1045bda4"
+description: |-
+  The **agent_runtime** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_runtime_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available_profiles` | array |  |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_reset` | boolean |  |  |
+  | `image` | string | yes |  |
+  | `memory_mb` | integer | yes |  |
+  | `platform` | string |  |  |
+  | `profile` | string | yes |  |
+  | `provider` | string |  |  |
+  | `state` | string | yes |  |
+  | `version` | string | yes |  |
+  | `volume` | object | yes |  |
+order: 30000

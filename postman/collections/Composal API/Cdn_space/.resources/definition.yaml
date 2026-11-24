@@ -1,0 +1,11 @@
+$kind: collection
+id: c9cae27a-434c-510e-83f3-79a5a64a6d4b
+description: |-
+  A CDN storage space and its objects.
+
+  The **cdn_space** entity, which belongs to a organization. Its requests address one record by `{{cdn_space_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 89000

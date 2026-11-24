@@ -1,0 +1,26 @@
+# BasicDeploymentDashboardFlow
+
+main: kit: flow: BasicDeploymentDashboardFlow:
+{
+  entity: "deployment_dashboard",
+  kind: "basic",
+  name: "BasicDeploymentDashboardFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deployment_dashboard_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentDashboardFlow"
+}

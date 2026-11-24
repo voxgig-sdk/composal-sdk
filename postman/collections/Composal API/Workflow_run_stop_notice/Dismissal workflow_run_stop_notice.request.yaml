@@ -1,0 +1,21 @@
+$kind: http-request
+id: d809aefb-3960-5284-bb86-531a6ac3844c
+description: |-
+  The `dismissal` action of **workflow_run_stop_notice**, a route of its `create` operation.
+
+  SDK: `client.WorkflowRunStopNotice().create({ "organization_id": "organization_id", "agent_id": "agent_id", "workflow_run_id": "workflow_run_id", $action: "dismissal" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs/:run_id/stop_notice/dismissal"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this workflow_run_stop_notice belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this workflow_run_stop_notice belongs to.
+  - key: run_id
+    value: "{{workflow_run_id}}"
+    description: "Input: workflow_run_id."
+order: 1000

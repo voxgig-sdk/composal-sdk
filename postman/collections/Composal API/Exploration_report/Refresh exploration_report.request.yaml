@@ -1,0 +1,31 @@
+$kind: http-request
+id: "0f4d33f7-e768-52e4-89cf-8b77b71f328e"
+description: |-
+  The `refresh` action of **exploration_report**, a route of its `create` operation.
+
+  SDK: `client.ExplorationReport().create({ "organization_id": "organization_id", "exploration_id": "exploration_id", $action: "refresh" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/report/refresh"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration_report belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this exploration_report belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "source_ids": [
+        "example"
+      ]
+    }
+order: 2000

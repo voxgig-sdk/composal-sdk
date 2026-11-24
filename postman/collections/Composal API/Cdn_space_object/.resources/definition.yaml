@@ -1,0 +1,9 @@
+$kind: collection
+id: c8730d04-8d22-5ced-9979-107ffc478a5e
+description: |-
+  The **cdn_space_object** entity, which belongs to a cdn_space. Its requests address one record by `{{cdn_space_object_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 90000

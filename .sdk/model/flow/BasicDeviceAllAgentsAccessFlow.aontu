@@ -1,0 +1,23 @@
+# BasicDeviceAllAgentsAccessFlow
+
+main: kit: flow: BasicDeviceAllAgentsAccessFlow:
+{
+  entity: "device_all_agents_access",
+  kind: "basic",
+  name: "BasicDeviceAllAgentsAccessFlow",
+  step: [
+    {
+      i: {
+        ref: "device_all_agents_access_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceAllAgentsAccessFlow"
+}

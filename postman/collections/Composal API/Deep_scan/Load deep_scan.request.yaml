@@ -1,0 +1,31 @@
+$kind: http-request
+id: "37e45fe1-3220-572b-95b1-ecaef0e0223e"
+description: |-
+  The `load` operation of **deep_scan**.
+
+  SDK: `client.DeepScan().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent_id
+    value: ""
+    disabled: true
+  - key: evidence
+    value: ""
+    disabled: true
+  - key: finding_id
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan belongs to.
+  - key: id
+    value: "{{deep_scan_id}}"
+    description: The deep_scan this request addresses.
+order: 2000

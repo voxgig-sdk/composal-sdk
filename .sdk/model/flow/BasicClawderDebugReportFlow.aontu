@@ -1,0 +1,27 @@
+# BasicClawderDebugReportFlow
+
+main: kit: flow: BasicClawderDebugReportFlow:
+{
+  entity: "clawder_debug_report",
+  kind: "basic",
+  name: "BasicClawderDebugReportFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_debug_report_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderDebugReportFlow"
+}

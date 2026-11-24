@@ -1,0 +1,18 @@
+# BasicOnboardingFlow
+
+main: kit: flow: BasicOnboardingFlow:
+{
+  entity: "onboarding",
+  kind: "basic",
+  name: "BasicOnboardingFlow",
+  step: [
+    {
+      i: {
+        ref: "onboarding_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOnboardingFlow"
+}

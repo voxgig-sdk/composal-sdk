@@ -1,0 +1,25 @@
+$kind: http-request
+id: e6860947-66c3-56b7-b3d5-169047f30cfe
+description: |-
+  The `remove` operation of **app_location**.
+
+  SDK: `client.AppLocation().remove({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/locations/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_location belongs to.
+  - key: id
+    value: "{{app_location_id}}"
+    description: The app_location this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("app_location_id")
+      }
+    language: text/javascript
+order: 3000

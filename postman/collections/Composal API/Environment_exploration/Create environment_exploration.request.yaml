@@ -1,0 +1,47 @@
+$kind: http-request
+id: "9a4b20ff-6020-5da2-b011-6957154ea7cb"
+description: |-
+  The `create` operation of **environment_exploration**.
+
+  SDK: `client.EnvironmentExploration().create({ environment_id: "example", organization_id: "example", project_id: "example", goal: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/environments/:environment_id/explorations?project_id={{project_id}}"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_exploration belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this environment_exploration belongs to.
+  - key: environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_exploration belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "persona_id": "example",
+      "account_id": "example",
+      "goal": "example",
+      "max_seconds": 14400,
+      "max_testers": 40,
+      "concurrency": 20,
+      "idempotency_key": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("environment_exploration_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

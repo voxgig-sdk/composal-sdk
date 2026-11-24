@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "project_finding": {
+      "PROJECT_FINDING00": {
+        "deferred_until": "s78",
+        "environment_name": "s79",
+        "id": "PROJECT_FINDING00",
+        "last_seen_at": "s7b",
+        "locked": true,
+        "severity": "s7d",
+        "source": "s7e",
+        "source_title": "s7f",
+        "status": "s80",
+        "title": "s81",
+        "verification": "s82",
+        "web_path": "s83",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_FINDING01": {
+        "deferred_until": "sf0",
+        "environment_name": "sf1",
+        "id": "PROJECT_FINDING01",
+        "last_seen_at": "sf3",
+        "locked": true,
+        "severity": "sf5",
+        "source": "sf6",
+        "source_title": "sf7",
+        "status": "sf8",
+        "title": "sf9",
+        "verification": "sfa",
+        "web_path": "sfb",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_FINDING02": {
+        "deferred_until": "s168",
+        "environment_name": "s169",
+        "id": "PROJECT_FINDING02",
+        "last_seen_at": "s16b",
+        "locked": true,
+        "severity": "s16d",
+        "source": "s16e",
+        "source_title": "s16f",
+        "status": "s170",
+        "title": "s171",
+        "verification": "s172",
+        "web_path": "s173",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_finding": {
+      "project_finding_ref01": {
+        "deferred_until": "s1e0",
+        "environment_name": "s1e1",
+        "last_seen_at": "s1e3",
+        "locked": true,
+        "severity": "s1e5",
+        "source": "s1e6",
+        "source_title": "s1e7",
+        "status": "s1e8",
+        "title": "s1e9",
+        "verification": "s1ea",
+        "web_path": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/findings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

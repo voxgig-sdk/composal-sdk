@@ -1,0 +1,27 @@
+$kind: http-request
+id: f9af02fb-34d2-57a1-9da1-ec1bfdc3e6a6
+description: |-
+  The `control` action of **browser_session**, a route of its `create` operation.
+
+  SDK: `client.BrowserSession().create({ "organization_id": "organization_id", "id": "ID", $action: "control" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/control"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "controller": "idle",
+      "generation": 1,
+      "idempotency_key": "example"
+    }
+order: 3000

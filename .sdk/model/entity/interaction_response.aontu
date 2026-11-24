@@ -1,0 +1,152 @@
+# Entity: interaction_response
+
+main: kit: entity: interaction_response: {
+
+  alias: field: {}
+
+  fields: {
+    answer: {
+      h: "Answer"
+      n: "answer"
+      r: true
+      t: "`$OBJECT`"
+      union: {
+        branches: 5
+        count: 1
+        depth: 3
+      }
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: true
+      sh: "Explicit conversation identity, including an agent-scoped native session alias."
+      t: "`$STRING`"
+    }
+    expected_revision: {
+      h: "Expected Revision"
+      n: "expected_revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "interaction_response"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "answer"
+            "conversation_id"
+            "expected_revision"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/responses"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "interaction_id"
+                or: "request_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/responses"
+          q: {
+            exist: [
+              "agent_id"
+              "idempotency_key"
+              "interaction_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              request_id: "interaction_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "interactions"
+            }
+            {
+              var: "interaction_id"
+            }
+            {
+              lit: "responses"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

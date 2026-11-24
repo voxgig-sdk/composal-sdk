@@ -1,0 +1,8 @@
+$kind: collection
+id: cf52893d-a7c0-5938-8e5b-9ee84b148db4
+description: |-
+  The **workflow_run_stop_notice** entity, which belongs to a organization and a agent. Its requests address one record by `{{workflow_run_stop_notice_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 215000

@@ -1,0 +1,24 @@
+# BasicGithubReviewOperationFlow
+
+main: kit: flow: BasicGithubReviewOperationFlow:
+{
+  entity: "github_review_operation",
+  kind: "basic",
+  name: "BasicGithubReviewOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "github_review_operation_ref01"
+      }
+
+      m: {
+        number: "number01",
+        organization_id: "organization01",
+        pull_request_id: "pull_request01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGithubReviewOperationFlow"
+}

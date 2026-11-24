@@ -1,0 +1,22 @@
+$kind: http-request
+id: c9aed81d-b1b3-5cfa-a4d1-fefc528b154e
+description: |-
+  The `scenario_editor` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", $action: "scenario_editor" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/scenario_editor"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: scenario_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 21000

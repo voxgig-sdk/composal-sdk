@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "demo_share_segment": {
+      "DEMO_SHARE_SEGMENT00": {
+        "id": "DEMO_SHARE_SEGMENT00",
+        "demo_share_id": "DEMO_SHARE01"
+      },
+      "DEMO_SHARE_SEGMENT01": {
+        "id": "DEMO_SHARE_SEGMENT01",
+        "demo_share_id": "DEMO_SHARE01"
+      },
+      "DEMO_SHARE_SEGMENT02": {
+        "id": "DEMO_SHARE_SEGMENT02",
+        "demo_share_id": "DEMO_SHARE01"
+      }
+    }
+  },
+  "new": {
+    "demo_share_segment": {
+      "demo_share_segment_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/verify/demo_shares/{token}/segments/{segment_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

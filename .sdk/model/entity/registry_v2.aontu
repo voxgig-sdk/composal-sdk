@@ -1,0 +1,59 @@
+# Entity: registry_v2
+
+main: kit: entity: registry_v2: {
+
+  alias: field: {}
+
+  name: "registry_v2"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/registry/v2/authorize"
+            source: "openapi3"
+            version: 2
+          }
+          m: "POST"
+          o: "/api/v1/registry/v2/authorize"
+          q: {
+            "$action": "authorize"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "registry"
+            }
+            {
+              lit: "v2"
+            }
+            {
+              lit: "authorize"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+
+}

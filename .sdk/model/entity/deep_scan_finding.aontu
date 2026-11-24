@@ -1,0 +1,260 @@
+# Entity: deep_scan_finding
+
+main: kit: entity: deep_scan_finding: {
+
+  alias: field: {}
+
+  fields: {
+    finding_count: {
+      h: "Finding Count"
+      n: "finding_count"
+      r: true
+      sh: "Findings at every priority; findings lists only the listed priority."
+      t: "`$INTEGER`"
+    }
+    finding_ids: {
+      h: "Finding Ids"
+      n: "finding_ids"
+      r: true
+      sh: "Original team order used by legacy hash links and rerun indices."
+      t: "`$ARRAY`"
+    }
+    findings: {
+      h: "Findings"
+      n: "findings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    findings_fix_prompt: {
+      h: "Findings Fix Prompt"
+      n: "findings_fix_prompt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    free_findings_pending: {
+      h: "Free Findings Pending"
+      n: "free_findings_pending"
+      r: true
+      sh: "Whether a scan with locked findings has yet to choose which are free, so every row is locked for now."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      t: "`$STRING`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    priority: {
+      h: "Priority"
+      n: "priority"
+      r: true
+      sh: "The priority findings are narrowed to, or null when they are not narrowed."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    priority_counts: {
+      h: "Priority Counts"
+      n: "priority_counts"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    reproduction_of: {
+      h: "Reproduction Of"
+      n: "reproduction_of"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    reproductions: {
+      h: "Reproductions"
+      n: "reproductions"
+      r: true
+      sh: "Fresh-browser reruns of this scan's reported bugs."
+      t: "`$ARRAY`"
+    }
+    reruns_available: {
+      h: "Reruns Available"
+      n: "reruns_available"
+      r: true
+      sh: "Whether findings can be rerun; a scan with locked findings waits for a paid plan."
+      t: "`$BOOLEAN`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    unlock: {
+      h: "Unlock"
+      n: "unlock"
+      r: true
+      sh: "Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one."
+      t: "`$OBJECT`"
+    }
+    web_url: {
+      h: "Web Url"
+      n: "web_url"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "deep_scan_finding"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "deep_scan_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "priority"
+                or: "priority"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings"
+          q: {
+            exist: [
+              "deep_scan_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "deep_scan_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "deep_scans"
+            }
+            {
+              var: "deep_scan_id"
+            }
+            {
+              lit: "findings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.deep_scan")]
+  ]
+
+}

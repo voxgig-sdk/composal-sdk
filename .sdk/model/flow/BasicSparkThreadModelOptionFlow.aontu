@@ -1,0 +1,50 @@
+# BasicSparkThreadModelOptionFlow
+
+main: kit: flow: BasicSparkThreadModelOptionFlow:
+{
+  entity: "spark_thread_model_option",
+  kind: "basic",
+  name: "BasicSparkThreadModelOptionFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_thread_model_option_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "spark_thread_model_option_ref01",
+        srcdatavar: "spark_thread_model_option_ref01_data",
+        suffix: "_up0",
+        textfield: "conversation_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_thread_model_option_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkThreadModelOptionFlow"
+}

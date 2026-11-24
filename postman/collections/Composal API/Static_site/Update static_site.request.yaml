@@ -1,0 +1,19 @@
+$kind: http-request
+id: "8f52cecd-9937-5d00-b61d-063fc5ac3f70"
+description: |-
+  The `update` operation of **static_site**.
+
+  SDK: `client.StaticSite().update({ id: "example" })`
+url: "{{base}}/api/v1/static_sites/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{static_site_id}}"
+    description: The static_site this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

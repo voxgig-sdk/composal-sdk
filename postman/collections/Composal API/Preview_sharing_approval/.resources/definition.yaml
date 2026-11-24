@@ -1,0 +1,20 @@
+$kind: collection
+id: "2b836b24-812a-55cc-b8c7-cb2f5984d3e0"
+description: |-
+  The **preview_sharing_approval** entity, which belongs to a app. Its requests address one record by `{{preview_sharing_approval_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `approved_build_keys` | array | yes |  |
+  | `approved_build_secrets` | array | yes |  |
+  | `approved_default_configuration` | array | yes |  |
+  | `approved_default_secrets` | array | yes |  |
+  | `approved_source_keys` | array | yes |  |
+  | `build_keys` | array |  |  |
+  | `build_secrets` | array |  |  |
+  | `default_configuration` | array |  |  |
+  | `default_secrets` | array |  |  |
+  | `services` | array | yes |  |
+  | `snapshot_version` | integer | yes |  |
+  | `source_keys` | array |  |  |
+order: 157000

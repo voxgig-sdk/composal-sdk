@@ -1,0 +1,178 @@
+# Entity: environment_first_run
+
+main: kit: entity: environment_first_run: {
+
+  alias: field: {}
+
+  name: "environment_first_run"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start"
+          q: {
+            "$action": "start"
+            exist: [
+              "environment_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "first_run"
+            }
+            {
+              lit: "start"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/test_user"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/test_user"
+          q: {
+            "$action": "test_user"
+            exist: [
+              "environment_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "first_run"
+            }
+            {
+              lit: "test_user"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.environment")]
+  ]
+
+}

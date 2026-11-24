@@ -1,0 +1,23 @@
+# BasicProductMapAnswerFlow
+
+main: kit: flow: BasicProductMapAnswerFlow:
+{
+  entity: "product_map_answer",
+  kind: "basic",
+  name: "BasicProductMapAnswerFlow",
+  step: [
+    {
+      i: {
+        ref: "product_map_answer_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProductMapAnswerFlow"
+}

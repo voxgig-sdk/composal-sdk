@@ -1,0 +1,18 @@
+$kind: collection
+id: bb092e0e-5217-5f45-b095-f5349ec1a731
+description: |-
+  The **project_android_apk** entity, which belongs to a organization and a project. Its requests address one record by `{{project_android_apk_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `android` | object | yes |  |
+  | `artifact_paths` | array |  |  |
+  | `description` | string | yes |  |
+  | `image` | string | yes |  |
+  | `ios` | object | yes |  |
+  | `launch_command` | string |  |  |
+  | `managed_binary` | object | yes |  |
+  | `platform` | string |  |  |
+  | `provider` | string |  |  |
+  | `setup_command` | string |  |  |
+order: 164000

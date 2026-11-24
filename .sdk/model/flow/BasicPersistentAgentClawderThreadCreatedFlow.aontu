@@ -1,0 +1,23 @@
+# BasicPersistentAgentClawderThreadCreatedFlow
+
+main: kit: flow: BasicPersistentAgentClawderThreadCreatedFlow:
+{
+  entity: "persistent_agent_clawder_thread_created",
+  kind: "basic",
+  name: "BasicPersistentAgentClawderThreadCreatedFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_clawder_thread_created_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPersistentAgentClawderThreadCreatedFlow"
+}

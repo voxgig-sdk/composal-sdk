@@ -1,0 +1,26 @@
+# BasicVerifyDreamsPageFlow
+
+main: kit: flow: BasicVerifyDreamsPageFlow:
+{
+  entity: "verify_dreams_page",
+  kind: "basic",
+  name: "BasicVerifyDreamsPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_dreams_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDreamsPageFlow"
+}

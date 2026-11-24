@@ -1,0 +1,16 @@
+$kind: collection
+id: "28af50d7-c4eb-576d-9737-8dcc0bf20df8"
+description: |-
+  The **project_scenario_option** entity, which belongs to a organization and a project. Its requests address one record by `{{project_scenario_option_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `environments` | array | yes |  |
+  | `permissions` | object | yes |  |
+  | `personas` | array | yes |  |
+  | `project` | object | yes |  |
+  | `scenario_states` | object | yes |  |
+  | `scenarios` | array | yes |  |
+  | `schedule_options` | any |  |  |
+  | `schedules` | array |  |  |
+order: 177000

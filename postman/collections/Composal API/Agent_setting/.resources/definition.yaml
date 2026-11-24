@@ -1,0 +1,12 @@
+$kind: collection
+id: "89617308-2536-5525-8cee-b39a6f0bbeb7"
+description: |-
+  The **agent_setting** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `expected_version` | string | yes |  |
+  | `instructions` | string | yes |  |
+  | `version` | string | yes |  |
+order: 31000

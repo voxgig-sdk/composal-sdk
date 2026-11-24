@@ -1,0 +1,30 @@
+$kind: http-request
+id: "8d8b8b00-1ceb-57ec-84ae-af05dfa9d9d7"
+description: |-
+  The `update` operation of **agent_webhook**.
+
+  SDK: `client.AgentWebhook().update({ agent_id: "example", id: "example", organization_id: "example", action: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/webhooks/:endpoint_id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_webhook belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_webhook belongs to.
+  - key: endpoint_id
+    value: "{{agent_webhook_id}}"
+    description: The agent_webhook this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "action": "pause",
+      "expected_generation": 1
+    }
+order: 3000

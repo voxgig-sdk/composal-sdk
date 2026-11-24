@@ -1,0 +1,22 @@
+$kind: http-request
+id: cc2bb0db-6494-5d15-bcbc-b7bcc57e52ad
+description: |-
+  The `context` action of **deep_scan**, a route of its `load` operation.
+
+  SDK: `client.DeepScan().load({ "organization_id": "organization_id", "id": "ID", $action: "context" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/:id/context"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan belongs to.
+  - key: id
+    value: "{{deep_scan_id}}"
+    description: The deep_scan this request addresses.
+order: 5000

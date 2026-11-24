@@ -1,0 +1,104 @@
+{
+  "existing": {
+    "verify_static_site_domain": {
+      "VERIFY_STATIC_SITE_DOMAIN00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "sca",
+        "dns_mode": "scb",
+        "dns_status": "scc",
+        "failure_message": "scd",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "scf",
+        "id": "VERIFY_STATIC_SITE_DOMAIN00",
+        "kind": "sd1",
+        "last_checked_at": "sd2",
+        "record_name": "sd3",
+        "record_type": "sd4",
+        "record_value": "sd5",
+        "redirect_to": "sd6",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "sd8",
+        "tls_status": "sd9",
+        "updated_at": "sda",
+        "verification_status": "sdb"
+      },
+      "VERIFY_STATIC_SITE_DOMAIN01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s192",
+        "dns_mode": "s193",
+        "dns_status": "s194",
+        "failure_message": "s195",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s197",
+        "id": "VERIFY_STATIC_SITE_DOMAIN01",
+        "kind": "s199",
+        "last_checked_at": "s19a",
+        "record_name": "s19b",
+        "record_type": "s19c",
+        "record_value": "s19d",
+        "redirect_to": "s19e",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s1a0",
+        "tls_status": "s1a1",
+        "updated_at": "s1a2",
+        "verification_status": "s1a3"
+      },
+      "VERIFY_STATIC_SITE_DOMAIN02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s25a",
+        "dns_mode": "s25b",
+        "dns_status": "s25c",
+        "failure_message": "s25d",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s25f",
+        "id": "VERIFY_STATIC_SITE_DOMAIN02",
+        "kind": "s261",
+        "last_checked_at": "s262",
+        "record_name": "s263",
+        "record_type": "s264",
+        "record_value": "s265",
+        "redirect_to": "s266",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s268",
+        "tls_status": "s269",
+        "updated_at": "s26a",
+        "verification_status": "s26b"
+      }
+    }
+  },
+  "new": {
+    "verify_static_site_domain": {
+      "verify_static_site_domain_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s322",
+        "dns_mode": "s323",
+        "dns_status": "s324",
+        "failure_message": "s325",
+        "hosted_app_id": "HOSTED_APP01",
+        "hostname": "s327",
+        "kind": "s329",
+        "last_checked_at": "s32a",
+        "record_name": "s32b",
+        "record_type": "s32c",
+        "record_value": "s32d",
+        "redirect_to": "s32e",
+        "static_site_id": "STATIC_SITE01",
+        "target_kind": "s330",
+        "tls_status": "s331",
+        "updated_at": "s332",
+        "verification_status": "s333"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/static_sites/{static_site_id}/domains/{id}/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

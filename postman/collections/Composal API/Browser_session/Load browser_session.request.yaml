@@ -1,0 +1,18 @@
+$kind: http-request
+id: ca459e7b-c09c-534f-a68e-5e793c7c4373
+description: |-
+  The `load` operation of **browser_session**.
+
+  SDK: `client.BrowserSession().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session belongs to.
+  - key: id
+    value: "{{browser_session_id}}"
+    description: The browser_session this request addresses.
+order: 1000

@@ -1,0 +1,22 @@
+$kind: http-request
+id: "27cd245e-ccce-5bc6-a8f8-64e1e36bc50a"
+description: |-
+  The `transcription_session` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", $action: "transcription_session" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/transcription_session"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 39000

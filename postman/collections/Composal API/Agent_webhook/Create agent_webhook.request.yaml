@@ -1,0 +1,41 @@
+$kind: http-request
+id: "45f22ae3-b142-57bb-82c7-636009f47021"
+description: |-
+  The `create` operation of **agent_webhook**.
+
+  SDK: `client.AgentWebhook().create({ agent_id: "example", organization_id: "example", event_types: [], max_events_per_day: 1, name: "example", purpose: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/webhooks"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_webhook belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_webhook belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "purpose": "example",
+      "event_types": [
+        "example"
+      ],
+      "max_events_per_day": 1
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_webhook_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

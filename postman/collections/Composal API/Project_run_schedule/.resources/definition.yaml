@@ -1,0 +1,27 @@
+$kind: collection
+id: f1fa06c6-ffbe-5b6a-8a28-c010f0202e34
+description: |-
+  The **project_run_schedule** entity, which belongs to a organization and a project. Its requests address one record by `{{project_run_schedule_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `credential_ids` | object | yes |  |
+  | `cron_expression` | string |  |  |
+  | `environment_id` | string | yes |  |
+  | `environment_name` | string |  |  |
+  | `history` | array | yes |  |
+  | `id` | string | yes |  |
+  | `labels` | array | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `next_run_at` | string | yes |  |
+  | `notification_channel` | string |  |  |
+  | `scenario_count` | integer | yes |  |
+  | `selection_mode` | string | yes |  |
+  | `slack_subscription_id` | string |  |  |
+  | `source_scenario_id` | string |  |  |
+  | `state` | string | yes |  |
+  | `time_of_day` | string | yes |  |
+  | `time_zone` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 176000

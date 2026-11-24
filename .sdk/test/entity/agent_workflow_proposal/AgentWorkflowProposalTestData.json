@@ -1,0 +1,132 @@
+{
+  "existing": {
+    "agent_workflow_proposal": {
+      "AGENT_WORKFLOW_PROPOSAL00": {
+        "agent_steps": {},
+        "base_digest": "se7",
+        "can_manage": true,
+        "can_revise": false,
+        "can_save": true,
+        "can_set_trigger": false,
+        "created_at": "sec",
+        "definition": "sed",
+        "digest": "see",
+        "error": "sef",
+        "id": "AGENT_WORKFLOW_PROPOSAL00",
+        "model_choices": [],
+        "name": "sf2",
+        "native_rows": [],
+        "path": "sf4",
+        "pipeline_checkpoints": {},
+        "pipeline_commands": {},
+        "reasoning_choices": [],
+        "runs_on_earlier_version": "sf8",
+        "saved": "sf9",
+        "stale": true,
+        "starts": "sfb",
+        "trigger_error": "sfc",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKFLOW_PROPOSAL01": {
+        "agent_steps": {},
+        "base_digest": "s1cd",
+        "can_manage": true,
+        "can_revise": false,
+        "can_save": true,
+        "can_set_trigger": false,
+        "created_at": "s1d2",
+        "definition": "s1d3",
+        "digest": "s1d4",
+        "error": "s1d5",
+        "id": "AGENT_WORKFLOW_PROPOSAL01",
+        "model_choices": [],
+        "name": "s1d8",
+        "native_rows": [],
+        "path": "s1da",
+        "pipeline_checkpoints": {},
+        "pipeline_commands": {},
+        "reasoning_choices": [],
+        "runs_on_earlier_version": "s1de",
+        "saved": "s1df",
+        "stale": true,
+        "starts": "s1e1",
+        "trigger_error": "s1e2",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WORKFLOW_PROPOSAL02": {
+        "agent_steps": {},
+        "base_digest": "s2b3",
+        "can_manage": true,
+        "can_revise": false,
+        "can_save": true,
+        "can_set_trigger": false,
+        "created_at": "s2b8",
+        "definition": "s2b9",
+        "digest": "s2ba",
+        "error": "s2bb",
+        "id": "AGENT_WORKFLOW_PROPOSAL02",
+        "model_choices": [],
+        "name": "s2be",
+        "native_rows": [],
+        "path": "s2c0",
+        "pipeline_checkpoints": {},
+        "pipeline_commands": {},
+        "reasoning_choices": [],
+        "runs_on_earlier_version": "s2c4",
+        "saved": "s2c5",
+        "stale": true,
+        "starts": "s2c7",
+        "trigger_error": "s2c8",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_workflow_proposal": {
+      "agent_workflow_proposal_ref01": {
+        "agent_steps": {},
+        "base_digest": "s399",
+        "can_manage": true,
+        "can_revise": false,
+        "can_save": true,
+        "can_set_trigger": false,
+        "created_at": "s39e",
+        "definition": "s39f",
+        "digest": "s3a0",
+        "error": "s3a1",
+        "model_choices": [],
+        "name": "s3a4",
+        "native_rows": [],
+        "path": "s3a6",
+        "pipeline_checkpoints": {},
+        "pipeline_commands": {},
+        "reasoning_choices": [],
+        "runs_on_earlier_version": "s3aa",
+        "saved": "s3ab",
+        "stale": true,
+        "starts": "s3ad",
+        "trigger_error": "s3ae"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/revise": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/save": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

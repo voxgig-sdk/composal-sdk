@@ -1,0 +1,41 @@
+$kind: collection
+id: "0a4e13b4-2c96-5ac5-bc3e-108dc5aef619"
+description: |-
+  The **spark_agent_local_thread** entity, which belongs to a organization and a agent. Its requests address one record by `{{spark_agent_local_thread_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action` | string | yes |  |
+  | `archived` | boolean | yes |  |
+  | `can_archive` | boolean | yes |  |
+  | `can_disconnect_relay` | boolean |  |  |
+  | `can_end` | boolean | yes |  |
+  | `can_interrupt` | boolean | yes |  |
+  | `can_send` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `delivery` | object | yes |  |
+  | `device_id` | string | yes |  |
+  | `device_name` | string | yes |  |
+  | `diagnostic_code` | string |  |  |
+  | `end` | any | yes |  |
+  | `expires_at` | string | yes |  |
+  | `full_title` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `last_activity_at` | string | yes |  |
+  | `native_thread_id` | string | yes |  |
+  | `parent_conversation_id` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `references` | object | yes |  |
+  | `relay_disconnected_at` | string |  |  |
+  | `relay_participant` | object | yes |  |
+  | `result` | any | yes |  |
+  | `result_expired` | boolean | yes |  |
+  | `result_schema` | object |  |  |
+  | `section` | string | yes |  |
+  | `state` | string | yes |  |
+  | `status` | string | yes |  |
+  | `task_configured` | boolean | yes |  |
+  | `thread_id` | string | yes |  |
+  | `title` | string | yes |  |
+order: 200000

@@ -1,0 +1,23 @@
+# BasicAgentTerminalFlow
+
+main: kit: flow: BasicAgentTerminalFlow:
+{
+  entity: "agent_terminal",
+  kind: "basic",
+  name: "BasicAgentTerminalFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_terminal_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentTerminalFlow"
+}

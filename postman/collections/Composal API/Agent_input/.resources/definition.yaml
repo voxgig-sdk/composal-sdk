@@ -1,0 +1,19 @@
+$kind: collection
+id: "83f5d2fe-3e30-5120-9eeb-15a50ef4a9be"
+description: |-
+  A message sent to an agent in a conversation. Accepting it starts a run; the reply arrives in the conversation.
+
+  The **agent_input** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_input_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attachment_ids` | array |  |  |
+  | `attachments` | array |  |  |
+  | `browser_context` | object | yes |  |
+  | `client_time` | object | yes |  |
+  | `conversation_id` | string | yes |  |
+  | `model_policy` | any |  |  |
+  | `requester_membership_id` | string |  |  |
+  | `speed` | string |  |  |
+  | `text` | string | yes |  |
+order: 13000

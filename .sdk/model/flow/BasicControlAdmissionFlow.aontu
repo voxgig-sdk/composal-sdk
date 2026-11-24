@@ -1,0 +1,22 @@
+# BasicControlAdmissionFlow
+
+main: kit: flow: BasicControlAdmissionFlow:
+{
+  entity: "control_admission",
+  kind: "basic",
+  name: "BasicControlAdmissionFlow",
+  step: [
+    {
+      i: {
+        ref: "control_admission_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicControlAdmissionFlow"
+}

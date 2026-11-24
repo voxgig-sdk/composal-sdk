@@ -1,0 +1,62 @@
+# BasicOrganizationAgentSiteFlow
+
+main: kit: flow: BasicOrganizationAgentSiteFlow:
+{
+  entity: "organization_agent_site",
+  kind: "basic",
+  name: "BasicOrganizationAgentSiteFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_agent_site_ref01"
+      }
+
+      m: {
+        agent_site_id: "agent_site01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_agent_site_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "organization_agent_site_ref01",
+        srcdatavar: "organization_agent_site_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "organization_agent_site01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_agent_site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationAgentSiteFlow"
+}

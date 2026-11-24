@@ -1,0 +1,24 @@
+$kind: http-request
+id: "1f041013-cb05-5d2f-9402-97c44a992ad1"
+description: |-
+  The `load` operation of **agent_interaction**.
+
+  SDK: `client.AgentInteraction().load({ agent_id: "example", id: "example_id", organization_id: "example", conversation_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/interactions/:request_id?conversation_id={{conversation_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: "{{conversation_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_interaction belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_interaction belongs to.
+  - key: request_id
+    value: "{{agent_interaction_id}}"
+    description: The agent_interaction this request addresses.
+order: 2000

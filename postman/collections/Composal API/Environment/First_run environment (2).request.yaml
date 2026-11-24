@@ -1,0 +1,18 @@
+$kind: http-request
+id: "8b653887-d2ad-5559-a7b8-e1f1c4f4f657"
+description: |-
+  The `first_run` action of **environment**, a route of its `remove` operation.
+
+  SDK: `client.Environment().remove({ "organization_id": "organization_id", "id": "ID", $action: "first_run" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/first_run"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this request addresses.
+order: 8000

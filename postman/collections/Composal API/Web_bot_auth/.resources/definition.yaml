@@ -1,0 +1,11 @@
+$kind: collection
+id: db134ae9-4edc-5669-94d5-f5060d2ebdea
+description: |-
+  The **web_bot_auth** entity. Its requests address one record by `{{web_bot_auth_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `expires_at` | string | yes |  |
+  | `origin` | string | yes |  |
+  | `signatures` | array | yes |  |
+order: 213000

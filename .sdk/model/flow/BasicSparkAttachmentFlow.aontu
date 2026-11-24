@@ -1,0 +1,23 @@
+# BasicSparkAttachmentFlow
+
+main: kit: flow: BasicSparkAttachmentFlow:
+{
+  entity: "spark_attachment",
+  kind: "basic",
+  name: "BasicSparkAttachmentFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_attachment_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicSparkAttachmentFlow"
+}

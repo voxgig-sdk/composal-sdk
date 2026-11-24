@@ -1,0 +1,10 @@
+$kind: collection
+id: "724ec374-10d8-588b-8805-e8ca757e320d"
+description: |-
+  The **run_schedule_option** entity, which belongs to a organization and a project. Its requests address one record by `{{run_schedule_option_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+order: 191000

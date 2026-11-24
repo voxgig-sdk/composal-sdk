@@ -1,0 +1,23 @@
+# BasicVerifyEnvironmentRevisionFlow
+
+main: kit: flow: BasicVerifyEnvironmentRevisionFlow:
+{
+  entity: "verify_environment_revision",
+  kind: "basic",
+  name: "BasicVerifyEnvironmentRevisionFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_environment_revision_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyEnvironmentRevisionFlow"
+}

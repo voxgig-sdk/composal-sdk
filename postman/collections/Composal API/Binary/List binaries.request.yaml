@@ -1,0 +1,31 @@
+$kind: http-request
+id: "4b12de59-9fbd-595a-97fb-b47e864a957a"
+description: |-
+  The `list` operation of **binary**.
+
+  SDK: `client.Binary().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/binaries?project_id={{project_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this binary belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("binary_id")) pm.collectionVariables.set("binary_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

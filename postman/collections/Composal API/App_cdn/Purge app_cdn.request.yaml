@@ -1,0 +1,32 @@
+$kind: http-request
+id: "570efe97-103c-579f-b559-c2aa9c179041"
+description: |-
+  The `purge` action of **app_cdn**, a route of its `create` operation.
+
+  SDK: `client.AppCdn().create({ "app_id": "app_id", "id": "ID", $action: "purge" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:id/purge"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+  - key: id
+    value: "{{app_cdn_id}}"
+    description: The app_cdn this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "source_ref": "example",
+      "commit_sha": "example",
+      "urls": [
+        "example"
+      ],
+      "purge_urls": [
+        "example"
+      ]
+    }
+order: 9000

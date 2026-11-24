@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "browser_session_control": {
+      "BROWSER_SESSION_CONTROL00": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "completed_at": "s5b",
+        "completed_generation": "s5c",
+        "connection": "s5d",
+        "failure_code": "s5e",
+        "id": "BROWSER_SESSION_CONTROL00",
+        "requested_controller": "s60",
+        "requested_generation": 97,
+        "status": "s62",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_CONTROL01": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "completed_at": "sb5",
+        "completed_generation": "sb6",
+        "connection": "sb7",
+        "failure_code": "sb8",
+        "id": "BROWSER_SESSION_CONTROL01",
+        "requested_controller": "sba",
+        "requested_generation": 187,
+        "status": "sbc",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_CONTROL02": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "completed_at": "s10f",
+        "completed_generation": "s110",
+        "connection": "s111",
+        "failure_code": "s112",
+        "id": "BROWSER_SESSION_CONTROL02",
+        "requested_controller": "s114",
+        "requested_generation": 277,
+        "status": "s116",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session_control": {
+      "browser_session_control_ref01": {
+        "browser_session_id": "BROWSER_SESSION01",
+        "completed_at": "s169",
+        "completed_generation": "s16a",
+        "connection": "s16b",
+        "failure_code": "s16c",
+        "requested_controller": "s16e",
+        "requested_generation": 367,
+        "status": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/controls/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

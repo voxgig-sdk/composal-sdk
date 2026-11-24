@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "deep_scan_option": {
+      "DEEP_SCAN_OPTION00": {
+        "accounts": [],
+        "deep_scan_defaults": "s51",
+        "flow_map": "s52",
+        "id": "DEEP_SCAN_OPTION00",
+        "name": "s54",
+        "personas": [],
+        "preview": true,
+        "target_url": "s57",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_OPTION01": {
+        "accounts": [],
+        "deep_scan_defaults": "sa1",
+        "flow_map": "sa2",
+        "id": "DEEP_SCAN_OPTION01",
+        "name": "sa4",
+        "personas": [],
+        "preview": true,
+        "target_url": "sa7",
+        "organization_id": "ORGANIZATION01"
+      },
+      "DEEP_SCAN_OPTION02": {
+        "accounts": [],
+        "deep_scan_defaults": "sf1",
+        "flow_map": "sf2",
+        "id": "DEEP_SCAN_OPTION02",
+        "name": "sf4",
+        "personas": [],
+        "preview": true,
+        "target_url": "sf7",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "deep_scan_option": {
+      "deep_scan_option_ref01": {
+        "accounts": [],
+        "deep_scan_defaults": "s141",
+        "flow_map": "s142",
+        "name": "s144",
+        "personas": [],
+        "preview": true,
+        "target_url": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/deep_scans/options": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "integration": {
+      "INTEGRATION00": {
+        "github": {},
+        "gitlab": {},
+        "permissions": {},
+        "slack": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "INTEGRATION01": {
+        "github": {},
+        "gitlab": {},
+        "permissions": {},
+        "slack": {},
+        "organization_id": "ORGANIZATION01"
+      },
+      "INTEGRATION02": {
+        "github": {},
+        "gitlab": {},
+        "permissions": {},
+        "slack": {},
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "integration": {
+      "integration_ref01": {
+        "github": {},
+        "gitlab": {},
+        "permissions": {},
+        "slack": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/integrations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

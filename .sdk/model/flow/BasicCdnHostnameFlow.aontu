@@ -1,0 +1,124 @@
+# BasicCdnHostnameFlow
+
+main: kit: flow: BasicCdnHostnameFlow:
+{
+  entity: "cdn_hostname",
+  kind: "basic",
+  name: "BasicCdnHostnameFlow",
+  step: [
+    {
+      i: {
+        ref: "cdn_hostname_ref01"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "cdn_hostname_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      i: {
+        ref: "cdn_hostname_ref01",
+        srcdatavar: "cdn_hostname_ref01_data",
+        suffix: "_up0",
+        textfield: "app_cdn_distribution_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cdn_hostname_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cdn_hostname_ref01",
+        srcdatavar: "cdn_hostname_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01",
+        id: "cdn_hostname01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cdn_hostname_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "cdn_hostname_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01",
+        id: "cdn_hostname01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        app_id: "app01",
+        cdn_id: "cdn01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "cdn_hostname_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCdnHostnameFlow"
+}

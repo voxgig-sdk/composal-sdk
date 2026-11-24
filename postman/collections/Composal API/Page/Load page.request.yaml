@@ -1,0 +1,34 @@
+$kind: http-request
+id: "0d909d48-8e04-51c6-aa95-227d5c132e50"
+description: |-
+  The `load` operation of **page**.
+
+  SDK: `client.Page().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: section
+    value: ""
+    disabled: true
+  - key: status
+    value: ""
+    disabled: true
+  - key: verify_environment_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page belongs to.
+order: 1000

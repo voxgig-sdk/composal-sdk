@@ -1,0 +1,78 @@
+$kind: http-request
+id: "026104a9-3fbb-5e1b-b88d-23e3258107c3"
+description: |-
+  The `update` operation of **project**.
+
+  SDK: `client.Project().update({ id: "example", organization_id: "example", context: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: id
+    value: "{{project_ref01}}"
+    description: The project this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "execution_mode": "website",
+      "verifier_preferences": {
+        "terminology": "example",
+        "behavior_guidance": "example",
+        "report_style": "example",
+        "reporting_focus": "example",
+        "prioritization": "example"
+      },
+      "slug": "example",
+      "name": "example",
+      "website_url": "https://example.com",
+      "purpose": "example",
+      "context": "example",
+      "documentation_urls": [
+        "https://example.com"
+      ],
+      "version": 1,
+      "archived_at": "Mark01-project_ref01"
+    }
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","project_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Update project: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      pm.test("3. Update project: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("project_ref01")))
+      })
+      if (pm.response.code < 300) pm.variables.set("project_ref01_marked", "Mark01-project_ref01")
+    language: text/javascript
+order: 3000

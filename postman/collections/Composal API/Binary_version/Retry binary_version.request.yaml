@@ -1,0 +1,28 @@
+$kind: http-request
+id: "29f30ae2-5abf-5ac8-8e84-0e534bc49b66"
+description: |-
+  The `retry` action of **binary_version**, a route of its `create` operation.
+
+  SDK: `client.BinaryVersion().create({ "organization_id": "organization_id", "binary_id": "binary_id", "id": "ID", "project_id": "project_id", $action: "retry" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/binaries/:binary_id/versions/:id/retry?project_id={{project_id}}"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this binary_version belongs to.
+  - key: binary_id
+    value: "{{binary_id}}"
+    description: The binary this binary_version belongs to.
+  - key: id
+    value: "{{binary_version_id}}"
+    description: The binary_version this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

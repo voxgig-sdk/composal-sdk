@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "agent_workflow": {
+      "AGENT_WORKFLOW00": {
+        "can_manage": true,
+        "expected_digest": "s51",
+        "path": "s52",
+        "source": "s53",
+        "template": "s54",
+        "templates": [],
+        "truncated": true,
+        "workflows": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_WORKFLOW00"
+      },
+      "AGENT_WORKFLOW01": {
+        "can_manage": true,
+        "expected_digest": "sa1",
+        "path": "sa2",
+        "source": "sa3",
+        "template": "sa4",
+        "templates": [],
+        "truncated": true,
+        "workflows": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_WORKFLOW01"
+      },
+      "AGENT_WORKFLOW02": {
+        "can_manage": true,
+        "expected_digest": "sf1",
+        "path": "sf2",
+        "source": "sf3",
+        "template": "sf4",
+        "templates": [],
+        "truncated": true,
+        "workflows": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_WORKFLOW02"
+      }
+    }
+  },
+  "new": {
+    "agent_workflow": {
+      "agent_workflow_ref01": {
+        "can_manage": true,
+        "expected_digest": "s141",
+        "path": "s142",
+        "source": "s143",
+        "template": "s144",
+        "templates": [],
+        "truncated": true,
+        "workflows": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

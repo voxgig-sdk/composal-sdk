@@ -1,0 +1,8 @@
+$kind: collection
+id: "57b0f5af-9f35-5901-b89f-9f2397e1dae8"
+description: |-
+  The **metric_query** entity. Its requests address one record by `{{metric_query_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 142000

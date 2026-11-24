@@ -1,0 +1,43 @@
+$kind: http-request
+id: "7631e93b-c5a7-576d-8eda-dfb088d6db96"
+description: |-
+  The `create` operation of **agent_connection**.
+
+  SDK: `client.AgentConnection().create({ agent_id: "example", organization_id: "example", agent_card_url: "example", auth_scheme: "example", name: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/relay/connections"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+  X-Composal-Relay-Scope: "{{x_composal_relay_scope}}"
+  X-Composal-Requester-Id: "{{x_composal_requester_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_connection belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_connection belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "auth_scheme": "bearer",
+      "credential": "example",
+      "remote_agent": "example",
+      "agent_card_url": "https://example.com",
+      "source_operation_id": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["connection"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("agent_connection_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

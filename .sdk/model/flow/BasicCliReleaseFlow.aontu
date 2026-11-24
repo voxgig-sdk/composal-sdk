@@ -1,0 +1,36 @@
+# BasicCliReleaseFlow
+
+main: kit: flow: BasicCliReleaseFlow:
+{
+  entity: "cli_release",
+  kind: "basic",
+  name: "BasicCliReleaseFlow",
+  step: [
+    {
+      i: {
+        ref: "cli_release_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "cli_release_ref01",
+        srcdatavar: "cli_release_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cli_release_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCliReleaseFlow"
+}

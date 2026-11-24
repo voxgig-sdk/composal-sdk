@@ -1,0 +1,27 @@
+# BasicClawderAgentEmailInboxFlow
+
+main: kit: flow: BasicClawderAgentEmailInboxFlow:
+{
+  entity: "clawder_agent_email_inbox",
+  kind: "basic",
+  name: "BasicClawderAgentEmailInboxFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_agent_email_inbox_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderAgentEmailInboxFlow"
+}

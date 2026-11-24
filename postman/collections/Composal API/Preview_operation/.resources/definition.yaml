@@ -1,0 +1,8 @@
+$kind: collection
+id: d7d8e18d-80e5-5f8d-973b-075efb44affe
+description: |-
+  The **preview_operation** entity, which belongs to a app. Its requests address one record by `{{preview_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 154000

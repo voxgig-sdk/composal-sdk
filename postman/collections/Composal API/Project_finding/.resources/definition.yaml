@@ -1,0 +1,20 @@
+$kind: collection
+id: b16d042f-a445-54b1-8c2a-fad15efb965d
+description: |-
+  The **project_finding** entity, which belongs to a organization and a project. Its requests address one record by `{{project_finding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `deferred_until` | string |  |  |
+  | `environment_name` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_seen_at` | string | yes |  |
+  | `locked` | boolean | yes |  |
+  | `severity` | string | yes |  |
+  | `source` | string | yes |  |
+  | `source_title` | string | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `verification` | any | yes |  |
+  | `web_path` | string | yes |  |
+order: 167000

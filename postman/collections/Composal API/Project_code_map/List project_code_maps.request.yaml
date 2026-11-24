@@ -1,0 +1,35 @@
+$kind: http-request
+id: "5d5aaec7-3deb-5deb-bf65-cc9898f6e1bc"
+description: |-
+  The `list` operation of **project_code_map**.
+
+  SDK: `client.ProjectCodeMap().list({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/projects/:project_id/code_maps"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: ref
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_code_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_code_map belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["repositories"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("project_code_map_id")) pm.collectionVariables.set("project_code_map_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

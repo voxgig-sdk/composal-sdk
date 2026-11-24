@@ -1,0 +1,27 @@
+# BasicClawderWorkflowRunFlow
+
+main: kit: flow: BasicClawderWorkflowRunFlow:
+{
+  entity: "clawder_workflow_run",
+  kind: "basic",
+  name: "BasicClawderWorkflowRunFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_workflow_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderWorkflowRunFlow"
+}

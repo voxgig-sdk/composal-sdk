@@ -1,0 +1,38 @@
+# BasicAgentManagerFlow
+
+main: kit: flow: BasicAgentManagerFlow:
+{
+  entity: "agent_manager",
+  kind: "basic",
+  name: "BasicAgentManagerFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_manager_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "agent_manager_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "agent_manager01",
+        organization_id: "organization01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicAgentManagerFlow"
+}

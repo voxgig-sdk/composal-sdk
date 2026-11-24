@@ -1,0 +1,15 @@
+$kind: http-request
+id: "1dfb4b1c-abb5-5a79-96a1-14dbd9b70071"
+description: |-
+  The `landing` action of **me**, a route of its `load` operation.
+
+  SDK: `client.Me().load({ $action: "landing" })`
+url: "{{base}}/api/v1/me/landing"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: organization_slug
+    value: ""
+    disabled: true
+order: 7000

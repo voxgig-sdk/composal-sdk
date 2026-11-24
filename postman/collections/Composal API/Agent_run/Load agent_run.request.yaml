@@ -1,0 +1,25 @@
+$kind: http-request
+id: "9bdd61e1-f35e-5986-bfeb-3d631c567391"
+description: |-
+  The `load` operation of **agent_run**.
+
+  SDK: `client.AgentRun().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/runs/:run_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: main
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_run belongs to.
+  - key: run_id
+    value: "{{agent_run_id}}"
+    description: The agent_run this request addresses.
+order: 1000

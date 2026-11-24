@@ -1,0 +1,27 @@
+# BasicDeepScanFindingFlow
+
+main: kit: flow: BasicDeepScanFindingFlow:
+{
+  entity: "deep_scan_finding",
+  kind: "basic",
+  name: "BasicDeepScanFindingFlow",
+  step: [
+    {
+      m: {
+        deep_scan_id: "deep_scan01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "deep_scan_finding_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeepScanFindingFlow"
+}

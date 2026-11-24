@@ -1,0 +1,23 @@
+$kind: http-request
+id: "20ae24ad-bc3e-5ece-b3bb-98e11fa48a0b"
+description: |-
+  The `install` action of **agent_marketplace**, a route of its `create` operation.
+
+  SDK: `client.AgentMarketplace().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "install" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_marketplace/:id/install"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_marketplace belongs to.
+  - key: id
+    value: "{{agent_marketplace_id}}"
+    description: The agent_marketplace this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

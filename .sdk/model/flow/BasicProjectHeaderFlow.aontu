@@ -1,0 +1,33 @@
+# BasicProjectHeaderFlow
+
+main: kit: flow: BasicProjectHeaderFlow:
+{
+  entity: "project_header",
+  kind: "basic",
+  name: "BasicProjectHeaderFlow",
+  step: [
+    {
+      i: {
+        ref: "project_header_ref01",
+        srcdatavar: "project_header_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "project_header01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-project_header_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectHeaderFlow"
+}

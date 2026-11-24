@@ -1,0 +1,40 @@
+# BasicProactiveAgentWaitlistStatusFlow
+
+main: kit: flow: BasicProactiveAgentWaitlistStatusFlow:
+{
+  entity: "proactive_agent_waitlist_status",
+  kind: "basic",
+  name: "BasicProactiveAgentWaitlistStatusFlow",
+  step: [
+    {
+      i: {
+        ref: "proactive_agent_waitlist_status_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "proactive_agent_waitlist_status_ref01",
+        srcdatavar: "proactive_agent_waitlist_status_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "proactive_agent_waitlist_status01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-proactive_agent_waitlist_status_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProactiveAgentWaitlistStatusFlow"
+}

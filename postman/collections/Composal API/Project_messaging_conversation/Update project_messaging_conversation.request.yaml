@@ -1,0 +1,29 @@
+$kind: http-request
+id: a1dfecc9-e85d-5bdb-aa02-85421547c5bd
+description: |-
+  The `update` operation of **project_messaging_conversation**.
+
+  SDK: `client.ProjectMessagingConversation().update({ id: "example", organization_id: "example", project_id: "example", assistant_number: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/messaging_conversations/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_messaging_conversation belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_messaging_conversation belongs to.
+  - key: id
+    value: "{{project_messaging_conversation_id}}"
+    description: The project_messaging_conversation this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "tester_number": "example",
+      "assistant_number": "example"
+    }
+order: 3000

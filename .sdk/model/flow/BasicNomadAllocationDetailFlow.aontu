@@ -1,0 +1,49 @@
+# BasicNomadAllocationDetailFlow
+
+main: kit: flow: BasicNomadAllocationDetailFlow:
+{
+  entity: "nomad_allocation_detail",
+  kind: "basic",
+  name: "BasicNomadAllocationDetailFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "nomad_allocation_detail_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "nomad_allocation_detail_ref01",
+        srcdatavar: "nomad_allocation_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "nomad_allocation_detail01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-nomad_allocation_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicNomadAllocationDetailFlow"
+}

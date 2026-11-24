@@ -1,0 +1,29 @@
+# BasicBillingPageFlow
+
+main: kit: flow: BasicBillingPageFlow:
+{
+  entity: "billing_page",
+  kind: "basic",
+  name: "BasicBillingPageFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_page_ref01",
+        srcdatavar: "billing_page_ref01_data",
+        suffix: "_up0",
+        textfield: "billing_email"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingPageFlow"
+}

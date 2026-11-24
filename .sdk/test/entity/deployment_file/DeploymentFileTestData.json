@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "deployment_file": {
+      "DEPLOYMENT_FILE00": {
+        "deployment_id": "DEPLOYMENT01",
+        "static_site_id": "STATIC_SITE01",
+        "id": "DEPLOYMENT_FILE00"
+      },
+      "DEPLOYMENT_FILE01": {
+        "deployment_id": "DEPLOYMENT01",
+        "static_site_id": "STATIC_SITE01",
+        "id": "DEPLOYMENT_FILE01"
+      },
+      "DEPLOYMENT_FILE02": {
+        "deployment_id": "DEPLOYMENT01",
+        "static_site_id": "STATIC_SITE01",
+        "id": "DEPLOYMENT_FILE02"
+      }
+    }
+  },
+  "new": {
+    "deployment_file": {
+      "deployment_file_ref01": {}
+    }
+  },
+  "requests": {
+    "PUT /api/v1/static_sites/{static_site_id}/deployments/{id}/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

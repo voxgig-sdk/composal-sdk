@@ -1,0 +1,51 @@
+# BasicVerifyTestAccountFlow
+
+main: kit: flow: BasicVerifyTestAccountFlow:
+{
+  entity: "verify_test_account",
+  kind: "basic",
+  name: "BasicVerifyTestAccountFlow",
+  step: [
+    {
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_test_account_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "verify_test_account_ref01",
+        srcdatavar: "verify_test_account_ref01_data",
+        suffix: "_up0",
+        textfield: "persona"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_test_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyTestAccountFlow"
+}

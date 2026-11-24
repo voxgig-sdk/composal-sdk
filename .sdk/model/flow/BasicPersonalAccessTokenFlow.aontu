@@ -1,0 +1,59 @@
+# BasicPersonalAccessTokenFlow
+
+main: kit: flow: BasicPersonalAccessTokenFlow:
+{
+  entity: "personal_access_token",
+  kind: "basic",
+  name: "BasicPersonalAccessTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "personal_access_token_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "personal_access_token_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "personal_access_token_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "personal_access_token01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "personal_access_token_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersonalAccessTokenFlow"
+}

@@ -1,0 +1,45 @@
+# BasicVerifyExplorationFlow
+
+main: kit: flow: BasicVerifyExplorationFlow:
+{
+  entity: "verify_exploration",
+  kind: "basic",
+  name: "BasicVerifyExplorationFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_exploration_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_exploration_ref01",
+        srcdatavar: "verify_exploration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_exploration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyExplorationFlow"
+}

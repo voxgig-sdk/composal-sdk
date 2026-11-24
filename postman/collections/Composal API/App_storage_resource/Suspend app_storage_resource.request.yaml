@@ -1,0 +1,22 @@
+$kind: http-request
+id: "9529e2f5-d9ac-5939-887f-8507e40895a8"
+description: |-
+  The `suspend` action of **app_storage_resource**, a route of its `create` operation.
+
+  SDK: `client.AppStorageResource().create({ "app_id": "app_id", "id": "ID", $action: "suspend" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources/:id/suspend"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_storage_resource belongs to.
+  - key: id
+    value: "{{app_storage_resource_id}}"
+    description: The app_storage_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 9000

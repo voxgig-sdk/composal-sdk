@@ -1,0 +1,27 @@
+# BasicPagesProjectScenarioFlow
+
+main: kit: flow: BasicPagesProjectScenarioFlow:
+{
+  entity: "pages_project_scenario",
+  kind: "basic",
+  name: "BasicPagesProjectScenarioFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "pages_project_scenario_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPagesProjectScenarioFlow"
+}

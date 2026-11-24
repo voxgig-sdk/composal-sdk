@@ -1,0 +1,28 @@
+# BasicRegistryFlow
+
+main: kit: flow: BasicRegistryFlow:
+{
+  entity: "registry",
+  kind: "basic",
+  name: "BasicRegistryFlow",
+  step: [
+    {
+      i: {
+        ref: "registry_ref01",
+        srcdatavar: "registry_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-registry_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRegistryFlow"
+}

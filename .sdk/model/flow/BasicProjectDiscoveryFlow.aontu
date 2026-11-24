@@ -1,0 +1,23 @@
+# BasicProjectDiscoveryFlow
+
+main: kit: flow: BasicProjectDiscoveryFlow:
+{
+  entity: "project_discovery",
+  kind: "basic",
+  name: "BasicProjectDiscoveryFlow",
+  step: [
+    {
+      i: {
+        ref: "project_discovery_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicProjectDiscoveryFlow"
+}

@@ -1,0 +1,28 @@
+$kind: http-request
+id: fa7d98f6-f46e-5b79-938a-c124781101d6
+description: |-
+  The `load` operation of **local_thread_delivery**.
+
+  SDK: `client.LocalThreadDelivery().load({ agent_id: "example", id: "example_id", local_thread_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/deliveries/:delivery_id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: expected_version
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this local_thread_delivery belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this local_thread_delivery belongs to.
+  - key: local_thread_id
+    value: "{{local_thread_id}}"
+    description: "Input: local_thread_id."
+  - key: delivery_id
+    value: "{{local_thread_delivery_id}}"
+    description: The local_thread_delivery this request addresses.
+order: 1000

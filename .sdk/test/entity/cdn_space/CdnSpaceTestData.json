@@ -1,0 +1,65 @@
+{
+  "existing": {
+    "cdn_space": {
+      "CDN_SPACE00": {
+        "id": "CDN_SPACE00",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CDN_SPACE01": {
+        "id": "CDN_SPACE01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "CDN_SPACE02": {
+        "id": "CDN_SPACE02",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "cdn_space": {
+      "cdn_space_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/cdn_spaces/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/cdn_spaces/{id}/provision": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{org_slug}/cdn_spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/cdn_spaces": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/cdn_spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/cdn_spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/cdn_spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/cdn_spaces/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

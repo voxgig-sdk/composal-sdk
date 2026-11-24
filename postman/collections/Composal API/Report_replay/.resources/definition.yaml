@@ -1,0 +1,13 @@
+$kind: collection
+id: "6d06bea5-0e19-513a-9af5-65a1fee8fa07"
+description: |-
+  The **report_replay** entity, which belongs to a organization and a exploration. Its requests address one record by `{{report_replay_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agent_id` | string | yes |  |
+  | `generated_at` | string | yes |  |
+  | `id` | string |  |  |
+  | `recording` | object | yes |  |
+  | `replay_steps` | array | yes |  |
+order: 188000

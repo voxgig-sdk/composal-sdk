@@ -1,0 +1,73 @@
+# BasicObservabilityFlow
+
+main: kit: flow: BasicObservabilityFlow:
+{
+  entity: "observability",
+  kind: "basic",
+  name: "BasicObservabilityFlow",
+  step: [
+    {
+      i: {
+        ref: "observability_ref01"
+      }
+
+      m: {
+        alert_rule_id: "alert_rule01",
+        log_stream_id: "log_stream01",
+        space_id: "space01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "observability_ref01",
+        srcdatavar: "observability_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-observability_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "observability_ref01",
+        srcdatavar: "observability_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-observability_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "observability_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "observability01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicObservabilityFlow"
+}

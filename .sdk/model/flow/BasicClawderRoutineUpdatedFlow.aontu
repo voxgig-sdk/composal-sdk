@@ -1,0 +1,24 @@
+# BasicClawderRoutineUpdatedFlow
+
+main: kit: flow: BasicClawderRoutineUpdatedFlow:
+{
+  entity: "clawder_routine_updated",
+  kind: "basic",
+  name: "BasicClawderRoutineUpdatedFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_routine_updated_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        routine_id: "routine01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClawderRoutineUpdatedFlow"
+}

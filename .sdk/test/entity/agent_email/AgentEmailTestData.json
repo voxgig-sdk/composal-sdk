@@ -1,0 +1,74 @@
+{
+  "existing": {
+    "agent_email": {
+      "AGENT_EMAIL00": {
+        "delivery": "s6e",
+        "direction": "s6f",
+        "from": "s70",
+        "id": "AGENT_EMAIL00",
+        "preview": "s72",
+        "received_at": "s73",
+        "recipient_tag": "s74",
+        "spam": false,
+        "subject": "s76",
+        "text": "s77",
+        "to": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_EMAIL01": {
+        "delivery": "sdc",
+        "direction": "sdd",
+        "from": "sde",
+        "id": "AGENT_EMAIL01",
+        "preview": "se0",
+        "received_at": "se1",
+        "recipient_tag": "se2",
+        "spam": false,
+        "subject": "se4",
+        "text": "se5",
+        "to": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_EMAIL02": {
+        "delivery": "s14a",
+        "direction": "s14b",
+        "from": "s14c",
+        "id": "AGENT_EMAIL02",
+        "preview": "s14e",
+        "received_at": "s14f",
+        "recipient_tag": "s150",
+        "spam": false,
+        "subject": "s152",
+        "text": "s153",
+        "to": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_email": {
+      "agent_email_ref01": {
+        "delivery": "s1b8",
+        "direction": "s1b9",
+        "from": "s1ba",
+        "preview": "s1bc",
+        "received_at": "s1bd",
+        "recipient_tag": "s1be",
+        "spam": false,
+        "subject": "s1c0",
+        "text": "s1c1",
+        "to": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

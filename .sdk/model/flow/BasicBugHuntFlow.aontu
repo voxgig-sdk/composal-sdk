@@ -1,0 +1,26 @@
+# BasicBugHuntFlow
+
+main: kit: flow: BasicBugHuntFlow:
+{
+  entity: "bug_hunt",
+  kind: "basic",
+  name: "BasicBugHuntFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bug_hunt_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBugHuntFlow"
+}

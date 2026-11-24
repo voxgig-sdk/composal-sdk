@@ -1,0 +1,14 @@
+$kind: collection
+id: ac685471-2062-5d2a-a11b-4e6d59a0cf74
+description: |-
+  The **project_setting** entity, which belongs to a organization and a project. Its requests address one record by `{{project_setting_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available_messaging_environments` | array | yes |  |
+  | `messaging_conversations` | array | yes |  |
+  | `messaging_enabled` | boolean | yes |  |
+  | `permissions` | object | yes |  |
+  | `project` | object | yes |  |
+  | `tester_numbers` | array | yes |  |
+order: 179000

@@ -1,0 +1,24 @@
+$kind: http-request
+id: "463cd1bf-b96e-5282-8682-87270f4d3d58"
+description: |-
+  The `scenario_edit` action of **run_scenario_run**, a route of its `load` operation.
+
+  SDK: `client.RunScenarioRun().load({ "organization_id": "organization_id", "project_id": "project_id", "run_id": "run_id", "id": "ID", $action: "scenario_edit" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/scenario_runs/:scenario_run_id/scenario_edit"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this run_scenario_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this run_scenario_run belongs to.
+  - key: id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: scenario_run_id
+    value: "{{run_scenario_run_id}}"
+    description: The run_scenario_run this request addresses.
+order: 2000

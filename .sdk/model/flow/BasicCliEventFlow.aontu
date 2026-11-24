@@ -1,0 +1,18 @@
+# BasicCliEventFlow
+
+main: kit: flow: BasicCliEventFlow:
+{
+  entity: "cli_event",
+  kind: "basic",
+  name: "BasicCliEventFlow",
+  step: [
+    {
+      i: {
+        ref: "cli_event_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCliEventFlow"
+}

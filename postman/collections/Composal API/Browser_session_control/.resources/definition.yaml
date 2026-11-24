@@ -1,0 +1,17 @@
+$kind: collection
+id: "2d4dc1ba-7a42-5659-b026-9a0eac08ce60"
+description: |-
+  The **browser_session_control** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_control_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_session_id` | string | yes |  |
+  | `completed_at` | string |  |  |
+  | `completed_generation` | integer |  |  |
+  | `connection` | object |  |  |
+  | `failure_code` | string |  |  |
+  | `id` | string | yes |  |
+  | `requested_controller` | string | yes |  |
+  | `requested_generation` | integer | yes |  |
+  | `status` | string | yes |  |
+order: 80000

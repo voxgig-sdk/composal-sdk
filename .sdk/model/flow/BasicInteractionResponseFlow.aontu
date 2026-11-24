@@ -1,0 +1,24 @@
+# BasicInteractionResponseFlow
+
+main: kit: flow: BasicInteractionResponseFlow:
+{
+  entity: "interaction_response",
+  kind: "basic",
+  name: "BasicInteractionResponseFlow",
+  step: [
+    {
+      i: {
+        ref: "interaction_response_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        interaction_id: "interaction01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicInteractionResponseFlow"
+}

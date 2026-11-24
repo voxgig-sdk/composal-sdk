@@ -1,0 +1,143 @@
+# Entity: project_scenario_option
+
+main: kit: entity: project_scenario_option: {
+
+  alias: field: {}
+
+  fields: {
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    personas: {
+      h: "Personas"
+      n: "personas"
+      r: true
+      t: "`$ARRAY`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+    scenario_states: {
+      h: "Scenario States"
+      n: "scenario_states"
+      r: true
+      sh: "Scenarios by the state of their latest execution."
+      t: "`$OBJECT`"
+    }
+    scenarios: {
+      h: "Scenarios"
+      n: "scenarios"
+      r: true
+      t: "`$ARRAY`"
+    }
+    schedule_options: {
+      h: "Schedule Options"
+      n: "schedule_options"
+      r: false
+      t: "`$ANY`"
+    }
+    schedules: {
+      h: "Schedules"
+      n: "schedules"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "project_scenario_option"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "scenario_options"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

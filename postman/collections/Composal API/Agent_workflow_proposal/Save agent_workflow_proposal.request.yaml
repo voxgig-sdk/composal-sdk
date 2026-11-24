@@ -1,0 +1,28 @@
+$kind: http-request
+id: "685362a9-c64f-59a3-888d-6b5d22363c32"
+description: |-
+  The `save` action of **agent_workflow_proposal**, a route of its `create` operation.
+
+  SDK: `client.AgentWorkflowProposal().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "save" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_proposals/:proposal/save"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_proposal belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_proposal belongs to.
+  - key: proposal
+    value: "{{agent_workflow_proposal_id}}"
+    description: The agent_workflow_proposal this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "digest": "example"
+    }
+order: 3000

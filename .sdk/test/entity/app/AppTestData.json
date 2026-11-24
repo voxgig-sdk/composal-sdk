@@ -1,0 +1,129 @@
+{
+  "existing": {
+    "app": {
+      "APP00": {
+        "created_at": "s96",
+        "created_at_label": "s97",
+        "description": "s98",
+        "framework": "s99",
+        "id": "APP00",
+        "name": "s9b",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "repository_kind": "s9e",
+        "root_path": "s9f",
+        "root_path_display": "sa0",
+        "slug": "sa1",
+        "status": "sa2",
+        "updated_at": "sa3",
+        "updated_at_label": "sa4"
+      },
+      "APP01": {
+        "created_at": "s12c",
+        "created_at_label": "s12d",
+        "description": "s12e",
+        "framework": "s12f",
+        "id": "APP01",
+        "name": "s131",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "repository_kind": "s134",
+        "root_path": "s135",
+        "root_path_display": "s136",
+        "slug": "s137",
+        "status": "s138",
+        "updated_at": "s139",
+        "updated_at_label": "s13a"
+      },
+      "APP02": {
+        "created_at": "s1c2",
+        "created_at_label": "s1c3",
+        "description": "s1c4",
+        "framework": "s1c5",
+        "id": "APP02",
+        "name": "s1c7",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "repository_kind": "s1ca",
+        "root_path": "s1cb",
+        "root_path_display": "s1cc",
+        "slug": "s1cd",
+        "status": "s1ce",
+        "updated_at": "s1cf",
+        "updated_at_label": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "app": {
+      "app_ref01": {
+        "created_at": "s258",
+        "created_at_label": "s259",
+        "description": "s25a",
+        "framework": "s25b",
+        "name": "s25d",
+        "organization_id": "ORGANIZATION01",
+        "repository_id": "REPOSITORY01",
+        "repository_kind": "s260",
+        "root_path": "s261",
+        "root_path_display": "s262",
+        "slug": "s263",
+        "status": "s264",
+        "updated_at": "s265",
+        "updated_at_label": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/apps/{id}/activate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/catalog": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/hosting/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/hosting/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

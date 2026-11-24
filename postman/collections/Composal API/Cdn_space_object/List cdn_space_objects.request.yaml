@@ -1,0 +1,25 @@
+$kind: http-request
+id: "32bead71-8470-5aa4-9fa6-bfbd06776122"
+description: |-
+  The `list` operation of **cdn_space_object**.
+
+  SDK: `client.CdnSpaceObject().list({ cdn_space_id: "example" })`
+url: "{{base}}/api/v1/cdn_spaces/:cdn_space_id/objects"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: cdn_space_id
+    value: "{{cdn_space_id}}"
+    description: The cdn_space this cdn_space_object belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("cdn_space_object_id")) pm.collectionVariables.set("cdn_space_object_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

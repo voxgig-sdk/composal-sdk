@@ -1,0 +1,804 @@
+# Entity: environment_revision
+
+main: kit: entity: environment_revision: {
+
+  alias: field: {}
+
+  fields: {
+    allowed_origins: {
+      h: "Allowed Origins"
+      n: "allowed_origins"
+      r: true
+      sh: "Origins browser testers may visit, subdomains included."
+      t: "`$ARRAY`"
+    }
+    app_environment_id: {
+      h: "App Environment Id"
+      n: "app_environment_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    app_release_id: {
+      h: "App Release Id"
+      n: "app_release_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    blueprint: {
+      h: "Blueprint"
+      n: "blueprint"
+      r: true
+      t: "`$OBJECT`"
+    }
+    blueprint_json: {
+      h: "Blueprint Json"
+      n: "blueprint_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    cleanup_state: {
+      h: "Cleanup State"
+      n: "cleanup_state"
+      r: true
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    digest: {
+      h: "Digest"
+      n: "digest"
+      r: true
+      t: "`$STRING`"
+    }
+    dry_run: {
+      h: "Dry Run"
+      n: "dry_run"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    expires_at: {
+      fo: "date-time"
+      h: "Expires At"
+      n: "expires_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    ready_at: {
+      fo: "date-time"
+      h: "Ready At"
+      n: "ready_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    resolved_manifest_json: {
+      h: "Resolved Manifest Json"
+      n: "resolved_manifest_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    retention_policy_json: {
+      h: "Retention Policy Json"
+      n: "retention_policy_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    revoked_at: {
+      fo: "date-time"
+      h: "Revoked At"
+      n: "revoked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    runner_environment_revision_id: {
+      h: "Runner Environment Revision Id"
+      n: "runner_environment_revision_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    safety_policy_json: {
+      h: "Safety Policy Json"
+      n: "safety_policy_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    schema_version: {
+      h: "Schema Version"
+      n: "schema_version"
+      r: true
+      t: "`$INTEGER`"
+    }
+    source_metadata: {
+      h: "Source Metadata"
+      n: "source_metadata"
+      r: false
+      t: "`$OBJECT`"
+    }
+    source_metadata_json: {
+      h: "Source Metadata Json"
+      n: "source_metadata_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    validation_json: {
+      h: "Validation Json"
+      n: "validation_json"
+      r: true
+      t: "`$OBJECT`"
+    }
+    verify_environment_id: {
+      h: "Verify Environment Id"
+      n: "verify_environment_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "environment_revision"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision"
+          q: {
+            "$action": "provision"
+            exist: [
+              "environment_id"
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "provision"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/revoke"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/revoke"
+          q: {
+            "$action": "revoke"
+            exist: [
+              "environment_id"
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "revoke"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/validate"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/validate"
+          q: {
+            "$action": "validate"
+            exist: [
+              "environment_id"
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "validate"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "blueprint"
+            "dry_run"
+            "source_metadata"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions"
+          q: {
+            exist: [
+              "environment_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}"
+          q: {
+            exist: [
+              "environment_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "environment_id"
+                or: "verify_environment_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}"
+          q: {
+            exist: [
+              "environment_id"
+              "id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              verify_environment_id: "environment_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "environments"
+            }
+            {
+              var: "environment_id"
+            }
+            {
+              lit: "revisions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.environment")]
+  ]
+
+}

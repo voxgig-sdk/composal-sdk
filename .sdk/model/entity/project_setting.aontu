@@ -1,0 +1,130 @@
+# Entity: project_setting
+
+main: kit: entity: project_setting: {
+
+  alias: field: {}
+
+  fields: {
+    available_messaging_environments: {
+      h: "Available Messaging Environments"
+      n: "available_messaging_environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    messaging_conversations: {
+      h: "Messaging Conversations"
+      n: "messaging_conversations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    messaging_enabled: {
+      h: "Messaging Enabled"
+      n: "messaging_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project: {
+      h: "Project"
+      n: "project"
+      r: true
+      t: "`$OBJECT`"
+    }
+    tester_numbers: {
+      h: "Tester Numbers"
+      n: "tester_numbers"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "project_setting"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "pages"
+            }
+            {
+              lit: "settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

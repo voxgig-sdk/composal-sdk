@@ -1,0 +1,102 @@
+{
+  "existing": {
+    "project_recording": {
+      "PROJECT_RECORDING00": {
+        "browser": {},
+        "created_at": "s83",
+        "draft": "s84",
+        "environment_id": "ENVIRONMENT01",
+        "error": "s86",
+        "event_count": 135,
+        "id": "PROJECT_RECORDING00",
+        "persona_id": "PERSONA01",
+        "phase": "s8a",
+        "signed_in_during_recording": false,
+        "start_path": "s8c",
+        "status": "s8d",
+        "updated_at": "s8e",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_RECORDING01": {
+        "browser": {},
+        "created_at": "s105",
+        "draft": "s106",
+        "environment_id": "ENVIRONMENT01",
+        "error": "s108",
+        "event_count": 265,
+        "id": "PROJECT_RECORDING01",
+        "persona_id": "PERSONA01",
+        "phase": "s10c",
+        "signed_in_during_recording": false,
+        "start_path": "s10e",
+        "status": "s10f",
+        "updated_at": "s110",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PROJECT_RECORDING02": {
+        "browser": {},
+        "created_at": "s187",
+        "draft": "s188",
+        "environment_id": "ENVIRONMENT01",
+        "error": "s18a",
+        "event_count": 395,
+        "id": "PROJECT_RECORDING02",
+        "persona_id": "PERSONA01",
+        "phase": "s18e",
+        "signed_in_during_recording": false,
+        "start_path": "s190",
+        "status": "s191",
+        "updated_at": "s192",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "project_recording": {
+      "project_recording_ref01": {
+        "browser": {},
+        "created_at": "s209",
+        "draft": "s20a",
+        "environment_id": "ENVIRONMENT01",
+        "error": "s20c",
+        "event_count": 525,
+        "persona_id": "PERSONA01",
+        "phase": "s210",
+        "signed_in_during_recording": false,
+        "start_path": "s212",
+        "status": "s213",
+        "updated_at": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/finish": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/redraft": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+$kind: http-request
+id: b3d0f717-1338-5553-8598-86ef3c365035
+description: |-
+  The `answer` action of **agent_workflow_run**, a route of its `create` operation.
+
+  SDK: `client.AgentWorkflowRun().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "answer" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_runs/:run_id/answer"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_run belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_run belongs to.
+  - key: run_id
+    value: "{{agent_workflow_run_id}}"
+    description: The agent_workflow_run this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "answer": "example",
+      "question_at": "2026-01-01T00:00:00Z"
+    }
+order: 3000

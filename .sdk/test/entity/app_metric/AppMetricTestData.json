@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "app_metric": {
+      "APP_METRIC00": {
+        "app_id": "APP01",
+        "id": "APP_METRIC00"
+      },
+      "APP_METRIC01": {
+        "app_id": "APP01",
+        "id": "APP_METRIC01"
+      },
+      "APP_METRIC02": {
+        "app_id": "APP01",
+        "id": "APP_METRIC02"
+      }
+    }
+  },
+  "new": {
+    "app_metric": {
+      "app_metric_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/metrics/query_range": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

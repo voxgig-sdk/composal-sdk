@@ -1,0 +1,28 @@
+$kind: http-request
+id: "18822d92-fd61-5c04-b388-bd5460b579ea"
+description: |-
+  The `update` operation of **attachment_part**.
+
+  SDK: `client.AttachmentPart().update({ agent_id: "example", attachment_id: "example", id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/attachments/:attachment_id/parts/:index"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this attachment_part belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this attachment_part belongs to.
+  - key: attachment_id
+    value: "{{attachment_id}}"
+    description: "Input: attachment_id."
+  - key: index
+    value: "{{attachment_part_id}}"
+    description: The attachment_part this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 1000

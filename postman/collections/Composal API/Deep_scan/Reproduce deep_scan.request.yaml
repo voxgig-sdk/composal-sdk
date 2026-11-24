@@ -1,0 +1,30 @@
+$kind: http-request
+id: "9b6b6662-077e-5a27-8d93-85cda99bea1e"
+description: |-
+  The `reproduce` action of **deep_scan**, a route of its `create` operation.
+
+  SDK: `client.DeepScan().create({ "organization_id": "organization_id", "id": "ID", $action: "reproduce" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/:id/reproduce"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan belongs to.
+  - key: id
+    value: "{{deep_scan_id}}"
+    description: The deep_scan this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "finding_index": 1,
+      "idempotency_key": "example"
+    }
+order: 6000

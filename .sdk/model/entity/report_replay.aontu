@@ -1,0 +1,167 @@
+# Entity: report_replay
+
+main: kit: entity: report_replay: {
+
+  alias: field: {}
+
+  fields: {
+    agent_id: {
+      h: "Agent Id"
+      n: "agent_id"
+      r: true
+      t: "`$STRING`"
+    }
+    generated_at: {
+      h: "Generated At"
+      n: "generated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    recording: {
+      h: "Recording"
+      n: "recording"
+      r: true
+      t: "`$OBJECT`"
+    }
+    replay_steps: {
+      h: "Replay Steps"
+      n: "replay_steps"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "report_replay"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/replay/{agent_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "exploration_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "agent_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "generated_at"
+                or: "generated_at"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/replay/{agent_id}"
+          q: {
+            exist: [
+              "exploration_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              agent_id: "id"
+              id: "exploration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "explorations"
+            }
+            {
+              var: "exploration_id"
+            }
+            {
+              lit: "report"
+            }
+            {
+              lit: "replay"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.exploration")]
+  ]
+
+}

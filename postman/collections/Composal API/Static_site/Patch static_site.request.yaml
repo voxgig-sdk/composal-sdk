@@ -1,0 +1,19 @@
+$kind: http-request
+id: "6c259664-5fde-55f2-8f2b-142f4d441f01"
+description: |-
+  The `patch` operation of **static_site**.
+
+  SDK: `client.StaticSite().patch({ id: "example" })`
+url: "{{base}}/api/v1/static_sites/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{static_site_id}}"
+    description: The static_site this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

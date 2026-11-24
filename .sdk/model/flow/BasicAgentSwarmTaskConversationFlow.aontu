@@ -1,0 +1,27 @@
+# BasicAgentSwarmTaskConversationFlow
+
+main: kit: flow: BasicAgentSwarmTaskConversationFlow:
+{
+  entity: "agent_swarm_task_conversation",
+  kind: "basic",
+  name: "BasicAgentSwarmTaskConversationFlow",
+  step: [
+    {
+      m: {
+        swarm_id: "swarm01",
+        task_id: "task01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_swarm_task_conversation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSwarmTaskConversationFlow"
+}

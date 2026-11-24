@@ -1,0 +1,28 @@
+# BasicRunBrowserPageFlow
+
+main: kit: flow: BasicRunBrowserPageFlow:
+{
+  entity: "run_browser_page",
+  kind: "basic",
+  name: "BasicRunBrowserPageFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01",
+        run_id: "run01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "run_browser_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunBrowserPageFlow"
+}

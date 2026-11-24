@@ -1,0 +1,32 @@
+# BasicVerifyDemoShareFlow
+
+main: kit: flow: BasicVerifyDemoShareFlow:
+{
+  entity: "verify_demo_share",
+  kind: "basic",
+  name: "BasicVerifyDemoShareFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_demo_share_ref01",
+        srcdatavar: "verify_demo_share_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_demo_share01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_demo_share_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDemoShareFlow"
+}

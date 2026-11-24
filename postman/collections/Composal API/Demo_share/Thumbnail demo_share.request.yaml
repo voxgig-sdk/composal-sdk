@@ -1,0 +1,15 @@
+$kind: http-request
+id: a224e4c3-5fb8-55de-8a6f-f0c4c27ffb09
+description: |-
+  The `thumbnail` action of **demo_share**, a route of its `load` operation.
+
+  SDK: `client.DemoShare().load({ "id": "ID", $action: "thumbnail" })`
+url: "{{base}}/api/v1/verify/demo_shares/:token/thumbnail"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: token
+    value: "{{demo_share_id}}"
+    description: The demo_share this request addresses.
+order: 2000

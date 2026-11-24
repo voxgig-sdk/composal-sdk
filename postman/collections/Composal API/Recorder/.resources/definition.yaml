@@ -1,0 +1,11 @@
+$kind: collection
+id: acacb7e4-ba1c-56ce-a15f-4250c3b08ef7
+description: |-
+  The **recorder** entity, which belongs to a organization. Its requests address one record by `{{recorder_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+order: 184000

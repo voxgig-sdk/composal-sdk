@@ -1,0 +1,22 @@
+$kind: http-request
+id: "041e723c-7ad8-5593-92cd-5659874b1175"
+description: |-
+  The `disable` action of **hosting_app_domain**, a route of its `create` operation.
+
+  SDK: `client.HostingAppDomain().create({ "app_id": "app_id", "id": "ID", $action: "disable" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:id/disable"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this hosting_app_domain belongs to.
+  - key: id
+    value: "{{hosting_app_domain_id}}"
+    description: The hosting_app_domain this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

@@ -1,0 +1,22 @@
+# BasicMetricQueryFlow
+
+main: kit: flow: BasicMetricQueryFlow:
+{
+  entity: "metric_query",
+  kind: "basic",
+  name: "BasicMetricQueryFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "metric_query_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMetricQueryFlow"
+}

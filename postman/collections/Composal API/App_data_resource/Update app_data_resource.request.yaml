@@ -1,0 +1,22 @@
+$kind: http-request
+id: "03851fec-7883-5c09-9030-0a39370ed534"
+description: |-
+  The `update` operation of **app_data_resource**.
+
+  SDK: `client.AppDataResource().update({ app_id: "example", id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+  - key: id
+    value: "{{app_data_resource_id}}"
+    description: The app_data_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

@@ -1,0 +1,27 @@
+# BasicArtefactDetailPageFlow
+
+main: kit: flow: BasicArtefactDetailPageFlow:
+{
+  entity: "artefact_detail_page",
+  kind: "basic",
+  name: "BasicArtefactDetailPageFlow",
+  step: [
+    {
+      m: {
+        artefact_ref: "artefact_ref01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "artefact_detail_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArtefactDetailPageFlow"
+}

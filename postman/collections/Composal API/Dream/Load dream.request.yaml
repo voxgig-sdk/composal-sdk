@@ -1,0 +1,27 @@
+$kind: http-request
+id: f94dc657-6fdd-51c0-9a60-5b07f6887fa7
+description: |-
+  The `load` operation of **dream**.
+
+  SDK: `client.Dream().load({ id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/dreams/:id?project_id={{project_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+  - key: project_id
+    value: "{{project_id}}"
+  - key: tab
+    value: changes
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this dream belongs to.
+  - key: id
+    value: "{{dream_id}}"
+    description: The dream this request addresses.
+order: 2000

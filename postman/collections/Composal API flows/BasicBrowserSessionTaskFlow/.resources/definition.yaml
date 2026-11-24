@@ -1,0 +1,4 @@
+$kind: collection
+id: "89d834c9-458d-5295-bdca-386daf7c2d26"
+description: "The `BasicBrowserSessionTaskFlow` flow of **browser_session_task**."
+order: 70000

@@ -1,0 +1,10 @@
+$kind: collection
+id: "8dd006da-4254-5e04-8399-093b8681c947"
+description: |-
+  The **agent_resource** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_resource_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `name` | string | yes |  |
+  | `uri` | string | yes |  |
+order: 27000

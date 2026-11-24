@@ -1,0 +1,41 @@
+$kind: http-request
+id: dfdb59ac-eb9d-5367-9e0f-a66b89b05fc1
+description: |-
+  The `patch` operation of **project**.
+
+  SDK: `client.Project().patch({ id: "example", organization_id: "example", context: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "execution_mode": "website",
+      "verifier_preferences": {
+        "terminology": "example",
+        "behavior_guidance": "example",
+        "report_style": "example",
+        "reporting_focus": "example",
+        "prioritization": "example"
+      },
+      "slug": "example",
+      "name": "example",
+      "website_url": "https://example.com",
+      "purpose": "example",
+      "context": "example",
+      "documentation_urls": [
+        "https://example.com"
+      ],
+      "version": 1
+    }
+order: 5000

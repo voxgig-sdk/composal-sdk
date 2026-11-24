@@ -1,0 +1,32 @@
+# BasicRunSearchFlow
+
+main: kit: flow: BasicRunSearchFlow:
+{
+  entity: "run_search",
+  kind: "basic",
+  name: "BasicRunSearchFlow",
+  step: [
+    {
+      i: {
+        ref: "run_search_ref01",
+        srcdatavar: "run_search_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "run_search01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-run_search_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRunSearchFlow"
+}

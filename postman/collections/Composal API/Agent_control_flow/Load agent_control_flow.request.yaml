@@ -1,0 +1,21 @@
+$kind: http-request
+id: "1acc696e-e2dd-5a6f-8d7d-621f5b7caecd"
+description: |-
+  The `load` operation of **agent_control_flow**.
+
+  SDK: `client.AgentControlFlow().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/control_flows/:flow_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_control_flow belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_control_flow belongs to.
+  - key: flow_id
+    value: "{{agent_control_flow_id}}"
+    description: The agent_control_flow this request addresses.
+order: 2000

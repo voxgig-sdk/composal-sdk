@@ -1,0 +1,29 @@
+$kind: http-request
+id: "564ada40-42bc-53a1-8c15-b725913c68e0"
+description: |-
+  The `patch` operation of **environment_test_account**.
+
+  SDK: `client.EnvironmentTestAccount().patch({ environment_id: "example", id: "example", organization_id: "example", credentials: [] })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/test_accounts/:persona"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_test_account belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_test_account belongs to.
+  - key: persona
+    value: "{{environment_test_account_id}}"
+    description: The environment_test_account this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "revision_id": "example",
+      "credentials": {}
+    }
+order: 3000

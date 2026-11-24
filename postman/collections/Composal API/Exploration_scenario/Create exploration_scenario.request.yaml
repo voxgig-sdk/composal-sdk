@@ -1,0 +1,36 @@
+$kind: http-request
+id: "247b9077-4a30-5821-ad5f-cfe2f398562b"
+description: |-
+  The `create` operation of **exploration_scenario**.
+
+  SDK: `client.ExplorationScenario().create({ exploration_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/scenarios"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration_scenario belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this exploration_scenario belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("exploration_scenario_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

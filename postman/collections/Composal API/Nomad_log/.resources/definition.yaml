@@ -1,0 +1,19 @@
+$kind: collection
+id: "8ee510cf-2581-5d89-bf81-ee9db2050567"
+description: |-
+  The **nomad_log** entity, which belongs to a app. Its requests address one record by `{{nomad_log_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allocation_id` | string | yes |  |
+  | `environment` | string |  |  |
+  | `fetched_at` | string | yes |  |
+  | `location` | string |  |  |
+  | `logs` | string | yes |  |
+  | `namespace` | string | yes |  |
+  | `offset` | integer | yes |  |
+  | `origin` | string | yes |  |
+  | `service` | string |  |  |
+  | `task` | string | yes |  |
+  | `type` | string | yes |  |
+order: 145000

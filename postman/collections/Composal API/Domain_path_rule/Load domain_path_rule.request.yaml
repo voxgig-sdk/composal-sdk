@@ -1,0 +1,21 @@
+$kind: http-request
+id: "18ace5cc-a5ba-59a7-bea1-f1396f107732"
+description: |-
+  The `load` operation of **domain_path_rule**.
+
+  SDK: `client.DomainPathRule().load({ app_id: "example", domain_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:domain_id/path_rules/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this domain_path_rule belongs to.
+  - key: domain_id
+    value: "{{domain_id}}"
+    description: "Input: domain_id."
+  - key: id
+    value: "{{domain_path_rule_id}}"
+    description: The domain_path_rule this request addresses.
+order: 2000

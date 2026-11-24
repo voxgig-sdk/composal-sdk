@@ -1,0 +1,35 @@
+$kind: http-request
+id: "38acb382-e214-5a2f-ad75-e2284f493ba6"
+description: |-
+  The `update` operation of **agent_repository**.
+
+  SDK: `client.AgentRepository().update({ agent_id: "example", organization_id: "example", expected_version: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/repositories"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_repository belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_repository belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "work_repositories": [
+        {
+          "repository_id": "example",
+          "permission": "read",
+          "write_branches": [
+            "example"
+          ],
+          "exclude_default_branch": true
+        }
+      ],
+      "expected_version": 1
+    }
+order: 2000

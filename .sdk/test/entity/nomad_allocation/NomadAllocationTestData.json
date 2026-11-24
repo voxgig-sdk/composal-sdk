@@ -1,0 +1,99 @@
+{
+  "existing": {
+    "nomad_allocation": {
+      "NOMAD_ALLOCATION00": {
+        "allocation_id": "ALLOCATION01",
+        "client_status": "sb5",
+        "create_time": "sb6",
+        "datacenter": "sb7",
+        "desired_description": "sb8",
+        "desired_status": "sb9",
+        "fetched_at": "sba",
+        "id": "NOMAD_ALLOCATION00",
+        "job_id": "JOB01",
+        "modify_time": "sbd",
+        "name": "sbe",
+        "namespace": "sbf",
+        "node_id": "NODE01",
+        "node_name": "sc1",
+        "resources": {},
+        "task_group": "sc3",
+        "task_states": [],
+        "verify_runner_images": [],
+        "app_id": "APP01"
+      },
+      "NOMAD_ALLOCATION01": {
+        "allocation_id": "ALLOCATION01",
+        "client_status": "s169",
+        "create_time": "s16a",
+        "datacenter": "s16b",
+        "desired_description": "s16c",
+        "desired_status": "s16d",
+        "fetched_at": "s16e",
+        "id": "NOMAD_ALLOCATION01",
+        "job_id": "JOB01",
+        "modify_time": "s171",
+        "name": "s172",
+        "namespace": "s173",
+        "node_id": "NODE01",
+        "node_name": "s175",
+        "resources": {},
+        "task_group": "s177",
+        "task_states": [],
+        "verify_runner_images": [],
+        "app_id": "APP01"
+      },
+      "NOMAD_ALLOCATION02": {
+        "allocation_id": "ALLOCATION01",
+        "client_status": "s21d",
+        "create_time": "s21e",
+        "datacenter": "s21f",
+        "desired_description": "s220",
+        "desired_status": "s221",
+        "fetched_at": "s222",
+        "id": "NOMAD_ALLOCATION02",
+        "job_id": "JOB01",
+        "modify_time": "s225",
+        "name": "s226",
+        "namespace": "s227",
+        "node_id": "NODE01",
+        "node_name": "s229",
+        "resources": {},
+        "task_group": "s22b",
+        "task_states": [],
+        "verify_runner_images": [],
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "nomad_allocation": {
+      "nomad_allocation_ref01": {
+        "allocation_id": "ALLOCATION01",
+        "client_status": "s2d1",
+        "create_time": "s2d2",
+        "datacenter": "s2d3",
+        "desired_description": "s2d4",
+        "desired_status": "s2d5",
+        "fetched_at": "s2d6",
+        "job_id": "JOB01",
+        "modify_time": "s2d9",
+        "name": "s2da",
+        "namespace": "s2db",
+        "node_id": "NODE01",
+        "node_name": "s2dd",
+        "resources": {},
+        "task_group": "s2df",
+        "task_states": [],
+        "verify_runner_images": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "253bb4b4-c34e-5473-a5fc-031465d00fdb"
+description: |-
+  The `frame` action of **agent_computer**, a route of its `load` operation.
+
+  SDK: `client.AgentComputer().load({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "frame" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/computer/frame"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_computer belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_computer belongs to.
+order: 3000

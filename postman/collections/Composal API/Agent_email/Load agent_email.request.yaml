@@ -1,0 +1,21 @@
+$kind: http-request
+id: e89df38e-7299-59c9-85f9-6299e5f6a923
+description: |-
+  The `load` operation of **agent_email**.
+
+  SDK: `client.AgentEmail().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/email/:message_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_email belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_email belongs to.
+  - key: message_id
+    value: "{{agent_email_id}}"
+    description: The agent_email this request addresses.
+order: 1000

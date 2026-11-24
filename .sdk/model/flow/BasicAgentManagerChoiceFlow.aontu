@@ -1,0 +1,27 @@
+# BasicAgentManagerChoiceFlow
+
+main: kit: flow: BasicAgentManagerChoiceFlow:
+{
+  entity: "agent_manager_choice",
+  kind: "basic",
+  name: "BasicAgentManagerChoiceFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_manager_choice_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentManagerChoiceFlow"
+}

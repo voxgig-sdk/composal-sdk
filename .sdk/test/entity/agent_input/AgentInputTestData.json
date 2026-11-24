@@ -1,0 +1,70 @@
+{
+  "existing": {
+    "agent_input": {
+      "AGENT_INPUT00": {
+        "attachment_ids": [],
+        "attachments": [],
+        "browser_context": {},
+        "client_time": {},
+        "conversation_id": "CONVERSATION01",
+        "model_policy": "s5f",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "speed": "s61",
+        "text": "s62",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_INPUT00"
+      },
+      "AGENT_INPUT01": {
+        "attachment_ids": [],
+        "attachments": [],
+        "browser_context": {},
+        "client_time": {},
+        "conversation_id": "CONVERSATION01",
+        "model_policy": "sb9",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "speed": "sbb",
+        "text": "sbc",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_INPUT01"
+      },
+      "AGENT_INPUT02": {
+        "attachment_ids": [],
+        "attachments": [],
+        "browser_context": {},
+        "client_time": {},
+        "conversation_id": "CONVERSATION01",
+        "model_policy": "s113",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "speed": "s115",
+        "text": "s116",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_INPUT02"
+      }
+    }
+  },
+  "new": {
+    "agent_input": {
+      "agent_input_ref01": {
+        "attachment_ids": [],
+        "attachments": [],
+        "browser_context": {},
+        "client_time": {},
+        "conversation_id": "CONVERSATION01",
+        "model_policy": "s16d",
+        "requester_membership_id": "REQUESTER_MEMBERSHIP01",
+        "speed": "s16f",
+        "text": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/inputs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

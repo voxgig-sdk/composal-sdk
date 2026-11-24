@@ -1,0 +1,719 @@
+# Entity: agent_thread
+
+main: kit: entity: agent_thread: {
+
+  alias: field: {}
+
+  fields: {
+    archived_count: {
+      h: "Archived Count"
+      n: "archived_count"
+      r: false
+      sh: "Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    can_create: {
+      h: "Can Create"
+      n: "can_create"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    execution: {
+      h: "Execution"
+      n: "execution"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    first_input: {
+      h: "First Input"
+      n: "first_input"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 0
+      }
+    }
+    first_input_key: {
+      h: "First Input Key"
+      n: "first_input_key"
+      r: false
+      sh: "Idempotency-Key that finds the first message through input_delivery."
+      t: "`$STRING`"
+    }
+    first_input_requester_membership_id: {
+      h: "First Input Requester Membership Id"
+      n: "first_input_requester_membership_id"
+      r: false
+      sh: "Membership the first message was sent as, for input_delivery."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    inherit_context: {
+      h: "Inherit Context"
+      n: "inherit_context"
+      r: false
+      sh: "Include the source conversation through its last completed reply."
+      t: "`$BOOLEAN`"
+    }
+    local_activities: {
+      h: "Local Activities"
+      n: "local_activities"
+      r: true
+      sh: "First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current."
+      t: "`$OBJECT`"
+    }
+    local_archived_count: {
+      h: "Local Archived Count"
+      n: "local_archived_count"
+      r: true
+      sh: "Local Claude Code and Codex threads archived on their computers."
+      t: "`$INTEGER`"
+    }
+    local_next_cursor: {
+      h: "Local Next Cursor"
+      n: "local_next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    local_scope_key: {
+      h: "Local Scope Key"
+      n: "local_scope_key"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    local_status_pending: {
+      h: "Local Status Pending"
+      n: "local_status_pending"
+      r: true
+      sh: "A computer is reporting newer local thread statuses; read the page again shortly."
+      t: "`$BOOLEAN`"
+    }
+    local_threads: {
+      h: "Local Threads"
+      n: "local_threads"
+      r: true
+      t: "`$ARRAY`"
+      union: {
+        branches: 2
+        count: 1
+        depth: 6
+      }
+    }
+    main_thread_id: {
+      h: "Main Thread Id"
+      n: "main_thread_id"
+      r: true
+      t: "`$STRING`"
+    }
+    message: {
+      h: "Message"
+      n: "message"
+      r: false
+      sh: "The thread's first message."
+      t: "`$STRING`"
+    }
+    next_cursor: {
+      h: "Next Cursor"
+      n: "next_cursor"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    parent_conversation_id: {
+      h: "Parent Conversation Id"
+      n: "parent_conversation_id"
+      r: false
+      sh: "Optional source conversation belonging to this agent."
+      t: "`$STRING`"
+    }
+    requester_membership_id: {
+      h: "Requester Membership Id"
+      n: "requester_membership_id"
+      r: false
+      t: "`$STRING`"
+    }
+    selected_thread: {
+      h: "Selected Thread"
+      n: "selected_thread"
+      r: true
+      t: "`$ANY`"
+    }
+    thread: {
+      h: "Thread"
+      n: "thread"
+      r: true
+      t: "`$OBJECT`"
+    }
+    threads: {
+      h: "Threads"
+      n: "threads"
+      r: true
+      t: "`$ARRAY`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    total_archived_count: {
+      h: "Total Archived Count"
+      n: "total_archived_count"
+      r: true
+      sh: "archived_count plus local_archived_count, computed by Rails for the Archived heading."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_thread"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "archived"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/archive"
+          q: {
+            "$action": "archive"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "archive"
+            }
+          ]
+          t: {
+            req: {
+              archived: "`reqdata.archived`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/compact"
+          q: {
+            "$action": "compact"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "compact"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "snoozed_until"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "thread_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/snooze"
+          q: {
+            "$action": "snooze"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              thread_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "snooze"
+            }
+          ]
+          t: {
+            req: {
+              snoozed_until: "`reqdata.snoozed_until`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "execution"
+            "inherit_context"
+            "message"
+            "parent_conversation_id"
+            "requester_membership_id"
+            "title"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "idempotency_key"
+                or: "Idempotency-Key"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+          q: {
+            exist: [
+              "agent_id"
+              "idempotency_key"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+          ]
+          t: {
+            req: {
+              execution: "`reqdata.execution`"
+              inherit_context: "`reqdata.inherit_context`"
+              message: "`reqdata.message`"
+              parent_conversation_id: "`reqdata.parent_conversation_id`"
+              requester_membership_id: "`reqdata.requester_membership_id`"
+              title: "`reqdata.title`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "exclude"
+                explode: true
+                k: "query"
+                n: "archived"
+                or: "archived"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "conversation_id"
+                or: "conversation_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "local_cursor"
+                or: "local_cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "threads"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

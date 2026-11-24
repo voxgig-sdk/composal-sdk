@@ -1,0 +1,15 @@
+$kind: http-request
+id: dd478c25-74b5-5eb3-8052-a9290bae4670
+description: |-
+  The `dismiss` action of **me_onboarding**, a route of its `create` operation.
+
+  SDK: `client.MeOnboarding().create({ $action: "dismiss" })`
+url: "{{base}}/api/v1/me/onboarding/dismiss"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: "{}"
+order: 3000

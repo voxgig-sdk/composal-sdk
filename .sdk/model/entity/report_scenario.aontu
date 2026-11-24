@@ -1,0 +1,188 @@
+# Entity: report_scenario
+
+main: kit: entity: report_scenario: {
+
+  alias: field: {}
+
+  fields: {
+    environment_name: {
+      h: "Environment Name"
+      n: "environment_name"
+      r: true
+      t: "`$STRING`"
+    }
+    goal: {
+      h: "Goal"
+      n: "goal"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    mode: {
+      h: "Mode"
+      n: "mode"
+      r: true
+      t: "`$STRING`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    related_explorations: {
+      h: "Related Explorations"
+      n: "related_explorations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    report: {
+      h: "Report"
+      n: "report"
+      r: true
+      t: "`$OBJECT`"
+    }
+    saves_scenarios: {
+      h: "Saves Scenarios"
+      n: "saves_scenarios"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    scenario_generation: {
+      h: "Scenario Generation"
+      n: "scenario_generation"
+      r: true
+      t: "`$OBJECT`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "report_scenario"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "exploration_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/scenarios"
+          q: {
+            exist: [
+              "exploration_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "exploration_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "explorations"
+            }
+            {
+              var: "exploration_id"
+            }
+            {
+              lit: "report"
+            }
+            {
+              lit: "scenarios"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.exploration")]
+  ]
+
+}

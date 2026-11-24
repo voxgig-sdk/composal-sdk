@@ -1,0 +1,22 @@
+$kind: http-request
+id: a1a9a3e4-3579-507d-8cad-a3958ef94e57
+description: |-
+  The `connect` action of **agent_terminal**, a route of its `create` operation.
+
+  SDK: `client.AgentTerminal().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "connect" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/terminal/connect"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_terminal belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_terminal belongs to.
+body:
+  type: json
+  content: "{}"
+order: 1000

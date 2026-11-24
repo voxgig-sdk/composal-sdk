@@ -1,0 +1,24 @@
+# BasicAgentWaitFlow
+
+main: kit: flow: BasicAgentWaitFlow:
+{
+  entity: "agent_wait",
+  kind: "basic",
+  name: "BasicAgentWaitFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_wait_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        wait_id: "wait01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentWaitFlow"
+}

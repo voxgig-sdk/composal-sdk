@@ -1,0 +1,40 @@
+$kind: http-request
+id: "18efff33-3256-598a-9c9b-c75ad94ad5c3"
+description: |-
+  The `brief` action of **project_product_map**, a route of its `load` operation.
+
+  SDK: `client.ProjectProductMap().load({ "organization_id": "organization_id", "project_id": "project_id", $action: "brief" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/product_map/brief"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: area
+    value: ""
+    disabled: true
+  - key: before
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+  - key: revision_id
+    value: ""
+    disabled: true
+  - key: since
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_product_map belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_product_map belongs to.
+order: 1000

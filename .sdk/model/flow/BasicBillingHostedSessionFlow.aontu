@@ -1,0 +1,46 @@
+# BasicBillingHostedSessionFlow
+
+main: kit: flow: BasicBillingHostedSessionFlow:
+{
+  entity: "billing_hosted_session",
+  kind: "basic",
+  name: "BasicBillingHostedSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "billing_hosted_session_ref01"
+      }
+
+      m: {
+        org_slug: "org_slug01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "billing_hosted_session_ref01",
+        srcdatavar: "billing_hosted_session_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "billing_hosted_session01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-billing_hosted_session_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBillingHostedSessionFlow"
+}

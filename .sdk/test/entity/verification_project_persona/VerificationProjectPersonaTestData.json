@@ -1,0 +1,109 @@
+{
+  "existing": {
+    "verification_project_persona": {
+      "VERIFICATION_PROJECT_PERSONA00": {
+        "access_mode": "s82",
+        "archived_at": "s83",
+        "capabilities": "s84",
+        "created_at": "s85",
+        "credential_id": "CREDENTIAL01",
+        "goals": "s87",
+        "id": "VERIFICATION_PROJECT_PERSONA00",
+        "lock_version": 137,
+        "name": "s8a",
+        "project_id": "PROJECT01",
+        "role": "s8c",
+        "updated_at": "s8d",
+        "version": 142,
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFICATION_PROJECT_PERSONA01": {
+        "access_mode": "s104",
+        "archived_at": "s105",
+        "capabilities": "s106",
+        "created_at": "s107",
+        "credential_id": "CREDENTIAL01",
+        "goals": "s109",
+        "id": "VERIFICATION_PROJECT_PERSONA01",
+        "lock_version": 267,
+        "name": "s10c",
+        "project_id": "PROJECT01",
+        "role": "s10e",
+        "updated_at": "s10f",
+        "version": 272,
+        "organization_id": "ORGANIZATION01"
+      },
+      "VERIFICATION_PROJECT_PERSONA02": {
+        "access_mode": "s186",
+        "archived_at": "s187",
+        "capabilities": "s188",
+        "created_at": "s189",
+        "credential_id": "CREDENTIAL01",
+        "goals": "s18b",
+        "id": "VERIFICATION_PROJECT_PERSONA02",
+        "lock_version": 397,
+        "name": "s18e",
+        "project_id": "PROJECT01",
+        "role": "s190",
+        "updated_at": "s191",
+        "version": 402,
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "verification_project_persona": {
+      "verification_project_persona_ref01": {
+        "access_mode": "s208",
+        "archived_at": "s209",
+        "capabilities": "s20a",
+        "created_at": "s20b",
+        "credential_id": "CREDENTIAL01",
+        "goals": "s20d",
+        "lock_version": 527,
+        "name": "s210",
+        "project_id": "PROJECT01",
+        "role": "s212",
+        "updated_at": "s213",
+        "version": 532
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}/archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

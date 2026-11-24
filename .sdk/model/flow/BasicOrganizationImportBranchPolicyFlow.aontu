@@ -1,0 +1,29 @@
+# BasicOrganizationImportBranchPolicyFlow
+
+main: kit: flow: BasicOrganizationImportBranchPolicyFlow:
+{
+  entity: "organization_import_branch_policy",
+  kind: "basic",
+  name: "BasicOrganizationImportBranchPolicyFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_import_branch_policy_ref01",
+        srcdatavar: "organization_import_branch_policy_ref01_data",
+        suffix: "_up0",
+        textfield: "default_trunk_bookmark"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_import_branch_policy_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationImportBranchPolicyFlow"
+}

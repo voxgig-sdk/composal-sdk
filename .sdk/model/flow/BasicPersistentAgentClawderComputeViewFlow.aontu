@@ -1,0 +1,33 @@
+# BasicPersistentAgentClawderComputeViewFlow
+
+main: kit: flow: BasicPersistentAgentClawderComputeViewFlow:
+{
+  entity: "persistent_agent_clawder_compute_view",
+  kind: "basic",
+  name: "BasicPersistentAgentClawderComputeViewFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_clawder_compute_view_ref01",
+        srcdatavar: "persistent_agent_clawder_compute_view_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "persistent_agent_clawder_compute_view01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persistent_agent_clawder_compute_view_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentClawderComputeViewFlow"
+}

@@ -1,0 +1,27 @@
+# BasicConnectionSourceFlow
+
+main: kit: flow: BasicConnectionSourceFlow:
+{
+  entity: "connection_source",
+  kind: "basic",
+  name: "BasicConnectionSourceFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "connection_source_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicConnectionSourceFlow"
+}

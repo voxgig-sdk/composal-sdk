@@ -1,0 +1,22 @@
+$kind: http-request
+id: "53fbe576-af98-58dd-b019-c79ce79244c9"
+description: |-
+  The `draft` action of **agent_marketplace**, a route of its `load` operation.
+
+  SDK: `client.AgentMarketplace().load({ "organization_id": "organization_id", $action: "draft" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_marketplace/draft"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent_id
+    value: ""
+    disabled: true
+  - key: listing_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_marketplace belongs to.
+order: 8000

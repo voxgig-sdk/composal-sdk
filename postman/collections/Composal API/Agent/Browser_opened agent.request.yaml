@@ -1,0 +1,27 @@
+$kind: http-request
+id: "51b11d8c-b973-5db5-9a2c-9ac4e2710e6e"
+description: |-
+  The `browser_opened` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "browser_opened" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/browser_opened"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "surface": "web",
+      "source": "button"
+    }
+order: 6000

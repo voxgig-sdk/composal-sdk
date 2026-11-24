@@ -1,0 +1,148 @@
+# Entity: scenario_run_lesson
+
+main: kit: entity: scenario_run_lesson: {
+
+  alias: field: {}
+
+  fields: {
+    finding: {
+      h: "Finding"
+      n: "finding"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Defaults to the Scenario's name."
+      t: "`$STRING`"
+    }
+    workaround: {
+      h: "Workaround"
+      n: "workaround"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "scenario_run_lesson"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "finding"
+            "title"
+            "workaround"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/lessons"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "run_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "scenario_run_id"
+                or: "scenario_run_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/lessons"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+              "run_id"
+              "scenario_run_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "run_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "runs"
+            }
+            {
+              var: "run_id"
+            }
+            {
+              lit: "scenario_runs"
+            }
+            {
+              var: "scenario_run_id"
+            }
+            {
+              lit: "lessons"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

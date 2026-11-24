@@ -1,0 +1,28 @@
+$kind: http-request
+id: b77ecc3b-a5ef-5388-947e-d9bba3f20047
+description: |-
+  The `remove` operation of **cdn_hostname**.
+
+  SDK: `client.CdnHostname().remove({ app_id: "example", cdn_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/hostnames/:id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_hostname belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+  - key: id
+    value: "{{cdn_hostname_id}}"
+    description: The cdn_hostname this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("cdn_hostname_id")
+      }
+    language: text/javascript
+order: 6000

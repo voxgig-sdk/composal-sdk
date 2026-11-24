@@ -1,0 +1,33 @@
+# BasicClawderAgentModelFlow
+
+main: kit: flow: BasicClawderAgentModelFlow:
+{
+  entity: "clawder_agent_model",
+  kind: "basic",
+  name: "BasicClawderAgentModelFlow",
+  step: [
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "clawder_agent_model_ref01",
+        srcdatavar: "clawder_agent_model_ref01_data",
+        suffix: "_up0",
+        textfield: "model"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-clawder_agent_model_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderAgentModelFlow"
+}

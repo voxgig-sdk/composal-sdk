@@ -1,0 +1,47 @@
+# BasicVerifyDiscoveryRunFlow
+
+main: kit: flow: BasicVerifyDiscoveryRunFlow:
+{
+  entity: "verify_discovery_run",
+  kind: "basic",
+  name: "BasicVerifyDiscoveryRunFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_discovery_run_ref01"
+      }
+
+      m: {
+        environment_id: "environment01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_discovery_run_ref01",
+        srcdatavar: "verify_discovery_run_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        environment_id: "environment01",
+        id: "verify_discovery_run01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_discovery_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyDiscoveryRunFlow"
+}

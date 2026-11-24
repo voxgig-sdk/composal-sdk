@@ -1,0 +1,103 @@
+{
+  "existing": {
+    "product_map_journey_replay": {
+      "PRODUCT_MAP_JOURNEY_REPLAY00": {
+        "actor_id": "ACTOR01",
+        "can_request_qualification": false,
+        "created_at": "sac",
+        "failure_code": "sad",
+        "failure_message": "sae",
+        "id": "PRODUCT_MAP_JOURNEY_REPLAY00",
+        "preparation_receipt": "sb0",
+        "qualification": "sb1",
+        "qualification_status": "sb2",
+        "replay_required": false,
+        "review_reason": "sb4",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "source_digest": "sb7",
+        "status": "sb8",
+        "updated_at": "sb9",
+        "variant_id": "VARIANT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_JOURNEY_REPLAY01": {
+        "actor_id": "ACTOR01",
+        "can_request_qualification": false,
+        "created_at": "s156",
+        "failure_code": "s157",
+        "failure_message": "s158",
+        "id": "PRODUCT_MAP_JOURNEY_REPLAY01",
+        "preparation_receipt": "s15a",
+        "qualification": "s15b",
+        "qualification_status": "s15c",
+        "replay_required": false,
+        "review_reason": "s15e",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "source_digest": "s161",
+        "status": "s162",
+        "updated_at": "s163",
+        "variant_id": "VARIANT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_JOURNEY_REPLAY02": {
+        "actor_id": "ACTOR01",
+        "can_request_qualification": false,
+        "created_at": "s200",
+        "failure_code": "s201",
+        "failure_message": "s202",
+        "id": "PRODUCT_MAP_JOURNEY_REPLAY02",
+        "preparation_receipt": "s204",
+        "qualification": "s205",
+        "qualification_status": "s206",
+        "replay_required": false,
+        "review_reason": "s208",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "source_digest": "s20b",
+        "status": "s20c",
+        "updated_at": "s20d",
+        "variant_id": "VARIANT01",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "product_map_journey_replay": {
+      "product_map_journey_replay_ref01": {
+        "actor_id": "ACTOR01",
+        "can_request_qualification": false,
+        "created_at": "s2aa",
+        "failure_code": "s2ab",
+        "failure_message": "s2ac",
+        "preparation_receipt": "s2ae",
+        "qualification": "s2af",
+        "qualification_status": "s2b0",
+        "replay_required": false,
+        "review_reason": "s2b2",
+        "run_id": "RUN01",
+        "scenario_run_id": "SCENARIO_RUN01",
+        "source_digest": "s2b5",
+        "status": "s2b6",
+        "updated_at": "s2b7",
+        "variant_id": "VARIANT01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_replays/{replay_id}/qualification": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_replays/{replay_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

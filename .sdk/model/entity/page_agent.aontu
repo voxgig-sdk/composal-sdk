@@ -1,0 +1,449 @@
+# Entity: page_agent
+
+main: kit: entity: page_agent: {
+
+  alias: field: {}
+
+  fields: {
+    agents: {
+      h: "Agents"
+      n: "agents"
+      r: true
+      t: "`$ARRAY`"
+    }
+    can_edit_integration_connections: {
+      h: "Can Edit Integration Connections"
+      n: "can_edit_integration_connections"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    creation_enabled: {
+      h: "Creation Enabled"
+      n: "creation_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    inbox: {
+      h: "Inbox"
+      n: "inbox"
+      r: false
+      t: "`$ANY`"
+      union: {
+        branches: 6
+        count: 3
+        depth: 14
+      }
+    }
+    integration_choices: {
+      h: "Integration Choices"
+      n: "integration_choices"
+      r: true
+      t: "`$ARRAY`"
+    }
+    integration_choices_truncated: {
+      h: "Integration Choices Truncated"
+      n: "integration_choices_truncated"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    integration_selected: {
+      h: "Integration Selected"
+      n: "integration_selected"
+      r: true
+      t: "`$ARRAY`"
+    }
+    model_choices: {
+      h: "Model Choices"
+      n: "model_choices"
+      r: false
+      t: "`$ARRAY`"
+    }
+    new_configuration: {
+      h: "New Configuration"
+      n: "new_configuration"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 5
+        count: 3
+        depth: 9
+      }
+    }
+    organization_id: {
+      h: "Organization Id"
+      n: "organization_id"
+      r: true
+      t: "`$STRING`"
+    }
+    pagination: {
+      h: "Pagination"
+      n: "pagination"
+      r: true
+      t: "`$OBJECT`"
+    }
+    pinned_agent: {
+      h: "Pinned Agent"
+      n: "pinned_agent"
+      r: true
+      t: "`$ANY`"
+    }
+    platform_event_types: {
+      h: "Platform Event Types"
+      n: "platform_event_types"
+      r: true
+      t: "`$ARRAY`"
+    }
+    repository_choices: {
+      de: true
+      h: "Repository Choices"
+      n: "repository_choices"
+      r: true
+      sh: "Empty compatibility field."
+      t: "`$ARRAY`"
+    }
+    repository_choices_truncated: {
+      de: true
+      h: "Repository Choices Truncated"
+      n: "repository_choices_truncated"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    runtime_versions: {
+      h: "Runtime Versions"
+      n: "runtime_versions"
+      r: false
+      sh: "Runtime choices authorized for this organization."
+      t: "`$ARRAY`"
+    }
+    selected_agent: {
+      h: "Selected Agent"
+      n: "selected_agent"
+      r: true
+      t: "`$ANY`"
+      union: {
+        branches: 5
+        count: 3
+        depth: 15
+      }
+    }
+    selected_reference: {
+      h: "Selected Reference"
+      n: "selected_reference"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    viewer_id: {
+      h: "Viewer Id"
+      n: "viewer_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  name: "page_agent"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "agent_ids"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/page/activity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/page/activity"
+          q: {
+            "$action": "activity"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              lit: "page"
+            }
+            {
+              lit: "activity"
+            }
+          ]
+          t: {
+            req: {
+              agent_ids: "`reqdata.agent_id`"
+            }
+            res: "`body.agents`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/page"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "agent"
+                or: "agent"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "agent_search"
+                or: "agent_search"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "agent_visibility"
+                or: "agent_visibility"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "integration_search"
+                or: "integration_search"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 30
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/page"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              lit: "page"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/page/roster"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "agent"
+                or: "agent"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "agent_search"
+                or: "agent_search"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "agent_visibility"
+                or: "agent_visibility"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/page/roster"
+          q: {
+            "$action": "roster"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              lit: "page"
+            }
+            {
+              lit: "roster"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "766359af-20a3-5ca5-b477-3b8d4c3d3818"
+description: |-
+  The `delivery_policy` action of **spark_agent_local_thread**, a route of its `load` operation.
+
+  SDK: `client.SparkAgentLocalThread().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "delivery_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/delivery_policy"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_local_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_local_thread belongs to.
+  - key: local_thread_id
+    value: "{{spark_agent_local_thread_id}}"
+    description: The spark_agent_local_thread this request addresses.
+order: 3000

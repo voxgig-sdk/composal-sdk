@@ -1,0 +1,27 @@
+# BasicClawderPullFlow
+
+main: kit: flow: BasicClawderPullFlow:
+{
+  entity: "clawder_pull",
+  kind: "basic",
+  name: "BasicClawderPullFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_pull_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderPullFlow"
+}

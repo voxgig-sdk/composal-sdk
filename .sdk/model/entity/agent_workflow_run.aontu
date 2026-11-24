@@ -1,0 +1,1022 @@
+# Entity: agent_workflow_run
+
+main: kit: entity: agent_workflow_run: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: true
+      t: "`$STRING`"
+    }
+    automation: {
+      h: "Automation"
+      n: "automation"
+      r: true
+      sh: "Saved native automation identity."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    budget_seconds: {
+      h: "Budget Seconds"
+      n: "budget_seconds"
+      r: true
+      sh: "The run stops once it has been running this long"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    budget_usd: {
+      h: "Budget Usd"
+      n: "budget_usd"
+      r: true
+      sh: "The run stops before a step once it has spent this much"
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    can_answer: {
+      h: "Can Answer"
+      n: "can_answer"
+      r: true
+      sh: "Whether this viewer can answer the step that stopped the run; the answer runs that step again"
+      t: "`$BOOLEAN`"
+    }
+    can_approve: {
+      h: "Can Approve"
+      n: "can_approve"
+      r: true
+      sh: "Whether this viewer can approve or decline the checkpoint the run waits at; only a person can approve one"
+      t: "`$BOOLEAN`"
+    }
+    can_dismiss: {
+      h: "Can Dismiss"
+      n: "can_dismiss"
+      r: true
+      sh: "Whether this viewer can dismiss the run waiting for them, which ends it unanswered"
+      t: "`$BOOLEAN`"
+    }
+    checkpoint: {
+      h: "Checkpoint"
+      n: "checkpoint"
+      r: true
+      sh: "The question a run waiting at a checkpoint is asking"
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    conversation_id: {
+      h: "Conversation Id"
+      n: "conversation_id"
+      r: true
+      sh: "The thread the run works in, which the person opens to follow it"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    decision_history: {
+      h: "Decision History"
+      n: "decision_history"
+      r: true
+      t: "`$OBJECT`"
+    }
+    error: {
+      h: "Error"
+      n: "error"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    finished_at: {
+      h: "Finished At"
+      n: "finished_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    flow_steps: {
+      h: "Flow Steps"
+      n: "flow_steps"
+      r: true
+      sh: "How the run went at each step of its workflow file, in the order it reached them; null when steps were recorded without their step of the file"
+      t: [
+        "`$ONE`"
+        [
+          "`$ARRAY`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Public run ID."
+      t: "`$STRING`"
+    }
+    needs_you: {
+      h: "Needs You"
+      n: "needs_you"
+      r: true
+      sh: "Whether a step stopped the run for the person, who can answer it"
+      t: "`$BOOLEAN`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: true
+      sh: "One sentence a workflow step left for the person, which the run's card leads with"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    nothing_to_do_reason: {
+      h: "Nothing To Do Reason"
+      n: "nothing_to_do_reason"
+      r: true
+      sh: "Why a run that succeeded did no work, as the step that found nothing to do said; null otherwise."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    resume_count: {
+      h: "Resume Count"
+      n: "resume_count"
+      r: true
+      sh: "How many times the run went on from a checkpoint; it tells one pause from the next, even at the same checkpoint"
+      t: "`$INTEGER`"
+    }
+    retry_step_id: {
+      h: "Retry Step Id"
+      n: "retry_step_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    running_seconds: {
+      h: "Running Seconds"
+      n: "running_seconds"
+      r: true
+      sh: "How long the run has been running, not counting time waiting at a checkpoint or for a retry"
+      t: "`$INTEGER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      t: "`$STRING`"
+    }
+    spent_tokens: {
+      h: "Spent Tokens"
+      n: "spent_tokens"
+      r: true
+      sh: "The tokens the run's agent steps have used so far"
+      t: "`$INTEGER`"
+    }
+    spent_usd: {
+      h: "Spent Usd"
+      n: "spent_usd"
+      r: true
+      sh: "What the run's agent steps have cost so far, as the agent reported it"
+      t: "`$NUMBER`"
+    }
+    stalled: {
+      h: "Stalled"
+      n: "stalled"
+      r: true
+      sh: "Whether a running run has had no sign of its worker for five minutes; it continues if the worker comes back"
+      t: "`$BOOLEAN`"
+    }
+    started_at: {
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: "`$STRING`"
+    }
+    started_by: {
+      h: "Started By"
+      n: "started_by"
+      r: true
+      sh: "The event that started the run"
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    step_count: {
+      h: "Step Count"
+      n: "step_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    steps: {
+      h: "Steps"
+      n: "steps"
+      r: true
+      t: "`$ARRAY`"
+    }
+    trigger_id: {
+      h: "Trigger Id"
+      n: "trigger_id"
+      r: true
+      sh: "The run settings that started it, for a run an event or schedule started"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    wake_at: {
+      h: "Wake At"
+      n: "wake_at"
+      r: true
+      sh: "When a sleeping run's step looks again"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    workflow_digest: {
+      h: "Workflow Digest"
+      n: "workflow_digest"
+      r: true
+      sh: "SHA-256 of the immutable definition this run uses"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    workflow_path: {
+      h: "Workflow Path"
+      n: "workflow_path"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "agent_workflow_run"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "answer"
+            "question_at"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/answer"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/answer"
+          q: {
+            "$action": "answer"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              run_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "answer"
+            }
+          ]
+          t: {
+            req: {
+              answer: "`reqdata.answer`"
+              question_at: "`reqdata.question_at`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "approved"
+            "checkpoint"
+            "resume_count"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/approve"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/approve"
+          q: {
+            "$action": "approve"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              run_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "approve"
+            }
+          ]
+          t: {
+            req: {
+              approved: "`reqdata.approved`"
+              checkpoint: "`reqdata.checkpoint`"
+              resume_count: "`reqdata.resume_count`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "question_at"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/dismiss"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/dismiss"
+          q: {
+            "$action": "dismiss"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              run_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "dismiss"
+            }
+          ]
+          t: {
+            req: {
+              question_at: "`reqdata.question_at`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/retry"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}/retry"
+          q: {
+            "$action": "retry"
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              run_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "retry"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "automation_key"
+                or: "automation_key"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "cursor"
+                or: "cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "view"
+                or: "view"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "workflow_path"
+                or: "workflow_path"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs"
+          q: {
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+            }
+            req: "`reqdata`"
+            res: "`body.items`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "id"
+                or: "run_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "decision_cursor"
+                or: "decision_cursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/{run_id}"
+          q: {
+            exist: [
+              "agent_id"
+              "id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+              run_id: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/summary"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "agent_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs/summary"
+          q: {
+            "$action": "summary"
+            exist: [
+              "agent_id"
+              "organization_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "agent_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "agents"
+            }
+            {
+              var: "agent_id"
+            }
+            {
+              lit: "spark"
+            }
+            {
+              lit: "workflow_runs"
+            }
+            {
+              lit: "summary"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.workflows`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.agent")]
+  ]
+
+}

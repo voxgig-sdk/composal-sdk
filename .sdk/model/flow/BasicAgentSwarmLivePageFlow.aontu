@@ -1,0 +1,26 @@
+# BasicAgentSwarmLivePageFlow
+
+main: kit: flow: BasicAgentSwarmLivePageFlow:
+{
+  entity: "agent_swarm_live_page",
+  kind: "basic",
+  name: "BasicAgentSwarmLivePageFlow",
+  step: [
+    {
+      m: {
+        swarm_id: "swarm01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_swarm_live_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSwarmLivePageFlow"
+}

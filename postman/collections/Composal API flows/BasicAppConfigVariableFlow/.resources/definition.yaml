@@ -1,0 +1,4 @@
+$kind: collection
+id: "0a2770c9-dc36-58e6-bbdc-bdb6a5c8234b"
+description: "The `BasicAppConfigVariableFlow` flow of **app_config_variable**."
+order: 42000

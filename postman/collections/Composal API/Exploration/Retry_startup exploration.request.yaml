@@ -1,0 +1,27 @@
+$kind: http-request
+id: c0e956b0-9008-5e7f-94b3-c9b11a54b2e9
+description: |-
+  The `retry_startup` action of **exploration**, a route of its `create` operation.
+
+  SDK: `client.Exploration().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "retry_startup" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/explorations/:id/retry_startup"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this exploration belongs to.
+  - key: id
+    value: "{{exploration_id}}"
+    description: The exploration this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 8000

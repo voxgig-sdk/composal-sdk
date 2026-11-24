@@ -1,0 +1,37 @@
+$kind: http-request
+id: "528f602a-74e9-5698-8ec3-f1abab8048c9"
+description: |-
+  The `scenario_edit` action of **run_scenario_run**, a route of its `update` operation.
+
+  SDK: `client.RunScenarioRun().update({ "organization_id": "organization_id", "project_id": "project_id", "run_id": "run_id", "id": "ID", $action: "scenario_edit" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/scenario_runs/:scenario_run_id/scenario_edit"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this run_scenario_run belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this run_scenario_run belongs to.
+  - key: id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: scenario_run_id
+    value: "{{run_scenario_run_id}}"
+    description: The run_scenario_run this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "steps": [
+        "example"
+      ],
+      "outcomes": [
+        "example"
+      ],
+      "version": 1
+    }
+order: 3000

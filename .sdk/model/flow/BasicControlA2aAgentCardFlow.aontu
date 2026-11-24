@@ -1,0 +1,22 @@
+# BasicControlA2aAgentCardFlow
+
+main: kit: flow: BasicControlA2aAgentCardFlow:
+{
+  entity: "control_a2a_agent_card",
+  kind: "basic",
+  name: "BasicControlA2aAgentCardFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "control_a2a_agent_card_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicControlA2aAgentCardFlow"
+}

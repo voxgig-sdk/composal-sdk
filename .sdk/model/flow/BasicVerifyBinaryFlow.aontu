@@ -1,0 +1,46 @@
+# BasicVerifyBinaryFlow
+
+main: kit: flow: BasicVerifyBinaryFlow:
+{
+  entity: "verify_binary",
+  kind: "basic",
+  name: "BasicVerifyBinaryFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_binary_ref01"
+      }
+
+      m: {
+        binary_id: "binary01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "verify_binary_ref01",
+        srcdatavar: "verify_binary_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "verify_binary01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_binary_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyBinaryFlow"
+}

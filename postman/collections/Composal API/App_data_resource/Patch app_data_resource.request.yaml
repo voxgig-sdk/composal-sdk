@@ -1,0 +1,22 @@
+$kind: http-request
+id: "2c47eb48-cb98-5a87-8d85-2b0963d9bed1"
+description: |-
+  The `patch` operation of **app_data_resource**.
+
+  SDK: `client.AppDataResource().patch({ app_id: "example", id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+  - key: id
+    value: "{{app_data_resource_id}}"
+    description: The app_data_resource this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

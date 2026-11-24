@@ -1,0 +1,25 @@
+$kind: http-request
+id: d6280b43-c20f-55cb-8fe5-7b4e67d3acc0
+description: |-
+  The `stop` action of **environment_discovery_run**, a route of its `create` operation.
+
+  SDK: `client.EnvironmentDiscoveryRun().create({ "organization_id": "organization_id", "environment_id": "environment_id", "id": "ID", $action: "stop" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:verify_environment_id/discovery_runs/:id/stop"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this environment_discovery_run belongs to.
+  - key: verify_environment_id
+    value: "{{environment_id}}"
+    description: The environment this environment_discovery_run belongs to.
+  - key: id
+    value: "{{environment_discovery_run_id}}"
+    description: The environment_discovery_run this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

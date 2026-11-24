@@ -1,0 +1,18 @@
+$kind: http-request
+id: e86f4a93-c619-5ddb-bdd1-16f11612a8ae
+description: |-
+  The `load` operation of **app_service_placement**.
+
+  SDK: `client.AppServicePlacement().load({ app_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/service_placements/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service_placement belongs to.
+  - key: id
+    value: "{{app_service_placement_id}}"
+    description: The app_service_placement this request addresses.
+order: 2000

@@ -1,0 +1,27 @@
+# BasicAgentSiteFlow
+
+main: kit: flow: BasicAgentSiteFlow:
+{
+  entity: "agent_site",
+  kind: "basic",
+  name: "BasicAgentSiteFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_site_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSiteFlow"
+}

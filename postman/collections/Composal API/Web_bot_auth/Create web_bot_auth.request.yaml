@@ -1,0 +1,28 @@
+$kind: http-request
+id: c22cdb89-4541-5801-b8cd-9c61d1b5629b
+description: |-
+  The `create` operation of **web_bot_auth**.
+
+  SDK: `client.WebBotAuth().create({ origin: "example" })`
+url: "{{base}}/api/v1/verify/web_bot_auth"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "origin": "https://example.com"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("web_bot_auth_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

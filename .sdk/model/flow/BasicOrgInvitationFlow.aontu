@@ -1,0 +1,44 @@
+# BasicOrgInvitationFlow
+
+main: kit: flow: BasicOrgInvitationFlow:
+{
+  entity: "org_invitation",
+  kind: "basic",
+  name: "BasicOrgInvitationFlow",
+  step: [
+    {
+      i: {
+        ref: "org_invitation_ref01"
+      }
+
+      m: {
+        token: "token01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "org_invitation_ref01",
+        srcdatavar: "org_invitation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "org_invitation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-org_invitation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrgInvitationFlow"
+}

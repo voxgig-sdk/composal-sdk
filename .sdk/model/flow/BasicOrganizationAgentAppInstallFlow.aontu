@@ -1,0 +1,33 @@
+# BasicOrganizationAgentAppInstallFlow
+
+main: kit: flow: BasicOrganizationAgentAppInstallFlow:
+{
+  entity: "organization_agent_app_install",
+  kind: "basic",
+  name: "BasicOrganizationAgentAppInstallFlow",
+  step: [
+    {
+      d: {
+        agent_app_id: "agent_app01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "organization_agent_app_install_ref01",
+        srcdatavar: "organization_agent_app_install_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_agent_app_install_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationAgentAppInstallFlow"
+}

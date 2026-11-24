@@ -1,0 +1,22 @@
+$kind: http-request
+id: "48aae8ba-0b18-558a-b805-f373e5147e16"
+description: |-
+  The `enable` action of **app_service_binding**, a route of its `create` operation.
+
+  SDK: `client.AppServiceBinding().create({ "app_id": "app_id", "id": "ID", $action: "enable" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/service_bindings/:id/enable"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service_binding belongs to.
+  - key: id
+    value: "{{app_service_binding_id}}"
+    description: The app_service_binding this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

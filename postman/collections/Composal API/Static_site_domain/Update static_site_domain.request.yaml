@@ -1,0 +1,22 @@
+$kind: http-request
+id: "9bdc3c0e-b9db-5a36-a0e9-17a472288057"
+description: |-
+  The `update` operation of **static_site_domain**.
+
+  SDK: `client.StaticSiteDomain().update({ id: "example", static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/domains/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_domain belongs to.
+  - key: id
+    value: "{{static_site_domain_id}}"
+    description: The static_site_domain this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

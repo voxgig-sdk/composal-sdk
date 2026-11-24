@@ -1,0 +1,9 @@
+$kind: collection
+id: c99b6449-f0b7-5dcc-bd57-30707d898303
+description: |-
+  The **service_endpoint** entity, which belongs to a app. Its requests address one record by `{{service_endpoint_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `id` | string |  |  |
+order: 197000

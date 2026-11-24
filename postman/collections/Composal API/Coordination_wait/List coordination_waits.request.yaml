@@ -1,0 +1,35 @@
+$kind: http-request
+id: "96237825-ca8e-5ba3-b109-935479b4307c"
+description: |-
+  The `list` operation of **coordination_wait**.
+
+  SDK: `client.CoordinationWait().list({ agent_id: "example", coordination_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/coordination/:task_id/waits"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this coordination_wait belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this coordination_wait belongs to.
+  - key: task_id
+    value: "{{coordination_id}}"
+    description: "Input: coordination_id."
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["items"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("coordination_wait_id")) pm.collectionVariables.set("coordination_wait_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

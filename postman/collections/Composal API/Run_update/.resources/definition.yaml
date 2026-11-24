@@ -1,0 +1,35 @@
+$kind: collection
+id: "25c7e915-897f-580a-9b48-86ffae3f67da"
+description: |-
+  The **run_update** entity, which belongs to a organization. Its requests address one record by `{{run_update_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `base_sha` | string | yes |  |
+  | `can_verify` | boolean | yes |  |
+  | `comment_url` | string | yes |  |
+  | `draft` | boolean | yes |  |
+  | `github_repository` | string | yes |  |
+  | `github_url` | string | yes |  |
+  | `head_sha` | string | yes |  |
+  | `id` | string | yes |  |
+  | `latest_created_at` | string | yes |  |
+  | `latest_current` | boolean | yes |  |
+  | `latest_head_sha` | string | yes |  |
+  | `latest_reason` | string | yes |  |
+  | `latest_run_id` | string | yes |  |
+  | `latest_state` | string | yes |  |
+  | `number` | integer | yes |  |
+  | `project_id` | string | yes |  |
+  | `project_slug` | string | yes |  |
+  | `provider` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `request_label` | string | yes |  |
+  | `source_branch` | string | yes |  |
+  | `source_repository` | string | yes |  |
+  | `source_url` | string | yes |  |
+  | `state` | string | yes |  |
+  | `title` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `web_path` | string | yes |  |
+order: 193000

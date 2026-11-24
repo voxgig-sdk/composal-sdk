@@ -1,0 +1,28 @@
+$kind: http-request
+id: "5d6abc51-5599-55b5-9055-6f7b1f9ee0e1"
+description: |-
+  The `archive` action of **agent_thread**, a route of its `create` operation.
+
+  SDK: `client.AgentThread().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/threads/:thread_id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_thread belongs to.
+  - key: thread_id
+    value: "{{agent_thread_id}}"
+    description: The agent_thread this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "archived": true
+    }
+order: 3000

@@ -1,0 +1,189 @@
+# Entity: scenario_revision
+
+main: kit: entity: scenario_revision: {
+
+  alias: field: {}
+
+  fields: {
+    action: {
+      h: "Action"
+      n: "action"
+      r: true
+      t: "`$STRING`"
+    }
+    batch: {
+      h: "Batch"
+      n: "batch"
+      r: true
+      sh: "Shared by every revision one request or job saved."
+      t: "`$STRING`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    definition: {
+      h: "Definition"
+      n: "definition"
+      r: true
+      sh: "One narrative v1 or named-actor v2 Scenario file; its $schema identifies the full contract."
+      t: "`$OBJECT`"
+      union: {
+        branches: 2
+        count: 3
+        depth: 5
+      }
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      sh: "The client the save came through."
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: true
+      sh: "Null when a system job saved the Scenario."
+      t: "`$ANY`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: true
+      sh: "The Scenario's lock_version after this save."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "scenario_revision"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "scenario_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "page"
+                or: "page"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions"
+          q: {
+            exist: [
+              "organization_id"
+              "project_id"
+              "scenario_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "scenario_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "scenarios"
+            }
+            {
+              var: "scenario_id"
+            }
+            {
+              lit: "revisions"
+            }
+          ]
+          t: {
+            page: {
+              next: "`body.pagination.next`"
+              total: "`body.pagination.count`"
+            }
+            req: "`reqdata`"
+            res: "`body.revisions`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

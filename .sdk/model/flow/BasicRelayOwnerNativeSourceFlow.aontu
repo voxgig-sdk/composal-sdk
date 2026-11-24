@@ -1,0 +1,27 @@
+# BasicRelayOwnerNativeSourceFlow
+
+main: kit: flow: BasicRelayOwnerNativeSourceFlow:
+{
+  entity: "relay_owner_native_source",
+  kind: "basic",
+  name: "BasicRelayOwnerNativeSourceFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "relay_owner_native_source_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayOwnerNativeSourceFlow"
+}

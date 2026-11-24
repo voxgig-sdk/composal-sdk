@@ -1,0 +1,24 @@
+# BasicAgentCoordinationFlow
+
+main: kit: flow: BasicAgentCoordinationFlow:
+{
+  entity: "agent_coordination",
+  kind: "basic",
+  name: "BasicAgentCoordinationFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_coordination_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        task_id: "task01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentCoordinationFlow"
+}

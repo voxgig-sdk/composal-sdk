@@ -1,0 +1,19 @@
+$kind: http-request
+id: "3c75324b-07a1-5cc2-8a15-b4471c0abccb"
+description: |-
+  The `provision` action of **cdn_space**, a route of its `create` operation.
+
+  SDK: `client.CdnSpace().create({ "id": "ID", $action: "provision" })`
+url: "{{base}}/api/v1/cdn_spaces/:id/provision"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{cdn_space_id}}"
+    description: The cdn_space this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 7000

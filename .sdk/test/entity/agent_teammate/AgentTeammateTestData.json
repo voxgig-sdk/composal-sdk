@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "agent_teammate": {
+      "AGENT_TEAMMATE00": {
+        "avatar": "s32",
+        "id": "AGENT_TEAMMATE00",
+        "name": "s34",
+        "persona": "s35",
+        "slug": "s36",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_TEAMMATE01": {
+        "avatar": "s64",
+        "id": "AGENT_TEAMMATE01",
+        "name": "s66",
+        "persona": "s67",
+        "slug": "s68",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_TEAMMATE02": {
+        "avatar": "s96",
+        "id": "AGENT_TEAMMATE02",
+        "name": "s98",
+        "persona": "s99",
+        "slug": "s9a",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_teammate": {
+      "agent_teammate_ref01": {
+        "avatar": "sc8",
+        "name": "sca",
+        "persona": "scb",
+        "slug": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/teammates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

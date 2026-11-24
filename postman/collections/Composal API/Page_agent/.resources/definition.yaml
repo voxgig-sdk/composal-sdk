@@ -1,0 +1,27 @@
+$kind: collection
+id: f1f95ddd-c55d-58fc-a77b-fcb0ba92ead0
+description: |-
+  The **page_agent** entity, which belongs to a organization. Its requests address one record by `{{page_agent_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `agents` | array | yes |  |
+  | `can_edit_integration_connections` | boolean | yes |  |
+  | `creation_enabled` | boolean | yes |  |
+  | `inbox` | any |  |  |
+  | `integration_choices` | array | yes |  |
+  | `integration_choices_truncated` | boolean | yes |  |
+  | `integration_selected` | array | yes |  |
+  | `model_choices` | array |  |  |
+  | `new_configuration` | any | yes |  |
+  | `organization_id` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `pinned_agent` | any | yes |  |
+  | `platform_event_types` | array | yes |  |
+  | `repository_choices` | array | yes |  |
+  | `repository_choices_truncated` | boolean | yes |  |
+  | `runtime_versions` | array |  |  |
+  | `selected_agent` | any | yes |  |
+  | `selected_reference` | string | yes |  |
+  | `viewer_id` | string | yes |  |
+order: 147000

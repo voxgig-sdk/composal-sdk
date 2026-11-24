@@ -1,0 +1,28 @@
+# BasicAgentIntegrationCallbackFlow
+
+main: kit: flow: BasicAgentIntegrationCallbackFlow:
+{
+  entity: "agent_integration_callback",
+  kind: "basic",
+  name: "BasicAgentIntegrationCallbackFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_integration_callback_ref01",
+        srcdatavar: "agent_integration_callback_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_integration_callback_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentIntegrationCallbackFlow"
+}

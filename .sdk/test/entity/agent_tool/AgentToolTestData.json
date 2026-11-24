@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "agent_tool": {
+      "AGENT_TOOL00": {
+        "description": "s1e",
+        "inputSchema": {},
+        "name": "s20",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_TOOL01": {
+        "description": "s3c",
+        "inputSchema": {},
+        "name": "s3e",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_TOOL02": {
+        "description": "s5a",
+        "inputSchema": {},
+        "name": "s5c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_tool": {
+      "agent_tool_ref01": {
+        "description": "s78",
+        "inputSchema": {},
+        "name": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

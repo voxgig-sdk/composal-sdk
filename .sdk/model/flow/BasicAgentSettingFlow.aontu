@@ -1,0 +1,50 @@
+# BasicAgentSettingFlow
+
+main: kit: flow: BasicAgentSettingFlow:
+{
+  entity: "agent_setting",
+  kind: "basic",
+  name: "BasicAgentSettingFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "agent_setting_ref01",
+        srcdatavar: "agent_setting_ref01_data",
+        suffix: "_up0",
+        textfield: "expected_version"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_setting_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentSettingFlow"
+}

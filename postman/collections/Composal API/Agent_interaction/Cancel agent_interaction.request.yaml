@@ -1,0 +1,30 @@
+$kind: http-request
+id: "205e76db-0461-55b9-bf91-e881696c35f2"
+description: |-
+  The `cancel` action of **agent_interaction**, a route of its `create` operation.
+
+  SDK: `client.AgentInteraction().create({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "cancel" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/interactions/:request_id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_interaction belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_interaction belongs to.
+  - key: request_id
+    value: "{{agent_interaction_id}}"
+    description: The agent_interaction this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example",
+      "expected_revision": 1
+    }
+order: 3000

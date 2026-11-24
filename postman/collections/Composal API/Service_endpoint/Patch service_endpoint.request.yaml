@@ -1,0 +1,25 @@
+$kind: http-request
+id: bade1e6e-56bf-5819-b745-84370691b528
+description: |-
+  The `patch` operation of **service_endpoint**.
+
+  SDK: `client.ServiceEndpoint().patch({ app_id: "example", id: "example", service_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services/:service_id/endpoints/:id"
+method: PATCH
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this service_endpoint belongs to.
+  - key: service_id
+    value: "{{service_id}}"
+    description: "Input: service_id."
+  - key: id
+    value: "{{service_endpoint_id}}"
+    description: The service_endpoint this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 5000

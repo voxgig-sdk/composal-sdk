@@ -1,0 +1,27 @@
+# BasicRelayOperatorToolFlow
+
+main: kit: flow: BasicRelayOperatorToolFlow:
+{
+  entity: "relay_operator_tool",
+  kind: "basic",
+  name: "BasicRelayOperatorToolFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "relay_operator_tool_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRelayOperatorToolFlow"
+}

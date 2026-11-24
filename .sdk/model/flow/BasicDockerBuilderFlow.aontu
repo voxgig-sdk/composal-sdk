@@ -1,0 +1,84 @@
+# BasicDockerBuilderFlow
+
+main: kit: flow: BasicDockerBuilderFlow:
+{
+  entity: "docker_builder",
+  kind: "basic",
+  name: "BasicDockerBuilderFlow",
+  step: [
+    {
+      i: {
+        ref: "docker_builder_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "docker_builder_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "docker_builder_ref01",
+        srcdatavar: "docker_builder_ref01_data",
+        suffix: "_up0",
+        textfield: "backend"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-docker_builder_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "docker_builder_ref01",
+        srcdatavar: "docker_builder_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "docker_builder01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-docker_builder_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDockerBuilderFlow"
+}

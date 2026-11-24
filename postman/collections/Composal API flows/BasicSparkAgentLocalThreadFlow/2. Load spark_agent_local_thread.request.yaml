@@ -1,0 +1,59 @@
+$kind: http-request
+id: f999a8ba-edfd-5815-8f34-dbee7e1bb0aa
+description: |-
+  The `load` operation of **spark_agent_local_thread**.
+
+  SDK: `client.SparkAgentLocalThread().load({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_local_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_local_thread belongs to.
+  - key: local_thread_id
+    value: "{{spark_agent_local_thread_ref01}}"
+    description: The spark_agent_local_thread this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","agent_id","spark_agent_local_thread_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Load spark_agent_local_thread: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-spark_agent_local_thread_ref01" === pm.variables.get("spark_agent_local_thread_ref01_marked")) pm.test("2. Load spark_agent_local_thread: the update reads back", () => {
+        pm.expect(JSON.stringify(body?.["thread"])).to.include("Mark01-spark_agent_local_thread_ref01")
+      })
+      pm.test("2. Load spark_agent_local_thread: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["thread"], "id"))).to.eql(String(pm.variables.get("spark_agent_local_thread_ref01")))
+      })
+    language: text/javascript
+order: 2000

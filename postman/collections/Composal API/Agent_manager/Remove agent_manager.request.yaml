@@ -1,0 +1,28 @@
+$kind: http-request
+id: d8c5abd0-0519-5775-ad9f-2fab29993919
+description: |-
+  The `remove` operation of **agent_manager**.
+
+  SDK: `client.AgentManager().remove({ agent_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/managers/:user_id"
+method: DELETE
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_manager belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_manager belongs to.
+  - key: user_id
+    value: "{{agent_manager_id}}"
+    description: The agent_manager this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("agent_manager_id")
+      }
+    language: text/javascript
+order: 2000

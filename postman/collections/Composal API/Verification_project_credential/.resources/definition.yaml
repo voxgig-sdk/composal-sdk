@@ -1,0 +1,41 @@
+$kind: collection
+id: "46109a81-21f2-5826-b494-f028d061346f"
+description: |-
+  The **verification_project_credential** entity, which belongs to a organization and a project. Its requests address one record by `{{verification_project_credential_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_authentication` | object |  |  |
+  | `browser_session` | string |  |  |
+  | `composal_address` | string | yes |  |
+  | `composal_inbox` | boolean |  |  |
+  | `composal_inbox_user` | string |  |  |
+  | `composal_managed_google` | boolean |  |  |
+  | `configured` | boolean | yes |  |
+  | `cookies` | string |  |  |
+  | `credential_keys` | object | yes |  |
+  | `description` | string | yes |  |
+  | `email_link_auth_origins` | array | yes |  |
+  | `has_inbox` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `identity_provider` | object | yes |  |
+  | `instructions` | string | yes |  |
+  | `login_method` | string | yes |  |
+  | `login_url` | string | yes |  |
+  | `managed` | boolean | yes |  |
+  | `mfa_enabled` | boolean | yes |  |
+  | `name` | string | yes |  |
+  | `oidc` | object |  |  |
+  | `passkey` | string |  |  |
+  | `password` | string |  |  |
+  | `project_id` | string | yes |  |
+  | `provider_guidance` | string | yes |  |
+  | `remove_browser_authentication` | boolean |  |  |
+  | `remove_totp` | boolean |  |  |
+  | `sign_in_verified` | boolean | yes |  |
+  | `sign_in_verified_at` | string | yes |  |
+  | `status` | string | yes |  |
+  | `totp_secret` | string |  |  |
+  | `updated_at` | string | yes |  |
+  | `username` | string | yes |  |
+order: 205000

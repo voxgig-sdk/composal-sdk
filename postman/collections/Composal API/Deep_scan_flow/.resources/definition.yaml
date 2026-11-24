@@ -1,0 +1,17 @@
+$kind: collection
+id: "890fb8f7-ccf2-5f6d-a009-a3e83cae170a"
+description: |-
+  The **deep_scan_flow** entity, which belongs to a organization. Its requests address one record by `{{deep_scan_flow_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string |  |  |
+  | `concurrency` | integer |  |  |
+  | `environment_id` | string |  |  |
+  | `exploration_id` | string |  |  |
+  | `flow_names` | array | yes |  |
+  | `idempotency_key` | string |  |  |
+  | `max_seconds` | integer |  |  |
+  | `max_testers` | integer |  |  |
+  | `note` | string |  |  |
+order: 99000

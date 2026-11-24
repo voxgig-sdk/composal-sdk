@@ -1,0 +1,19 @@
+$kind: collection
+id: ef1af5a9-2acb-59d4-8fe2-ed5f83a5b298
+description: |-
+  The **pull_request_setting_detect_comment** entity, which belongs to a organization. Its requests address one record by `{{pull_request_setting_detect_comment_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `bots` | array |  |  |
+  | `deployment` | string |  |  |
+  | `example_url` | string |  |  |
+  | `imessage_comment_prefix` | string |  |  |
+  | `imessage_number` | string |  |  |
+  | `kind` | string | yes |  |
+  | `link_pattern` | string |  |  |
+  | `project_id` | string | yes |  |
+  | `provider` | string |  |  |
+  | `repository_id` | string |  |  |
+  | `request_number` | integer |  |  |
+order: 183000

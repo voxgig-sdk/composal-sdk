@@ -1,0 +1,89 @@
+{
+  "existing": {
+    "image_repository": {
+      "IMAGE_REPOSITORY00": {
+        "auth_configured": true,
+        "created_at": "s97",
+        "created_at_label": "s98",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "IMAGE_REPOSITORY00",
+        "name": "s9b",
+        "organization_id": "ORGANIZATION01",
+        "provider_kind": "s9d",
+        "registry_auth_token": "s9e",
+        "repository_path": "s9f",
+        "slug": "sa0",
+        "status": "sa1",
+        "updated_at": "sa2",
+        "updated_at_label": "sa3",
+        "visibility": "sa4"
+      },
+      "IMAGE_REPOSITORY01": {
+        "auth_configured": true,
+        "created_at": "s12d",
+        "created_at_label": "s12e",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "IMAGE_REPOSITORY01",
+        "name": "s131",
+        "organization_id": "ORGANIZATION01",
+        "provider_kind": "s133",
+        "registry_auth_token": "s134",
+        "repository_path": "s135",
+        "slug": "s136",
+        "status": "s137",
+        "updated_at": "s138",
+        "updated_at_label": "s139",
+        "visibility": "s13a"
+      },
+      "IMAGE_REPOSITORY02": {
+        "auth_configured": true,
+        "created_at": "s1c3",
+        "created_at_label": "s1c4",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "IMAGE_REPOSITORY02",
+        "name": "s1c7",
+        "organization_id": "ORGANIZATION01",
+        "provider_kind": "s1c9",
+        "registry_auth_token": "s1ca",
+        "repository_path": "s1cb",
+        "slug": "s1cc",
+        "status": "s1cd",
+        "updated_at": "s1ce",
+        "updated_at_label": "s1cf",
+        "visibility": "s1d0"
+      }
+    }
+  },
+  "new": {
+    "image_repository": {
+      "image_repository_ref01": {
+        "auth_configured": true,
+        "created_at": "s259",
+        "created_at_label": "s25a",
+        "hosted_app_id": "HOSTED_APP01",
+        "name": "s25d",
+        "organization_id": "ORGANIZATION01",
+        "provider_kind": "s25f",
+        "registry_auth_token": "s260",
+        "repository_path": "s261",
+        "slug": "s262",
+        "status": "s263",
+        "updated_at": "s264",
+        "updated_at_label": "s265",
+        "visibility": "s266"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{org_slug}/image_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/image_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

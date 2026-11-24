@@ -1,0 +1,25 @@
+$kind: collection
+id: "0c1989aa-1b37-58d6-be86-6258c13c94e7"
+description: |-
+  An app hosted by Composal: list, create, read, change, activate, archive or delete one.
+
+  The **app** entity. Its requests address one record by `{{app_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `created_at` | string | yes |  |
+  | `created_at_label` | string | yes |  |
+  | `description` | string | yes |  |
+  | `framework` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `repository_id` | string | yes |  |
+  | `repository_kind` | string | yes |  |
+  | `root_path` | string | yes |  |
+  | `root_path_display` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `updated_at_label` | string | yes |  |
+order: 52000

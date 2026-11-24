@@ -1,0 +1,27 @@
+# BasicDeviceControlMessageFlow
+
+main: kit: flow: BasicDeviceControlMessageFlow:
+{
+  entity: "device_control_message",
+  kind: "basic",
+  name: "BasicDeviceControlMessageFlow",
+  step: [
+    {
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "device_control_message_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceControlMessageFlow"
+}

@@ -1,0 +1,167 @@
+# Entity: demo_share
+
+main: kit: entity: demo_share: {
+
+  alias: field: {}
+
+  fields: {
+    head_sha: {
+      h: "Head Sha"
+      n: "head_sha"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    recording: {
+      h: "Recording"
+      n: "recording"
+      r: true
+      t: "`$OBJECT`"
+    }
+    summary: {
+      h: "Summary"
+      n: "summary"
+      r: true
+      sh: "What the recorded browser confirmed."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "demo_share"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/verify/demo_shares/{token}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "token"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/verify/demo_shares/{token}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              token: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "demo_shares"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/verify/demo_shares/{token}/thumbnail"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "token"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/verify/demo_shares/{token}/thumbnail"
+          q: {
+            "$action": "thumbnail"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              token: "id"
+            }
+          }
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "image/png"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "demo_shares"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "thumbnail"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

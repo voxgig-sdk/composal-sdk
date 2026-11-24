@@ -1,0 +1,348 @@
+# Entity: app_deployment_rollback
+
+main: kit: entity: app_deployment_rollback: {
+
+  alias: field: {}
+
+  fields: {
+    app_environment_id: {
+      h: "App Environment Id"
+      n: "app_environment_id"
+      r: false
+      t: "`$STRING`"
+    }
+    app_id: {
+      h: "App Id"
+      n: "app_id"
+      r: true
+      t: "`$STRING`"
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: false
+      t: "`$STRING`"
+    }
+    blockers: {
+      h: "Blockers"
+      n: "blockers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    candidate_releases: {
+      h: "Candidate Releases"
+      n: "candidate_releases"
+      r: true
+      t: "`$ARRAY`"
+    }
+    confirmation_text: {
+      h: "Confirmation Text"
+      n: "confirmation_text"
+      r: true
+      t: "`$STRING`"
+    }
+    current_deployment: {
+      h: "Current Deployment"
+      n: "current_deployment"
+      r: true
+      t: "`$ANY`"
+    }
+    current_release: {
+      h: "Current Release"
+      n: "current_release"
+      r: true
+      t: "`$ANY`"
+    }
+    deployment: {
+      h: "Deployment"
+      n: "deployment"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$ANY`"
+    }
+    desired_state: {
+      h: "Desired State"
+      n: "desired_state"
+      r: true
+      t: "`$ANY`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$ANY`"
+    }
+    execution_allowed: {
+      h: "Execution Allowed"
+      n: "execution_allowed"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    force: {
+      h: "Force"
+      n: "force"
+      op: {
+        create: {
+          req: false
+          type: "`$BOOLEAN`"
+        }
+      }
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: false
+      t: "`$STRING`"
+    }
+    idempotent_reuse: {
+      h: "Idempotent Reuse"
+      n: "idempotent_reuse"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    location: {
+      h: "Location"
+      n: "location"
+      r: true
+      t: "`$ANY`"
+    }
+    operation: {
+      h: "Operation"
+      n: "operation"
+      r: true
+      t: "`$ANY`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    rollback_release: {
+      h: "Rollback Release"
+      n: "rollback_release"
+      r: true
+      t: "`$ANY`"
+    }
+    rollout: {
+      h: "Rollout"
+      n: "rollout"
+      r: true
+      t: "`$ANY`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: "`$ANY`"
+    }
+    target_artifact_locator: {
+      h: "Target Artifact Locator"
+      n: "target_artifact_locator"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    target_release: {
+      h: "Target Release"
+      n: "target_release"
+      r: true
+      t: "`$ANY`"
+    }
+    to: {
+      h: "To"
+      n: "to"
+      r: false
+      t: "`$STRING`"
+    }
+    warnings: {
+      h: "Warnings"
+      n: "warnings"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "app_deployment_rollback"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "app_environment_id"
+            "app_service_id"
+            "deployment"
+            "environment"
+            "force"
+            "idempotency_key"
+            "reason"
+            "service"
+            "to"
+          ]
+          co: {
+            id: "POST /api/v1/hosting/apps/{app_id}/deployment_rollbacks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/hosting/apps/{app_id}/deployment_rollbacks"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployment_rollbacks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "app_environment_id"
+            "app_service_id"
+            "deployment"
+            "environment"
+            "force"
+            "idempotency_key"
+            "reason"
+            "service"
+            "to"
+          ]
+          co: {
+            id: "POST /api/v1/hosting/apps/{app_id}/deployment_rollbacks/plan"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/hosting/apps/{app_id}/deployment_rollbacks/plan"
+          q: {
+            "$action": "plan"
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "deployment_rollbacks"
+            }
+            {
+              lit: "plan"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

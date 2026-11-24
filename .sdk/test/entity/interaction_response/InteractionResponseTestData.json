@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "interaction_response": {
+      "INTERACTION_RESPONSE00": {
+        "answer": {},
+        "conversation_id": "CONVERSATION01",
+        "expected_revision": 32,
+        "agent_id": "AGENT01",
+        "interaction_id": "INTERACTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INTERACTION_RESPONSE00"
+      },
+      "INTERACTION_RESPONSE01": {
+        "answer": {},
+        "conversation_id": "CONVERSATION01",
+        "expected_revision": 62,
+        "agent_id": "AGENT01",
+        "interaction_id": "INTERACTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INTERACTION_RESPONSE01"
+      },
+      "INTERACTION_RESPONSE02": {
+        "answer": {},
+        "conversation_id": "CONVERSATION01",
+        "expected_revision": 92,
+        "agent_id": "AGENT01",
+        "interaction_id": "INTERACTION01",
+        "organization_id": "ORGANIZATION01",
+        "id": "INTERACTION_RESPONSE02"
+      }
+    }
+  },
+  "new": {
+    "interaction_response": {
+      "interaction_response_ref01": {
+        "answer": {},
+        "conversation_id": "CONVERSATION01",
+        "expected_revision": 122
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/responses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

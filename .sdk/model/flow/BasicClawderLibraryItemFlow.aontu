@@ -1,0 +1,27 @@
+# BasicClawderLibraryItemFlow
+
+main: kit: flow: BasicClawderLibraryItemFlow:
+{
+  entity: "clawder_library_item",
+  kind: "basic",
+  name: "BasicClawderLibraryItemFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_library_item_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderLibraryItemFlow"
+}

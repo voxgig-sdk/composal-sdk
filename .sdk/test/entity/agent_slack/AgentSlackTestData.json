@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "agent_slack": {
+      "AGENT_SLACK00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SLACK00"
+      },
+      "AGENT_SLACK01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SLACK01"
+      },
+      "AGENT_SLACK02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SLACK02"
+      }
+    }
+  },
+  "new": {
+    "agent_slack": {
+      "agent_slack_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack/app": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack/as_you": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

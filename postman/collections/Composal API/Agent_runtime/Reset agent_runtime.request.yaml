@@ -1,0 +1,26 @@
+$kind: http-request
+id: "2ded3be6-bdf4-57f3-aa1f-9ee34ca76ef0"
+description: |-
+  The `reset` action of **agent_runtime**, a route of its `create` operation.
+
+  SDK: `client.AgentRuntime().create({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "reset" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/runtime/reset"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_runtime belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_runtime belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": "example",
+      "acknowledge_data_loss": true
+    }
+order: 1000

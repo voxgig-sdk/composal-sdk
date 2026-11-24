@@ -1,0 +1,23 @@
+# BasicVerifyFixtureFlow
+
+main: kit: flow: BasicVerifyFixtureFlow:
+{
+  entity: "verify_fixture",
+  kind: "basic",
+  name: "BasicVerifyFixtureFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_fixture_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyFixtureFlow"
+}

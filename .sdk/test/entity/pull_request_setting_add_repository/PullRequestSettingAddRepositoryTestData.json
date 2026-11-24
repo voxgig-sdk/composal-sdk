@@ -1,0 +1,43 @@
+{
+  "existing": {
+    "pull_request_setting_add_repository": {
+      "PULL_REQUEST_SETTING_ADD_REPOSITORY00": {
+        "project_id": "PROJECT01",
+        "replace": false,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_ADD_REPOSITORY00"
+      },
+      "PULL_REQUEST_SETTING_ADD_REPOSITORY01": {
+        "project_id": "PROJECT01",
+        "replace": false,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_ADD_REPOSITORY01"
+      },
+      "PULL_REQUEST_SETTING_ADD_REPOSITORY02": {
+        "project_id": "PROJECT01",
+        "replace": false,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "PULL_REQUEST_SETTING_ADD_REPOSITORY02"
+      }
+    }
+  },
+  "new": {
+    "pull_request_setting_add_repository": {
+      "pull_request_setting_add_repository_ref01": {
+        "project_id": "PROJECT01",
+        "replace": false,
+        "repositories": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

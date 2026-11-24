@@ -1,0 +1,26 @@
+# BasicBrowserEgressCandidateFlow
+
+main: kit: flow: BasicBrowserEgressCandidateFlow:
+{
+  entity: "browser_egress_candidate",
+  kind: "basic",
+  name: "BasicBrowserEgressCandidateFlow",
+  step: [
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "browser_egress_candidate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBrowserEgressCandidateFlow"
+}

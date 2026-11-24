@@ -1,0 +1,22 @@
+# BasicWebhookFlow
+
+main: kit: flow: BasicWebhookFlow:
+{
+  entity: "webhook",
+  kind: "basic",
+  name: "BasicWebhookFlow",
+  step: [
+    {
+      i: {
+        ref: "webhook_ref01"
+      }
+
+      m: {
+        connection_key: "connection_key01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWebhookFlow"
+}

@@ -1,0 +1,24 @@
+$kind: collection
+id: "947f43b4-d962-5e50-836e-66eb0a39f44d"
+description: |-
+  The **project_messaging_conversation** entity, which belongs to a organization and a project. Its requests address one record by `{{project_messaging_conversation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `assistant_number` | string | yes |  |
+  | `attachment_limit` | integer | yes |  |
+  | `attachment_max_bytes` | integer | yes |  |
+  | `environment_name` | string | yes |  |
+  | `id` | string | yes |  |
+  | `leased` | boolean | yes |  |
+  | `messages` | array | yes |  |
+  | `reconciled_at` | string | yes |  |
+  | `retirable` | boolean | yes |  |
+  | `seeded` | boolean | yes |  |
+  | `send_blocked_reason` | string | yes |  |
+  | `send_disposition` | string |  |  |
+  | `send_error` | string |  |  |
+  | `tester_number` | string | yes |  |
+  | `unknown_send` | boolean | yes |  |
+  | `verify_environment_id` | string | yes |  |
+order: 170000

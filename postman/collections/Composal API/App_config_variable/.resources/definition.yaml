@@ -1,0 +1,21 @@
+$kind: collection
+id: "54e6f721-16c5-5bbd-ae79-65b93222046d"
+description: |-
+  The **app_config_variable** entity, which belongs to a app. Its requests address one record by `{{app_config_variable_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `description` | string | yes |  |
+  | `exposed_to_build` | boolean | yes |  |
+  | `has_value` | boolean | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `key` | string | yes |  |
+  | `scope_kind` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `value` | string | yes |  |
+  | `value_kind` | string | yes |  |
+order: 55000

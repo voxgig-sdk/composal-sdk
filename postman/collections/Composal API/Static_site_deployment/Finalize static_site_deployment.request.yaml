@@ -1,0 +1,22 @@
+$kind: http-request
+id: "6d92b5a3-d961-5926-865c-7ba1be1a3b15"
+description: |-
+  The `finalize` action of **static_site_deployment**, a route of its `create` operation.
+
+  SDK: `client.StaticSiteDeployment().create({ "static_site_id": "static_site_id", "id": "ID", $action: "finalize" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/deployments/:id/finalize"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_deployment belongs to.
+  - key: id
+    value: "{{static_site_deployment_id}}"
+    description: The static_site_deployment this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

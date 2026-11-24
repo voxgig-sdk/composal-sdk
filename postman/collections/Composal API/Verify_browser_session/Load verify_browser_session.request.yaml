@@ -1,0 +1,18 @@
+$kind: http-request
+id: "2841bf5a-1041-5250-ac38-545612b984aa"
+description: |-
+  The `load` operation of **verify_browser_session**.
+
+  SDK: `client.VerifyBrowserSession().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/browser_sessions/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verify_browser_session belongs to.
+  - key: id
+    value: "{{verify_browser_session_id}}"
+    description: The verify_browser_session this request addresses.
+order: 1000

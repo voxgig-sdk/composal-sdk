@@ -1,0 +1,18 @@
+$kind: http-request
+id: "069b8398-6521-576c-8b1e-5b5683101892"
+description: |-
+  The `environment` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "environment" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/environment"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 14000

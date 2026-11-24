@@ -1,0 +1,40 @@
+# BasicAgentIntegrationFlow
+
+main: kit: flow: BasicAgentIntegrationFlow:
+{
+  entity: "agent_integration",
+  kind: "basic",
+  name: "BasicAgentIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_integration_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentIntegrationFlow"
+}

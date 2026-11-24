@@ -1,0 +1,12 @@
+$kind: collection
+id: "6752acdd-3f5d-54f0-8845-937cb5d9178c"
+description: |-
+  The **demo_share** entity. Its requests address one record by `{{demo_share_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `head_sha` | string | yes |  |
+  | `id` | string |  |  |
+  | `recording` | object | yes |  |
+  | `summary` | string | yes |  |
+order: 102000

@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "app_service_placement": {
+      "APP_SERVICE_PLACEMENT00": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s8e",
+        "deployment_channel": "s8f",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_SERVICE_PLACEMENT00",
+        "mode": "s92",
+        "organization_id": "ORGANIZATION01",
+        "region_count": 148,
+        "replicas_per_region": 149,
+        "rollout_strategy": "s96",
+        "targets": [],
+        "total_replicas": 152,
+        "updated_at": "s99",
+        "app_id": "APP01"
+      },
+      "APP_SERVICE_PLACEMENT01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s11a",
+        "deployment_channel": "s11b",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_SERVICE_PLACEMENT01",
+        "mode": "s11e",
+        "organization_id": "ORGANIZATION01",
+        "region_count": 288,
+        "replicas_per_region": 289,
+        "rollout_strategy": "s122",
+        "targets": [],
+        "total_replicas": 292,
+        "updated_at": "s125",
+        "app_id": "APP01"
+      },
+      "APP_SERVICE_PLACEMENT02": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s1a6",
+        "deployment_channel": "s1a7",
+        "hosted_app_id": "HOSTED_APP01",
+        "id": "APP_SERVICE_PLACEMENT02",
+        "mode": "s1aa",
+        "organization_id": "ORGANIZATION01",
+        "region_count": 428,
+        "replicas_per_region": 429,
+        "rollout_strategy": "s1ae",
+        "targets": [],
+        "total_replicas": 432,
+        "updated_at": "s1b1",
+        "app_id": "APP01"
+      }
+    }
+  },
+  "new": {
+    "app_service_placement": {
+      "app_service_placement_ref01": {
+        "app_environment_id": "APP_ENVIRONMENT01",
+        "app_service_id": "APP_SERVICE01",
+        "created_at": "s232",
+        "deployment_channel": "s233",
+        "hosted_app_id": "HOSTED_APP01",
+        "mode": "s236",
+        "organization_id": "ORGANIZATION01",
+        "region_count": 568,
+        "replicas_per_region": 569,
+        "rollout_strategy": "s23a",
+        "targets": [],
+        "total_replicas": 572,
+        "updated_at": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/hosting/apps/{app_id}/service_placements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/service_placements/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /api/v1/hosting/apps/{app_id}/service_placements/configure": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

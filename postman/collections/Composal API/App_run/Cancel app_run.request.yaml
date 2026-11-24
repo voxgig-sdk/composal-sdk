@@ -1,0 +1,19 @@
+$kind: http-request
+id: "64e67056-2ede-5872-a0a0-a9a4a22014a4"
+description: |-
+  The `cancel` action of **app_run**, a route of its `create` operation.
+
+  SDK: `client.AppRun().create({ "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/hosting/app_runs/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: id
+    value: "{{app_run_id}}"
+    description: The app_run this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 4000

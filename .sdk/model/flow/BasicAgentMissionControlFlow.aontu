@@ -1,0 +1,22 @@
+# BasicAgentMissionControlFlow
+
+main: kit: flow: BasicAgentMissionControlFlow:
+{
+  entity: "agent_mission_control",
+  kind: "basic",
+  name: "BasicAgentMissionControlFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_mission_control_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicAgentMissionControlFlow"
+}

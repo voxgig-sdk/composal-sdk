@@ -1,0 +1,24 @@
+$kind: collection
+id: "0eb5cae9-d9d7-554f-9673-242422f4754d"
+description: |-
+  The **product_map_state** entity, which belongs to a organization and a project. Its requests address one record by `{{product_map_state_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string | yes |  |
+  | `attempts` | array | yes |  |
+  | `captured_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `incoming` | array | yes |  |
+  | `labels` | object | yes |  |
+  | `layout` | object | yes |  |
+  | `observation_id` | string | yes |  |
+  | `omitted_controls` | integer | yes |  |
+  | `outgoing` | array | yes |  |
+  | `revision_id` | string | yes |  |
+  | `scope` | object | yes |  |
+  | `screenshot_url` | string | yes |  |
+  | `state` | object | yes |  |
+  | `truncated` | boolean | yes |  |
+  | `url` | string | yes |  |
+order: 163000

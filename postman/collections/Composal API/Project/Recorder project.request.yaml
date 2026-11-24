@@ -1,0 +1,18 @@
+$kind: http-request
+id: b9d7ca20-136f-536f-8c60-a41da9dd1983
+description: |-
+  The `recorder` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", $action: "recorder" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/recorder"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 19000

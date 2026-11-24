@@ -1,0 +1,30 @@
+$kind: http-request
+id: "62dbb4ab-8caf-5cc9-b202-c6fd64457990"
+description: |-
+  The `update` operation of **domain_path_rule**.
+
+  SDK: `client.DomainPathRule().update({ app_id: "example", domain_id: "example", id: "example", app_service_endpoint_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:domain_id/path_rules/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this domain_path_rule belongs to.
+  - key: domain_id
+    value: "{{domain_id}}"
+    description: "Input: domain_id."
+  - key: id
+    value: "{{domain_path_rule_id}}"
+    description: The domain_path_rule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "path_prefix": "example",
+      "app_service_id": "{{app_service_id}}",
+      "app_service_endpoint_id": "example"
+    }
+order: 4000

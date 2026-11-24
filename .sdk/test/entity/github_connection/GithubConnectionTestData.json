@@ -1,0 +1,60 @@
+{
+  "existing": {
+    "github_connection": {
+      "GITHUB_CONNECTION00": {
+        "accounts": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "installations": [],
+        "project_id": "PROJECT01",
+        "replace": true,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_CONNECTION00"
+      },
+      "GITHUB_CONNECTION01": {
+        "accounts": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "installations": [],
+        "project_id": "PROJECT01",
+        "replace": true,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_CONNECTION01"
+      },
+      "GITHUB_CONNECTION02": {
+        "accounts": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "installations": [],
+        "project_id": "PROJECT01",
+        "replace": true,
+        "repositories": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "GITHUB_CONNECTION02"
+      }
+    }
+  },
+  "new": {
+    "github_connection": {
+      "github_connection_ref01": {
+        "accounts": [],
+        "github_app_installation_id": "GITHUB_APP_INSTALLATION01",
+        "installations": [],
+        "project_id": "PROJECT01",
+        "replace": true,
+        "repositories": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verify/github_connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/github_connections": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+$kind: http-request
+id: "601e891d-ee8e-548e-b9dc-52bac07ba406"
+description: |-
+  The `cancel` action of **browser_session_task**, a route of its `create` operation.
+
+  SDK: `client.BrowserSessionTask().create({ "organization_id": "organization_id", "browser_session_id": "browser_session_id", "id": "ID", $action: "cancel" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/tasks/:id/cancel"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_task belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_task belongs to.
+  - key: id
+    value: "{{browser_session_task_id}}"
+    description: The browser_session_task this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

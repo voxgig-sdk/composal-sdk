@@ -1,0 +1,18 @@
+$kind: http-request
+id: "339d4c71-9b58-5eb2-b48a-c9e25f760d13"
+description: |-
+  The `load` operation of **demo_share_segment**.
+
+  SDK: `client.DemoShareSegment().load({ demo_share_id: "example", id: "example_id" })`
+url: "{{base}}/api/v1/verify/demo_shares/:token/segments/:segment_id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: token
+    value: "{{demo_share_id}}"
+    description: The demo_share this demo_share_segment belongs to.
+  - key: segment_id
+    value: "{{demo_share_segment_id}}"
+    description: The demo_share_segment this request addresses.
+order: 1000

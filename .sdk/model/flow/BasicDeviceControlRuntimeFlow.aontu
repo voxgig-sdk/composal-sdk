@@ -1,0 +1,23 @@
+# BasicDeviceControlRuntimeFlow
+
+main: kit: flow: BasicDeviceControlRuntimeFlow:
+{
+  entity: "device_control_runtime",
+  kind: "basic",
+  name: "BasicDeviceControlRuntimeFlow",
+  step: [
+    {
+      i: {
+        ref: "device_control_runtime_ref01"
+      }
+
+      m: {
+        device_id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeviceControlRuntimeFlow"
+}

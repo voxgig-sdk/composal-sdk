@@ -1,0 +1,29 @@
+$kind: http-request
+id: "3f1b0c30-bced-5fb9-8ad2-876291d4053d"
+description: |-
+  The `create` operation of **static_site_deployment**.
+
+  SDK: `client.StaticSiteDeployment().create({ static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/deployments"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_deployment belongs to.
+body:
+  type: json
+  content: "{}"
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("static_site_deployment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

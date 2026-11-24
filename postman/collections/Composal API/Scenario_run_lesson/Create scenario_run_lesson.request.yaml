@@ -1,0 +1,43 @@
+$kind: http-request
+id: "62a69fc3-66fb-5aaf-862b-77b23fd4af85"
+description: |-
+  The `create` operation of **scenario_run_lesson**.
+
+  SDK: `client.ScenarioRunLesson().create({ organization_id: "example", project_id: "example", run_id: "example", scenario_run_id: "example", finding: "example", workaround: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/runs/:id/scenario_runs/:scenario_run_id/lessons"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this scenario_run_lesson belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this scenario_run_lesson belongs to.
+  - key: id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: scenario_run_id
+    value: "{{scenario_run_id}}"
+    description: "Input: scenario_run_id."
+body:
+  type: json
+  content: |-
+    {
+      "title": "example",
+      "finding": "example",
+      "workaround": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("scenario_run_lesson_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

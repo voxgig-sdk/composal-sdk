@@ -1,0 +1,32 @@
+# BasicDemoShareFlow
+
+main: kit: flow: BasicDemoShareFlow:
+{
+  entity: "demo_share",
+  kind: "basic",
+  name: "BasicDemoShareFlow",
+  step: [
+    {
+      i: {
+        ref: "demo_share_ref01",
+        srcdatavar: "demo_share_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "demo_share01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-demo_share_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDemoShareFlow"
+}

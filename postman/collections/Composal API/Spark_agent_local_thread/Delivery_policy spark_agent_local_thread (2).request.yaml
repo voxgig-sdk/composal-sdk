@@ -1,0 +1,34 @@
+$kind: http-request
+id: "997bf61a-9f47-5de6-8c5f-6331f9ace4d8"
+description: |-
+  The `delivery_policy` action of **spark_agent_local_thread**, a route of its `update` operation.
+
+  SDK: `client.SparkAgentLocalThread().update({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "delivery_policy" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/local_threads/:local_thread_id/delivery_policy"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_local_thread belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_local_thread belongs to.
+  - key: local_thread_id
+    value: "{{spark_agent_local_thread_id}}"
+    description: The spark_agent_local_thread this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "expected_version": 1,
+      "restricted": true,
+      "ask_first": true,
+      "allowed_senders": [
+        "example"
+      ],
+      "reply_with_final_answer": true
+    }
+order: 4000

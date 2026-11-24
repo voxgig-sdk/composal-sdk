@@ -1,0 +1,34 @@
+$kind: collection
+id: "5780a863-0e15-5c97-adb5-d2a40c13bb35"
+description: |-
+  The **environment_revision** entity, which belongs to a organization and a environment. Its requests address one record by `{{environment_revision_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `allowed_origins` | array | yes |  |
+  | `app_environment_id` | string | yes |  |
+  | `app_release_id` | string | yes |  |
+  | `blueprint` | object | yes |  |
+  | `blueprint_json` | object | yes |  |
+  | `cleanup_state` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `digest` | string | yes |  |
+  | `dry_run` | boolean |  |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `ready_at` | string | yes |  |
+  | `resolved_manifest_json` | object | yes |  |
+  | `retention_policy_json` | object | yes |  |
+  | `revision` | integer | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `runner_environment_revision_id` | string | yes |  |
+  | `safety_policy_json` | object | yes |  |
+  | `schema_version` | integer | yes |  |
+  | `source_metadata` | object |  |  |
+  | `source_metadata_json` | object | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `validation_json` | object | yes |  |
+  | `verify_environment_id` | string | yes |  |
+order: 113000

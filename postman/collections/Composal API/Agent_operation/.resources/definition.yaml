@@ -1,0 +1,16 @@
+$kind: collection
+id: "293e3530-32e5-510c-80b3-4e53e0cd3d28"
+description: |-
+  The **agent_operation** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_operation_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `arguments` | object | yes |  |
+  | `id` | string |  |  |
+  | `key` | string | yes |  |
+  | `name` | string | yes |  |
+  | `operation` | object | yes |  |
+  | `participant` | string | yes |  |
+  | `requester_id` | string | yes |  |
+  | `scope_key` | string | yes |  |
+order: 22000

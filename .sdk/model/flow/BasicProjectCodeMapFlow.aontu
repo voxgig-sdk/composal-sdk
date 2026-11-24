@@ -1,0 +1,40 @@
+# BasicProjectCodeMapFlow
+
+main: kit: flow: BasicProjectCodeMapFlow:
+{
+  entity: "project_code_map",
+  kind: "basic",
+  name: "BasicProjectCodeMapFlow",
+  step: [
+    {
+      i: {
+        ref: "project_code_map_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "project_code_map_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProjectCodeMapFlow"
+}

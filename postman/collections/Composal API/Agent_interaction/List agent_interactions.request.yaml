@@ -1,0 +1,34 @@
+$kind: http-request
+id: "80bca517-f4a0-57e9-8311-7525abd94a59"
+description: |-
+  The `list` operation of **agent_interaction**.
+
+  SDK: `client.AgentInteraction().list({ agent_id: "example", organization_id: "example", conversation_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/interactions?conversation_id={{conversation_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: "{{conversation_id}}"
+  - key: "ids[]"
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_interaction belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_interaction belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["interactions"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("agent_interaction_id")) pm.collectionVariables.set("agent_interaction_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

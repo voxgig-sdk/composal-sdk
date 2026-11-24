@@ -1,0 +1,23 @@
+# BasicRunSchedulePreviewFlow
+
+main: kit: flow: BasicRunSchedulePreviewFlow:
+{
+  entity: "run_schedule_preview",
+  kind: "basic",
+  name: "BasicRunSchedulePreviewFlow",
+  step: [
+    {
+      i: {
+        ref: "run_schedule_preview_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicRunSchedulePreviewFlow"
+}

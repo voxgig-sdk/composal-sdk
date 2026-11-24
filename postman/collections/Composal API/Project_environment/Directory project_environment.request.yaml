@@ -1,0 +1,31 @@
+$kind: http-request
+id: b2894809-1da9-5f7d-af6f-19e2ebc7f63b
+description: |-
+  The `directory` action of **project_environment**, a route of its `load` operation.
+
+  SDK: `client.ProjectEnvironment().load({ "organization_id": "organization_id", "project_id": "project_id", $action: "directory" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/environments/directory"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: archived
+    value: ""
+    disabled: true
+  - key: environments_page
+    value: ""
+    disabled: true
+  - key: previews_page
+    value: ""
+    disabled: true
+  - key: query
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_environment belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_environment belongs to.
+order: 7000

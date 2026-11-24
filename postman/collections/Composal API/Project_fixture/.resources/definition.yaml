@@ -1,0 +1,27 @@
+$kind: collection
+id: "535b1b02-c1ca-5de2-9ac1-9ac3a3fe8927"
+description: |-
+  The **project_fixture** entity, which belongs to a organization and a project. Its requests address one record by `{{project_fixture_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `assignments` | array | yes |  |
+  | `byte_size` | integer | yes |  |
+  | `content_type` | string | yes |  |
+  | `credential_ids` | array | yes |  |
+  | `credentials` | array | yes |  |
+  | `environment_ids` | array | yes |  |
+  | `environments` | array | yes |  |
+  | `fixtures` | array | yes |  |
+  | `id` | string |  |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `pagination` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `persona_ids` | array | yes |  |
+  | `personas` | array | yes |  |
+  | `project` | object | yes |  |
+  | `sha256` | string | yes |  |
+  | `url` | string | yes |  |
+  | `version` | integer | yes |  |
+order: 168000

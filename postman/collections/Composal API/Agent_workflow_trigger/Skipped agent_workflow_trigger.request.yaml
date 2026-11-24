@@ -1,0 +1,21 @@
+$kind: http-request
+id: c646f6ea-f95e-566e-98e8-ca9f32cac994
+description: |-
+  The `skipped` action of **agent_workflow_trigger**, a route of its `load` operation.
+
+  SDK: `client.AgentWorkflowTrigger().load({ "organization_id": "organization_id", "agent_id": "agent_id", "id": "ID", $action: "skipped" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflow_triggers/:trigger_id/skipped"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow_trigger belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow_trigger belongs to.
+  - key: trigger_id
+    value: "{{agent_workflow_trigger_id}}"
+    description: The agent_workflow_trigger this request addresses.
+order: 8000

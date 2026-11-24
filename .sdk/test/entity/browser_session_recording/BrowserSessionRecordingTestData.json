@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "browser_session_recording": {
+      "BROWSER_SESSION_RECORDING00": {
+        "id": "BROWSER_SESSION_RECORDING00",
+        "idempotency_key": "s1f",
+        "wait": true,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_RECORDING01": {
+        "id": "BROWSER_SESSION_RECORDING01",
+        "idempotency_key": "s3d",
+        "wait": true,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "BROWSER_SESSION_RECORDING02": {
+        "id": "BROWSER_SESSION_RECORDING02",
+        "idempotency_key": "s5b",
+        "wait": true,
+        "browser_session_id": "BROWSER_SESSION01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "browser_session_recording": {
+      "browser_session_recording_ref01": {
+        "idempotency_key": "s79",
+        "wait": true
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings/{id}/stop": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

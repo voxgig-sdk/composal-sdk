@@ -1,0 +1,4 @@
+$kind: collection
+id: "225acf0d-53b0-5c0a-9494-6fdff02621f1"
+description: "The `BasicBrowserSessionScreenshotFlow` flow of **browser_session_screenshot**."
+order: 69000

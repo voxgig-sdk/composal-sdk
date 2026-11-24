@@ -1,0 +1,18 @@
+$kind: collection
+id: "6d97f866-c163-5a89-839e-0a43587bfaf4"
+description: |-
+  The **domain_path_rule** entity, which belongs to a app. Its requests address one record by `{{domain_path_rule_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `action_kind` | string | yes |  |
+  | `app_service_endpoint_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `backend_ref` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `last_error` | string | yes |  |
+  | `path_prefix` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+order: 107000

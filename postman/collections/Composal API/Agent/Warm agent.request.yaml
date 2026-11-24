@@ -1,0 +1,25 @@
+$kind: http-request
+id: "474b68b8-12f0-5bfd-9989-94c3e4fc0789"
+description: |-
+  The `warm` action of **agent**, a route of its `create` operation.
+
+  SDK: `client.Agent().create({ "organization_id": "organization_id", "id": "ID", $action: "warm" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/warm"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "conversation_id": "example"
+    }
+order: 41000

@@ -1,0 +1,293 @@
+# Entity: journey_variant_replay
+
+main: kit: entity: journey_variant_replay: {
+
+  alias: field: {}
+
+  fields: {
+    actor_id: {
+      h: "Actor Id"
+      n: "actor_id"
+      op: {
+        create: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    can_request_qualification: {
+      h: "Can Request Qualification"
+      n: "can_request_qualification"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    failure_code: {
+      h: "Failure Code"
+      n: "failure_code"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    failure_message: {
+      h: "Failure Message"
+      n: "failure_message"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    idempotency_key: {
+      h: "Idempotency Key"
+      n: "idempotency_key"
+      r: true
+      t: "`$STRING`"
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    preparation_receipt: {
+      h: "Preparation Receipt"
+      n: "preparation_receipt"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    qualification: {
+      h: "Qualification"
+      n: "qualification"
+      r: true
+      t: "`$ANY`"
+    }
+    qualification_status: {
+      h: "Qualification Status"
+      n: "qualification_status"
+      r: true
+      t: "`$STRING`"
+    }
+    replay_required: {
+      h: "Replay Required"
+      n: "replay_required"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    review_reason: {
+      h: "Review Reason"
+      n: "review_reason"
+      r: true
+      t: "`$STRING`"
+    }
+    run_id: {
+      h: "Run Id"
+      n: "run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    scenario_file: {
+      h: "Scenario File"
+      n: "scenario_file"
+      r: true
+      t: "`$OBJECT`"
+    }
+    scenario_run_id: {
+      h: "Scenario Run Id"
+      n: "scenario_run_id"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    source_digest: {
+      h: "Source Digest"
+      n: "source_digest"
+      r: true
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: true
+      t: "`$STRING`"
+    }
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+    variant_id: {
+      h: "Variant Id"
+      n: "variant_id"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "journey_variant_replay"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "actor_id"
+            "idempotency_key"
+            "max_seconds"
+            "review_reason"
+            "scenario_file"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "journey_variant_id"
+                or: "variant_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "project_id"
+                or: "project_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays"
+          q: {
+            exist: [
+              "journey_variant_id"
+              "organization_id"
+              "project_id"
+            ]
+          }
+          r: {
+            param: {
+              variant_id: "journey_variant_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verification"
+            }
+            {
+              lit: "projects"
+            }
+            {
+              var: "project_id"
+            }
+            {
+              lit: "product_map"
+            }
+            {
+              lit: "journey_variants"
+            }
+            {
+              var: "journey_variant_id"
+            }
+            {
+              lit: "replays"
+            }
+          ]
+          t: {
+            req: {
+              actor_id: "`reqdata.actor_id`"
+              idempotency_key: "`reqdata.idempotency_key`"
+              max_seconds: "`reqdata.max_second`"
+              review_reason: "`reqdata.review_reason`"
+              scenario_file: "`reqdata.scenario_file`"
+            }
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization") path("$.main.kit.entity.project")]
+  ]
+
+}

@@ -1,0 +1,4 @@
+$kind: collection
+id: "04e960d7-6dc0-5d2e-93c6-8d4b344b84a6"
+description: "The `BasicDomainPathRuleFlow` flow of **domain_path_rule**."
+order: 90000

@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "agent_interaction": {
+      "AGENT_INTERACTION00": {
+        "id": "AGENT_INTERACTION00",
+        "interactions": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_INTERACTION01": {
+        "id": "AGENT_INTERACTION01",
+        "interactions": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_INTERACTION02": {
+        "id": "AGENT_INTERACTION02",
+        "interactions": [],
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_interaction": {
+      "agent_interaction_ref01": {
+        "interactions": []
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/connect": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

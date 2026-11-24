@@ -1,0 +1,25 @@
+$kind: http-request
+id: "0d5cbada-9ff0-5e45-a2c0-1ec0d460a439"
+description: |-
+  The `list` operation of **static_site_domain**.
+
+  SDK: `client.StaticSiteDomain().list({ static_site_id: "example" })`
+url: "{{base}}/api/v1/static_sites/:static_site_id/domains"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: static_site_id
+    value: "{{static_site_id}}"
+    description: The static_site this static_site_domain belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body?.["domains"] || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("static_site_domain_id")) pm.collectionVariables.set("static_site_domain_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

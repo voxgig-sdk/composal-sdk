@@ -1,0 +1,27 @@
+# BasicAgentTeammateFlow
+
+main: kit: flow: BasicAgentTeammateFlow:
+{
+  entity: "agent_teammate",
+  kind: "basic",
+  name: "BasicAgentTeammateFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_teammate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentTeammateFlow"
+}

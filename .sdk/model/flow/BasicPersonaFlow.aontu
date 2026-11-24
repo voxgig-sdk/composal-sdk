@@ -1,0 +1,124 @@
+# BasicPersonaFlow
+
+main: kit: flow: BasicPersonaFlow:
+{
+  entity: "persona",
+  kind: "basic",
+  name: "BasicPersonaFlow",
+  step: [
+    {
+      i: {
+        ref: "persona_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "persona_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "persona_ref01",
+        srcdatavar: "persona_ref01_data",
+        suffix: "_up0",
+        textfield: "access_mode"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persona_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "persona_ref01",
+        srcdatavar: "persona_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "persona01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persona_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "persona_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "persona01",
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "persona_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersonaFlow"
+}

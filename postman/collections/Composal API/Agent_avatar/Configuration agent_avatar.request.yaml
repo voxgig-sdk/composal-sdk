@@ -1,0 +1,22 @@
+$kind: http-request
+id: c3527b60-0230-5fdd-9b99-92285dc2a8df
+description: |-
+  The `configuration` action of **agent_avatar**, a route of its `load` operation.
+
+  SDK: `client.AgentAvatar().load({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "configuration" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/avatar/configuration"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: style_catalog
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_avatar belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_avatar belongs to.
+order: 1000

@@ -1,0 +1,62 @@
+# BasicDeviceFlow
+
+main: kit: flow: BasicDeviceFlow:
+{
+  entity: "device",
+  kind: "basic",
+  name: "BasicDeviceFlow",
+  step: [
+    {
+      i: {
+        ref: "device_ref01"
+      }
+
+      m: {
+        device_registration_id: "device_registration01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "device_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "device_ref01",
+        srcdatavar: "device_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "device01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-device_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeviceFlow"
+}

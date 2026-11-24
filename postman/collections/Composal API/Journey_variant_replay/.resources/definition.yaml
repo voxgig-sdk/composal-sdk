@@ -1,0 +1,28 @@
+$kind: collection
+id: bda223d4-311f-5dd4-8c79-95d55668ceb7
+description: |-
+  The **journey_variant_replay** entity, which belongs to a organization and a project. Its requests address one record by `{{journey_variant_replay_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `actor_id` | string | yes |  |
+  | `can_request_qualification` | boolean | yes |  |
+  | `created_at` | string | yes |  |
+  | `failure_code` | string | yes |  |
+  | `failure_message` | string | yes |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string | yes |  |
+  | `max_seconds` | integer |  |  |
+  | `preparation_receipt` | object | yes |  |
+  | `qualification` | any | yes |  |
+  | `qualification_status` | string | yes |  |
+  | `replay_required` | boolean | yes |  |
+  | `review_reason` | string | yes |  |
+  | `run_id` | string | yes |  |
+  | `scenario_file` | object | yes |  |
+  | `scenario_run_id` | string | yes |  |
+  | `source_digest` | string | yes |  |
+  | `status` | string | yes |  |
+  | `updated_at` | string | yes |  |
+  | `variant_id` | string | yes |  |
+order: 128000

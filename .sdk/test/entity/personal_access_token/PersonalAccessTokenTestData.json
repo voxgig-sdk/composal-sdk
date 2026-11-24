@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "personal_access_token": {
+      "PERSONAL_ACCESS_TOKEN00": {
+        "id": "PERSONAL_ACCESS_TOKEN00"
+      },
+      "PERSONAL_ACCESS_TOKEN01": {
+        "id": "PERSONAL_ACCESS_TOKEN01"
+      },
+      "PERSONAL_ACCESS_TOKEN02": {
+        "id": "PERSONAL_ACCESS_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "personal_access_token": {
+      "personal_access_token_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/personal_access_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/personal_access_tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/personal_access_tokens/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+# BasicAgentMarketplaceSharedFlow
+
+main: kit: flow: BasicAgentMarketplaceSharedFlow:
+{
+  entity: "agent_marketplace_shared",
+  kind: "basic",
+  name: "BasicAgentMarketplaceSharedFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_marketplace_shared_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        share_token: "share_token01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "agent_marketplace_shared_ref01",
+        srcdatavar: "agent_marketplace_shared_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_marketplace_shared01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_marketplace_shared_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentMarketplaceSharedFlow"
+}

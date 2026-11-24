@@ -1,0 +1,27 @@
+# BasicClawderRoutineFlow
+
+main: kit: flow: BasicClawderRoutineFlow:
+{
+  entity: "clawder_routine",
+  kind: "basic",
+  name: "BasicClawderRoutineFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_routine_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderRoutineFlow"
+}

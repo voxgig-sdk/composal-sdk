@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "pages_project_persona": {
+      "PAGES_PROJECT_PERSONA00": {
+        "active_count": 70,
+        "credentials": [],
+        "needs_attention_count": 72,
+        "permissions": {},
+        "persona_states": {},
+        "personas": [],
+        "project": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PAGES_PROJECT_PERSONA01": {
+        "active_count": 140,
+        "credentials": [],
+        "needs_attention_count": 142,
+        "permissions": {},
+        "persona_states": {},
+        "personas": [],
+        "project": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PAGES_PROJECT_PERSONA02": {
+        "active_count": 210,
+        "credentials": [],
+        "needs_attention_count": 212,
+        "permissions": {},
+        "persona_states": {},
+        "personas": [],
+        "project": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "pages_project_persona": {
+      "pages_project_persona_ref01": {
+        "active_count": 280,
+        "credentials": [],
+        "needs_attention_count": 282,
+        "permissions": {},
+        "persona_states": {},
+        "personas": [],
+        "project": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

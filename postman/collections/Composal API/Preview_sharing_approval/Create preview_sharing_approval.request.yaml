@@ -1,0 +1,50 @@
+$kind: http-request
+id: "79cf509a-b213-5413-a0a0-95a10639eeac"
+description: |-
+  The `create` operation of **preview_sharing_approval**.
+
+  SDK: `client.PreviewSharingApproval().create({ app_id: "example", preview_id: "example", snapshot_version: 1 })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/sharing_approvals"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this preview_sharing_approval belongs to.
+  - key: id
+    value: "{{preview_id}}"
+    description: "Input: preview_id."
+body:
+  type: json
+  content: |-
+    {
+      "snapshot_version": 1,
+      "source_keys": [
+        "example"
+      ],
+      "default_secrets": [
+        "example"
+      ],
+      "default_configuration": [
+        "example"
+      ],
+      "build_keys": [
+        "example"
+      ],
+      "build_secrets": [
+        "example"
+      ]
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("preview_sharing_approval_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 2000

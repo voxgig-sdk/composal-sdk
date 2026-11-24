@@ -1,0 +1,22 @@
+# BasicVerifyStaticSiteDomainFlow
+
+main: kit: flow: BasicVerifyStaticSiteDomainFlow:
+{
+  entity: "verify_static_site_domain",
+  kind: "basic",
+  name: "BasicVerifyStaticSiteDomainFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_static_site_domain_ref01"
+      }
+
+      m: {
+        static_site_id: "static_site01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicVerifyStaticSiteDomainFlow"
+}

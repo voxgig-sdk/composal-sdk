@@ -1,0 +1,32 @@
+# BasicDeploymentFileFlow
+
+main: kit: flow: BasicDeploymentFileFlow:
+{
+  entity: "deployment_file",
+  kind: "basic",
+  name: "BasicDeploymentFileFlow",
+  step: [
+    {
+      d: {
+        static_site_id: "static_site01"
+      }
+
+      i: {
+        ref: "deployment_file_ref01",
+        srcdatavar: "deployment_file_ref01_data",
+        suffix: "_up0"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-deployment_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeploymentFileFlow"
+}

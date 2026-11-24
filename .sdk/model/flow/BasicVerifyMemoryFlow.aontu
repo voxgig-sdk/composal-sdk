@@ -1,0 +1,38 @@
+# BasicVerifyMemoryFlow
+
+main: kit: flow: BasicVerifyMemoryFlow:
+{
+  entity: "verify_memory",
+  kind: "basic",
+  name: "BasicVerifyMemoryFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_memory_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "verify_memory_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyMemoryFlow"
+}

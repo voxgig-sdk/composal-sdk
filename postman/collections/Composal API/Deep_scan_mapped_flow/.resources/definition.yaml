@@ -1,0 +1,12 @@
+$kind: collection
+id: "94894bea-c3aa-58a4-86e5-37e1af3e0f33"
+description: |-
+  The **deep_scan_mapped_flow** entity, which belongs to a organization. Its requests address one record by `{{deep_scan_mapped_flow_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string | yes |  |
+  | `environment_id` | string | yes |  |
+  | `flow_map` | object | yes |  |
+  | `revision_id` | string | yes |  |
+order: 100000

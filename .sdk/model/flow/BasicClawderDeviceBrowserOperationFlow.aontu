@@ -1,0 +1,23 @@
+# BasicClawderDeviceBrowserOperationFlow
+
+main: kit: flow: BasicClawderDeviceBrowserOperationFlow:
+{
+  entity: "clawder_device_browser_operation",
+  kind: "basic",
+  name: "BasicClawderDeviceBrowserOperationFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_device_browser_operation_ref01"
+      }
+
+      m: {
+        operation_id: "operation01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClawderDeviceBrowserOperationFlow"
+}

@@ -1,0 +1,48 @@
+# BasicPersistentAgentWorkflowProposalFlow
+
+main: kit: flow: BasicPersistentAgentWorkflowProposalFlow:
+{
+  entity: "persistent_agent_workflow_proposal",
+  kind: "basic",
+  name: "BasicPersistentAgentWorkflowProposalFlow",
+  step: [
+    {
+      i: {
+        ref: "persistent_agent_workflow_proposal_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        proposal: "proposal01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "persistent_agent_workflow_proposal_ref01",
+        srcdatavar: "persistent_agent_workflow_proposal_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        agent_id: "agent01",
+        id: "persistent_agent_workflow_proposal01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-persistent_agent_workflow_proposal_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPersistentAgentWorkflowProposalFlow"
+}

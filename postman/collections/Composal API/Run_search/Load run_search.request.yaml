@@ -1,0 +1,19 @@
+$kind: http-request
+id: "3f3ff5d7-ce44-53fe-8a00-7e0c18c8b01c"
+description: |-
+  The `load` operation of **run_search**.
+
+  SDK: `client.RunSearch().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/run_search"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: query
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this run_search belongs to.
+order: 1000

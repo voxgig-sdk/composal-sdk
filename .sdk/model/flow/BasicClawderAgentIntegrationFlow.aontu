@@ -1,0 +1,40 @@
+# BasicClawderAgentIntegrationFlow
+
+main: kit: flow: BasicClawderAgentIntegrationFlow:
+{
+  entity: "clawder_agent_integration",
+  kind: "basic",
+  name: "BasicClawderAgentIntegrationFlow",
+  step: [
+    {
+      i: {
+        ref: "clawder_agent_integration_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "clawder_agent_integration_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicClawderAgentIntegrationFlow"
+}

@@ -1,0 +1,22 @@
+$kind: http-request
+id: f2bca1e2-d743-5a10-a9f1-25f44b9232e7
+description: |-
+  The `archive` action of **app_cdn**, a route of its `create` operation.
+
+  SDK: `client.AppCdn().create({ "app_id": "app_id", "id": "ID", $action: "archive" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:id/archive"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+  - key: id
+    value: "{{app_cdn_id}}"
+    description: The app_cdn this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 6000

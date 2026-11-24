@@ -1,0 +1,24 @@
+# BasicControlFlowSnapshotFlow
+
+main: kit: flow: BasicControlFlowSnapshotFlow:
+{
+  entity: "control_flow_snapshot",
+  kind: "basic",
+  name: "BasicControlFlowSnapshotFlow",
+  step: [
+    {
+      i: {
+        ref: "control_flow_snapshot_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        flow_id: "flow01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicControlFlowSnapshotFlow"
+}

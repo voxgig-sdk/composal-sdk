@@ -1,0 +1,34 @@
+$kind: collection
+id: eb891b40-8d5d-58ce-860b-ec49034ded55
+description: |-
+  A browser runner: open one, hand control between your client and the agent, read its media, or close it.
+
+  The **browser_session** entity, which belongs to a organization. Its requests address one record by `{{browser_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `active_task_id` | string |  |  |
+  | `authentication_status` | string | yes |  |
+  | `authentication_task_id` | string |  |  |
+  | `cdp_url` | string |  |  |
+  | `closed_at` | string |  |  |
+  | `closure_basis` | string |  |  |
+  | `control_generation` | integer | yes |  |
+  | `controller` | string | yes |  |
+  | `credential_id` | string |  |  |
+  | `environment_id` | string |  |  |
+  | `environment_revision_id` | string |  |  |
+  | `expires_at` | string | yes |  |
+  | `failure_code` | string |  |  |
+  | `id` | string | yes |  |
+  | `idempotency_key` | string |  |  |
+  | `initial_url` | string | yes |  |
+  | `max_seconds` | integer |  |  |
+  | `pending_control_id` | string |  |  |
+  | `project_id` | string |  |  |
+  | `reconciled_at` | string |  |  |
+  | `started_at` | string |  |  |
+  | `status` | string | yes |  |
+  | `url` | string |  |  |
+  | `viewer` | object |  |  |
+order: 78000

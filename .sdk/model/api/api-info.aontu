@@ -1,0 +1,162 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: "Generated from Rails routes. Run `bin/rails ts:client:openapi` after route changes."
+      security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "X-Vex-Lease-Token"
+              prefix: ""
+              scheme: "executorLease"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "DeviceIngressServiceKey"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "clawderHarnessProxy"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "clawderTenantBridge"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "x-api-key"
+              prefix: ""
+              scheme: "clawderSearchBridge"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "controlTransportBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "clawderTelemetryCallback"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "controlA2aBearer"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "RunnerCheckoutToken"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "RunnerScaleSetBrokerToken"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "RunnerSupplyAdmissionToken"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "cookie"
+              name: "_vex_api_session"
+              prefix: ""
+              scheme: "browserSession"
+              type: "apiKey"
+            }
+            {
+              in: "header"
+              name: "X-CSRF-Token"
+              prefix: ""
+              scheme: "csrfToken"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "X-Com-Builder-Gateway-Key"
+              prefix: ""
+              scheme: "DockerBuilderGatewayKey"
+              type: "apiKey"
+            }
+          ]
+          [
+            {
+              in: "cookie"
+              name: "__Host-verify_messages"
+              prefix: ""
+              scheme: "verifyMessagingSession"
+              type: "apiKey"
+            }
+          ]
+        ]
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "bearerAuth"
+        type: "http"
+      }
+      servers: [
+        {
+          url: "https://api.composal.com"
+        }
+      ]
+      summary: "Generated from Rails routes."
+      title: "Vex API"
+      version: "1.0.0"
+      website: "https://composal.com"
+    }
+  }
+}
+

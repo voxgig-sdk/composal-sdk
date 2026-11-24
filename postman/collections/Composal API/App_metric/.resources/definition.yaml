@@ -1,0 +1,8 @@
+$kind: collection
+id: "08620b9a-5662-5175-ba44-1b858497b1c9"
+description: |-
+  The **app_metric** entity, which belongs to a app. Its requests address one record by `{{app_metric_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+order: 63000

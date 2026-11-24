@@ -1,0 +1,21 @@
+$kind: collection
+id: "5117ab4d-df68-5e35-8e49-204cf7a3c916"
+description: |-
+  The **page_project_run** entity, which belongs to a organization and a project. Its requests address one record by `{{page_project_run_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `available_tests` | array | yes |  |
+  | `fix_scenario_count` | integer | yes |  |
+  | `fix_scenarios` | array | yes |  |
+  | `fixable_count` | integer | yes |  |
+  | `id` | string |  |  |
+  | `pagination` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `preparation_reason` | string | yes |  |
+  | `project` | object | yes |  |
+  | `run` | object | yes |  |
+  | `scenario_runs` | array | yes |  |
+  | `selected_scenario_run` | any | yes |  |
+  | `web_path` | string | yes |  |
+order: 148000

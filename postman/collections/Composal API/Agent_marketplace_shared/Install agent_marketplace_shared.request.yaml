@@ -1,0 +1,23 @@
+$kind: http-request
+id: "73f3daf8-bcd4-592d-9049-f09d0f394725"
+description: |-
+  The `install` action of **agent_marketplace_shared**, a route of its `create` operation.
+
+  SDK: `client.AgentMarketplaceShared().create({ "organization_id": "organization_id", "id": "ID", "idempotency_key": "idempotency_key", $action: "install" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_marketplace/shared/:share_token/install"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+  Idempotency-Key: "{{idempotency_key}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_marketplace_shared belongs to.
+  - key: share_token
+    value: "{{agent_marketplace_shared_id}}"
+    description: The agent_marketplace_shared this request addresses.
+body:
+  type: json
+  content: "{}"
+order: 3000

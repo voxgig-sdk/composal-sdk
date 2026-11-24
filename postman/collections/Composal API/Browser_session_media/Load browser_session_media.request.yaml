@@ -1,0 +1,21 @@
+$kind: http-request
+id: fea681e6-4639-5113-951c-dc90c356519a
+description: |-
+  The `load` operation of **browser_session_media**.
+
+  SDK: `client.BrowserSessionMedia().load({ browser_session_id: "example", id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/browser_sessions/:browser_session_id/media/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this browser_session_media belongs to.
+  - key: browser_session_id
+    value: "{{browser_session_id}}"
+    description: The browser_session this browser_session_media belongs to.
+  - key: id
+    value: "{{browser_session_media_id}}"
+    description: The browser_session_media this request addresses.
+order: 1000

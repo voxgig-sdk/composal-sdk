@@ -1,0 +1,27 @@
+# BasicAgentWritePermissionFlow
+
+main: kit: flow: BasicAgentWritePermissionFlow:
+{
+  entity: "agent_write_permission",
+  kind: "basic",
+  name: "BasicAgentWritePermissionFlow",
+  step: [
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_write_permission_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWritePermissionFlow"
+}

@@ -1,0 +1,24 @@
+$kind: http-request
+id: a2bb31bf-04e6-55dd-8b79-64970dbc5207
+description: |-
+  The `persona` action of **project**, a route of its `load` operation.
+
+  SDK: `client.Project().load({ "organization_id": "organization_id", "id": "ID", "persona_id": "persona_id", $action: "persona" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/persona?persona_id={{persona_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+  - key: persona_id
+    value: "{{persona_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this request addresses.
+order: 15000

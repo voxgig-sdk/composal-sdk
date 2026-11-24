@@ -1,0 +1,26 @@
+$kind: collection
+id: a6d8692e-6b24-5ef1-b3d9-ed436c7d6eb3
+description: |-
+  The **deep_scan_finding** entity, which belongs to a organization and a deep_scan. Its requests address one record by `{{deep_scan_finding_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `finding_count` | integer | yes |  |
+  | `finding_ids` | array | yes |  |
+  | `findings` | array | yes |  |
+  | `findings_fix_prompt` | string | yes |  |
+  | `free_findings_pending` | boolean | yes |  |
+  | `id` | string | yes |  |
+  | `mode` | string | yes |  |
+  | `permissions` | object | yes |  |
+  | `priority` | string | yes |  |
+  | `priority_counts` | object | yes |  |
+  | `project_id` | string | yes |  |
+  | `reproduction_of` | object | yes |  |
+  | `reproductions` | array | yes |  |
+  | `reruns_available` | boolean | yes |  |
+  | `status` | string | yes |  |
+  | `title` | string | yes |  |
+  | `unlock` | object | yes |  |
+  | `web_url` | string | yes |  |
+order: 98000

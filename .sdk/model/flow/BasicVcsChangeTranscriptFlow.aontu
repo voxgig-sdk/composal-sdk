@@ -1,0 +1,28 @@
+# BasicVcsChangeTranscriptFlow
+
+main: kit: flow: BasicVcsChangeTranscriptFlow:
+{
+  entity: "vcs_change_transcript",
+  kind: "basic",
+  name: "BasicVcsChangeTranscriptFlow",
+  step: [
+    {
+      m: {
+        change_id: "change01",
+        organization_id: "organization01",
+        repo_id: "repo01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "vcs_change_transcript_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsChangeTranscriptFlow"
+}

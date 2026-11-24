@@ -1,0 +1,40 @@
+$kind: http-request
+id: "6f42003a-f22e-5b49-95d1-8f268ed49422"
+description: |-
+  The `update` operation of **project_run_schedule**.
+
+  SDK: `client.ProjectRunSchedule().update({ id: "example", organization_id: "example", project_id: "example", credential_ids: {} })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_schedules/:id"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_schedule belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_schedule belongs to.
+  - key: id
+    value: "{{project_run_schedule_id}}"
+    description: The project_run_schedule this request addresses.
+body:
+  type: json
+  content: |-
+    {
+      "name": "example",
+      "state": "active",
+      "time_of_day": "example",
+      "time_zone": "example",
+      "credential_ids": {},
+      "environment_id": "{{environment_id}}",
+      "notification_channel": "email",
+      "slack_subscription_id": "example",
+      "version": 1,
+      "selection_mode": "all",
+      "labels": [
+        "example"
+      ]
+    }
+order: 4000

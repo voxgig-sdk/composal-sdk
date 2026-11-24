@@ -1,0 +1,46 @@
+# BasicExplorationReportFlow
+
+main: kit: flow: BasicExplorationReportFlow:
+{
+  entity: "exploration_report",
+  kind: "basic",
+  name: "BasicExplorationReportFlow",
+  step: [
+    {
+      i: {
+        ref: "exploration_report_ref01"
+      }
+
+      m: {
+        exploration_id: "exploration01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "exploration_report_ref01",
+        srcdatavar: "exploration_report_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "exploration_report01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-exploration_report_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicExplorationReportFlow"
+}

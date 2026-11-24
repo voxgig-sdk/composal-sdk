@@ -1,0 +1,38 @@
+# BasicOrganizationAgreementsPageFlow
+
+main: kit: flow: BasicOrganizationAgreementsPageFlow:
+{
+  entity: "organization_agreements_page",
+  kind: "basic",
+  name: "BasicOrganizationAgreementsPageFlow",
+  step: [
+    {
+      i: {
+        ref: "organization_agreements_page_ref01"
+      }
+
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "organization_agreements_page_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOrganizationAgreementsPageFlow"
+}

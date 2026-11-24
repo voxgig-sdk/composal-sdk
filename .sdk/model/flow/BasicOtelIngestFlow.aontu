@@ -1,0 +1,18 @@
+# BasicOtelIngestFlow
+
+main: kit: flow: BasicOtelIngestFlow:
+{
+  entity: "otel_ingest",
+  kind: "basic",
+  name: "BasicOtelIngestFlow",
+  step: [
+    {
+      i: {
+        ref: "otel_ingest_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOtelIngestFlow"
+}

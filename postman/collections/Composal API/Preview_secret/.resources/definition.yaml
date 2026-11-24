@@ -1,0 +1,13 @@
+$kind: collection
+id: "039fd338-bb2b-51c1-a6ef-539ec6483fe1"
+description: |-
+  The **preview_secret** entity, which belongs to a app. Its requests address one record by `{{preview_secret_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `env_key` | string | yes |  |
+  | `id` | string |  |  |
+  | `name` | string | yes |  |
+  | `slug` | string | yes |  |
+  | `value` | string | yes |  |
+order: 156000

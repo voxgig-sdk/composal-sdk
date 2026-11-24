@@ -1,0 +1,18 @@
+$kind: http-request
+id: "6f310177-78e6-56e8-925d-8f53fbe5fb7a"
+description: |-
+  The `live` action of **app_deployment**, a route of its `load` operation.
+
+  SDK: `client.AppDeployment().load({ "app_id": "app_id", "id": "ID", $action: "live" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployments/:deployment_id/live"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_deployment belongs to.
+  - key: deployment_id
+    value: "{{app_deployment_id}}"
+    description: The app_deployment this request addresses.
+order: 8000

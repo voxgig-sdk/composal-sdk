@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "agent_file": {
+      "AGENT_FILE00": {
+        "content_type": "s32",
+        "download_url": "s33",
+        "filename": "s34",
+        "id": "AGENT_FILE00",
+        "size_bytes": 54,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_FILE01": {
+        "content_type": "s64",
+        "download_url": "s65",
+        "filename": "s66",
+        "id": "AGENT_FILE01",
+        "size_bytes": 104,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_FILE02": {
+        "content_type": "s96",
+        "download_url": "s97",
+        "filename": "s98",
+        "id": "AGENT_FILE02",
+        "size_bytes": 154,
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_file": {
+      "agent_file_ref01": {
+        "content_type": "sc8",
+        "download_url": "sc9",
+        "filename": "sca",
+        "size_bytes": 204
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/files/{file_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

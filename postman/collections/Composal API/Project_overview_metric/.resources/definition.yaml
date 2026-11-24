@@ -1,0 +1,9 @@
+$kind: collection
+id: "69d3fb65-c29a-5994-b23f-5ccbbaecb836"
+description: |-
+  The **project_overview_metric** entity, which belongs to a organization and a project. Its requests address one record by `{{project_overview_metric_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `counts` | object | yes |  |
+order: 171000

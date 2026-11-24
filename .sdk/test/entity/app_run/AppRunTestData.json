@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "app_run": {
+      "APP_RUN00": {
+        "id": "APP_RUN00",
+        "image": "s15"
+      },
+      "APP_RUN01": {
+        "id": "APP_RUN01",
+        "image": "s29"
+      },
+      "APP_RUN02": {
+        "id": "APP_RUN02",
+        "image": "s3d"
+      }
+    }
+  },
+  "new": {
+    "app_run": {
+      "app_run_ref01": {
+        "image": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/hosting/app_runs/{id}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /api/v1/hosting/app_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/app_runs": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/app_runs/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

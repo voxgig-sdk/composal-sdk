@@ -1,0 +1,18 @@
+$kind: http-request
+id: a3630213-27f7-585d-9002-5a1d0d27db00
+description: |-
+  The `review` action of **agent_sharing**, a route of its `load` operation.
+
+  SDK: `client.AgentSharing().load({ "organization_id": "organization_id", "agent_id": "agent_id", $action: "review" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/sharing/review"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_sharing belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_sharing belongs to.
+order: 1000

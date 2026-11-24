@@ -1,0 +1,28 @@
+$kind: http-request
+id: f8ba30a5-dac5-5572-a72e-f75bfd3ee29e
+description: |-
+  The `create` operation of **verification_project_scenario**.
+
+  SDK: `client.VerificationProjectScenario().create({ organization_id: "example", project_id: "example", name: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/scenarios"
+method: POST
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this verification_project_scenario belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this verification_project_scenario belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("verification_project_scenario_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

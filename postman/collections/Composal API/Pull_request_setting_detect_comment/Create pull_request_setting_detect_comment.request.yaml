@@ -1,0 +1,33 @@
+$kind: http-request
+id: "1019b646-0c51-5716-83d0-f1ba6e5090f0"
+description: |-
+  The `create` operation of **pull_request_setting_detect_comment**.
+
+  SDK: `client.PullRequestSettingDetectComment().create({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_request_settings/detect_comments"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pull_request_setting_detect_comment belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "project_id": "{{project_id}}",
+      "repository_id": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("pull_request_setting_detect_comment_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

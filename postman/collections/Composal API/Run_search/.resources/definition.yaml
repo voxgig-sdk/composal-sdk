@@ -1,0 +1,9 @@
+$kind: collection
+id: fb9875c0-0669-5c9d-afd6-b953908af45c
+description: |-
+  The **run_search** entity, which belongs to a organization. Its requests address one record by `{{run_search_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `runs` | array | yes |  |
+order: 192000

@@ -1,0 +1,64 @@
+# BasicAgentWorkflowRunFlow
+
+main: kit: flow: BasicAgentWorkflowRunFlow:
+{
+  entity: "agent_workflow_run",
+  kind: "basic",
+  name: "BasicAgentWorkflowRunFlow",
+  step: [
+    {
+      i: {
+        ref: "agent_workflow_run_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01",
+        run_id: "run01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        agent_id: "agent01",
+        organization_id: "organization01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "agent_workflow_run_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_workflow_run_ref01",
+        srcdatavar: "agent_workflow_run_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_workflow_run01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_workflow_run_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAgentWorkflowRunFlow"
+}

@@ -1,0 +1,728 @@
+# Entity: pull_request_setting
+
+main: kit: entity: pull_request_setting: {
+
+  alias: field: {}
+
+  fields: {
+    app_preview_profile_id: {
+      h: "App Preview Profile Id"
+      n: "app_preview_profile_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    app_service_id: {
+      h: "App Service Id"
+      n: "app_service_id"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    bots: {
+      h: "Bots"
+      n: "bots"
+      r: true
+      sh: "hosting: bot accounts that comment the preview link, such as netlify[bot]."
+      t: "`$ARRAY`"
+    }
+    browser_options_available: {
+      h: "Browser Options Available"
+      n: "browser_options_available"
+      r: true
+      sh: "Whether browser demo and scenario-writing options apply to this saved repository setup."
+      t: "`$BOOLEAN`"
+    }
+    ci_preview: {
+      h: "Ci Preview"
+      n: "ci_preview"
+      r: true
+      sh: "The latest preview the project's CI handed over, while the saved setting uses CI"
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    concurrency: {
+      h: "Concurrency"
+      n: "concurrency"
+      r: false
+      sh: "Up to 50 parallel browsers per run, lowered only by an explicit administrator override."
+      t: "`$INTEGER`"
+    }
+    configured_repository: {
+      h: "Configured Repository"
+      n: "configured_repository"
+      r: true
+      t: "`$ANY`"
+    }
+    demo_videos: {
+      h: "Demo Videos"
+      n: "demo_videos"
+      r: true
+      sh: "Record a short walkthrough of the change and add it to the PR comment."
+      t: "`$BOOLEAN`"
+    }
+    demo_videos_enabled: {
+      h: "Demo Videos Enabled"
+      n: "demo_videos_enabled"
+      r: false
+      sh: "Record a short walkthrough of the change and add it to the PR comment."
+      t: "`$BOOLEAN`"
+    }
+    deployment: {
+      h: "Deployment"
+      n: "deployment"
+      r: true
+      sh: "hosting: the deployment environment name the host reports on each PR, such as Preview."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    deployment_environment: {
+      h: "Deployment Environment"
+      n: "deployment_environment"
+      r: false
+      t: "`$STRING`"
+    }
+    enabled: {
+      h: "Enabled"
+      n: "enabled"
+      r: true
+      sh: "Test PRs automatically."
+      t: "`$BOOLEAN`"
+    }
+    environment: {
+      h: "Environment"
+      n: "environment"
+      r: true
+      sh: "The environment whose test accounts sign in to the previews."
+      t: "`$STRING`"
+    }
+    environments: {
+      h: "Environments"
+      n: "environments"
+      r: true
+      t: "`$ARRAY`"
+    }
+    github_check_enabled: {
+      h: "Github Check Enabled"
+      n: "github_check_enabled"
+      r: false
+      sh: "Report the Composal Verify check on GitHub pull requests."
+      t: "`$BOOLEAN`"
+    }
+    hosting_presets: {
+      h: "Hosting Presets"
+      n: "hosting_presets"
+      r: true
+      sh: "Hosting services that build PR previews and the setup answers each needs"
+      t: "`$ARRAY`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    imessage_comment_prefix: {
+      h: "Imessage Comment Prefix"
+      n: "imessage_comment_prefix"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    imessage_number: {
+      h: "Imessage Number"
+      n: "imessage_number"
+      r: true
+      sh: "International destination number; blank or null clears it on an added environment."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    imessage_number_source: {
+      h: "Imessage Number Source"
+      n: "imessage_number_source"
+      r: true
+      t: "`$STRING`"
+    }
+    limits: {
+      h: "Limits"
+      n: "limits"
+      r: true
+      t: "`$OBJECT`"
+    }
+    link_pattern: {
+      h: "Link Pattern"
+      n: "link_pattern"
+      r: true
+      sh: "hosting: a regular expression for the preview link, as preview detection returns it."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    links: {
+      h: "Links"
+      n: "links"
+      r: true
+      sh: "hosting: the preview address with * for the part that changes, such as https://deploy-preview-*--shop.netlify.app."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    max_seconds: {
+      h: "Max Seconds"
+      n: "max_seconds"
+      r: false
+      t: "`$INTEGER`"
+    }
+    messaging_enabled: {
+      h: "Messaging Enabled"
+      n: "messaging_enabled"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    messaging_tester_number: {
+      h: "Messaging Tester Number"
+      n: "messaging_tester_number"
+      r: true
+      sh: "One configured tester number."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    non_product_paths: {
+      h: "Non Product Paths"
+      n: "non_product_paths"
+      r: false
+      t: "`$ARRAY`"
+    }
+    permissions: {
+      h: "Permissions"
+      n: "permissions"
+      r: true
+      t: "`$OBJECT`"
+    }
+    pr_check: {
+      h: "Pr Check"
+      n: "pr_check"
+      r: true
+      sh: "Report a Composal Verify check on GitHub PRs."
+      t: "`$BOOLEAN`"
+    }
+    preview_access: {
+      h: "Preview Access"
+      n: "preview_access"
+      r: false
+      t: "`$STRING`"
+    }
+    preview_comment_authors: {
+      h: "Preview Comment Authors"
+      n: "preview_comment_authors"
+      r: false
+      t: "`$ARRAY`"
+    }
+    preview_comment_pattern: {
+      h: "Preview Comment Pattern"
+      n: "preview_comment_pattern"
+      r: false
+      t: "`$STRING`"
+    }
+    preview_comment_wildcard: {
+      h: "Preview Comment Wildcard"
+      n: "preview_comment_wildcard"
+      r: true
+      sh: "A preview address with * for the part that changes, such as https://*.vercel.app."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    preview_profile: {
+      h: "Preview Profile"
+      n: "preview_profile"
+      r: true
+      sh: "composal: the preview profile that builds each PR."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    preview_profiles: {
+      h: "Preview Profiles"
+      n: "preview_profiles"
+      r: true
+      t: "`$ARRAY`"
+    }
+    previews: {
+      h: "Previews"
+      n: "previews"
+      r: true
+      sh: "Who builds each PR's preview: a hosting service such as Vercel or Netlify, your CI workflow, or Composal hosting."
+      t: "`$STRING`"
+    }
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
+      r: true
+      sh: "Composal project owning this PR Testing configuration."
+      t: "`$STRING`"
+    }
+    project_repositories: {
+      h: "Project Repositories"
+      n: "project_repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    provider: {
+      h: "Provider"
+      n: "provider"
+      r: true
+      t: "`$STRING`"
+    }
+    repositories: {
+      h: "Repositories"
+      n: "repositories"
+      r: true
+      t: "`$ARRAY`"
+    }
+    repository: {
+      h: "Repository"
+      n: "repository"
+      r: true
+      sh: "Repository ID; see repositories for its name."
+      t: "`$STRING`"
+    }
+    repository_id: {
+      h: "Repository Id"
+      n: "repository_id"
+      r: true
+      t: "`$STRING`"
+    }
+    repository_kind: {
+      h: "Repository Kind"
+      n: "repository_kind"
+      r: true
+      sh: "Auto assesses each diff; MFE supports browser previews; API analyzes changes and offers manual runs against the configured test environment."
+      t: "`$STRING`"
+    }
+    selected_repository: {
+      h: "Selected Repository"
+      n: "selected_repository"
+      r: true
+      t: "`$ANY`"
+    }
+    service: {
+      h: "Service"
+      n: "service"
+      r: true
+      sh: "composal: the public service the browsers open."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    settings: {
+      h: "Settings"
+      n: "settings"
+      r: true
+      t: "`$ARRAY`"
+    }
+    setup: {
+      h: "Setup"
+      n: "setup"
+      r: true
+      sh: "The project's saved setup as answers, when it has one."
+      t: "`$ANY`"
+    }
+    setup_defaults: {
+      h: "Setup Defaults"
+      n: "setup_defaults"
+      r: true
+      sh: "The answers a new setup starts from"
+      t: "`$OBJECT`"
+    }
+    source_repository: {
+      h: "Source Repository"
+      n: "source_repository"
+      r: true
+      t: "`$STRING`"
+    }
+    target_mode: {
+      h: "Target Mode"
+      n: "target_mode"
+      r: true
+      t: "`$STRING`"
+    }
+    tester_numbers: {
+      h: "Tester Numbers"
+      n: "tester_numbers"
+      r: true
+      t: "`$ARRAY`"
+    }
+    trigger_label: {
+      h: "Trigger Label"
+      n: "trigger_label"
+      r: true
+      sh: "Label whose addition triggers verification when trigger_on_label is enabled."
+      t: "`$STRING`"
+    }
+    trigger_on_comment: {
+      h: "Trigger On Comment"
+      n: "trigger_on_comment"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    trigger_on_label: {
+      h: "Trigger On Label"
+      n: "trigger_on_label"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    trigger_on_push: {
+      h: "Trigger On Push"
+      n: "trigger_on_push"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    trigger_on_ready: {
+      h: "Trigger On Ready"
+      n: "trigger_on_ready"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    triggers: {
+      h: "Triggers"
+      n: "triggers"
+      r: true
+      sh: "When runs start."
+      t: "`$OBJECT`"
+    }
+    verify_environment_id: {
+      h: "Verify Environment Id"
+      n: "verify_environment_id"
+      r: true
+      t: "`$STRING`"
+    }
+    write_scenarios: {
+      h: "Write Scenarios"
+      n: "write_scenarios"
+      r: true
+      sh: "Draft and validate focused scenarios for each change on its preview."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "pull_request_setting"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "app_preview_profile_id"
+            "app_service_id"
+            "bots"
+            "concurrency"
+            "demo_videos"
+            "demo_videos_enabled"
+            "deployment"
+            "deployment_environment"
+            "enabled"
+            "environment"
+            "github_check_enabled"
+            "imessage_comment_prefix"
+            "imessage_number"
+            "imessage_number_source"
+            "limits"
+            "link_pattern"
+            "links"
+            "max_seconds"
+            "messaging_tester_number"
+            "non_product_paths"
+            "pr_check"
+            "preview_access"
+            "preview_comment_authors"
+            "preview_comment_pattern"
+            "preview_comment_wildcard"
+            "preview_profile"
+            "previews"
+            "project_id"
+            "provider"
+            "repository"
+            "repository_id"
+            "repository_kind"
+            "service"
+            "target_mode"
+            "trigger_label"
+            "trigger_on_comment"
+            "trigger_on_label"
+            "trigger_on_push"
+            "trigger_on_ready"
+            "triggers"
+            "verify_environment_id"
+            "write_scenarios"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/pull_request_settings"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "pull_request_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "project_id"
+            "repository_id"
+          ]
+          co: {
+            id: "POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_preview"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_preview"
+          q: {
+            "$action": "detect_preview"
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "pull_request_settings"
+            }
+            {
+              lit: "detect_preview"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/organizations/{organization_id}/verify/pull_request_settings"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "organization_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "project_id"
+                or: "project_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "provider"
+                or: "provider"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "repository_id"
+                or: "repository_id"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{organization_id}/verify/pull_request_settings"
+          q: {
+            exist: [
+              "organization_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "verify"
+            }
+            {
+              lit: "pull_request_settings"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.organization")]
+  ]
+
+}

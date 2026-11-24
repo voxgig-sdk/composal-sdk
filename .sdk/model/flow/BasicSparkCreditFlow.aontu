@@ -1,0 +1,57 @@
+# BasicSparkCreditFlow
+
+main: kit: flow: BasicSparkCreditFlow:
+{
+  entity: "spark_credit",
+  kind: "basic",
+  name: "BasicSparkCreditFlow",
+  step: [
+    {
+      i: {
+        ref: "spark_credit_ref01"
+      }
+
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        org_slug: "org_slug01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spark_credit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spark_credit_ref01",
+        srcdatavar: "spark_credit_ref01_data",
+        suffix: "_up0",
+        textfield: "available_usd"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spark_credit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSparkCreditFlow"
+}

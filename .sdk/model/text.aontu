@@ -1,0 +1,130 @@
+# README wording — YOURS. The scaffold creates this file once and never
+# overwrites it.
+#
+# A slot set here words the generated README files over the same slot of
+# main.kit.info, where apidef puts the spec's metadata. A slot left out keeps
+# the spec's wording. Text edited into a generated README is lost on the next
+# generate; text here is not.
+#
+#   main: kit: text: {
+#     tagline: 'Payments, invoices and refunds from TypeScript, Go and Python.'
+#     summary: 'Acme Pay is a payments API for marketplaces.'
+#     entity_desc: { invoice: 'A bill sent to a customer.' }
+#   }
+#
+# The slots are title, summary, website, tagline, about_md, homepage,
+# docs_url, meta_source and entity_desc. Any other key fails the model build.
+
+# Written in our own words: the summary, the about text and the entity
+# descriptions do not quote Composal's documentation.
+main: kit: text: {
+  title: 'Composal API'
+  summary: 'Composal runs AI agents for engineering teams: always-on persistent agents with their own instructions, memory and triggers, and Verify, whose browser agents test real user journeys on pull-request previews and releases. Its HTTP API also covers app hosting and a container registry.'
+  website: 'https://composal.com'
+  docs_url: 'https://composal.com/docs/api'
+  about_md: `**Credentials.** Every call takes a Composal personal access token, passed as the
+\`apikey\` option; the SDK sends it as \`Authorization: Bearer ...\`. The token acts as its user,
+with that user's organization memberships and agent access. The base URL is
+\`https://api.composal.com\`, and every path keeps its \`/api/v1\` prefix. The CLI and the MCP
+server read the token from \`COMPOSAL_APIKEY\`.
+
+**Organizations.** Most resources live in an organization, passed as \`organization_id\`. It takes
+the organization's slug or its public id. Composal's definition names this parameter
+\`org_slug\` on some routes; here it is \`organization_id\` everywhere.
+
+\`\`\`python
+import os
+from composal_sdk import ComposalSDK
+
+client = ComposalSDK({"apikey": os.environ.get("COMPOSAL_APIKEY", "")})
+org = os.environ.get("COMPOSAL_ORGANIZATION", "your-organization")
+
+# The organization's persistent agents.
+for agent in client.Agent().list({"organization_id": org}):
+    print(agent.data_get().get("id"), agent.data_get().get("name"))
+
+# Its Verify projects: the apps whose user journeys Verify tests.
+for project in client.Project().list({"organization_id": org}):
+    print(project.data_get().get("slug"), project.data_get().get("website_url"))
+\`\`\`
+
+Sending work to an agent, in TypeScript:
+
+\`\`\`ts
+import { ComposalSDK } from '@voxgig-sdk/composal-sdk'
+
+const client = new ComposalSDK({ apikey: process.env.COMPOSAL_APIKEY ?? '' })
+const organization_id = process.env.COMPOSAL_ORGANIZATION ?? 'your-organization'
+const agent_id = process.env.COMPOSAL_AGENT_ID ?? 'YOUR_AGENT_ID'
+
+const input = await client.AgentInput().create({
+  organization_id,
+  agent_id,
+  conversation_id: 'main',
+  text: 'Summarise the pull requests merged yesterday.',
+})
+console.log(input.data())
+\`\`\`
+
+**Agents.** \`Agent\` create makes a persistent agent from a \`name\` and an optional
+\`configuration\` (its \`instructions\`, model policy and work repositories); it starts as a draft
+while its runtime is provisioned. \`AgentInput\` create sends it a message in a conversation
+(\`main\` is the default one). Acceptance is not an answer: the reply arrives in the
+conversation, which \`Agent\` load reads with \`$action: 'conversation'\`. Runs, threads, routines,
+workflow triggers and the agent's settings each have their own resource (\`AgentRun\`,
+\`AgentThread\`, \`AgentRoutine\`, \`AgentWorkflowTrigger\`, \`AgentSetting\`).
+
+**Actions.** A verb on a record is an action, passed as \`$action\`: \`VerificationProjectRun\`
+create with \`$action: 'cancel'\` cancels a run, \`App\` create with \`$action: 'archive'\` archives a
+hosted app.
+
+**Retries.** Composal asks for an \`Idempotency-Key\` header on many writes, so that a retried
+request is not applied twice. Switch on the SDK's idempotency feature,
+\`feature: { idempotency: { active: true } }\`, and it adds a key to each write, which its own
+retries of that call reuse.
+
+**Files.** Twelve calls can answer with a file rather than JSON: images, recordings, archives,
+plain text and downloads, such as \`Evidence\` load with \`$action: 'download'\`. This generation
+does not read a binary body, so those calls report an unreadable response. Six uploads take
+multipart form data or JSON; the SDK sends JSON.
+
+**Scope.** Composal's definition is generated from its application's routes and holds 2,008
+operations, including internal services, payment and telemetry callbacks and admin routes.
+This SDK covers the areas Composal's API reference lists: persistent agents and their
+marketplace, Verify (projects, scenarios, runs, findings, browser runners), hosting (apps,
+environments, services, deployments, domains, CDN and static sites), the container registry,
+and the current user, tokens, organizations, members and invitations. Within those areas it
+leaves out routes marked internal or deprecated (the \`/clawder\` paths, which \`/spark\` replaces),
+routes that need a credential other than a personal access token, and the agent event stream,
+whose replies the conversation also holds. That is 726 operations, as 216 resources.
+
+**Not yet run with a token.** Every request was checked against the definition, not against
+Composal.`
+
+  entity_desc: {
+    agent: 'A persistent agent: list, create, read or delete one, rename it, change who can see it, and read its conversation, usage and runtime (actions).'
+    agent_input: 'A message sent to an agent in a conversation. Accepting it starts a run; the reply arrives in the conversation.'
+    agent_thread: "An agent's conversations: list or start one, or archive, compact or snooze it (actions)."
+    agent_run: "One run of an agent's work, with its status."
+    agent_routine: "An agent's scheduled routines and heartbeat: list them, or change one (pause or enable it)."
+    agent_workflow_trigger: "The triggers that start an agent's workflows: list, read, change or remove one, or pause or resume it (actions)."
+    agent_marketplace: "Agent listings in the organization's marketplace: browse them, publish, change or remove one, or install one (action)."
+    project: 'A Verify project: an app whose user journeys Verify tests, with its environments, credentials, personas and scenarios.'
+    verification_project_scenario: "A user journey Verify tests in a project: list, write, import or export them."
+    verification_project_run: 'A Verify run of a project: list or read runs, launch, cancel or rerun one (actions).'
+    finding: 'A problem Verify found: list, read or update findings.'
+    exploration: 'An exploration in which browser agents map an app before scenarios exist: start, follow, stop or read its report.'
+    browser_session: 'A browser runner: open one, hand control between your client and the agent, read its media, or close it.'
+    app: 'An app hosted by Composal: list, create, read, change, activate, archive or delete one.'
+    app_deployment: "A deployment of a hosted app: list, start, read or cancel one."
+    app_environment: "A hosted app's environments: list, create, read, change, pause, resume, archive or remove one."
+    static_site: 'A static site hosted by Composal: list, create, read, change or remove one.'
+    cdn_space: 'A CDN storage space and its objects.'
+    image_repository: "A container image repository in the organization's registry: list or create one."
+    personal_access_token: "The calling user's personal access tokens: list, create or revoke one."
+    organization: 'An organization the user belongs to: list, create, read or change one.'
+    member: "An organization's members: list them, or change or remove one."
+    invitation: 'Invitations to join an organization: list, send or withdraw one.'
+    me: 'The calling user: read or change the profile, choose the active organization, or request account deletion (actions).'
+  }
+}

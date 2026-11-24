@@ -1,0 +1,44 @@
+# BasicPublicAgentListingDetailFlow
+
+main: kit: flow: BasicPublicAgentListingDetailFlow:
+{
+  entity: "public_agent_listing_detail",
+  kind: "basic",
+  name: "BasicPublicAgentListingDetailFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "public_agent_listing_detail_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "public_agent_listing_detail_ref01",
+        srcdatavar: "public_agent_listing_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "public_agent_listing_detail01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-public_agent_listing_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPublicAgentListingDetailFlow"
+}

@@ -1,0 +1,17 @@
+$kind: collection
+id: c06c7ca0-9753-572a-a9aa-c4824a5e0731
+description: |-
+  The **agent_repository** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_repository_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_manage` | boolean | yes |  |
+  | `environments` | object | yes |  |
+  | `expected_version` | integer | yes |  |
+  | `id` | string |  |  |
+  | `repository_choices` | array | yes |  |
+  | `repository_choices_error` | string |  |  |
+  | `repository_choices_truncated` | boolean | yes |  |
+  | `version` | integer | yes |  |
+  | `work_repositories` | array | yes |  |
+order: 26000

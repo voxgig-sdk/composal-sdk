@@ -1,0 +1,12 @@
+$kind: collection
+id: "82ab0cd3-329a-559a-b312-3f61cac6ee8f"
+description: |-
+  The **integration** entity, which belongs to a organization. Its requests address one record by `{{integration_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `github` | object | yes |  |
+  | `gitlab` | object | yes |  |
+  | `permissions` | object | yes |  |
+  | `slack` | object | yes |  |
+order: 125000

@@ -1,0 +1,33 @@
+# BasicVcsBrowserFileFlow
+
+main: kit: flow: BasicVcsBrowserFileFlow:
+{
+  entity: "vcs_browser_file",
+  kind: "basic",
+  name: "BasicVcsBrowserFileFlow",
+  step: [
+    {
+      i: {
+        ref: "vcs_browser_file_ref01",
+        srcdatavar: "vcs_browser_file_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "vcs_browser_file01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-vcs_browser_file_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVcsBrowserFileFlow"
+}

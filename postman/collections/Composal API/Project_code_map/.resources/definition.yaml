@@ -1,0 +1,19 @@
+$kind: collection
+id: c4a8e93c-2ec4-57af-b36d-fa406c170fec
+description: |-
+  The **project_code_map** entity, which belongs to a organization and a project. Its requests address one record by `{{project_code_map_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `can_scan` | boolean | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `configured` | boolean | yes |  |
+  | `error_code` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
+  | `ref` | string |  |  |
+  | `repository_id` | string | yes |  |
+  | `revision` | object | yes |  |
+  | `slug` | string | yes |  |
+  | `status` | string | yes |  |
+order: 165000

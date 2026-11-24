@@ -1,0 +1,17 @@
+$kind: collection
+id: "847a292b-fdf9-51a4-9d67-cb030bbd8208"
+description: |-
+  The **verify_browser_session** entity, which belongs to a organization. Its requests address one record by `{{verify_browser_session_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `account_id` | string | yes |  |
+  | `expires_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string |  |  |
+  | `origin` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `status` | string | yes |  |
+  | `url` | string | yes |  |
+  | `viewer_url` | string | yes |  |
+order: 210000

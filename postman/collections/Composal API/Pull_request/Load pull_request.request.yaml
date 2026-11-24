@@ -1,0 +1,22 @@
+$kind: http-request
+id: "9ab508a9-847f-5d7d-a93d-3ba0c7283afa"
+description: |-
+  The `load` operation of **pull_request**.
+
+  SDK: `client.PullRequest().load({ id: "example_id", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_requests/:id"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: page
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pull_request belongs to.
+  - key: id
+    value: "{{pull_request_id}}"
+    description: The pull_request this request addresses.
+order: 1000

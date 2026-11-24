@@ -1,0 +1,22 @@
+$kind: collection
+id: "8c4d369d-79fe-5f84-8eec-e3980214977f"
+description: |-
+  The **app_service_placement** entity, which belongs to a app. Its requests address one record by `{{app_service_placement_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `app_environment_id` | string | yes |  |
+  | `app_service_id` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `deployment_channel` | string | yes |  |
+  | `hosted_app_id` | string | yes |  |
+  | `id` | string | yes |  |
+  | `mode` | string | yes |  |
+  | `organization_id` | string | yes |  |
+  | `region_count` | integer | yes |  |
+  | `replicas_per_region` | integer | yes |  |
+  | `rollout_strategy` | string | yes |  |
+  | `targets` | array | yes |  |
+  | `total_replicas` | integer | yes |  |
+  | `updated_at` | string | yes |  |
+order: 70000

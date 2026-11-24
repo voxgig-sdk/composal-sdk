@@ -1,0 +1,14 @@
+$kind: collection
+id: faac9f2e-4f04-5d7f-ae02-9d910dd745ca
+description: |-
+  The **browser_session_event** entity, which belongs to a organization and a browser_session. Its requests address one record by `{{browser_session_event_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `browser_task_id` | string |  |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `payload` | object | yes |  |
+  | `source_sequence` | integer |  |  |
+order: 81000

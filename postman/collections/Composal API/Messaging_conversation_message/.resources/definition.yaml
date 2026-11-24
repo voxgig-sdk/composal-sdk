@@ -1,0 +1,22 @@
+$kind: collection
+id: "9beb4e2a-b568-5b51-b5c7-00392e145359"
+description: |-
+  The **messaging_conversation_message** entity, which belongs to a organization and a project. Its requests address one record by `{{messaging_conversation_message_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `attachment_limit` | integer | yes |  |
+  | `attachment_max_bytes` | integer | yes |  |
+  | `client_operation_id` | string | yes |  |
+  | `content` | string | yes |  |
+  | `id` | string |  |  |
+  | `media` | object | yes |  |
+  | `media_upload_ids` | array |  |  |
+  | `messages` | array | yes |  |
+  | `reply_to` | string |  |  |
+  | `retry_attachment` | boolean |  |  |
+  | `send_blocked_reason` | string | yes |  |
+  | `send_disposition` | string |  |  |
+  | `send_error` | string |  |  |
+  | `send_style` | string |  |  |
+order: 140000

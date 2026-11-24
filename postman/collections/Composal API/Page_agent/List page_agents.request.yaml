@@ -1,0 +1,44 @@
+$kind: http-request
+id: "4c6b0228-50f6-5a88-a95b-56e1ad4d38a2"
+description: |-
+  The `list` operation of **page_agent**.
+
+  SDK: `client.PageAgent().list({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent
+    value: ""
+    disabled: true
+  - key: agent_search
+    value: ""
+    disabled: true
+  - key: agent_visibility
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: integration_search
+    value: ""
+    disabled: true
+  - key: limit
+    value: "30"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_agent belongs to.
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = (body || [])[0]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id") && !pm.collectionVariables.get("page_agent_id")) pm.collectionVariables.set("page_agent_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 1000

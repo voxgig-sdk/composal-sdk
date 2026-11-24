@@ -1,0 +1,25 @@
+# BasicWorkflowTriggerSkippedFlow
+
+main: kit: flow: BasicWorkflowTriggerSkippedFlow:
+{
+  entity: "workflow_trigger_skipped",
+  kind: "basic",
+  name: "BasicWorkflowTriggerSkippedFlow",
+  step: [
+    {
+      i: {
+        ref: "workflow_trigger_skipped_ref01"
+      }
+
+      m: {
+        agent_id: "agent01",
+        delivery_id: "delivery01",
+        organization_id: "organization01",
+        workflow_trigger_id: "workflow_trigger01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicWorkflowTriggerSkippedFlow"
+}

@@ -1,0 +1,35 @@
+{
+  "existing": {
+    "run_search": {
+      "RUN_SEARCH00": {
+        "runs": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "RUN_SEARCH00"
+      },
+      "RUN_SEARCH01": {
+        "runs": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "RUN_SEARCH01"
+      },
+      "RUN_SEARCH02": {
+        "runs": [],
+        "organization_id": "ORGANIZATION01",
+        "id": "RUN_SEARCH02"
+      }
+    }
+  },
+  "new": {
+    "run_search": {
+      "run_search_ref01": {
+        "runs": []
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/run_search": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

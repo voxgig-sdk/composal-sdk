@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "agent_subscription": {
+      "AGENT_SUBSCRIPTION00": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SUBSCRIPTION00"
+      },
+      "AGENT_SUBSCRIPTION01": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SUBSCRIPTION01"
+      },
+      "AGENT_SUBSCRIPTION02": {
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_SUBSCRIPTION02"
+      }
+    }
+  },
+  "new": {
+    "agent_subscription": {
+      "agent_subscription_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

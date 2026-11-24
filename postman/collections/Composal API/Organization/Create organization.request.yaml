@@ -1,0 +1,30 @@
+$kind: http-request
+id: a435d7f6-36a3-5dd1-9ebc-fc4854980925
+description: |-
+  The `create` operation of **organization**.
+
+  SDK: `client.Organization().create({ name: "example", slug: "example" })`
+url: "{{base}}/api/v1/organizations"
+method: POST
+headers:
+  Accept: application/json
+  Content-Type: application/json
+body:
+  type: json
+  content: |-
+    {
+      "slug": "example",
+      "name": "example",
+      "timezone": "example"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      const rec = body?.["organization"]
+      if (pm.response.code < 300 && null != rec) {
+        if (null != at(rec, "id")) pm.collectionVariables.set("organization_id", String(at(rec, "id")))
+      }
+    language: text/javascript
+order: 3000

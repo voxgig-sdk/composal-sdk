@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "agent_write_permission": {
+      "AGENT_WRITE_PERMISSION00": {
+        "account": "s46",
+        "granted_at": "s47",
+        "granted_by": "s48",
+        "id": "AGENT_WRITE_PERMISSION00",
+        "in_effect": true,
+        "last_used_at": "s4b",
+        "tool": "s4c",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WRITE_PERMISSION01": {
+        "account": "s8c",
+        "granted_at": "s8d",
+        "granted_by": "s8e",
+        "id": "AGENT_WRITE_PERMISSION01",
+        "in_effect": true,
+        "last_used_at": "s91",
+        "tool": "s92",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_WRITE_PERMISSION02": {
+        "account": "sd2",
+        "granted_at": "sd3",
+        "granted_by": "sd4",
+        "id": "AGENT_WRITE_PERMISSION02",
+        "in_effect": true,
+        "last_used_at": "sd7",
+        "tool": "sd8",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_write_permission": {
+      "agent_write_permission_ref01": {
+        "account": "s118",
+        "granted_at": "s119",
+        "granted_by": "s11a",
+        "in_effect": true,
+        "last_used_at": "s11d",
+        "tool": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/agents/{id}/write_permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /api/v1/organizations/{organization_id}/agents/{id}/write_permissions/{write_permission_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

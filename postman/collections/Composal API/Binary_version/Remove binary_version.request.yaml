@@ -1,0 +1,31 @@
+$kind: http-request
+id: "848df3e9-02a3-5658-ab5c-c3327a355506"
+description: |-
+  The `remove` operation of **binary_version**.
+
+  SDK: `client.BinaryVersion().remove({ binary_id: "example", id: "example_id", organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/binaries/:binary_id/versions/:id?project_id={{project_id}}"
+method: DELETE
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: "{{project_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this binary_version belongs to.
+  - key: binary_id
+    value: "{{binary_id}}"
+    description: The binary this binary_version belongs to.
+  - key: id
+    value: "{{binary_version_id}}"
+    description: The binary_version this request addresses.
+scripts:
+  - type: afterResponse
+    code: |-
+      if (pm.response.code < 300) {
+        pm.collectionVariables.unset("binary_version_id")
+      }
+    language: text/javascript
+order: 6000

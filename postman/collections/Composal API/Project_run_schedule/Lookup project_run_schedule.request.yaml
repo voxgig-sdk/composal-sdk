@@ -1,0 +1,21 @@
+$kind: http-request
+id: ca0a50e5-42dd-5646-9ab2-a79915d92776
+description: |-
+  The `lookup` action of **project_run_schedule**, a route of its `load` operation.
+
+  SDK: `client.ProjectRunSchedule().load({ "organization_id": "organization_id", "project_id": "project_id", "name": "name", $action: "lookup" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/run_schedules/lookup?name={{name}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: name
+    value: "{{name}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_run_schedule belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_run_schedule belongs to.
+order: 6000

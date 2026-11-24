@@ -1,0 +1,99 @@
+{
+  "existing": {
+    "product_map_state": {
+      "PRODUCT_MAP_STATE00": {
+        "account_id": "ACCOUNT01",
+        "attempts": [],
+        "captured_at": "sa2",
+        "id": "PRODUCT_MAP_STATE00",
+        "incoming": [],
+        "labels": {},
+        "layout": {},
+        "observation_id": "OBSERVATION01",
+        "omitted_controls": 168,
+        "outgoing": [],
+        "revision_id": "REVISION01",
+        "scope": {},
+        "screenshot_url": "sac",
+        "state": {},
+        "truncated": true,
+        "url": "saf",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_STATE01": {
+        "account_id": "ACCOUNT01",
+        "attempts": [],
+        "captured_at": "s142",
+        "id": "PRODUCT_MAP_STATE01",
+        "incoming": [],
+        "labels": {},
+        "layout": {},
+        "observation_id": "OBSERVATION01",
+        "omitted_controls": 328,
+        "outgoing": [],
+        "revision_id": "REVISION01",
+        "scope": {},
+        "screenshot_url": "s14c",
+        "state": {},
+        "truncated": true,
+        "url": "s14f",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      },
+      "PRODUCT_MAP_STATE02": {
+        "account_id": "ACCOUNT01",
+        "attempts": [],
+        "captured_at": "s1e2",
+        "id": "PRODUCT_MAP_STATE02",
+        "incoming": [],
+        "labels": {},
+        "layout": {},
+        "observation_id": "OBSERVATION01",
+        "omitted_controls": 488,
+        "outgoing": [],
+        "revision_id": "REVISION01",
+        "scope": {},
+        "screenshot_url": "s1ec",
+        "state": {},
+        "truncated": true,
+        "url": "s1ef",
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01"
+      }
+    }
+  },
+  "new": {
+    "product_map_state": {
+      "product_map_state_ref01": {
+        "account_id": "ACCOUNT01",
+        "attempts": [],
+        "captured_at": "s282",
+        "incoming": [],
+        "labels": {},
+        "layout": {},
+        "observation_id": "OBSERVATION01",
+        "omitted_controls": 648,
+        "outgoing": [],
+        "revision_id": "REVISION01",
+        "scope": {},
+        "screenshot_url": "s28c",
+        "state": {},
+        "truncated": true,
+        "url": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/states": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/states/{state_id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

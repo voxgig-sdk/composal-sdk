@@ -1,0 +1,18 @@
+$kind: collection
+id: "34d67b12-b37a-5c97-be4e-aae3e32796dd"
+description: |-
+  The **project_ios_app** entity, which belongs to a organization and a project. Its requests address one record by `{{project_ios_app_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `android` | object | yes |  |
+  | `artifact_paths` | array |  |  |
+  | `description` | string | yes |  |
+  | `image` | string | yes |  |
+  | `ios` | object | yes |  |
+  | `launch_command` | string |  |  |
+  | `managed_binary` | object | yes |  |
+  | `platform` | string |  |  |
+  | `provider` | string |  |  |
+  | `setup_command` | string |  |  |
+order: 169000

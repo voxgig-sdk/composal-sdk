@@ -1,0 +1,18 @@
+$kind: http-request
+id: dae3a50b-356f-5546-ad42-2fd6c833346e
+description: |-
+  The `github_access` action of **agent**, a route of its `load` operation.
+
+  SDK: `client.Agent().load({ "organization_id": "organization_id", "id": "ID", $action: "github_access" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/github_access"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this request addresses.
+order: 16000

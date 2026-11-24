@@ -1,0 +1,11 @@
+$kind: http-request
+id: d949dbd2-2c78-5ba7-add8-cc642b222436
+description: |-
+  The `account_deletion` action of **me**, a route of its `load` operation.
+
+  SDK: `client.Me().load({ $action: "account_deletion" })`
+url: "{{base}}/api/v1/me/account_deletion"
+method: GET
+headers:
+  Accept: application/json
+order: 3000

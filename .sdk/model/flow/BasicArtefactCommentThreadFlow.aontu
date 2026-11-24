@@ -1,0 +1,47 @@
+# BasicArtefactCommentThreadFlow
+
+main: kit: flow: BasicArtefactCommentThreadFlow:
+{
+  entity: "artefact_comment_thread",
+  kind: "basic",
+  name: "BasicArtefactCommentThreadFlow",
+  step: [
+    {
+      i: {
+        ref: "artefact_comment_thread_ref01"
+      }
+
+      m: {
+        artefact_ref: "artefact_ref01",
+        organization_id: "organization01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        artefact_ref: "artefact_ref01",
+        organization_id: "organization01"
+      }
+
+      i: {
+        ref: "artefact_comment_thread_ref01",
+        srcdatavar: "artefact_comment_thread_ref01_data",
+        suffix: "_up0",
+        textfield: "anchor"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-artefact_comment_thread_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicArtefactCommentThreadFlow"
+}

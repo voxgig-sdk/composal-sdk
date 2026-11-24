@@ -1,0 +1,47 @@
+# BasicVerifyMessagingSetupFlow
+
+main: kit: flow: BasicVerifyMessagingSetupFlow:
+{
+  entity: "verify_messaging_setup",
+  kind: "basic",
+  name: "BasicVerifyMessagingSetupFlow",
+  step: [
+    {
+      i: {
+        ref: "verify_messaging_setup_ref01"
+      }
+
+      m: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      o: "create"
+    }
+
+    {
+      d: {
+        organization_id: "organization01",
+        project_id: "project01"
+      }
+
+      i: {
+        ref: "verify_messaging_setup_ref01",
+        srcdatavar: "verify_messaging_setup_ref01_data",
+        suffix: "_up0",
+        textfield: "assistant_number"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-verify_messaging_setup_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicVerifyMessagingSetupFlow"
+}

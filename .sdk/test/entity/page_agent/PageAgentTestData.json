@@ -1,0 +1,114 @@
+{
+  "existing": {
+    "page_agent": {
+      "PAGE_AGENT00": {
+        "agents": [],
+        "can_edit_integration_connections": false,
+        "creation_enabled": true,
+        "inbox": "sc1",
+        "integration_choices": [],
+        "integration_choices_truncated": false,
+        "integration_selected": [],
+        "model_choices": [],
+        "new_configuration": "sc6",
+        "organization_id": "ORGANIZATION01",
+        "pagination": {},
+        "pinned_agent": "sc9",
+        "platform_event_types": [],
+        "repository_choices": [],
+        "repository_choices_truncated": true,
+        "runtime_versions": [],
+        "selected_agent": "sce",
+        "selected_reference": "scf",
+        "viewer_id": "VIEWER01",
+        "id": "PAGE_AGENT00"
+      },
+      "PAGE_AGENT01": {
+        "agents": [],
+        "can_edit_integration_connections": false,
+        "creation_enabled": true,
+        "inbox": "s17f",
+        "integration_choices": [],
+        "integration_choices_truncated": false,
+        "integration_selected": [],
+        "model_choices": [],
+        "new_configuration": "s184",
+        "organization_id": "ORGANIZATION01",
+        "pagination": {},
+        "pinned_agent": "s187",
+        "platform_event_types": [],
+        "repository_choices": [],
+        "repository_choices_truncated": true,
+        "runtime_versions": [],
+        "selected_agent": "s18c",
+        "selected_reference": "s18d",
+        "viewer_id": "VIEWER01",
+        "id": "PAGE_AGENT01"
+      },
+      "PAGE_AGENT02": {
+        "agents": [],
+        "can_edit_integration_connections": false,
+        "creation_enabled": true,
+        "inbox": "s23d",
+        "integration_choices": [],
+        "integration_choices_truncated": false,
+        "integration_selected": [],
+        "model_choices": [],
+        "new_configuration": "s242",
+        "organization_id": "ORGANIZATION01",
+        "pagination": {},
+        "pinned_agent": "s245",
+        "platform_event_types": [],
+        "repository_choices": [],
+        "repository_choices_truncated": true,
+        "runtime_versions": [],
+        "selected_agent": "s24a",
+        "selected_reference": "s24b",
+        "viewer_id": "VIEWER01",
+        "id": "PAGE_AGENT02"
+      }
+    }
+  },
+  "new": {
+    "page_agent": {
+      "page_agent_ref01": {
+        "agents": [],
+        "can_edit_integration_connections": false,
+        "creation_enabled": true,
+        "inbox": "s2fb",
+        "integration_choices": [],
+        "integration_choices_truncated": false,
+        "integration_selected": [],
+        "model_choices": [],
+        "new_configuration": "s300",
+        "organization_id": "ORGANIZATION01",
+        "pagination": {},
+        "pinned_agent": "s303",
+        "platform_event_types": [],
+        "repository_choices": [],
+        "repository_choices_truncated": true,
+        "runtime_versions": [],
+        "selected_agent": "s308",
+        "selected_reference": "s309",
+        "viewer_id": "VIEWER01"
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/page/activity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/page": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agents/page/roster": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

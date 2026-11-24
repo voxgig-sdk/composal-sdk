@@ -1,0 +1,68 @@
+# BasicAppServicePlacementFlow
+
+main: kit: flow: BasicAppServicePlacementFlow:
+{
+  entity: "app_service_placement",
+  kind: "basic",
+  name: "BasicAppServicePlacementFlow",
+  step: [
+    {
+      m: {
+        app_id: "app01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "app_service_placement_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_service_placement_ref01",
+        srcdatavar: "app_service_placement_ref01_data",
+        suffix: "_up0",
+        textfield: "app_environment_id"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_service_placement_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "app_service_placement_ref01",
+        srcdatavar: "app_service_placement_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        app_id: "app01",
+        id: "app_service_placement01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-app_service_placement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAppServicePlacementFlow"
+}

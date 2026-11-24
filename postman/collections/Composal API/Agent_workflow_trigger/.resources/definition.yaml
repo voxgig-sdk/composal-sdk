@@ -1,0 +1,35 @@
+$kind: collection
+id: "96eb4e0e-6b5b-5883-8a77-1a47b6b40630"
+description: |-
+  The triggers that start an agent's workflows: list, read, change or remove one, or pause or resume it (actions).
+
+  The **agent_workflow_trigger** entity, which belongs to a organization and a agent. Its requests address one record by `{{agent_workflow_trigger_id}}`, which a list or a create remembers.
+
+  | field | type | required | |
+  |---|---|---|---|
+  | `budget` | object | yes |  |
+  | `can_manage` | boolean | yes |  |
+  | `can_pause` | boolean | yes |  |
+  | `can_resume` | boolean | yes |  |
+  | `can_review` | boolean | yes |  |
+  | `daily_limit` | integer | yes |  |
+  | `day_resets_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `kind` | string | yes |  |
+  | `next_due_at` | string | yes |  |
+  | `pause_cause` | string | yes |  |
+  | `paused` | boolean | yes |  |
+  | `read_at` | string | yes |  |
+  | `run_budget_usd` | number | yes |  |
+  | `schedule` | object | yes |  |
+  | `settings_changed_at` | string | yes |  |
+  | `skipped_today` | integer | yes |  |
+  | `stale_at` | string | yes |  |
+  | `stale_reason` | string | yes |  |
+  | `starts` | object | yes |  |
+  | `subscription_id` | string | yes |  |
+  | `time_zone` | string | yes |  |
+  | `today_count` | integer | yes |  |
+  | `trigger` | object | yes |  |
+  | `workflow_path` | string | yes |  |
+order: 49000

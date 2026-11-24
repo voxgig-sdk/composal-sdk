@@ -1,0 +1,32 @@
+# BasicCliLoginOrganizationFlow
+
+main: kit: flow: BasicCliLoginOrganizationFlow:
+{
+  entity: "cli_login_organization",
+  kind: "basic",
+  name: "BasicCliLoginOrganizationFlow",
+  step: [
+    {
+      i: {
+        ref: "cli_login_organization_ref01",
+        srcdatavar: "cli_login_organization_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "cli_login_organization01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-cli_login_organization_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCliLoginOrganizationFlow"
+}

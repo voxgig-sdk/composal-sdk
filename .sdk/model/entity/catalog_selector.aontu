@@ -1,0 +1,86 @@
+# Entity: catalog_selector
+
+main: kit: entity: catalog_selector: {
+
+  alias: field: {}
+
+  fields: {
+    app: {
+      h: "App"
+      n: "app"
+      r: true
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "catalog_selector"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /api/v1/hosting/apps/{app_id}/catalog/selectors"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "app_id"
+                or: "app_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/hosting/apps/{app_id}/catalog/selectors"
+          q: {
+            exist: [
+              "app_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "apps"
+            }
+            {
+              var: "app_id"
+            }
+            {
+              lit: "catalog"
+            }
+            {
+              lit: "selectors"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.app`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.app")]
+  ]
+
+}

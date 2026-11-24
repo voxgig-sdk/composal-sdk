@@ -1,0 +1,103 @@
+{
+  "existing": {
+    "page": {
+      "PAGE00": {
+        "active_runs": [],
+        "checkout_required": false,
+        "cli_signed_in_at": "sb6",
+        "counts": {},
+        "demo_project": "sb8",
+        "environments": [],
+        "included_deep_scan": true,
+        "onboarding_discovery": "sbb",
+        "organization": {},
+        "permissions": {},
+        "project": "sbe",
+        "pull_request_launch_options": [],
+        "pull_requests": [],
+        "repositories": [],
+        "runs": [],
+        "runs_pagination": {},
+        "suggested_app_url": "sc4",
+        "url_first_start": false,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGE00"
+      },
+      "PAGE01": {
+        "active_runs": [],
+        "checkout_required": false,
+        "cli_signed_in_at": "s16a",
+        "counts": {},
+        "demo_project": "s16c",
+        "environments": [],
+        "included_deep_scan": true,
+        "onboarding_discovery": "s16f",
+        "organization": {},
+        "permissions": {},
+        "project": "s172",
+        "pull_request_launch_options": [],
+        "pull_requests": [],
+        "repositories": [],
+        "runs": [],
+        "runs_pagination": {},
+        "suggested_app_url": "s178",
+        "url_first_start": false,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGE01"
+      },
+      "PAGE02": {
+        "active_runs": [],
+        "checkout_required": false,
+        "cli_signed_in_at": "s21e",
+        "counts": {},
+        "demo_project": "s220",
+        "environments": [],
+        "included_deep_scan": true,
+        "onboarding_discovery": "s223",
+        "organization": {},
+        "permissions": {},
+        "project": "s226",
+        "pull_request_launch_options": [],
+        "pull_requests": [],
+        "repositories": [],
+        "runs": [],
+        "runs_pagination": {},
+        "suggested_app_url": "s22c",
+        "url_first_start": false,
+        "organization_id": "ORGANIZATION01",
+        "id": "PAGE02"
+      }
+    }
+  },
+  "new": {
+    "page": {
+      "page_ref01": {
+        "active_runs": [],
+        "checkout_required": false,
+        "cli_signed_in_at": "s2d2",
+        "counts": {},
+        "demo_project": "s2d4",
+        "environments": [],
+        "included_deep_scan": true,
+        "onboarding_discovery": "s2d7",
+        "organization": {},
+        "permissions": {},
+        "project": "s2da",
+        "pull_request_launch_options": [],
+        "pull_requests": [],
+        "repositories": [],
+        "runs": [],
+        "runs_pagination": {},
+        "suggested_app_url": "s2e0",
+        "url_first_start": false
+      }
+    }
+  },
+  "requests": {
+    "GET /api/v1/organizations/{organization_id}/verify/page": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

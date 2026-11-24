@@ -1,0 +1,28 @@
+$kind: http-request
+id: ae386a0b-38bf-5af6-8abb-e4e953df1747
+description: |-
+  The `update` operation of **agent_verify_project**.
+
+  SDK: `client.AgentVerifyProject().update({ agent_id: "example", organization_id: "example", expected_version: 1 })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/verify_projects"
+method: PUT
+headers:
+  Accept: application/json
+  Content-Type: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_verify_project belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_verify_project belongs to.
+body:
+  type: json
+  content: |-
+    {
+      "verify_projects": [
+        "example"
+      ],
+      "expected_version": 1
+    }
+order: 2000

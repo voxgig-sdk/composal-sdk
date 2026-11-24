@@ -1,0 +1,15 @@
+$kind: http-request
+id: b4be16a0-e414-5251-91e0-e795baf727dd
+description: |-
+  The `load` operation of **static_site**.
+
+  SDK: `client.StaticSite().load({ id: "example_id" })`
+url: "{{base}}/api/v1/static_sites/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{static_site_id}}"
+    description: The static_site this request addresses.
+order: 2000

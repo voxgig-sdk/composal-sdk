@@ -1,0 +1,11 @@
+$kind: http-request
+id: "70399ae5-51b5-51f0-afbb-cffba8838d47"
+description: |-
+  The `load` operation of **me**.
+
+  SDK: `client.Me().load({ id: "example_id" })`
+url: "{{base}}/api/v1/me"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

@@ -1,0 +1,50 @@
+{
+  "existing": {
+    "product_map_identity_decision": {
+      "PRODUCT_MAP_IDENTITY_DECISION00": {
+        "observations": [],
+        "operation": "s29",
+        "reason": "s2a",
+        "target": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_IDENTITY_DECISION00"
+      },
+      "PRODUCT_MAP_IDENTITY_DECISION01": {
+        "observations": [],
+        "operation": "s51",
+        "reason": "s52",
+        "target": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_IDENTITY_DECISION01"
+      },
+      "PRODUCT_MAP_IDENTITY_DECISION02": {
+        "observations": [],
+        "operation": "s79",
+        "reason": "s7a",
+        "target": {},
+        "organization_id": "ORGANIZATION01",
+        "project_id": "PROJECT01",
+        "id": "PRODUCT_MAP_IDENTITY_DECISION02"
+      }
+    }
+  },
+  "new": {
+    "product_map_identity_decision": {
+      "product_map_identity_decision_ref01": {
+        "observations": [],
+        "operation": "sa1",
+        "reason": "sa2",
+        "target": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/identity_decisions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

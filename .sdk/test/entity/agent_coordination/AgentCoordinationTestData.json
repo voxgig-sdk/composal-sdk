@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "agent_coordination": {
+      "AGENT_COORDINATION00": {
+        "id": "AGENT_COORDINATION00",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_COORDINATION01": {
+        "id": "AGENT_COORDINATION01",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      },
+      "AGENT_COORDINATION02": {
+        "id": "AGENT_COORDINATION02",
+        "agent_id": "AGENT01",
+        "organization_id": "ORGANIZATION01"
+      }
+    }
+  },
+  "new": {
+    "agent_coordination": {
+      "agent_coordination_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/stop": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}
