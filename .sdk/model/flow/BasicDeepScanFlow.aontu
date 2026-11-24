@@ -19,22 +19,6 @@ main: kit: flow: BasicDeepScanFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "deep_scan_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "deep_scan_ref01",
         srcdatavar: "deep_scan_ref01_data",
@@ -42,8 +26,7 @@ main: kit: flow: BasicDeepScanFlow:
       }
 
       m: {
-        id: "deep_scan01",
-        organization_id: "organization01"
+        id: "deep_scan01"
       }
 
       o: "load",

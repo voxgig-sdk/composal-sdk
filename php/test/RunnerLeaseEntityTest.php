@@ -33,7 +33,7 @@ class RunnerLeaseEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RunnerLease(null)->list(["runner_id" => 1, "runner_pool_id" => 'x'], null);
+            $client->RunnerLease(null)->load(["runner_id" => 1, "runner_pool_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RunnerLeaseEntityTest extends TestCase
         $setup = runner_lease_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "runner_lease." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,37 +54,8 @@ class RunnerLeaseEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"runner_lease.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["runner01", "runner_pool01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUNNER_LEASE_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $runner_lease_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.runner_lease")));
-        $runner_lease_ref01_data = null;
-        if (count($runner_lease_ref01_data_raw) > 0) {
-            $runner_lease_ref01_data = Helpers::to_map($runner_lease_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $runner_lease_ref01_ent = $client->RunnerLease(null);
-        $runner_lease_ref01_match = [
-            "runner_id" => $setup["idmap"]["runner01"],
-            "runner_pool_id" => $setup["idmap"]["runner_pool01"],
-        ];
-
-        $runner_lease_ref01_list_result = $runner_lease_ref01_ent->list($runner_lease_ref01_match, null);
-        $this->assertIsArray($runner_lease_ref01_list_result);
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"runner_lease.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only runner_lease.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: runner_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim); runner_lease.load.1 excluded (GET-only live run: reads a record only runner_lease.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -114,19 +85,17 @@ class RunnerLeaseEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $runner_lease_ref01_match = [
-            "runner_id" => $setup["idmap"]["runner01"],
-            "runner_pool_id" => $setup["idmap"]["runner_pool01"],
+        // LOAD
+        $runner_lease_ref01_match_dt0 = [
+            "id" => $runner_lease_ref01_data["id"],
         ];
-
-        $runner_lease_ref01_list_result = $runner_lease_ref01_ent->list($runner_lease_ref01_match, null);
-        $this->assertIsArray($runner_lease_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($runner_lease_ref01_list_result),
-            ["id" => $runner_lease_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $runner_lease_ref01_match_dt0["runner_pool_id"] = $setup["idmap"]["runner_pool_id"] ?? $setup["idmap"]["runner_pool01"] ?? null;
+        $runner_lease_ref01_data_dt0_loaded = $runner_lease_ref01_ent->load($runner_lease_ref01_match_dt0, null);
+        $runner_lease_ref01_data_dt0_load_result = Helpers::to_map(is_object($runner_lease_ref01_data_dt0_loaded) && method_exists($runner_lease_ref01_data_dt0_loaded, 'data_get') ? $runner_lease_ref01_data_dt0_loaded->data_get() : $runner_lease_ref01_data_dt0_loaded);
+        $this->assertNotNull($runner_lease_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($runner_lease_ref01_data_dt0_load_result["id"] ?? null, $runner_lease_ref01_data["id"]));
+        }
 
     }
 }

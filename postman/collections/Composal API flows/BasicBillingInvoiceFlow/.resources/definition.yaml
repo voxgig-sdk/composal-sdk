@@ -1,4 +1,4 @@
 $kind: collection
 id: "6417438d-5e06-5a46-b8d9-444038bdeada"
 description: "The `BasicBillingInvoiceFlow` flow of **billing_invoice**."
-order: 103000
+order: 98000

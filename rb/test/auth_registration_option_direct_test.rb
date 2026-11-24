@@ -17,12 +17,9 @@ class AuthRegistrationOptionDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_list_auth_registration_option
-    setup = auth_registration_option_direct_setup([
-      { "id" => "direct01" },
-      { "id" => "direct02" },
-    ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-auth_registration_option", setup[:live] ? "live" : "unit")
+  def test_direct_load_auth_registration_option
+    setup = auth_registration_option_direct_setup({ "id" => "direct01" })
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-auth_registration_option", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
@@ -32,6 +29,9 @@ class AuthRegistrationOptionDirectTest < Minitest::Test
 
     params = {}
     query = {}
+    if setup[:live]
+    else
+    end
 
     result = client.direct({
       "path" => "api/v1/auth/registration_options",
@@ -41,18 +41,20 @@ class AuthRegistrationOptionDirectTest < Minitest::Test
     })
     if setup[:live]
       unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
+        Runner.live_miss(LIVE_STRICT, "Live load failed: " + Runner.live_describe(result))
       end
-      if Runner.live_list(result["data"]).nil?
-        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
+      if result["data"].nil?
+        Runner.live_miss(LIVE_STRICT, "Live load returned no data: " + Runner.live_describe(result))
       end
-      assert Runner.live_list(result["data"]).is_a?(Array)
+      assert !result["data"].nil?
     else
       assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
-      assert result["data"].is_a?(Array)
-      assert_equal 2, result["data"].length
+      assert !result["data"].nil?
+      if result["data"].is_a?(Hash)
+        assert_equal "direct01", result["data"]["id"]
+      end
       assert_equal 1, setup[:calls].length
     end
   end

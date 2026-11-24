@@ -6,8 +6,8 @@ main: kit: entity: preview_operation: {
 
   name: "preview_operation"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

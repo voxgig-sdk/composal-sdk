@@ -33,7 +33,7 @@ class AgentSubscriptionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentSubscription(null)->list(["agent_id" => 1, "organization_id" => 'x'], null);
+            $client->AgentSubscription(null)->load(["agent_id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AgentSubscriptionEntityTest extends TestCase
         $setup = agent_subscription_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_subscription." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class AgentSubscriptionEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"agent_subscription.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SUBSCRIPTION_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,15 +67,12 @@ class AgentSubscriptionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $agent_subscription_ref01_ent = $client->AgentSubscription(null);
-        $agent_subscription_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_subscription_ref01_list_result = $agent_subscription_ref01_ent->list($agent_subscription_ref01_match, null);
-        $this->assertIsArray($agent_subscription_ref01_list_result);
+        $agent_subscription_ref01_match_dt0 = [];
+        $agent_subscription_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_subscription_ref01_data_dt0_loaded = $agent_subscription_ref01_ent->load($agent_subscription_ref01_match_dt0, null);
+        $this->assertNotNull($agent_subscription_ref01_data_dt0_loaded);
 
             return;
         }
@@ -113,14 +103,11 @@ class AgentSubscriptionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $agent_subscription_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_subscription_ref01_list_result = $agent_subscription_ref01_ent->list($agent_subscription_ref01_match, null);
-        $this->assertIsArray($agent_subscription_ref01_list_result);
+        // LOAD
+        $agent_subscription_ref01_match_dt0 = [];
+        $agent_subscription_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_subscription_ref01_data_dt0_loaded = $agent_subscription_ref01_ent->load($agent_subscription_ref01_match_dt0, null);
+        $this->assertNotNull($agent_subscription_ref01_data_dt0_loaded);
 
     }
 }

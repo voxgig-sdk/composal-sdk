@@ -5,22 +5,23 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `finding_count` | integer | yes |  |
-  | `finding_ids` | array | yes |  |
-  | `findings` | array | yes |  |
-  | `findings_fix_prompt` | string | yes |  |
-  | `free_findings_pending` | boolean | yes |  |
+  | `actual` | string | yes |  |
+  | `agent_id` | string | yes |  |
+  | `agent_title` | string | yes |  |
+  | `area` | string |  |  |
+  | `checks` | array | yes |  |
+  | `confidence` | string | yes |  |
+  | `confirmed` | boolean |  |  |
+  | `evidence_step_ids` | array |  |  |
+  | `evidence_timestamp_ms` | integer | yes |  |
+  | `expected` | string | yes |  |
+  | `fix_prompt` | string | yes |  |
+  | `has_recording` | boolean |  |  |
   | `id` | string | yes |  |
-  | `mode` | string | yes |  |
-  | `permissions` | object | yes |  |
-  | `priority` | string | yes |  |
-  | `priority_counts` | object | yes |  |
-  | `project_id` | string | yes |  |
-  | `reproduction_of` | object | yes |  |
-  | `reproductions` | array | yes |  |
-  | `reruns_available` | boolean | yes |  |
-  | `status` | string | yes |  |
+  | `locked` | boolean | yes |  |
+  | `reproduction_steps` | array | yes |  |
+  | `severity` | string | yes |  |
   | `title` | string | yes |  |
-  | `unlock` | object | yes |  |
-  | `web_url` | string | yes |  |
+  | `tracked` | object | yes |  |
+  | `url` | string | yes |  |
 order: 198000

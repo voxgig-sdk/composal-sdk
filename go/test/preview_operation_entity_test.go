@@ -38,7 +38,7 @@ func TestPreviewOperationEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.PreviewOperation(nil).List(map[string]any{"app_id": 1, "preview_id": "x"}, nil)
+		_, err := client.PreviewOperation(nil).Load(map[string]any{"app_id": 1, "preview_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestPreviewOperationEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "preview_operation." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestPreviewOperationEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"app01", "preview01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, preview_operationEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PREVIEW_OPERATION_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		previewOperationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.preview_operation")))
@@ -81,25 +76,6 @@ func TestPreviewOperationEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = previewOperationRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		previewOperationRef01Ent := client.PreviewOperation(nil)
-		previewOperationRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_id": setup.idmap["preview01"],
-		}
-
-		previewOperationRef01ListResult, err := previewOperationRef01Ent.List(previewOperationRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, previewOperationRef01ListOk := previewOperationRef01ListResult.([]any)
-		if !previewOperationRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", previewOperationRef01ListResult)
-		}
 
 	})
 }
@@ -129,7 +105,7 @@ func preview_operationBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03", "preview01"},
+		[]any{"preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

@@ -37,7 +37,7 @@ class TestOrganizationSiteEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.OrganizationSite(None).list({"organization_id": 1, "native_agent_id": "x"}, None)
+            client.OrganizationSite(None).load({"organization_id": 1, "native_agent_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,17 @@ class TestOrganizationSiteEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "remove"]:
+        for _op in ["create", "update", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "organization_site." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"organization_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token\"}")
-            print("LIVE STEP {\"id\":\"organization_site.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
+            print("LIVE STEP {\"id\":\"organization_site.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
+            print("LIVE STEP {\"id\":\"organization_site.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_site.create.0 gives\"}")
             print("LIVE STEP {\"id\":\"organization_site.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
-            print("LIVE STEP {\"id\":\"organization_site.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            pytest.skip("Live coverage incomplete: organization_site.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token); organization_site.update.1 excluded (GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}); organization_site.load.2 excluded (GET-only live run: reads a record only organization_site.create.0 gives); organization_site.remove.3 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name})")
 
         if setup["live"]:
             for _live_key in ["organization01"]:
@@ -78,21 +78,6 @@ class TestOrganizationSiteEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        organization_site_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        organization_site_ref01_list_result = organization_site_ref01_ent.list(organization_site_ref01_match, None)
-        assert isinstance(organization_site_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(organization_site_ref01_list_result),
-            {"id": organization_site_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         organization_site_ref01_data_up0_up = {
             "id": organization_site_ref01_data["id"],
@@ -106,53 +91,24 @@ class TestOrganizationSiteEntity:
 
         if setup["live"]:
             runner.live_pace()
+        # LOAD
+        organization_site_ref01_match_dt0 = {
+            "id": organization_site_ref01_data["id"],
+        }
+        organization_site_ref01_data_dt0_loaded = organization_site_ref01_ent.load(organization_site_ref01_match_dt0, None)
+        organization_site_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(organization_site_ref01_data_dt0_loaded))
+        assert organization_site_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(organization_site_ref01_data_dt0_load_result.get("id"), organization_site_ref01_data["id"])
+
+        if setup["live"]:
+            runner.live_pace()
         # REMOVE
         organization_site_ref01_match_rm0 = {
             "id": organization_site_ref01_data["id"],
         }
         organization_site_ref01_match_rm0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
         organization_site_ref01_ent.remove(organization_site_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        organization_site_ref01_match_rt0 = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        organization_site_ref01_list_rt0_result = organization_site_ref01_ent.list(organization_site_ref01_match_rt0, None)
-        assert isinstance(organization_site_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(organization_site_ref01_list_rt0_result),
-            {"id": organization_site_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_ORGANIZATION_SITE_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        organization_site_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.organization_site")))
-        organization_site_ref01_data = None
-        if len(organization_site_ref01_data_raw) > 0:
-            organization_site_ref01_data = helpers.to_map(organization_site_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        organization_site_ref01_ent = client.OrganizationSite(None)
-        organization_site_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        organization_site_ref01_list_result = organization_site_ref01_ent.list(organization_site_ref01_match, None)
-        assert isinstance(organization_site_ref01_list_result, list)
 
 
 

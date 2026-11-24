@@ -112,8 +112,8 @@
 <a href="../api/artifact_image_repository.html">ArtifactImageRepository</a>
 <a href="../api/artifact_package_mirror.html">ArtifactPackageMirror</a>
 <a aria-current="page" href="../api/artifact_retention_policy.html">ArtifactRetentionPolicy</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1artifactsretention_policies">POST /api/v1/artifacts/retention_policies</a>
-<a class="nav-section" href="#get-apiv1artifactsretention_policies">GET /api/v1/artifacts/retention_policies</a>
 <a class="nav-section" href="#get-apiv1artifactsretention_policiesid">GET /api/v1/artifacts/retention_policies/{id}</a>
+<a class="nav-section" href="#get-apiv1artifactsretention_policies">GET /api/v1/artifacts/retention_policies</a>
 <a class="nav-section" href="#patch-apiv1artifactsretention_policiesid">PATCH /api/v1/artifacts/retention_policies/{id}</a>
 <a class="nav-section" href="#delete-apiv1artifactsretention_policiesid">DELETE /api/v1/artifacts/retention_policies/{id}</a>
 <a class="nav-section" href="#put-apiv1artifactsretention_policiesid">PUT /api/v1/artifacts/retention_policies/{id}</a></div>
@@ -608,13 +608,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactsretention_policies"><code>/api/v1/artifacts/retention_policies</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1artifactsretention_policiesid"><code>/api/v1/artifacts/retention_policies/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactsretention_policiesid"><code>/api/v1/artifacts/retention_policies/{id}</code></a></td>
+<td><a href="#get-apiv1artifactsretention_policies"><code>/api/v1/artifacts/retention_policies</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -642,12 +642,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">artifact_retention_policys, err := client.ArtifactRetentionPolicy(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(artifact_retention_policys)
-artifact_retention_policy, err := client.ArtifactRetentionPolicy(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">artifact_retention_policy, err := client.ArtifactRetentionPolicy(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -675,8 +670,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local artifact_retention_policys, err = client:ArtifactRetentionPolicy():list()
-local artifact_retention_policy, err = client:ArtifactRetentionPolicy():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local artifact_retention_policy, err = client:ArtifactRetentionPolicy():load({ id = &quot;example_id&quot; })
 local created, err = client:ArtifactRetentionPolicy():create({  })
 local updated, err = client:ArtifactRetentionPolicy():update({ id = &quot;example_id&quot; })
 local patched, err = client:ArtifactRetentionPolicy():patch({ id = &quot;example_id&quot; })
@@ -684,8 +678,7 @@ local removed, err = client:ArtifactRetentionPolicy():remove({ id = &quot;exampl
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$artifact_retention_policys = $client-&gt;ArtifactRetentionPolicy()-&gt;list();
-$artifact_retention_policy = $client-&gt;ArtifactRetentionPolicy()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$artifact_retention_policy = $client-&gt;ArtifactRetentionPolicy()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;ArtifactRetentionPolicy()-&gt;create([]);
 $updated = $client-&gt;ArtifactRetentionPolicy()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;ArtifactRetentionPolicy()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -693,8 +686,7 @@ $client-&gt;ArtifactRetentionPolicy()-&gt;remove([&quot;id&quot; =&gt; &quot;exa
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">artifact_retention_policys = client.ArtifactRetentionPolicy().list()
-artifact_retention_policy = client.ArtifactRetentionPolicy().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">artifact_retention_policy = client.ArtifactRetentionPolicy().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.ArtifactRetentionPolicy().create({  })
 updated = client.ArtifactRetentionPolicy().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.ArtifactRetentionPolicy().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -702,8 +694,7 @@ client.ArtifactRetentionPolicy().remove({&quot;id&quot;: &quot;example_id&quot;}
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">artifact_retention_policys = client.ArtifactRetentionPolicy.list()
-artifact_retention_policy = client.ArtifactRetentionPolicy.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">artifact_retention_policy = client.ArtifactRetentionPolicy.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.ArtifactRetentionPolicy.create({  })
 updated = client.ArtifactRetentionPolicy.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.ArtifactRetentionPolicy.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -711,8 +702,7 @@ client.ArtifactRetentionPolicy.remove({ &quot;id&quot; =&gt; &quot;example_id&qu
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const artifact_retention_policys = await client.ArtifactRetentionPolicy().list()
-const artifact_retention_policy = await client.ArtifactRetentionPolicy().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const artifact_retention_policy = await client.ArtifactRetentionPolicy().load({ id: &quot;example_id&quot; })
 const created = await client.ArtifactRetentionPolicy().create({  })
 const updated = await client.ArtifactRetentionPolicy().update({ id: &quot;example_id&quot; })
 const patched = await client.ArtifactRetentionPolicy().patch({ id: &quot;example_id&quot; })
@@ -753,19 +743,6 @@ await client.ArtifactRetentionPolicy().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1artifactsretention_policies" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/retention_policies</h3>
-<p>Operation ID: <code>api_v1_retention_policies</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-1">Responses</h4>
-<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1artifactsretention_policiesid" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/retention_policies/{id}</h3>
 <p>Operation ID: <code>api_v1_retention_policy</code>.</p>
@@ -791,6 +768,18 @@ await client.ArtifactRetentionPolicy().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1artifactsretention_policies" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/retention_policies</h3>
+<p>Operation ID: <code>api_v1_retention_policies</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-2">Responses</h4>
 <h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

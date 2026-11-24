@@ -73,12 +73,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/agent/roder/code_repairs": {
+    "GET /api/v1/agent/roder/code_repairs/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/agent/roder/code_repairs/{id}": {
+    "GET /api/v1/agent/roder/code_repairs": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -38,7 +38,7 @@ func TestGithubConnectionEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.GithubConnection(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.GithubConnection(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestGithubConnectionEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "github_connection." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestGithubConnectionEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"github_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/github_connections\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, github_connectionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_GITHUB_CONNECTION_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestGithubConnectionEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		githubConnectionRef01Ent := client.GithubConnection(nil)
-		githubConnectionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		githubConnectionRef01ListResult, err := githubConnectionRef01Ent.List(githubConnectionRef01Match, nil)
+		githubConnectionRef01MatchDt0 := map[string]any{}
+		githubConnectionRef01DataDt0Loaded, err := githubConnectionRef01Ent.Load(githubConnectionRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, githubConnectionRef01ListOk := githubConnectionRef01ListResult.([]any)
-		if !githubConnectionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", githubConnectionRef01ListResult)
+		if githubConnectionRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestGithubConnectionEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		githubConnectionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		githubConnectionRef01ListResult, err := githubConnectionRef01Ent.List(githubConnectionRef01Match, nil)
+		// LOAD
+		githubConnectionRef01MatchDt0 := map[string]any{}
+		githubConnectionRef01DataDt0Loaded, err := githubConnectionRef01Ent.Load(githubConnectionRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, githubConnectionRef01ListOk := githubConnectionRef01ListResult.([]any)
-		if !githubConnectionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", githubConnectionRef01ListResult)
+		if githubConnectionRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

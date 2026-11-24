@@ -93,9 +93,9 @@
 <a class="nav-section" href="#post-apiv1hostingappsapp_iddeploymentsidfail">POST /api/v1/hosting/apps/{app_id}/deployments/{id}/fail</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_iddeploymentsidsucceed">POST /api/v1/hosting/apps/{app_id}/deployments/{id}/succeed</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_iddeployments">POST /api/v1/hosting/apps/{app_id}/deployments</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_iddeployments">GET /api/v1/hosting/apps/{app_id}/deployments</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_iddeploymentsdeployment_idlive">GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_iddeploymentsid">GET /api/v1/hosting/apps/{app_id}/deployments/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_iddeployments">GET /api/v1/hosting/apps/{app_id}/deployments</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_iddeploymentsid">PATCH /api/v1/hosting/apps/{app_id}/deployments/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_iddeploymentsid">DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_iddeploymentsid">PUT /api/v1/hosting/apps/{app_id}/deployments/{id}</a></div>
@@ -631,12 +631,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_iddeployments"><code>/api/v1/hosting/apps/{app_id}/deployments</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_iddeploymentsdeployment_idlive"><code>/api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
@@ -644,6 +638,12 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_iddeploymentsid"><code>/api/v1/hosting/apps/{app_id}/deployments/{id}</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1hostingappsapp_iddeployments"><code>/api/v1/hosting/apps/{app_id}/deployments</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -671,12 +671,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_deployments, err := client.AppDeployment(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_deployments)
-app_deployment, err := client.AppDeployment(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_deployment, err := client.AppDeployment(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -704,8 +699,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_deployments, err = client:AppDeployment():list({ app_id = &quot;example&quot; })
-local app_deployment, err = client:AppDeployment():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_deployment, err = client:AppDeployment():load({ app_id = &quot;example&quot; })
 local created, err = client:AppDeployment():create({ app_id = &quot;example&quot; })
 local updated, err = client:AppDeployment():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
 local patched, err = client:AppDeployment():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
@@ -713,8 +707,7 @@ local removed, err = client:AppDeployment():remove({ app_id = &quot;example&quot
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_deployments = $client-&gt;AppDeployment()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_deployment = $client-&gt;AppDeployment()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_deployment = $client-&gt;AppDeployment()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppDeployment()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppDeployment()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;AppDeployment()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
@@ -722,8 +715,7 @@ $client-&gt;AppDeployment()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example&q
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_deployments = client.AppDeployment().list({&quot;app_id&quot;: &quot;example&quot;})
-app_deployment = client.AppDeployment().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_deployment = client.AppDeployment().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppDeployment().create({ &quot;app_id&quot;: &quot;example&quot; })
 updated = client.AppDeployment().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
 patched = client.AppDeployment().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
@@ -731,8 +723,7 @@ client.AppDeployment().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;id
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_deployments = client.AppDeployment.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_deployment = client.AppDeployment.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_deployment = client.AppDeployment.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppDeployment.create({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 updated = client.AppDeployment.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 patched = client.AppDeployment.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
@@ -740,8 +731,7 @@ client.AppDeployment.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quo
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_deployments = await client.AppDeployment().list({ app_id: &quot;example&quot; })
-const app_deployment = await client.AppDeployment().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_deployment = await client.AppDeployment().load({ app_id: &quot;example&quot; })
 const created = await client.AppDeployment().create({ app_id: &quot;example&quot; })
 const updated = await client.AppDeployment().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
 const patched = await client.AppDeployment().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
@@ -2390,45 +2380,11 @@ await client.AppDeployment().remove({ app_id: &quot;example&quot;, id: &quot;exa
 </tbody>
 </table>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_iddeployments" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/deployments</h3>
-<p>Operation ID: <code>api_v1_app_deployments</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-4">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-4">Responses</h4>
-<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1hostingappsapp_iddeploymentsdeployment_idlive" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live</h3>
 <p>Operation ID: <code>get_api_v1_hosting_apps_app_id_deployments_deployment_id_live</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-5">Parameters</h4>
+<h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -2456,19 +2412,19 @@ await client.AppDeployment().remove({ app_id: &quot;example&quot;, id: &quot;exa
 </tr>
 </tbody>
 </table>
-<h4 id="responses-5">Responses</h4>
-<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>
 <p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1hostingappsapp_iddeploymentsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/deployments/{id}</h3>
 <p>Operation ID: <code>api_v1_app_deployment</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-6">Parameters</h4>
+<h4 id="parameters-5">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -2489,6 +2445,39 @@ await client.AppDeployment().remove({ app_id: &quot;example&quot;, id: &quot;exa
 </tr>
 <tr>
 <td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1hostingappsapp_iddeployments" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/deployments</h3>
+<p>Operation ID: <code>api_v1_app_deployments</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app_id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

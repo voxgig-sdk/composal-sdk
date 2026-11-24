@@ -77,8 +77,8 @@ main: kit: entity: agent_repository: {
 
   name: "agent_repository"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

@@ -19,22 +19,6 @@ main: kit: flow: BasicPageAgentFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "page_agent_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "page_agent_ref01",
         srcdatavar: "page_agent_ref01_data",

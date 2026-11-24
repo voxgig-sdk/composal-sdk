@@ -33,7 +33,7 @@ class RunnerPoolRunnerEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RunnerPoolRunner(null)->list(["runner_pool_id" => 1], null);
+            $client->RunnerPoolRunner(null)->load(["id" => 1, "runner_pool_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RunnerPoolRunnerEntityTest extends TestCase
         $setup = runner_pool_runner_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "runner_pool_runner." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,58 +54,9 @@ class RunnerPoolRunnerEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"runner_pool_runner.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"runner_pool_runner.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["runner_pool01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["runner_pool_runner01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "runner_pool_runner",
-                fn() => $client->RunnerPoolRunner(null)->list(["runner_pool_id" => $setup["idmap"]["runner_pool01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $runner_pool_runner_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.runner_pool_runner")));
-        $runner_pool_runner_ref01_data = null;
-        if (count($runner_pool_runner_ref01_data_raw) > 0) {
-            $runner_pool_runner_ref01_data = Helpers::to_map($runner_pool_runner_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $runner_pool_runner_ref01_ent = $client->RunnerPoolRunner(null);
-        $runner_pool_runner_ref01_match = [
-            "runner_pool_id" => $setup["idmap"]["runner_pool01"],
-        ];
-
-        $runner_pool_runner_ref01_list_result = $runner_pool_runner_ref01_ent->list($runner_pool_runner_ref01_match, null);
-        $this->assertIsArray($runner_pool_runner_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $runner_pool_runner_ref01_match_dt0 = [
-            "id" => $runner_pool_runner_ref01_data["id"],
-        ];
-        $runner_pool_runner_ref01_match_dt0["runner_pool_id"] = $setup["idmap"]["runner_pool_id"] ?? $setup["idmap"]["runner_pool01"] ?? null;
-        $runner_pool_runner_ref01_data_dt0_loaded = $runner_pool_runner_ref01_ent->load($runner_pool_runner_ref01_match_dt0, null);
-        $runner_pool_runner_ref01_data_dt0_load_result = Helpers::to_map(is_object($runner_pool_runner_ref01_data_dt0_loaded) && method_exists($runner_pool_runner_ref01_data_dt0_loaded, 'data_get') ? $runner_pool_runner_ref01_data_dt0_loaded->data_get() : $runner_pool_runner_ref01_data_dt0_loaded);
-        $this->assertNotNull($runner_pool_runner_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($runner_pool_runner_ref01_data_dt0_load_result["id"] ?? null, $runner_pool_runner_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"runner_pool_runner.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"runner_pool_runner.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only runner_pool_runner.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: runner_pool_runner.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat); runner_pool_runner.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}); runner_pool_runner.load.2 excluded (GET-only live run: reads a record only runner_pool_runner.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -134,22 +85,6 @@ class RunnerPoolRunnerEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $runner_pool_runner_ref01_match = [
-            "runner_pool_id" => $setup["idmap"]["runner_pool01"],
-        ];
-
-        $runner_pool_runner_ref01_list_result = $runner_pool_runner_ref01_ent->list($runner_pool_runner_ref01_match, null);
-        $this->assertIsArray($runner_pool_runner_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($runner_pool_runner_ref01_list_result),
-            ["id" => $runner_pool_runner_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $runner_pool_runner_ref01_data_up0_up = [
             "id" => $runner_pool_runner_ref01_data["id"],
@@ -170,7 +105,6 @@ class RunnerPoolRunnerEntityTest extends TestCase
         $runner_pool_runner_ref01_match_dt0 = [
             "id" => $runner_pool_runner_ref01_data["id"],
         ];
-        $runner_pool_runner_ref01_match_dt0["runner_pool_id"] = $setup["idmap"]["runner_pool_id"] ?? $setup["idmap"]["runner_pool01"] ?? null;
         $runner_pool_runner_ref01_data_dt0_loaded = $runner_pool_runner_ref01_ent->load($runner_pool_runner_ref01_match_dt0, null);
         $runner_pool_runner_ref01_data_dt0_load_result = Helpers::to_map(is_object($runner_pool_runner_ref01_data_dt0_loaded) && method_exists($runner_pool_runner_ref01_data_dt0_loaded, 'data_get') ? $runner_pool_runner_ref01_data_dt0_loaded->data_get() : $runner_pool_runner_ref01_data_dt0_loaded);
         $this->assertNotNull($runner_pool_runner_ref01_data_dt0_load_result);

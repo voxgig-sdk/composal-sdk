@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch JobStepListMatch
+---@param reqmatch JobStepLoadMatch
 ---@param ctrl? table
----@return JobStepEntity[]
+---@return JobStepEntity
 ---@return string? err
-function JobStepEntity:list(reqmatch, ctrl)
+function JobStepEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function JobStepEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

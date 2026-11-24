@@ -37,7 +37,7 @@ class TestSpaceTraceSpanEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SpaceTraceSpan(None).list({"space_id": 1}, None)
+            client.SpaceTraceSpan(None).load({"space_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestSpaceTraceSpanEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "space_trace_span." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -74,20 +74,13 @@ class TestSpaceTraceSpanEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        space_trace_span_ref01_match = {
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        space_trace_span_ref01_list_result = space_trace_span_ref01_ent.list(space_trace_span_ref01_match, None)
-        assert isinstance(space_trace_span_ref01_list_result, list)
+        # LOAD
+        space_trace_span_ref01_match_dt0 = {}
+        space_trace_span_ref01_data_dt0_loaded = space_trace_span_ref01_ent.load(space_trace_span_ref01_match_dt0, None)
+        assert space_trace_span_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPACE_TRACE_SPAN_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -99,14 +92,11 @@ class TestSpaceTraceSpanEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         space_trace_span_ref01_ent = client.SpaceTraceSpan(None)
-        space_trace_span_ref01_match = {
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        space_trace_span_ref01_list_result = space_trace_span_ref01_ent.list(space_trace_span_ref01_match, None)
-        assert isinstance(space_trace_span_ref01_list_result, list)
+        space_trace_span_ref01_match_dt0 = {}
+        space_trace_span_ref01_data_dt0_loaded = space_trace_span_ref01_ent.load(space_trace_span_ref01_match_dt0, None)
+        assert space_trace_span_ref01_data_dt0_loaded is not None
 
 
 

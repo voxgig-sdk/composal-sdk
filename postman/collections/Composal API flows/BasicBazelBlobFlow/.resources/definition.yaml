@@ -1,4 +1,4 @@
 $kind: collection
 id: "10588390-28c3-5111-8416-6463ef0da4eb"
 description: "The `BasicBazelBlobFlow` flow of **bazel_blob**."
-order: 98000
+order: 93000

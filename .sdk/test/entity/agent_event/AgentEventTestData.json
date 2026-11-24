@@ -3,15 +3,18 @@
     "agent_event": {
       "AGENT_EVENT00": {
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_EVENT00"
       },
       "AGENT_EVENT01": {
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_EVENT01"
       },
       "AGENT_EVENT02": {
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "AGENT_EVENT02"
       }
     }
   },

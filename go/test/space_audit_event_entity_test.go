@@ -38,7 +38,7 @@ func TestSpaceAuditEventEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceAuditEvent(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceAuditEvent(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceAuditEventEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_audit_event." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestSpaceAuditEventEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_audit_event.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/audit_events\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_audit_eventEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_AUDIT_EVENT_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestSpaceAuditEventEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		spaceAuditEventRef01Ent := client.SpaceAuditEvent(nil)
-		spaceAuditEventRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceAuditEventRef01ListResult, err := spaceAuditEventRef01Ent.List(spaceAuditEventRef01Match, nil)
+		spaceAuditEventRef01MatchDt0 := map[string]any{}
+		spaceAuditEventRef01DataDt0Loaded, err := spaceAuditEventRef01Ent.Load(spaceAuditEventRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceAuditEventRef01ListOk := spaceAuditEventRef01ListResult.([]any)
-		if !spaceAuditEventRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceAuditEventRef01ListResult)
+		if spaceAuditEventRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestSpaceAuditEventEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceAuditEventRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceAuditEventRef01ListResult, err := spaceAuditEventRef01Ent.List(spaceAuditEventRef01Match, nil)
+		// LOAD
+		spaceAuditEventRef01MatchDt0 := map[string]any{}
+		spaceAuditEventRef01DataDt0Loaded, err := spaceAuditEventRef01Ent.Load(spaceAuditEventRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceAuditEventRef01ListOk := spaceAuditEventRef01ListResult.([]any)
-		if !spaceAuditEventRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceAuditEventRef01ListResult)
+		if spaceAuditEventRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

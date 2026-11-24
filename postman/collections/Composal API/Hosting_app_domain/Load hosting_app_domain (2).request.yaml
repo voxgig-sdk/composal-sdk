@@ -1,0 +1,19 @@
+$kind: http-request
+id: "55c1a280-6cfc-5a5e-9cf5-5ad5d5e4d1f4"
+description: |-
+  The `load` operation of **hosting_app_domain**.
+
+  SDK: `client.HostingAppDomain().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app_environment_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this hosting_app_domain belongs to.
+order: 2000

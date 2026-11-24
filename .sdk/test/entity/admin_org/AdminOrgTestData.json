@@ -85,12 +85,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/admin/organizations": {
+    "GET /api/v1/admin/organizations/{org_slug}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/admin/organizations/{org_slug}": {
+    "GET /api/v1/admin/organizations": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

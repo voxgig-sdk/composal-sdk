@@ -15,26 +15,10 @@ main: kit: flow: BasicAgentThreadFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "agent_thread_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "agent_thread_ref01",
         srcdatavar: "agent_thread_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "agent_thread01"
       }
 
       o: "load",

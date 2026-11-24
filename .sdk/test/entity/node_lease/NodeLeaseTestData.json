@@ -36,17 +36,17 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/ci/nodes/{id}/leases": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/job": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/ci/nodes/{id}/leases": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -33,7 +33,7 @@ class BackendRunnerPoolEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->BackendRunnerPool(null)->list(["backend_id" => 1], null);
+            $client->BackendRunnerPool(null)->load(["backend_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class BackendRunnerPoolEntityTest extends TestCase
         $setup = backend_runner_pool_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "remove"] as $_op) {
+        foreach (["create", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "backend_runner_pool." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,38 +54,9 @@ class BackendRunnerPoolEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"backend_runner_pool.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"backend_runner_pool.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only backend_runner_pool.create.0 gives"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"backend_runner_pool.remove.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"backend_runner_pool.list.3","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["backend01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_BACKEND_RUNNER_POOL_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $backend_runner_pool_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.backend_runner_pool")));
-        $backend_runner_pool_ref01_data = null;
-        if (count($backend_runner_pool_ref01_data_raw) > 0) {
-            $backend_runner_pool_ref01_data = Helpers::to_map($backend_runner_pool_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $backend_runner_pool_ref01_ent = $client->BackendRunnerPool(null);
-        $backend_runner_pool_ref01_match = [
-            "backend_id" => $setup["idmap"]["backend01"],
-        ];
-
-        $backend_runner_pool_ref01_list_result = $backend_runner_pool_ref01_ent->list($backend_runner_pool_ref01_match, null);
-        $this->assertIsArray($backend_runner_pool_ref01_list_result);
-
-            return;
+            $this->markTestSkipped('Live coverage incomplete: backend_runner_pool.create.0 excluded (GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools); backend_runner_pool.load.1 excluded (GET-only live run: reads a record only backend_runner_pool.create.0 gives); backend_runner_pool.remove.2 excluded (GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -114,18 +85,16 @@ class BackendRunnerPoolEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $backend_runner_pool_ref01_match = [
-            "backend_id" => $setup["idmap"]["backend01"],
+        // LOAD
+        $backend_runner_pool_ref01_match_dt0 = [
+            "id" => $backend_runner_pool_ref01_data["id"],
         ];
-
-        $backend_runner_pool_ref01_list_result = $backend_runner_pool_ref01_ent->list($backend_runner_pool_ref01_match, null);
-        $this->assertIsArray($backend_runner_pool_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($backend_runner_pool_ref01_list_result),
-            ["id" => $backend_runner_pool_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $backend_runner_pool_ref01_data_dt0_loaded = $backend_runner_pool_ref01_ent->load($backend_runner_pool_ref01_match_dt0, null);
+        $backend_runner_pool_ref01_data_dt0_load_result = Helpers::to_map(is_object($backend_runner_pool_ref01_data_dt0_loaded) && method_exists($backend_runner_pool_ref01_data_dt0_loaded, 'data_get') ? $backend_runner_pool_ref01_data_dt0_loaded->data_get() : $backend_runner_pool_ref01_data_dt0_loaded);
+        $this->assertNotNull($backend_runner_pool_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($backend_runner_pool_ref01_data_dt0_load_result["id"] ?? null, $backend_runner_pool_ref01_data["id"]));
+        }
 
         if (!empty($setup["live"])) {
             Runner::live_pace();
@@ -136,22 +105,6 @@ class BackendRunnerPoolEntityTest extends TestCase
         ];
         $backend_runner_pool_ref01_match_rm0["backend_id"] = $setup["idmap"]["backend_id"] ?? $setup["idmap"]["backend01"] ?? null;
         $backend_runner_pool_ref01_ent->remove($backend_runner_pool_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $backend_runner_pool_ref01_match_rt0 = [
-            "backend_id" => $setup["idmap"]["backend01"],
-        ];
-
-        $backend_runner_pool_ref01_list_rt0_result = $backend_runner_pool_ref01_ent->list($backend_runner_pool_ref01_match_rt0, null);
-        $this->assertIsArray($backend_runner_pool_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($backend_runner_pool_ref01_list_rt0_result),
-            ["id" => $backend_runner_pool_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

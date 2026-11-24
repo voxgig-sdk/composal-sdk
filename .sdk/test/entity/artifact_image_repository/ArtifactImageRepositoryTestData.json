@@ -43,12 +43,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/image_repositories": {
+    "GET /api/v1/artifacts/image_repositories/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/image_repositories/{id}": {
+    "GET /api/v1/artifacts/image_repositories": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

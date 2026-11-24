@@ -41,65 +41,19 @@ describe('DeviceEnterpriseRelayEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('device_enterprise_relay hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).DeviceEnterpriseRelay().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).DeviceEnterpriseRelay()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.DeviceEnterpriseRelay().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().DeviceEnterpriseRelay().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.DeviceEnterpriseRelay().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.DeviceEnterpriseRelay().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
 
 
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of ['load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'device_enterprise_relay.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"device_enterprise_relay","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/spark/devices/enterprise_relays","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/spark/devices/enterprise_relays","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"spark"},{"lit":"devices"},{"lit":"enterprise_relays"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"device_enterprise_relay","name__orig":"device_enterprise_relay","Name":"DeviceEnterpriseRelay","name_":"device_enterprise_relay","name-":"device-enterprise-relay","NAME":"DEVICE_ENTERPRISE_RELAY","index$":214}, {"active":true,"entity":"device_enterprise_relay","key$":"BasicDeviceEnterpriseRelayFlow","kind":"basic","name":"BasicDeviceEnterpriseRelayFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"device_enterprise_relay_ref01"}}],"index$":0}]}, 'DeviceEnterpriseRelay', {"GET /api/v1/spark/devices/enterprise_relays":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"device_enterprise_relay","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/spark/devices/enterprise_relays","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/spark/devices/enterprise_relays","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"spark"},{"lit":"devices"},{"lit":"enterprise_relays"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"device_enterprise_relay","name__orig":"device_enterprise_relay","Name":"DeviceEnterpriseRelay","name_":"device_enterprise_relay","name-":"device-enterprise-relay","NAME":"DEVICE_ENTERPRISE_RELAY","index$":214}, {"active":true,"entity":"device_enterprise_relay","key$":"BasicDeviceEnterpriseRelayFlow","kind":"basic","name":"BasicDeviceEnterpriseRelayFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"device_enterprise_relay_ref01","srcdatavar":"device_enterprise_relay_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-device_enterprise_relay_ref01"}}],"index$":0}]}, 'DeviceEnterpriseRelay', {"GET /api/v1/spark/devices/enterprise_relays":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,11 +63,11 @@ describe('DeviceEnterpriseRelayEntity', async () => {
 
     let device_enterprise_relay_ref01_data = Object.values(setup.data.existing.device_enterprise_relay)[0] as any
 
-    // LIST
+    // LOAD
     const device_enterprise_relay_ref01_ent = client.DeviceEnterpriseRelay()
-    const device_enterprise_relay_ref01_match: any = {}
-
-    const device_enterprise_relay_ref01_list = (await device_enterprise_relay_ref01_ent.list(device_enterprise_relay_ref01_match)).map((e: any) => e.data())
+    const device_enterprise_relay_ref01_match_dt0: any = {}
+    const device_enterprise_relay_ref01_data_dt0 = (await device_enterprise_relay_ref01_ent.load(device_enterprise_relay_ref01_match_dt0)).data()
+    assert(null != device_enterprise_relay_ref01_data_dt0)
 
 
   })

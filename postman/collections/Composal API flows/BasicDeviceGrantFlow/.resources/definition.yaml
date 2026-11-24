@@ -1,4 +1,4 @@
 $kind: collection
 id: "2574a0d2-c0af-553f-9b39-e64cd5ab11e2"
 description: "The `BasicDeviceGrantFlow` flow of **device_grant**."
-order: 181000
+order: 173000

@@ -33,7 +33,7 @@ class OrganizationServiceAccountEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->OrganizationServiceAccount(null)->list(["organization_id" => 1], null);
+            $client->OrganizationServiceAccount(null)->load(["id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class OrganizationServiceAccountEntityTest extends TestCase
         $setup = organization_service_account_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "organization_service_account." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,60 +54,10 @@ class OrganizationServiceAccountEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ORGANIZATION_SERVICE_ACCOUNT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["organization_service_account01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "organization_service_account",
-                fn() => $client->OrganizationServiceAccount(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $organization_service_account_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.organization_service_account")));
-        $organization_service_account_ref01_data = null;
-        if (count($organization_service_account_ref01_data_raw) > 0) {
-            $organization_service_account_ref01_data = Helpers::to_map($organization_service_account_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $organization_service_account_ref01_ent = $client->OrganizationServiceAccount(null);
-        $organization_service_account_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $organization_service_account_ref01_list_result = $organization_service_account_ref01_ent->list($organization_service_account_ref01_match, null);
-        $this->assertIsArray($organization_service_account_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $organization_service_account_ref01_match_dt0 = [
-            "id" => $organization_service_account_ref01_data["id"],
-        ];
-        $organization_service_account_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $organization_service_account_ref01_data_dt0_loaded = $organization_service_account_ref01_ent->load($organization_service_account_ref01_match_dt0, null);
-        $organization_service_account_ref01_data_dt0_load_result = Helpers::to_map(is_object($organization_service_account_ref01_data_dt0_loaded) && method_exists($organization_service_account_ref01_data_dt0_loaded, 'data_get') ? $organization_service_account_ref01_data_dt0_loaded->data_get() : $organization_service_account_ref01_data_dt0_loaded);
-        $this->assertNotNull($organization_service_account_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($organization_service_account_ref01_data_dt0_load_result["id"] ?? null, $organization_service_account_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only organization_service_account.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"organization_service_account.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: organization_service_account.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate); organization_service_account.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}); organization_service_account.load.2 excluded (GET-only live run: reads a record only organization_service_account.create.0 gives); organization_service_account.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -136,22 +86,6 @@ class OrganizationServiceAccountEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $organization_service_account_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $organization_service_account_ref01_list_result = $organization_service_account_ref01_ent->list($organization_service_account_ref01_match, null);
-        $this->assertIsArray($organization_service_account_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($organization_service_account_ref01_list_result),
-            ["id" => $organization_service_account_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $organization_service_account_ref01_data_up0_up = [
             "id" => $organization_service_account_ref01_data["id"],
@@ -172,7 +106,6 @@ class OrganizationServiceAccountEntityTest extends TestCase
         $organization_service_account_ref01_match_dt0 = [
             "id" => $organization_service_account_ref01_data["id"],
         ];
-        $organization_service_account_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $organization_service_account_ref01_data_dt0_loaded = $organization_service_account_ref01_ent->load($organization_service_account_ref01_match_dt0, null);
         $organization_service_account_ref01_data_dt0_load_result = Helpers::to_map(is_object($organization_service_account_ref01_data_dt0_loaded) && method_exists($organization_service_account_ref01_data_dt0_loaded, 'data_get') ? $organization_service_account_ref01_data_dt0_loaded->data_get() : $organization_service_account_ref01_data_dt0_loaded);
         $this->assertNotNull($organization_service_account_ref01_data_dt0_load_result);
@@ -189,22 +122,6 @@ class OrganizationServiceAccountEntityTest extends TestCase
         ];
         $organization_service_account_ref01_match_rm0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $organization_service_account_ref01_ent->remove($organization_service_account_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $organization_service_account_ref01_match_rt0 = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $organization_service_account_ref01_list_rt0_result = $organization_service_account_ref01_ent->list($organization_service_account_ref01_match_rt0, null);
-        $this->assertIsArray($organization_service_account_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($organization_service_account_ref01_list_rt0_result),
-            ["id" => $organization_service_account_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

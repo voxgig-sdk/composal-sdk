@@ -29,7 +29,7 @@ describe("RuntimeInstanceHealthSnapshotEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RuntimeInstanceHealthSnapshot(nil):list({ ["runtime_instance_id"] = 1 }, nil)
+    local _, err = client:RuntimeInstanceHealthSnapshot(nil):load({ ["runtime_instance_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RuntimeInstanceHealthSnapshotEntity", function()
     local setup = runtime_instance_health_snapshot_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "runtime_instance_health_snapshot." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("RuntimeInstanceHealthSnapshotEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"runtime_instance_health_snapshot.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"runtime_instance01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_RUNTIME_INSTANCE_HEALTH_SNAPSHOT_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,15 +59,12 @@ describe("RuntimeInstanceHealthSnapshotEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local runtime_instance_health_snapshot_ref01_ent = client:RuntimeInstanceHealthSnapshot(nil)
-    local runtime_instance_health_snapshot_ref01_match = {
-      ["runtime_instance_id"] = setup.idmap["runtime_instance01"],
-    }
-
-    local runtime_instance_health_snapshot_ref01_list_result, err = runtime_instance_health_snapshot_ref01_ent:list(runtime_instance_health_snapshot_ref01_match, nil)
+    local runtime_instance_health_snapshot_ref01_match_dt0 = {}
+    local runtime_instance_health_snapshot_ref01_data_dt0_loaded, err = runtime_instance_health_snapshot_ref01_ent:load(runtime_instance_health_snapshot_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(runtime_instance_health_snapshot_ref01_list_result)
+    assert.is_not_nil(runtime_instance_health_snapshot_ref01_data_dt0_loaded)
 
       return
     end
@@ -105,14 +95,11 @@ describe("RuntimeInstanceHealthSnapshotEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local runtime_instance_health_snapshot_ref01_match = {
-      ["runtime_instance_id"] = setup.idmap["runtime_instance01"],
-    }
-
-    local runtime_instance_health_snapshot_ref01_list_result, err = runtime_instance_health_snapshot_ref01_ent:list(runtime_instance_health_snapshot_ref01_match, nil)
+    -- LOAD
+    local runtime_instance_health_snapshot_ref01_match_dt0 = {}
+    local runtime_instance_health_snapshot_ref01_data_dt0_loaded, err = runtime_instance_health_snapshot_ref01_ent:load(runtime_instance_health_snapshot_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(runtime_instance_health_snapshot_ref01_list_result)
+    assert.is_not_nil(runtime_instance_health_snapshot_ref01_data_dt0_loaded)
 
   end)
 end)

@@ -310,69 +310,6 @@ main: kit: entity: release_rollout: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/execution/releases/{release_id}/rollouts"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "release_id"
-                or: "release_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/execution/releases/{release_id}/rollouts"
-          q: {
-            exist: [
-              "release_id"
-            ]
-          }
-          r: {
-            param: {
-              release_id: "release_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "execution"
-            }
-            {
-              lit: "releases"
-            }
-            {
-              var: "release_id"
-            }
-            {
-              lit: "rollouts"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -439,6 +376,64 @@ main: kit: entity: release_rollout: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/execution/releases/{release_id}/rollouts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "release_id"
+                or: "release_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/execution/releases/{release_id}/rollouts"
+          q: {
+            exist: [
+              "release_id"
+            ]
+          }
+          r: {
+            param: {
+              release_id: "release_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "execution"
+            }
+            {
+              lit: "releases"
+            }
+            {
+              var: "release_id"
+            }
+            {
+              lit: "rollouts"
             }
           ]
           t: {

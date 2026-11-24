@@ -351,8 +351,8 @@
 <a aria-current="page" href="../api/organization_identity_certificate.html">OrganizationIdentityCertificate</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1identityorganizationsorganization_ididentity_certificatesidexpire">POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_ididentity_certificatesidrevoke">POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/revoke</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_ididentity_certificates">POST /api/v1/identity/organizations/{organization_id}/identity_certificates</a>
-<a class="nav-section" href="#get-apiv1identityorganizationsorganization_ididentity_certificates">GET /api/v1/identity/organizations/{organization_id}/identity_certificates</a>
 <a class="nav-section" href="#get-apiv1identityorganizationsorganization_ididentity_certificatesid">GET /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</a>
+<a class="nav-section" href="#get-apiv1identityorganizationsorganization_ididentity_certificates">GET /api/v1/identity/organizations/{organization_id}/identity_certificates</a>
 <a class="nav-section" href="#patch-apiv1identityorganizationsorganization_ididentity_certificatesid">PATCH /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</a>
 <a class="nav-section" href="#delete-apiv1identityorganizationsorganization_ididentity_certificatesid">DELETE /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</a>
 <a class="nav-section" href="#put-apiv1identityorganizationsorganization_ididentity_certificatesid">PUT /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</a></div>
@@ -622,13 +622,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_ididentity_certificates"><code>/api/v1/identity/organizations/{organization_id}/identity_certificates</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1identityorganizationsorganization_ididentity_certificatesid"><code>/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_ididentity_certificatesid"><code>/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</code></a></td>
+<td><a href="#get-apiv1identityorganizationsorganization_ididentity_certificates"><code>/api/v1/identity/organizations/{organization_id}/identity_certificates</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -656,12 +656,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">organization_identity_certificates, err := client.OrganizationIdentityCertificate(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(organization_identity_certificates)
-organization_identity_certificate, err := client.OrganizationIdentityCertificate(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">organization_identity_certificate, err := client.OrganizationIdentityCertificate(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -689,8 +684,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local organization_identity_certificates, err = client:OrganizationIdentityCertificate():list({ organization_id = &quot;example&quot; })
-local organization_identity_certificate, err = client:OrganizationIdentityCertificate():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local organization_identity_certificate, err = client:OrganizationIdentityCertificate():load({ organization_id = &quot;example&quot; })
 local created, err = client:OrganizationIdentityCertificate():create({ organization_id = &quot;example&quot; })
 local updated, err = client:OrganizationIdentityCertificate():update({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
 local patched, err = client:OrganizationIdentityCertificate():patch({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
@@ -698,8 +692,7 @@ local removed, err = client:OrganizationIdentityCertificate():remove({ id = &quo
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$organization_identity_certificates = $client-&gt;OrganizationIdentityCertificate()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$organization_identity_certificate = $client-&gt;OrganizationIdentityCertificate()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$organization_identity_certificate = $client-&gt;OrganizationIdentityCertificate()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;OrganizationIdentityCertificate()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;OrganizationIdentityCertificate()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;OrganizationIdentityCertificate()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
@@ -707,8 +700,7 @@ $client-&gt;OrganizationIdentityCertificate()-&gt;remove([&quot;id&quot; =&gt; &
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">organization_identity_certificates = client.OrganizationIdentityCertificate().list({&quot;organization_id&quot;: &quot;example&quot;})
-organization_identity_certificate = client.OrganizationIdentityCertificate().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">organization_identity_certificate = client.OrganizationIdentityCertificate().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.OrganizationIdentityCertificate().create({ &quot;organization_id&quot;: &quot;example&quot; })
 updated = client.OrganizationIdentityCertificate().update({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 patched = client.OrganizationIdentityCertificate().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
@@ -716,8 +708,7 @@ client.OrganizationIdentityCertificate().remove({&quot;id&quot;: &quot;example_i
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">organization_identity_certificates = client.OrganizationIdentityCertificate.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-organization_identity_certificate = client.OrganizationIdentityCertificate.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">organization_identity_certificate = client.OrganizationIdentityCertificate.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.OrganizationIdentityCertificate.create({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 updated = client.OrganizationIdentityCertificate.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 patched = client.OrganizationIdentityCertificate.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
@@ -725,8 +716,7 @@ client.OrganizationIdentityCertificate.remove({ &quot;id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const organization_identity_certificates = await client.OrganizationIdentityCertificate().list({ organization_id: &quot;example&quot; })
-const organization_identity_certificate = await client.OrganizationIdentityCertificate().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const organization_identity_certificate = await client.OrganizationIdentityCertificate().load({ organization_id: &quot;example&quot; })
 const created = await client.OrganizationIdentityCertificate().create({ organization_id: &quot;example&quot; })
 const updated = await client.OrganizationIdentityCertificate().update({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
 const patched = await client.OrganizationIdentityCertificate().patch({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
@@ -874,9 +864,9 @@ await client.OrganizationIdentityCertificate().remove({ id: &quot;example_id&quo
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1identityorganizationsorganization_ididentity_certificates" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/identity_certificates</h3>
-<p>Operation ID: <code>api_v1_organization_identity_certificates</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1identityorganizationsorganization_ididentity_certificatesid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</h3>
+<p>Operation ID: <code>api_v1_organization_identity_certificate</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -897,6 +887,13 @@ await client.OrganizationIdentityCertificate().remove({ id: &quot;example_id&quo
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-3">Responses</h4>
@@ -908,9 +905,8 @@ await client.OrganizationIdentityCertificate().remove({ id: &quot;example_id&quo
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1identityorganizationsorganization_ididentity_certificatesid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}</h3>
-<p>Operation ID: <code>api_v1_organization_identity_certificate</code>.</p>
+<h3 id="get-apiv1identityorganizationsorganization_ididentity_certificates" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/identity_certificates</h3>
+<p>Operation ID: <code>api_v1_organization_identity_certificates</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -926,13 +922,6 @@ await client.OrganizationIdentityCertificate().remove({ id: &quot;example_id&quo
 <tbody>
 <tr>
 <td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

@@ -6,8 +6,8 @@ main: kit: entity: device_enterprise_relay: {
 
   name: "device_enterprise_relay"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

@@ -33,7 +33,7 @@ class AllocationLogEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AllocationLog(null)->list(["allocation_id" => 1, "app_id" => 'x'], null);
+            $client->AllocationLog(null)->load(["allocation_id" => 1, "app_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AllocationLogEntityTest extends TestCase
         $setup = allocation_log_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "allocation_log." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class AllocationLogEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["allocation01", "app01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ALLOCATION_LOG_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,19 +65,6 @@ class AllocationLogEntityTest extends TestCase
         if (count($allocation_log_ref01_data_raw) > 0) {
             $allocation_log_ref01_data = Helpers::to_map($allocation_log_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $allocation_log_ref01_ent = $client->AllocationLog(null);
-        $allocation_log_ref01_match = [
-            "allocation_id" => $setup["idmap"]["allocation01"],
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $allocation_log_ref01_list_result = $allocation_log_ref01_ent->list($allocation_log_ref01_match, null);
-        $this->assertIsArray($allocation_log_ref01_list_result);
 
     }
 }
@@ -100,7 +84,7 @@ function allocation_log_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03", "allocation01"] as $k) {
+    foreach (["allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

@@ -20,17 +20,23 @@ main: kit: flow: BasicSiteAccessKeyFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01",
-        site_id: "site01"
+      i: {
+        ref: "site_access_key_ref01",
+        srcdatavar: "site_access_key_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "site_access_key01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "site_access_key_ref01"
+            mark: "Mark01-site_access_key_ref01"
           }
         }
       ]
@@ -49,27 +55,6 @@ main: kit: flow: BasicSiteAccessKeyFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01",
-        site_id: "site01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "site_access_key_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSiteAccessKeyFlow"

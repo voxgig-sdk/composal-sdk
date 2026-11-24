@@ -1,4 +1,4 @@
 $kind: collection
 id: "4c1f98e1-8259-52bd-87ec-9e9c5b184636"
 description: "The `BasicPreviewSharingApprovalFlow` flow of **preview_sharing_approval**."
-order: 310000
+order: 295000

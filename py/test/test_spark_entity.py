@@ -37,7 +37,7 @@ class TestSparkEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.Spark(None).list({"organization_id": 1}, None)
+            client.Spark(None).load({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,19 +46,16 @@ class TestSparkEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "spark." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"spark.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"spark.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only spark.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: spark.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks); spark.load.1 excluded (GET-only live run: reads a record only spark.create.0 gives)")
 
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_ENTID")
         client = setup["client"]
 
         if setup["live"]:
@@ -67,52 +64,10 @@ class TestSparkEntity:
         spark_ref01_ent = client.Spark(None)
         spark_ref01_data = helpers.to_map(vs.getprop(
             vs.getpath(setup["data"], "new.spark"), "spark_ref01"))
-        spark_ref01_data["organization_id"] = setup["idmap"]["organization01"]
 
         spark_ref01_data = helpers.to_map(runner.entity_data(spark_ref01_ent.create(spark_ref01_data, None)))
         assert spark_ref01_data is not None
         assert spark_ref01_data["id"] is not None
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        spark_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_ref01_list_result = spark_ref01_ent.list(spark_ref01_match, None)
-        assert isinstance(spark_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(spark_ref01_list_result),
-            {"id": spark_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        spark_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.spark")))
-        spark_ref01_data = None
-        if len(spark_ref01_data_raw) > 0:
-            spark_ref01_data = helpers.to_map(spark_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        spark_ref01_ent = client.Spark(None)
-        spark_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_ref01_list_result = spark_ref01_ent.list(spark_ref01_match, None)
-        assert isinstance(spark_ref01_list_result, list)
 
 
 

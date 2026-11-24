@@ -144,8 +144,8 @@ main: kit: entity: deployment_detail: {
 
   name: "deployment_detail"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

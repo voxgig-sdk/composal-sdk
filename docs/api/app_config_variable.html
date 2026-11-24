@@ -89,8 +89,8 @@
 <a aria-current="page" href="../api/app_config_variable.html">AppConfigVariable</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingappsapp_idconfig_variablesiddisable">POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/disable</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idconfig_variablesidrotate">POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/rotate</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idconfig_variables">POST /api/v1/hosting/apps/{app_id}/config_variables</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idconfig_variables">GET /api/v1/hosting/apps/{app_id}/config_variables</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idconfig_variablesid">GET /api/v1/hosting/apps/{app_id}/config_variables/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idconfig_variables">GET /api/v1/hosting/apps/{app_id}/config_variables</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idconfig_variablesid">PATCH /api/v1/hosting/apps/{app_id}/config_variables/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idconfig_variablesid">DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idconfig_variablesid">PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}</a></div>
@@ -622,13 +622,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idconfig_variables"><code>/api/v1/hosting/apps/{app_id}/config_variables</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idconfig_variablesid"><code>/api/v1/hosting/apps/{app_id}/config_variables/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idconfig_variablesid"><code>/api/v1/hosting/apps/{app_id}/config_variables/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idconfig_variables"><code>/api/v1/hosting/apps/{app_id}/config_variables</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -656,12 +656,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_config_variables, err := client.AppConfigVariable(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_config_variables)
-app_config_variable, err := client.AppConfigVariable(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_config_variable, err := client.AppConfigVariable(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -689,8 +684,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_config_variables, err = client:AppConfigVariable():list({ app_id = &quot;example&quot; })
-local app_config_variable, err = client:AppConfigVariable():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_config_variable, err = client:AppConfigVariable():load({ app_id = &quot;example&quot; })
 local created, err = client:AppConfigVariable():create({ app_id = &quot;example&quot;, exposed_to_build = true, key = &quot;example&quot;, scope_kind = &quot;example&quot;, value_kind = &quot;example&quot; })
 local updated, err = client:AppConfigVariable():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
 local patched, err = client:AppConfigVariable():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
@@ -698,8 +692,7 @@ local removed, err = client:AppConfigVariable():remove({ app_id = &quot;example&
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_config_variables = $client-&gt;AppConfigVariable()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_config_variable = $client-&gt;AppConfigVariable()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_config_variable = $client-&gt;AppConfigVariable()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppConfigVariable()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;exposed_to_build&quot; =&gt; true, &quot;key&quot; =&gt; &quot;example&quot;, &quot;scope_kind&quot; =&gt; &quot;example&quot;, &quot;value_kind&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppConfigVariable()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;AppConfigVariable()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
@@ -707,8 +700,7 @@ $client-&gt;AppConfigVariable()-&gt;remove([&quot;app_id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_config_variables = client.AppConfigVariable().list({&quot;app_id&quot;: &quot;example&quot;})
-app_config_variable = client.AppConfigVariable().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_config_variable = client.AppConfigVariable().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppConfigVariable().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;exposed_to_build&quot;: True, &quot;key&quot;: &quot;example&quot;, &quot;scope_kind&quot;: &quot;example&quot;, &quot;value_kind&quot;: &quot;example&quot; })
 updated = client.AppConfigVariable().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
 patched = client.AppConfigVariable().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
@@ -716,8 +708,7 @@ client.AppConfigVariable().remove({&quot;app_id&quot;: &quot;example&quot;, &quo
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_config_variables = client.AppConfigVariable.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_config_variable = client.AppConfigVariable.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_config_variable = client.AppConfigVariable.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppConfigVariable.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;exposed_to_build&quot; =&gt; true, &quot;key&quot; =&gt; &quot;example&quot;, &quot;scope_kind&quot; =&gt; &quot;example&quot;, &quot;value_kind&quot; =&gt; &quot;example&quot; })
 updated = client.AppConfigVariable.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 patched = client.AppConfigVariable.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
@@ -725,8 +716,7 @@ client.AppConfigVariable.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, 
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_config_variables = await client.AppConfigVariable().list({ app_id: &quot;example&quot; })
-const app_config_variable = await client.AppConfigVariable().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_config_variable = await client.AppConfigVariable().load({ app_id: &quot;example&quot; })
 const created = await client.AppConfigVariable().create({ app_id: &quot;example&quot;, exposed_to_build: true, key: &quot;example&quot;, scope_kind: &quot;example&quot;, value_kind: &quot;example&quot; })
 const updated = await client.AppConfigVariable().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
 const patched = await client.AppConfigVariable().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
@@ -1461,52 +1451,11 @@ await client.AppConfigVariable().remove({ app_id: &quot;example&quot;, id: &quot
 </tbody>
 </table>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idconfig_variables" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/config_variables</h3>
-<p>Operation ID: <code>api_v1_app_config_variables</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>app_environment_id</code></td>
-<td><code>query</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>Return only records scoped to this environment of the app, including archived previews.</td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-3">Responses</h4>
-<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1hostingappsapp_idconfig_variablesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/config_variables/{id}</h3>
 <p>Operation ID: <code>api_v1_app_config_variable</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-4">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1531,6 +1480,46 @@ await client.AppConfigVariable().remove({ app_id: &quot;example&quot;, id: &quot
 <td><code>string</code></td>
 <td>Yes</td>
 <td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-success" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1hostingappsapp_idconfig_variables" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/config_variables</h3>
+<p>Operation ID: <code>api_v1_app_config_variables</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>app_environment_id</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Return only records scoped to this environment of the app, including archived previews.</td>
 </tr>
 </tbody>
 </table>

@@ -30,6 +30,10 @@ class EnvironmentDiscoveryRunDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
+        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['environment01'] ?? null)) {
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-environment_discovery_run","state":"excluded","attempted":false,"reason":"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)');
+        }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['environment_discovery_run01'] ?? null)) {
             fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-environment_discovery_run","state":"excluded","attempted":false,"reason":"GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives"}' . "\n");
             $this->markTestSkipped('Live coverage incomplete: direct-load-environment_discovery_run excluded (GET-only live run: needs environment_discovery_run01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop gives)');

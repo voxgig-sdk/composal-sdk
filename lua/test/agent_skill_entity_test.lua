@@ -29,7 +29,7 @@ describe("AgentSkillEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentSkill(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:AgentSkill(nil):load({ ["id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AgentSkillEntity", function()
     local setup = agent_skill_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load", "remove"}) do
+    for _, _op in ipairs({"create", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_skill." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,64 +46,10 @@ describe("AgentSkillEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills\"}")
-      print("LIVE STEP {\"id\":\"agent_skill.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}")
-      print("LIVE STEP {\"id\":\"agent_skill.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}")
-      print("LIVE STEP {\"id\":\"agent_skill.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SKILL_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["agent_skill01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "agent_skill", function()
-        return client:AgentSkill(nil):list({["organization_id"] = setup.idmap["organization01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local agent_skill_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.agent_skill")))
-    local agent_skill_ref01_data = nil
-    if #agent_skill_ref01_data_raw > 0 then
-      agent_skill_ref01_data = helpers.to_map(agent_skill_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_skill_ref01_ent = client:AgentSkill(nil)
-    local agent_skill_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_skill_ref01_list_result, err = agent_skill_ref01_ent:list(agent_skill_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_skill_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local agent_skill_ref01_match_dt0 = {
-      id = agent_skill_ref01_data["id"],
-    }
-    local agent_skill_ref01_data_dt0_loaded, err = agent_skill_ref01_ent:load(agent_skill_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local agent_skill_ref01_data_dt0_load_result = helpers.to_map(type(agent_skill_ref01_data_dt0_loaded) == 'table' and agent_skill_ref01_data_dt0_loaded.data_get and agent_skill_ref01_data_dt0_loaded:data_get() or agent_skill_ref01_data_dt0_loaded)
-    assert.is_not_nil(agent_skill_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(agent_skill_ref01_data_dt0_load_result["id"], agent_skill_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"agent_skill.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}")
+      print("LIVE STEP {\"id\":\"agent_skill.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_skill.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"agent_skill.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}")
+      pending("Live coverage incomplete: agent_skill.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills); agent_skill.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience); agent_skill.load.2 excluded (GET-only live run: reads a record only agent_skill.create.0 gives); agent_skill.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id})")
       return
     end
 
@@ -134,23 +80,6 @@ describe("AgentSkillEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local agent_skill_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_skill_ref01_list_result, err = agent_skill_ref01_ent:list(agent_skill_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_skill_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(agent_skill_ref01_list_result),
-      { id = agent_skill_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local agent_skill_ref01_match_dt0 = {
       id = agent_skill_ref01_data["id"],
@@ -173,23 +102,6 @@ describe("AgentSkillEntity", function()
     agent_skill_ref01_match_rm0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local _, err = agent_skill_ref01_ent:remove(agent_skill_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_skill_ref01_match_rt0 = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_skill_ref01_list_rt0_result, err = agent_skill_ref01_ent:list(agent_skill_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_skill_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(agent_skill_ref01_list_rt0_result),
-      { id = agent_skill_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

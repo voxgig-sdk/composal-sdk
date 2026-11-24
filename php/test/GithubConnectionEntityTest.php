@@ -33,7 +33,7 @@ class GithubConnectionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->GithubConnection(null)->list(["organization_id" => 1], null);
+            $client->GithubConnection(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class GithubConnectionEntityTest extends TestCase
         $setup = github_connection_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "github_connection." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class GithubConnectionEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"github_connection.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/github_connections"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_GITHUB_CONNECTION_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,14 +67,11 @@ class GithubConnectionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $github_connection_ref01_ent = $client->GithubConnection(null);
-        $github_connection_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $github_connection_ref01_list_result = $github_connection_ref01_ent->list($github_connection_ref01_match, null);
-        $this->assertIsArray($github_connection_ref01_list_result);
+        $github_connection_ref01_match_dt0 = [];
+        $github_connection_ref01_data_dt0_loaded = $github_connection_ref01_ent->load($github_connection_ref01_match_dt0, null);
+        $this->assertNotNull($github_connection_ref01_data_dt0_loaded);
 
             return;
         }
@@ -111,13 +101,10 @@ class GithubConnectionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $github_connection_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $github_connection_ref01_list_result = $github_connection_ref01_ent->list($github_connection_ref01_match, null);
-        $this->assertIsArray($github_connection_ref01_list_result);
+        // LOAD
+        $github_connection_ref01_match_dt0 = [];
+        $github_connection_ref01_data_dt0_loaded = $github_connection_ref01_ent->load($github_connection_ref01_match_dt0, null);
+        $this->assertNotNull($github_connection_ref01_data_dt0_loaded);
 
     }
 }

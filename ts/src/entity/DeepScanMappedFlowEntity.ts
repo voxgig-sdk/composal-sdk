@@ -16,7 +16,7 @@ import type {
 
 import type {
   DeepScanMappedFlow,
-  DeepScanMappedFlowListMatch,
+  DeepScanMappedFlowLoadMatch,
 } from '../ComposalTypes'
 
 class DeepScanMappedFlowEntity extends ComposalEntityBase<DeepScanMappedFlow> {
@@ -35,8 +35,7 @@ class DeepScanMappedFlowEntity extends ComposalEntityBase<DeepScanMappedFlow> {
 
 
 
-
-  async list(this: any, reqmatch?: DeepScanMappedFlowListMatch, ctrl?: Control): Promise<DeepScanMappedFlowEntity[]> {
+  async load(this: any, reqmatch?: DeepScanMappedFlowLoadMatch, ctrl?: Control): Promise<DeepScanMappedFlowEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class DeepScanMappedFlowEntity extends ComposalEntityBase<DeepScanMappedFlow> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,15 @@ class DeepScanMappedFlowEntity extends ComposalEntityBase<DeepScanMappedFlow> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -147,11 +152,12 @@ class DeepScanMappedFlowEntity extends ComposalEntityBase<DeepScanMappedFlow> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<DeepScanMappedFlowEntity[]> return stays clean under strict null checks.
+        // Promise<DeepScanMappedFlowEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

@@ -22,13 +22,10 @@ class AgentWorkflowDirectTest extends TestCase
         return empty($result["err"]) && !empty($result["ok"]) && $status >= 200 && $status < 300;
     }
 
-    public function test_direct_list_agent_workflow(): void
+    public function test_direct_load_agent_workflow(): void
     {
-        $setup = agent_workflow_direct_setup([
-            ["id" => "direct01"],
-            ["id" => "direct02"],
-        ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-agent_workflow", $setup["live"] ? "live" : "unit");
+        $setup = agent_workflow_direct_setup(["id" => "direct01"]);
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-agent_workflow", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -47,8 +44,13 @@ class AgentWorkflowDirectTest extends TestCase
 
         $params = [];
         $query = [];
-        $params["agent_id"] = $setup["live"] ? ($setup["idmap"]["agent01"] ?? null) : "direct01";
-        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct02";
+        if ($setup["live"]) {
+            $params["agent_id"] = $setup["idmap"]["agent01"] ?? null;
+            $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
+        } else {
+            $params["agent_id"] = "direct01";
+            $params["organization_id"] = "direct02";
+        }
 
         $result = $client->direct([
             "path" => "api/v1/organizations/{organization_id}/agents/{agent_id}/spark/workflows",
@@ -58,18 +60,20 @@ class AgentWorkflowDirectTest extends TestCase
         ]);
         if ($setup["live"]) {
             if (!self::liveOk($result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list failed: " . Runner::live_describe($result));
+                Runner::live_miss(self::LIVE_STRICT, "Live load failed: " . Runner::live_describe($result));
             }
-            if (null === Runner::live_list($result["data"] ?? null)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list returned no list: " . Runner::live_describe($result));
+            if (null === ($result["data"] ?? null)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load returned no data: " . Runner::live_describe($result));
             }
-            $this->assertIsArray(Runner::live_list($result["data"]));
+            $this->assertNotNull($result["data"]);
         } else {
             $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
-            $this->assertIsArray($result["data"]);
-            $this->assertCount(2, $result["data"]);
+            $this->assertNotNull($result["data"]);
+            if (is_array($result["data"]) && isset($result["data"]["id"])) {
+                $this->assertEquals("direct01", $result["data"]["id"]);
+            }
             $this->assertCount(1, $setup["calls"]);
         }
     }

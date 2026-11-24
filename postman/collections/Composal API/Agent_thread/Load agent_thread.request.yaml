@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{agent_thread_id}}"
     description: The agent_thread this request addresses.
-order: 2000
+order: 1000

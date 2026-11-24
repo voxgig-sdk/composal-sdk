@@ -100,8 +100,8 @@ main: kit: entity: site_access_key: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

@@ -29,7 +29,7 @@ describe("AgentSessionCheckpointEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentSessionCheckpoint(nil):list({ ["agent_session_id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
+    local _, err = client:AgentSessionCheckpoint(nil):load({ ["agent_session_id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AgentSessionCheckpointEntity", function()
     local setup = agent_session_checkpoint_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_session_checkpoint." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,66 +46,8 @@ describe("AgentSessionCheckpointEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"agent_session_checkpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"agent_session01", "organization01", "repo01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SESSION_CHECKPOINT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["agent_session_checkpoint01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "agent_session_checkpoint", function()
-        return client:AgentSessionCheckpoint(nil):list({["agent_session_id"] = setup.idmap["agent_session01"], ["organization_id"] = setup.idmap["organization01"], ["repo_id"] = setup.idmap["repo01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local agent_session_checkpoint_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.agent_session_checkpoint")))
-    local agent_session_checkpoint_ref01_data = nil
-    if #agent_session_checkpoint_ref01_data_raw > 0 then
-      agent_session_checkpoint_ref01_data = helpers.to_map(agent_session_checkpoint_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_session_checkpoint_ref01_ent = client:AgentSessionCheckpoint(nil)
-    local agent_session_checkpoint_ref01_match = {
-      ["agent_session_id"] = setup.idmap["agent_session01"],
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local agent_session_checkpoint_ref01_list_result, err = agent_session_checkpoint_ref01_ent:list(agent_session_checkpoint_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_session_checkpoint_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local agent_session_checkpoint_ref01_match_dt0 = {
-      id = agent_session_checkpoint_ref01_data["id"],
-    }
-    agent_session_checkpoint_ref01_match_dt0["agent_session_id"] = setup.idmap["agent_session_id"] or setup.idmap["agent_session01"]
-    agent_session_checkpoint_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-    agent_session_checkpoint_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
-    local agent_session_checkpoint_ref01_data_dt0_loaded, err = agent_session_checkpoint_ref01_ent:load(agent_session_checkpoint_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local agent_session_checkpoint_ref01_data_dt0_load_result = helpers.to_map(type(agent_session_checkpoint_ref01_data_dt0_loaded) == 'table' and agent_session_checkpoint_ref01_data_dt0_loaded.data_get and agent_session_checkpoint_ref01_data_dt0_loaded:data_get() or agent_session_checkpoint_ref01_data_dt0_loaded)
-    assert.is_not_nil(agent_session_checkpoint_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(agent_session_checkpoint_ref01_data_dt0_load_result["id"], agent_session_checkpoint_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"agent_session_checkpoint.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_session_checkpoint.create.0 gives\"}")
+      pending("Live coverage incomplete: agent_session_checkpoint.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize); agent_session_checkpoint.load.1 excluded (GET-only live run: reads a record only agent_session_checkpoint.create.0 gives)")
       return
     end
 
@@ -138,30 +80,10 @@ describe("AgentSessionCheckpointEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local agent_session_checkpoint_ref01_match = {
-      ["agent_session_id"] = setup.idmap["agent_session01"],
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local agent_session_checkpoint_ref01_list_result, err = agent_session_checkpoint_ref01_ent:list(agent_session_checkpoint_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_session_checkpoint_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(agent_session_checkpoint_ref01_list_result),
-      { id = agent_session_checkpoint_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local agent_session_checkpoint_ref01_match_dt0 = {
       id = agent_session_checkpoint_ref01_data["id"],
     }
-    agent_session_checkpoint_ref01_match_dt0["agent_session_id"] = setup.idmap["agent_session_id"] or setup.idmap["agent_session01"]
     agent_session_checkpoint_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     agent_session_checkpoint_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
     local agent_session_checkpoint_ref01_data_dt0_loaded, err = agent_session_checkpoint_ref01_ent:load(agent_session_checkpoint_ref01_match_dt0, nil)

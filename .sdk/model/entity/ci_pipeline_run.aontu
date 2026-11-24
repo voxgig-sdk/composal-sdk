@@ -449,69 +449,6 @@ main: kit: entity: ci_pipeline_run: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/ci/pipelines/{pipeline_id}/runs"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "pipeline_id"
-                or: "pipeline_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/ci/pipelines/{pipeline_id}/runs"
-          q: {
-            exist: [
-              "pipeline_id"
-            ]
-          }
-          r: {
-            param: {
-              pipeline_id: "pipeline_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "ci"
-            }
-            {
-              lit: "pipelines"
-            }
-            {
-              var: "pipeline_id"
-            }
-            {
-              lit: "runs"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -583,6 +520,64 @@ main: kit: entity: ci_pipeline_run: {
           t: {
             req: "`reqdata`"
             res: "`body.pipeline_run`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/ci/pipelines/{pipeline_id}/runs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "pipeline_id"
+                or: "pipeline_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/pipelines/{pipeline_id}/runs"
+          q: {
+            exist: [
+              "pipeline_id"
+            ]
+          }
+          r: {
+            param: {
+              pipeline_id: "pipeline_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "pipelines"
+            }
+            {
+              var: "pipeline_id"
+            }
+            {
+              lit: "runs"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
           }
         }
       ]

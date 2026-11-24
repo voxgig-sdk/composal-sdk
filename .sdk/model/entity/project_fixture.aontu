@@ -40,12 +40,6 @@ main: kit: entity: project_fixture: {
       r: true
       t: "`$ARRAY`"
     }
-    credentials: {
-      h: "Credentials"
-      n: "credentials"
-      r: true
-      t: "`$ARRAY`"
-    }
     environment_ids: {
       h: "Environment Ids"
       n: "environment_ids"
@@ -59,18 +53,6 @@ main: kit: entity: project_fixture: {
           type: "`$ARRAY`"
         }
       }
-      r: true
-      t: "`$ARRAY`"
-    }
-    environments: {
-      h: "Environments"
-      n: "environments"
-      r: true
-      t: "`$ARRAY`"
-    }
-    fixtures: {
-      h: "Fixtures"
-      n: "fixtures"
       r: true
       t: "`$ARRAY`"
     }
@@ -103,23 +85,6 @@ main: kit: entity: project_fixture: {
       r: true
       t: "`$STRING`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
-      r: true
-      t: "`$OBJECT`"
-      union: {
-        branches: 2
-        count: 1
-        depth: 3
-      }
-    }
-    permissions: {
-      h: "Permissions"
-      n: "permissions"
-      r: true
-      t: "`$OBJECT`"
-    }
     persona_ids: {
       h: "Persona Ids"
       n: "persona_ids"
@@ -135,18 +100,6 @@ main: kit: entity: project_fixture: {
       }
       r: true
       t: "`$ARRAY`"
-    }
-    personas: {
-      h: "Personas"
-      n: "personas"
-      r: true
-      t: "`$ARRAY`"
-    }
-    project: {
-      h: "Project"
-      n: "project"
-      r: true
-      t: "`$OBJECT`"
     }
     sha256: {
       h: "Sha256"
@@ -389,7 +342,7 @@ main: kit: entity: project_fixture: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.fixtures`"
           }
         }
       ]

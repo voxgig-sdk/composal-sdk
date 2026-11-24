@@ -98,12 +98,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/environments": {
+    "GET /api/v1/hosting/apps/{app_id}/environments/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/environments/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/environments": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

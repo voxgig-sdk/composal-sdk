@@ -15,12 +15,18 @@ main: kit: flow: BasicRoderCodeRepairSettingFlow:
     }
 
     {
-      o: "list",
+      i: {
+        ref: "roder_code_repair_setting_ref01",
+        srcdatavar: "roder_code_repair_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "roder_code_repair_setting_ref01"
+            mark: "Mark01-roder_code_repair_setting_ref01"
           }
         }
       ]

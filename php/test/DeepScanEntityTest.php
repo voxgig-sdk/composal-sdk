@@ -33,7 +33,7 @@ class DeepScanEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->DeepScan(null)->list(["organization_id" => 1], null);
+            $client->DeepScan(null)->load(["id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class DeepScanEntityTest extends TestCase
         $setup = deep_scan_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "deep_scan." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,55 +54,8 @@ class DeepScanEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"deep_scan.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_DEEP_SCAN_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["deep_scan01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "deep_scan",
-                fn() => $client->DeepScan(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $deep_scan_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.deep_scan")));
-        $deep_scan_ref01_data = null;
-        if (count($deep_scan_ref01_data_raw) > 0) {
-            $deep_scan_ref01_data = Helpers::to_map($deep_scan_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $deep_scan_ref01_ent = $client->DeepScan(null);
-        $deep_scan_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $deep_scan_ref01_list_result = $deep_scan_ref01_ent->list($deep_scan_ref01_match, null);
-        $this->assertIsArray($deep_scan_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $deep_scan_ref01_match_dt0 = [
-            "id" => $deep_scan_ref01_data["id"],
-        ];
-        $deep_scan_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $deep_scan_ref01_data_dt0_loaded = $deep_scan_ref01_ent->load($deep_scan_ref01_match_dt0, null);
-        $deep_scan_ref01_data_dt0_load_result = Helpers::to_map(is_object($deep_scan_ref01_data_dt0_loaded) && method_exists($deep_scan_ref01_data_dt0_loaded, 'data_get') ? $deep_scan_ref01_data_dt0_loaded->data_get() : $deep_scan_ref01_data_dt0_loaded);
-        $this->assertNotNull($deep_scan_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($deep_scan_ref01_data_dt0_load_result["id"] ?? null, $deep_scan_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"deep_scan.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only deep_scan.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: deep_scan.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce); deep_scan.load.1 excluded (GET-only live run: reads a record only deep_scan.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -131,27 +84,10 @@ class DeepScanEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $deep_scan_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $deep_scan_ref01_list_result = $deep_scan_ref01_ent->list($deep_scan_ref01_match, null);
-        $this->assertIsArray($deep_scan_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($deep_scan_ref01_list_result),
-            ["id" => $deep_scan_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $deep_scan_ref01_match_dt0 = [
             "id" => $deep_scan_ref01_data["id"],
         ];
-        $deep_scan_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $deep_scan_ref01_data_dt0_loaded = $deep_scan_ref01_ent->load($deep_scan_ref01_match_dt0, null);
         $deep_scan_ref01_data_dt0_load_result = Helpers::to_map(is_object($deep_scan_ref01_data_dt0_loaded) && method_exists($deep_scan_ref01_data_dt0_loaded, 'data_get') ? $deep_scan_ref01_data_dt0_loaded->data_get() : $deep_scan_ref01_data_dt0_loaded);
         $this->assertNotNull($deep_scan_ref01_data_dt0_load_result);

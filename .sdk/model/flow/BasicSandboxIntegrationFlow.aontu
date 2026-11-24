@@ -19,22 +19,6 @@ main: kit: flow: BasicSandboxIntegrationFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "sandbox_integration_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -48,6 +32,28 @@ main: kit: flow: BasicSandboxIntegrationFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-sandbox_integration_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "sandbox_integration_ref01",
+        srcdatavar: "sandbox_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "sandbox_integration01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

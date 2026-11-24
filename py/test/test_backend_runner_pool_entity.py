@@ -37,7 +37,7 @@ class TestBackendRunnerPoolEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.BackendRunnerPool(None).list({"backend_id": 1}, None)
+            client.BackendRunnerPool(None).load({"backend_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,16 +46,16 @@ class TestBackendRunnerPoolEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "remove"]:
+        for _op in ["create", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "backend_runner_pool." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"backend_runner_pool.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools\"}")
+            print("LIVE STEP {\"id\":\"backend_runner_pool.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only backend_runner_pool.create.0 gives\"}")
             print("LIVE STEP {\"id\":\"backend_runner_pool.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}\"}")
-            print("LIVE STEP {\"id\":\"backend_runner_pool.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            pytest.skip("Live coverage incomplete: backend_runner_pool.create.0 excluded (GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools); backend_runner_pool.load.1 excluded (GET-only live run: reads a record only backend_runner_pool.create.0 gives); backend_runner_pool.remove.2 excluded (GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id})")
 
         if setup["live"]:
             for _live_key in ["backend01"]:
@@ -77,18 +77,15 @@ class TestBackendRunnerPoolEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        backend_runner_pool_ref01_match = {
-            "backend_id": setup["idmap"]["backend01"],
+        # LOAD
+        backend_runner_pool_ref01_match_dt0 = {
+            "id": backend_runner_pool_ref01_data["id"],
         }
-
-        backend_runner_pool_ref01_list_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match, None)
-        assert isinstance(backend_runner_pool_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(backend_runner_pool_ref01_list_result),
-            {"id": backend_runner_pool_ref01_data["id"]})
-        assert not vs.isempty(found_item)
+        backend_runner_pool_ref01_data_dt0_loaded = backend_runner_pool_ref01_ent.load(backend_runner_pool_ref01_match_dt0, None)
+        backend_runner_pool_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(backend_runner_pool_ref01_data_dt0_loaded))
+        assert backend_runner_pool_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(backend_runner_pool_ref01_data_dt0_load_result.get("id"), backend_runner_pool_ref01_data["id"])
 
         if setup["live"]:
             runner.live_pace()
@@ -98,47 +95,6 @@ class TestBackendRunnerPoolEntity:
         }
         backend_runner_pool_ref01_match_rm0["backend_id"] = setup["idmap"].get("backend_id") or setup["idmap"].get("backend01")
         backend_runner_pool_ref01_ent.remove(backend_runner_pool_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        backend_runner_pool_ref01_match_rt0 = {
-            "backend_id": setup["idmap"]["backend01"],
-        }
-
-        backend_runner_pool_ref01_list_rt0_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match_rt0, None)
-        assert isinstance(backend_runner_pool_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(backend_runner_pool_ref01_list_rt0_result),
-            {"id": backend_runner_pool_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["backend01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_BACKEND_RUNNER_POOL_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        backend_runner_pool_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.backend_runner_pool")))
-        backend_runner_pool_ref01_data = None
-        if len(backend_runner_pool_ref01_data_raw) > 0:
-            backend_runner_pool_ref01_data = helpers.to_map(backend_runner_pool_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        backend_runner_pool_ref01_ent = client.BackendRunnerPool(None)
-        backend_runner_pool_ref01_match = {
-            "backend_id": setup["idmap"]["backend01"],
-        }
-
-        backend_runner_pool_ref01_list_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match, None)
-        assert isinstance(backend_runner_pool_ref01_list_result, list)
 
 
 

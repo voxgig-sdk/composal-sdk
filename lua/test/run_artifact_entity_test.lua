@@ -29,7 +29,7 @@ describe("RunArtifactEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RunArtifact(nil):list({ ["pipeline_id"] = 1, ["run_id"] = "x" }, nil)
+    local _, err = client:RunArtifact(nil):load({ ["pipeline_id"] = 1, ["run_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RunArtifactEntity", function()
     local setup = run_artifact_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "run_artifact." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("RunArtifactEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"run_artifact.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"pipeline01", "run01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_RUN_ARTIFACT_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,16 +59,13 @@ describe("RunArtifactEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local run_artifact_ref01_ent = client:RunArtifact(nil)
-    local run_artifact_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local run_artifact_ref01_list_result, err = run_artifact_ref01_ent:list(run_artifact_ref01_match, nil)
+    local run_artifact_ref01_match_dt0 = {}
+    run_artifact_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
+    local run_artifact_ref01_data_dt0_loaded, err = run_artifact_ref01_ent:load(run_artifact_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(run_artifact_ref01_list_result)
+    assert.is_not_nil(run_artifact_ref01_data_dt0_loaded)
 
       return
     end
@@ -107,15 +97,12 @@ describe("RunArtifactEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local run_artifact_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local run_artifact_ref01_list_result, err = run_artifact_ref01_ent:list(run_artifact_ref01_match, nil)
+    -- LOAD
+    local run_artifact_ref01_match_dt0 = {}
+    run_artifact_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
+    local run_artifact_ref01_data_dt0_loaded, err = run_artifact_ref01_ent:load(run_artifact_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(run_artifact_ref01_list_result)
+    assert.is_not_nil(run_artifact_ref01_data_dt0_loaded)
 
   end)
 end)

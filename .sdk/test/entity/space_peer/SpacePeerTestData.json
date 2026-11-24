@@ -46,17 +46,17 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/peers": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/networking/spaces/{space_id}/peers/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/networking/spaces/{space_id}/peers/{id}/bootstrap": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/peers": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

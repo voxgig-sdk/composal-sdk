@@ -47,7 +47,7 @@ describe('SpaceAuditEventEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.SpaceAuditEvent().list({"space_id":1} as any),
+    await assert.rejects(client.SpaceAuditEvent().load({"space_id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('SpaceAuditEventEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'space_audit_event.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"space_audit_event","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/observability/spaces/{space_id}/audit_events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/observability/spaces/{space_id}/audit_events","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"audit_events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/observability/spaces/{space_id}/audit_events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/observability/spaces/{space_id}/audit_events","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"audit_events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"space_audit_event","name__orig":"space_audit_event","Name":"SpaceAuditEvent","name_":"space_audit_event","name-":"space-audit-event","NAME":"SPACE_AUDIT_EVENT","index$":484}, {"active":true,"entity":"space_audit_event","key$":"BasicSpaceAuditEventFlow","kind":"basic","name":"BasicSpaceAuditEventFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"space_audit_event_ref01"},"m":{"space_id":"space01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{"space_id":"space01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"space_audit_event_ref01"}}],"index$":1}]}, 'SpaceAuditEvent', {"POST /api/v1/observability/spaces/{space_id}/audit_events":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/observability/spaces/{space_id}/audit_events":{"protocol":"http","parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"space_audit_event.create.0":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/audit_events"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"space_audit_event","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/observability/spaces/{space_id}/audit_events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/observability/spaces/{space_id}/audit_events","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"audit_events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/observability/spaces/{space_id}/audit_events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/observability/spaces/{space_id}/audit_events","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"audit_events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"space_audit_event","name__orig":"space_audit_event","Name":"SpaceAuditEvent","name_":"space_audit_event","name-":"space-audit-event","NAME":"SPACE_AUDIT_EVENT","index$":484}, {"active":true,"entity":"space_audit_event","key$":"BasicSpaceAuditEventFlow","kind":"basic","name":"BasicSpaceAuditEventFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"space_audit_event_ref01"},"m":{"space_id":"space01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"space_audit_event_ref01","srcdatavar":"space_audit_event_ref01_data","suffix":"_dt0"},"m":{"id":"space_audit_event01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-space_audit_event_ref01"}}],"index$":1}]}, 'SpaceAuditEvent', {"POST /api/v1/observability/spaces/{space_id}/audit_events":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/observability/spaces/{space_id}/audit_events":{"protocol":"http","parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"space_audit_event.create.0":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/audit_events"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -80,12 +80,6 @@ describe('SpaceAuditEventEntity', async () => {
     space_audit_event_ref01_data = (await space_audit_event_ref01_ent.create(space_audit_event_ref01_data)).data()
     assert(null != space_audit_event_ref01_data)
 
-
-    // LIST
-    const space_audit_event_ref01_match: any = {}
-    space_audit_event_ref01_match['space_id'] = setup.idmap['space01']
-
-    const space_audit_event_ref01_list = (await space_audit_event_ref01_ent.list(space_audit_event_ref01_match)).map((e: any) => e.data())
 
 
   })

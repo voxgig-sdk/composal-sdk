@@ -1,0 +1,15 @@
+$kind: http-request
+id: "82757efa-a9c2-513d-9561-52d6981cb274"
+description: |-
+  The `load` operation of **space_metric_sery**.
+
+  SDK: `client.SpaceMetricSery().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/metric_series"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

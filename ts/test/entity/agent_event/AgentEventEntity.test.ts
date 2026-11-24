@@ -47,7 +47,7 @@ describe('AgentEventEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.AgentEvent().list({"agent_id":1,"organization_id":"x"} as any),
+    await assert.rejects(client.AgentEvent().load({"agent_id":1,"organization_id":"x"} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('AgentEventEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'agent_event.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"agent_event","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"agent_id","or":"id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":1}],"query":[{"a":true,"ex":"main","explode":true,"k":"query","n":"conversation_id","or":"conversation_id","r":false,"style":"form","t":"`$STRING`","index$":0},{"a":true,"ex":"codex","explode":true,"k":"query","n":"device_activity_provider","or":"device_activity_providers","r":false,"style":"form","t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/agents/{id}/spark/events","q":{"exist":["agent_id","organization_id"]},"r":{"param":{"id":"agent_id"}},"rs":{"alternatives":[{"kind":"raw","media":"text/event-stream"}],"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"agents"},{"var":"agent_id"},{"lit":"spark"},{"lit":"events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["$.main.kit.entity.organization","$.main.kit.entity.agent"]]},"key$":"agent_event","name__orig":"agent_event","Name":"AgentEvent","name_":"agent_event","name-":"agent-event","NAME":"AGENT_EVENT","index$":20}, {"active":true,"entity":"agent_event","key$":"BasicAgentEventFlow","kind":"basic","name":"BasicAgentEventFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"agent_id":"agent01","organization_id":"organization01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"agent_event_ref01"}}],"index$":0}]}, 'AgentEvent', {"GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":1},{"name":"conversation_id","in":"query","schema":{"type":"string","default":"main"},"index$":2},{"name":"device_activity_providers","in":"query","description":"Comma-separated device preview providers understood by this client. Omitted retains Codex-only compatibility; current clients send codex,roder,claude. Does not grant execution access.","schema":{"type":"string","default":"codex"},"index$":3}]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"agent_event","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"agent_id","or":"id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":1}],"query":[{"a":true,"ex":"main","explode":true,"k":"query","n":"conversation_id","or":"conversation_id","r":false,"style":"form","t":"`$STRING`","index$":0},{"a":true,"ex":"codex","explode":true,"k":"query","n":"device_activity_provider","or":"device_activity_providers","r":false,"style":"form","t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/agents/{id}/spark/events","q":{"exist":["agent_id","organization_id"]},"r":{"param":{"id":"agent_id"}},"rs":{"alternatives":[{"kind":"raw","media":"text/event-stream"}],"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"agents"},{"var":"agent_id"},{"lit":"spark"},{"lit":"events"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["$.main.kit.entity.organization","$.main.kit.entity.agent"]]},"key$":"agent_event","name__orig":"agent_event","Name":"AgentEvent","name_":"agent_event","name-":"agent-event","NAME":"AGENT_EVENT","index$":20}, {"active":true,"entity":"agent_event","key$":"BasicAgentEventFlow","kind":"basic","name":"BasicAgentEventFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"agent_event_ref01","srcdatavar":"agent_event_ref01_data","suffix":"_dt0"},"m":{"id":"agent_event01","organization_id":"organization01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-agent_event_ref01"}}],"unreachable":true}]}, 'AgentEvent', {"GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":1},{"name":"conversation_id","in":"query","schema":{"type":"string","default":"main"},"index$":2},{"name":"device_activity_providers","in":"query","description":"Comma-separated device preview providers understood by this client. Omitted retains Codex-only compatibility; current clients send codex,roder,claude. Does not grant execution access.","schema":{"type":"string","default":"codex"},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,15 +72,6 @@ describe('AgentEventEntity', async () => {
     const select = struct.select
 
     let agent_event_ref01_data = Object.values(setup.data.existing.agent_event)[0] as any
-
-    // LIST
-    const agent_event_ref01_ent = client.AgentEvent()
-    const agent_event_ref01_match: any = {}
-    agent_event_ref01_match['agent_id'] = setup.idmap['agent01']
-    agent_event_ref01_match['organization_id'] = setup.idmap['organization01']
-
-    const agent_event_ref01_list = (await agent_event_ref01_ent.list(agent_event_ref01_match)).map((e: any) => e.data())
-
 
   })
 })

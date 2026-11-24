@@ -80,17 +80,17 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/agent_skills": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{organization_id}/agent_skills/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{organization_id}/agent_skills/marketplace": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/agent_skills": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

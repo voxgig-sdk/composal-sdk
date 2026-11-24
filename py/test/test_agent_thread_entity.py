@@ -16,22 +16,6 @@ _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
 
 
-class _FailHook(ComposalBaseFeature):
-    def __init__(self):
-        super().__init__()
-        self.name = "failhook"
-        self.unexpected = 0
-
-    def init(self, ctx, options):
-        pass
-
-    def PreSpec(self, ctx):
-        raise RuntimeError("agent_thread hook failed")
-
-    def PreUnexpected(self, ctx):
-        self.unexpected += 1
-
-
 
 # main.kit.test.live.strict is true (the default is true): a live
 # request that fails, or a live test missing an input it needs,
@@ -47,87 +31,13 @@ class TestAgentThreadEntity:
         ent = testsdk.AgentThread(None)
         assert ent is not None
 
-    def test_should_stream(self):
-        # Feature #4: the entity stream(action, ...) method runs the op
-        # pipeline and yields result items. With the streaming feature active
-        # it yields the feature's incremental output; otherwise it falls back
-        # to the materialised list so stream always yields.
-        seed = {
-            "entity": {
-                "agent_thread": {
-                    "s1": {"id": "s1"},
-                    "s2": {"id": "s2"},
-                    "s3": {"id": "s3"},
-                }
-            }
-        }
-
-        # Fallback: streaming inactive -> yields the materialised list items.
-        base = ComposalSDK.test(seed, None)
-        seen = list(base.AgentThread(None).stream("list", None, None))
-        assert len(seen) == 3
-
-        # Inbound: streaming active -> yields each item from the feature.
-        from composal_sdk.config import shared_config
-        cfg = shared_config()
-        if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
-            sdk = ComposalSDK.test(
-                seed, {"feature": {"streaming": {"active": True}}})
-            got = []
-            for item in sdk.AgentThread(None).stream("list", None, None):
-                if isinstance(item, list):
-                    got.extend(item)
-                else:
-                    got.append(item)
-            assert len(got) == 3
-
-    def test_should_report_a_failed_stream(self):
-        offline = {"net": {"offline": True}}
-        with pytest.raises(Exception, match="offline"):
-            list(ComposalSDK.test(offline, None).AgentThread(None).stream("list", None, None))
-
-        quiet = {"ctrl": {"throw": False}}
-        list(ComposalSDK.test(offline, None).AgentThread(None).stream("list", None, quiet))
-
-        if "rbac" in (shared_config().get("feature") or {}):
-            denied = ComposalSDK.test(
-                None, {"feature": {"rbac": {"active": True, "deny": True}}})
-            with pytest.raises(Exception) as err:
-                list(denied.AgentThread(None).stream("list", None, None))
-            assert "rbac_denied" == getattr(err.value, "code", None)
-
-    def test_should_leave_the_callers_ctrl(self):
-        explain = {}
-        ctrl = {"explain": explain}
-        list(ComposalSDK.test(None, None).AgentThread(None).stream("list", None, {"ctrl": ctrl}))
-        assert ["explain"] == list(ctrl.keys())
-        assert explain is ctrl["explain"] and 0 < len(explain)
-
-    def test_should_fire_pre_unexpected(self):
-        hook = _FailHook()
-        client = ComposalSDK({"feature": {"test": {"active": True}}, "extend": [hook]})
-        with pytest.raises(Exception, match="hook failed"):
-            client.AgentThread(None).list(None, None)
-        assert 0 < hook.unexpected
-
-        fired = hook.unexpected
-        assert client.AgentThread(None).list(None, {"throw": False}) is None
-        assert fired < hook.unexpected
-
-    def test_should_validate_each_listed_record(self):
-        if "validate" not in (shared_config().get("feature") or {}):
-            pytest.skip("feature not present in this SDK: validate")
-        opts = {"feature": {"validate": {"active": True, "request": False, "response": True}}}
-        listed = ComposalSDK.test({"entity": {"agent_thread": {"v1": {}}}}, opts).AgentThread(None).list(None, None)
-        assert ["v1"] == [ent.data_get().get("id") for ent in listed]
-
     def test_should_refuse_an_invalid_request(self):
         if "validate" not in (shared_config().get("feature") or {}):
             pytest.skip("feature not present in this SDK: validate")
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AgentThread(None).list({"id": 1}, None)
+            client.AgentThread(None).load({"id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -136,14 +46,15 @@ class TestAgentThreadEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "load"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "agent_thread." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"agent_thread.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/agent/threads/{id}/archive\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"agent_thread.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_thread.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: agent_thread.create.0 excluded (GET-only live run: needs POST /api/v1/agent/threads/{id}/archive); agent_thread.load.1 excluded (GET-only live run: reads a record only agent_thread.create.0 gives)")
 
         client = setup["client"]
 
@@ -157,57 +68,6 @@ class TestAgentThreadEntity:
         agent_thread_ref01_data = helpers.to_map(runner.entity_data(agent_thread_ref01_ent.create(agent_thread_ref01_data, None)))
         assert agent_thread_ref01_data is not None
         assert agent_thread_ref01_data["id"] is not None
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        agent_thread_ref01_match = {}
-
-        agent_thread_ref01_list_result = agent_thread_ref01_ent.list(agent_thread_ref01_match, None)
-        assert isinstance(agent_thread_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(agent_thread_ref01_list_result),
-            {"id": agent_thread_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        agent_thread_ref01_match_dt0 = {
-            "id": agent_thread_ref01_data["id"],
-        }
-        agent_thread_ref01_data_dt0_loaded = agent_thread_ref01_ent.load(agent_thread_ref01_match_dt0, None)
-        agent_thread_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(agent_thread_ref01_data_dt0_loaded))
-        assert agent_thread_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(agent_thread_ref01_data_dt0_load_result.get("id"), agent_thread_ref01_data["id"])
-
-
-    def _run_get_only_flow(self, setup):
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("agent_thread01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "agent_thread",
-                                 lambda: client.AgentThread(None).list({}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        agent_thread_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.agent_thread")))
-        agent_thread_ref01_data = None
-        if len(agent_thread_ref01_data_raw) > 0:
-            agent_thread_ref01_data = helpers.to_map(agent_thread_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        agent_thread_ref01_ent = client.AgentThread(None)
-        agent_thread_ref01_match = {}
-
-        agent_thread_ref01_list_result = agent_thread_ref01_ent.list(agent_thread_ref01_match, None)
-        assert isinstance(agent_thread_ref01_list_result, list)
 
         if setup["live"]:
             runner.live_pace()

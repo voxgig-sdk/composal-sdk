@@ -29,7 +29,7 @@ describe("PreviewOperationEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:PreviewOperation(nil):list({ ["app_id"] = 1, ["preview_id"] = "x" }, nil)
+    local _, err = client:PreviewOperation(nil):load({ ["app_id"] = 1, ["preview_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("PreviewOperationEntity", function()
     local setup = preview_operation_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "preview_operation." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,12 +45,10 @@ describe("PreviewOperationEntity", function()
       end
     end
     if setup.live then
-      for _, _live_key in ipairs({"app01", "preview01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PREVIEW_OPERATION_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -60,20 +58,6 @@ describe("PreviewOperationEntity", function()
     if #preview_operation_ref01_data_raw > 0 then
       preview_operation_ref01_data = helpers.to_map(preview_operation_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local preview_operation_ref01_ent = client:PreviewOperation(nil)
-    local preview_operation_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_id"] = setup.idmap["preview01"],
-    }
-
-    local preview_operation_ref01_list_result, err = preview_operation_ref01_ent:list(preview_operation_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(preview_operation_ref01_list_result)
 
   end)
 end)
@@ -98,7 +82,7 @@ function preview_operation_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03", "preview01" },
+    { "preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

@@ -1,0 +1,11 @@
+$kind: http-request
+id: "93498ea9-3572-56d2-96da-5a2c7583ec9c"
+description: |-
+  The `load` operation of **execution_desired_state**.
+
+  SDK: `client.ExecutionDesiredState().load({ id: "example_id" })`
+url: "{{base}}/api/v1/execution/desired_states"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

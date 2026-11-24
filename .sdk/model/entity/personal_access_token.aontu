@@ -55,8 +55,8 @@ main: kit: entity: personal_access_token: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

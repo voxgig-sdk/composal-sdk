@@ -38,7 +38,7 @@ func TestDeploymentDetailEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.DeploymentDetail(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.DeploymentDetail(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestDeploymentDetailEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "deployment_detail." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestDeploymentDetailEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, deployment_detailEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DEPLOYMENT_DETAIL_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		deploymentDetailRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.deployment_detail")))
@@ -81,24 +76,6 @@ func TestDeploymentDetailEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deploymentDetailRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		deploymentDetailRef01Ent := client.DeploymentDetail(nil)
-		deploymentDetailRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		deploymentDetailRef01ListResult, err := deploymentDetailRef01Ent.List(deploymentDetailRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, deploymentDetailRef01ListOk := deploymentDetailRef01ListResult.([]any)
-		if !deploymentDetailRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", deploymentDetailRef01ListResult)
-		}
 
 	})
 }

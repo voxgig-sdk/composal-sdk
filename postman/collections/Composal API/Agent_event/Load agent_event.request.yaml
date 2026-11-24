@@ -1,0 +1,25 @@
+$kind: http-request
+id: "4e0964e3-0eb9-5d49-83d0-7e32f48d5d2d"
+description: |-
+  The `load` operation of **agent_event**.
+
+  SDK: `client.AgentEvent().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/events"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: conversation_id
+    value: main
+    disabled: true
+  - key: device_activity_providers
+    value: codex
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_event belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_event belongs to.
+order: 1000

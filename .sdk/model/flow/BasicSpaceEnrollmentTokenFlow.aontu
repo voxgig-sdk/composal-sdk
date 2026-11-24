@@ -19,22 +19,6 @@ main: kit: flow: BasicSpaceEnrollmentTokenFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "space_enrollment_token_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         space_id: "space01"
       }
@@ -64,8 +48,7 @@ main: kit: flow: BasicSpaceEnrollmentTokenFlow:
       }
 
       m: {
-        id: "space_enrollment_token01",
-        space_id: "space01"
+        id: "space_enrollment_token01"
       }
 
       o: "load",
@@ -91,26 +74,6 @@ main: kit: flow: BasicSpaceEnrollmentTokenFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "space_enrollment_token_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSpaceEnrollmentTokenFlow"

@@ -1,0 +1,56 @@
+$kind: http-request
+id: "84811c50-491e-5017-9776-0d235770b188"
+description: |-
+  The `load` operation of **ci_pipeline_run**.
+
+  SDK: `client.CiPipelineRun().load({ pipeline_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: id
+    value: "{{ci_pipeline_run_ref01}}"
+    description: The ci_pipeline_run this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","pipeline_id","ci_pipeline_run_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Load ci_pipeline_run: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-ci_pipeline_run_ref01" === pm.variables.get("ci_pipeline_run_ref01_marked")) pm.test("2. Load ci_pipeline_run: the update reads back", () => {
+        pm.expect(JSON.stringify(body?.["pipeline_run"])).to.include("Mark01-ci_pipeline_run_ref01")
+      })
+      pm.test("2. Load ci_pipeline_run: the record is the one asked for", () => {
+        pm.expect(String(at(body?.["pipeline_run"], "id"))).to.eql(String(pm.variables.get("ci_pipeline_run_ref01")))
+      })
+    language: text/javascript
+order: 2000

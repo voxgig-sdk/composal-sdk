@@ -38,7 +38,7 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceGateway(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceGateway(nil).Load(map[string]any{"id": 1, "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_gateway." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_gateway.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat\"}")
-			t.Log("LIVE STEP {\"id\":\"space_gateway.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_gateway.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_gateway.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_gatewayEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_GATEWAY_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["space_gateway01"]
-			}
-			livePace()
-			liveExisting(t, space_gatewayEntityLiveStrict, setup.data, "space_gateway", "id", _liveId,
-				func() (any, error) {
-					return client.SpaceGateway(nil).List(map[string]any{"space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spaceGatewayRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_gateway")))
-		var spaceGatewayRef01Data map[string]any
-		if len(spaceGatewayRef01DataRaw) > 0 {
-			spaceGatewayRef01Data = core.ToMapAny(spaceGatewayRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spaceGatewayRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceGatewayRef01Ent := client.SpaceGateway(nil)
-		spaceGatewayRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGatewayRef01ListResult, err := spaceGatewayRef01Ent.List(spaceGatewayRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spaceGatewayRef01ListOk := spaceGatewayRef01ListResult.([]any)
-		if !spaceGatewayRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceGatewayRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		spaceGatewayRef01MatchDt0 := map[string]any{
-			"id": spaceGatewayRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceGatewayRef01MatchDt0["space_id"] = v
-		} else {
-			spaceGatewayRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		spaceGatewayRef01DataDt0Loaded, err := spaceGatewayRef01Ent.Load(spaceGatewayRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		spaceGatewayRef01DataDt0LoadResult := core.ToMapAny(entityData(spaceGatewayRef01DataDt0Loaded))
-		if spaceGatewayRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(spaceGatewayRef01DataDt0LoadResult["id"], spaceGatewayRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"space_gateway.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_gateway.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_gateway.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"space_gateway.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
+			t.Skip("Live coverage incomplete: space_gateway.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat); space_gateway.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}); space_gateway.load.2 excluded (GET-only live run: reads a record only space_gateway.create.0 gives); space_gateway.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceGatewayRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGatewayRef01ListResult, err := spaceGatewayRef01Ent.List(spaceGatewayRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceGatewayRef01List, spaceGatewayRef01ListOk := spaceGatewayRef01ListResult.([]any)
-		if !spaceGatewayRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceGatewayRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spaceGatewayRef01List), map[string]any{"id": spaceGatewayRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spaceGatewayRef01DataUp0Up := map[string]any{
 			"id": spaceGatewayRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		// LOAD
 		spaceGatewayRef01MatchDt0 := map[string]any{
 			"id": spaceGatewayRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceGatewayRef01MatchDt0["space_id"] = v
-		} else {
-			spaceGatewayRef01MatchDt0["space_id"] = setup.idmap["space01"]
 		}
 		spaceGatewayRef01DataDt0Loaded, err := spaceGatewayRef01Ent.Load(spaceGatewayRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSpaceGatewayEntity(t *testing.T) {
 		_, err = spaceGatewayRef01Ent.Remove(spaceGatewayRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceGatewayRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGatewayRef01ListRt0Result, err := spaceGatewayRef01Ent.List(spaceGatewayRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceGatewayRef01ListRt0, spaceGatewayRef01ListRt0Ok := spaceGatewayRef01ListRt0Result.([]any)
-		if !spaceGatewayRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spaceGatewayRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spaceGatewayRef01ListRt0), map[string]any{"id": spaceGatewayRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

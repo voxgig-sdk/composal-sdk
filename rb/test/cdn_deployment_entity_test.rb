@@ -25,7 +25,7 @@ class CdnDeploymentEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.CdnDeployment(nil).list({ "app_id" => 1, "cdn_id" => "x" }, nil)
+      client.CdnDeployment(nil).load({ "app_id" => 1, "cdn_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class CdnDeploymentEntityTest < Minitest::Test
     setup = cdn_deployment_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "load"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "cdn_deployment." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,54 +43,8 @@ class CdnDeploymentEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"cdn_deployment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments\"}"
-    if setup[:live]
-      ["app01", "cdn01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CDN_DEPLOYMENT_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["cdn_deployment01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "cdn_deployment", "id", _live_id) do
-        client.CdnDeployment(nil).list({"app_id" => setup[:idmap]["app01"], "cdn_id" => setup[:idmap]["cdn01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    cdn_deployment_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.cdn_deployment")))
-    cdn_deployment_ref01_data = nil
-    if cdn_deployment_ref01_data_raw.length > 0
-      cdn_deployment_ref01_data = Helpers.to_map(cdn_deployment_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_deployment_ref01_ent = client.CdnDeployment(nil)
-    cdn_deployment_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "cdn_id" => setup[:idmap]["cdn01"],
-    }
-
-    cdn_deployment_ref01_list_result = cdn_deployment_ref01_ent.list(cdn_deployment_ref01_match, nil)
-    assert cdn_deployment_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    cdn_deployment_ref01_match_dt0 = {
-      "id" => cdn_deployment_ref01_data["id"],
-    }
-    cdn_deployment_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    cdn_deployment_ref01_match_dt0["cdn_id"] = setup[:idmap]["cdn_id"] || setup[:idmap]["cdn01"]
-    cdn_deployment_ref01_data_dt0_loaded = cdn_deployment_ref01_ent.load(cdn_deployment_ref01_match_dt0, nil)
-    cdn_deployment_ref01_data_dt0_load_result = Helpers.to_map(cdn_deployment_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_deployment_ref01_data_dt0_loaded.data_get : cdn_deployment_ref01_data_dt0_loaded)
-    assert !cdn_deployment_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(cdn_deployment_ref01_data_dt0_load_result["id"], cdn_deployment_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"cdn_deployment.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cdn_deployment.create.0 gives\"}"
+      skip("Live coverage incomplete: cdn_deployment.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments); cdn_deployment.load.1 excluded (GET-only live run: reads a record only cdn_deployment.create.0 gives)")
     end
 
     if setup[:live]
@@ -116,27 +70,11 @@ class CdnDeploymentEntityTest < Minitest::Test
     assert !cdn_deployment_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    cdn_deployment_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "cdn_id" => setup[:idmap]["cdn01"],
-    }
-
-    cdn_deployment_ref01_list_result = cdn_deployment_ref01_ent.list(cdn_deployment_ref01_match, nil)
-    assert cdn_deployment_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(cdn_deployment_ref01_list_result),
-      { "id" => cdn_deployment_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # LOAD
     cdn_deployment_ref01_match_dt0 = {
       "id" => cdn_deployment_ref01_data["id"],
     }
     cdn_deployment_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    cdn_deployment_ref01_match_dt0["cdn_id"] = setup[:idmap]["cdn_id"] || setup[:idmap]["cdn01"]
     cdn_deployment_ref01_data_dt0_loaded = cdn_deployment_ref01_ent.load(cdn_deployment_ref01_match_dt0, nil)
     cdn_deployment_ref01_data_dt0_load_result = Helpers.to_map(cdn_deployment_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_deployment_ref01_data_dt0_loaded.data_get : cdn_deployment_ref01_data_dt0_loaded)
     assert !cdn_deployment_ref01_data_dt0_load_result.nil?

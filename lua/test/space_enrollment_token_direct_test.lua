@@ -21,60 +21,6 @@ local function live_ok(result, err)
 end
 
 describe("SpaceEnrollmentTokenDirect", function()
-  it("should direct-list-space_enrollment_token", function()
-    local setup = space_enrollment_token_direct_setup({
-      { id = "direct01" },
-      { id = "direct02" },
-    })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-space_enrollment_token", setup.live and "live" or "unit")
-    if _should_skip then
-      pending(_reason or "skipped via sdk-test-control.json")
-      return
-    end
-    if setup.live then
-      for _, _live_key in ipairs({"space01"}) do
-        if setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPACE_ENROLLMENT_TOKEN_ENTID")
-        end
-      end
-    end
-    if setup.live then
-      runner.live_pace()
-    end
-    local client = setup.client
-
-    local params = {}
-    local query = {}
-    if setup.live then
-      params["space_id"] = setup.idmap["space01"]
-    else
-      params["space_id"] = "direct01"
-    end
-
-    local result, err = client:direct({
-      path = "api/v1/networking/spaces/{space_id}/enrollment_tokens",
-      method = "GET",
-      params = params,
-      query = query,
-    })
-    if setup.live then
-      if not live_ok(result, err) then
-        runner.live_miss(pending, LIVE_STRICT, "Live list failed: " .. runner.live_describe(result, err))
-      end
-      if runner.live_list(result["data"]) == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live list returned no list: " .. runner.live_describe(result, err))
-      end
-      assert.is_table(runner.live_list(result["data"]))
-    else
-      assert.is_nil(err)
-      assert.is_true(result["ok"])
-      assert.are.equal(200, helpers.to_int(result["status"]))
-      assert.is_table(result["data"])
-      assert.are.equal(2, #result["data"])
-      assert.are.equal(1, #setup.calls)
-    end
-  end)
-
   it("should direct-load-space_enrollment_token", function()
     local setup = space_enrollment_token_direct_setup({ id = "direct01" })
     local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-space_enrollment_token", setup.live and "live" or "unit")
@@ -82,8 +28,13 @@ describe("SpaceEnrollmentTokenDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["space_enrollment_token01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-load-space_enrollment_token\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs space_enrollment_token01, which only POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke gives\"}")
+      pending("Live coverage incomplete: direct-load-space_enrollment_token excluded (GET-only live run: needs space_enrollment_token01, which only POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke gives)")
+      return
+    end
     if setup.live then
-      for _, _live_key in ipairs({"space01"}) do
+      for _, _live_key in ipairs({"space_enrollment_token01", "space01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPACE_ENROLLMENT_TOKEN_ENTID")
         end
@@ -97,27 +48,7 @@ describe("SpaceEnrollmentTokenDirect", function()
     local params = {}
     local query = {}
     if setup.live then
-      local list_result, list_err = client:direct({
-        path = "api/v1/networking/spaces/{space_id}/enrollment_tokens",
-        method = "GET",
-        params = {["space_id"] = setup.idmap["space01"]},
-      })
-      if not live_ok(list_result, list_err) then
-        runner.live_miss(pending, LIVE_STRICT, "Live list discovery failed: " .. runner.live_describe(list_result, list_err))
-      end
-      local records = runner.live_list(list_result["data"])
-      if records == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live list discovery returned no list: " .. runner.live_describe(list_result, list_err))
-      end
-      if records[1] == nil then
-        runner.live_empty(pending, "The account has no space_enrollment_token record to load")
-      end
-      local first = type(records[1]) == "table" and records[1] or {}
-      local found = first["id"]
-      if found == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-      end
-      params["id"] = found
+      params["id"] = setup.idmap["space_enrollment_token01"]
       params["space_id"] = setup.idmap["space01"]
     else
       params["id"] = "direct01"

@@ -5,19 +5,22 @@
         "description": "s28",
         "icon_url": "s29",
         "image_url": "s2a",
-        "title": "s2b"
+        "title": "s2b",
+        "id": "AGENT_WEB_PREVIEW00"
       },
       "AGENT_WEB_PREVIEW01": {
         "description": "s50",
         "icon_url": "s51",
         "image_url": "s52",
-        "title": "s53"
+        "title": "s53",
+        "id": "AGENT_WEB_PREVIEW01"
       },
       "AGENT_WEB_PREVIEW02": {
         "description": "s78",
         "icon_url": "s79",
         "image_url": "s7a",
-        "title": "s7b"
+        "title": "s7b",
+        "id": "AGENT_WEB_PREVIEW02"
       }
     }
   },

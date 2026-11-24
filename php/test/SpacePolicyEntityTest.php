@@ -33,7 +33,7 @@ class SpacePolicyEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SpacePolicy(null)->list(["space_id" => 1], null);
+            $client->SpacePolicy(null)->load(["id" => 1, "space_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SpacePolicyEntityTest extends TestCase
         $setup = space_policy_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "space_policy." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,60 +54,10 @@ class SpacePolicyEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/policies/{id}/activate"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPACE_POLICY_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["space_policy01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "space_policy",
-                fn() => $client->SpacePolicy(null)->list(["space_id" => $setup["idmap"]["space01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $space_policy_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.space_policy")));
-        $space_policy_ref01_data = null;
-        if (count($space_policy_ref01_data_raw) > 0) {
-            $space_policy_ref01_data = Helpers::to_map($space_policy_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $space_policy_ref01_ent = $client->SpacePolicy(null);
-        $space_policy_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_policy_ref01_list_result = $space_policy_ref01_ent->list($space_policy_ref01_match, null);
-        $this->assertIsArray($space_policy_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $space_policy_ref01_match_dt0 = [
-            "id" => $space_policy_ref01_data["id"],
-        ];
-        $space_policy_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
-        $space_policy_ref01_data_dt0_loaded = $space_policy_ref01_ent->load($space_policy_ref01_match_dt0, null);
-        $space_policy_ref01_data_dt0_load_result = Helpers::to_map(is_object($space_policy_ref01_data_dt0_loaded) && method_exists($space_policy_ref01_data_dt0_loaded, 'data_get') ? $space_policy_ref01_data_dt0_loaded->data_get() : $space_policy_ref01_data_dt0_loaded);
-        $this->assertNotNull($space_policy_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($space_policy_ref01_data_dt0_load_result["id"] ?? null, $space_policy_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only space_policy.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"space_policy.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: space_policy.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/policies/{id}/activate); space_policy.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}); space_policy.load.2 excluded (GET-only live run: reads a record only space_policy.create.0 gives); space_policy.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -136,22 +86,6 @@ class SpacePolicyEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $space_policy_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_policy_ref01_list_result = $space_policy_ref01_ent->list($space_policy_ref01_match, null);
-        $this->assertIsArray($space_policy_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($space_policy_ref01_list_result),
-            ["id" => $space_policy_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $space_policy_ref01_data_up0_up = [
             "id" => $space_policy_ref01_data["id"],
@@ -172,7 +106,6 @@ class SpacePolicyEntityTest extends TestCase
         $space_policy_ref01_match_dt0 = [
             "id" => $space_policy_ref01_data["id"],
         ];
-        $space_policy_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $space_policy_ref01_data_dt0_loaded = $space_policy_ref01_ent->load($space_policy_ref01_match_dt0, null);
         $space_policy_ref01_data_dt0_load_result = Helpers::to_map(is_object($space_policy_ref01_data_dt0_loaded) && method_exists($space_policy_ref01_data_dt0_loaded, 'data_get') ? $space_policy_ref01_data_dt0_loaded->data_get() : $space_policy_ref01_data_dt0_loaded);
         $this->assertNotNull($space_policy_ref01_data_dt0_load_result);
@@ -189,22 +122,6 @@ class SpacePolicyEntityTest extends TestCase
         ];
         $space_policy_ref01_match_rm0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $space_policy_ref01_ent->remove($space_policy_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $space_policy_ref01_match_rt0 = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_policy_ref01_list_rt0_result = $space_policy_ref01_ent->list($space_policy_ref01_match_rt0, null);
-        $this->assertIsArray($space_policy_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($space_policy_ref01_list_rt0_result),
-            ["id" => $space_policy_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

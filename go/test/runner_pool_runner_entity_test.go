@@ -38,7 +38,7 @@ func TestRunnerPoolRunnerEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RunnerPoolRunner(nil).List(map[string]any{"runner_pool_id": 1}, nil)
+		_, err := client.RunnerPoolRunner(nil).Load(map[string]any{"id": 1, "runner_pool_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRunnerPoolRunnerEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "runner_pool_runner." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,81 +64,10 @@ func TestRunnerPoolRunnerEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"runner_pool_runner.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat\"}")
-			t.Log("LIVE STEP {\"id\":\"runner_pool_runner.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"runner_pool01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, runner_pool_runnerEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["runner_pool_runner01"]
-			}
-			livePace()
-			liveExisting(t, runner_pool_runnerEntityLiveStrict, setup.data, "runner_pool_runner", "id", _liveId,
-				func() (any, error) {
-					return client.RunnerPoolRunner(nil).List(map[string]any{"runner_pool_id": setup.idmap["runner_pool01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		runnerPoolRunnerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.runner_pool_runner")))
-		var runnerPoolRunnerRef01Data map[string]any
-		if len(runnerPoolRunnerRef01DataRaw) > 0 {
-			runnerPoolRunnerRef01Data = core.ToMapAny(runnerPoolRunnerRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = runnerPoolRunnerRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		runnerPoolRunnerRef01Ent := client.RunnerPoolRunner(nil)
-		runnerPoolRunnerRef01Match := map[string]any{
-			"runner_pool_id": setup.idmap["runner_pool01"],
-		}
-
-		runnerPoolRunnerRef01ListResult, err := runnerPoolRunnerRef01Ent.List(runnerPoolRunnerRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, runnerPoolRunnerRef01ListOk := runnerPoolRunnerRef01ListResult.([]any)
-		if !runnerPoolRunnerRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runnerPoolRunnerRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		runnerPoolRunnerRef01MatchDt0 := map[string]any{
-			"id": runnerPoolRunnerRef01Data["id"],
-		}
-		if v := setup.idmap["runner_pool_id"]; v != nil {
-			runnerPoolRunnerRef01MatchDt0["runner_pool_id"] = v
-		} else {
-			runnerPoolRunnerRef01MatchDt0["runner_pool_id"] = setup.idmap["runner_pool01"]
-		}
-		runnerPoolRunnerRef01DataDt0Loaded, err := runnerPoolRunnerRef01Ent.Load(runnerPoolRunnerRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		runnerPoolRunnerRef01DataDt0LoadResult := core.ToMapAny(entityData(runnerPoolRunnerRef01DataDt0Loaded))
-		if runnerPoolRunnerRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(runnerPoolRunnerRef01DataDt0LoadResult["id"], runnerPoolRunnerRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"runner_pool_runner.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"runner_pool_runner.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only runner_pool_runner.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: runner_pool_runner.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat); runner_pool_runner.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}); runner_pool_runner.load.2 excluded (GET-only live run: reads a record only runner_pool_runner.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -175,28 +104,6 @@ func TestRunnerPoolRunnerEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		runnerPoolRunnerRef01Match := map[string]any{
-			"runner_pool_id": setup.idmap["runner_pool01"],
-		}
-
-		runnerPoolRunnerRef01ListResult, err := runnerPoolRunnerRef01Ent.List(runnerPoolRunnerRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		runnerPoolRunnerRef01List, runnerPoolRunnerRef01ListOk := runnerPoolRunnerRef01ListResult.([]any)
-		if !runnerPoolRunnerRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runnerPoolRunnerRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(runnerPoolRunnerRef01List), map[string]any{"id": runnerPoolRunnerRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		runnerPoolRunnerRef01DataUp0Up := map[string]any{
 			"id": runnerPoolRunnerRef01Data["id"],
@@ -221,11 +128,6 @@ func TestRunnerPoolRunnerEntity(t *testing.T) {
 		// LOAD
 		runnerPoolRunnerRef01MatchDt0 := map[string]any{
 			"id": runnerPoolRunnerRef01Data["id"],
-		}
-		if v := setup.idmap["runner_pool_id"]; v != nil {
-			runnerPoolRunnerRef01MatchDt0["runner_pool_id"] = v
-		} else {
-			runnerPoolRunnerRef01MatchDt0["runner_pool_id"] = setup.idmap["runner_pool01"]
 		}
 		runnerPoolRunnerRef01DataDt0Loaded, err := runnerPoolRunnerRef01Ent.Load(runnerPoolRunnerRef01MatchDt0, nil)
 		if err != nil {

@@ -33,7 +33,7 @@ class AlertRuleEventEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AlertRuleEvent(null)->list(["alert_rule_id" => 1, "space_id" => 'x'], null);
+            $client->AlertRuleEvent(null)->load(["alert_rule_id" => 1, "space_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AlertRuleEventEntityTest extends TestCase
         $setup = alert_rule_event_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load", "remove"] as $_op) {
+        foreach (["create", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "alert_rule_event." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,61 +54,9 @@ class AlertRuleEventEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"alert_rule_event.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"alert_rule_event.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"alert_rule_event.list.4","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["alert_rule01", "space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ALERT_RULE_EVENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["alert_rule_event01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "alert_rule_event",
-                fn() => $client->AlertRuleEvent(null)->list(["alert_rule_id" => $setup["idmap"]["alert_rule01"] ?? null, "space_id" => $setup["idmap"]["space01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $alert_rule_event_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.alert_rule_event")));
-        $alert_rule_event_ref01_data = null;
-        if (count($alert_rule_event_ref01_data_raw) > 0) {
-            $alert_rule_event_ref01_data = Helpers::to_map($alert_rule_event_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $alert_rule_event_ref01_ent = $client->AlertRuleEvent(null);
-        $alert_rule_event_ref01_match = [
-            "alert_rule_id" => $setup["idmap"]["alert_rule01"],
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $alert_rule_event_ref01_list_result = $alert_rule_event_ref01_ent->list($alert_rule_event_ref01_match, null);
-        $this->assertIsArray($alert_rule_event_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $alert_rule_event_ref01_match_dt0 = [
-            "id" => $alert_rule_event_ref01_data["id"],
-        ];
-        $alert_rule_event_ref01_match_dt0["alert_rule_id"] = $setup["idmap"]["alert_rule_id"] ?? $setup["idmap"]["alert_rule01"] ?? null;
-        $alert_rule_event_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
-        $alert_rule_event_ref01_data_dt0_loaded = $alert_rule_event_ref01_ent->load($alert_rule_event_ref01_match_dt0, null);
-        $alert_rule_event_ref01_data_dt0_load_result = Helpers::to_map(is_object($alert_rule_event_ref01_data_dt0_loaded) && method_exists($alert_rule_event_ref01_data_dt0_loaded, 'data_get') ? $alert_rule_event_ref01_data_dt0_loaded->data_get() : $alert_rule_event_ref01_data_dt0_loaded);
-        $this->assertNotNull($alert_rule_event_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($alert_rule_event_ref01_data_dt0_load_result["id"] ?? null, $alert_rule_event_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"alert_rule_event.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only alert_rule_event.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"alert_rule_event.remove.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: alert_rule_event.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge); alert_rule_event.load.1 excluded (GET-only live run: reads a record only alert_rule_event.create.0 gives); alert_rule_event.remove.2 excluded (GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -138,28 +86,10 @@ class AlertRuleEventEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $alert_rule_event_ref01_match = [
-            "alert_rule_id" => $setup["idmap"]["alert_rule01"],
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $alert_rule_event_ref01_list_result = $alert_rule_event_ref01_ent->list($alert_rule_event_ref01_match, null);
-        $this->assertIsArray($alert_rule_event_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($alert_rule_event_ref01_list_result),
-            ["id" => $alert_rule_event_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $alert_rule_event_ref01_match_dt0 = [
             "id" => $alert_rule_event_ref01_data["id"],
         ];
-        $alert_rule_event_ref01_match_dt0["alert_rule_id"] = $setup["idmap"]["alert_rule_id"] ?? $setup["idmap"]["alert_rule01"] ?? null;
         $alert_rule_event_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $alert_rule_event_ref01_data_dt0_loaded = $alert_rule_event_ref01_ent->load($alert_rule_event_ref01_match_dt0, null);
         $alert_rule_event_ref01_data_dt0_load_result = Helpers::to_map(is_object($alert_rule_event_ref01_data_dt0_loaded) && method_exists($alert_rule_event_ref01_data_dt0_loaded, 'data_get') ? $alert_rule_event_ref01_data_dt0_loaded->data_get() : $alert_rule_event_ref01_data_dt0_loaded);
@@ -178,23 +108,6 @@ class AlertRuleEventEntityTest extends TestCase
         $alert_rule_event_ref01_match_rm0["alert_rule_id"] = $setup["idmap"]["alert_rule_id"] ?? $setup["idmap"]["alert_rule01"] ?? null;
         $alert_rule_event_ref01_match_rm0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $alert_rule_event_ref01_ent->remove($alert_rule_event_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $alert_rule_event_ref01_match_rt0 = [
-            "alert_rule_id" => $setup["idmap"]["alert_rule01"],
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $alert_rule_event_ref01_list_rt0_result = $alert_rule_event_ref01_ent->list($alert_rule_event_ref01_match_rt0, null);
-        $this->assertIsArray($alert_rule_event_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($alert_rule_event_ref01_list_rt0_result),
-            ["id" => $alert_rule_event_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

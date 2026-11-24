@@ -25,6 +25,18 @@ main: kit: entity: agent_verify_project: {
       r: true
       t: "`$INTEGER`"
     }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: true
+      t: "`$STRING`"
+    }
     project_choices: {
       h: "Project Choices"
       n: "project_choices"
@@ -38,6 +50,12 @@ main: kit: entity: agent_verify_project: {
       r: true
       t: "`$BOOLEAN`"
     }
+    slug: {
+      h: "Slug"
+      n: "slug"
+      r: true
+      t: "`$STRING`"
+    }
     verify_projects: {
       h: "Verify Projects"
       n: "verify_projects"
@@ -50,6 +68,11 @@ main: kit: entity: agent_verify_project: {
       r: true
       t: "`$INTEGER`"
     }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "agent_verify_project"
@@ -126,7 +149,7 @@ main: kit: entity: agent_verify_project: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.verify_projects`"
           }
         }
       ]

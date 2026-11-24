@@ -294,16 +294,11 @@ func (e *OrganizationAppEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *OrganizationAppEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *OrganizationAppEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *OrganizationAppEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *OrganizationAppEntity) List(reqmatch map[string]any, ctrl map[string]an
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// OrganizationAppListMatch and returns []OrganizationApp. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *OrganizationAppEntity) ListTyped(reqmatch OrganizationAppListMatch, ctrl map[string]any) ([]OrganizationApp, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// OrganizationAppLoadMatch and returns an OrganizationApp. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *OrganizationAppEntity) LoadTyped(reqmatch OrganizationAppLoadMatch, ctrl map[string]any) (OrganizationApp, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return OrganizationApp{}, err
 	}
-	return typedSliceFrom[OrganizationApp](res), nil
+	return typedFrom[OrganizationApp](res), nil
 }
 
+
+
+func (e *OrganizationAppEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 func (e *OrganizationAppEntity) Create(_ map[string]any, _ map[string]any) (any, error) {

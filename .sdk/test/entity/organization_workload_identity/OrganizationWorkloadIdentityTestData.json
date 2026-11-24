@@ -56,12 +56,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/workload_identities": {
+    "GET /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/workload_identities/{id}": {
+    "GET /api/v1/identity/organizations/{organization_id}/workload_identities": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

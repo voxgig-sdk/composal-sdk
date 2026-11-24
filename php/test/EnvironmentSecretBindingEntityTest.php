@@ -33,7 +33,7 @@ class EnvironmentSecretBindingEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->EnvironmentSecretBinding(null)->list(["app_id" => 1, "environment_id" => 'x'], null);
+            $client->EnvironmentSecretBinding(null)->load(["app_id" => 1, "environment_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class EnvironmentSecretBindingEntityTest extends TestCase
         $setup = environment_secret_binding_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "remove"] as $_op) {
+        foreach (["create", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "environment_secret_binding." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,39 +54,9 @@ class EnvironmentSecretBindingEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"environment_secret_binding.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"environment_secret_binding.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only environment_secret_binding.create.0 gives"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"environment_secret_binding.remove.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"environment_secret_binding.list.3","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01", "environment01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ENVIRONMENT_SECRET_BINDING_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $environment_secret_binding_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.environment_secret_binding")));
-        $environment_secret_binding_ref01_data = null;
-        if (count($environment_secret_binding_ref01_data_raw) > 0) {
-            $environment_secret_binding_ref01_data = Helpers::to_map($environment_secret_binding_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $environment_secret_binding_ref01_ent = $client->EnvironmentSecretBinding(null);
-        $environment_secret_binding_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "environment_id" => $setup["idmap"]["environment01"],
-        ];
-
-        $environment_secret_binding_ref01_list_result = $environment_secret_binding_ref01_ent->list($environment_secret_binding_ref01_match, null);
-        $this->assertIsArray($environment_secret_binding_ref01_list_result);
-
-            return;
+            $this->markTestSkipped('Live coverage incomplete: environment_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings); environment_secret_binding.load.1 excluded (GET-only live run: reads a record only environment_secret_binding.create.0 gives); environment_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -116,19 +86,17 @@ class EnvironmentSecretBindingEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $environment_secret_binding_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "environment_id" => $setup["idmap"]["environment01"],
+        // LOAD
+        $environment_secret_binding_ref01_match_dt0 = [
+            "id" => $environment_secret_binding_ref01_data["id"],
         ];
-
-        $environment_secret_binding_ref01_list_result = $environment_secret_binding_ref01_ent->list($environment_secret_binding_ref01_match, null);
-        $this->assertIsArray($environment_secret_binding_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($environment_secret_binding_ref01_list_result),
-            ["id" => $environment_secret_binding_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $environment_secret_binding_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
+        $environment_secret_binding_ref01_data_dt0_loaded = $environment_secret_binding_ref01_ent->load($environment_secret_binding_ref01_match_dt0, null);
+        $environment_secret_binding_ref01_data_dt0_load_result = Helpers::to_map(is_object($environment_secret_binding_ref01_data_dt0_loaded) && method_exists($environment_secret_binding_ref01_data_dt0_loaded, 'data_get') ? $environment_secret_binding_ref01_data_dt0_loaded->data_get() : $environment_secret_binding_ref01_data_dt0_loaded);
+        $this->assertNotNull($environment_secret_binding_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($environment_secret_binding_ref01_data_dt0_load_result["id"] ?? null, $environment_secret_binding_ref01_data["id"]));
+        }
 
         if (!empty($setup["live"])) {
             Runner::live_pace();
@@ -140,23 +108,6 @@ class EnvironmentSecretBindingEntityTest extends TestCase
         $environment_secret_binding_ref01_match_rm0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $environment_secret_binding_ref01_match_rm0["environment_id"] = $setup["idmap"]["environment_id"] ?? $setup["idmap"]["environment01"] ?? null;
         $environment_secret_binding_ref01_ent->remove($environment_secret_binding_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $environment_secret_binding_ref01_match_rt0 = [
-            "app_id" => $setup["idmap"]["app01"],
-            "environment_id" => $setup["idmap"]["environment01"],
-        ];
-
-        $environment_secret_binding_ref01_list_rt0_result = $environment_secret_binding_ref01_ent->list($environment_secret_binding_ref01_match_rt0, null);
-        $this->assertIsArray($environment_secret_binding_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($environment_secret_binding_ref01_list_rt0_result),
-            ["id" => $environment_secret_binding_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

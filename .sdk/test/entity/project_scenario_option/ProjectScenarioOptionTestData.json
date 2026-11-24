@@ -11,7 +11,8 @@
         "schedule_options": "s56",
         "schedules": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SCENARIO_OPTION00"
       },
       "PROJECT_SCENARIO_OPTION01": {
         "environments": [],
@@ -23,7 +24,8 @@
         "schedule_options": "sa6",
         "schedules": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SCENARIO_OPTION01"
       },
       "PROJECT_SCENARIO_OPTION02": {
         "environments": [],
@@ -35,7 +37,8 @@
         "schedule_options": "sf6",
         "schedules": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SCENARIO_OPTION02"
       }
     }
   },

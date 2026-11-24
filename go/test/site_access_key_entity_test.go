@@ -38,7 +38,7 @@ func TestSiteAccessKeyEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SiteAccessKey(nil).List(map[string]any{"organization_id": 1, "site_id": "x"}, nil)
+		_, err := client.SiteAccessKey(nil).Load(map[string]any{"organization_id": 1, "site_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSiteAccessKeyEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "remove"} {
+		for _, _op := range []string{"create", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "site_access_key." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,10 @@ func TestSiteAccessKeyEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"site_access_key.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys\"}")
+			t.Log("LIVE STEP {\"id\":\"site_access_key.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only site_access_key.create.0 gives\"}")
 			t.Log("LIVE STEP {\"id\":\"site_access_key.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}\"}")
-			t.Log("LIVE STEP {\"id\":\"site_access_key.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "site01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, site_access_keyEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SITE_ACCESS_KEY_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		siteAccessKeyRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.site_access_key")))
-		var siteAccessKeyRef01Data map[string]any
-		if len(siteAccessKeyRef01DataRaw) > 0 {
-			siteAccessKeyRef01Data = core.ToMapAny(siteAccessKeyRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = siteAccessKeyRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		siteAccessKeyRef01Ent := client.SiteAccessKey(nil)
-		siteAccessKeyRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"site_id": setup.idmap["site01"],
-		}
-
-		siteAccessKeyRef01ListResult, err := siteAccessKeyRef01Ent.List(siteAccessKeyRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, siteAccessKeyRef01ListOk := siteAccessKeyRef01ListResult.([]any)
-		if !siteAccessKeyRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", siteAccessKeyRef01ListResult)
-		}
-
-		return
+			t.Skip("Live coverage incomplete: site_access_key.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys); site_access_key.load.1 excluded (GET-only live run: reads a record only site_access_key.create.0 gives); site_access_key.remove.2 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id})")
+			return
 		}
 
 		if setup.live {
@@ -143,24 +105,25 @@ func TestSiteAccessKeyEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		siteAccessKeyRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"site_id": setup.idmap["site01"],
+		// LOAD
+		siteAccessKeyRef01MatchDt0 := map[string]any{
+			"id": siteAccessKeyRef01Data["id"],
 		}
-
-		siteAccessKeyRef01ListResult, err := siteAccessKeyRef01Ent.List(siteAccessKeyRef01Match, nil)
+		if v := setup.idmap["organization_id"]; v != nil {
+			siteAccessKeyRef01MatchDt0["organization_id"] = v
+		} else {
+			siteAccessKeyRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		siteAccessKeyRef01DataDt0Loaded, err := siteAccessKeyRef01Ent.Load(siteAccessKeyRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		siteAccessKeyRef01List, siteAccessKeyRef01ListOk := siteAccessKeyRef01ListResult.([]any)
-		if !siteAccessKeyRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", siteAccessKeyRef01ListResult)
+		siteAccessKeyRef01DataDt0LoadResult := core.ToMapAny(entityData(siteAccessKeyRef01DataDt0Loaded))
+		if siteAccessKeyRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
 		}
-
-		foundItem := vs.Select(entityListToData(siteAccessKeyRef01List), map[string]any{"id": siteAccessKeyRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
+		if !setup.live && !liveSameId(siteAccessKeyRef01DataDt0LoadResult["id"], siteAccessKeyRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 		if setup.live {
@@ -183,29 +146,6 @@ func TestSiteAccessKeyEntity(t *testing.T) {
 		_, err = siteAccessKeyRef01Ent.Remove(siteAccessKeyRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		siteAccessKeyRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"site_id": setup.idmap["site01"],
-		}
-
-		siteAccessKeyRef01ListRt0Result, err := siteAccessKeyRef01Ent.List(siteAccessKeyRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		siteAccessKeyRef01ListRt0, siteAccessKeyRef01ListRt0Ok := siteAccessKeyRef01ListRt0Result.([]any)
-		if !siteAccessKeyRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", siteAccessKeyRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(siteAccessKeyRef01ListRt0), map[string]any{"id": siteAccessKeyRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -29,7 +29,7 @@ describe("VcsSettingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:VcsSetting(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:VcsSetting(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("VcsSettingEntity", function()
     local setup = vcs_setting_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "vcs_setting." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,12 +45,10 @@ describe("VcsSettingEntity", function()
       end
     end
     if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_VCS_SETTING_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -60,19 +58,6 @@ describe("VcsSettingEntity", function()
     if #vcs_setting_ref01_data_raw > 0 then
       vcs_setting_ref01_data = helpers.to_map(vcs_setting_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local vcs_setting_ref01_ent = client:VcsSetting(nil)
-    local vcs_setting_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local vcs_setting_ref01_list_result, err = vcs_setting_ref01_ent:list(vcs_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(vcs_setting_ref01_list_result)
 
   end)
 end)

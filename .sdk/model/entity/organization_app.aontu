@@ -21,8 +21,8 @@ main: kit: entity: organization_app: {
 
   name: "organization_app"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

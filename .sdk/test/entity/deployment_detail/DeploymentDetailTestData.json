@@ -23,7 +23,8 @@
         "service_bindings": [],
         "service_views": [],
         "storage_resources": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEPLOYMENT_DETAIL00"
       },
       "DEPLOYMENT_DETAIL01": {
         "activity": [],
@@ -47,7 +48,8 @@
         "service_bindings": [],
         "service_views": [],
         "storage_resources": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEPLOYMENT_DETAIL01"
       },
       "DEPLOYMENT_DETAIL02": {
         "activity": [],
@@ -71,7 +73,8 @@
         "service_bindings": [],
         "service_views": [],
         "storage_resources": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEPLOYMENT_DETAIL02"
       }
     }
   },

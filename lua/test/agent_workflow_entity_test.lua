@@ -29,7 +29,7 @@ describe("AgentWorkflowEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentWorkflow(nil):list({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:AgentWorkflow(nil):load({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AgentWorkflowEntity", function()
     local setup = agent_workflow_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_workflow." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,14 +46,7 @@ describe("AgentWorkflowEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"agent_workflow.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
-      print("LIVE STEP {\"id\":\"agent_workflow.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_WORKFLOW_ENTID")
-        end
-      end
-    end
+      print("LIVE STEP {\"id\":\"agent_workflow.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -67,16 +60,13 @@ describe("AgentWorkflowEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local agent_workflow_ref01_ent = client:AgentWorkflow(nil)
-    local agent_workflow_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_workflow_ref01_list_result, err = agent_workflow_ref01_ent:list(agent_workflow_ref01_match, nil)
+    local agent_workflow_ref01_match_dt0 = {}
+    agent_workflow_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local agent_workflow_ref01_data_dt0_loaded, err = agent_workflow_ref01_ent:load(agent_workflow_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(agent_workflow_ref01_list_result)
+    assert.is_not_nil(agent_workflow_ref01_data_dt0_loaded)
 
       return
     end
@@ -108,19 +98,6 @@ describe("AgentWorkflowEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local agent_workflow_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_workflow_ref01_list_result, err = agent_workflow_ref01_ent:list(agent_workflow_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_workflow_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local agent_workflow_ref01_data_up0_up = {
       ["organization_id"] = setup.idmap["organization_id"],
@@ -135,6 +112,16 @@ describe("AgentWorkflowEntity", function()
     local agent_workflow_ref01_resdata_up0 = helpers.to_map(type(agent_workflow_ref01_resdata_up0_result) == 'table' and agent_workflow_ref01_resdata_up0_result.data_get and agent_workflow_ref01_resdata_up0_result:data_get() or agent_workflow_ref01_resdata_up0_result)
     assert.is_not_nil(agent_workflow_ref01_resdata_up0)
     assert.are.equal(agent_workflow_ref01_resdata_up0[agent_workflow_ref01_markdef_up0_name], agent_workflow_ref01_markdef_up0_value)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local agent_workflow_ref01_match_dt0 = {}
+    agent_workflow_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local agent_workflow_ref01_data_dt0_loaded, err = agent_workflow_ref01_ent:load(agent_workflow_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    assert.is_not_nil(agent_workflow_ref01_data_dt0_loaded)
 
   end)
 end)

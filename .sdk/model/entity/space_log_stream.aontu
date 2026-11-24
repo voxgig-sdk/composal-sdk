@@ -70,8 +70,8 @@ main: kit: entity: space_log_stream: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

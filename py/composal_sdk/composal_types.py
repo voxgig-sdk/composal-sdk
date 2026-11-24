@@ -49,24 +49,6 @@ class AdminOrgLoadMatch(TypedDict):
     id: str
 
 
-class AdminOrgListMatch(TypedDict, total=False):
-    billing_email: str | None
-    billing_reason: str
-    customize_onboarding_packages: bool
-    deployment_usage_visibility: str
-    deployment_usage_visible: bool
-    id: str
-    monthly_price_dollars: str | float
-    monthly_price_override_cents: int | None
-    name: str
-    onboarding_custom_pricing: bool
-    onboarding_package_keys: list | None
-    owner_email: str
-    package_id: str | None
-    skip_payment: bool
-    slug: str
-
-
 class AdminOrgCreateDataRequired(TypedDict):
     name: str
     owner_email: str
@@ -213,12 +195,9 @@ class AgentApp(TypedDict):
     hidden_install_count: int
     id: str
     install_count: int
-    install_targets: list
     installed_by: list
     installed_target_ids: list
-    items: list
     mcp_url: str | None
-    next_cursor: str | None
     owner: dict
     thread: Any
     title: str
@@ -754,12 +733,12 @@ class AgentEvent(TypedDict):
     pass
 
 
-class AgentEventListMatchRequired(TypedDict):
+class AgentEventLoadMatchRequired(TypedDict):
     agent_id: str
     organization_id: str
 
 
-class AgentEventListMatch(AgentEventListMatchRequired, total=False):
+class AgentEventLoadMatch(AgentEventLoadMatchRequired, total=False):
     conversation_id: str
     device_activity_provider: str
 
@@ -846,16 +825,12 @@ class AgentIntegration(AgentIntegrationRequired, total=False):
     sharing_status: str
 
 
-class AgentIntegrationLoadMatch(TypedDict):
+class AgentIntegrationLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class AgentIntegrationLoadMatch(AgentIntegrationLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class AgentIntegrationListMatchRequired(TypedDict):
-    organization_id: str
-
-
-class AgentIntegrationListMatch(AgentIntegrationListMatchRequired, total=False):
     cursor: str
     enableable: bool
     limit: int
@@ -1360,12 +1335,12 @@ class AgentRepository(AgentRepositoryRequired, total=False):
     repository_choices_error: str | None
 
 
-class AgentRepositoryListMatchRequired(TypedDict):
+class AgentRepositoryLoadMatchRequired(TypedDict):
     agent_id: str
     organization_id: str
 
 
-class AgentRepositoryListMatch(AgentRepositoryListMatchRequired, total=False):
+class AgentRepositoryLoadMatch(AgentRepositoryLoadMatchRequired, total=False):
     q: str
 
 
@@ -1515,17 +1490,14 @@ class AgentSessionCheckpoint(TypedDict, total=False):
     id: str
 
 
-class AgentSessionCheckpointLoadMatch(TypedDict):
+class AgentSessionCheckpointLoadMatchRequired(TypedDict):
     agent_session_id: str
+    organization_id: str
+    repo_id: str
+
+
+class AgentSessionCheckpointLoadMatch(AgentSessionCheckpointLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-    repo_id: str
-
-
-class AgentSessionCheckpointListMatch(TypedDict):
-    agent_session_id: str
-    organization_id: str
-    repo_id: str
 
 
 class AgentSessionCheckpointCreateData(TypedDict):
@@ -1557,7 +1529,7 @@ class AgentSetting(TypedDict):
     version: str
 
 
-class AgentSettingListMatch(TypedDict):
+class AgentSettingLoadMatch(TypedDict):
     agent_id: str
     organization_id: str
 
@@ -1638,13 +1610,12 @@ class AgentSkill(AgentSkillRequired, total=False):
     source: str
 
 
-class AgentSkillLoadMatch(TypedDict):
+class AgentSkillLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class AgentSkillLoadMatch(AgentSkillLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class AgentSkillListMatch(TypedDict):
-    organization_id: str
 
 
 class AgentSkillCreateDataRequired(TypedDict):
@@ -1725,12 +1696,12 @@ class AgentSubscription(TypedDict):
     pass
 
 
-class AgentSubscriptionListMatchRequired(TypedDict):
+class AgentSubscriptionLoadMatchRequired(TypedDict):
     agent_id: str
     organization_id: str
 
 
-class AgentSubscriptionListMatch(AgentSubscriptionListMatchRequired, total=False):
+class AgentSubscriptionLoadMatch(AgentSubscriptionLoadMatchRequired, total=False):
     refresh_provider: str
 
 
@@ -1889,10 +1860,6 @@ class AgentThreadLoadMatch(TypedDict):
     id: str
 
 
-class AgentThreadListMatch(TypedDict, total=False):
-    id: str
-
-
 class AgentThreadCreateData(TypedDict):
     pass
 
@@ -1934,8 +1901,11 @@ class AgentVerifyProject(TypedDict):
     available: bool
     can_manage: bool
     expected_version: int
+    id: str
+    name: str
     project_choices: list
     project_choices_truncated: bool
+    slug: str
     verify_projects: list
     version: int
 
@@ -1972,11 +1942,11 @@ class AgentWebPreview(TypedDict):
     title: str | None
 
 
-class AgentWebPreviewListMatchRequired(TypedDict):
+class AgentWebPreviewLoadMatchRequired(TypedDict):
     token: str
 
 
-class AgentWebPreviewListMatch(AgentWebPreviewListMatchRequired, total=False):
+class AgentWebPreviewLoadMatch(AgentWebPreviewLoadMatchRequired, total=False):
     asset: str
 
 
@@ -2047,12 +2017,12 @@ class AgentWorkflow(TypedDict):
     workflows: list
 
 
-class AgentWorkflowListMatchRequired(TypedDict):
+class AgentWorkflowLoadMatchRequired(TypedDict):
     agent_id: str
     organization_id: str
 
 
-class AgentWorkflowListMatch(AgentWorkflowListMatchRequired, total=False):
+class AgentWorkflowLoadMatch(AgentWorkflowLoadMatchRequired, total=False):
     view: str
     workflow_path: str
 
@@ -2329,15 +2299,13 @@ class AlertRuleEvent(TypedDict, total=False):
     id: str
 
 
-class AlertRuleEventLoadMatch(TypedDict):
+class AlertRuleEventLoadMatchRequired(TypedDict):
     alert_rule_id: str
+    space_id: str
+
+
+class AlertRuleEventLoadMatch(AlertRuleEventLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class AlertRuleEventListMatch(TypedDict):
-    alert_rule_id: str
-    space_id: str
 
 
 class AlertRuleEventCreateData(TypedDict):
@@ -2368,12 +2336,12 @@ class AllocationLog(AllocationLogRequired, total=False):
     service: str
 
 
-class AllocationLogListMatchRequired(TypedDict):
+class AllocationLogLoadMatchRequired(TypedDict):
     allocation_id: str
     app_id: str
 
 
-class AllocationLogListMatch(AllocationLogListMatchRequired, total=False):
+class AllocationLogLoadMatch(AllocationLogLoadMatchRequired, total=False):
     offset: int
     origin: str
     task: str
@@ -2466,7 +2434,7 @@ class AppAccessJwk(TypedDict):
     pass
 
 
-class AppAccessJwkListMatch(TypedDict):
+class AppAccessJwkLoadMatch(TypedDict):
     pass
 
 
@@ -2503,13 +2471,12 @@ class AppCdn(AppCdnRequired, total=False):
     cache_path_prefix: str | None
 
 
-class AppCdnLoadMatch(TypedDict):
+class AppCdnLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppCdnLoadMatch(AppCdnLoadMatchRequired, total=False):
     id: str
-
-
-class AppCdnListMatch(TypedDict):
-    app_id: str
 
 
 class AppCdnCreateDataRequired(TypedDict):
@@ -2589,16 +2556,12 @@ class AppConfigVariable(TypedDict):
     value_kind: str
 
 
-class AppConfigVariableLoadMatch(TypedDict):
+class AppConfigVariableLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppConfigVariableLoadMatch(AppConfigVariableLoadMatchRequired, total=False):
     id: str
-
-
-class AppConfigVariableListMatchRequired(TypedDict):
-    app_id: str
-
-
-class AppConfigVariableListMatch(AppConfigVariableListMatchRequired, total=False):
     app_environment_id: str
 
 
@@ -2653,13 +2616,12 @@ class AppDataResource(TypedDict):
     version: str | None
 
 
-class AppDataResourceLoadMatch(TypedDict):
+class AppDataResourceLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppDataResourceLoadMatch(AppDataResourceLoadMatchRequired, total=False):
     id: str
-
-
-class AppDataResourceListMatch(TypedDict):
-    app_id: str
 
 
 class AppDataResourceCreateDataRequired(TypedDict):
@@ -2771,13 +2733,12 @@ class AppDeployment(AppDeploymentRequired, total=False):
     app_service_placement_id: str
 
 
-class AppDeploymentLoadMatch(TypedDict):
+class AppDeploymentLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppDeploymentLoadMatch(AppDeploymentLoadMatchRequired, total=False):
     id: str
-
-
-class AppDeploymentListMatch(TypedDict):
-    app_id: str
 
 
 class AppDeploymentCreateDataRequired(TypedDict):
@@ -2963,13 +2924,12 @@ class AppEnvironment(TypedDict):
     updated_at_label: str | None
 
 
-class AppEnvironmentLoadMatch(TypedDict):
+class AppEnvironmentLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppEnvironmentLoadMatch(AppEnvironmentLoadMatchRequired, total=False):
     id: str
-
-
-class AppEnvironmentListMatch(TypedDict):
-    app_id: str
 
 
 class AppEnvironmentCreateDataRequired(TypedDict):
@@ -3077,13 +3037,12 @@ class AppPreview(AppPreviewRequired, total=False):
     storage_binding_resources: dict
 
 
-class AppPreviewLoadMatch(TypedDict):
+class AppPreviewLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppPreviewLoadMatch(AppPreviewLoadMatchRequired, total=False):
     id: str
-
-
-class AppPreviewListMatch(TypedDict):
-    app_id: str
 
 
 class AppPreviewCreateDataRequired(TypedDict):
@@ -3141,13 +3100,12 @@ class AppPreviewProfile(AppPreviewProfileRequired, total=False):
     updated_at: str
 
 
-class AppPreviewProfileLoadMatch(TypedDict):
+class AppPreviewProfileLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppPreviewProfileLoadMatch(AppPreviewProfileLoadMatchRequired, total=False):
     id: str
-
-
-class AppPreviewProfileListMatch(TypedDict):
-    app_id: str
 
 
 class AppPreviewProfileCreateDataRequired(TypedDict):
@@ -3194,11 +3152,6 @@ class AppRun(TypedDict, total=False):
 
 class AppRunLoadMatch(TypedDict):
     id: str
-
-
-class AppRunListMatch(TypedDict, total=False):
-    id: str
-    image: str
 
 
 class AppRunCreateData(TypedDict, total=False):
@@ -3329,13 +3282,12 @@ class AppService(TypedDict):
     updated_at_label: str | None
 
 
-class AppServiceLoadMatch(TypedDict):
+class AppServiceLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppServiceLoadMatch(AppServiceLoadMatchRequired, total=False):
     id: str
-
-
-class AppServiceListMatch(TypedDict):
-    app_id: str
 
 
 class AppServiceCreateDataRequired(TypedDict):
@@ -3457,13 +3409,12 @@ class AppServiceBinding(TypedDict, total=False):
     id: str
 
 
-class AppServiceBindingLoadMatch(TypedDict):
+class AppServiceBindingLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppServiceBindingLoadMatch(AppServiceBindingLoadMatchRequired, total=False):
     id: str
-
-
-class AppServiceBindingListMatch(TypedDict):
-    app_id: str
 
 
 class AppServiceBindingCreateData(TypedDict):
@@ -3555,13 +3506,12 @@ class AppStorageResource(TypedDict):
     updated_at: str
 
 
-class AppStorageResourceLoadMatch(TypedDict):
+class AppStorageResourceLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class AppStorageResourceLoadMatch(AppStorageResourceLoadMatchRequired, total=False):
     id: str
-
-
-class AppStorageResourceListMatch(TypedDict):
-    app_id: str
 
 
 class AppStorageResourceCreateDataRequired(TypedDict):
@@ -3761,10 +3711,6 @@ class ArtifactLoadMatch(TypedDict):
     id: str
 
 
-class ArtifactListMatch(TypedDict, total=False):
-    id: str
-
-
 class ArtifactCreateData(TypedDict):
     pass
 
@@ -3786,10 +3732,6 @@ class ArtifactCacheNamespace(TypedDict, total=False):
 
 
 class ArtifactCacheNamespaceLoadMatch(TypedDict):
-    id: str
-
-
-class ArtifactCacheNamespaceListMatch(TypedDict, total=False):
     id: str
 
 
@@ -3817,10 +3759,6 @@ class ArtifactImageRepositoryLoadMatch(TypedDict):
     id: str
 
 
-class ArtifactImageRepositoryListMatch(TypedDict, total=False):
-    id: str
-
-
 class ArtifactImageRepositoryCreateData(TypedDict):
     pass
 
@@ -3845,10 +3783,6 @@ class ArtifactPackageMirrorLoadMatch(TypedDict):
     id: str
 
 
-class ArtifactPackageMirrorListMatch(TypedDict, total=False):
-    id: str
-
-
 class ArtifactPackageMirrorCreateData(TypedDict):
     pass
 
@@ -3870,10 +3804,6 @@ class ArtifactRetentionPolicy(TypedDict, total=False):
 
 
 class ArtifactRetentionPolicyLoadMatch(TypedDict):
-    id: str
-
-
-class ArtifactRetentionPolicyListMatch(TypedDict, total=False):
     id: str
 
 
@@ -4022,7 +3952,7 @@ class AuthRegistrationOption(AuthRegistrationOptionRequired, total=False):
     openai_sign_in_enabled: bool
 
 
-class AuthRegistrationOptionListMatch(TypedDict, total=False):
+class AuthRegistrationOptionLoadMatch(TypedDict, total=False):
     email_password_signup_enabled: bool
     openai_sign_in_enabled: bool
     turnstile_site_key: str | None
@@ -4117,7 +4047,7 @@ class BackendRunnerPool(TypedDict, total=False):
     id: str
 
 
-class BackendRunnerPoolListMatch(TypedDict):
+class BackendRunnerPoolLoadMatch(TypedDict):
     backend_id: str
 
 
@@ -4157,10 +4087,6 @@ class BazelBackend(TypedDict, total=False):
 
 
 class BazelBackendLoadMatch(TypedDict):
-    id: str
-
-
-class BazelBackendListMatch(TypedDict, total=False):
     id: str
 
 
@@ -5024,13 +4950,12 @@ class CacheNamespaceEntry(TypedDict, total=False):
     id: str
 
 
-class CacheNamespaceEntryLoadMatch(TypedDict):
+class CacheNamespaceEntryLoadMatchRequired(TypedDict):
     cache_namespace_id: str
+
+
+class CacheNamespaceEntryLoadMatch(CacheNamespaceEntryLoadMatchRequired, total=False):
     id: str
-
-
-class CacheNamespaceEntryListMatch(TypedDict):
-    cache_namespace_id: str
 
 
 class CacheNamespaceEntryCreateData(TypedDict):
@@ -5064,15 +4989,13 @@ class CdnDeployment(TypedDict, total=False):
     id: str
 
 
-class CdnDeploymentLoadMatch(TypedDict):
+class CdnDeploymentLoadMatchRequired(TypedDict):
     app_id: str
     cdn_id: str
+
+
+class CdnDeploymentLoadMatch(CdnDeploymentLoadMatchRequired, total=False):
     id: str
-
-
-class CdnDeploymentListMatch(TypedDict):
-    app_id: str
-    cdn_id: str
 
 
 class CdnDeploymentCreateData(TypedDict):
@@ -5092,15 +5015,13 @@ class CdnHostname(TypedDict):
     updated_at: str
 
 
-class CdnHostnameLoadMatch(TypedDict):
+class CdnHostnameLoadMatchRequired(TypedDict):
     app_id: str
     cdn_id: str
+
+
+class CdnHostnameLoadMatch(CdnHostnameLoadMatchRequired, total=False):
     id: str
-
-
-class CdnHostnameListMatch(TypedDict):
-    app_id: str
-    cdn_id: str
 
 
 class CdnHostnameCreateDataRequired(TypedDict):
@@ -5141,10 +5062,6 @@ class CdnSpaceLoadMatch(TypedDict):
     id: str
 
 
-class CdnSpaceListMatch(TypedDict):
-    organization_id: str
-
-
 class CdnSpaceCreateData(TypedDict):
     organization_id: str
 
@@ -5165,13 +5082,12 @@ class CdnSpaceObject(TypedDict, total=False):
     id: str
 
 
-class CdnSpaceObjectLoadMatch(TypedDict):
+class CdnSpaceObjectLoadMatchRequired(TypedDict):
     cdn_space_id: str
+
+
+class CdnSpaceObjectLoadMatch(CdnSpaceObjectLoadMatchRequired, total=False):
     id: str
-
-
-class CdnSpaceObjectListMatch(TypedDict):
-    cdn_space_id: str
 
 
 class CdnSpaceObjectUpdateData(TypedDict):
@@ -5190,11 +5106,11 @@ class Change(TypedDict):
     result: Any
 
 
-class ChangeListMatchRequired(TypedDict):
+class ChangeLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class ChangeListMatch(ChangeListMatchRequired, total=False):
+class ChangeLoadMatch(ChangeLoadMatchRequired, total=False):
     author: str
     awaiting_review: bool
     direction: str
@@ -5756,13 +5672,12 @@ class CiPipelineRun(TypedDict):
     updated_at: str
 
 
-class CiPipelineRunLoadMatch(TypedDict):
+class CiPipelineRunLoadMatchRequired(TypedDict):
+    pipeline_id: str
+
+
+class CiPipelineRunLoadMatch(CiPipelineRunLoadMatchRequired, total=False):
     id: str
-    pipeline_id: str
-
-
-class CiPipelineRunListMatch(TypedDict):
-    pipeline_id: str
 
 
 class CiPipelineRunCreateData(TypedDict):
@@ -5854,10 +5769,6 @@ class CliRelease(TypedDict):
 
 
 class CliReleaseLoadMatch(TypedDict):
-    pass
-
-
-class CliReleaseListMatch(TypedDict):
     pass
 
 
@@ -6254,25 +6165,17 @@ class DeepScan(DeepScanRequired, total=False):
 
 
 class DeepScanLoadMatchRequired(TypedDict):
-    id: str
     organization_id: str
 
 
 class DeepScanLoadMatch(DeepScanLoadMatchRequired, total=False):
+    id: str
     agent_id: str
     evidence: str
     finding_id: str
     project_id: str
-
-
-class DeepScanListMatchRequired(TypedDict):
-    organization_id: str
-
-
-class DeepScanListMatch(DeepScanListMatchRequired, total=False):
     finding: str
     page: int
-    project_id: str
     query: str
     status: str
 
@@ -6292,25 +6195,29 @@ class DeepScanCreateData(DeepScanCreateDataRequired, total=False):
     max_testers: int
 
 
-class DeepScanFinding(TypedDict):
-    finding_count: int
-    finding_ids: list
-    findings: list
-    findings_fix_prompt: str | None
-    free_findings_pending: bool
+class DeepScanFindingRequired(TypedDict):
+    actual: str
+    agent_id: str
+    agent_title: str
+    checks: list
+    confidence: str
+    evidence_timestamp_ms: int | None
+    expected: str
+    fix_prompt: str
     id: str
-    mode: str
-    permissions: dict
-    priority: str | None
-    priority_counts: dict
-    project_id: str | None
-    reproduction_of: dict | None
-    reproductions: list
-    reruns_available: bool
-    status: str
+    locked: bool
+    reproduction_steps: list
+    severity: str
     title: str
-    unlock: dict
-    web_url: str
+    tracked: dict | None
+    url: str
+
+
+class DeepScanFinding(DeepScanFindingRequired, total=False):
+    area: str | None
+    confirmed: bool
+    evidence_step_ids: list
+    has_recording: bool
 
 
 class DeepScanFindingListMatchRequired(TypedDict):
@@ -6362,12 +6269,12 @@ class DeepScanMappedFlow(TypedDict):
     revision_id: str | None
 
 
-class DeepScanMappedFlowListMatchRequired(TypedDict):
+class DeepScanMappedFlowLoadMatchRequired(TypedDict):
     organization_id: str
     environment_id: str
 
 
-class DeepScanMappedFlowListMatch(DeepScanMappedFlowListMatchRequired, total=False):
+class DeepScanMappedFlowLoadMatch(DeepScanMappedFlowLoadMatchRequired, total=False):
     account_id: str
     project_id: str
 
@@ -6500,11 +6407,11 @@ class DeploymentDetail(TypedDict):
     storage_resources: list
 
 
-class DeploymentDetailListMatchRequired(TypedDict):
+class DeploymentDetailLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class DeploymentDetailListMatch(DeploymentDetailListMatchRequired, total=False):
+class DeploymentDetailLoadMatch(DeploymentDetailLoadMatchRequired, total=False):
     app: str
     environment: str
     service: str
@@ -6812,7 +6719,7 @@ class DeviceEnterpriseRelay(TypedDict):
     pass
 
 
-class DeviceEnterpriseRelayListMatch(TypedDict):
+class DeviceEnterpriseRelayLoadMatch(TypedDict):
     pass
 
 
@@ -6844,20 +6751,19 @@ class DeviceFolderListingCreateData(TypedDict):
     path: str
 
 
-class DeviceGrantRequired(TypedDict):
-    active_grants: list
-    agent_choices: list
+class DeviceGrant(TypedDict):
     agent_id: str
-    all_agents_access: bool
+    agent_name: str | None
+    can_edit: bool
+    can_revoke: bool
     capabilities: list
-    execution_available: bool
-    grants: list
-    next_cursor: str | None
-    principal_id: str
-
-
-class DeviceGrant(DeviceGrantRequired, total=False):
+    created_at: str
     id: str
+    principal_id: str
+    principal_name: str | None
+    revision: int
+    revoked_at: str | None
+    updated_at: str
 
 
 class DeviceGrantListMatchRequired(TypedDict):
@@ -7280,19 +7186,11 @@ class Environment(EnvironmentRequired, total=False):
 
 
 class EnvironmentLoadMatchRequired(TypedDict):
-    id: str
     organization_id: str
 
 
 class EnvironmentLoadMatch(EnvironmentLoadMatchRequired, total=False):
-    project_id: str
-
-
-class EnvironmentListMatchRequired(TypedDict):
-    organization_id: str
-
-
-class EnvironmentListMatch(EnvironmentListMatchRequired, total=False):
+    id: str
     project_id: str
 
 
@@ -7515,7 +7413,7 @@ class EnvironmentSecretBinding(EnvironmentSecretBindingRequired, total=False):
     secret_version_id: str
 
 
-class EnvironmentSecretBindingListMatch(TypedDict):
+class EnvironmentSecretBindingLoadMatch(TypedDict):
     app_id: str
     environment_id: str
 
@@ -7605,12 +7503,6 @@ class ExecutionDesiredStateLoadMatch(TypedDict):
     id: str
 
 
-class ExecutionDesiredStateListMatch(TypedDict, total=False):
-    desired_state: dict
-    id: str
-    stop_observed: bool
-
-
 class ExecutionDesiredStateCreateData(TypedDict):
     pass
 
@@ -7635,10 +7527,6 @@ class ExecutionReconcilerTickLoadMatch(TypedDict):
     id: str
 
 
-class ExecutionReconcilerTickListMatch(TypedDict, total=False):
-    id: str
-
-
 class ExecutionReconcilerTickCreateData(TypedDict):
     pass
 
@@ -7648,10 +7536,6 @@ class ExecutionRelease(TypedDict, total=False):
 
 
 class ExecutionReleaseLoadMatch(TypedDict):
-    id: str
-
-
-class ExecutionReleaseListMatch(TypedDict, total=False):
     id: str
 
 
@@ -7723,18 +7607,18 @@ class ExecutionRuntimeInstanceRemoveMatch(TypedDict):
 
 
 class ExplorationRequired(TypedDict):
-    active: list
     agent_filters: dict
     agents: list
+    check_count: int
     concurrency: int
     covered_areas: list
     created_at: str
     deadline_at: str
     demo_project: dict | None
+    duration_ms: int | None
     ended_early: bool
     environment_id: str
     environment_name: str
-    explorations: list
     explorer_activity: dict
     finding_count: int
     findings: list
@@ -7742,12 +7626,10 @@ class ExplorationRequired(TypedDict):
     goal: str
     huntable_flows: list
     id: str
-    launch_options: dict
     max_seconds: int
     max_testers: int
     next_scan_improvements: list
     onboarding: bool
-    pagination: dict
     paywalled: bool
     permissions: dict
     priority_counts: dict
@@ -7760,6 +7642,7 @@ class ExplorationRequired(TypedDict):
     scenario_generation: dict
     sign_in_needs_answer: bool
     sign_in_outcome: str
+    started_at: str
     status: str
     time_limit_reached: bool
     unlock: Any
@@ -7770,12 +7653,15 @@ class Exploration(ExplorationRequired, total=False):
     account_id: str | None
     can_continue: bool
     chat_messages: list
+    credential_name: str | None
     finished_at: str | None
     idempotency_key: str
     mode: str
     observed_at: str
     persona_id: str | None
     project_id: str | None
+    scenario_count: int
+    scenarios_pending: bool
     sign_in_question: str | None
     startup_retryable: bool
     title: str
@@ -8356,11 +8242,11 @@ class GithubConnection(GithubConnectionRequired, total=False):
     replace: bool
 
 
-class GithubConnectionListMatchRequired(TypedDict):
+class GithubConnectionLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class GithubConnectionListMatch(GithubConnectionListMatchRequired, total=False):
+class GithubConnectionLoadMatch(GithubConnectionLoadMatchRequired, total=False):
     github_app_installation_id: str
     project_id: str
 
@@ -8823,16 +8709,12 @@ class HostingAppDomain(TypedDict):
     verification_status: str
 
 
-class HostingAppDomainLoadMatch(TypedDict):
+class HostingAppDomainLoadMatchRequired(TypedDict):
     app_id: str
+
+
+class HostingAppDomainLoadMatch(HostingAppDomainLoadMatchRequired, total=False):
     id: str
-
-
-class HostingAppDomainListMatchRequired(TypedDict):
-    app_id: str
-
-
-class HostingAppDomainListMatch(HostingAppDomainListMatchRequired, total=False):
     app_environment_id: str
 
 
@@ -8956,7 +8838,7 @@ class Integration(TypedDict):
     slack: dict
 
 
-class IntegrationListMatch(TypedDict):
+class IntegrationLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -9064,7 +8946,7 @@ class JobStep(TypedDict, total=False):
     id: str
 
 
-class JobStepListMatch(TypedDict):
+class JobStepLoadMatch(TypedDict):
     job_id: str
     pipeline_id: str
     run_id: str
@@ -9094,7 +8976,7 @@ class JobWorkspace(TypedDict, total=False):
     id: str
 
 
-class JobWorkspaceListMatch(TypedDict):
+class JobWorkspaceLoadMatch(TypedDict):
     job_id: str
     pipeline_id: str
     run_id: str
@@ -9468,15 +9350,13 @@ class LogStreamChunk(TypedDict, total=False):
     id: str
 
 
-class LogStreamChunkLoadMatch(TypedDict):
+class LogStreamChunkLoadMatchRequired(TypedDict):
+    log_stream_id: str
+    space_id: str
+
+
+class LogStreamChunkLoadMatch(LogStreamChunkLoadMatchRequired, total=False):
     id: str
-    log_stream_id: str
-    space_id: str
-
-
-class LogStreamChunkListMatch(TypedDict):
-    log_stream_id: str
-    space_id: str
 
 
 class LogStreamChunkCreateData(TypedDict):
@@ -9525,7 +9405,7 @@ class MarketingSetting(TypedDict):
     call_first: bool
 
 
-class MarketingSettingListMatch(TypedDict, total=False):
+class MarketingSettingLoadMatch(TypedDict, total=False):
     call_first: bool
 
 
@@ -10026,7 +9906,7 @@ class MetricQuery(TypedDict):
     pass
 
 
-class MetricQueryListMatch(TypedDict):
+class MetricQueryLoadMatch(TypedDict):
     pass
 
 
@@ -10174,10 +10054,6 @@ class NetworkingSpaceLoadMatch(TypedDict):
     id: str
 
 
-class NetworkingSpaceListMatch(TypedDict, total=False):
-    id: str
-
-
 class NetworkingSpaceCreateData(TypedDict):
     pass
 
@@ -10232,11 +10108,6 @@ class NodeLease(TypedDict, total=False):
 
 
 class NodeLeaseLoadMatch(TypedDict):
-    id: str
-    node_id: str
-
-
-class NodeLeaseListMatch(TypedDict):
     node_id: str
 
 
@@ -10291,11 +10162,11 @@ class NomadLog(NomadLogRequired, total=False):
     service: str
 
 
-class NomadLogListMatchRequired(TypedDict):
+class NomadLogLoadMatchRequired(TypedDict):
     app_id: str
 
 
-class NomadLogListMatch(NomadLogListMatchRequired, total=False):
+class NomadLogLoadMatch(NomadLogLoadMatchRequired, total=False):
     environment: str
     location: str
     offset: int
@@ -10329,10 +10200,6 @@ class ObservabilityClickhouseClusterLoadMatch(TypedDict):
     id: str
 
 
-class ObservabilityClickhouseClusterListMatch(TypedDict, total=False):
-    id: str
-
-
 class ObservabilityClickhouseClusterCreateData(TypedDict):
     pass
 
@@ -10357,10 +10224,6 @@ class ObservabilityQuickwitClusterLoadMatch(TypedDict):
     id: str
 
 
-class ObservabilityQuickwitClusterListMatch(TypedDict, total=False):
-    id: str
-
-
 class ObservabilityQuickwitClusterCreateData(TypedDict):
     pass
 
@@ -10382,10 +10245,6 @@ class ObservabilitySpace(TypedDict, total=False):
 
 
 class ObservabilitySpaceLoadMatch(TypedDict):
-    id: str
-
-
-class ObservabilitySpaceListMatch(TypedDict, total=False):
     id: str
 
 
@@ -10536,12 +10395,12 @@ class OrganizationApp(TypedDict, total=False):
     id: str
 
 
-class OrganizationAppListMatchRequired(TypedDict):
+class OrganizationAppLoadMatchRequired(TypedDict):
     organization_id: str
     native_agent_id: str
 
 
-class OrganizationAppListMatch(OrganizationAppListMatchRequired, total=False):
+class OrganizationAppLoadMatch(OrganizationAppLoadMatchRequired, total=False):
     context: bool
     installed: bool
 
@@ -10588,13 +10447,12 @@ class OrganizationIdentityCertificate(TypedDict, total=False):
     id: str
 
 
-class OrganizationIdentityCertificateLoadMatch(TypedDict):
+class OrganizationIdentityCertificateLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class OrganizationIdentityCertificateLoadMatch(OrganizationIdentityCertificateLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class OrganizationIdentityCertificateListMatch(TypedDict):
-    organization_id: str
 
 
 class OrganizationIdentityCertificateCreateData(TypedDict):
@@ -10656,13 +10514,12 @@ class OrganizationOidcTrust(TypedDict, total=False):
     id: str
 
 
-class OrganizationOidcTrustLoadMatch(TypedDict):
+class OrganizationOidcTrustLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class OrganizationOidcTrustLoadMatch(OrganizationOidcTrustLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class OrganizationOidcTrustListMatch(TypedDict):
-    organization_id: str
 
 
 class OrganizationOidcTrustCreateData(TypedDict):
@@ -10776,13 +10633,12 @@ class OrganizationServiceAccount(TypedDict, total=False):
     id: str
 
 
-class OrganizationServiceAccountLoadMatch(TypedDict):
+class OrganizationServiceAccountLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class OrganizationServiceAccountLoadMatch(OrganizationServiceAccountLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class OrganizationServiceAccountListMatch(TypedDict):
-    organization_id: str
 
 
 class OrganizationServiceAccountCreateData(TypedDict):
@@ -10836,7 +10692,7 @@ class OrganizationSite(TypedDict, total=False):
     id: str
 
 
-class OrganizationSiteListMatch(TypedDict):
+class OrganizationSiteLoadMatch(TypedDict):
     organization_id: str
     native_agent_id: str
 
@@ -10880,13 +10736,12 @@ class OrganizationWorkloadIdentity(TypedDict, total=False):
     id: str
 
 
-class OrganizationWorkloadIdentityLoadMatch(TypedDict):
+class OrganizationWorkloadIdentityLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class OrganizationWorkloadIdentityLoadMatch(OrganizationWorkloadIdentityLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class OrganizationWorkloadIdentityListMatch(TypedDict):
-    organization_id: str
 
 
 class OrganizationWorkloadIdentityCreateData(TypedDict):
@@ -10983,18 +10838,6 @@ class PageAgentLoadMatchRequired(TypedDict):
 
 
 class PageAgentLoadMatch(PageAgentLoadMatchRequired, total=False):
-    agent: str
-    agent_search: str
-    agent_visibility: str
-    cursor: str
-    limit: int
-
-
-class PageAgentListMatchRequired(TypedDict):
-    organization_id: str
-
-
-class PageAgentListMatch(PageAgentListMatchRequired, total=False):
     agent: str
     agent_search: str
     agent_visibility: str
@@ -11254,13 +11097,23 @@ class PagesProjectCredentialListMatch(TypedDict):
 
 
 class PagesProjectPersona(TypedDict):
-    active_count: int
-    credentials: list
-    needs_attention_count: int
-    permissions: dict
-    persona_states: dict
-    personas: list
-    project: dict
+    access_mode: str
+    active_run_count: int
+    archived_at: str | None
+    attention: list
+    capabilities: str | None
+    created_at: str
+    credential: Any
+    credential_id: str | None
+    goals: str | None
+    health: dict
+    id: str
+    lock_version: int
+    name: str
+    project_id: str
+    role: str
+    scenario_count: int
+    updated_at: str
 
 
 class PagesProjectPersonaListMatch(TypedDict):
@@ -11269,12 +11122,28 @@ class PagesProjectPersonaListMatch(TypedDict):
 
 
 class PagesProjectRun(TypedDict):
-    environment_query: str
-    environments: list
-    environments_has_more: bool
-    pagination: dict
-    runs: list
-    selected_environment: Any
+    archived_at: str | None
+    browser_seconds: float | None
+    can_archive: bool
+    can_restore: bool
+    cleanup_state: str
+    commit_sha: str | None
+    created_at: str
+    duration_seconds: float | None
+    environment_name: str | None
+    finished_at: str | None
+    id: str
+    outcome: str | None
+    pull_request: Any
+    pull_request_label: str | None
+    scenario_count: int
+    source_run: dict | None
+    started_at: str | None
+    state: str
+    title: str
+    trigger_kind: str
+    triggered_by: str | None
+    web_path: str
 
 
 class PagesProjectRunListMatchRequired(TypedDict):
@@ -11435,10 +11304,6 @@ class PairingLoadMatch(TypedDict):
     id: str
 
 
-class PairingListMatch(TypedDict, total=False):
-    id: str
-
-
 class PairingCreateData(TypedDict):
     pass
 
@@ -11447,7 +11312,7 @@ class PairingEvent(TypedDict):
     pass
 
 
-class PairingEventListMatch(TypedDict):
+class PairingEventLoadMatch(TypedDict):
     pairing_id: str
 
 
@@ -11480,7 +11345,7 @@ class PersonalAccessToken(TypedDict, total=False):
     id: str
 
 
-class PersonalAccessTokenListMatch(TypedDict, total=False):
+class PersonalAccessTokenLoadMatch(TypedDict):
     id: str
 
 
@@ -11496,7 +11361,7 @@ class PreviewOperation(TypedDict):
     pass
 
 
-class PreviewOperationListMatch(TypedDict):
+class PreviewOperationLoadMatch(TypedDict):
     app_id: str
     preview_id: str
 
@@ -11512,7 +11377,7 @@ class PreviewProfileSecretBinding(PreviewProfileSecretBindingRequired, total=Fal
     secret_version_id: str
 
 
-class PreviewProfileSecretBindingListMatch(TypedDict):
+class PreviewProfileSecretBindingLoadMatch(TypedDict):
     app_id: str
     preview_profile_id: str
 
@@ -11567,19 +11432,19 @@ class PreviewSharingApprovalRequired(TypedDict):
     approved_default_configuration: list
     approved_default_secrets: list
     approved_source_keys: list
+    build_secrets: list
+    default_configuration: list
+    default_secrets: list
     services: list
     snapshot_version: int
+    source_keys: list
 
 
 class PreviewSharingApproval(PreviewSharingApprovalRequired, total=False):
     build_keys: list
-    build_secrets: list
-    default_configuration: list
-    default_secrets: list
-    source_keys: list
 
 
-class PreviewSharingApprovalListMatch(TypedDict):
+class PreviewSharingApprovalLoadMatch(TypedDict):
     app_id: str
     preview_id: str
 
@@ -12186,17 +12051,10 @@ class ProjectFixtureRequired(TypedDict):
     byte_size: int
     content_type: str
     credential_ids: list
-    credentials: list
     environment_ids: list
-    environments: list
-    fixtures: list
     lock_version: int
     name: str
-    pagination: dict
-    permissions: dict
     persona_ids: list
-    personas: list
-    project: dict
     sha256: str
     url: str
     version: int
@@ -12636,7 +12494,7 @@ class ProjectScenarioOption(ProjectScenarioOptionRequired, total=False):
     schedules: list
 
 
-class ProjectScenarioOptionListMatch(TypedDict):
+class ProjectScenarioOptionLoadMatch(TypedDict):
     organization_id: str
     project_id: str
 
@@ -12673,7 +12531,7 @@ class ProjectSetting(TypedDict):
     tester_numbers: list
 
 
-class ProjectSettingListMatch(TypedDict):
+class ProjectSettingLoadMatch(TypedDict):
     organization_id: str
     project_id: str
 
@@ -12863,11 +12721,11 @@ class PullRequestSetting(PullRequestSettingRequired, total=False):
     trigger_on_ready: bool
 
 
-class PullRequestSettingListMatchRequired(TypedDict):
+class PullRequestSettingLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class PullRequestSettingListMatch(PullRequestSettingListMatchRequired, total=False):
+class PullRequestSettingLoadMatch(PullRequestSettingLoadMatchRequired, total=False):
     project_id: str
     provider: str
     repository_id: str
@@ -13135,13 +12993,12 @@ class ReleaseRollout(TypedDict, total=False):
     id: str
 
 
-class ReleaseRolloutLoadMatch(TypedDict):
+class ReleaseRolloutLoadMatchRequired(TypedDict):
+    release_id: str
+
+
+class ReleaseRolloutLoadMatch(ReleaseRolloutLoadMatchRequired, total=False):
     id: str
-    release_id: str
-
-
-class ReleaseRolloutListMatch(TypedDict):
-    release_id: str
 
 
 class ReleaseRolloutCreateData(TypedDict):
@@ -13276,15 +13133,13 @@ class RepoAgentSession(RepoAgentSessionRequired, total=False):
     title: str | None
 
 
-class RepoAgentSessionLoadMatch(TypedDict):
+class RepoAgentSessionLoadMatchRequired(TypedDict):
+    organization_id: str
+    repo_id: str
+
+
+class RepoAgentSessionLoadMatch(RepoAgentSessionLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-    repo_id: str
-
-
-class RepoAgentSessionListMatch(TypedDict):
-    organization_id: str
-    repo_id: str
 
 
 class RepoAgentSessionCreateData(TypedDict):
@@ -13430,15 +13285,13 @@ class RepoCloudWorkspaceBackup(TypedDict, total=False):
     id: str
 
 
-class RepoCloudWorkspaceBackupLoadMatch(TypedDict):
+class RepoCloudWorkspaceBackupLoadMatchRequired(TypedDict):
+    organization_id: str
+    repo_id: str
+
+
+class RepoCloudWorkspaceBackupLoadMatch(RepoCloudWorkspaceBackupLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-    repo_id: str
-
-
-class RepoCloudWorkspaceBackupListMatch(TypedDict):
-    organization_id: str
-    repo_id: str
 
 
 class RepoCloudWorkspaceBackupCreateData(TypedDict):
@@ -13848,10 +13701,6 @@ class RoderCodeRepairLoadMatch(TypedDict):
     id: str
 
 
-class RoderCodeRepairListMatch(TypedDict):
-    scenario_run_id: str
-
-
 class RoderCodeRepairCreateData(TypedDict):
     base_sha: str
     organization_id: str
@@ -13869,7 +13718,7 @@ class RoderCodeRepairSetting(TypedDict):
     repository_slug: str | None
 
 
-class RoderCodeRepairSettingListMatch(TypedDict):
+class RoderCodeRepairSettingLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -13922,7 +13771,7 @@ class RunArtifact(TypedDict):
     pass
 
 
-class RunArtifactListMatch(TypedDict):
+class RunArtifactLoadMatch(TypedDict):
     pipeline_id: str
     run_id: str
 
@@ -13972,15 +13821,13 @@ class RunJob(RunJobRequired, total=False):
     reconciliation_id: str | None
 
 
-class RunJobLoadMatch(TypedDict):
+class RunJobLoadMatchRequired(TypedDict):
+    pipeline_id: str
+    run_id: str
+
+
+class RunJobLoadMatch(RunJobLoadMatchRequired, total=False):
     id: str
-    pipeline_id: str
-    run_id: str
-
-
-class RunJobListMatch(TypedDict):
-    pipeline_id: str
-    run_id: str
 
 
 class RunJobCreateData(TypedDict):
@@ -14087,7 +13934,7 @@ class RunnerLease(TypedDict, total=False):
     id: str
 
 
-class RunnerLeaseListMatch(TypedDict):
+class RunnerLeaseLoadMatch(TypedDict):
     runner_id: str
     runner_pool_id: str
 
@@ -14142,13 +13989,12 @@ class RunnerPoolRunner(TypedDict, total=False):
     id: str
 
 
-class RunnerPoolRunnerLoadMatch(TypedDict):
+class RunnerPoolRunnerLoadMatchRequired(TypedDict):
+    runner_pool_id: str
+
+
+class RunnerPoolRunnerLoadMatch(RunnerPoolRunnerLoadMatchRequired, total=False):
     id: str
-    runner_pool_id: str
-
-
-class RunnerPoolRunnerListMatch(TypedDict):
-    runner_pool_id: str
 
 
 class RunnerPoolRunnerCreateData(TypedDict):
@@ -14169,7 +14015,7 @@ class RuntimeInstanceHealthSnapshot(TypedDict):
     pass
 
 
-class RuntimeInstanceHealthSnapshotListMatch(TypedDict):
+class RuntimeInstanceHealthSnapshotLoadMatch(TypedDict):
     runtime_instance_id: str
 
 
@@ -14191,11 +14037,11 @@ class SandboxIntegration(TypedDict):
     version: int
 
 
-class SandboxIntegrationListMatchRequired(TypedDict):
+class SandboxIntegrationLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class SandboxIntegrationListMatch(SandboxIntegrationListMatchRequired, total=False):
+class SandboxIntegrationLoadMatch(SandboxIntegrationLoadMatchRequired, total=False):
     provider: str
 
 
@@ -14298,15 +14144,13 @@ class SecretGrant(TypedDict, total=False):
     id: str
 
 
-class SecretGrantLoadMatch(TypedDict):
+class SecretGrantLoadMatchRequired(TypedDict):
+    organization_id: str
+    secret_id: str
+
+
+class SecretGrantLoadMatch(SecretGrantLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-    secret_id: str
-
-
-class SecretGrantListMatch(TypedDict):
-    organization_id: str
-    secret_id: str
 
 
 class SecretGrantCreateData(TypedDict):
@@ -14336,15 +14180,13 @@ class SecretVersion(TypedDict, total=False):
     id: str
 
 
-class SecretVersionLoadMatch(TypedDict):
+class SecretVersionLoadMatchRequired(TypedDict):
+    organization_id: str
+    secret_id: str
+
+
+class SecretVersionLoadMatch(SecretVersionLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-    secret_id: str
-
-
-class SecretVersionListMatch(TypedDict):
-    organization_id: str
-    secret_id: str
 
 
 class SecretVersionCreateData(TypedDict):
@@ -14374,15 +14216,13 @@ class ServiceEndpoint(TypedDict, total=False):
     id: str
 
 
-class ServiceEndpointLoadMatch(TypedDict):
+class ServiceEndpointLoadMatchRequired(TypedDict):
     app_id: str
+    service_id: str
+
+
+class ServiceEndpointLoadMatch(ServiceEndpointLoadMatchRequired, total=False):
     id: str
-    service_id: str
-
-
-class ServiceEndpointListMatch(TypedDict):
-    app_id: str
-    service_id: str
 
 
 class ServiceEndpointCreateData(TypedDict):
@@ -14417,7 +14257,7 @@ class Setting(TypedDict):
     sandbox_regions: list
 
 
-class SettingListMatch(TypedDict):
+class SettingLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -14644,13 +14484,12 @@ class SignalSubscription(TypedDict, total=False):
     id: str
 
 
-class SignalSubscriptionLoadMatch(TypedDict):
+class SignalSubscriptionLoadMatchRequired(TypedDict):
+    organization_id: str
+
+
+class SignalSubscriptionLoadMatch(SignalSubscriptionLoadMatchRequired, total=False):
     id: str
-    organization_id: str
-
-
-class SignalSubscriptionListMatch(TypedDict):
-    organization_id: str
 
 
 class SignalSubscriptionCreateData(TypedDict):
@@ -14713,7 +14552,7 @@ class SiteAccessKey(TypedDict, total=False):
     id: str
 
 
-class SiteAccessKeyListMatch(TypedDict):
+class SiteAccessKeyLoadMatch(TypedDict):
     organization_id: str
     site_id: str
 
@@ -14799,13 +14638,12 @@ class SpaceAlertRule(TypedDict, total=False):
     id: str
 
 
-class SpaceAlertRuleLoadMatch(TypedDict):
+class SpaceAlertRuleLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceAlertRuleLoadMatch(SpaceAlertRuleLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceAlertRuleListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceAlertRuleCreateData(TypedDict):
@@ -14831,7 +14669,7 @@ class SpaceAuditEvent(TypedDict):
     pass
 
 
-class SpaceAuditEventListMatch(TypedDict):
+class SpaceAuditEventLoadMatch(TypedDict):
     space_id: str
 
 
@@ -14843,13 +14681,12 @@ class SpaceDnsRecord(TypedDict, total=False):
     id: str
 
 
-class SpaceDnsRecordLoadMatch(TypedDict):
+class SpaceDnsRecordLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceDnsRecordLoadMatch(SpaceDnsRecordLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceDnsRecordListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceDnsRecordCreateData(TypedDict):
@@ -14875,13 +14712,12 @@ class SpaceEnrollmentToken(TypedDict, total=False):
     id: str
 
 
-class SpaceEnrollmentTokenLoadMatch(TypedDict):
+class SpaceEnrollmentTokenLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceEnrollmentTokenLoadMatch(SpaceEnrollmentTokenLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceEnrollmentTokenListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceEnrollmentTokenCreateData(TypedDict):
@@ -14907,13 +14743,12 @@ class SpaceGateway(TypedDict, total=False):
     id: str
 
 
-class SpaceGatewayLoadMatch(TypedDict):
+class SpaceGatewayLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceGatewayLoadMatch(SpaceGatewayLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceGatewayListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceGatewayCreateData(TypedDict):
@@ -14939,7 +14774,7 @@ class SpaceGroup(TypedDict, total=False):
     id: str
 
 
-class SpaceGroupListMatch(TypedDict):
+class SpaceGroupLoadMatch(TypedDict):
     space_id: str
 
 
@@ -14966,7 +14801,7 @@ class SpaceGroupMembership(TypedDict, total=False):
     id: str
 
 
-class SpaceGroupMembershipListMatch(TypedDict):
+class SpaceGroupMembershipLoadMatch(TypedDict):
     space_id: str
 
 
@@ -14993,7 +14828,7 @@ class SpaceLogStream(TypedDict):
     pass
 
 
-class SpaceLogStreamListMatch(TypedDict):
+class SpaceLogStreamLoadMatch(TypedDict):
     space_id: str
 
 
@@ -15005,7 +14840,7 @@ class SpaceMetricSery(TypedDict):
     pass
 
 
-class SpaceMetricSeryListMatch(TypedDict):
+class SpaceMetricSeryLoadMatch(TypedDict):
     space_id: str
 
 
@@ -15017,13 +14852,12 @@ class SpaceOtelCollector(TypedDict, total=False):
     id: str
 
 
-class SpaceOtelCollectorLoadMatch(TypedDict):
+class SpaceOtelCollectorLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceOtelCollectorLoadMatch(SpaceOtelCollectorLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceOtelCollectorListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceOtelCollectorCreateData(TypedDict):
@@ -15049,13 +14883,12 @@ class SpacePeer(TypedDict, total=False):
     id: str
 
 
-class SpacePeerLoadMatch(TypedDict):
+class SpacePeerLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpacePeerLoadMatch(SpacePeerLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpacePeerListMatch(TypedDict):
-    space_id: str
 
 
 class SpacePeerCreateData(TypedDict):
@@ -15081,7 +14914,7 @@ class SpacePeerAttachment(TypedDict, total=False):
     id: str
 
 
-class SpacePeerAttachmentListMatch(TypedDict):
+class SpacePeerAttachmentLoadMatch(TypedDict):
     space_id: str
 
 
@@ -15108,13 +14941,12 @@ class SpacePolicy(TypedDict, total=False):
     id: str
 
 
-class SpacePolicyLoadMatch(TypedDict):
+class SpacePolicyLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpacePolicyLoadMatch(SpacePolicyLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpacePolicyListMatch(TypedDict):
-    space_id: str
 
 
 class SpacePolicyCreateData(TypedDict):
@@ -15140,13 +14972,12 @@ class SpaceSegment(TypedDict, total=False):
     id: str
 
 
-class SpaceSegmentLoadMatch(TypedDict):
+class SpaceSegmentLoadMatchRequired(TypedDict):
+    space_id: str
+
+
+class SpaceSegmentLoadMatch(SpaceSegmentLoadMatchRequired, total=False):
     id: str
-    space_id: str
-
-
-class SpaceSegmentListMatch(TypedDict):
-    space_id: str
 
 
 class SpaceSegmentCreateData(TypedDict):
@@ -15172,7 +15003,7 @@ class SpaceTraceSpan(TypedDict):
     pass
 
 
-class SpaceTraceSpanListMatch(TypedDict):
+class SpaceTraceSpanLoadMatch(TypedDict):
     space_id: str
 
 
@@ -15218,7 +15049,7 @@ class Spark(SparkRequired, total=False):
     source_ui_enabled: bool
 
 
-class SparkListMatch(TypedDict):
+class SparkLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -15261,12 +15092,12 @@ class SparkAgentIntegration(SparkAgentIntegrationRequired, total=False):
     personal_creation_key_supported: bool
 
 
-class SparkAgentIntegrationListMatchRequired(TypedDict):
+class SparkAgentIntegrationLoadMatchRequired(TypedDict):
     agent_id: str
     organization_id: str
 
 
-class SparkAgentIntegrationListMatch(SparkAgentIntegrationListMatchRequired, total=False):
+class SparkAgentIntegrationLoadMatch(SparkAgentIntegrationLoadMatchRequired, total=False):
     catalog_q: str
     cursor: str
     limit: int
@@ -15411,31 +15242,33 @@ class SparkAgentSkillCreateData(TypedDict):
 
 
 class SparkAgentThreadRequired(TypedDict):
-    can_create: bool
-    local_activities: dict
-    local_archived_count: int
-    local_next_cursor: str | None
-    local_scope_key: str | None
-    local_status_pending: bool
-    local_threads: list
-    main_thread_id: str
-    next_cursor: str | None
-    selected_thread: Any
+    archived: bool
+    attention: dict | None
+    can_archive: bool
+    can_compact: bool
+    can_snooze: bool
+    group: str
+    has_active_run: bool
+    id: str
+    is_main: bool
+    kind: str
+    older: bool
+    snoozed_until: str | None
     thread: dict
-    threads: list
-    total_archived_count: int | None
+    updated_at: str | None
 
 
 class SparkAgentThread(SparkAgentThreadRequired, total=False):
-    archived_count: int | None
+    archive_deletes_sandbox: bool
+    coordination_status: str | None
     execution: Any
     first_input: Any
     first_input_key: str
     first_input_requester_membership_id: str
-    id: str
     inherit_context: bool
     message: str
     parent_conversation_id: str
+    parent_conversation_title: str
     requester_membership_id: str
     title: str
 
@@ -15476,6 +15309,7 @@ class SparkCreditRequired(TypedDict):
     kind: str
     payment_method: dict | None
     payments_enabled: bool
+    plan: str | None
     plans: list
     refill_limits_cents: list
     refill_options: list
@@ -15492,20 +15326,15 @@ class SparkCredit(SparkCreditRequired, total=False):
     billing_unit: str
     compute_usd: str
     inference_usd: str
-    plan: str
     quoted_credits_cents: int
     quoted_price_cents: int
 
 
-class SparkCreditLoadMatch(TypedDict):
+class SparkCreditLoadMatchRequired(TypedDict):
     organization_id: str
 
 
-class SparkCreditListMatchRequired(TypedDict):
-    organization_id: str
-
-
-class SparkCreditListMatch(SparkCreditListMatchRequired, total=False):
+class SparkCreditLoadMatch(SparkCreditLoadMatchRequired, total=False):
     view: str
 
 
@@ -15518,7 +15347,7 @@ class SparkCreditCreateDataRequired(TypedDict):
 class SparkCreditCreateData(SparkCreditCreateDataRequired, total=False):
     amount_cents: int
     billing_unit: str
-    plan: str
+    plan: str | None
     quoted_credits_cents: int
     quoted_price_cents: int
 
@@ -15558,7 +15387,7 @@ class SparkCreditUsageTotal(TypedDict):
     inference_usd: str
 
 
-class SparkCreditUsageTotalListMatch(TypedDict):
+class SparkCreditUsageTotalLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -16388,7 +16217,7 @@ class VcsSetting(TypedDict):
     sandbox_regions: list
 
 
-class VcsSettingListMatch(TypedDict):
+class VcsSettingLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -16883,7 +16712,7 @@ class VerifyEmailVerification(TypedDict):
     pass
 
 
-class VerifyEmailVerificationListMatch(TypedDict):
+class VerifyEmailVerificationLoadMatch(TypedDict):
     pass
 
 

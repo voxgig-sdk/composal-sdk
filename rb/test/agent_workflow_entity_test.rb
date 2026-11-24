@@ -25,7 +25,7 @@ class AgentWorkflowEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AgentWorkflow(nil).list({ "agent_id" => 1, "organization_id" => "x" }, nil)
+      client.AgentWorkflow(nil).load({ "agent_id" => 1, "organization_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class AgentWorkflowEntityTest < Minitest::Test
     setup = agent_workflow_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update"].each do |_op|
+    ["create", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "agent_workflow." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,14 +43,7 @@ class AgentWorkflowEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"agent_workflow.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}"
-      puts "LIVE STEP {\"id\":\"agent_workflow.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}"
-    if setup[:live]
-      ["agent01", "organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_WORKFLOW_ENTID")
-        end
-      end
-    end
+      puts "LIVE STEP {\"id\":\"agent_workflow.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}"
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -62,15 +55,12 @@ class AgentWorkflowEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     agent_workflow_ref01_ent = client.AgentWorkflow(nil)
-    agent_workflow_ref01_match = {
-      "agent_id" => setup[:idmap]["agent01"],
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    agent_workflow_ref01_list_result = agent_workflow_ref01_ent.list(agent_workflow_ref01_match, nil)
-    assert agent_workflow_ref01_list_result.is_a?(Array)
+    agent_workflow_ref01_match_dt0 = {}
+    agent_workflow_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    agent_workflow_ref01_data_dt0_loaded = agent_workflow_ref01_ent.load(agent_workflow_ref01_match_dt0, nil)
+    assert !agent_workflow_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -97,16 +87,6 @@ class AgentWorkflowEntityTest < Minitest::Test
     assert !agent_workflow_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    agent_workflow_ref01_match = {
-      "agent_id" => setup[:idmap]["agent01"],
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    agent_workflow_ref01_list_result = agent_workflow_ref01_ent.list(agent_workflow_ref01_match, nil)
-    assert agent_workflow_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     agent_workflow_ref01_data_up0_up = {
       "organization_id" => setup[:idmap]["organization_id"],
@@ -120,6 +100,13 @@ class AgentWorkflowEntityTest < Minitest::Test
     agent_workflow_ref01_resdata_up0 = Helpers.to_map(agent_workflow_ref01_resdata_up0_result.respond_to?(:data_get) ? agent_workflow_ref01_resdata_up0_result.data_get : agent_workflow_ref01_resdata_up0_result)
     assert !agent_workflow_ref01_resdata_up0.nil?
     assert_equal agent_workflow_ref01_resdata_up0[agent_workflow_ref01_markdef_up0_name], agent_workflow_ref01_markdef_up0_value
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    agent_workflow_ref01_match_dt0 = {}
+    agent_workflow_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    agent_workflow_ref01_data_dt0_loaded = agent_workflow_ref01_ent.load(agent_workflow_ref01_match_dt0, nil)
+    assert !agent_workflow_ref01_data_dt0_loaded.nil?
 
   end
 end

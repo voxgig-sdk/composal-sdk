@@ -20,23 +20,6 @@ main: kit: flow: BasicRepoCloudWorkspaceBackupFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01",
-        repo_id: "repo01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "repo_cloud_workspace_backup_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "repo_cloud_workspace_backup_ref01",
         srcdatavar: "repo_cloud_workspace_backup_ref01_data",
@@ -45,8 +28,7 @@ main: kit: flow: BasicRepoCloudWorkspaceBackupFlow:
 
       m: {
         id: "repo_cloud_workspace_backup01",
-        organization_id: "organization01",
-        repo_id: "repo01"
+        organization_id: "organization01"
       }
 
       o: "load",

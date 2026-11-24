@@ -25,7 +25,7 @@ class LogStreamChunkEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.LogStreamChunk(nil).list({ "log_stream_id" => 1, "space_id" => "x" }, nil)
+      client.LogStreamChunk(nil).load({ "id" => 1, "log_stream_id" => "x", "space_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class LogStreamChunkEntityTest < Minitest::Test
     setup = log_stream_chunk_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "load"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "log_stream_chunk." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,54 +43,8 @@ class LogStreamChunkEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"log_stream_chunk.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks\"}"
-    if setup[:live]
-      ["log_stream01", "space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["log_stream_chunk01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "log_stream_chunk", "id", _live_id) do
-        client.LogStreamChunk(nil).list({"log_stream_id" => setup[:idmap]["log_stream01"], "space_id" => setup[:idmap]["space01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    log_stream_chunk_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.log_stream_chunk")))
-    log_stream_chunk_ref01_data = nil
-    if log_stream_chunk_ref01_data_raw.length > 0
-      log_stream_chunk_ref01_data = Helpers.to_map(log_stream_chunk_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    log_stream_chunk_ref01_ent = client.LogStreamChunk(nil)
-    log_stream_chunk_ref01_match = {
-      "log_stream_id" => setup[:idmap]["log_stream01"],
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    log_stream_chunk_ref01_list_result = log_stream_chunk_ref01_ent.list(log_stream_chunk_ref01_match, nil)
-    assert log_stream_chunk_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    log_stream_chunk_ref01_match_dt0 = {
-      "id" => log_stream_chunk_ref01_data["id"],
-    }
-    log_stream_chunk_ref01_match_dt0["log_stream_id"] = setup[:idmap]["log_stream_id"] || setup[:idmap]["log_stream01"]
-    log_stream_chunk_ref01_match_dt0["space_id"] = setup[:idmap]["space_id"] || setup[:idmap]["space01"]
-    log_stream_chunk_ref01_data_dt0_loaded = log_stream_chunk_ref01_ent.load(log_stream_chunk_ref01_match_dt0, nil)
-    log_stream_chunk_ref01_data_dt0_load_result = Helpers.to_map(log_stream_chunk_ref01_data_dt0_loaded.respond_to?(:data_get) ? log_stream_chunk_ref01_data_dt0_loaded.data_get : log_stream_chunk_ref01_data_dt0_loaded)
-    assert !log_stream_chunk_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(log_stream_chunk_ref01_data_dt0_load_result["id"], log_stream_chunk_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"log_stream_chunk.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only log_stream_chunk.create.0 gives\"}"
+      skip("Live coverage incomplete: log_stream_chunk.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks); log_stream_chunk.load.1 excluded (GET-only live run: reads a record only log_stream_chunk.create.0 gives)")
     end
 
     if setup[:live]
@@ -116,26 +70,10 @@ class LogStreamChunkEntityTest < Minitest::Test
     assert !log_stream_chunk_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    log_stream_chunk_ref01_match = {
-      "log_stream_id" => setup[:idmap]["log_stream01"],
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    log_stream_chunk_ref01_list_result = log_stream_chunk_ref01_ent.list(log_stream_chunk_ref01_match, nil)
-    assert log_stream_chunk_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(log_stream_chunk_ref01_list_result),
-      { "id" => log_stream_chunk_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # LOAD
     log_stream_chunk_ref01_match_dt0 = {
       "id" => log_stream_chunk_ref01_data["id"],
     }
-    log_stream_chunk_ref01_match_dt0["log_stream_id"] = setup[:idmap]["log_stream_id"] || setup[:idmap]["log_stream01"]
     log_stream_chunk_ref01_match_dt0["space_id"] = setup[:idmap]["space_id"] || setup[:idmap]["space01"]
     log_stream_chunk_ref01_data_dt0_loaded = log_stream_chunk_ref01_ent.load(log_stream_chunk_ref01_match_dt0, nil)
     log_stream_chunk_ref01_data_dt0_load_result = Helpers.to_map(log_stream_chunk_ref01_data_dt0_loaded.respond_to?(:data_get) ? log_stream_chunk_ref01_data_dt0_loaded.data_get : log_stream_chunk_ref01_data_dt0_loaded)

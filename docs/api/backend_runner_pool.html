@@ -606,7 +606,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1bazelbackendsbackend_idrunner_pools"><code>/api/v1/bazel/backends/{backend_id}/runner_pools</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
@@ -621,17 +621,17 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">backend_runner_pools, err := client.BackendRunnerPool(nil).List(map[string]any{&quot;backend_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">backend_runner_pool, err := client.BackendRunnerPool(nil).Load(map[string]any{&quot;backend_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(backend_runner_pools)
+fmt.Println(backend_runner_pool)
 created, err := client.BackendRunnerPool(nil).Create(map[string]any{&quot;backend_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(created)
-removed, err := client.BackendRunnerPool(nil).Remove(map[string]any{&quot;backend_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+removed, err := client.BackendRunnerPool(nil).Remove(map[string]any{&quot;backend_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -639,33 +639,33 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local backend_runner_pools, err = client:BackendRunnerPool():list({ backend_id = &quot;example&quot; })
+<pre><code class="language-lua">local backend_runner_pool, err = client:BackendRunnerPool():load({ backend_id = &quot;example&quot; })
 local created, err = client:BackendRunnerPool():create({ backend_id = &quot;example&quot; })
-local removed, err = client:BackendRunnerPool():remove({ backend_id = &quot;example&quot;, id = &quot;example_id&quot; })
+local removed, err = client:BackendRunnerPool():remove({ backend_id = &quot;example&quot;, id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$backend_runner_pools = $client-&gt;BackendRunnerPool()-&gt;list([&quot;backend_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$backend_runner_pool = $client-&gt;BackendRunnerPool()-&gt;load([&quot;backend_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;BackendRunnerPool()-&gt;create([&quot;backend_id&quot; =&gt; &quot;example&quot;]);
-$client-&gt;BackendRunnerPool()-&gt;remove([&quot;backend_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+$client-&gt;BackendRunnerPool()-&gt;remove([&quot;backend_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">backend_runner_pools = client.BackendRunnerPool().list({&quot;backend_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">backend_runner_pool = client.BackendRunnerPool().load({&quot;backend_id&quot;: &quot;example&quot;})
 created = client.BackendRunnerPool().create({ &quot;backend_id&quot;: &quot;example&quot; })
-client.BackendRunnerPool().remove({&quot;backend_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+client.BackendRunnerPool().remove({&quot;backend_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">backend_runner_pools = client.BackendRunnerPool.list({ &quot;backend_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">backend_runner_pool = client.BackendRunnerPool.load({ &quot;backend_id&quot; =&gt; &quot;example&quot; })
 created = client.BackendRunnerPool.create({ &quot;backend_id&quot; =&gt; &quot;example&quot; })
-client.BackendRunnerPool.remove({ &quot;backend_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+client.BackendRunnerPool.remove({ &quot;backend_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const backend_runner_pools = await client.BackendRunnerPool().list({ backend_id: &quot;example&quot; })
+<pre><code class="language-ts">const backend_runner_pool = await client.BackendRunnerPool().load({ backend_id: &quot;example&quot; })
 const created = await client.BackendRunnerPool().create({ backend_id: &quot;example&quot; })
-await client.BackendRunnerPool().remove({ backend_id: &quot;example&quot;, id: &quot;example_id&quot; })
+await client.BackendRunnerPool().remove({ backend_id: &quot;example&quot;, id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -723,7 +723,7 @@ await client.BackendRunnerPool().remove({ backend_id: &quot;example&quot;, id: &
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1bazelbackendsbackend_idrunner_pools" class="operation" data-method="get"><code>GET</code> /api/v1/bazel/backends/{backend_id}/runner_pools</h3>
 <p>Operation ID: <code>api_v1_backend_runner_pools</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

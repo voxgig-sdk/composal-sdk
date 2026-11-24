@@ -160,69 +160,6 @@ main: kit: entity: runner_pool_runner: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "runner_pool_id"
-                or: "runner_pool_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners"
-          q: {
-            exist: [
-              "runner_pool_id"
-            ]
-          }
-          r: {
-            param: {
-              runner_pool_id: "runner_pool_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "ci"
-            }
-            {
-              lit: "runner_pools"
-            }
-            {
-              var: "runner_pool_id"
-            }
-            {
-              lit: "runners"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -289,6 +226,64 @@ main: kit: entity: runner_pool_runner: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "runner_pool_id"
+                or: "runner_pool_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/runner_pools/{runner_pool_id}/runners"
+          q: {
+            exist: [
+              "runner_pool_id"
+            ]
+          }
+          r: {
+            param: {
+              runner_pool_id: "runner_pool_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "runner_pools"
+            }
+            {
+              var: "runner_pool_id"
+            }
+            {
+              lit: "runners"
             }
           ]
           t: {

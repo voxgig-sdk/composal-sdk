@@ -1,9 +1,15 @@
 {
   "existing": {
     "metric_query": {
-      "METRIC_QUERY00": {},
-      "METRIC_QUERY01": {},
-      "METRIC_QUERY02": {}
+      "METRIC_QUERY00": {
+        "id": "METRIC_QUERY00"
+      },
+      "METRIC_QUERY01": {
+        "id": "METRIC_QUERY01"
+      },
+      "METRIC_QUERY02": {
+        "id": "METRIC_QUERY02"
+      }
     }
   },
   "new": {

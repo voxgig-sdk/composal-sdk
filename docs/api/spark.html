@@ -612,7 +612,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idsparks"><code>/api/v1/organizations/{organization_id}/sparks</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>The first Spark, GitHub status and starting credit</td>
 </tr>
 </tbody>
@@ -621,11 +621,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">sparks, err := client.Spark(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">spark, err := client.Spark(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(sparks)
+fmt.Println(spark)
 created, err := client.Spark(nil).Create(map[string]any{&quot;jsonrpc&quot;: &quot;example&quot;, &quot;method&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -634,27 +634,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local sparks, err = client:Spark():list({ organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local spark, err = client:Spark():load({ organization_id = &quot;example&quot; })
 local created, err = client:Spark():create({ jsonrpc = &quot;example&quot;, method = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$sparks = $client-&gt;Spark()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$spark = $client-&gt;Spark()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;Spark()-&gt;create([&quot;jsonrpc&quot; =&gt; &quot;example&quot;, &quot;method&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">sparks = client.Spark().list({&quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">spark = client.Spark().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.Spark().create({ &quot;jsonrpc&quot;: &quot;example&quot;, &quot;method&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">sparks = client.Spark.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">spark = client.Spark.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.Spark.create({ &quot;jsonrpc&quot; =&gt; &quot;example&quot;, &quot;method&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const sparks = await client.Spark().list({ organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const spark = await client.Spark().load({ organization_id: &quot;example&quot; })
 const created = await client.Spark().create({ jsonrpc: &quot;example&quot;, method: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -1104,7 +1104,7 @@ const created = await client.Spark().create({ jsonrpc: &quot;example&quot;, meth
 <h5 id="401-missing" class="status" data-status="4xx">401: Missing</h5>
 <h5 id="403-untrusted-request-origin" class="status" data-status="4xx">403: Untrusted request origin</h5>
 <h5 id="413-request-exceeds-two-mib" class="status" data-status="4xx">413: Request exceeds two MiB</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idsparks" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/sparks</h3>
 <p>Operation ID: <code>api_v1_organization_sparks</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

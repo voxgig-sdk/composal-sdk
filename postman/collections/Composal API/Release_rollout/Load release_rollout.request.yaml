@@ -3,7 +3,7 @@ id: eef67aa7-3bc8-52a5-b5e3-20281318d4dd
 description: |-
   The `load` operation of **release_rollout**.
 
-  SDK: `client.ReleaseRollout().load({ id: "example_id", release_id: "example" })`
+  SDK: `client.ReleaseRollout().load({ release_id: "example" })`
 url: "{{base}}/api/v1/execution/releases/:release_id/rollouts/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{release_rollout_id}}"
     description: The release_rollout this request addresses.
-order: 2000
+order: 1000

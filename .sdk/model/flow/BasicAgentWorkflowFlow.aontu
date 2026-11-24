@@ -20,23 +20,6 @@ main: kit: flow: BasicAgentWorkflowFlow:
     }
 
     {
-      m: {
-        agent_id: "agent01",
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "agent_workflow_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -50,6 +33,29 @@ main: kit: flow: BasicAgentWorkflowFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-agent_workflow_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "agent_workflow_ref01",
+        srcdatavar: "agent_workflow_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "agent_workflow01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

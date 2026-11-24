@@ -29,12 +29,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
+    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

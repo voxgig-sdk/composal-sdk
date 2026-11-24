@@ -1,0 +1,11 @@
+$kind: http-request
+id: "954078a9-6289-53d7-840a-e18f1c848aca"
+description: |-
+  The `load` operation of **cli_release**.
+
+  SDK: `client.CliRelease().load()`
+url: "{{base}}/api/v1/cli_releases"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

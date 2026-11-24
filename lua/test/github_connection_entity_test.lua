@@ -29,7 +29,7 @@ describe("GithubConnectionEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:GithubConnection(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:GithubConnection(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("GithubConnectionEntity", function()
     local setup = github_connection_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "github_connection." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("GithubConnectionEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"github_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/github_connections\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_GITHUB_CONNECTION_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,15 +59,12 @@ describe("GithubConnectionEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local github_connection_ref01_ent = client:GithubConnection(nil)
-    local github_connection_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local github_connection_ref01_list_result, err = github_connection_ref01_ent:list(github_connection_ref01_match, nil)
+    local github_connection_ref01_match_dt0 = {}
+    local github_connection_ref01_data_dt0_loaded, err = github_connection_ref01_ent:load(github_connection_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(github_connection_ref01_list_result)
+    assert.is_not_nil(github_connection_ref01_data_dt0_loaded)
 
       return
     end
@@ -105,14 +95,11 @@ describe("GithubConnectionEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local github_connection_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local github_connection_ref01_list_result, err = github_connection_ref01_ent:list(github_connection_ref01_match, nil)
+    -- LOAD
+    local github_connection_ref01_match_dt0 = {}
+    local github_connection_ref01_data_dt0_loaded, err = github_connection_ref01_ent:load(github_connection_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(github_connection_ref01_list_result)
+    assert.is_not_nil(github_connection_ref01_data_dt0_loaded)
 
   end)
 end)

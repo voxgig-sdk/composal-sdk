@@ -1,0 +1,11 @@
+$kind: http-request
+id: a060d440-91db-55b4-9ac5-403abca516a6
+description: |-
+  The `load` operation of **auth_registration_option**.
+
+  SDK: `client.AuthRegistrationOption().load()`
+url: "{{base}}/api/v1/auth/registration_options"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

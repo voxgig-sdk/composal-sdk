@@ -82,8 +82,8 @@ main: kit: entity: allocation_log: {
 
   name: "allocation_log"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

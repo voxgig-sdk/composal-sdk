@@ -38,7 +38,7 @@ func TestPreviewProfileSecretBindingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.PreviewProfileSecretBinding(nil).List(map[string]any{"app_id": 1, "preview_profile_id": "x"}, nil)
+		_, err := client.PreviewProfileSecretBinding(nil).Load(map[string]any{"app_id": 1, "preview_profile_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestPreviewProfileSecretBindingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "remove"} {
+		for _, _op := range []string{"create", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "preview_profile_secret_binding." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,10 @@ func TestPreviewProfileSecretBindingEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"preview_profile_secret_binding.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings\"}")
+			t.Log("LIVE STEP {\"id\":\"preview_profile_secret_binding.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives\"}")
 			t.Log("LIVE STEP {\"id\":\"preview_profile_secret_binding.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"preview_profile_secret_binding.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01", "preview_profile01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, preview_profile_secret_bindingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PREVIEW_PROFILE_SECRET_BINDING_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		previewProfileSecretBindingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.preview_profile_secret_binding")))
-		var previewProfileSecretBindingRef01Data map[string]any
-		if len(previewProfileSecretBindingRef01DataRaw) > 0 {
-			previewProfileSecretBindingRef01Data = core.ToMapAny(previewProfileSecretBindingRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = previewProfileSecretBindingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		previewProfileSecretBindingRef01Ent := client.PreviewProfileSecretBinding(nil)
-		previewProfileSecretBindingRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_profile_id": setup.idmap["preview_profile01"],
-		}
-
-		previewProfileSecretBindingRef01ListResult, err := previewProfileSecretBindingRef01Ent.List(previewProfileSecretBindingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, previewProfileSecretBindingRef01ListOk := previewProfileSecretBindingRef01ListResult.([]any)
-		if !previewProfileSecretBindingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", previewProfileSecretBindingRef01ListResult)
-		}
-
-		return
+			t.Skip("Live coverage incomplete: preview_profile_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings); preview_profile_secret_binding.load.1 excluded (GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives); preview_profile_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id})")
+			return
 		}
 
 		if setup.live {
@@ -143,24 +105,25 @@ func TestPreviewProfileSecretBindingEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		previewProfileSecretBindingRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_profile_id": setup.idmap["preview_profile01"],
+		// LOAD
+		previewProfileSecretBindingRef01MatchDt0 := map[string]any{
+			"id": previewProfileSecretBindingRef01Data["id"],
 		}
-
-		previewProfileSecretBindingRef01ListResult, err := previewProfileSecretBindingRef01Ent.List(previewProfileSecretBindingRef01Match, nil)
+		if v := setup.idmap["app_id"]; v != nil {
+			previewProfileSecretBindingRef01MatchDt0["app_id"] = v
+		} else {
+			previewProfileSecretBindingRef01MatchDt0["app_id"] = setup.idmap["app01"]
+		}
+		previewProfileSecretBindingRef01DataDt0Loaded, err := previewProfileSecretBindingRef01Ent.Load(previewProfileSecretBindingRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		previewProfileSecretBindingRef01List, previewProfileSecretBindingRef01ListOk := previewProfileSecretBindingRef01ListResult.([]any)
-		if !previewProfileSecretBindingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", previewProfileSecretBindingRef01ListResult)
+		previewProfileSecretBindingRef01DataDt0LoadResult := core.ToMapAny(entityData(previewProfileSecretBindingRef01DataDt0Loaded))
+		if previewProfileSecretBindingRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
 		}
-
-		foundItem := vs.Select(entityListToData(previewProfileSecretBindingRef01List), map[string]any{"id": previewProfileSecretBindingRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
+		if !setup.live && !liveSameId(previewProfileSecretBindingRef01DataDt0LoadResult["id"], previewProfileSecretBindingRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 		if setup.live {
@@ -183,29 +146,6 @@ func TestPreviewProfileSecretBindingEntity(t *testing.T) {
 		_, err = previewProfileSecretBindingRef01Ent.Remove(previewProfileSecretBindingRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		previewProfileSecretBindingRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_profile_id": setup.idmap["preview_profile01"],
-		}
-
-		previewProfileSecretBindingRef01ListRt0Result, err := previewProfileSecretBindingRef01Ent.List(previewProfileSecretBindingRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		previewProfileSecretBindingRef01ListRt0, previewProfileSecretBindingRef01ListRt0Ok := previewProfileSecretBindingRef01ListRt0Result.([]any)
-		if !previewProfileSecretBindingRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", previewProfileSecretBindingRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(previewProfileSecretBindingRef01ListRt0), map[string]any{"id": previewProfileSecretBindingRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -475,8 +475,8 @@
 <a href="../api/secret_grant.html">SecretGrant</a>
 <a href="../api/secret_version.html">SecretVersion</a>
 <a aria-current="page" href="../api/service_endpoint.html">ServiceEndpoint</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingappsapp_idservicesservice_idendpoints">POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idservicesservice_idendpoints">GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idservicesservice_idendpointsid">GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idservicesservice_idendpoints">GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idservicesservice_idendpointsid">PATCH /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idservicesservice_idendpointsid">DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idservicesservice_idendpointsid">PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</a></div>
@@ -608,13 +608,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservicesservice_idendpoints"><code>/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idservicesservice_idendpointsid"><code>/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservicesservice_idendpointsid"><code>/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idservicesservice_idendpoints"><code>/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -642,12 +642,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">service_endpoints, err := client.ServiceEndpoint(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(service_endpoints)
-service_endpoint, err := client.ServiceEndpoint(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;, &quot;service_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">service_endpoint, err := client.ServiceEndpoint(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -675,8 +670,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local service_endpoints, err = client:ServiceEndpoint():list({ app_id = &quot;example&quot;, service_id = &quot;example&quot; })
-local service_endpoint, err = client:ServiceEndpoint():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot;, service_id = &quot;example&quot; })
+<pre><code class="language-lua">local service_endpoint, err = client:ServiceEndpoint():load({ app_id = &quot;example&quot;, service_id = &quot;example&quot; })
 local created, err = client:ServiceEndpoint():create({ app_id = &quot;example&quot;, service_id = &quot;example&quot; })
 local updated, err = client:ServiceEndpoint():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, service_id = &quot;example&quot; })
 local patched, err = client:ServiceEndpoint():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, service_id = &quot;example&quot; })
@@ -684,8 +678,7 @@ local removed, err = client:ServiceEndpoint():remove({ app_id = &quot;example&qu
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$service_endpoints = $client-&gt;ServiceEndpoint()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
-$service_endpoint = $client-&gt;ServiceEndpoint()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$service_endpoint = $client-&gt;ServiceEndpoint()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;ServiceEndpoint()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;ServiceEndpoint()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;ServiceEndpoint()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot;]);
@@ -693,8 +686,7 @@ $client-&gt;ServiceEndpoint()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">service_endpoints = client.ServiceEndpoint().list({&quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;})
-service_endpoint = client.ServiceEndpoint().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;, &quot;service_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">service_endpoint = client.ServiceEndpoint().load({&quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;})
 created = client.ServiceEndpoint().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot; })
 updated = client.ServiceEndpoint().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;})
 patched = client.ServiceEndpoint().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;service_id&quot;: &quot;example&quot;})
@@ -702,8 +694,7 @@ client.ServiceEndpoint().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">service_endpoints = client.ServiceEndpoint.list({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
-service_endpoint = client.ServiceEndpoint.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">service_endpoint = client.ServiceEndpoint.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
 created = client.ServiceEndpoint.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
 updated = client.ServiceEndpoint.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
 patched = client.ServiceEndpoint.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;service_id&quot; =&gt; &quot;example&quot; })
@@ -711,8 +702,7 @@ client.ServiceEndpoint.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &q
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const service_endpoints = await client.ServiceEndpoint().list({ app_id: &quot;example&quot;, service_id: &quot;example&quot; })
-const service_endpoint = await client.ServiceEndpoint().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot;, service_id: &quot;example&quot; })
+<pre><code class="language-ts">const service_endpoint = await client.ServiceEndpoint().load({ app_id: &quot;example&quot;, service_id: &quot;example&quot; })
 const created = await client.ServiceEndpoint().create({ app_id: &quot;example&quot;, service_id: &quot;example&quot; })
 const updated = await client.ServiceEndpoint().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, service_id: &quot;example&quot; })
 const patched = await client.ServiceEndpoint().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, service_id: &quot;example&quot; })
@@ -781,9 +771,9 @@ await client.ServiceEndpoint().remove({ app_id: &quot;example&quot;, id: &quot;e
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idservicesservice_idendpoints" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</h3>
-<p>Operation ID: <code>api_v1_app_service_endpoints</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idservicesservice_idendpointsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</h3>
+<p>Operation ID: <code>api_v1_app_service_endpoint</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -811,6 +801,13 @@ await client.ServiceEndpoint().remove({ app_id: &quot;example&quot;, id: &quot;e
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-1">Responses</h4>
@@ -822,9 +819,8 @@ await client.ServiceEndpoint().remove({ app_id: &quot;example&quot;, id: &quot;e
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idservicesservice_idendpointsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}</h3>
-<p>Operation ID: <code>api_v1_app_service_endpoint</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idservicesservice_idendpoints" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints</h3>
+<p>Operation ID: <code>api_v1_app_service_endpoints</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -847,13 +843,6 @@ await client.ServiceEndpoint().remove({ app_id: &quot;example&quot;, id: &quot;e
 </tr>
 <tr>
 <td><code>service_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

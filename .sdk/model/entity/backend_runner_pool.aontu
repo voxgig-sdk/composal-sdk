@@ -85,8 +85,8 @@ main: kit: entity: backend_runner_pool: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

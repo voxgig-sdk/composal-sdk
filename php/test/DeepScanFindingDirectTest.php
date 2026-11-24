@@ -33,6 +33,10 @@ class DeepScanFindingDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
+        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['deep_scan01'] ?? null)) {
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-list-deep_scan_finding","state":"excluded","attempted":false,"reason":"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)');
+        }
         if ($setup["live"]) {
             foreach (["deep_scan01", "organization01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {

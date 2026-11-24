@@ -241,11 +241,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/verify/deep_scans": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}": {
       "provenance": "operation-contract",
       "version": 2,
@@ -257,6 +252,11 @@
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{organization_id}/verify/deep_scans": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

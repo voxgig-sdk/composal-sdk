@@ -1,0 +1,15 @@
+$kind: http-request
+id: a533948b-4683-5b01-9b3c-26c6bdb14432
+description: |-
+  The `load` operation of **app_storage_resource**.
+
+  SDK: `client.AppStorageResource().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_storage_resource belongs to.
+order: 2000

@@ -1,4 +1,4 @@
 $kind: collection
 id: c32d643c-4fc2-516d-8450-c562a0be6812
 description: "The `BasicMetricQueryFlow` flow of **metric_query**."
-order: 264000
+order: 255000

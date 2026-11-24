@@ -38,7 +38,7 @@ func TestSpacePeerEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpacePeer(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpacePeer(nil).Load(map[string]any{"id": 1, "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpacePeerEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_peer." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSpacePeerEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_peer.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve\"}")
-			t.Log("LIVE STEP {\"id\":\"space_peer.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_peer.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_peer.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_peerEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_PEER_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["space_peer01"]
-			}
-			livePace()
-			liveExisting(t, space_peerEntityLiveStrict, setup.data, "space_peer", "id", _liveId,
-				func() (any, error) {
-					return client.SpacePeer(nil).List(map[string]any{"space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spacePeerRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_peer")))
-		var spacePeerRef01Data map[string]any
-		if len(spacePeerRef01DataRaw) > 0 {
-			spacePeerRef01Data = core.ToMapAny(spacePeerRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spacePeerRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePeerRef01Ent := client.SpacePeer(nil)
-		spacePeerRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerRef01ListResult, err := spacePeerRef01Ent.List(spacePeerRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spacePeerRef01ListOk := spacePeerRef01ListResult.([]any)
-		if !spacePeerRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		spacePeerRef01MatchDt0 := map[string]any{
-			"id": spacePeerRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spacePeerRef01MatchDt0["space_id"] = v
-		} else {
-			spacePeerRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		spacePeerRef01DataDt0Loaded, err := spacePeerRef01Ent.Load(spacePeerRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		spacePeerRef01DataDt0LoadResult := core.ToMapAny(entityData(spacePeerRef01DataDt0Loaded))
-		if spacePeerRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(spacePeerRef01DataDt0LoadResult["id"], spacePeerRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"space_peer.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_peer.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_peer.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"space_peer.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
+			t.Skip("Live coverage incomplete: space_peer.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve); space_peer.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}); space_peer.load.2 excluded (GET-only live run: reads a record only space_peer.create.0 gives); space_peer.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSpacePeerEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spacePeerRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerRef01ListResult, err := spacePeerRef01Ent.List(spacePeerRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePeerRef01List, spacePeerRef01ListOk := spacePeerRef01ListResult.([]any)
-		if !spacePeerRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spacePeerRef01List), map[string]any{"id": spacePeerRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spacePeerRef01DataUp0Up := map[string]any{
 			"id": spacePeerRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSpacePeerEntity(t *testing.T) {
 		// LOAD
 		spacePeerRef01MatchDt0 := map[string]any{
 			"id": spacePeerRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spacePeerRef01MatchDt0["space_id"] = v
-		} else {
-			spacePeerRef01MatchDt0["space_id"] = setup.idmap["space01"]
 		}
 		spacePeerRef01DataDt0Loaded, err := spacePeerRef01Ent.Load(spacePeerRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSpacePeerEntity(t *testing.T) {
 		_, err = spacePeerRef01Ent.Remove(spacePeerRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePeerRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerRef01ListRt0Result, err := spacePeerRef01Ent.List(spacePeerRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePeerRef01ListRt0, spacePeerRef01ListRt0Ok := spacePeerRef01ListRt0Result.([]any)
-		if !spacePeerRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spacePeerRef01ListRt0), map[string]any{"id": spacePeerRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

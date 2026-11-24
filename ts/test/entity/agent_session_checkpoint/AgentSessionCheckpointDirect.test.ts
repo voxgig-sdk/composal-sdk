@@ -43,37 +43,19 @@ describe('AgentSessionCheckpointDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-agent_session_checkpoint', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent_session01","organization01","repo01"], LIVE_STRICT)) return
+    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["agent_session_checkpoint01"]) {
+      console.log("LIVE STEP {\"id\":\"direct-load-agent_session_checkpoint\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs agent_session_checkpoint01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize gives\"}")
+      t.skip("Live coverage incomplete: direct-load-agent_session_checkpoint excluded (GET-only live run: needs agent_session_checkpoint01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize gives)")
+      return
+    }
+    if (skipIfMissingIds(t, setup, ["agent_session01","agent_session_checkpoint01","organization01","repo01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      const listResult: any = await client.direct({
-        path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/agent_sessions/{agent_session_id}/checkpoints',
-        method: 'GET',
-        params: {
-        agent_session_id: setup.idmap['agent_session01'],
-        organization_id: setup.idmap['organization01'],
-        repo_id: setup.idmap['repo01'],
-        },
-      })
-      if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery failed: ' + describeLive(listResult))
-      }
-      const listArr = unwrapListData(listResult.data)
-      if (null == listArr) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery returned no list: ' + describeLive(listResult))
-      }
-      if (0 === listArr.length) {
-        return void liveEmpty(t, 'The account has no agent_session_checkpoint record to load')
-      }
-      const candidateId = listArr[0]?.id
-      if (null == candidateId) {
-        return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
-      }
-      params.id = candidateId
       params.agent_session_id = setup.idmap['agent_session01']
+      params.id = setup.idmap['agent_session_checkpoint01']
       params.organization_id = setup.idmap['organization01']
       params.repo_id = setup.idmap['repo01']
     } else {
@@ -108,54 +90,6 @@ describe('AgentSessionCheckpointDirect', async () => {
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
       assert(calls[0].url.includes('direct04'))
-    }
-  })
-
-  test('direct-list-agent_session_checkpoint', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-agent_session_checkpoint', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["agent_session01","organization01","repo01"], LIVE_STRICT)) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-    if (setup.live) {
-      params.agent_session_id = setup.idmap['agent_session01']
-      params.organization_id = setup.idmap['organization01']
-      params.repo_id = setup.idmap['repo01']
-    } else {
-      params.agent_session_id = 'direct01'
-      params.organization_id = 'direct02'
-      params.repo_id = 'direct03'
-    }
-
-    const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/agent_sessions/{agent_session_id}/checkpoints',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
-      }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
-      }
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
-      assert(calls[0].url.includes('direct03'))
     }
   })
 

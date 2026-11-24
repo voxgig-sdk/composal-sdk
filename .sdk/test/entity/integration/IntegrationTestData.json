@@ -6,21 +6,24 @@
         "gitlab": {},
         "permissions": {},
         "slack": {},
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "INTEGRATION00"
       },
       "INTEGRATION01": {
         "github": {},
         "gitlab": {},
         "permissions": {},
         "slack": {},
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "INTEGRATION01"
       },
       "INTEGRATION02": {
         "github": {},
         "gitlab": {},
         "permissions": {},
         "slack": {},
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "INTEGRATION02"
       }
     }
   },

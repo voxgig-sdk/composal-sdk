@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch AgentSettingListMatch
+---@param reqmatch AgentSettingLoadMatch
 ---@param ctrl? table
----@return AgentSettingEntity[]
+---@return AgentSettingEntity
 ---@return string? err
-function AgentSettingEntity:list(reqmatch, ctrl)
+function AgentSettingEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function AgentSettingEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

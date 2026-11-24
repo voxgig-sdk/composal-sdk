@@ -16,7 +16,7 @@ import type {
 
 import type {
   SpaceMetricSery,
-  SpaceMetricSeryListMatch,
+  SpaceMetricSeryLoadMatch,
   SpaceMetricSeryCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class SpaceMetricSeryEntity extends ComposalEntityBase<SpaceMetricSery> {
 
 
 
-
-  async list(this: any, reqmatch?: SpaceMetricSeryListMatch, ctrl?: Control): Promise<SpaceMetricSeryEntity[]> {
+  async load(this: any, reqmatch?: SpaceMetricSeryLoadMatch, ctrl?: Control): Promise<SpaceMetricSeryEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class SpaceMetricSeryEntity extends ComposalEntityBase<SpaceMetricSery> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class SpaceMetricSeryEntity extends ComposalEntityBase<SpaceMetricSery> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class SpaceMetricSeryEntity extends ComposalEntityBase<SpaceMetricSery> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<SpaceMetricSeryEntity[]> return stays clean under strict null checks.
+        // Promise<SpaceMetricSeryEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

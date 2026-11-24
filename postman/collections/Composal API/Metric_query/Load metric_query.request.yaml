@@ -1,0 +1,11 @@
+$kind: http-request
+id: d5467729-36d6-51f5-825f-33e25d110e67
+description: |-
+  The `load` operation of **metric_query**.
+
+  SDK: `client.MetricQuery().load()`
+url: "{{base}}/api/v1/hosting/metrics/queries"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

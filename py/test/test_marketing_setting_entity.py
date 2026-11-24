@@ -16,22 +16,6 @@ _TEST_DIR = os.path.dirname(os.path.abspath(__file__))
 from test import runner
 
 
-class _FailHook(ComposalBaseFeature):
-    def __init__(self):
-        super().__init__()
-        self.name = "failhook"
-        self.unexpected = 0
-
-    def init(self, ctx, options):
-        pass
-
-    def PreSpec(self, ctx):
-        raise RuntimeError("marketing_setting hook failed")
-
-    def PreUnexpected(self, ctx):
-        self.unexpected += 1
-
-
 
 # main.kit.test.live.strict is true (the default is true): a live
 # request that fails, or a live test missing an input it needs,
@@ -47,80 +31,13 @@ class TestMarketingSettingEntity:
         ent = testsdk.MarketingSetting(None)
         assert ent is not None
 
-    def test_should_stream(self):
-        # Feature #4: the entity stream(action, ...) method runs the op
-        # pipeline and yields result items. With the streaming feature active
-        # it yields the feature's incremental output; otherwise it falls back
-        # to the materialised list so stream always yields.
-        seed = {
-            "entity": {
-                "marketing_setting": {
-                    "s1": {"id": "s1"},
-                    "s2": {"id": "s2"},
-                    "s3": {"id": "s3"},
-                }
-            }
-        }
-
-        # Fallback: streaming inactive -> yields the materialised list items.
-        base = ComposalSDK.test(seed, None)
-        seen = list(base.MarketingSetting(None).stream("list", None, None))
-        assert len(seen) == 3
-
-        # Inbound: streaming active -> yields each item from the feature.
-        from composal_sdk.config import shared_config
-        cfg = shared_config()
-        if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
-            sdk = ComposalSDK.test(
-                seed, {"feature": {"streaming": {"active": True}}})
-            got = []
-            for item in sdk.MarketingSetting(None).stream("list", None, None):
-                if isinstance(item, list):
-                    got.extend(item)
-                else:
-                    got.append(item)
-            assert len(got) == 3
-
-    def test_should_report_a_failed_stream(self):
-        offline = {"net": {"offline": True}}
-        with pytest.raises(Exception, match="offline"):
-            list(ComposalSDK.test(offline, None).MarketingSetting(None).stream("list", None, None))
-
-        quiet = {"ctrl": {"throw": False}}
-        list(ComposalSDK.test(offline, None).MarketingSetting(None).stream("list", None, quiet))
-
-        if "rbac" in (shared_config().get("feature") or {}):
-            denied = ComposalSDK.test(
-                None, {"feature": {"rbac": {"active": True, "deny": True}}})
-            with pytest.raises(Exception) as err:
-                list(denied.MarketingSetting(None).stream("list", None, None))
-            assert "rbac_denied" == getattr(err.value, "code", None)
-
-    def test_should_leave_the_callers_ctrl(self):
-        explain = {}
-        ctrl = {"explain": explain}
-        list(ComposalSDK.test(None, None).MarketingSetting(None).stream("list", None, {"ctrl": ctrl}))
-        assert ["explain"] == list(ctrl.keys())
-        assert explain is ctrl["explain"] and 0 < len(explain)
-
-    def test_should_fire_pre_unexpected(self):
-        hook = _FailHook()
-        client = ComposalSDK({"feature": {"test": {"active": True}}, "extend": [hook]})
-        with pytest.raises(Exception, match="hook failed"):
-            client.MarketingSetting(None).list(None, None)
-        assert 0 < hook.unexpected
-
-        fired = hook.unexpected
-        assert client.MarketingSetting(None).list(None, {"throw": False}) is None
-        assert fired < hook.unexpected
-
     def test_should_refuse_an_invalid_request(self):
         if "validate" not in (shared_config().get("feature") or {}):
             pytest.skip("feature not present in this SDK: validate")
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.MarketingSetting(None).list({"call_first": "x"}, None)
+            client.MarketingSetting(None).load({"call_first": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -129,7 +46,7 @@ class TestMarketingSettingEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in ["load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "marketing_setting." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -145,12 +62,11 @@ class TestMarketingSettingEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         marketing_setting_ref01_ent = client.MarketingSetting(None)
-        marketing_setting_ref01_match = {}
-
-        marketing_setting_ref01_list_result = marketing_setting_ref01_ent.list(marketing_setting_ref01_match, None)
-        assert isinstance(marketing_setting_ref01_list_result, list)
+        marketing_setting_ref01_match_dt0 = {}
+        marketing_setting_ref01_data_dt0_loaded = marketing_setting_ref01_ent.load(marketing_setting_ref01_match_dt0, None)
+        assert marketing_setting_ref01_data_dt0_loaded is not None
 
 
 

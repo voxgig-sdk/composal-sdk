@@ -19,22 +19,6 @@ main: kit: flow: BasicSignalSubscriptionFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "signal_subscription_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -64,8 +48,7 @@ main: kit: flow: BasicSignalSubscriptionFlow:
       }
 
       m: {
-        id: "signal_subscription01",
-        organization_id: "organization01"
+        id: "signal_subscription01"
       }
 
       o: "load",
@@ -91,26 +74,6 @@ main: kit: flow: BasicSignalSubscriptionFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "signal_subscription_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSignalSubscriptionFlow"

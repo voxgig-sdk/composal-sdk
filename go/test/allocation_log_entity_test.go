@@ -38,7 +38,7 @@ func TestAllocationLogEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AllocationLog(nil).List(map[string]any{"allocation_id": 1, "app_id": "x"}, nil)
+		_, err := client.AllocationLog(nil).Load(map[string]any{"allocation_id": 1, "app_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAllocationLogEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "allocation_log." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestAllocationLogEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"allocation01", "app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, allocation_logEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ALLOCATION_LOG_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		allocationLogRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.allocation_log")))
@@ -81,25 +76,6 @@ func TestAllocationLogEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = allocationLogRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		allocationLogRef01Ent := client.AllocationLog(nil)
-		allocationLogRef01Match := map[string]any{
-			"allocation_id": setup.idmap["allocation01"],
-			"app_id": setup.idmap["app01"],
-		}
-
-		allocationLogRef01ListResult, err := allocationLogRef01Ent.List(allocationLogRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, allocationLogRef01ListOk := allocationLogRef01ListResult.([]any)
-		if !allocationLogRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", allocationLogRef01ListResult)
-		}
 
 	})
 }
@@ -129,7 +105,7 @@ func allocation_logBasicSetup(extra map[string]any) *entityTestSetup {
 
 	// Generate idmap via transform, matching TS pattern.
 	idmap, _ := vs.Transform(
-		[]any{"allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03", "allocation01"},
+		[]any{"allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
 				"`$KEY`": "`$COPY`",

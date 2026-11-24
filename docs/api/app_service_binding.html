@@ -103,8 +103,8 @@
 <a aria-current="page" href="../api/app_service_binding.html">AppServiceBinding</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingappsapp_idservice_bindingsiddisable">POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idservice_bindingsidenable">POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/enable</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idservice_bindings">POST /api/v1/hosting/apps/{app_id}/service_bindings</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idservice_bindings">GET /api/v1/hosting/apps/{app_id}/service_bindings</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idservice_bindingsid">GET /api/v1/hosting/apps/{app_id}/service_bindings/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idservice_bindings">GET /api/v1/hosting/apps/{app_id}/service_bindings</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idservice_bindingsid">PATCH /api/v1/hosting/apps/{app_id}/service_bindings/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idservice_bindingsid">DELETE /api/v1/hosting/apps/{app_id}/service_bindings/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idservice_bindingsid">PUT /api/v1/hosting/apps/{app_id}/service_bindings/{id}</a></div>
@@ -622,13 +622,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservice_bindings"><code>/api/v1/hosting/apps/{app_id}/service_bindings</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idservice_bindingsid"><code>/api/v1/hosting/apps/{app_id}/service_bindings/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservice_bindingsid"><code>/api/v1/hosting/apps/{app_id}/service_bindings/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idservice_bindings"><code>/api/v1/hosting/apps/{app_id}/service_bindings</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -656,12 +656,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_service_bindings, err := client.AppServiceBinding(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_service_bindings)
-app_service_binding, err := client.AppServiceBinding(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_service_binding, err := client.AppServiceBinding(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -689,8 +684,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_service_bindings, err = client:AppServiceBinding():list({ app_id = &quot;example&quot; })
-local app_service_binding, err = client:AppServiceBinding():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_service_binding, err = client:AppServiceBinding():load({ app_id = &quot;example&quot; })
 local created, err = client:AppServiceBinding():create({ app_id = &quot;example&quot; })
 local updated, err = client:AppServiceBinding():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
 local patched, err = client:AppServiceBinding():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
@@ -698,8 +692,7 @@ local removed, err = client:AppServiceBinding():remove({ app_id = &quot;example&
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_service_bindings = $client-&gt;AppServiceBinding()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_service_binding = $client-&gt;AppServiceBinding()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_service_binding = $client-&gt;AppServiceBinding()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppServiceBinding()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppServiceBinding()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;AppServiceBinding()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
@@ -707,8 +700,7 @@ $client-&gt;AppServiceBinding()-&gt;remove([&quot;app_id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_service_bindings = client.AppServiceBinding().list({&quot;app_id&quot;: &quot;example&quot;})
-app_service_binding = client.AppServiceBinding().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_service_binding = client.AppServiceBinding().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppServiceBinding().create({ &quot;app_id&quot;: &quot;example&quot; })
 updated = client.AppServiceBinding().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
 patched = client.AppServiceBinding().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
@@ -716,8 +708,7 @@ client.AppServiceBinding().remove({&quot;app_id&quot;: &quot;example&quot;, &quo
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_service_bindings = client.AppServiceBinding.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_service_binding = client.AppServiceBinding.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_service_binding = client.AppServiceBinding.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppServiceBinding.create({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 updated = client.AppServiceBinding.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 patched = client.AppServiceBinding.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
@@ -725,8 +716,7 @@ client.AppServiceBinding.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, 
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_service_bindings = await client.AppServiceBinding().list({ app_id: &quot;example&quot; })
-const app_service_binding = await client.AppServiceBinding().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_service_binding = await client.AppServiceBinding().load({ app_id: &quot;example&quot; })
 const created = await client.AppServiceBinding().create({ app_id: &quot;example&quot; })
 const updated = await client.AppServiceBinding().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
 const patched = await client.AppServiceBinding().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
@@ -874,9 +864,9 @@ await client.AppServiceBinding().remove({ app_id: &quot;example&quot;, id: &quot
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idservice_bindings" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/service_bindings</h3>
-<p>Operation ID: <code>api_v1_app_service_bindings</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idservice_bindingsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/service_bindings/{id}</h3>
+<p>Operation ID: <code>api_v1_app_service_binding</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -897,6 +887,13 @@ await client.AppServiceBinding().remove({ app_id: &quot;example&quot;, id: &quot
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-3">Responses</h4>
@@ -908,9 +905,8 @@ await client.AppServiceBinding().remove({ app_id: &quot;example&quot;, id: &quot
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idservice_bindingsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/service_bindings/{id}</h3>
-<p>Operation ID: <code>api_v1_app_service_binding</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idservice_bindings" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/service_bindings</h3>
+<p>Operation ID: <code>api_v1_app_service_bindings</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -926,13 +922,6 @@ await client.AppServiceBinding().remove({ app_id: &quot;example&quot;, id: &quot
 <tbody>
 <tr>
 <td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

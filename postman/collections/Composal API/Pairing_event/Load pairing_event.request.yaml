@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6b74add5-c44b-5e17-8b13-e577ea212674"
+description: |-
+  The `load` operation of **pairing_event**.
+
+  SDK: `client.PairingEvent().load({ pairing_id: "example" })`
+url: "{{base}}/api/v1/relay/pairings/:id/events"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{pairing_id}}"
+    description: The pairing this pairing_event belongs to.
+order: 1000

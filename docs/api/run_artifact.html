@@ -605,7 +605,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1cipipelinespipeline_idrunsrun_idartifacts"><code>/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 </tbody>
@@ -614,11 +614,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">run_artifacts, err := client.RunArtifact(nil).List(map[string]any{&quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">run_artifact, err := client.RunArtifact(nil).Load(map[string]any{&quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(run_artifacts)
+fmt.Println(run_artifact)
 created, err := client.RunArtifact(nil).Create(map[string]any{&quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -627,27 +627,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local run_artifacts, err = client:RunArtifact():list({ pipeline_id = &quot;example&quot;, run_id = &quot;example&quot; })
+<pre><code class="language-lua">local run_artifact, err = client:RunArtifact():load({ pipeline_id = &quot;example&quot;, run_id = &quot;example&quot; })
 local created, err = client:RunArtifact():create({ pipeline_id = &quot;example&quot;, run_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$run_artifacts = $client-&gt;RunArtifact()-&gt;list([&quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$run_artifact = $client-&gt;RunArtifact()-&gt;load([&quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;RunArtifact()-&gt;create([&quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">run_artifacts = client.RunArtifact().list({&quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">run_artifact = client.RunArtifact().load({&quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot;})
 created = client.RunArtifact().create({ &quot;pipeline_id&quot;: &quot;example&quot;, &quot;run_id&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">run_artifacts = client.RunArtifact.list({ &quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">run_artifact = client.RunArtifact.load({ &quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot; })
 created = client.RunArtifact.create({ &quot;pipeline_id&quot; =&gt; &quot;example&quot;, &quot;run_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const run_artifacts = await client.RunArtifact().list({ pipeline_id: &quot;example&quot;, run_id: &quot;example&quot; })
+<pre><code class="language-ts">const run_artifact = await client.RunArtifact().load({ pipeline_id: &quot;example&quot;, run_id: &quot;example&quot; })
 const created = await client.RunArtifact().create({ pipeline_id: &quot;example&quot;, run_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -705,7 +705,7 @@ const created = await client.RunArtifact().create({ pipeline_id: &quot;example&q
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1cipipelinespipeline_idrunsrun_idartifacts" class="operation" data-method="get"><code>GET</code> /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts</h3>
 <p>Operation ID: <code>api_v1_pipeline_run_artifacts</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

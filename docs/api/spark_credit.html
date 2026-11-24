@@ -608,7 +608,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorg_slugspark_credits"><code>/api/v1/organizations/{org_slug}/spark_credits</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>SparkCredits billing summary</td>
 </tr>
 <tr>
@@ -635,11 +635,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">spark_credits, err := client.SparkCredit(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">spark_credit, err := client.SparkCredit(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(spark_credits)
+fmt.Println(spark_credit)
 created, err := client.SparkCredit(nil).Create(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;kind&quot;: &quot;example&quot;, &quot;request_key&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -658,35 +658,35 @@ fmt.Println(patched)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local spark_credits, err = client:SparkCredit():list({ organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local spark_credit, err = client:SparkCredit():load({ organization_id = &quot;example&quot; })
 local created, err = client:SparkCredit():create({ organization_id = &quot;example&quot;, kind = &quot;example&quot;, request_key = &quot;example&quot; })
 local updated, err = client:SparkCredit():update({ organization_id = &quot;example&quot; })
 local patched, err = client:SparkCredit():patch({ organization_id = &quot;example&quot;, view = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$spark_credits = $client-&gt;SparkCredit()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$spark_credit = $client-&gt;SparkCredit()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SparkCredit()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;request_key&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;SparkCredit()-&gt;update([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;SparkCredit()-&gt;patch([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;view&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">spark_credits = client.SparkCredit().list({&quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">spark_credit = client.SparkCredit().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.SparkCredit().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;kind&quot;: &quot;example&quot;, &quot;request_key&quot;: &quot;example&quot; })
 updated = client.SparkCredit().update({&quot;organization_id&quot;: &quot;example&quot;})
 patched = client.SparkCredit().patch({&quot;organization_id&quot;: &quot;example&quot;, &quot;view&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">spark_credits = client.SparkCredit.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">spark_credit = client.SparkCredit.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.SparkCredit.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;request_key&quot; =&gt; &quot;example&quot; })
 updated = client.SparkCredit.update({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 patched = client.SparkCredit.patch({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;view&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const spark_credits = await client.SparkCredit().list({ organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const spark_credit = await client.SparkCredit().load({ organization_id: &quot;example&quot; })
 const created = await client.SparkCredit().create({ organization_id: &quot;example&quot;, kind: &quot;example&quot;, request_key: &quot;example&quot; })
 const updated = await client.SparkCredit().update({ organization_id: &quot;example&quot; })
 const patched = await client.SparkCredit().patch({ organization_id: &quot;example&quot;, view: &quot;example&quot; })
@@ -782,8 +782,8 @@ const patched = await client.SparkCredit().patch({ organization_id: &quot;exampl
 </tr>
 <tr>
 <td><code>plan</code></td>
-<td><code>string</code></td>
-<td>No</td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
 <td>Plan</td>
 </tr>
 <tr>
@@ -964,7 +964,7 @@ const patched = await client.SparkCredit().patch({ organization_id: &quot;exampl
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorg_slugspark_credits" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/spark_credits</h3>
 <p>Operation ID: <code>api_v1_spark_credits</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
@@ -1430,7 +1430,6 @@ const patched = await client.SparkCredit().patch({ organization_id: &quot;exampl
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorg_slugspark_creditsdaily_usage" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/spark_credits/daily_usage</h3>
 <p>Operation ID: <code>daily_usage_api_v1_spark_credits</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

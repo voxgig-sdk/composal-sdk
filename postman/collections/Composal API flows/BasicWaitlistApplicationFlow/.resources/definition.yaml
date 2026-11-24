@@ -1,4 +1,4 @@
 $kind: collection
 id: "04465729-d99a-5c6d-ab2d-7cc0495189e6"
 description: "The `BasicWaitlistApplicationFlow` flow of **waitlist_application**."
-order: 449000
+order: 429000

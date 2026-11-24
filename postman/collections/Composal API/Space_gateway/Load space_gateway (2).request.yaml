@@ -1,0 +1,15 @@
+$kind: http-request
+id: "29136e5f-9ca5-56bc-a93b-c7091a988637"
+description: |-
+  The `load` operation of **space_gateway**.
+
+  SDK: `client.SpaceGateway().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/gateways"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

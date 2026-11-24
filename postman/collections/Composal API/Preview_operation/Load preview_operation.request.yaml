@@ -1,0 +1,18 @@
+$kind: http-request
+id: "380378f0-3550-5d81-9f87-180dd6265439"
+description: |-
+  The `load` operation of **preview_operation**.
+
+  SDK: `client.PreviewOperation().load({ app_id: "example", preview_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/operations"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this preview_operation belongs to.
+  - key: id
+    value: "{{preview_id}}"
+    description: "Input: preview_id."
+order: 1000

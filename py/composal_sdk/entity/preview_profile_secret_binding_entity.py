@@ -6,7 +6,7 @@ from composal_sdk.utility.voxgig_struct import voxgig_struct as vs
 from composal_sdk.core import helpers
 from composal_sdk.composal_types import (
     PreviewProfileSecretBinding,
-    PreviewProfileSecretBindingListMatch,
+    PreviewProfileSecretBindingLoadMatch,
     PreviewProfileSecretBindingCreateData,
     PreviewProfileSecretBindingRemoveMatch,
 )
@@ -202,16 +202,15 @@ class PreviewProfileSecretBindingEntity:
         return None
 
     
-
-    
-    def list(self, reqmatch=None, ctrl=None) -> list[PreviewProfileSecretBindingEntity]:
+    def load(self, reqmatch=None, ctrl=None) -> PreviewProfileSecretBindingEntity:
         utility = self._utility
-        # reqmatch is optional: an omitted match lists all records. Treat None
-        # as an empty match so client.PreviewProfileSecretBinding().list() works with no args.
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.PreviewProfileSecretBinding().load()
+        # works with no args.
         if reqmatch is None:
             reqmatch = {}
         ctx = utility.make_context({
-            "opname": "list",
+            "opname": "load",
             "ctrl": ctrl,
             "match": self._match,
             "data": self._data,
@@ -222,10 +221,14 @@ class PreviewProfileSecretBindingEntity:
             if ctx.result is not None:
                 if ctx.result.resmatch is not None:
                     self._match = ctx.result.resmatch
+                if ctx.result.resdata is not None:
+                    self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
 
         return self._run_op(ctx, post_done)
 
 
+
+    
 
     
     def create(self, reqdata: PreviewProfileSecretBindingCreateData, ctrl=None) -> PreviewProfileSecretBindingEntity:

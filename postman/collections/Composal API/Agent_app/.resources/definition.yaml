@@ -12,12 +12,9 @@ description: |-
   | `hidden_install_count` | integer | yes |  |
   | `id` | string | yes |  |
   | `install_count` | integer | yes |  |
-  | `install_targets` | array | yes |  |
   | `installed_by` | array | yes |  |
   | `installed_target_ids` | array | yes |  |
-  | `items` | array | yes |  |
   | `mcp_url` | string | yes |  |
-  | `next_cursor` | string | yes |  |
   | `owner` | object | yes |  |
   | `thread` | any | yes |  |
   | `title` | string | yes |  |

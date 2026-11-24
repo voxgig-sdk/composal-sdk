@@ -290,22 +290,20 @@ class AgentRepositoryEntity
     }
 
     
-
-    
     /**
-     * List AgentRepository items matching the given filter.
+     * Load a single AgentRepository.
      *
-     * @param AgentRepositoryListMatch|array|null $reqmatch Match filter (any subset
-     *   of AgentRepository fields) as an assoc-array; AgentRepositoryListMatch names the shape.
+     * @param AgentRepositoryLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed AgentRepositoryLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return AgentRepositoryEntity[] The AgentRepository entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return AgentRepositoryEntity The loaded AgentRepository entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class AgentRepositoryEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
 

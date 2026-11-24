@@ -17,46 +17,6 @@ class ArtifactPackageMirrorDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_list_artifact_package_mirror
-    setup = artifact_package_mirror_direct_setup([
-      { "id" => "direct01" },
-      { "id" => "direct02" },
-    ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-artifact_package_mirror", setup[:live] ? "live" : "unit")
-    if _should_skip
-      skip(_reason || "skipped via sdk-test-control.json")
-      return
-    end
-    Runner.live_pace if setup[:live]
-    client = setup[:client]
-
-    params = {}
-    query = {}
-
-    result = client.direct({
-      "path" => "api/v1/artifacts/package_mirrors",
-      "method" => "GET",
-      "params" => params,
-      "query" => query,
-    })
-    if setup[:live]
-      unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
-      end
-      if Runner.live_list(result["data"]).nil?
-        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
-      end
-      assert Runner.live_list(result["data"]).is_a?(Array)
-    else
-      assert_nil result["err"]
-      assert result["ok"]
-      assert_equal 200, Helpers.to_int(result["status"])
-      assert result["data"].is_a?(Array)
-      assert_equal 2, result["data"].length
-      assert_equal 1, setup[:calls].length
-    end
-  end
-
   def test_direct_load_artifact_package_mirror
     setup = artifact_package_mirror_direct_setup({ "id" => "direct01" })
     _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-artifact_package_mirror", setup[:live] ? "live" : "unit")
@@ -64,33 +24,24 @@ class ArtifactPackageMirrorDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["artifact_package_mirror01"].nil?
+      puts "LIVE STEP {\"id\":\"direct-load-artifact_package_mirror\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs artifact_package_mirror01, which only POST /api/v1/artifacts/package_mirrors/{id}/pause gives\"}"
+      skip("Live coverage incomplete: direct-load-artifact_package_mirror excluded (GET-only live run: needs artifact_package_mirror01, which only POST /api/v1/artifacts/package_mirrors/{id}/pause gives)")
+    end
+    if setup[:live]
+      ["artifact_package_mirror01"].each do |_live_key|
+        if setup[:idmap][_live_key].nil?
+          Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_ARTIFACT_PACKAGE_MIRROR_ENTID")
+        end
+      end
+    end
     Runner.live_pace if setup[:live]
     client = setup[:client]
 
     params = {}
     query = {}
     if setup[:live]
-      list_result = client.direct({
-        "path" => "api/v1/artifacts/package_mirrors",
-        "method" => "GET",
-        "params" => {},
-      })
-      unless live_ok(list_result)
-        Runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + Runner.live_describe(list_result))
-      end
-      records = Runner.live_list(list_result["data"])
-      if records.nil?
-        Runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + Runner.live_describe(list_result))
-      end
-      if records.empty?
-        Runner.live_empty("The account has no artifact_package_mirror record to load")
-      end
-      first = records[0].is_a?(Hash) ? records[0] : {}
-      found = first["id"]
-      if found.nil?
-        Runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-      end
-      params["id"] = found
+      params["id"] = setup[:idmap]["artifact_package_mirror01"]
     else
       params["id"] = "direct01"
     end

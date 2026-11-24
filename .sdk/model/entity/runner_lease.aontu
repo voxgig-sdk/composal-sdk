@@ -370,8 +370,8 @@ main: kit: entity: runner_lease: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

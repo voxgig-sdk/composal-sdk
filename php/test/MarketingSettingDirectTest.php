@@ -22,13 +22,10 @@ class MarketingSettingDirectTest extends TestCase
         return empty($result["err"]) && !empty($result["ok"]) && $status >= 200 && $status < 300;
     }
 
-    public function test_direct_list_marketing_setting(): void
+    public function test_direct_load_marketing_setting(): void
     {
-        $setup = marketing_setting_direct_setup([
-            ["id" => "direct01"],
-            ["id" => "direct02"],
-        ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-marketing_setting", $setup["live"] ? "live" : "unit");
+        $setup = marketing_setting_direct_setup(["id" => "direct01"]);
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-marketing_setting", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -40,6 +37,9 @@ class MarketingSettingDirectTest extends TestCase
 
         $params = [];
         $query = [];
+        if ($setup["live"]) {
+        } else {
+        }
 
         $result = $client->direct([
             "path" => "api/v1/marketing_settings",
@@ -49,18 +49,20 @@ class MarketingSettingDirectTest extends TestCase
         ]);
         if ($setup["live"]) {
             if (!self::liveOk($result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list failed: " . Runner::live_describe($result));
+                Runner::live_miss(self::LIVE_STRICT, "Live load failed: " . Runner::live_describe($result));
             }
-            if (null === Runner::live_list($result["data"] ?? null)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list returned no list: " . Runner::live_describe($result));
+            if (null === ($result["data"] ?? null)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load returned no data: " . Runner::live_describe($result));
             }
-            $this->assertIsArray(Runner::live_list($result["data"]));
+            $this->assertNotNull($result["data"]);
         } else {
             $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
-            $this->assertIsArray($result["data"]);
-            $this->assertCount(2, $result["data"]);
+            $this->assertNotNull($result["data"]);
+            if (is_array($result["data"]) && isset($result["data"]["id"])) {
+                $this->assertEquals("direct01", $result["data"]["id"]);
+            }
             $this->assertCount(1, $setup["calls"]);
         }
     }

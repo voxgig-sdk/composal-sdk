@@ -33,7 +33,7 @@ class RunJobEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RunJob(null)->list(["pipeline_id" => 1, "run_id" => 'x'], null);
+            $client->RunJob(null)->load(["id" => 1, "pipeline_id" => 'x', "run_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RunJobEntityTest extends TestCase
         $setup = run_job_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "run_job." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,57 +54,8 @@ class RunJobEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"run_job.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["pipeline01", "run01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUN_JOB_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["run_job01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "run_job",
-                fn() => $client->RunJob(null)->list(["pipeline_id" => $setup["idmap"]["pipeline01"] ?? null, "run_id" => $setup["idmap"]["run01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $run_job_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.run_job")));
-        $run_job_ref01_data = null;
-        if (count($run_job_ref01_data_raw) > 0) {
-            $run_job_ref01_data = Helpers::to_map($run_job_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $run_job_ref01_ent = $client->RunJob(null);
-        $run_job_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $run_job_ref01_list_result = $run_job_ref01_ent->list($run_job_ref01_match, null);
-        $this->assertIsArray($run_job_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $run_job_ref01_match_dt0 = [
-            "id" => $run_job_ref01_data["id"],
-        ];
-        $run_job_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
-        $run_job_ref01_match_dt0["run_id"] = $setup["idmap"]["run_id"] ?? $setup["idmap"]["run01"] ?? null;
-        $run_job_ref01_data_dt0_loaded = $run_job_ref01_ent->load($run_job_ref01_match_dt0, null);
-        $run_job_ref01_data_dt0_load_result = Helpers::to_map(is_object($run_job_ref01_data_dt0_loaded) && method_exists($run_job_ref01_data_dt0_loaded, 'data_get') ? $run_job_ref01_data_dt0_loaded->data_get() : $run_job_ref01_data_dt0_loaded);
-        $this->assertNotNull($run_job_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($run_job_ref01_data_dt0_load_result["id"] ?? null, $run_job_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"run_job.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only run_job.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: run_job.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs); run_job.load.1 excluded (GET-only live run: reads a record only run_job.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -134,29 +85,11 @@ class RunJobEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $run_job_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $run_job_ref01_list_result = $run_job_ref01_ent->list($run_job_ref01_match, null);
-        $this->assertIsArray($run_job_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($run_job_ref01_list_result),
-            ["id" => $run_job_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $run_job_ref01_match_dt0 = [
             "id" => $run_job_ref01_data["id"],
         ];
         $run_job_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
-        $run_job_ref01_match_dt0["run_id"] = $setup["idmap"]["run_id"] ?? $setup["idmap"]["run01"] ?? null;
         $run_job_ref01_data_dt0_loaded = $run_job_ref01_ent->load($run_job_ref01_match_dt0, null);
         $run_job_ref01_data_dt0_load_result = Helpers::to_map(is_object($run_job_ref01_data_dt0_loaded) && method_exists($run_job_ref01_data_dt0_loaded, 'data_get') ? $run_job_ref01_data_dt0_loaded->data_get() : $run_job_ref01_data_dt0_loaded);
         $this->assertNotNull($run_job_ref01_data_dt0_load_result);

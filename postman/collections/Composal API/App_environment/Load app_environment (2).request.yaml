@@ -1,0 +1,15 @@
+$kind: http-request
+id: "49b2a455-db6b-552b-85ac-0569bb4a61e4"
+description: |-
+  The `load` operation of **app_environment**.
+
+  SDK: `client.AppEnvironment().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/environments"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_environment belongs to.
+order: 2000

@@ -29,7 +29,7 @@ describe("RepoAgentSessionEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RepoAgentSession(nil):list({ ["organization_id"] = 1, ["repo_id"] = "x" }, nil)
+    local _, err = client:RepoAgentSession(nil):load({ ["id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RepoAgentSessionEntity", function()
     local setup = repo_agent_session_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "repo_agent_session." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,63 +46,9 @@ describe("RepoAgentSessionEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"repo_agent_session.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete\"}")
-      print("LIVE STEP {\"id\":\"repo_agent_session.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01", "repo01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_REPO_AGENT_SESSION_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["repo_agent_session01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "repo_agent_session", function()
-        return client:RepoAgentSession(nil):list({["organization_id"] = setup.idmap["organization01"], ["repo_id"] = setup.idmap["repo01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local repo_agent_session_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.repo_agent_session")))
-    local repo_agent_session_ref01_data = nil
-    if #repo_agent_session_ref01_data_raw > 0 then
-      repo_agent_session_ref01_data = helpers.to_map(repo_agent_session_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local repo_agent_session_ref01_ent = client:RepoAgentSession(nil)
-    local repo_agent_session_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local repo_agent_session_ref01_list_result, err = repo_agent_session_ref01_ent:list(repo_agent_session_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(repo_agent_session_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local repo_agent_session_ref01_match_dt0 = {
-      id = repo_agent_session_ref01_data["id"],
-    }
-    repo_agent_session_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-    repo_agent_session_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
-    local repo_agent_session_ref01_data_dt0_loaded, err = repo_agent_session_ref01_ent:load(repo_agent_session_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local repo_agent_session_ref01_data_dt0_load_result = helpers.to_map(type(repo_agent_session_ref01_data_dt0_loaded) == 'table' and repo_agent_session_ref01_data_dt0_loaded.data_get and repo_agent_session_ref01_data_dt0_loaded:data_get() or repo_agent_session_ref01_data_dt0_loaded)
-    assert.is_not_nil(repo_agent_session_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(repo_agent_session_ref01_data_dt0_load_result["id"], repo_agent_session_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"repo_agent_session.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}")
+      print("LIVE STEP {\"id\":\"repo_agent_session.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repo_agent_session.create.0 gives\"}")
+      pending("Live coverage incomplete: repo_agent_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete); repo_agent_session.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}); repo_agent_session.load.2 excluded (GET-only live run: reads a record only repo_agent_session.create.0 gives)")
       return
     end
 
@@ -134,24 +80,6 @@ describe("RepoAgentSessionEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local repo_agent_session_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local repo_agent_session_ref01_list_result, err = repo_agent_session_ref01_ent:list(repo_agent_session_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(repo_agent_session_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(repo_agent_session_ref01_list_result),
-      { id = repo_agent_session_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local repo_agent_session_ref01_data_up0_up = {
       id = repo_agent_session_ref01_data["id"],
@@ -178,7 +106,6 @@ describe("RepoAgentSessionEntity", function()
       id = repo_agent_session_ref01_data["id"],
     }
     repo_agent_session_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-    repo_agent_session_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
     local repo_agent_session_ref01_data_dt0_loaded, err = repo_agent_session_ref01_ent:load(repo_agent_session_ref01_match_dt0, nil)
     assert.is_nil(err)
     local repo_agent_session_ref01_data_dt0_load_result = helpers.to_map(type(repo_agent_session_ref01_data_dt0_loaded) == 'table' and repo_agent_session_ref01_data_dt0_loaded.data_get and repo_agent_session_ref01_data_dt0_loaded:data_get() or repo_agent_session_ref01_data_dt0_loaded)

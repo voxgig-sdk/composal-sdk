@@ -29,7 +29,7 @@ describe("AllocationLogEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AllocationLog(nil):list({ ["allocation_id"] = 1, ["app_id"] = "x" }, nil)
+    local _, err = client:AllocationLog(nil):load({ ["allocation_id"] = 1, ["app_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AllocationLogEntity", function()
     local setup = allocation_log_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "allocation_log." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,12 +45,10 @@ describe("AllocationLogEntity", function()
       end
     end
     if setup.live then
-      for _, _live_key in ipairs({"allocation01", "app01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_ALLOCATION_LOG_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -60,20 +58,6 @@ describe("AllocationLogEntity", function()
     if #allocation_log_ref01_data_raw > 0 then
       allocation_log_ref01_data = helpers.to_map(allocation_log_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local allocation_log_ref01_ent = client:AllocationLog(nil)
-    local allocation_log_ref01_match = {
-      ["allocation_id"] = setup.idmap["allocation01"],
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local allocation_log_ref01_list_result, err = allocation_log_ref01_ent:list(allocation_log_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(allocation_log_ref01_list_result)
 
   end)
 end)
@@ -98,7 +82,7 @@ function allocation_log_basic_setup(extra)
 
   -- Generate idmap via transform.
   local idmap = vs.transform(
-    { "allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03", "allocation01" },
+    { "allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03" },
     {
       ["`$PACK`"] = { "", {
         ["`$KEY`"] = "`$COPY`",

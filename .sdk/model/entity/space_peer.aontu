@@ -373,69 +373,6 @@ main: kit: entity: space_peer: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/networking/spaces/{space_id}/peers"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "space_id"
-                or: "space_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/networking/spaces/{space_id}/peers"
-          q: {
-            exist: [
-              "space_id"
-            ]
-          }
-          r: {
-            param: {
-              space_id: "space_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "networking"
-            }
-            {
-              lit: "spaces"
-            }
-            {
-              var: "space_id"
-            }
-            {
-              lit: "peers"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -576,6 +513,64 @@ main: kit: entity: space_peer: {
             }
             {
               lit: "bootstrap"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/networking/spaces/{space_id}/peers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "space_id"
+                or: "space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/networking/spaces/{space_id}/peers"
+          q: {
+            exist: [
+              "space_id"
+            ]
+          }
+          r: {
+            param: {
+              space_id: "space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "networking"
+            }
+            {
+              lit: "spaces"
+            }
+            {
+              var: "space_id"
+            }
+            {
+              lit: "peers"
             }
           ]
           t: {

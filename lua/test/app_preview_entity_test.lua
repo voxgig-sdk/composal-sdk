@@ -29,7 +29,7 @@ describe("AppPreviewEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AppPreview(nil):list({ ["app_id"] = 1 }, nil)
+    local _, err = client:AppPreview(nil):load({ ["app_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AppPreviewEntity", function()
     local setup = app_preview_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "app_preview." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,64 +46,10 @@ describe("AppPreviewEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"app_preview.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/archive\"}")
-      print("LIVE STEP {\"id\":\"app_preview.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
-      print("LIVE STEP {\"id\":\"app_preview.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
-      print("LIVE STEP {\"id\":\"app_preview.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"app01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_APP_PREVIEW_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["app_preview01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "app_preview", function()
-        return client:AppPreview(nil):list({["app_id"] = setup.idmap["app01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local app_preview_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.app_preview")))
-    local app_preview_ref01_data = nil
-    if #app_preview_ref01_data_raw > 0 then
-      app_preview_ref01_data = helpers.to_map(app_preview_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local app_preview_ref01_ent = client:AppPreview(nil)
-    local app_preview_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local app_preview_ref01_list_result, err = app_preview_ref01_ent:list(app_preview_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(app_preview_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local app_preview_ref01_match_dt0 = {
-      id = app_preview_ref01_data["id"],
-    }
-    local app_preview_ref01_data_dt0_loaded, err = app_preview_ref01_ent:load(app_preview_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local app_preview_ref01_data_dt0_load_result = helpers.to_map(type(app_preview_ref01_data_dt0_loaded) == 'table' and app_preview_ref01_data_dt0_loaded.data_get and app_preview_ref01_data_dt0_loaded:data_get() or app_preview_ref01_data_dt0_loaded)
-    assert.is_not_nil(app_preview_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(app_preview_ref01_data_dt0_load_result["id"], app_preview_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"app_preview.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
+      print("LIVE STEP {\"id\":\"app_preview.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_preview.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"app_preview.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
+      pending("Live coverage incomplete: app_preview.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/archive); app_preview.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}); app_preview.load.2 excluded (GET-only live run: reads a record only app_preview.create.0 gives); app_preview.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id})")
       return
     end
 
@@ -130,23 +76,6 @@ describe("AppPreviewEntity", function()
     app_preview_ref01_data = helpers.to_map(type(app_preview_ref01_data_result) == 'table' and app_preview_ref01_data_result.data_get and app_preview_ref01_data_result:data_get() or app_preview_ref01_data_result)
     assert.is_not_nil(app_preview_ref01_data)
     assert.is_not_nil(app_preview_ref01_data["id"])
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local app_preview_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local app_preview_ref01_list_result, err = app_preview_ref01_ent:list(app_preview_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(app_preview_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(app_preview_ref01_list_result),
-      { id = app_preview_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
 
     if setup.live then
       runner.live_pace()
@@ -195,23 +124,6 @@ describe("AppPreviewEntity", function()
     app_preview_ref01_match_rm0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
     local _, err = app_preview_ref01_ent:remove(app_preview_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local app_preview_ref01_match_rt0 = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local app_preview_ref01_list_rt0_result, err = app_preview_ref01_ent:list(app_preview_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(app_preview_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(app_preview_ref01_list_rt0_result),
-      { id = app_preview_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

@@ -1,0 +1,15 @@
+$kind: http-request
+id: "000f5ff0-e8e8-586b-a9b8-6209535301a2"
+description: |-
+  The `load` operation of **runner_pool_runner**.
+
+  SDK: `client.RunnerPoolRunner().load({ runner_pool_id: "example" })`
+url: "{{base}}/api/v1/ci/runner_pools/:runner_pool_id/runners"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: runner_pool_id
+    value: "{{runner_pool_id}}"
+    description: "Input: runner_pool_id."
+order: 2000

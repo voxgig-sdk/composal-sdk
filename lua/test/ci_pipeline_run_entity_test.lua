@@ -29,7 +29,7 @@ describe("CiPipelineRunEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:CiPipelineRun(nil):list({ ["pipeline_id"] = 1 }, nil)
+    local _, err = client:CiPipelineRun(nil):load({ ["id"] = 1, ["pipeline_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("CiPipelineRunEntity", function()
     local setup = ci_pipeline_run_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "ci_pipeline_run." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,60 +46,8 @@ describe("CiPipelineRunEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"ci_pipeline_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"pipeline01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_CI_PIPELINE_RUN_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["ci_pipeline_run01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "ci_pipeline_run", function()
-        return client:CiPipelineRun(nil):list({["pipeline_id"] = setup.idmap["pipeline01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local ci_pipeline_run_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.ci_pipeline_run")))
-    local ci_pipeline_run_ref01_data = nil
-    if #ci_pipeline_run_ref01_data_raw > 0 then
-      ci_pipeline_run_ref01_data = helpers.to_map(ci_pipeline_run_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local ci_pipeline_run_ref01_ent = client:CiPipelineRun(nil)
-    local ci_pipeline_run_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-    }
-
-    local ci_pipeline_run_ref01_list_result, err = ci_pipeline_run_ref01_ent:list(ci_pipeline_run_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(ci_pipeline_run_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local ci_pipeline_run_ref01_match_dt0 = {
-      id = ci_pipeline_run_ref01_data["id"],
-    }
-    ci_pipeline_run_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
-    local ci_pipeline_run_ref01_data_dt0_loaded, err = ci_pipeline_run_ref01_ent:load(ci_pipeline_run_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local ci_pipeline_run_ref01_data_dt0_load_result = helpers.to_map(type(ci_pipeline_run_ref01_data_dt0_loaded) == 'table' and ci_pipeline_run_ref01_data_dt0_loaded.data_get and ci_pipeline_run_ref01_data_dt0_loaded:data_get() or ci_pipeline_run_ref01_data_dt0_loaded)
-    assert.is_not_nil(ci_pipeline_run_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(ci_pipeline_run_ref01_data_dt0_load_result["id"], ci_pipeline_run_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"ci_pipeline_run.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only ci_pipeline_run.create.0 gives\"}")
+      pending("Live coverage incomplete: ci_pipeline_run.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry); ci_pipeline_run.load.1 excluded (GET-only live run: reads a record only ci_pipeline_run.create.0 gives)")
       return
     end
 
@@ -130,28 +78,10 @@ describe("CiPipelineRunEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local ci_pipeline_run_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-    }
-
-    local ci_pipeline_run_ref01_list_result, err = ci_pipeline_run_ref01_ent:list(ci_pipeline_run_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(ci_pipeline_run_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(ci_pipeline_run_ref01_list_result),
-      { id = ci_pipeline_run_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local ci_pipeline_run_ref01_match_dt0 = {
       id = ci_pipeline_run_ref01_data["id"],
     }
-    ci_pipeline_run_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
     local ci_pipeline_run_ref01_data_dt0_loaded, err = ci_pipeline_run_ref01_ent:load(ci_pipeline_run_ref01_match_dt0, nil)
     assert.is_nil(err)
     local ci_pipeline_run_ref01_data_dt0_load_result = helpers.to_map(type(ci_pipeline_run_ref01_data_dt0_loaded) == 'table' and ci_pipeline_run_ref01_data_dt0_loaded.data_get and ci_pipeline_run_ref01_data_dt0_loaded:data_get() or ci_pipeline_run_ref01_data_dt0_loaded)

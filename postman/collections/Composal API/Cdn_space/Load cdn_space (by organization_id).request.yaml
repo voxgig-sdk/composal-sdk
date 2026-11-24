@@ -1,0 +1,15 @@
+$kind: http-request
+id: f4e16cd8-1ed2-5470-a66d-e8eca82bee6c
+description: |-
+  The `load` operation of **cdn_space**.
+
+  SDK: `client.CdnSpace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/organizations/:org_slug/cdn_spaces"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this cdn_space belongs to.
+order: 2000

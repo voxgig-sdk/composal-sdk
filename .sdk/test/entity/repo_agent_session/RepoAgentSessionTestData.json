@@ -55,11 +55,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}": {
       "provenance": "operation-contract",
       "version": 2,
@@ -76,6 +71,11 @@
       "source": "openapi3"
     },
     "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

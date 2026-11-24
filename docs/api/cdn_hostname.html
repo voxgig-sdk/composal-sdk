@@ -160,8 +160,8 @@
 <a href="../api/catalog_selector.html">CatalogSelector</a>
 <a href="../api/cdn_deployment.html">CdnDeployment</a>
 <a aria-current="page" href="../api/cdn_hostname.html">CdnHostname</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingappsapp_idcdnscdn_idhostnames">POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idcdnscdn_idhostnames">GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idcdnscdn_idhostnamesid">GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idcdnscdn_idhostnames">GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idcdnscdn_idhostnamesid">PATCH /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idcdnscdn_idhostnamesid">DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idcdnscdn_idhostnamesid">PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</a></div>
@@ -608,13 +608,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idcdnscdn_idhostnames"><code>/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idcdnscdn_idhostnamesid"><code>/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idcdnscdn_idhostnamesid"><code>/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idcdnscdn_idhostnames"><code>/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -642,12 +642,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">cdn_hostnames, err := client.CdnHostname(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(cdn_hostnames)
-cdn_hostname, err := client.CdnHostname(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">cdn_hostname, err := client.CdnHostname(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -675,8 +670,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local cdn_hostnames, err = client:CdnHostname():list({ app_id = &quot;example&quot;, cdn_id = &quot;example&quot; })
-local cdn_hostname, err = client:CdnHostname():load({ app_id = &quot;example&quot;, cdn_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local cdn_hostname, err = client:CdnHostname():load({ app_id = &quot;example&quot;, cdn_id = &quot;example&quot; })
 local created, err = client:CdnHostname():create({ app_id = &quot;example&quot;, cdn_id = &quot;example&quot;, hostname = &quot;example&quot; })
 local updated, err = client:CdnHostname():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, cdn_id = &quot;example&quot; })
 local patched, err = client:CdnHostname():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, cdn_id = &quot;example&quot; })
@@ -684,8 +678,7 @@ local removed, err = client:CdnHostname():remove({ app_id = &quot;example&quot;,
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$cdn_hostnames = $client-&gt;CdnHostname()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;]);
-$cdn_hostname = $client-&gt;CdnHostname()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$cdn_hostname = $client-&gt;CdnHostname()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;CdnHostname()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;, &quot;hostname&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;CdnHostname()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;CdnHostname()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;]);
@@ -693,8 +686,7 @@ $client-&gt;CdnHostname()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example&quo
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">cdn_hostnames = client.CdnHostname().list({&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;})
-cdn_hostname = client.CdnHostname().load({&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">cdn_hostname = client.CdnHostname().load({&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;})
 created = client.CdnHostname().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;, &quot;hostname&quot;: &quot;example&quot; })
 updated = client.CdnHostname().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;})
 patched = client.CdnHostname().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;cdn_id&quot;: &quot;example&quot;})
@@ -702,8 +694,7 @@ client.CdnHostname().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;cdn_
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">cdn_hostnames = client.CdnHostname.list({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot; })
-cdn_hostname = client.CdnHostname.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">cdn_hostname = client.CdnHostname.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot; })
 created = client.CdnHostname.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot;, &quot;hostname&quot; =&gt; &quot;example&quot; })
 updated = client.CdnHostname.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot; })
 patched = client.CdnHostname.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;cdn_id&quot; =&gt; &quot;example&quot; })
@@ -711,8 +702,7 @@ client.CdnHostname.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const cdn_hostnames = await client.CdnHostname().list({ app_id: &quot;example&quot;, cdn_id: &quot;example&quot; })
-const cdn_hostname = await client.CdnHostname().load({ app_id: &quot;example&quot;, cdn_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const cdn_hostname = await client.CdnHostname().load({ app_id: &quot;example&quot;, cdn_id: &quot;example&quot; })
 const created = await client.CdnHostname().create({ app_id: &quot;example&quot;, cdn_id: &quot;example&quot;, hostname: &quot;example&quot; })
 const updated = await client.CdnHostname().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, cdn_id: &quot;example&quot; })
 const patched = await client.CdnHostname().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, cdn_id: &quot;example&quot; })
@@ -1034,9 +1024,9 @@ await client.CdnHostname().remove({ app_id: &quot;example&quot;, cdn_id: &quot;e
 </tbody>
 </table>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idcdnscdn_idhostnames" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</h3>
-<p>Operation ID: <code>api_v1_app_cdn_hostnames</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idcdnscdn_idhostnamesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</h3>
+<p>Operation ID: <code>api_v1_app_cdn_hostname</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -1064,6 +1054,13 @@ await client.CdnHostname().remove({ app_id: &quot;example&quot;, cdn_id: &quot;e
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-1">Responses</h4>
@@ -1075,9 +1072,8 @@ await client.CdnHostname().remove({ app_id: &quot;example&quot;, cdn_id: &quot;e
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idcdnscdn_idhostnamesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}</h3>
-<p>Operation ID: <code>api_v1_app_cdn_hostname</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idcdnscdn_idhostnames" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames</h3>
+<p>Operation ID: <code>api_v1_app_cdn_hostnames</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -1100,13 +1096,6 @@ await client.CdnHostname().remove({ app_id: &quot;example&quot;, cdn_id: &quot;e
 </tr>
 <tr>
 <td><code>cdn_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idverificationprojectsproject_idpagessettings"><code>/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>ProjectSettingsPage</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">project_settings, err := client.ProjectSetting(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">project_setting, err := client.ProjectSetting(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(project_settings)
+fmt.Println(project_setting)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local project_settings, err = client:ProjectSetting():list({ organization_id = &quot;example&quot;, project_id = &quot;example&quot; })
+<pre><code class="language-lua">local project_setting, err = client:ProjectSetting():load({ organization_id = &quot;example&quot;, project_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$project_settings = $client-&gt;ProjectSetting()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$project_setting = $client-&gt;ProjectSetting()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">project_settings = client.ProjectSetting().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">project_setting = client.ProjectSetting().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">project_settings = client.ProjectSetting.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">project_setting = client.ProjectSetting.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const project_settings = await client.ProjectSetting().list({ organization_id: &quot;example&quot;, project_id: &quot;example&quot; })
+<pre><code class="language-ts">const project_setting = await client.ProjectSetting().load({ organization_id: &quot;example&quot;, project_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -682,7 +682,7 @@ fmt.Println(project_settings)
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idverificationprojectsproject_idpagessettings" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings</h3>
 <p>Operation ID: <code>api_v1_verification_project_pages_settings</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

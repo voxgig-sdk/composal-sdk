@@ -41,59 +41,13 @@ describe('BazelBackendEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('bazel_backend hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).BazelBackend().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).BazelBackend()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.BazelBackend().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().BazelBackend().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.BazelBackend().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.BazelBackend().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.BazelBackend().list({"id":1} as any),
+    await assert.rejects(client.BazelBackend().load({"id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('BazelBackendEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list', 'update', 'load', 'remove']) {
+    for (const op of ['create', 'update', 'load', 'remove']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'bazel_backend.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"bazel_backend","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/issue_token","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/issue_token","q":{"$action":"issue_token","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"issue_token"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/pause","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/pause","q":{"$action":"pause","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"pause"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/resume","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/resume","q":{"$action":"resume","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"resume"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/bazel/backends","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/bazel/backends","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/bazel/backends","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"patch":{"input":"data","name":"patch","points":[{"a":true,"bf":false,"co":{"id":"PATCH /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"PATCH","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"patch"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"bf":false,"co":{"id":"PUT /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"PUT","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"bazel_backend","name__orig":"bazel_backend","Name":"BazelBackend","name_":"bazel_backend","name-":"bazel-backend","NAME":"BAZEL_BACKEND","index$":120}, {"active":true,"entity":"bazel_backend","key$":"BasicBazelBackendFlow","kind":"basic","name":"BasicBazelBackendFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"bazel_backend_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","srcdatavar":"bazel_backend_ref01_data","suffix":"_up0"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bazel_backend_ref01"}}],"v":[],"index$":2},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","srcdatavar":"bazel_backend_ref01_data","suffix":"_dt0"},"m":{"id":"bazel_backend01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bazel_backend_ref01"}}],"index$":3,"route":"GET /api/v1/bazel/backends/{id}","record":{}},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","suffix":"_rm0"},"m":{"id":"bazel_backend01"},"o":"remove","s":[],"v":[],"index$":4},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"bazel_backend_ref01"}}],"index$":5}]}, 'BazelBackend', {"POST /api/v1/bazel/backends/{id}/issue_token":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends/{id}/pause":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends/{id}/resume":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/bazel/backends":{"protocol":"http","parameters":[]},"GET /api/v1/bazel/backends/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"PATCH /api/v1/bazel/backends/{id}":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"DELETE /api/v1/bazel/backends/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"PUT /api/v1/bazel/backends/{id}":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"bazel_backend.create.0":"GET-only live run: needs POST /api/v1/bazel/backends/{id}/issue_token","bazel_backend.update.2":"GET-only live run: needs PUT /api/v1/bazel/backends/{id}","bazel_backend.remove.4":"GET-only live run: needs DELETE /api/v1/bazel/backends/{id}","bazel_backend.list.5":"GET-only live run: checks a removal this run does not make"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"bazel_backend","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/issue_token","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/issue_token","q":{"$action":"issue_token","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"issue_token"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/pause","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/pause","q":{"$action":"pause","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"pause"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends/{id}/resume","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/bazel/backends/{id}/resume","q":{"$action":"resume","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"},{"lit":"resume"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":2},{"a":true,"bf":false,"co":{"id":"POST /api/v1/bazel/backends","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/bazel/backends","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":3}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /api/v1/bazel/backends","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/bazel/backends","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"},"patch":{"input":"data","name":"patch","points":[{"a":true,"bf":false,"co":{"id":"PATCH /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"PATCH","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"patch"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"},"update":{"input":"data","name":"update","points":[{"a":true,"bf":false,"co":{"id":"PUT /api/v1/bazel/backends/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"PUT","o":"/api/v1/bazel/backends/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"bazel"},{"lit":"backends"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[]},"key$":"bazel_backend","name__orig":"bazel_backend","Name":"BazelBackend","name_":"bazel_backend","name-":"bazel-backend","NAME":"BAZEL_BACKEND","index$":120}, {"active":true,"entity":"bazel_backend","key$":"BasicBazelBackendFlow","kind":"basic","name":"BasicBazelBackendFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","srcdatavar":"bazel_backend_ref01_data","suffix":"_up0"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bazel_backend_ref01"}}],"v":[],"index$":1},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","srcdatavar":"bazel_backend_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-bazel_backend_ref01"}}],"index$":2,"route":"GET /api/v1/bazel/backends/{id}","record":{}},{"a":true,"d":{},"i":{"ref":"bazel_backend_ref01","suffix":"_rm0"},"m":{"id":"bazel_backend01"},"o":"remove","s":[],"v":[],"index$":3}]}, 'BazelBackend', {"POST /api/v1/bazel/backends/{id}/issue_token":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends/{id}/pause":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends/{id}/resume":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/bazel/backends":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/bazel/backends/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/bazel/backends":{"protocol":"http","parameters":[]},"PATCH /api/v1/bazel/backends/{id}":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"DELETE /api/v1/bazel/backends/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"PUT /api/v1/bazel/backends/{id}":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"bazel_backend.create.0":"GET-only live run: needs POST /api/v1/bazel/backends/{id}/issue_token","bazel_backend.update.1":"GET-only live run: needs PUT /api/v1/bazel/backends/{id}","bazel_backend.load.2":"GET-only live run: reads a record only bazel_backend.create.0 gives","bazel_backend.remove.3":"GET-only live run: needs DELETE /api/v1/bazel/backends/{id}"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -124,14 +78,6 @@ describe('BazelBackendEntity', async () => {
 
     bazel_backend_ref01_data = (await bazel_backend_ref01_ent.create(bazel_backend_ref01_data)).data()
     assert(null != bazel_backend_ref01_data.id)
-
-
-    // LIST
-    const bazel_backend_ref01_match: any = {}
-
-    const bazel_backend_ref01_list = (await bazel_backend_ref01_ent.list(bazel_backend_ref01_match)).map((e: any) => e.data())
-
-    assert(!isempty(select(bazel_backend_ref01_list, { id: bazel_backend_ref01_data.id })))
 
 
     // UPDATE
@@ -153,14 +99,6 @@ describe('BazelBackendEntity', async () => {
     const bazel_backend_ref01_match_rm0: any = { id: bazel_backend_ref01_data.id }
     await bazel_backend_ref01_ent.remove(bazel_backend_ref01_match_rm0)
   
-
-    // LIST
-    const bazel_backend_ref01_match_rt0: any = {}
-
-    const bazel_backend_ref01_list_rt0 = (await bazel_backend_ref01_ent.list(bazel_backend_ref01_match_rt0)).map((e: any) => e.data())
-
-    assert(isempty(select(bazel_backend_ref01_list_rt0, { id: bazel_backend_ref01_data.id })))
-
 
   })
 })

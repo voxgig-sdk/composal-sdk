@@ -19,22 +19,6 @@ main: kit: flow: BasicAgentSkillFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "agent_skill_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -91,26 +75,6 @@ main: kit: flow: BasicAgentSkillFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "agent_skill_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAgentSkillFlow"

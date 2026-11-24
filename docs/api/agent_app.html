@@ -711,12 +711,6 @@ const agent_app = await client.AgentApp().load({ id: &quot;example_id&quot;, org
 <td>Install Count</td>
 </tr>
 <tr>
-<td><code>install_targets</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Active agents the viewer owns or manages, which they can install apps on</td>
-</tr>
-<tr>
 <td><code>installed_by</code></td>
 <td><code>array</code></td>
 <td>Yes</td>
@@ -729,22 +723,10 @@ const agent_app = await client.AgentApp().load({ id: &quot;example_id&quot;, org
 <td>Install targets of the viewer that have this app installed</td>
 </tr>
 <tr>
-<td><code>items</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Items</td>
-</tr>
-<tr>
 <td><code>mcp_url</code></td>
 <td><code>one,string,null</code></td>
 <td>Yes</td>
 <td>Mcp Url</td>
-</tr>
-<tr>
-<td><code>next_cursor</code></td>
-<td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>Pass as cursor to load older apps</td>
 </tr>
 <tr>
 <td><code>owner</code></td>

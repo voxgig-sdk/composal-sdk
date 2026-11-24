@@ -25,7 +25,7 @@ class CdnHostnameEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.CdnHostname(nil).list({ "app_id" => 1, "cdn_id" => "x" }, nil)
+      client.CdnHostname(nil).load({ "app_id" => 1, "cdn_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class CdnHostnameEntityTest < Minitest::Test
     setup = cdn_hostname_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "cdn_hostname." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,57 +43,10 @@ class CdnHostnameEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"cdn_hostname.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames\"}"
-      puts "LIVE STEP {\"id\":\"cdn_hostname.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}\"}"
-      puts "LIVE STEP {\"id\":\"cdn_hostname.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}\"}"
-      puts "LIVE STEP {\"id\":\"cdn_hostname.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["app01", "cdn01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CDN_HOSTNAME_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["cdn_hostname01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "cdn_hostname", "id", _live_id) do
-        client.CdnHostname(nil).list({"app_id" => setup[:idmap]["app01"], "cdn_id" => setup[:idmap]["cdn01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    cdn_hostname_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.cdn_hostname")))
-    cdn_hostname_ref01_data = nil
-    if cdn_hostname_ref01_data_raw.length > 0
-      cdn_hostname_ref01_data = Helpers.to_map(cdn_hostname_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_hostname_ref01_ent = client.CdnHostname(nil)
-    cdn_hostname_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "cdn_id" => setup[:idmap]["cdn01"],
-    }
-
-    cdn_hostname_ref01_list_result = cdn_hostname_ref01_ent.list(cdn_hostname_ref01_match, nil)
-    assert cdn_hostname_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    cdn_hostname_ref01_match_dt0 = {
-      "id" => cdn_hostname_ref01_data["id"],
-    }
-    cdn_hostname_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    cdn_hostname_ref01_match_dt0["cdn_id"] = setup[:idmap]["cdn_id"] || setup[:idmap]["cdn01"]
-    cdn_hostname_ref01_data_dt0_loaded = cdn_hostname_ref01_ent.load(cdn_hostname_ref01_match_dt0, nil)
-    cdn_hostname_ref01_data_dt0_load_result = Helpers.to_map(cdn_hostname_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_hostname_ref01_data_dt0_loaded.data_get : cdn_hostname_ref01_data_dt0_loaded)
-    assert !cdn_hostname_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(cdn_hostname_ref01_data_dt0_load_result["id"], cdn_hostname_ref01_data["id"])
-
-      return
+      puts "LIVE STEP {\"id\":\"cdn_hostname.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}\"}"
+      puts "LIVE STEP {\"id\":\"cdn_hostname.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cdn_hostname.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"cdn_hostname.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}\"}"
+      skip("Live coverage incomplete: cdn_hostname.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames); cdn_hostname.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}); cdn_hostname.load.2 excluded (GET-only live run: reads a record only cdn_hostname.create.0 gives); cdn_hostname.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id})")
     end
 
     if setup[:live]
@@ -119,21 +72,6 @@ class CdnHostnameEntityTest < Minitest::Test
     assert !cdn_hostname_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    cdn_hostname_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "cdn_id" => setup[:idmap]["cdn01"],
-    }
-
-    cdn_hostname_ref01_list_result = cdn_hostname_ref01_ent.list(cdn_hostname_ref01_match, nil)
-    assert cdn_hostname_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(cdn_hostname_ref01_list_result),
-      { "id" => cdn_hostname_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     cdn_hostname_ref01_data_up0_up = {
       "id" => cdn_hostname_ref01_data["id"],
@@ -157,7 +95,6 @@ class CdnHostnameEntityTest < Minitest::Test
       "id" => cdn_hostname_ref01_data["id"],
     }
     cdn_hostname_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    cdn_hostname_ref01_match_dt0["cdn_id"] = setup[:idmap]["cdn_id"] || setup[:idmap]["cdn01"]
     cdn_hostname_ref01_data_dt0_loaded = cdn_hostname_ref01_ent.load(cdn_hostname_ref01_match_dt0, nil)
     cdn_hostname_ref01_data_dt0_load_result = Helpers.to_map(cdn_hostname_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_hostname_ref01_data_dt0_loaded.data_get : cdn_hostname_ref01_data_dt0_loaded)
     assert !cdn_hostname_ref01_data_dt0_load_result.nil?
@@ -171,21 +108,6 @@ class CdnHostnameEntityTest < Minitest::Test
     cdn_hostname_ref01_match_rm0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     cdn_hostname_ref01_match_rm0["cdn_id"] = setup[:idmap]["cdn_id"] || setup[:idmap]["cdn01"]
     cdn_hostname_ref01_ent.remove(cdn_hostname_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_hostname_ref01_match_rt0 = {
-      "app_id" => setup[:idmap]["app01"],
-      "cdn_id" => setup[:idmap]["cdn01"],
-    }
-
-    cdn_hostname_ref01_list_rt0_result = cdn_hostname_ref01_ent.list(cdn_hostname_ref01_match_rt0, nil)
-    assert cdn_hostname_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(cdn_hostname_ref01_list_rt0_result),
-      { "id" => cdn_hostname_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

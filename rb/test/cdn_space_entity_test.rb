@@ -25,7 +25,7 @@ class CdnSpaceEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.CdnSpace(nil).list({ "organization_id" => 1 }, nil)
+      client.CdnSpace(nil).load({ "id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class CdnSpaceEntityTest < Minitest::Test
     setup = cdn_space_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "cdn_space." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,54 +43,10 @@ class CdnSpaceEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"cdn_space.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive\"}"
-      puts "LIVE STEP {\"id\":\"cdn_space.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{id}\"}"
-      puts "LIVE STEP {\"id\":\"cdn_space.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/cdn_spaces/{id}\"}"
-      puts "LIVE STEP {\"id\":\"cdn_space.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CDN_SPACE_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["cdn_space01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "cdn_space", "id", _live_id) do
-        client.CdnSpace(nil).list({"organization_id" => setup[:idmap]["organization01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    cdn_space_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.cdn_space")))
-    cdn_space_ref01_data = nil
-    if cdn_space_ref01_data_raw.length > 0
-      cdn_space_ref01_data = Helpers.to_map(cdn_space_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_space_ref01_ent = client.CdnSpace(nil)
-    cdn_space_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    cdn_space_ref01_list_result = cdn_space_ref01_ent.list(cdn_space_ref01_match, nil)
-    assert cdn_space_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    cdn_space_ref01_match_dt0 = {
-      "id" => cdn_space_ref01_data["id"],
-    }
-    cdn_space_ref01_data_dt0_loaded = cdn_space_ref01_ent.load(cdn_space_ref01_match_dt0, nil)
-    cdn_space_ref01_data_dt0_load_result = Helpers.to_map(cdn_space_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_space_ref01_data_dt0_loaded.data_get : cdn_space_ref01_data_dt0_loaded)
-    assert !cdn_space_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(cdn_space_ref01_data_dt0_load_result["id"], cdn_space_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"cdn_space.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{id}\"}"
+      puts "LIVE STEP {\"id\":\"cdn_space.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cdn_space.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"cdn_space.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/cdn_spaces/{id}\"}"
+      skip("Live coverage incomplete: cdn_space.create.0 excluded (GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive); cdn_space.update.1 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{id}); cdn_space.load.2 excluded (GET-only live run: reads a record only cdn_space.create.0 gives); cdn_space.remove.3 excluded (GET-only live run: needs DELETE /api/v1/cdn_spaces/{id})")
     end
 
     if setup[:live]
@@ -113,20 +69,6 @@ class CdnSpaceEntityTest < Minitest::Test
     cdn_space_ref01_data = Helpers.to_map(cdn_space_ref01_data_result.respond_to?(:data_get) ? cdn_space_ref01_data_result.data_get : cdn_space_ref01_data_result)
     assert !cdn_space_ref01_data.nil?
     assert !cdn_space_ref01_data["id"].nil?
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_space_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    cdn_space_ref01_list_result = cdn_space_ref01_ent.list(cdn_space_ref01_match, nil)
-    assert cdn_space_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(cdn_space_ref01_list_result),
-      { "id" => cdn_space_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
 
     Runner.live_pace if setup[:live]
     # UPDATE
@@ -155,20 +97,6 @@ class CdnSpaceEntityTest < Minitest::Test
       "id" => cdn_space_ref01_data["id"],
     }
     cdn_space_ref01_ent.remove(cdn_space_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_space_ref01_match_rt0 = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    cdn_space_ref01_list_rt0_result = cdn_space_ref01_ent.list(cdn_space_ref01_match_rt0, nil)
-    assert cdn_space_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(cdn_space_ref01_list_rt0_result),
-      { "id" => cdn_space_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

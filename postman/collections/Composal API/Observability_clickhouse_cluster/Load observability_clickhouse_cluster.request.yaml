@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{observability_clickhouse_cluster_id}}"
     description: The observability_clickhouse_cluster this request addresses.
-order: 2000
+order: 1000

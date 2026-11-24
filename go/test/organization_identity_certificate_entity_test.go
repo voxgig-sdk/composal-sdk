@@ -38,7 +38,7 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.OrganizationIdentityCertificate(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.OrganizationIdentityCertificate(nil).Load(map[string]any{"id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "organization_identity_certificate." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, organization_identity_certificateEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ORGANIZATION_IDENTITY_CERTIFICATE_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["organization_identity_certificate01"]
-			}
-			livePace()
-			liveExisting(t, organization_identity_certificateEntityLiveStrict, setup.data, "organization_identity_certificate", "id", _liveId,
-				func() (any, error) {
-					return client.OrganizationIdentityCertificate(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		organizationIdentityCertificateRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.organization_identity_certificate")))
-		var organizationIdentityCertificateRef01Data map[string]any
-		if len(organizationIdentityCertificateRef01DataRaw) > 0 {
-			organizationIdentityCertificateRef01Data = core.ToMapAny(organizationIdentityCertificateRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = organizationIdentityCertificateRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationIdentityCertificateRef01Ent := client.OrganizationIdentityCertificate(nil)
-		organizationIdentityCertificateRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationIdentityCertificateRef01ListResult, err := organizationIdentityCertificateRef01Ent.List(organizationIdentityCertificateRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, organizationIdentityCertificateRef01ListOk := organizationIdentityCertificateRef01ListResult.([]any)
-		if !organizationIdentityCertificateRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationIdentityCertificateRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		organizationIdentityCertificateRef01MatchDt0 := map[string]any{
-			"id": organizationIdentityCertificateRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationIdentityCertificateRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationIdentityCertificateRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		organizationIdentityCertificateRef01DataDt0Loaded, err := organizationIdentityCertificateRef01Ent.Load(organizationIdentityCertificateRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		organizationIdentityCertificateRef01DataDt0LoadResult := core.ToMapAny(entityData(organizationIdentityCertificateRef01DataDt0Loaded))
-		if organizationIdentityCertificateRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(organizationIdentityCertificateRef01DataDt0LoadResult["id"], organizationIdentityCertificateRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_identity_certificate.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_identity_certificate.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}\"}")
+			t.Skip("Live coverage incomplete: organization_identity_certificate.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire); organization_identity_certificate.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}); organization_identity_certificate.load.2 excluded (GET-only live run: reads a record only organization_identity_certificate.create.0 gives); organization_identity_certificate.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/identity_certificates/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		organizationIdentityCertificateRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationIdentityCertificateRef01ListResult, err := organizationIdentityCertificateRef01Ent.List(organizationIdentityCertificateRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationIdentityCertificateRef01List, organizationIdentityCertificateRef01ListOk := organizationIdentityCertificateRef01ListResult.([]any)
-		if !organizationIdentityCertificateRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationIdentityCertificateRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(organizationIdentityCertificateRef01List), map[string]any{"id": organizationIdentityCertificateRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		organizationIdentityCertificateRef01DataUp0Up := map[string]any{
 			"id": organizationIdentityCertificateRef01Data["id"],
@@ -223,11 +129,6 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		// LOAD
 		organizationIdentityCertificateRef01MatchDt0 := map[string]any{
 			"id": organizationIdentityCertificateRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationIdentityCertificateRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationIdentityCertificateRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		organizationIdentityCertificateRef01DataDt0Loaded, err := organizationIdentityCertificateRef01Ent.Load(organizationIdentityCertificateRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestOrganizationIdentityCertificateEntity(t *testing.T) {
 		_, err = organizationIdentityCertificateRef01Ent.Remove(organizationIdentityCertificateRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationIdentityCertificateRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationIdentityCertificateRef01ListRt0Result, err := organizationIdentityCertificateRef01Ent.List(organizationIdentityCertificateRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationIdentityCertificateRef01ListRt0, organizationIdentityCertificateRef01ListRt0Ok := organizationIdentityCertificateRef01ListRt0Result.([]any)
-		if !organizationIdentityCertificateRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", organizationIdentityCertificateRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(organizationIdentityCertificateRef01ListRt0), map[string]any{"id": organizationIdentityCertificateRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

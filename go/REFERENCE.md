@@ -2372,39 +2372,25 @@ fmt.Println(adminOrg.GetName()) // "admin_org"
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `billing_email` | - | - | - |
-| `billing_reason` | - | - | - |
-| `customize_onboarding_packages` | - | - | - |
-| `deployment_usage_visibility` | - | - | - |
-| `deployment_usage_visible` | - | - | - |
-| `id` | - | - | - |
-| `monthly_price_dollars` | - | - | - |
-| `monthly_price_override_cents` | - | - | - |
-| `name` | - | - | - |
-| `onboarding_custom_pricing` | - | - | - |
-| `onboarding_package_keys` | - | - | - |
-| `owner_email` | - | - | - |
-| `package_id` | - | - | Yes |
-| `skip_payment` | - | - | - |
-| `slug` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `billing_email` | - | - |
+| `billing_reason` | - | - |
+| `customize_onboarding_packages` | - | - |
+| `deployment_usage_visibility` | - | - |
+| `deployment_usage_visible` | - | - |
+| `id` | - | - |
+| `monthly_price_dollars` | - | - |
+| `monthly_price_override_cents` | - | - |
+| `name` | - | - |
+| `onboarding_custom_pricing` | - | - |
+| `onboarding_package_keys` | - | - |
+| `owner_email` | - | - |
+| `package_id` | - | Yes |
+| `skip_payment` | - | - |
+| `slug` | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AdminOrg(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -2672,12 +2658,9 @@ fmt.Println(agentApp.GetName()) // "agent_app"
 | `hidden_install_count` | `int` | Yes | Installs by agents the viewer cannot open |
 | `id` | `string` | Yes |  |
 | `install_count` | `int` | Yes |  |
-| `install_targets` | `[]any` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `[]any` | Yes |  |
 | `installed_target_ids` | `[]any` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `[]any` | Yes |  |
 | `mcp_url` | `any` | Yes |  |
-| `next_cursor` | `any` | Yes | Pass as cursor to load older apps |
 | `owner` | `map[string]any` | Yes | The person who controls the author agent |
 | `thread` | `any` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` | Yes |  |
@@ -3994,18 +3977,16 @@ fmt.Println(agentEvent.GetName()) // "agent_event"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentEvent(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.AgentEvent(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -4220,20 +4201,6 @@ fmt.Println(agentIntegration.GetName()) // "agent_integration"
 | `toolkit` | `string` | Yes |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AgentIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -5504,18 +5471,16 @@ fmt.Println(agentRepository.GetName()) // "agent_repository"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentRepository(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.AgentRepository(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Update(reqdata, ctrl map[string]any) (any, error)`
@@ -5938,20 +5903,6 @@ fmt.Println(agentSessionCheckpoint.GetName()) // "agent_session_checkpoint"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AgentSessionCheckpoint(nil).List(map[string]any{"agent_session_id": "example", "organization_id": "example", "repo_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -6094,18 +6045,16 @@ fmt.Println(agentSetting.GetName()) // "agent_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentSetting(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.AgentSetting(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Update(reqdata, ctrl map[string]any) (any, error)`
@@ -6306,20 +6255,6 @@ fmt.Println(agentSkill.GetName()) // "agent_skill"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AgentSkill(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -6513,18 +6448,16 @@ fmt.Println(agentSubscription.GetName()) // "agent_subscription"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentSubscription(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.AgentSubscription(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -6881,20 +6814,6 @@ fmt.Println(agentThread.GetName()) // "agent_thread"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AgentThread(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -7095,8 +7014,11 @@ fmt.Println(agentVerifyProject.GetName()) // "agent_verify_project"
 | `available` | `bool` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `bool` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `project_choices` | `[]any` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `bool` | Yes |  |
+| `slug` | `string` | Yes |  |
 | `verify_projects` | `[]any` | Yes |  |
 | `version` | `int` | Yes |  |
 
@@ -7227,18 +7149,16 @@ fmt.Println(agentWebPreview.GetName()) // "agent_web_preview"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentWebPreview(nil).List(map[string]any{"token": "example"}, nil)
+result, err := client.AgentWebPreview(nil).Load(map[string]any{"token": "token"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -7444,18 +7364,16 @@ fmt.Println(agentWorkflow.GetName()) // "agent_workflow"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AgentWorkflow(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.AgentWorkflow(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -8136,20 +8054,6 @@ fmt.Println(alertRuleEvent.GetName()) // "alert_rule_event"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AlertRuleEvent(nil).List(map[string]any{"alert_rule_id": "example", "space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -8246,18 +8150,16 @@ fmt.Println(allocationLog.GetName()) // "allocation_log"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AllocationLog(nil).List(map[string]any{"allocation_id": "example", "app_id": "example"}, nil)
+result, err := client.AllocationLog(nil).Load(map[string]any{"allocation_id": "allocation_id", "app_id": "app_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -8507,18 +8409,16 @@ fmt.Println(appAccessJwk.GetName()) // "app_access_jwk"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AppAccessJwk(nil).List(nil, nil)
+result, err := client.AppAccessJwk(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -8594,51 +8494,37 @@ fmt.Println(appCdn.GetName()) // "app_cdn"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppCdn(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -8772,37 +8658,23 @@ fmt.Println(appConfigVariable.GetName()) // "app_config_variable"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppConfigVariable(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -8942,42 +8814,28 @@ fmt.Println(appDataResource.GetName()) // "app_data_resource"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppDataResource(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -9206,58 +9064,44 @@ fmt.Println(appDeployment.GetName()) // "app_deployment"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppDeployment(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -9682,39 +9526,25 @@ fmt.Println(appEnvironment.GetName()) // "app_environment"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppEnvironment(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -9986,20 +9816,6 @@ fmt.Println(appPreview.GetName()) // "app_preview"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppPreview(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -10129,34 +9945,20 @@ fmt.Println(appPreviewProfile.GetName()) // "app_preview_profile"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppPreviewProfile(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -10278,20 +10080,6 @@ fmt.Println(appRun.GetName()) // "app_run"
 | `image` | `string` | No | Optional fully qualified digest-pinned image from the deployed service's registry and repository. |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppRun(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -10579,66 +10367,52 @@ fmt.Println(appService.GetName()) // "app_service"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppService(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -10766,20 +10540,6 @@ fmt.Println(appServiceBinding.GetName()) // "app_service_binding"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppServiceBinding(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -11004,45 +10764,31 @@ fmt.Println(appStorageResource.GetName()) // "app_storage_resource"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.AppStorageResource(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -11602,20 +11348,6 @@ fmt.Println(artifact.GetName()) // "artifact"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.Artifact(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -11729,20 +11461,6 @@ fmt.Println(artifactCacheNamespace.GetName()) // "artifact_cache_namespace"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ArtifactCacheNamespace(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -11858,20 +11576,6 @@ fmt.Println(artifactImageRepository.GetName()) // "artifact_image_repository"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ArtifactImageRepository(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -11986,20 +11690,6 @@ fmt.Println(artifactPackageMirror.GetName()) // "artifact_package_mirror"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ArtifactPackageMirror(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -12113,20 +11803,6 @@ fmt.Println(artifactRetentionPolicy.GetName()) // "artifact_retention_policy"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ArtifactRetentionPolicy(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -12659,18 +12335,16 @@ fmt.Println(authRegistrationOption.GetName()) // "auth_registration_option"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.AuthRegistrationOption(nil).List(nil, nil)
+result, err := client.AuthRegistrationOption(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -12901,18 +12575,16 @@ fmt.Println(backendRunnerPool.GetName()) // "backend_runner_pool"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.BackendRunnerPool(nil).List(map[string]any{"backend_id": "example"}, nil)
+result, err := client.BackendRunnerPool(nil).Load(map[string]any{"backend_id": "backend_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -12934,7 +12606,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.BackendRunnerPool(nil).Remove(map[string]any{"id": "backend_runner_pool_id", "backend_id": "backend_id"}, nil)
+result, err := client.BackendRunnerPool(nil).Remove(map[string]any{"backend_id": "backend_id", "id": "id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -13101,20 +12773,6 @@ fmt.Println(bazelBackend.GetName()) // "bazel_backend"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.BazelBackend(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -15587,20 +15245,6 @@ fmt.Println(cacheNamespaceEntry.GetName()) // "cache_namespace_entry"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CacheNamespaceEntry(nil).List(map[string]any{"cache_namespace_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -15779,20 +15423,6 @@ fmt.Println(cdnDeployment.GetName()) // "cdn_deployment"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CdnDeployment(nil).List(map[string]any{"app_id": "example", "cdn_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -15875,33 +15505,19 @@ fmt.Println(cdnHostname.GetName()) // "cdn_hostname"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CdnHostname(nil).List(map[string]any{"app_id": "example", "cdn_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -16024,20 +15640,6 @@ fmt.Println(cdnSpace.GetName()) // "cdn_space"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CdnSpace(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -16153,20 +15755,6 @@ fmt.Println(cdnSpaceObject.GetName()) // "cdn_space_object"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CdnSpaceObject(nil).List(map[string]any{"cdn_space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -16256,18 +15844,16 @@ fmt.Println(change.GetName()) // "change"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.Change(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.Change(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -17707,20 +17293,6 @@ fmt.Println(ciPipelineRun.GetName()) // "ci_pipeline_run"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.CiPipelineRun(nil).List(map[string]any{"pipeline_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -18054,18 +17626,16 @@ fmt.Println(cliRelease.GetName()) // "cli_release"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.CliRelease(nil).List(nil, nil)
+result, err := client.CliRelease(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -19155,76 +18725,62 @@ fmt.Println(deepScan.GetName()) // "deep_scan"
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.DeepScan(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -19297,24 +18853,25 @@ fmt.Println(deepScanFinding.GetName()) // "deep_scan_finding"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `int` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `[]any` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `[]any` | Yes |  |
-| `findings_fix_prompt` | `any` | Yes |  |
-| `free_findings_pending` | `bool` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` | Yes |  |
+| `agent_id` | `string` | Yes |  |
+| `agent_title` | `string` | Yes |  |
+| `area` | `any` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `[]any` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` | Yes |  |
+| `confirmed` | `bool` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `[]any` | No |  |
+| `evidence_timestamp_ms` | `any` | Yes |  |
+| `expected` | `string` | Yes |  |
+| `fix_prompt` | `string` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `bool` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` | Yes |  |
-| `mode` | `string` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
-| `priority` | `any` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `map[string]any` | Yes |  |
-| `project_id` | `any` | Yes |  |
-| `reproduction_of` | `any` | Yes |  |
-| `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `bool` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` | Yes |  |
+| `locked` | `bool` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `[]any` | Yes |  |
+| `severity` | `string` | Yes |  |
 | `title` | `string` | Yes |  |
-| `unlock` | `map[string]any` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` | Yes |  |
+| `tracked` | `any` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -19452,18 +19009,16 @@ fmt.Println(deepScanMappedFlow.GetName()) // "deep_scan_mapped_flow"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.DeepScanMappedFlow(nil).List(map[string]any{"organization_id": "example", "environment_id": "example"}, nil)
+result, err := client.DeepScanMappedFlow(nil).Load(map[string]any{"organization_id": "organization_id", "environment_id": "environment_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -19855,18 +19410,16 @@ fmt.Println(deploymentDetail.GetName()) // "deployment_detail"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.DeploymentDetail(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.DeploymentDetail(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -20708,18 +20261,16 @@ fmt.Println(deviceEnterpriseRelay.GetName()) // "device_enterprise_relay"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.DeviceEnterpriseRelay(nil).List(nil, nil)
+result, err := client.DeviceEnterpriseRelay(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -20863,16 +20414,18 @@ fmt.Println(deviceGrant.GetName()) // "device_grant"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `[]any` | Yes |  |
-| `agent_choices` | `[]any` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` | Yes |  |
-| `all_agents_access` | `bool` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `any` | Yes |  |
+| `can_edit` | `bool` | Yes |  |
+| `can_revoke` | `bool` | Yes |  |
 | `capabilities` | `[]any` | Yes |  |
-| `execution_available` | `bool` | Yes |  |
-| `grants` | `[]any` | Yes |  |
-| `id` | `string` | No |  |
-| `next_cursor` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
 | `principal_id` | `string` | Yes |  |
+| `principal_name` | `any` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `revoked_at` | `any` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -22075,65 +21628,51 @@ fmt.Println(environment.GetName()) // "environment"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.Environment(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -22677,18 +22216,16 @@ fmt.Println(environmentSecretBinding.GetName()) // "environment_secret_binding"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.EnvironmentSecretBinding(nil).List(map[string]any{"app_id": "example", "environment_id": "example"}, nil)
+result, err := client.EnvironmentSecretBinding(nil).Load(map[string]any{"app_id": "app_id", "environment_id": "environment_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -22712,7 +22249,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.EnvironmentSecretBinding(nil).Remove(map[string]any{"id": "environment_secret_binding_id", "app_id": "app_id", "environment_id": "environment_id"}, nil)
+result, err := client.EnvironmentSecretBinding(nil).Remove(map[string]any{"app_id": "app_id", "environment_id": "environment_id", "id": "id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -22928,20 +22465,6 @@ fmt.Println(executionDesiredState.GetName()) // "execution_desired_state"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ExecutionDesiredState(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -23056,20 +22579,6 @@ fmt.Println(executionReconcilerTick.GetName()) // "execution_reconciler_tick"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ExecutionReconcilerTick(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -23141,20 +22650,6 @@ fmt.Println(executionRelease.GetName()) // "execution_release"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ExecutionRelease(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -23384,20 +22879,21 @@ fmt.Println(exploration.GetName()) // "exploration"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `any` | No |  |
-| `active` | `[]any` | Yes |  |
 | `agent_filters` | `map[string]any` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `[]any` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `[]any` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `[]any` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `any` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `any` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `any` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `[]any` | Yes |  |
 | `explorer_activity` | `map[string]any` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `[]any` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -23407,14 +22903,12 @@ fmt.Println(exploration.GetName()) // "exploration"
 | `huntable_flows` | `[]any` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `map[string]any` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `[]any` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `map[string]any` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `map[string]any` | Yes |  |
 | `persona_id` | `any` | No | Project persona whose role and observed access this discovery maps. |
@@ -23426,10 +22920,13 @@ fmt.Println(exploration.GetName()) // "exploration"
 | `reproductions` | `[]any` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `[]any` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `map[string]any` | Yes |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `any` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -23442,37 +22939,36 @@ fmt.Println(exploration.GetName()) // "exploration"
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -23484,14 +22980,17 @@ fmt.Println(exploration.GetName()) // "exploration"
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -24788,18 +24287,16 @@ fmt.Println(githubConnection.GetName()) // "github_connection"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.GithubConnection(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.GithubConnection(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -26228,47 +25725,33 @@ fmt.Println(hostingAppDomain.GetName()) // "hosting_app_domain"
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.HostingAppDomain(nil).List(map[string]any{"app_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -26707,18 +26190,16 @@ fmt.Println(integration.GetName()) // "integration"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.Integration(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.Integration(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -27068,18 +26549,16 @@ fmt.Println(jobStep.GetName()) // "job_step"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.JobStep(nil).List(map[string]any{"job_id": "example", "pipeline_id": "example", "run_id": "example"}, nil)
+result, err := client.JobStep(nil).Load(map[string]any{"job_id": "job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -27181,18 +26660,16 @@ fmt.Println(jobWorkspace.GetName()) // "job_workspace"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.JobWorkspace(nil).List(map[string]any{"job_id": "example", "pipeline_id": "example", "run_id": "example"}, nil)
+result, err := client.JobWorkspace(nil).Load(map[string]any{"job_id": "job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -28469,20 +27946,6 @@ fmt.Println(logStreamChunk.GetName()) // "log_stream_chunk"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.LogStreamChunk(nil).List(map[string]any{"log_stream_id": "example", "space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -28653,18 +28116,16 @@ fmt.Println(marketingSetting.GetName()) // "marketing_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.MarketingSetting(nil).List(nil, nil)
+result, err := client.MarketingSetting(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -29780,18 +29241,16 @@ fmt.Println(metricQuery.GetName()) // "metric_query"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.MetricQuery(nil).List(nil, nil)
+result, err := client.MetricQuery(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -30214,20 +29673,6 @@ fmt.Println(networkingSpace.GetName()) // "networking_space"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.NetworkingSpace(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -30459,18 +29904,16 @@ fmt.Println(nodeLease.GetName()) // "node_lease"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.NodeLease(nil).List(map[string]any{"node_id": "example"}, nil)
+result, err := client.NodeLease(nil).Load(map[string]any{"node_id": "node_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -30606,18 +30049,16 @@ fmt.Println(nomadLog.GetName()) // "nomad_log"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.NomadLog(nil).List(map[string]any{"app_id": "example"}, nil)
+result, err := client.NomadLog(nil).Load(map[string]any{"app_id": "app_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -30729,20 +30170,6 @@ fmt.Println(observabilityClickhouseCluster.GetName()) // "observability_clickhou
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ObservabilityClickhouseCluster(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -30858,20 +30285,6 @@ fmt.Println(observabilityQuickwitCluster.GetName()) // "observability_quickwit_c
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ObservabilityQuickwitCluster(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -30985,20 +30398,6 @@ fmt.Println(observabilitySpace.GetName()) // "observability_space"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ObservabilitySpace(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -31400,18 +30799,16 @@ fmt.Println(organizationApp.GetName()) // "organization_app"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.OrganizationApp(nil).List(map[string]any{"organization_id": "example", "native_agent_id": "example"}, nil)
+result, err := client.OrganizationApp(nil).Load(map[string]any{"organization_id": "organization_id", "native_agent_id": "native_agent_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -31544,20 +30941,6 @@ fmt.Println(organizationIdentityCertificate.GetName()) // "organization_identity
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.OrganizationIdentityCertificate(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -31862,20 +31245,6 @@ fmt.Println(organizationOidcTrust.GetName()) // "organization_oidc_trust"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.OrganizationOidcTrust(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -32353,20 +31722,6 @@ fmt.Println(organizationServiceAccount.GetName()) // "organization_service_accou
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.OrganizationServiceAccount(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -32554,18 +31909,16 @@ fmt.Println(organizationSite.GetName()) // "organization_site"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.OrganizationSite(nil).List(map[string]any{"organization_id": "example", "native_agent_id": "example"}, nil)
+result, err := client.OrganizationSite(nil).Load(map[string]any{"organization_id": "organization_id", "native_agent_id": "native_agent_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -32588,7 +31941,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```go
 result, err := client.OrganizationSite(nil).Update(map[string]any{
-    "id": "organization_site_id",
+    "id": "id",
     "organization_id": "organization_id",
     // Fields to update
 }, nil)
@@ -32603,7 +31956,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.OrganizationSite(nil).Remove(map[string]any{"id": "organization_site_id", "organization_id": "organization_id"}, nil)
+result, err := client.OrganizationSite(nil).Remove(map[string]any{"id": "id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -32761,20 +32114,6 @@ fmt.Println(organizationWorkloadIdentity.GetName()) // "organization_workload_id
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.OrganizationWorkloadIdentity(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -33026,18 +32365,16 @@ fmt.Println(pageAgent.GetName()) // "page_agent"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PageAgent(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.PageAgent(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -33689,13 +33026,23 @@ fmt.Println(pagesProjectPersona.GetName()) // "pages_project_persona"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `int` | Yes |  |
-| `credentials` | `[]any` | Yes |  |
-| `needs_attention_count` | `int` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
-| `persona_states` | `map[string]any` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `[]any` | Yes |  |
-| `project` | `map[string]any` | Yes |  |
+| `access_mode` | `string` | Yes |  |
+| `active_run_count` | `int` | Yes |  |
+| `archived_at` | `any` | Yes |  |
+| `attention` | `[]any` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `credential` | `any` | Yes |  |
+| `credential_id` | `any` | Yes | The credential this persona signs in with. |
+| `goals` | `any` | Yes |  |
+| `health` | `map[string]any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `lock_version` | `int` | Yes |  |
+| `name` | `string` | Yes |  |
+| `project_id` | `string` | Yes |  |
+| `role` | `string` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -33756,12 +33103,28 @@ fmt.Println(pagesProjectRun.GetName()) // "pages_project_run"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `string` | Yes |  |
-| `environments` | `[]any` | Yes |  |
-| `environments_has_more` | `bool` | Yes |  |
-| `pagination` | `map[string]any` | Yes |  |
-| `runs` | `[]any` | Yes |  |
-| `selected_environment` | `any` | Yes |  |
+| `archived_at` | `any` | Yes |  |
+| `browser_seconds` | `any` | Yes |  |
+| `can_archive` | `bool` | Yes |  |
+| `can_restore` | `bool` | Yes |  |
+| `cleanup_state` | `string` | Yes |  |
+| `commit_sha` | `any` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `duration_seconds` | `any` | Yes |  |
+| `environment_name` | `any` | Yes |  |
+| `finished_at` | `any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `outcome` | `any` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `pull_request_label` | `any` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `source_run` | `any` | Yes |  |
+| `started_at` | `any` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `triggered_by` | `any` | Yes |  |
+| `web_path` | `string` | Yes |  |
 
 ### Operations
 
@@ -34116,20 +33479,6 @@ fmt.Println(pairing.GetName()) // "pairing"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.Pairing(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -34196,18 +33545,16 @@ fmt.Println(pairingEvent.GetName()) // "pairing_event"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PairingEvent(nil).List(map[string]any{"pairing_id": "example"}, nil)
+result, err := client.PairingEvent(nil).Load(map[string]any{"pairing_id": "pairing_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -34357,18 +33704,16 @@ fmt.Println(personalAccessToken.GetName()) // "personal_access_token"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PersonalAccessToken(nil).List(nil, nil)
+result, err := client.PersonalAccessToken(nil).Load(map[string]any{"id": "personal_access_token_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -34437,18 +33782,16 @@ fmt.Println(previewOperation.GetName()) // "preview_operation"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PreviewOperation(nil).List(map[string]any{"app_id": "example", "preview_id": "example"}, nil)
+result, err := client.PreviewOperation(nil).Load(map[string]any{"app_id": "app_id", "preview_id": "preview_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -34502,18 +33845,16 @@ fmt.Println(previewProfileSecretBinding.GetName()) // "preview_profile_secret_bi
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PreviewProfileSecretBinding(nil).List(map[string]any{"app_id": "example", "preview_profile_id": "example"}, nil)
+result, err := client.PreviewProfileSecretBinding(nil).Load(map[string]any{"app_id": "app_id", "preview_profile_id": "preview_profile_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -34537,7 +33878,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.PreviewProfileSecretBinding(nil).Remove(map[string]any{"id": "preview_profile_secret_binding_id", "app_id": "app_id", "preview_profile_id": "preview_profile_id"}, nil)
+result, err := client.PreviewProfileSecretBinding(nil).Remove(map[string]any{"app_id": "app_id", "id": "id", "preview_profile_id": "preview_profile_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -34675,16 +34016,16 @@ fmt.Println(previewSharingApproval.GetName()) // "preview_sharing_approval"
 | `approved_default_secrets` | `[]any` | Yes |  |
 | `approved_source_keys` | `[]any` | Yes |  |
 | `build_keys` | `[]any` | No |  |
-| `build_secrets` | `[]any` | No |  |
-| `default_configuration` | `[]any` | No |  |
-| `default_secrets` | `[]any` | No |  |
+| `build_secrets` | `[]any` | Yes |  |
+| `default_configuration` | `[]any` | Yes |  |
+| `default_secrets` | `[]any` | Yes |  |
 | `services` | `[]any` | Yes |  |
 | `snapshot_version` | `int` | Yes |  |
-| `source_keys` | `[]any` | No |  |
+| `source_keys` | `[]any` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -34692,27 +34033,25 @@ fmt.Println(previewSharingApproval.GetName()) // "preview_sharing_approval"
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PreviewSharingApproval(nil).List(map[string]any{"app_id": "example", "preview_id": "example"}, nil)
+result, err := client.PreviewSharingApproval(nil).Load(map[string]any{"app_id": "app_id", "preview_id": "preview_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -36000,18 +35339,11 @@ fmt.Println(projectFixture.GetName()) // "project_fixture"
 | `byte_size` | `int` | Yes |  |
 | `content_type` | `string` | Yes |  |
 | `credential_ids` | `[]any` | Yes |  |
-| `credentials` | `[]any` | Yes |  |
 | `environment_ids` | `[]any` | Yes |  |
-| `environments` | `[]any` | Yes |  |
-| `fixtures` | `[]any` | Yes |  |
 | `id` | `string` | No |  |
 | `lock_version` | `int` | Yes |  |
 | `name` | `string` | Yes |  |
-| `pagination` | `map[string]any` | Yes |  |
-| `permissions` | `map[string]any` | Yes |  |
 | `persona_ids` | `[]any` | Yes |  |
-| `personas` | `[]any` | Yes |  |
-| `project` | `map[string]any` | Yes |  |
 | `sha256` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
 | `version` | `int` | Yes |  |
@@ -36024,18 +35356,11 @@ fmt.Println(projectFixture.GetName()) // "project_fixture"
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -36978,18 +36303,16 @@ fmt.Println(projectScenarioOption.GetName()) // "project_scenario_option"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.ProjectScenarioOption(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
+result, err := client.ProjectScenarioOption(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -37113,18 +36436,16 @@ fmt.Println(projectSetting.GetName()) // "project_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.ProjectSetting(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
+result, err := client.ProjectSetting(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -37444,18 +36765,16 @@ fmt.Println(pullRequestSetting.GetName()) // "pull_request_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.PullRequestSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.PullRequestSetting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -38235,20 +37554,6 @@ fmt.Println(releaseRollout.GetName()) // "release_rollout"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ReleaseRollout(nil).List(map[string]any{"release_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -38667,20 +37972,6 @@ fmt.Println(repoAgentSession.GetName()) // "repo_agent_session"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.RepoAgentSession(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -39036,20 +38327,6 @@ fmt.Println(repoCloudWorkspaceBackup.GetName()) // "repo_cloud_workspace_backup"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.RepoCloudWorkspaceBackup(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -40227,20 +39504,6 @@ fmt.Println(roderCodeRepair.GetName()) // "roder_code_repair"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.RoderCodeRepair(nil).List(map[string]any{"scenario_run_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -40323,7 +39586,7 @@ fmt.Println(roderCodeRepairSetting.GetName()) // "roder_code_repair_setting"
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -40335,18 +39598,16 @@ fmt.Println(roderCodeRepairSetting.GetName()) // "roder_code_repair_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RoderCodeRepairSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.RoderCodeRepairSetting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -40579,18 +39840,16 @@ fmt.Println(runArtifact.GetName()) // "run_artifact"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RunArtifact(nil).List(map[string]any{"pipeline_id": "example", "run_id": "example"}, nil)
+result, err := client.RunArtifact(nil).Load(map[string]any{"pipeline_id": "pipeline_id", "run_id": "run_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -40687,20 +39946,6 @@ fmt.Println(runJob.GetName()) // "run_job"
 | `updated_at` | `string` | Yes |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.RunJob(nil).List(map[string]any{"pipeline_id": "example", "run_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -41083,18 +40328,16 @@ fmt.Println(runnerLease.GetName()) // "runner_lease"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RunnerLease(nil).List(map[string]any{"runner_id": "example", "runner_pool_id": "example"}, nil)
+result, err := client.RunnerLease(nil).Load(map[string]any{"runner_id": "runner_id", "runner_pool_id": "runner_pool_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -41283,20 +40526,6 @@ fmt.Println(runnerPoolRunner.GetName()) // "runner_pool_runner"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.RunnerPoolRunner(nil).List(map[string]any{"runner_pool_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -41396,18 +40625,16 @@ fmt.Println(runtimeInstanceHealthSnapshot.GetName()) // "runtime_instance_health
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RuntimeInstanceHealthSnapshot(nil).List(map[string]any{"runtime_instance_id": "example"}, nil)
+result, err := client.RuntimeInstanceHealthSnapshot(nil).Load(map[string]any{"runtime_instance_id": "runtime_instance_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -41481,7 +40708,7 @@ fmt.Println(sandboxIntegration.GetName()) // "sandbox_integration"
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -41497,18 +40724,16 @@ fmt.Println(sandboxIntegration.GetName()) // "sandbox_integration"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SandboxIntegration(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.SandboxIntegration(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -41783,20 +41008,6 @@ fmt.Println(secretGrant.GetName()) // "secret_grant"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SecretGrant(nil).List(map[string]any{"organization_id": "example", "secret_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -41917,20 +41128,6 @@ fmt.Println(secretVersion.GetName()) // "secret_version"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SecretVersion(nil).List(map[string]any{"organization_id": "example", "secret_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -42050,20 +41247,6 @@ fmt.Println(serviceEndpoint.GetName()) // "service_endpoint"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.ServiceEndpoint(nil).List(map[string]any{"app_id": "example", "service_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -42190,18 +41373,16 @@ fmt.Println(setting.GetName()) // "setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.Setting(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.Setting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -42801,20 +41982,6 @@ fmt.Println(signalSubscription.GetName()) // "signal_subscription"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SignalSubscription(nil).List(map[string]any{"organization_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -43018,18 +42185,16 @@ fmt.Println(siteAccessKey.GetName()) // "site_access_key"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SiteAccessKey(nil).List(map[string]any{"organization_id": "example", "site_id": "example"}, nil)
+result, err := client.SiteAccessKey(nil).Load(map[string]any{"organization_id": "organization_id", "site_id": "site_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -43052,7 +42217,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.SiteAccessKey(nil).Remove(map[string]any{"id": "site_access_key_id", "organization_id": "organization_id", "site_id": "site_id"}, nil)
+result, err := client.SiteAccessKey(nil).Remove(map[string]any{"id": "id", "organization_id": "organization_id", "site_id": "site_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -43356,20 +42521,6 @@ fmt.Println(spaceAlertRule.GetName()) // "space_alert_rule"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceAlertRule(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -43481,18 +42632,16 @@ fmt.Println(spaceAuditEvent.GetName()) // "space_audit_event"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceAuditEvent(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceAuditEvent(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -43555,20 +42704,6 @@ fmt.Println(spaceDnsRecord.GetName()) // "space_dns_record"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceDnsRecord(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -43687,20 +42822,6 @@ fmt.Println(spaceEnrollmentToken.GetName()) // "space_enrollment_token"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceEnrollmentToken(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -43817,20 +42938,6 @@ fmt.Println(spaceGateway.GetName()) // "space_gateway"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceGateway(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -43949,18 +43056,16 @@ fmt.Println(spaceGroup.GetName()) // "space_group"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceGroup(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceGroup(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -43983,7 +43088,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```go
 result, err := client.SpaceGroup(nil).Update(map[string]any{
-    "id": "space_group_id",
+    "id": "id",
     "space_id": "space_id",
     // Fields to update
 }, nil)
@@ -43999,7 +43104,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```go
 result, err := client.SpaceGroup(nil).Patch(map[string]any{
-    "id": "space_group_id",
+    "id": "id",
     "space_id": "space_id",
     // Only the fields to change
 }, nil)
@@ -44014,7 +43119,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.SpaceGroup(nil).Remove(map[string]any{"id": "space_group_id", "space_id": "space_id"}, nil)
+result, err := client.SpaceGroup(nil).Remove(map[string]any{"id": "id", "space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -44068,18 +43173,16 @@ fmt.Println(spaceGroupMembership.GetName()) // "space_group_membership"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceGroupMembership(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceGroupMembership(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -44102,7 +43205,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```go
 result, err := client.SpaceGroupMembership(nil).Update(map[string]any{
-    "id": "space_group_membership_id",
+    "id": "id",
     "space_id": "space_id",
     // Fields to update
 }, nil)
@@ -44118,7 +43221,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```go
 result, err := client.SpaceGroupMembership(nil).Patch(map[string]any{
-    "id": "space_group_membership_id",
+    "id": "id",
     "space_id": "space_id",
     // Only the fields to change
 }, nil)
@@ -44133,7 +43236,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.SpaceGroupMembership(nil).Remove(map[string]any{"id": "space_group_membership_id", "space_id": "space_id"}, nil)
+result, err := client.SpaceGroupMembership(nil).Remove(map[string]any{"id": "id", "space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -44181,18 +43284,16 @@ fmt.Println(spaceLogStream.GetName()) // "space_log_stream"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceLogStream(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceLogStream(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -44250,18 +43351,16 @@ fmt.Println(spaceMetricSery.GetName()) // "space_metric_sery"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceMetricSery(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceMetricSery(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -44324,20 +43423,6 @@ fmt.Println(spaceOtelCollector.GetName()) // "space_otel_collector"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceOtelCollector(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -44456,20 +43541,6 @@ fmt.Println(spacePeer.GetName()) // "space_peer"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpacePeer(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -44587,18 +43658,16 @@ fmt.Println(spacePeerAttachment.GetName()) // "space_peer_attachment"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpacePeerAttachment(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpacePeerAttachment(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -44621,7 +43690,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```go
 result, err := client.SpacePeerAttachment(nil).Update(map[string]any{
-    "id": "space_peer_attachment_id",
+    "id": "id",
     "space_id": "space_id",
     // Fields to update
 }, nil)
@@ -44637,7 +43706,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```go
 result, err := client.SpacePeerAttachment(nil).Patch(map[string]any{
-    "id": "space_peer_attachment_id",
+    "id": "id",
     "space_id": "space_id",
     // Only the fields to change
 }, nil)
@@ -44652,7 +43721,7 @@ fmt.Println(result.(sdk.Entity).Data())
 Remove the entity matching the given criteria. Returns the entity, marked as deleted; `err` is non-nil on failure.
 
 ```go
-result, err := client.SpacePeerAttachment(nil).Remove(map[string]any{"id": "space_peer_attachment_id", "space_id": "space_id"}, nil)
+result, err := client.SpacePeerAttachment(nil).Remove(map[string]any{"id": "id", "space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
@@ -44705,20 +43774,6 @@ fmt.Println(spacePolicy.GetName()) // "space_policy"
 | `id` | `string` | No |  |
 
 ### Operations
-
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpacePolicy(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
@@ -44837,20 +43892,6 @@ fmt.Println(spaceSegment.GetName()) // "space_segment"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
-
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
-
-```go
-results, err := client.SpaceSegment(nil).List(map[string]any{"space_id": "example"}, nil)
-if err != nil {
-    panic(err)
-}
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
-```
-
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
@@ -44962,18 +44003,16 @@ fmt.Println(spaceTraceSpan.GetName()) // "space_trace_span"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SpaceTraceSpan(nil).List(map[string]any{"space_id": "example"}, nil)
+result, err := client.SpaceTraceSpan(nil).Load(map[string]any{"space_id": "space_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -45068,7 +44107,7 @@ fmt.Println(spark.GetName()) // "spark"
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -45105,18 +44144,16 @@ fmt.Println(spark.GetName()) // "spark"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.Spark(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.Spark(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -45203,18 +44240,16 @@ fmt.Println(sparkAgentIntegration.GetName()) // "spark_agent_integration"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SparkAgentIntegration(nil).List(map[string]any{"agent_id": "example", "organization_id": "example"}, nil)
+result, err := client.SparkAgentIntegration(nil).Load(map[string]any{"agent_id": "agent_id", "organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -45543,30 +44578,63 @@ fmt.Println(sparkAgentThread.GetName()) // "spark_agent_thread"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `any` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` | Yes |  |
-| `execution` | `any` | No |  |
+| `archive_deletes_sandbox` | `bool` | No |  |
+| `archived` | `bool` | Yes |  |
+| `attention` | `any` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `bool` | Yes |  |
+| `can_compact` | `bool` | Yes |  |
+| `can_snooze` | `bool` | Yes |  |
+| `coordination_status` | `any` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `any` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `any` | No |  |
 | `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `string` | No |  |
+| `group` | `string` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
 | `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `map[string]any` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `any` | Yes |  |
-| `local_scope_key` | `any` | Yes |  |
-| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `[]any` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
+| `is_main` | `bool` | Yes |  |
+| `kind` | `string` | Yes |  |
 | `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `any` | Yes |  |
+| `older` | `bool` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `any` | Yes |  |
+| `snoozed_until` | `any` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `map[string]any` | Yes |  |
-| `threads` | `[]any` | Yes |  |
 | `title` | `string` | No |  |
-| `total_archived_count` | `any` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `any` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Operations
 
@@ -45655,7 +44723,7 @@ fmt.Println(sparkCredit.GetName()) // "spark_credit"
 | `kind` | `string` | Yes |  |
 | `payment_method` | `any` | Yes |  |
 | `payments_enabled` | `bool` | Yes |  |
-| `plan` | `string` | No |  |
+| `plan` | `any` | Yes |  |
 | `plans` | `[]any` | Yes |  |
 | `quoted_credits_cents` | `int` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `int` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -45670,7 +44738,7 @@ fmt.Println(sparkCredit.GetName()) // "spark_credit"
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `amount_cents` | - | - | - | - |
 | `autofill` | - | - | - | - |
@@ -45685,7 +44753,7 @@ fmt.Println(sparkCredit.GetName()) // "spark_credit"
 | `kind` | - | - | - | - |
 | `payment_method` | - | - | - | - |
 | `payments_enabled` | - | - | - | - |
-| `plan` | Yes | - | - | Yes |
+| `plan` | - | Yes | - | - |
 | `plans` | - | - | - | - |
 | `quoted_credits_cents` | - | - | - | - |
 | `quoted_price_cents` | - | - | - | - |
@@ -45700,18 +44768,16 @@ fmt.Println(sparkCredit.GetName()) // "spark_credit"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SparkCredit(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.SparkCredit(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Create(reqdata, ctrl map[string]any) (any, error)`
@@ -45872,18 +44938,16 @@ fmt.Println(sparkCreditUsageTotal.GetName()) // "spark_credit_usage_total"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.SparkCreditUsageTotal(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.SparkCreditUsageTotal(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -48072,18 +47136,16 @@ fmt.Println(vcsSetting.GetName()) // "vcs_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.VcsSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.VcsSetting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -48958,18 +48020,16 @@ fmt.Println(verifyEmailVerification.GetName()) // "verify_email_verification"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.VerifyEmailVerification(nil).List(nil, nil)
+result, err := client.VerifyEmailVerification(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods

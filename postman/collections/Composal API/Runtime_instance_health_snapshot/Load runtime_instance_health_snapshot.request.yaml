@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4d713ad3-06e1-5c59-ba31-891429201448"
+description: |-
+  The `load` operation of **runtime_instance_health_snapshot**.
+
+  SDK: `client.RuntimeInstanceHealthSnapshot().load({ runtime_instance_id: "example" })`
+url: "{{base}}/api/v1/execution/runtime_instances/:runtime_instance_id/health_snapshots"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: runtime_instance_id
+    value: "{{runtime_instance_id}}"
+    description: "Input: runtime_instance_id."
+order: 1000

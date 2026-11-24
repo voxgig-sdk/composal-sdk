@@ -1,0 +1,15 @@
+$kind: http-request
+id: f9520a6a-67c1-5d6a-acfa-daf1edb36269
+description: |-
+  The `load` operation of **space_audit_event**.
+
+  SDK: `client.SpaceAuditEvent().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/audit_events"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

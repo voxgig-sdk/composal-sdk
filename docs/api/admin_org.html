@@ -9,8 +9,8 @@
 <a href="../api/a2a_well_known.html">A2aWellKnown</a>
 <a aria-current="page" href="../api/admin_org.html">AdminOrg</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1adminorganizationsorg_slugcheckout_session">POST /api/v1/admin/organizations/{org_slug}/checkout_session</a>
 <a class="nav-section" href="#post-apiv1adminorganizations">POST /api/v1/admin/organizations</a>
-<a class="nav-section" href="#get-apiv1adminorganizations">GET /api/v1/admin/organizations</a>
 <a class="nav-section" href="#get-apiv1adminorganizationsorg_slug">GET /api/v1/admin/organizations/{org_slug}</a>
+<a class="nav-section" href="#get-apiv1adminorganizations">GET /api/v1/admin/organizations</a>
 <a class="nav-section" href="#put-apiv1adminorganizationsorg_slugbilling_agreement">PUT /api/v1/admin/organizations/{org_slug}/billing_agreement</a>
 <a class="nav-section" href="#patch-apiv1adminorganizationsorg_slugbilling_contact">PATCH /api/v1/admin/organizations/{org_slug}/billing_contact</a>
 <a class="nav-section" href="#put-apiv1adminorganizationsorg_slugpackage">PUT /api/v1/admin/organizations/{org_slug}/package</a></div>
@@ -615,15 +615,15 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1adminorganizations"><code>/api/v1/admin/organizations</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1adminorganizationsorg_slug"><code>/api/v1/admin/organizations/{org_slug}</code></a></td>
 <td><code>load</code></td>
 <td>Customer account settings</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1adminorganizations"><code>/api/v1/admin/organizations</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
 </tr>
 <tr>
 <td><code>PUT</code></td>
@@ -649,12 +649,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">admin_orgs, err := client.AdminOrg(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(admin_orgs)
-admin_org, err := client.AdminOrg(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">admin_org, err := client.AdminOrg(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -667,32 +662,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local admin_orgs, err = client:AdminOrg():list()
-local admin_org, err = client:AdminOrg():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local admin_org, err = client:AdminOrg():load({ id = &quot;example_id&quot; })
 local created, err = client:AdminOrg():create({ name = &quot;example&quot;, owner_email = &quot;example&quot;, slug = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$admin_orgs = $client-&gt;AdminOrg()-&gt;list();
-$admin_org = $client-&gt;AdminOrg()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$admin_org = $client-&gt;AdminOrg()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;AdminOrg()-&gt;create([&quot;name&quot; =&gt; &quot;example&quot;, &quot;owner_email&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">admin_orgs = client.AdminOrg().list()
-admin_org = client.AdminOrg().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">admin_org = client.AdminOrg().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.AdminOrg().create({ &quot;name&quot;: &quot;example&quot;, &quot;owner_email&quot;: &quot;example&quot;, &quot;slug&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">admin_orgs = client.AdminOrg.list()
-admin_org = client.AdminOrg.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">admin_org = client.AdminOrg.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.AdminOrg.create({ &quot;name&quot; =&gt; &quot;example&quot;, &quot;owner_email&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const admin_orgs = await client.AdminOrg().list()
-const admin_org = await client.AdminOrg().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const admin_org = await client.AdminOrg().load({ id: &quot;example_id&quot; })
 const created = await client.AdminOrg().create({ name: &quot;example&quot;, owner_email: &quot;example&quot;, slug: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -944,19 +934,6 @@ const created = await client.AdminOrg().create({ name: &quot;example&quot;, owne
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1adminorganizations" class="operation" data-method="get"><code>GET</code> /api/v1/admin/organizations</h3>
-<p>Operation ID: <code>api_v1_admin_organizations</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1adminorganizationsorg_slug" class="operation" data-method="get"><code>GET</code> /api/v1/admin/organizations/{org_slug}</h3>
 <p>Operation ID: <code>api_v1_admin_organization</code>.</p>
@@ -982,7 +959,7 @@ const created = await client.AdminOrg().create({ name: &quot;example&quot;, owne
 </tr>
 </tbody>
 </table>
-<h4 id="responses-3">Responses</h4>
+<h4 id="responses-2">Responses</h4>
 <h5 id="200-customer-account-settings" class="status" data-status="2xx">200: Customer account settings</h5>
 <p><code>application/json</code></p>
 <table>
@@ -1057,6 +1034,18 @@ const created = await client.AdminOrg().create({ name: &quot;example&quot;, owne
 </tr>
 </tbody>
 </table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1adminorganizations" class="operation" data-method="get"><code>GET</code> /api/v1/admin/organizations</h3>
+<p>Operation ID: <code>api_v1_admin_organizations</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
 <h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
 <h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>

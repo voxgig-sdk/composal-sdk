@@ -38,7 +38,7 @@ func TestSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.Setting(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.Setting(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestSettingEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SETTING_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		settingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.setting")))
@@ -81,24 +76,6 @@ func TestSettingEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = settingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		settingRef01Ent := client.Setting(nil)
-		settingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		settingRef01ListResult, err := settingRef01Ent.List(settingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, settingRef01ListOk := settingRef01ListResult.([]any)
-		if !settingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", settingRef01ListResult)
-		}
 
 	})
 }

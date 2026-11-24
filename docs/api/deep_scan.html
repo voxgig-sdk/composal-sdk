@@ -202,10 +202,10 @@
 <a aria-current="page" href="../api/deep_scan.html">DeepScan</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorganization_idverifydeep_scansidreproduce">POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idverifydeep_scansidstop">POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/stop</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idverifydeep_scans">POST /api/v1/organizations/{organization_id}/verify/deep_scans</a>
-<a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scans">GET /api/v1/organizations/{organization_id}/verify/deep_scans</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scansid">GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scansidagent">GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent</a>
-<a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scansidcontext">GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context</a></div>
+<a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scansidcontext">GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context</a>
+<a class="nav-section" href="#get-apiv1organizationsorganization_idverifydeep_scans">GET /api/v1/organizations/{organization_id}/verify/deep_scans</a></div>
 <a href="../api/deep_scan_finding.html">DeepScanFinding</a>
 <a href="../api/deep_scan_flow.html">DeepScanFlow</a>
 <a href="../api/deep_scan_mapped_flow.html">DeepScanMappedFlow</a>
@@ -621,12 +621,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorganization_idverifydeep_scans"><code>/api/v1/organizations/{organization_id}/verify/deep_scans</code></a></td>
-<td><code>list</code></td>
-<td>Deep scan history and active scans</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idverifydeep_scansid"><code>/api/v1/organizations/{organization_id}/verify/deep_scans/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Deep scan</td>
@@ -643,18 +637,19 @@
 <td><code>load</code></td>
 <td>Deep Scan navigation context</td>
 </tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1organizationsorganization_idverifydeep_scans"><code>/api/v1/organizations/{organization_id}/verify/deep_scans</code></a></td>
+<td><code>load</code></td>
+<td>Deep scan history and active scans</td>
+</tr>
 </tbody>
 </table>
 <h2 id="examples">Examples</h2>
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">deep_scans, err := client.DeepScan(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(deep_scans)
-deep_scan, err := client.DeepScan(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">deep_scan, err := client.DeepScan(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -667,32 +662,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local deep_scans, err = client:DeepScan():list({ organization_id = &quot;example&quot; })
-local deep_scan, err = client:DeepScan():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local deep_scan, err = client:DeepScan():load({ organization_id = &quot;example&quot; })
 local created, err = client:DeepScan():create({ organization_id = &quot;example&quot;, environment_id = &quot;example&quot;, goal = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$deep_scans = $client-&gt;DeepScan()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$deep_scan = $client-&gt;DeepScan()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$deep_scan = $client-&gt;DeepScan()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;DeepScan()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;environment_id&quot; =&gt; &quot;example&quot;, &quot;goal&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">deep_scans = client.DeepScan().list({&quot;organization_id&quot;: &quot;example&quot;})
-deep_scan = client.DeepScan().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">deep_scan = client.DeepScan().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.DeepScan().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;environment_id&quot;: &quot;example&quot;, &quot;goal&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">deep_scans = client.DeepScan.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-deep_scan = client.DeepScan.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">deep_scan = client.DeepScan.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.DeepScan.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;environment_id&quot; =&gt; &quot;example&quot;, &quot;goal&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const deep_scans = await client.DeepScan().list({ organization_id: &quot;example&quot; })
-const deep_scan = await client.DeepScan().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const deep_scan = await client.DeepScan().load({ organization_id: &quot;example&quot; })
 const created = await client.DeepScan().create({ organization_id: &quot;example&quot;, environment_id: &quot;example&quot;, goal: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -8544,553 +8534,11 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1organizationsorganization_idverifydeep_scans" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/deep_scans</h3>
-<p>Operation ID: <code>api_v1_deep_scans</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>project_id</code></td>
-<td><code>query</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>page</code></td>
-<td><code>query</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>query</code></td>
-<td><code>query</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>status</code></td>
-<td><code>query</code></td>
-<td><code>enum: all, active, completed, partial, canceled</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>findings</code></td>
-<td><code>query</code></td>
-<td><code>enum: all, with_findings</code></td>
-<td>No</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-3">Responses</h4>
-<h5 id="200-deep-scan-history-and-active-scans" class="status" data-status="2xx">200: Deep scan history and active scans</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>active</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].check_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].credential_name</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>active[].deadline_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td>When the team's time limit ends. Older API releases omit this additive field during independent web and API rollouts.</td>
-</tr>
-<tr>
-<td><code>active[].duration_ms</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].environment_name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].finding_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].finished_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].scenario_count</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>Scenarios saved from this discovery. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>active[].scenarios_pending</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td>Scenarios are still being prepared, so <code>scenario_count</code> may still grow. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>active[].started_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].status</code></td>
-<td><code>enum: discovering, testing, completed, partial, canceled</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>active[].title</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].check_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].credential_name</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>explorations[].deadline_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>No</td>
-<td>When the team's time limit ends. Older API releases omit this additive field during independent web and API rollouts.</td>
-</tr>
-<tr>
-<td><code>explorations[].duration_ms</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].environment_name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].finding_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].finished_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].scenario_count</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>Scenarios saved from this discovery. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>explorations[].scenarios_pending</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td>Scenarios are still being prepared, so <code>scenario_count</code> may still grow. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>explorations[].started_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].status</code></td>
-<td><code>enum: discovering, testing, completed, partial, canceled</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>explorations[].title</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>Present only when launch was requested by an admin</td>
-</tr>
-<tr>
-<td><code>launch_options.capacity</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>Shared capacity when supplied by the API release. Older API releases omit this additive field during independent web and API rollouts.</td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.active_runs</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.available_slots</code></td>
-<td><code>integer,null</code></td>
-<td>Yes</td>
-<td>Available operator-limited slots; null means no organization concurrency cap.</td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.concurrency_limit</code></td>
-<td><code>integer,null</code></td>
-<td>Yes</td>
-<td>Operator browser limit; null means no organization concurrency cap.</td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.daily_run_limit</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.daily_runs_remaining</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.daily_runs_used</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.capacity.observed_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.deep_scan_defaults</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>A signed-out browser Deep Scan's team when launched without budgets, before an environment is chosen. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>launch_options.discovery_defaults</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.discovery_defaults.concurrency</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.discovery_defaults.max_seconds</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td>Default discovery duration in seconds.</td>
-</tr>
-<tr>
-<td><code>launch_options.discovery_defaults.max_seconds_limit</code></td>
-<td><code>integer</code></td>
-<td>No</td>
-<td>Maximum explicitly requested discovery duration in seconds.</td>
-</tr>
-<tr>
-<td><code>launch_options.discovery_defaults.max_testers</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environment_query</code></td>
-<td><code>string</code></td>
-<td>No</td>
-<td>The search the environments match. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>launch_options.environments</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].accounts</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].accounts[].deep_scan_defaults</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>The team a Deep Scan of this environment with this login gets without budgets. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].accounts[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].accounts[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].deep_scan_defaults</code></td>
-<td><code>object</code></td>
-<td>No</td>
-<td>The team a signed-out Deep Scan of this environment gets without budgets. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].flow_map</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>Flows from the newest discovery; null until discovery has recorded some.</td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].flow_map.flows</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].flow_map.flows[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].flow_map.flows[].purpose</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].flow_map.observed_at</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].personas</code></td>
-<td><code>array of object</code></td>
-<td>No</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].personas[].account_id</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].personas[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].personas[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].personas[].role</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].preview</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td>A short-lived pull request or branch deployment, listed after configured environments. Older API releases omit this additive field during independent web and API rollouts.</td>
-</tr>
-<tr>
-<td><code>launch_options.environments[].target_url</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.environments_has_more</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td>More environments match than the 25 configured environments and 25 previews returned; false when <code>environment_query</code> was omitted. Older API releases omit this additive field.</td>
-</tr>
-<tr>
-<td><code>launch_options.permissions</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>launch_options.permissions.manage</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.last</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.limit</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.next</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.page</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.previous</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pagination.series</code></td>
-<td><code>array of integer or string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>permissions</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>permissions.manage</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idverifydeep_scansid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/deep_scans/{id}</h3>
 <p>Operation ID: <code>api_v1_deep_scan</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-4">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -9146,7 +8594,7 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 </tr>
 </tbody>
 </table>
-<h4 id="responses-4">Responses</h4>
+<h4 id="responses-3">Responses</h4>
 <h5 id="200-deep-scan" class="status" data-status="2xx">200: Deep scan</h5>
 <p><code>application/json</code></p>
 <table>
@@ -10937,15 +10385,15 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 </tr>
 </tbody>
 </table>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1organizationsorganization_idverifydeep_scansidagent" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent</h3>
 <p>Operation ID: <code>agent_api_v1_deep_scan</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-5">Parameters</h4>
+<h4 id="parameters-4">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -10994,7 +10442,7 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 </tr>
 </tbody>
 </table>
-<h4 id="responses-5">Responses</h4>
+<h4 id="responses-4">Responses</h4>
 <h5 id="200-the-selected-tester" class="status" data-status="2xx">200: The selected tester</h5>
 <p><code>application/json</code></p>
 <table>
@@ -11795,15 +11243,15 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 </tr>
 </tbody>
 </table>
-<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-5" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1organizationsorganization_idverifydeep_scansidcontext" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context</h3>
 <p>Operation ID: <code>context_api_v1_deep_scan</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-6">Parameters</h4>
+<h4 id="parameters-5">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -11838,7 +11286,7 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 </tr>
 </tbody>
 </table>
-<h4 id="responses-6">Responses</h4>
+<h4 id="responses-5">Responses</h4>
 <h5 id="200-deep-scan-navigation-context" class="status" data-status="2xx">200: Deep Scan navigation context</h5>
 <p><code>application/json</code></p>
 <table>
@@ -12060,6 +11508,547 @@ const created = await client.DeepScan().create({ organization_id: &quot;example&
 <td><code>string</code></td>
 <td>Yes</td>
 <td>The page's title; the workspace's included scan is named for the app it tested, as in <code>Free scan of acme.example.com</code>.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-5" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1organizationsorganization_idverifydeep_scans" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/deep_scans</h3>
+<p>Operation ID: <code>api_v1_deep_scans</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>project_id</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>page</code></td>
+<td><code>query</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>query</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>query</code></td>
+<td><code>enum: all, active, completed, partial, canceled</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>findings</code></td>
+<td><code>query</code></td>
+<td><code>enum: all, with_findings</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-deep-scan-history-and-active-scans" class="status" data-status="2xx">200: Deep scan history and active scans</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].check_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].credential_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>active[].deadline_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the team's time limit ends. Older API releases omit this additive field during independent web and API rollouts.</td>
+</tr>
+<tr>
+<td><code>active[].duration_ms</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].environment_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].finding_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].finished_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].scenario_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Scenarios saved from this discovery. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>active[].scenarios_pending</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Scenarios are still being prepared, so <code>scenario_count</code> may still grow. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>active[].started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].status</code></td>
+<td><code>enum: discovering, testing, completed, partial, canceled</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>active[].title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].check_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].credential_name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>explorations[].deadline_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the team's time limit ends. Older API releases omit this additive field during independent web and API rollouts.</td>
+</tr>
+<tr>
+<td><code>explorations[].duration_ms</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].environment_name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].finding_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].finished_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].scenario_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Scenarios saved from this discovery. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>explorations[].scenarios_pending</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Scenarios are still being prepared, so <code>scenario_count</code> may still grow. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>explorations[].started_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].status</code></td>
+<td><code>enum: discovering, testing, completed, partial, canceled</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>explorations[].title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Present only when launch was requested by an admin</td>
+</tr>
+<tr>
+<td><code>launch_options.capacity</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Shared capacity when supplied by the API release. Older API releases omit this additive field during independent web and API rollouts.</td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.active_runs</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.available_slots</code></td>
+<td><code>integer,null</code></td>
+<td>Yes</td>
+<td>Available operator-limited slots; null means no organization concurrency cap.</td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.concurrency_limit</code></td>
+<td><code>integer,null</code></td>
+<td>Yes</td>
+<td>Operator browser limit; null means no organization concurrency cap.</td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.daily_run_limit</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.daily_runs_remaining</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.daily_runs_used</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.capacity.observed_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.deep_scan_defaults</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>A signed-out browser Deep Scan's team when launched without budgets, before an environment is chosen. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>launch_options.discovery_defaults</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.discovery_defaults.concurrency</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.discovery_defaults.max_seconds</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Default discovery duration in seconds.</td>
+</tr>
+<tr>
+<td><code>launch_options.discovery_defaults.max_seconds_limit</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Maximum explicitly requested discovery duration in seconds.</td>
+</tr>
+<tr>
+<td><code>launch_options.discovery_defaults.max_testers</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environment_query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The search the environments match. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>launch_options.environments</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].accounts</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].accounts[].deep_scan_defaults</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The team a Deep Scan of this environment with this login gets without budgets. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].accounts[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].accounts[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].deep_scan_defaults</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The team a signed-out Deep Scan of this environment gets without budgets. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].flow_map</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Flows from the newest discovery; null until discovery has recorded some.</td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].flow_map.flows</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].flow_map.flows[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].flow_map.flows[].purpose</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].flow_map.observed_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].personas</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].personas[].account_id</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].personas[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].personas[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].personas[].role</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].preview</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>A short-lived pull request or branch deployment, listed after configured environments. Older API releases omit this additive field during independent web and API rollouts.</td>
+</tr>
+<tr>
+<td><code>launch_options.environments[].target_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.environments_has_more</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>More environments match than the 25 configured environments and 25 previews returned; false when <code>environment_query</code> was omitted. Older API releases omit this additive field.</td>
+</tr>
+<tr>
+<td><code>launch_options.permissions</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>launch_options.permissions.manage</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.last</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.limit</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.next</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.page</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.previous</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pagination.series</code></td>
+<td><code>array of integer or string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>permissions</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>permissions.manage</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
 </tr>
 </tbody>
 </table>

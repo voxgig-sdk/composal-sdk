@@ -29,7 +29,7 @@ describe("SiteAccessKeyEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SiteAccessKey(nil):list({ ["organization_id"] = 1, ["site_id"] = "x" }, nil)
+    local _, err = client:SiteAccessKey(nil):load({ ["organization_id"] = 1, ["site_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SiteAccessKeyEntity", function()
     local setup = site_access_key_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "remove"}) do
+    for _, _op in ipairs({"create", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "site_access_key." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,39 +46,9 @@ describe("SiteAccessKeyEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"site_access_key.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys\"}")
+      print("LIVE STEP {\"id\":\"site_access_key.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only site_access_key.create.0 gives\"}")
       print("LIVE STEP {\"id\":\"site_access_key.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}\"}")
-      print("LIVE STEP {\"id\":\"site_access_key.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01", "site01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SITE_ACCESS_KEY_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local site_access_key_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.site_access_key")))
-    local site_access_key_ref01_data = nil
-    if #site_access_key_ref01_data_raw > 0 then
-      site_access_key_ref01_data = helpers.to_map(site_access_key_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local site_access_key_ref01_ent = client:SiteAccessKey(nil)
-    local site_access_key_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["site_id"] = setup.idmap["site01"],
-    }
-
-    local site_access_key_ref01_list_result, err = site_access_key_ref01_ent:list(site_access_key_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(site_access_key_ref01_list_result)
-
+      pending("Live coverage incomplete: site_access_key.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys); site_access_key.load.1 excluded (GET-only live run: reads a record only site_access_key.create.0 gives); site_access_key.remove.2 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id})")
       return
     end
 
@@ -110,20 +80,18 @@ describe("SiteAccessKeyEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local site_access_key_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["site_id"] = setup.idmap["site01"],
+    -- LOAD
+    local site_access_key_ref01_match_dt0 = {
+      id = site_access_key_ref01_data["id"],
     }
-
-    local site_access_key_ref01_list_result, err = site_access_key_ref01_ent:list(site_access_key_ref01_match, nil)
+    site_access_key_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local site_access_key_ref01_data_dt0_loaded, err = site_access_key_ref01_ent:load(site_access_key_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(site_access_key_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(site_access_key_ref01_list_result),
-      { id = site_access_key_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
+    local site_access_key_ref01_data_dt0_load_result = helpers.to_map(type(site_access_key_ref01_data_dt0_loaded) == 'table' and site_access_key_ref01_data_dt0_loaded.data_get and site_access_key_ref01_data_dt0_loaded:data_get() or site_access_key_ref01_data_dt0_loaded)
+    assert.is_not_nil(site_access_key_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(site_access_key_ref01_data_dt0_load_result["id"], site_access_key_ref01_data["id"]))
+    end
 
     if setup.live then
       runner.live_pace()
@@ -136,24 +104,6 @@ describe("SiteAccessKeyEntity", function()
     site_access_key_ref01_match_rm0["site_id"] = setup.idmap["site_id"] or setup.idmap["site01"]
     local _, err = site_access_key_ref01_ent:remove(site_access_key_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local site_access_key_ref01_match_rt0 = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["site_id"] = setup.idmap["site01"],
-    }
-
-    local site_access_key_ref01_list_rt0_result, err = site_access_key_ref01_ent:list(site_access_key_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(site_access_key_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(site_access_key_ref01_list_rt0_result),
-      { id = site_access_key_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

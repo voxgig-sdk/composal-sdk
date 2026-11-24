@@ -1,0 +1,67 @@
+$kind: http-request
+id: "20de8979-0c4f-5034-80af-759583423d81"
+description: |-
+  The `load` operation of **change**.
+
+  SDK: `client.Change().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/changes"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: author
+    value: ""
+    disabled: true
+  - key: awaiting_review
+    value: ""
+    disabled: true
+  - key: direction
+    value: desc
+    disabled: true
+  - key: group_pages
+    value: ""
+    disabled: true
+  - key: label
+    value: ""
+    disabled: true
+  - key: mine
+    value: ""
+    disabled: true
+  - key: number
+    value: ""
+    disabled: true
+  - key: page
+    value: "1"
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: repo
+    value: ""
+    disabled: true
+  - key: sort
+    value: submitted
+    disabled: true
+  - key: source
+    value: ""
+    disabled: true
+  - key: stack
+    value: ""
+    disabled: true
+  - key: state
+    value: ""
+    disabled: true
+  - key: target
+    value: ""
+    disabled: true
+  - key: tips_only
+    value: ""
+    disabled: true
+  - key: view
+    value: list
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change belongs to.
+order: 1000

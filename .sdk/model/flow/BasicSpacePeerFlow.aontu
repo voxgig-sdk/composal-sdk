@@ -19,22 +19,6 @@ main: kit: flow: BasicSpacePeerFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "space_peer_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         space_id: "space01"
       }
@@ -64,8 +48,7 @@ main: kit: flow: BasicSpacePeerFlow:
       }
 
       m: {
-        id: "space_peer01",
-        space_id: "space01"
+        id: "space_peer01"
       }
 
       o: "load",
@@ -91,26 +74,6 @@ main: kit: flow: BasicSpacePeerFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "space_peer_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSpacePeerFlow"

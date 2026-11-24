@@ -19,22 +19,6 @@ main: kit: flow: BasicEnvironmentFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "environment_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -65,8 +49,7 @@ main: kit: flow: BasicEnvironmentFlow:
       }
 
       m: {
-        id: "environment01",
-        organization_id: "organization01"
+        id: "environment01"
       }
 
       o: "load",
@@ -92,26 +75,6 @@ main: kit: flow: BasicEnvironmentFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "environment_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicEnvironmentFlow"

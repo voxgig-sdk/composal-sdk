@@ -5,10 +5,26 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `environment_query` | string | yes |  |
-  | `environments` | array | yes |  |
-  | `environments_has_more` | boolean | yes |  |
-  | `pagination` | object | yes |  |
-  | `runs` | array | yes |  |
-  | `selected_environment` | any | yes |  |
+  | `archived_at` | string | yes |  |
+  | `browser_seconds` | number | yes |  |
+  | `can_archive` | boolean | yes |  |
+  | `can_restore` | boolean | yes |  |
+  | `cleanup_state` | string | yes |  |
+  | `commit_sha` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `duration_seconds` | number | yes |  |
+  | `environment_name` | string | yes |  |
+  | `finished_at` | string | yes |  |
+  | `id` | string | yes |  |
+  | `outcome` | string | yes |  |
+  | `pull_request` | any | yes |  |
+  | `pull_request_label` | string | yes |  |
+  | `scenario_count` | integer | yes |  |
+  | `source_run` | object | yes |  |
+  | `started_at` | string | yes |  |
+  | `state` | string | yes |  |
+  | `title` | string | yes |  |
+  | `trigger_kind` | string | yes |  |
+  | `triggered_by` | string | yes |  |
+  | `web_path` | string | yes |  |
 order: 375000

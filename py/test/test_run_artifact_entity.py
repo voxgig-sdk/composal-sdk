@@ -37,7 +37,7 @@ class TestRunArtifactEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.RunArtifact(None).list({"pipeline_id": 1, "run_id": "x"}, None)
+            client.RunArtifact(None).load({"pipeline_id": 1, "run_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestRunArtifactEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "run_artifact." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -75,21 +75,14 @@ class TestRunArtifactEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        run_artifact_ref01_match = {
-            "pipeline_id": setup["idmap"]["pipeline01"],
-            "run_id": setup["idmap"]["run01"],
-        }
-
-        run_artifact_ref01_list_result = run_artifact_ref01_ent.list(run_artifact_ref01_match, None)
-        assert isinstance(run_artifact_ref01_list_result, list)
+        # LOAD
+        run_artifact_ref01_match_dt0 = {}
+        run_artifact_ref01_match_dt0["pipeline_id"] = setup["idmap"].get("pipeline_id") or setup["idmap"].get("pipeline01")
+        run_artifact_ref01_data_dt0_loaded = run_artifact_ref01_ent.load(run_artifact_ref01_match_dt0, None)
+        assert run_artifact_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["pipeline01", "run01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_RUN_ARTIFACT_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -101,15 +94,12 @@ class TestRunArtifactEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         run_artifact_ref01_ent = client.RunArtifact(None)
-        run_artifact_ref01_match = {
-            "pipeline_id": setup["idmap"]["pipeline01"],
-            "run_id": setup["idmap"]["run01"],
-        }
-
-        run_artifact_ref01_list_result = run_artifact_ref01_ent.list(run_artifact_ref01_match, None)
-        assert isinstance(run_artifact_ref01_list_result, list)
+        run_artifact_ref01_match_dt0 = {}
+        run_artifact_ref01_match_dt0["pipeline_id"] = setup["idmap"].get("pipeline_id") or setup["idmap"].get("pipeline01")
+        run_artifact_ref01_data_dt0_loaded = run_artifact_ref01_ent.load(run_artifact_ref01_match_dt0, None)
+        assert run_artifact_ref01_data_dt0_loaded is not None
 
 
 

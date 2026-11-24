@@ -7,16 +7,22 @@ main: kit: flow: BasicSparkCreditUsageTotalFlow:
   name: "BasicSparkCreditUsageTotalFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "spark_credit_usage_total_ref01",
+        srcdatavar: "spark_credit_usage_total_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "spark_credit_usage_total01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "spark_credit_usage_total_ref01"
+            mark: "Mark01-spark_credit_usage_total_ref01"
           }
         }
       ]

@@ -37,7 +37,7 @@ class TestPreviewOperationEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.PreviewOperation(None).list({"app_id": 1, "preview_id": "x"}, None)
+            client.PreviewOperation(None).load({"app_id": 1, "preview_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,14 @@ class TestPreviewOperationEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "preview_operation." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["app01", "preview01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PREVIEW_OPERATION_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -63,18 +62,6 @@ class TestPreviewOperationEntity:
         preview_operation_ref01_data = None
         if len(preview_operation_ref01_data_raw) > 0:
             preview_operation_ref01_data = helpers.to_map(preview_operation_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        preview_operation_ref01_ent = client.PreviewOperation(None)
-        preview_operation_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_id": setup["idmap"]["preview01"],
-        }
-
-        preview_operation_ref01_list_result = preview_operation_ref01_ent.list(preview_operation_ref01_match, None)
-        assert isinstance(preview_operation_ref01_list_result, list)
 
 
 
@@ -94,7 +81,7 @@ def _preview_operation_basic_setup(extra):
 
     # Generate idmap via transform.
     idmap = vs.transform(
-        ["preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03", "preview01"],
+        ["preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03"],
         {
             "`$PACK`": ["", {
                 "`$KEY`": "`$COPY`",

@@ -17,97 +17,6 @@ import (
 const runner_pool_runnerDirectLiveStrict = true
 
 func TestRunnerPoolRunnerDirect(t *testing.T) {
-	t.Run("direct-list-runner_pool_runner", func(t *testing.T) {
-		setup := runner_pool_runnerDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
-		_mode := "unit"
-		if setup.live {
-			_mode = "live"
-		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-runner_pool_runner", _mode); _shouldSkip {
-			if _reason == "" {
-				_reason = "skipped via sdk-test-control.json"
-			}
-			t.Skip(_reason)
-			return
-		}
-		if setup.live {
-			for _, _liveKey := range []string{"runner_pool01"} {
-				if v := setup.idmap[_liveKey]; v == nil {
-					liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID", _liveKey)
-					return
-				}
-			}
-		}
-		if setup.live {
-			livePace()
-		}
-		client := setup.client
-
-		params := map[string]any{}
-		query := map[string]any{}
-		if setup.live {
-			params["runner_pool_id"] = setup.idmap["runner_pool01"]
-		} else {
-			params["runner_pool_id"] = "direct01"
-		}
-
-		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/ci/runner_pools/{runner_pool_id}/runners",
-			"method": "GET",
-			"params": params,
-			"query":  query,
-		})
-		if setup.live {
-			if err != nil {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list failed: %v", err)
-			}
-			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
-			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
-			}
-		} else {
-			if err != nil {
-				t.Fatalf("direct failed: %v", err)
-			}
-			if result["ok"] != true {
-				t.Fatalf("expected ok to be true, got %v", result["ok"])
-			}
-			if core.ToInt(result["status"]) != 200 {
-				t.Fatalf("expected status 200, got %v", result["status"])
-			}
-		}
-
-		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
-				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
-			}
-
-			if len(*setup.calls) != 1 {
-				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
-			}
-			call := (*setup.calls)[0]
-			if initMap, ok := call["init"].(map[string]any); ok {
-				if initMap["method"] != "GET" {
-					t.Fatalf("expected method GET, got %v", initMap["method"])
-				}
-			}
-			if url, ok := call["url"].(string); ok {
-				if !strings.Contains(url, "direct01") {
-					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-			}
-		}
-	})
-
 	t.Run("direct-load-runner_pool_runner", func(t *testing.T) {
 		setup := runner_pool_runnerDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
@@ -121,8 +30,13 @@ func TestRunnerPoolRunnerDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["runner_pool_runner01"] == nil {
+			t.Log("LIVE STEP {\"id\":\"direct-load-runner_pool_runner\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs runner_pool_runner01, which only POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-runner_pool_runner excluded (GET-only live run: needs runner_pool_runner01, which only POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat gives)")
+			return
+		}
 		if setup.live {
-			for _, _liveKey := range []string{"runner_pool01"} {
+			for _, _liveKey := range []string{"runner_pool_runner01", "runner_pool01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID", _liveKey)
 					return
@@ -137,31 +51,7 @@ func TestRunnerPoolRunnerDirect(t *testing.T) {
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			listParams := map[string]any{}
-			listParams["runner_pool_id"] = setup.idmap["runner_pool01"]
-			listResult, listErr := client.Direct(map[string]any{
-				"path":   "api/v1/ci/runner_pools/{runner_pool_id}/runners",
-				"method": "GET",
-				"params": listParams,
-			})
-			if listErr != nil {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list discovery failed: %v", listErr)
-			}
-			if listResult["ok"] != true {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list discovery failed: %s", liveDescribe(listResult))
-			}
-			listData, listOk := liveList(listResult["data"])
-			if !listOk {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live list discovery returned no list: %s", liveDescribe(listResult))
-			}
-			if len(listData) == 0 {
-				liveEmpty(t, "The account has no runner_pool_runner record to load")
-			}
-			firstEnt := core.ToMapAny(listData[0])
-			if firstEnt["id"] == nil {
-				liveMiss(t, runner_pool_runnerDirectLiveStrict, "Live load blocked: discovery returned no usable identity")
-			}
-			params["id"] = firstEnt["id"]
+			params["id"] = setup.idmap["runner_pool_runner01"]
 			params["runner_pool_id"] = setup.idmap["runner_pool01"]
 		} else {
 			params["id"] = "direct01"

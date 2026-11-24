@@ -1,0 +1,37 @@
+$kind: http-request
+id: "27f13ded-707a-596f-9241-7a1f2a0e4ebd"
+description: |-
+  The `load` operation of **nomad_log**.
+
+  SDK: `client.NomadLog().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_dashboard/nomad/logs"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: environment
+    value: ""
+    disabled: true
+  - key: location
+    value: ""
+    disabled: true
+  - key: offset
+    value: "65536"
+    disabled: true
+  - key: origin
+    value: end
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+  - key: task
+    value: ""
+    disabled: true
+  - key: type
+    value: stdout
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this nomad_log belongs to.
+order: 1000

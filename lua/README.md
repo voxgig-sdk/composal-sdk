@@ -55,7 +55,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local agentoperation, err = client:AgentOperation():load({ agent_id = "example", id = "example_id", organization_id = "example" })
+local githubonboarding, err = client:GithubOnboarding():load({ organization_id = "example" })
 if err then error(err) end
 ```
 
@@ -113,7 +113,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:AgentOperation():load({ id = "test01", agent_id = "example", organization_id = "example" })
+local result, err = client:GithubOnboarding():load({ organization_id = "example" })
 -- result is the entity; data_get() reads its mock record; err is set on failure
 ```
 
@@ -831,7 +831,7 @@ API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
 | `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
 | `slug` |  |
 
-Operations: Create, List, Load, Update.
+Operations: Create, Load, Update.
 
 API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
@@ -897,12 +897,9 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_ope
 | `hidden_install_count` | Installs by agents the viewer cannot open |
 | `id` |  |
 | `install_count` |  |
-| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` |  |
 | `installed_target_ids` | Install targets of the viewer that have this app installed |
-| `items` |  |
 | `mcp_url` |  |
-| `next_cursor` | Pass as cursor to load older apps |
 | `owner` | The person who controls the author agent |
 | `thread` | The thread that published the app, when the viewer can open the author agent |
 | `title` |  |
@@ -1223,7 +1220,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{mess
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
 
@@ -1294,7 +1291,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | `team_sharing_version` |  |
 | `toolkit` |  |
 
-Operations: Create, List, Load, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
 
@@ -1616,7 +1613,7 @@ API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accou
 | `version` |  |
 | `work_repositories` |  |
 
-Operations: List, Update.
+Operations: Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories`
 
@@ -1715,7 +1712,7 @@ API path: `/api/v1/agent_sessions/{session_id}/transcript`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
 
@@ -1739,7 +1736,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id
 | `instructions` |  |
 | `version` |  |
 
-Operations: List, Update.
+Operations: Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/settings`
 
@@ -1791,7 +1788,7 @@ API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 | `skills` |  |
 | `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: Create, List, Load, Remove, Update.
+Operations: Create, Load, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
@@ -1830,7 +1827,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subagents`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
@@ -1920,7 +1917,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/agent/threads/{id}/archive`
 
@@ -1960,8 +1957,11 @@ API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 | `available` | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` |  |
+| `id` |  |
+| `name` |  |
 | `project_choices` | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` |  |
+| `slug` |  |
 | `verify_projects` |  |
 | `version` |  |
 
@@ -1988,7 +1988,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait
 | `image_url` |  |
 | `title` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/agent_web_previews`
 
@@ -2034,7 +2034,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/work/{work_
 | `truncated` |  |
 | `workflows` |  |
 
-Operations: Create, List, Update.
+Operations: Create, Load, Update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows`
 
@@ -2210,7 +2210,7 @@ API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
 
@@ -2230,7 +2230,7 @@ API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/e
 | `task` |  |
 | `type` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs`
 
@@ -2272,7 +2272,7 @@ API path: `/api/v1/app_access/callback`
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/app_access/jwks`
 
@@ -2308,7 +2308,7 @@ API path: `/api/v1/app_access/jwks`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{id}/archive`
 
@@ -2330,7 +2330,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{id}/archive`
 | `value` |  |
 | `value_kind` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/config_variables/{id}/disable`
 
@@ -2357,7 +2357,7 @@ API path: `/api/v1/hosting/apps/{app_id}/config_variables/{id}/disable`
 | `updated_at` |  |
 | `version` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/archive`
 
@@ -2421,7 +2421,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deploys`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel`
 
@@ -2531,7 +2531,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_rollbacks`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/environments/{id}/archive`
 
@@ -2580,7 +2580,7 @@ API path: `/api/v1/hosting/apps/{app_id}/metrics/query_range`
 | `source_ref` |  |
 | `storage_binding_resources` | Replace preview storage selections, mapping captured mount binding IDs to storage resource IDs. |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/archive`
 
@@ -2599,7 +2599,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/archive`
 | `ttl_days` |  |
 | `updated_at` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/preview_profiles`
 
@@ -2610,7 +2610,7 @@ API path: `/api/v1/hosting/apps/{app_id}/preview_profiles`
 | `id` |  |
 | `image` | Optional fully qualified digest-pinned image from the deployed service's registry and repository. |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/hosting/app_runs/{id}/cancel`
 
@@ -2688,7 +2688,7 @@ API path: `/api/v1/hosting/apps/{app_id}/secrets/{id}/set_value`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{id}/archive`
 
@@ -2698,7 +2698,7 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable`
 
@@ -2751,7 +2751,7 @@ API path: `/api/v1/hosting/apps/{app_id}/service_placements`
 | `status` |  |
 | `updated_at` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
@@ -2839,7 +2839,7 @@ API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/artifacts/{id}/expire`
 
@@ -2849,7 +2849,7 @@ API path: `/api/v1/artifacts/artifacts/{id}/expire`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
 
@@ -2859,7 +2859,7 @@ API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/image_repositories/{id}/archive`
 
@@ -2869,7 +2869,7 @@ API path: `/api/v1/artifacts/image_repositories/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
 
@@ -2879,7 +2879,7 @@ API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/retention_policies`
 
@@ -2985,7 +2985,7 @@ API path: `/api/v1/auth/password_resets`
 | `turnstile_site_key` |  |
 | `waitlist_enabled` | New public signups require waitlist approval when enabled. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/auth/registration_options`
 
@@ -3066,7 +3066,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
 
@@ -3095,7 +3095,7 @@ API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/bazel/backends/{id}/issue_token`
 
@@ -3710,7 +3710,7 @@ API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_ses
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
 
@@ -3730,7 +3730,7 @@ API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments`
 
@@ -3748,7 +3748,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments`
 | `tls_status` |  |
 | `updated_at` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 
@@ -3758,7 +3758,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/cdn_spaces/{id}/archive`
 
@@ -3768,9 +3768,9 @@ API path: `/api/v1/cdn_spaces/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: List, Load, Remove, Update.
+Operations: Load, Remove, Update.
 
-API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
+API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}`
 
 #### Change
 
@@ -3781,7 +3781,7 @@ API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 | `github_sync` |  |
 | `result` | What this page is a page of. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/changes`
 
@@ -4182,7 +4182,7 @@ API path: `/api/v1/ci/pipelines`
 | `trigger_kind` |  |
 | `updated_at` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
 
@@ -4242,7 +4242,7 @@ API path: `/api/v1/cli_events`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/cli_releases`
 
@@ -4565,7 +4565,7 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `unlock` | Once a paywalled scan ends, whether a paid plan would unlock its locked findings and whether this person may choose one, as on its findings page. |
 | `web_url` | The run's page in the Composal web app |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce`
 
@@ -4573,24 +4573,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reprod
 
 | Field | Description |
 | --- | --- |
-| `finding_count` | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | Original team order used by legacy hash links and rerun indices. |
-| `findings` |  |
-| `findings_fix_prompt` |  |
-| `free_findings_pending` | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` |  |
+| `agent_id` |  |
+| `agent_title` |  |
+| `area` | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | Checks in the same tester report that this finding cites. |
+| `confidence` |  |
+| `confirmed` | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` |  |
+| `evidence_timestamp_ms` |  |
+| `expected` |  |
+| `fix_prompt` | A coding-agent prompt for this finding alone |
+| `has_recording` | On a locked finding, whether the tester recorded evidence for it. |
 | `id` |  |
-| `mode` |  |
-| `permissions` |  |
-| `priority` | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` |  |
-| `project_id` |  |
-| `reproduction_of` |  |
-| `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` |  |
+| `locked` | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` |  |
+| `severity` |  |
 | `title` |  |
-| `unlock` | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` |  |
+| `tracked` | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` |  |
 
 Operations: List.
 
@@ -4623,7 +4624,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/flows`
 | `flow_map` |  |
 | `revision_id` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows`
 
@@ -4747,7 +4748,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 | `service_views` |  |
 | `storage_resources` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
 
@@ -4964,7 +4965,7 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/spark/devices/enterprise_relays`
 
@@ -4990,16 +4991,18 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 
 | Field | Description |
 | --- | --- |
-| `active_grants` |  |
-| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` |  |
-| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` |  |
+| `can_edit` |  |
+| `can_revoke` |  |
 | `capabilities` |  |
-| `execution_available` |  |
-| `grants` |  |
+| `created_at` |  |
 | `id` |  |
-| `next_cursor` |  |
 | `principal_id` |  |
+| `principal_name` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `updated_at` |  |
 
 Operations: Create, List.
 
@@ -5247,7 +5250,7 @@ API path: `/api/v1/email_verifications/resend`
 | `verify_network_connection_id` |  |
 | `version` | Required for target or tester changes; use lock_version from the environment. |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/environments`
 
@@ -5382,7 +5385,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 | `secret_id` |  |
 | `secret_version_id` |  |
 
-Operations: Create, List, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings`
 
@@ -5420,7 +5423,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
 | `id` |  |
 | `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/execution/desired_states/{id}/reconcile`
 
@@ -5430,7 +5433,7 @@ API path: `/api/v1/execution/desired_states/{id}/reconcile`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/execution/reconciler_ticks`
 
@@ -5440,7 +5443,7 @@ API path: `/api/v1/execution/reconciler_ticks`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/execution/releases/{id}/activate`
 
@@ -5490,20 +5493,21 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | Field | Description |
 | --- | --- |
 | `account_id` |  |
-| `active` |  |
 | `agent_filters` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` |  |
 | `can_continue` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` |  |
+| `check_count` |  |
 | `concurrency` |  |
 | `covered_areas` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` |  |
-| `deadline_at` |  |
+| `credential_name` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | When the team's time limit ends. |
 | `demo_project` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` |  |
 | `ended_early` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` |  |
 | `environment_name` |  |
-| `explorations` |  |
 | `explorer_activity` | What the team is doing now. |
 | `finding_count` | Findings at every priority, locked ones included. |
 | `findings` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -5513,14 +5517,12 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | `huntable_flows` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` |  |
 | `idempotency_key` |  |
-| `launch_options` | Present only when launch was requested by an admin |
 | `max_seconds` |  |
 | `max_testers` |  |
 | `mode` |  |
 | `next_scan_improvements` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` |  |
 | `paywalled` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` |  |
 | `persona_id` | Project persona whose role and observed access this discovery maps. |
@@ -5532,10 +5534,13 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | Scenarios saved from this discovery. |
 | `scenario_generation` |  |
+| `scenarios_pending` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` |  |
 | `startup_retryable` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` |  |
 | `time_limit_reached` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -5907,7 +5912,7 @@ API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{githu
 | `replace` | Make these the project's only repositories. |
 | `repositories` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
 
@@ -6240,7 +6245,7 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 | `verification_record` |  |
 | `verification_status` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
@@ -6315,7 +6320,7 @@ API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 | `permissions` |  |
 | `slack` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/integrations`
 
@@ -6393,7 +6398,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_ch
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
 
@@ -6403,7 +6408,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
@@ -6652,7 +6657,7 @@ API path: `/api/v1/hosting/locations`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
 
@@ -6694,7 +6699,7 @@ API path: `/api/v1/organizations/{organization_id}/logo_image`
 | --- | --- |
 | `call_first` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/marketing_settings`
 
@@ -6957,7 +6962,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/metrics/queries`
 
@@ -7025,7 +7030,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{id}/activate`
 
@@ -7071,7 +7076,7 @@ API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
@@ -7118,7 +7123,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 | `task` |  |
 | `type` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
@@ -7142,7 +7147,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/now`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
 
@@ -7152,7 +7157,7 @@ API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
 
@@ -7162,7 +7167,7 @@ API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/observability/spaces/{id}/activate`
 
@@ -7228,7 +7233,7 @@ API path: `/api/v1/organizations`
 | --- | --- |
 | `id` |  |
 
-Operations: List, Remove, Update.
+Operations: Load, Remove, Update.
 
 API path: `/api/v1/spark/organizations/{organization_id}/apps`
 
@@ -7257,7 +7262,7 @@ API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{devic
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
 
@@ -7297,7 +7302,7 @@ API path: `/api/v1/spark/organizations/{organization_id}/message_files`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
 
@@ -7377,7 +7382,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
 
@@ -7405,7 +7410,7 @@ API path: `/api/v1/admin/organizations/{org_slug}/settings`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Remove, Update.
+Operations: Create, Load, Remove, Update.
 
 API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
 
@@ -7436,7 +7441,7 @@ API path: `/api/v1/spark/organizations/{organization_id}/tools`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
 
@@ -7500,7 +7505,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/page`
 | `selected_reference` |  |
 | `viewer_id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
@@ -7704,13 +7709,23 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `active_count` |  |
-| `credentials` |  |
-| `needs_attention_count` |  |
-| `permissions` |  |
-| `persona_states` | Scenarios by the state of their latest execution. |
-| `personas` |  |
-| `project` |  |
+| `access_mode` |  |
+| `active_run_count` |  |
+| `archived_at` |  |
+| `attention` | What needs an operator's eye, problems before notices |
+| `capabilities` |  |
+| `created_at` |  |
+| `credential` |  |
+| `credential_id` | The credential this persona signs in with. |
+| `goals` |  |
+| `health` |  |
+| `id` |  |
+| `lock_version` |  |
+| `name` |  |
+| `project_id` |  |
+| `role` |  |
+| `scenario_count` |  |
+| `updated_at` |  |
 
 Operations: List.
 
@@ -7720,12 +7735,28 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `environment_query` |  |
-| `environments` |  |
-| `environments_has_more` |  |
-| `pagination` |  |
-| `runs` |  |
-| `selected_environment` |  |
+| `archived_at` |  |
+| `browser_seconds` |  |
+| `can_archive` |  |
+| `can_restore` |  |
+| `cleanup_state` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `duration_seconds` |  |
+| `environment_name` |  |
+| `finished_at` |  |
+| `id` |  |
+| `outcome` |  |
+| `pull_request` |  |
+| `pull_request_label` |  |
+| `scenario_count` |  |
+| `source_run` |  |
+| `started_at` |  |
+| `state` |  |
+| `title` |  |
+| `trigger_kind` |  |
+| `triggered_by` |  |
+| `web_path` |  |
 
 Operations: List.
 
@@ -7809,7 +7840,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/sessions`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/relay/pairings`
 
@@ -7818,7 +7849,7 @@ API path: `/api/v1/relay/pairings`
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/relay/pairings/{id}/events`
 
@@ -7849,7 +7880,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/p
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/personal_access_tokens`
 
@@ -7858,7 +7889,7 @@ API path: `/api/v1/personal_access_tokens`
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/operations`
 
@@ -7872,7 +7903,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/operations`
 | `secret_id` |  |
 | `secret_version_id` |  |
 
-Operations: Create, List, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings`
 
@@ -7907,7 +7938,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 | `snapshot_version` |  |
 | `source_keys` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
 
@@ -8233,18 +8264,11 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `byte_size` |  |
 | `content_type` |  |
 | `credential_ids` |  |
-| `credentials` |  |
 | `environment_ids` |  |
-| `environments` |  |
-| `fixtures` |  |
 | `id` |  |
 | `lock_version` |  |
 | `name` |  |
-| `pagination` |  |
-| `permissions` |  |
 | `persona_ids` |  |
-| `personas` |  |
-| `project` |  |
 | `sha256` |  |
 | `url` |  |
 | `version` |  |
@@ -8438,7 +8462,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `schedule_options` |  |
 | `schedules` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options`
 
@@ -8471,7 +8495,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `project` |  |
 | `tester_numbers` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings`
 
@@ -8602,7 +8626,7 @@ API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_reposit
 | `verify_environment_id` |  |
 | `write_scenarios` | Draft and validate focused scenarios for each change on its preview. |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings`
 
@@ -8757,7 +8781,7 @@ API path: `/api/v1/relay/signals`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
 
@@ -8846,7 +8870,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/
 | `status` |  |
 | `title` |  |
 
-Operations: Create, List, Load, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
 
@@ -8909,7 +8933,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protectio
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
 
@@ -9174,7 +9198,7 @@ API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
 | `task` |  |
 | `trigger_kind` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
 
@@ -9190,7 +9214,7 @@ API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
 | `organization_id` |  |
 | `repository_slug` | Connected Composal repository required when enabling |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/agent/roder/code_repair_settings`
 
@@ -9240,7 +9264,7 @@ API path: `/api/v1/agent/roder/workspace_credentials`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
 
@@ -9283,7 +9307,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
 | `timeout_seconds` |  |
 | `updated_at` |  |
 
-Operations: Create, List, Load.
+Operations: Create, Load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
@@ -9369,7 +9393,7 @@ API path: `/api/v1/agent/roder/run/workspace_credentials`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
 
@@ -9410,7 +9434,7 @@ API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
 
@@ -9419,7 +9443,7 @@ API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
 
@@ -9439,7 +9463,7 @@ API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snap
 | `provider` |  |
 | `version` |  |
 
-Operations: Create, List, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
 
@@ -9487,7 +9511,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
 
@@ -9497,7 +9521,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
 
@@ -9507,7 +9531,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 
@@ -9522,7 +9546,7 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 | `organization` |  |
 | `sandbox_regions` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/settings`
 
@@ -9656,7 +9680,7 @@ API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_i
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
 
@@ -9701,7 +9725,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/sites`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Remove.
+Operations: Create, Load, Remove.
 
 API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
@@ -9760,7 +9784,7 @@ API path: `/api/v1/source_connections/{id}/refresh`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
 
@@ -9769,7 +9793,7 @@ API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/observability/spaces/{space_id}/audit_events`
 
@@ -9779,7 +9803,7 @@ API path: `/api/v1/observability/spaces/{space_id}/audit_events`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/dns_records`
 
@@ -9789,7 +9813,7 @@ API path: `/api/v1/networking/spaces/{space_id}/dns_records`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
 
@@ -9799,7 +9823,7 @@ API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
 
@@ -9809,7 +9833,7 @@ API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/groups`
 
@@ -9819,7 +9843,7 @@ API path: `/api/v1/networking/spaces/{space_id}/groups`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
 
@@ -9828,7 +9852,7 @@ API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/observability/spaces/{space_id}/log_streams`
 
@@ -9837,7 +9861,7 @@ API path: `/api/v1/observability/spaces/{space_id}/log_streams`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/observability/spaces/{space_id}/metric_series`
 
@@ -9847,7 +9871,7 @@ API path: `/api/v1/observability/spaces/{space_id}/metric_series`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
 
@@ -9857,7 +9881,7 @@ API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
 
@@ -9867,7 +9891,7 @@ API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
 
@@ -9877,7 +9901,7 @@ API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
 
@@ -9887,7 +9911,7 @@ API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: Create, List, Load, Patch, Remove, Update.
+Operations: Create, Load, Patch, Remove, Update.
 
 API path: `/api/v1/networking/spaces/{space_id}/segments`
 
@@ -9896,7 +9920,7 @@ API path: `/api/v1/networking/spaces/{space_id}/segments`
 | Field | Description |
 | --- | --- |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
 
@@ -9937,7 +9961,7 @@ API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
 | `updated_at_label` |  |
 | `verify_pr_scenario_writing_enabled` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/sparks`
 
@@ -9969,7 +9993,7 @@ API path: `/api/v1/organizations/{organization_id}/sparks`
 | `webhook_connections` |  |
 | `webhooks_available` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
@@ -10054,30 +10078,32 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
+| `archive_deletes_sandbox` |  |
+| `archived` |  |
+| `attention` | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` |  |
+| `can_compact` |  |
+| `can_snooze` |  |
+| `coordination_status` | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` |  |
 | `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `group` | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` |  |
 | `id` |  |
 | `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
+| `is_main` |  |
+| `kind` |  |
 | `message` | The thread's first message. |
-| `next_cursor` |  |
+| `older` | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` |  |
-| `selected_thread` |  |
+| `snoozed_until` | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` |  |
-| `threads` |  |
 | `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` |  |
 
 Operations: Create, List.
 
@@ -10113,7 +10139,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 | `top_up_max_cents` | Maximum manual top-up, in USD cents. |
 | `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
 
-Operations: Create, List, Load, Patch, Update.
+Operations: Create, Load, Patch, Update.
 
 API path: `/api/v1/organizations/{org_slug}/spark_credits`
 
@@ -10139,7 +10165,7 @@ API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}
 | `compute_usd` |  |
 | `inference_usd` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
@@ -10658,7 +10684,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
 | `organization` |  |
 | `sandbox_regions` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
@@ -10840,7 +10866,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/
 | Field | Description |
 | --- | --- |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/email_verifications/verify`
 
@@ -11063,7 +11089,6 @@ Create an instance: `local admin_org = client:AdminOrg(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
@@ -11091,12 +11116,6 @@ Create an instance: `local admin_org = client:AdminOrg(nil)`
 
 ```lua
 local admin_org, err = client:AdminOrg():load({ id = "admin_org_id" })
-```
-
-#### Example: List
-
-```lua
-local admin_orgs, err = client:AdminOrg():list()
 ```
 
 #### Example: Create
@@ -11216,12 +11235,9 @@ Create an instance: `local agent_app = client:AgentApp(nil)`
 | `hidden_install_count` | `number` | Installs by agents the viewer cannot open |
 | `id` | `string` |  |
 | `install_count` | `number` |  |
-| `install_targets` | `table` | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `table` |  |
 | `installed_target_ids` | `table` | Install targets of the viewer that have this app installed |
-| `items` | `table` |  |
 | `mcp_url` | `string|nil` |  |
-| `next_cursor` | `string|nil` | Pass as cursor to load older apps |
 | `owner` | `table` | The person who controls the author agent |
 | `thread` | `any` | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` |  |
@@ -11786,12 +11802,12 @@ Create an instance: `local agent_event = client:AgentEvent(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_events, err = client:AgentEvent():list({ agent_id = "example", organization_id = "example" })
+local agent_event, err = client:AgentEvent():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 
@@ -11869,7 +11885,6 @@ Create an instance: `local agent_integration = client:AgentIntegration(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -11912,12 +11927,6 @@ Create an instance: `local agent_integration = client:AgentIntegration(nil)`
 
 ```lua
 local agent_integration, err = client:AgentIntegration():load({ id = "agent_integration_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local agent_integrations, err = client:AgentIntegration():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -12467,7 +12476,7 @@ Create an instance: `local agent_repository = client:AgentRepository(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -12484,10 +12493,10 @@ Create an instance: `local agent_repository = client:AgentRepository(nil)`
 | `version` | `number` |  |
 | `work_repositories` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_repositorys, err = client:AgentRepository():list({ agent_id = "example", organization_id = "example" })
+local agent_repository, err = client:AgentRepository():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 
@@ -12646,7 +12655,6 @@ Create an instance: `local agent_session_checkpoint = client:AgentSessionCheckpo
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -12659,12 +12667,6 @@ Create an instance: `local agent_session_checkpoint = client:AgentSessionCheckpo
 
 ```lua
 local agent_session_checkpoint, err = client:AgentSessionCheckpoint():load({ id = "agent_session_checkpoint_id", agent_session_id = "agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
-```
-
-#### Example: List
-
-```lua
-local agent_session_checkpoints, err = client:AgentSessionCheckpoint():list({ agent_session_id = "example", organization_id = "example", repo_id = "example" })
 ```
 
 #### Example: Create
@@ -12714,7 +12716,7 @@ Create an instance: `local agent_setting = client:AgentSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -12726,10 +12728,10 @@ Create an instance: `local agent_setting = client:AgentSetting(nil)`
 | `instructions` | `string` |  |
 | `version` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_settings, err = client:AgentSetting():list({ agent_id = "example", organization_id = "example" })
+local agent_setting, err = client:AgentSetting():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 
@@ -12795,7 +12797,6 @@ Create an instance: `local agent_skill = client:AgentSkill(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -12822,12 +12823,6 @@ Create an instance: `local agent_skill = client:AgentSkill(nil)`
 
 ```lua
 local agent_skill, err = client:AgentSkill():load({ id = "agent_skill_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local agent_skills, err = client:AgentSkill():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -12896,12 +12891,12 @@ Create an instance: `local agent_subscription = client:AgentSubscription(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_subscriptions, err = client:AgentSubscription():list({ agent_id = "example", organization_id = "example" })
+local agent_subscription, err = client:AgentSubscription():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -13049,7 +13044,6 @@ Create an instance: `local agent_thread = client:AgentThread(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -13062,12 +13056,6 @@ Create an instance: `local agent_thread = client:AgentThread(nil)`
 
 ```lua
 local agent_thread, err = client:AgentThread():load({ id = "agent_thread_id" })
-```
-
-#### Example: List
-
-```lua
-local agent_threads, err = client:AgentThread():list()
 ```
 
 #### Example: Create
@@ -13151,8 +13139,11 @@ Create an instance: `local agent_verify_project = client:AgentVerifyProject(nil)
 | `available` | `boolean` | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `boolean` | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `project_choices` | `table` | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `boolean` |  |
+| `slug` | `string` |  |
 | `verify_projects` | `table` |  |
 | `version` | `number` |  |
 
@@ -13188,7 +13179,7 @@ Create an instance: `local agent_web_preview = client:AgentWebPreview(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -13199,10 +13190,10 @@ Create an instance: `local agent_web_preview = client:AgentWebPreview(nil)`
 | `image_url` | `string|nil` |  |
 | `title` | `string|nil` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_web_previews, err = client:AgentWebPreview():list({ token = "example" })
+local agent_web_preview, err = client:AgentWebPreview():load({ token = "token" })
 ```
 
 
@@ -13279,7 +13270,7 @@ Create an instance: `local agent_workflow = client:AgentWorkflow(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -13295,10 +13286,10 @@ Create an instance: `local agent_workflow = client:AgentWorkflow(nil)`
 | `truncated` | `boolean` |  |
 | `workflows` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local agent_workflows, err = client:AgentWorkflow():list({ agent_id = "example", organization_id = "example" })
+local agent_workflow, err = client:AgentWorkflow():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -13596,7 +13587,6 @@ Create an instance: `local alert_rule_event = client:AlertRuleEvent(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -13610,12 +13600,6 @@ Create an instance: `local alert_rule_event = client:AlertRuleEvent(nil)`
 
 ```lua
 local alert_rule_event, err = client:AlertRuleEvent():load({ id = "alert_rule_event_id", alert_rule_id = "alert_rule_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local alert_rule_events, err = client:AlertRuleEvent():list({ alert_rule_id = "example", space_id = "example" })
 ```
 
 #### Example: Create
@@ -13636,7 +13620,7 @@ Create an instance: `local allocation_log = client:AllocationLog(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -13654,10 +13638,10 @@ Create an instance: `local allocation_log = client:AllocationLog(nil)`
 | `task` | `string` |  |
 | `type` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local allocation_logs, err = client:AllocationLog():list({ allocation_id = "example", app_id = "example" })
+local allocation_log, err = client:AllocationLog():load({ allocation_id = "allocation_id", app_id = "app_id" })
 ```
 
 
@@ -13740,12 +13724,12 @@ Create an instance: `local app_access_jwk = client:AppAccessJwk(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local app_access_jwks, err = client:AppAccessJwk():list()
+local app_access_jwk, err = client:AppAccessJwk():load()
 ```
 
 
@@ -13758,7 +13742,6 @@ Create an instance: `local app_cdn = client:AppCdn(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13802,12 +13785,6 @@ Create an instance: `local app_cdn = client:AppCdn(nil)`
 local app_cdn, err = client:AppCdn():load({ id = "app_cdn_id", app_id = "app_id" })
 ```
 
-#### Example: List
-
-```lua
-local app_cdns, err = client:AppCdn():list({ app_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -13829,7 +13806,6 @@ Create an instance: `local app_config_variable = client:AppConfigVariable(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13859,12 +13835,6 @@ Create an instance: `local app_config_variable = client:AppConfigVariable(nil)`
 local app_config_variable, err = client:AppConfigVariable():load({ id = "app_config_variable_id", app_id = "app_id" })
 ```
 
-#### Example: List
-
-```lua
-local app_config_variables, err = client:AppConfigVariable():list({ app_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -13887,7 +13857,6 @@ Create an instance: `local app_data_resource = client:AppDataResource(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13920,12 +13889,6 @@ Create an instance: `local app_data_resource = client:AppDataResource(nil)`
 
 ```lua
 local app_data_resource, err = client:AppDataResource():load({ id = "app_data_resource_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local app_data_resources, err = client:AppDataResource():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -13987,7 +13950,6 @@ Create an instance: `local app_deployment = client:AppDeployment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14036,12 +13998,6 @@ Create an instance: `local app_deployment = client:AppDeployment(nil)`
 
 ```lua
 local app_deployment, err = client:AppDeployment():load({ id = "app_deployment_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local app_deployments, err = client:AppDeployment():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -14192,7 +14148,6 @@ Create an instance: `local app_environment = client:AppEnvironment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14222,12 +14177,6 @@ Create an instance: `local app_environment = client:AppEnvironment(nil)`
 
 ```lua
 local app_environment, err = client:AppEnvironment():load({ id = "app_environment_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local app_environments, err = client:AppEnvironment():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -14305,7 +14254,6 @@ Create an instance: `local app_preview = client:AppPreview(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14337,12 +14285,6 @@ Create an instance: `local app_preview = client:AppPreview(nil)`
 local app_preview, err = client:AppPreview():load({ id = "app_preview_id", app_id = "app_id" })
 ```
 
-#### Example: List
-
-```lua
-local app_previews, err = client:AppPreview():list({ app_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -14364,7 +14306,6 @@ Create an instance: `local app_preview_profile = client:AppPreviewProfile(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14391,12 +14332,6 @@ Create an instance: `local app_preview_profile = client:AppPreviewProfile(nil)`
 local app_preview_profile, err = client:AppPreviewProfile():load({ id = "app_preview_profile_id", app_id = "app_id" })
 ```
 
-#### Example: List
-
-```lua
-local app_preview_profiles, err = client:AppPreviewProfile():list({ app_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -14418,7 +14353,6 @@ Create an instance: `local app_run = client:AppRun(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -14432,12 +14366,6 @@ Create an instance: `local app_run = client:AppRun(nil)`
 
 ```lua
 local app_run, err = client:AppRun():load({ id = "app_run_id" })
-```
-
-#### Example: List
-
-```lua
-local app_runs, err = client:AppRun():list()
 ```
 
 #### Example: Create
@@ -14518,7 +14446,6 @@ Create an instance: `local app_service = client:AppService(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14577,12 +14504,6 @@ Create an instance: `local app_service = client:AppService(nil)`
 local app_service, err = client:AppService():load({ id = "app_service_id", app_id = "app_id" })
 ```
 
-#### Example: List
-
-```lua
-local app_services, err = client:AppService():list({ app_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -14611,7 +14532,6 @@ Create an instance: `local app_service_binding = client:AppServiceBinding(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14627,12 +14547,6 @@ Create an instance: `local app_service_binding = client:AppServiceBinding(nil)`
 
 ```lua
 local app_service_binding, err = client:AppServiceBinding():load({ id = "app_service_binding_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local app_service_bindings, err = client:AppServiceBinding():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -14697,7 +14611,6 @@ Create an instance: `local app_storage_resource = client:AppStorageResource(nil)
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14733,12 +14646,6 @@ Create an instance: `local app_storage_resource = client:AppStorageResource(nil)
 
 ```lua
 local app_storage_resource, err = client:AppStorageResource():load({ id = "app_storage_resource_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local app_storage_resources, err = client:AppStorageResource():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -14935,7 +14842,6 @@ Create an instance: `local artifact = client:Artifact(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14951,12 +14857,6 @@ Create an instance: `local artifact = client:Artifact(nil)`
 
 ```lua
 local artifact, err = client:Artifact():load({ id = "artifact_id" })
-```
-
-#### Example: List
-
-```lua
-local artifacts, err = client:Artifact():list()
 ```
 
 #### Example: Create
@@ -14976,7 +14876,6 @@ Create an instance: `local artifact_cache_namespace = client:ArtifactCacheNamesp
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14992,12 +14891,6 @@ Create an instance: `local artifact_cache_namespace = client:ArtifactCacheNamesp
 
 ```lua
 local artifact_cache_namespace, err = client:ArtifactCacheNamespace():load({ id = "artifact_cache_namespace_id" })
-```
-
-#### Example: List
-
-```lua
-local artifact_cache_namespaces, err = client:ArtifactCacheNamespace():list()
 ```
 
 #### Example: Create
@@ -15017,7 +14910,6 @@ Create an instance: `local artifact_image_repository = client:ArtifactImageRepos
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15033,12 +14925,6 @@ Create an instance: `local artifact_image_repository = client:ArtifactImageRepos
 
 ```lua
 local artifact_image_repository, err = client:ArtifactImageRepository():load({ id = "artifact_image_repository_id" })
-```
-
-#### Example: List
-
-```lua
-local artifact_image_repositorys, err = client:ArtifactImageRepository():list()
 ```
 
 #### Example: Create
@@ -15058,7 +14944,6 @@ Create an instance: `local artifact_package_mirror = client:ArtifactPackageMirro
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15074,12 +14959,6 @@ Create an instance: `local artifact_package_mirror = client:ArtifactPackageMirro
 
 ```lua
 local artifact_package_mirror, err = client:ArtifactPackageMirror():load({ id = "artifact_package_mirror_id" })
-```
-
-#### Example: List
-
-```lua
-local artifact_package_mirrors, err = client:ArtifactPackageMirror():list()
 ```
 
 #### Example: Create
@@ -15099,7 +14978,6 @@ Create an instance: `local artifact_retention_policy = client:ArtifactRetentionP
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15115,12 +14993,6 @@ Create an instance: `local artifact_retention_policy = client:ArtifactRetentionP
 
 ```lua
 local artifact_retention_policy, err = client:ArtifactRetentionPolicy():load({ id = "artifact_retention_policy_id" })
-```
-
-#### Example: List
-
-```lua
-local artifact_retention_policys, err = client:ArtifactRetentionPolicy():list()
 ```
 
 #### Example: Create
@@ -15280,7 +15152,7 @@ Create an instance: `local auth_registration_option = client:AuthRegistrationOpt
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -15291,10 +15163,10 @@ Create an instance: `local auth_registration_option = client:AuthRegistrationOpt
 | `turnstile_site_key` | `string|nil` |  |
 | `waitlist_enabled` | `boolean` | New public signups require waitlist approval when enabled. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local auth_registration_options, err = client:AuthRegistrationOption():list()
+local auth_registration_option, err = client:AuthRegistrationOption():load()
 ```
 
 
@@ -15405,7 +15277,7 @@ Create an instance: `local backend_runner_pool = client:BackendRunnerPool(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -15414,10 +15286,10 @@ Create an instance: `local backend_runner_pool = client:BackendRunnerPool(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local backend_runner_pools, err = client:BackendRunnerPool():list({ backend_id = "example" })
+local backend_runner_pool, err = client:BackendRunnerPool():load({ backend_id = "backend_id" })
 ```
 
 #### Example: Create
@@ -15473,7 +15345,6 @@ Create an instance: `local bazel_backend = client:BazelBackend(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15489,12 +15360,6 @@ Create an instance: `local bazel_backend = client:BazelBackend(nil)`
 
 ```lua
 local bazel_backend, err = client:BazelBackend():load({ id = "bazel_backend_id" })
-```
-
-#### Example: List
-
-```lua
-local bazel_backends, err = client:BazelBackend():list()
 ```
 
 #### Example: Create
@@ -16569,7 +16434,6 @@ Create an instance: `local cache_namespace_entry = client:CacheNamespaceEntry(ni
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16585,12 +16449,6 @@ Create an instance: `local cache_namespace_entry = client:CacheNamespaceEntry(ni
 
 ```lua
 local cache_namespace_entry, err = client:CacheNamespaceEntry():load({ id = "cache_namespace_entry_id", cache_namespace_id = "cache_namespace_id" })
-```
-
-#### Example: List
-
-```lua
-local cache_namespace_entrys, err = client:CacheNamespaceEntry():list({ cache_namespace_id = "example" })
 ```
 
 #### Example: Create
@@ -16634,7 +16492,6 @@ Create an instance: `local cdn_deployment = client:CdnDeployment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -16647,12 +16504,6 @@ Create an instance: `local cdn_deployment = client:CdnDeployment(nil)`
 
 ```lua
 local cdn_deployment, err = client:CdnDeployment():load({ id = "cdn_deployment_id", app_id = "app_id", cdn_id = "cdn_id" })
-```
-
-#### Example: List
-
-```lua
-local cdn_deployments, err = client:CdnDeployment():list({ app_id = "example", cdn_id = "example" })
 ```
 
 #### Example: Create
@@ -16674,7 +16525,6 @@ Create an instance: `local cdn_hostname = client:CdnHostname(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16700,12 +16550,6 @@ Create an instance: `local cdn_hostname = client:CdnHostname(nil)`
 local cdn_hostname, err = client:CdnHostname():load({ id = "cdn_hostname_id", app_id = "app_id", cdn_id = "cdn_id" })
 ```
 
-#### Example: List
-
-```lua
-local cdn_hostnames, err = client:CdnHostname():list({ app_id = "example", cdn_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -16726,7 +16570,6 @@ Create an instance: `local cdn_space = client:CdnSpace(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16742,12 +16585,6 @@ Create an instance: `local cdn_space = client:CdnSpace(nil)`
 
 ```lua
 local cdn_space, err = client:CdnSpace():load({ id = "cdn_space_id" })
-```
-
-#### Example: List
-
-```lua
-local cdn_spaces, err = client:CdnSpace():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -16767,7 +16604,6 @@ Create an instance: `local cdn_space_object = client:CdnSpaceObject(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -16784,12 +16620,6 @@ Create an instance: `local cdn_space_object = client:CdnSpaceObject(nil)`
 local cdn_space_object, err = client:CdnSpaceObject():load({ id = "cdn_space_object_id", cdn_space_id = "cdn_space_id" })
 ```
 
-#### Example: List
-
-```lua
-local cdn_space_objects, err = client:CdnSpaceObject():list({ cdn_space_id = "example" })
-```
-
 
 ### Change
 
@@ -16799,7 +16629,7 @@ Create an instance: `local change = client:Change(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -16810,10 +16640,10 @@ Create an instance: `local change = client:Change(nil)`
 | `github_sync` | `table` |  |
 | `result` | `any` | What this page is a page of. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local changes, err = client:Change():list({ organization_id = "example" })
+local change, err = client:Change():load({ organization_id = "organization_id" })
 ```
 
 
@@ -17470,7 +17300,6 @@ Create an instance: `local ci_pipeline_run = client:CiPipelineRun(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -17515,12 +17344,6 @@ Create an instance: `local ci_pipeline_run = client:CiPipelineRun(nil)`
 
 ```lua
 local ci_pipeline_run, err = client:CiPipelineRun():load({ id = "ci_pipeline_run_id", pipeline_id = "pipeline_id" })
-```
-
-#### Example: List
-
-```lua
-local ci_pipeline_runs, err = client:CiPipelineRun():list({ pipeline_id = "example" })
 ```
 
 #### Example: Create
@@ -17640,13 +17463,12 @@ Create an instance: `local cli_release = client:CliRelease(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local cli_releases, err = client:CliRelease():list()
+local cli_release, err = client:CliRelease():load()
 ```
 
 #### Example: Create
@@ -18137,7 +17959,6 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -18203,12 +18024,6 @@ Create an instance: `local deep_scan = client:DeepScan(nil)`
 local deep_scan, err = client:DeepScan():load({ id = "deep_scan_id", organization_id = "organization_id" })
 ```
 
-#### Example: List
-
-```lua
-local deep_scans, err = client:DeepScan():list({ organization_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -18234,24 +18049,25 @@ Create an instance: `local deep_scan_finding = client:DeepScanFinding(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `finding_count` | `number` | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `table` | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `table` |  |
-| `findings_fix_prompt` | `string|nil` |  |
-| `free_findings_pending` | `boolean` | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` |  |
+| `agent_id` | `string` |  |
+| `agent_title` | `string` |  |
+| `area` | `string|nil` | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `table` | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` |  |
+| `confirmed` | `boolean` | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `table` |  |
+| `evidence_timestamp_ms` | `number|nil` |  |
+| `expected` | `string` |  |
+| `fix_prompt` | `string` | A coding-agent prompt for this finding alone |
+| `has_recording` | `boolean` | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` |  |
-| `mode` | `string` |  |
-| `permissions` | `table` |  |
-| `priority` | `string|nil` | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `table` |  |
-| `project_id` | `string|nil` |  |
-| `reproduction_of` | `table|nil` |  |
-| `reproductions` | `table` | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `boolean` | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` |  |
+| `locked` | `boolean` | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `table` |  |
+| `severity` | `string` |  |
 | `title` | `string` |  |
-| `unlock` | `table` | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` |  |
+| `tracked` | `table|nil` | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -18302,7 +18118,7 @@ Create an instance: `local deep_scan_mapped_flow = client:DeepScanMappedFlow(nil
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -18313,10 +18129,10 @@ Create an instance: `local deep_scan_mapped_flow = client:DeepScanMappedFlow(nil
 | `flow_map` | `table|nil` |  |
 | `revision_id` | `string|nil` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local deep_scan_mapped_flows, err = client:DeepScanMappedFlow():list({ organization_id = "example", environment_id = "example" })
+local deep_scan_mapped_flow, err = client:DeepScanMappedFlow():load({ organization_id = "organization_id", environment_id = "environment_id" })
 ```
 
 
@@ -18476,7 +18292,7 @@ Create an instance: `local deployment_detail = client:DeploymentDetail(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -18504,10 +18320,10 @@ Create an instance: `local deployment_detail = client:DeploymentDetail(nil)`
 | `service_views` | `table` |  |
 | `storage_resources` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local deployment_details, err = client:DeploymentDetail():list({ organization_id = "example" })
+local deployment_detail, err = client:DeploymentDetail():load({ organization_id = "organization_id" })
 ```
 
 
@@ -18887,12 +18703,12 @@ Create an instance: `local device_enterprise_relay = client:DeviceEnterpriseRela
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local device_enterprise_relays, err = client:DeviceEnterpriseRelay():list()
+local device_enterprise_relay, err = client:DeviceEnterpriseRelay():load()
 ```
 
 
@@ -18954,16 +18770,18 @@ Create an instance: `local device_grant = client:DeviceGrant(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_grants` | `table` |  |
-| `agent_choices` | `table` | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` |  |
-| `all_agents_access` | `boolean` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `string|nil` |  |
+| `can_edit` | `boolean` |  |
+| `can_revoke` | `boolean` |  |
 | `capabilities` | `table` |  |
-| `execution_available` | `boolean` |  |
-| `grants` | `table` |  |
+| `created_at` | `string` |  |
 | `id` | `string` |  |
-| `next_cursor` | `string|nil` |  |
 | `principal_id` | `string` |  |
+| `principal_name` | `string|nil` |  |
+| `revision` | `number` |  |
+| `revoked_at` | `string|nil` |  |
+| `updated_at` | `string` |  |
 
 #### Example: List
 
@@ -19405,7 +19223,6 @@ Create an instance: `local environment = client:Environment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -19461,12 +19278,6 @@ Create an instance: `local environment = client:Environment(nil)`
 
 ```lua
 local environment, err = client:Environment():load({ id = "environment_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local environments, err = client:Environment():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -19677,7 +19488,7 @@ Create an instance: `local environment_secret_binding = client:EnvironmentSecret
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -19690,10 +19501,10 @@ Create an instance: `local environment_secret_binding = client:EnvironmentSecret
 | `secret_id` | `string` |  |
 | `secret_version_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local environment_secret_bindings, err = client:EnvironmentSecretBinding():list({ app_id = "example", environment_id = "example" })
+local environment_secret_binding, err = client:EnvironmentSecretBinding():load({ app_id = "app_id", environment_id = "environment_id" })
 ```
 
 #### Example: Create
@@ -19770,7 +19581,6 @@ Create an instance: `local execution_desired_state = client:ExecutionDesiredStat
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -19790,12 +19600,6 @@ Create an instance: `local execution_desired_state = client:ExecutionDesiredStat
 local execution_desired_state, err = client:ExecutionDesiredState():load({ id = "execution_desired_state_id" })
 ```
 
-#### Example: List
-
-```lua
-local execution_desired_states, err = client:ExecutionDesiredState():list()
-```
-
 #### Example: Create
 
 ```lua
@@ -19813,7 +19617,6 @@ Create an instance: `local execution_reconciler_tick = client:ExecutionReconcile
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -19826,12 +19629,6 @@ Create an instance: `local execution_reconciler_tick = client:ExecutionReconcile
 
 ```lua
 local execution_reconciler_tick, err = client:ExecutionReconcilerTick():load({ id = "execution_reconciler_tick_id" })
-```
-
-#### Example: List
-
-```lua
-local execution_reconciler_ticks, err = client:ExecutionReconcilerTick():list()
 ```
 
 #### Example: Create
@@ -19851,7 +19648,6 @@ Create an instance: `local execution_release = client:ExecutionRelease(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -19864,12 +19660,6 @@ Create an instance: `local execution_release = client:ExecutionRelease(nil)`
 
 ```lua
 local execution_release, err = client:ExecutionRelease():load({ id = "execution_release_id" })
-```
-
-#### Example: List
-
-```lua
-local execution_releases, err = client:ExecutionRelease():list()
 ```
 
 #### Example: Create
@@ -19969,20 +19759,21 @@ Create an instance: `local exploration = client:Exploration(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_id` | `string|nil` |  |
-| `active` | `table` |  |
 | `agent_filters` | `table` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `table` |  |
 | `can_continue` | `boolean` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `table` |  |
+| `check_count` | `number` |  |
 | `concurrency` | `number` |  |
 | `covered_areas` | `table` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` |  |
-| `deadline_at` | `string` |  |
+| `credential_name` | `string|nil` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | When the team's time limit ends. |
 | `demo_project` | `table|nil` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number|nil` |  |
 | `ended_early` | `boolean` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` |  |
 | `environment_name` | `string` |  |
-| `explorations` | `table` |  |
 | `explorer_activity` | `table` | What the team is doing now. |
 | `finding_count` | `number` | Findings at every priority, locked ones included. |
 | `findings` | `table` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -19992,14 +19783,12 @@ Create an instance: `local exploration = client:Exploration(nil)`
 | `huntable_flows` | `table` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` |  |
 | `idempotency_key` | `string` |  |
-| `launch_options` | `table` | Present only when launch was requested by an admin |
 | `max_seconds` | `number` |  |
 | `max_testers` | `number` |  |
 | `mode` | `string` |  |
 | `next_scan_improvements` | `table` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `table` |  |
 | `paywalled` | `boolean` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `table` |  |
 | `persona_id` | `string|nil` | Project persona whose role and observed access this discovery maps. |
@@ -20011,10 +19800,13 @@ Create an instance: `local exploration = client:Exploration(nil)`
 | `reproductions` | `table` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | Scenarios saved from this discovery. |
 | `scenario_generation` | `table` |  |
+| `scenarios_pending` | `boolean` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` |  |
 | `startup_retryable` | `boolean` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` |  |
 | `time_limit_reached` | `boolean` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20613,7 +20405,7 @@ Create an instance: `local github_connection = client:GithubConnection(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -20626,10 +20418,10 @@ Create an instance: `local github_connection = client:GithubConnection(nil)`
 | `replace` | `boolean` | Make these the project's only repositories. |
 | `repositories` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local github_connections, err = client:GithubConnection():list({ organization_id = "example" })
+local github_connection, err = client:GithubConnection():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -21245,7 +21037,6 @@ Create an instance: `local hosting_app_domain = client:HostingAppDomain(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -21283,12 +21074,6 @@ Create an instance: `local hosting_app_domain = client:HostingAppDomain(nil)`
 
 ```lua
 local hosting_app_domain, err = client:HostingAppDomain():load({ id = "hosting_app_domain_id", app_id = "app_id" })
-```
-
-#### Example: List
-
-```lua
-local hosting_app_domains, err = client:HostingAppDomain():list({ app_id = "example" })
 ```
 
 #### Example: Create
@@ -21432,7 +21217,7 @@ Create an instance: `local integration = client:Integration(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -21443,10 +21228,10 @@ Create an instance: `local integration = client:Integration(nil)`
 | `permissions` | `table` |  |
 | `slack` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local integrations, err = client:Integration():list({ organization_id = "example" })
+local integration, err = client:Integration():load({ organization_id = "organization_id" })
 ```
 
 
@@ -21598,7 +21383,7 @@ Create an instance: `local job_step = client:JobStep(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -21608,10 +21393,10 @@ Create an instance: `local job_step = client:JobStep(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local job_steps, err = client:JobStep():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+local job_step, err = client:JobStep():load({ job_id = "job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 #### Example: Create
@@ -21634,7 +21419,7 @@ Create an instance: `local job_workspace = client:JobWorkspace(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -21644,10 +21429,10 @@ Create an instance: `local job_workspace = client:JobWorkspace(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local job_workspaces, err = client:JobWorkspace():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+local job_workspace, err = client:JobWorkspace():load({ job_id = "job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 #### Example: Create
@@ -22138,7 +21923,6 @@ Create an instance: `local log_stream_chunk = client:LogStreamChunk(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -22151,12 +21935,6 @@ Create an instance: `local log_stream_chunk = client:LogStreamChunk(nil)`
 
 ```lua
 local log_stream_chunk, err = client:LogStreamChunk():load({ id = "log_stream_chunk_id", log_stream_id = "log_stream_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local log_stream_chunks, err = client:LogStreamChunk():list({ log_stream_id = "example", space_id = "example" })
 ```
 
 #### Example: Create
@@ -22217,7 +21995,7 @@ Create an instance: `local marketing_setting = client:MarketingSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -22225,10 +22003,10 @@ Create an instance: `local marketing_setting = client:MarketingSetting(nil)`
 | --- | --- | --- |
 | `call_first` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local marketing_settings, err = client:MarketingSetting():list()
+local marketing_setting, err = client:MarketingSetting():load()
 ```
 
 
@@ -22700,12 +22478,12 @@ Create an instance: `local metric_query = client:MetricQuery(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local metric_querys, err = client:MetricQuery():list()
+local metric_query, err = client:MetricQuery():load()
 ```
 
 
@@ -22842,7 +22620,6 @@ Create an instance: `local networking_space = client:NetworkingSpace(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -22858,12 +22635,6 @@ Create an instance: `local networking_space = client:NetworkingSpace(nil)`
 
 ```lua
 local networking_space, err = client:NetworkingSpace():load({ id = "networking_space_id" })
-```
-
-#### Example: List
-
-```lua
-local networking_spaces, err = client:NetworkingSpace():list()
 ```
 
 #### Example: Create
@@ -22934,7 +22705,6 @@ Create an instance: `local node_lease = client:NodeLease(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -22943,10 +22713,10 @@ Create an instance: `local node_lease = client:NodeLease(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local node_leases, err = client:NodeLease():list({ node_id = "example" })
+local node_lease, err = client:NodeLease():load({ node_id = "node_id" })
 ```
 
 
@@ -22998,7 +22768,7 @@ Create an instance: `local nomad_log = client:NomadLog(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -23016,10 +22786,10 @@ Create an instance: `local nomad_log = client:NomadLog(nil)`
 | `task` | `string` |  |
 | `type` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local nomad_logs, err = client:NomadLog():list({ app_id = "example" })
+local nomad_log, err = client:NomadLog():load({ app_id = "app_id" })
 ```
 
 
@@ -23059,7 +22829,6 @@ Create an instance: `local observability_clickhouse_cluster = client:Observabili
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23075,12 +22844,6 @@ Create an instance: `local observability_clickhouse_cluster = client:Observabili
 
 ```lua
 local observability_clickhouse_cluster, err = client:ObservabilityClickhouseCluster():load({ id = "observability_clickhouse_cluster_id" })
-```
-
-#### Example: List
-
-```lua
-local observability_clickhouse_clusters, err = client:ObservabilityClickhouseCluster():list()
 ```
 
 #### Example: Create
@@ -23100,7 +22863,6 @@ Create an instance: `local observability_quickwit_cluster = client:Observability
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23116,12 +22878,6 @@ Create an instance: `local observability_quickwit_cluster = client:Observability
 
 ```lua
 local observability_quickwit_cluster, err = client:ObservabilityQuickwitCluster():load({ id = "observability_quickwit_cluster_id" })
-```
-
-#### Example: List
-
-```lua
-local observability_quickwit_clusters, err = client:ObservabilityQuickwitCluster():list()
 ```
 
 #### Example: Create
@@ -23141,7 +22897,6 @@ Create an instance: `local observability_space = client:ObservabilitySpace(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23157,12 +22912,6 @@ Create an instance: `local observability_space = client:ObservabilitySpace(nil)`
 
 ```lua
 local observability_space, err = client:ObservabilitySpace():load({ id = "observability_space_id" })
-```
-
-#### Example: List
-
-```lua
-local observability_spaces, err = client:ObservabilitySpace():list()
 ```
 
 #### Example: Create
@@ -23291,7 +23040,7 @@ Create an instance: `local organization_app = client:OrganizationApp(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -23301,10 +23050,10 @@ Create an instance: `local organization_app = client:OrganizationApp(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local organization_apps, err = client:OrganizationApp():list({ organization_id = "example", native_agent_id = "example" })
+local organization_app, err = client:OrganizationApp():load({ organization_id = "organization_id", native_agent_id = "native_agent_id" })
 ```
 
 
@@ -23345,7 +23094,6 @@ Create an instance: `local organization_identity_certificate = client:Organizati
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23361,12 +23109,6 @@ Create an instance: `local organization_identity_certificate = client:Organizati
 
 ```lua
 local organization_identity_certificate, err = client:OrganizationIdentityCertificate():load({ id = "organization_identity_certificate_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local organization_identity_certificates, err = client:OrganizationIdentityCertificate():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -23455,7 +23197,6 @@ Create an instance: `local organization_oidc_trust = client:OrganizationOidcTrus
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23471,12 +23212,6 @@ Create an instance: `local organization_oidc_trust = client:OrganizationOidcTrus
 
 ```lua
 local organization_oidc_trust, err = client:OrganizationOidcTrust():load({ id = "organization_oidc_trust_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local organization_oidc_trusts, err = client:OrganizationOidcTrust():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -23631,7 +23366,6 @@ Create an instance: `local organization_service_account = client:OrganizationSer
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23647,12 +23381,6 @@ Create an instance: `local organization_service_account = client:OrganizationSer
 
 ```lua
 local organization_service_account, err = client:OrganizationServiceAccount():load({ id = "organization_service_account_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local organization_service_accounts, err = client:OrganizationServiceAccount():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -23698,7 +23426,7 @@ Create an instance: `local organization_site = client:OrganizationSite(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -23708,10 +23436,10 @@ Create an instance: `local organization_site = client:OrganizationSite(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local organization_sites, err = client:OrganizationSite():list({ organization_id = "example", native_agent_id = "example" })
+local organization_site, err = client:OrganizationSite():load({ organization_id = "organization_id", native_agent_id = "native_agent_id" })
 ```
 
 #### Example: Create
@@ -23773,7 +23501,6 @@ Create an instance: `local organization_workload_identity = client:OrganizationW
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23789,12 +23516,6 @@ Create an instance: `local organization_workload_identity = client:OrganizationW
 
 ```lua
 local organization_workload_identity, err = client:OrganizationWorkloadIdentity():load({ id = "organization_workload_identity_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local organization_workload_identitys, err = client:OrganizationWorkloadIdentity():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -23866,7 +23587,6 @@ Create an instance: `local page_agent = client:PageAgent(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -23893,10 +23613,10 @@ Create an instance: `local page_agent = client:PageAgent(nil)`
 | `selected_reference` | `string|nil` |  |
 | `viewer_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local page_agents, err = client:PageAgent():list({ organization_id = "example" })
+local page_agent, err = client:PageAgent():load({ organization_id = "organization_id" })
 ```
 
 
@@ -24221,13 +23941,23 @@ Create an instance: `local pages_project_persona = client:PagesProjectPersona(ni
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_count` | `number` |  |
-| `credentials` | `table` |  |
-| `needs_attention_count` | `number` |  |
-| `permissions` | `table` |  |
-| `persona_states` | `table` | Scenarios by the state of their latest execution. |
-| `personas` | `table` |  |
-| `project` | `table` |  |
+| `access_mode` | `string` |  |
+| `active_run_count` | `number` |  |
+| `archived_at` | `string|nil` |  |
+| `attention` | `table` | What needs an operator's eye, problems before notices |
+| `capabilities` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `credential` | `any` |  |
+| `credential_id` | `string|nil` | The credential this persona signs in with. |
+| `goals` | `string|nil` |  |
+| `health` | `table` |  |
+| `id` | `string` |  |
+| `lock_version` | `number` |  |
+| `name` | `string` |  |
+| `project_id` | `string` |  |
+| `role` | `string` |  |
+| `scenario_count` | `number` |  |
+| `updated_at` | `string` |  |
 
 #### Example: List
 
@@ -24250,12 +23980,28 @@ Create an instance: `local pages_project_run = client:PagesProjectRun(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `environment_query` | `string` |  |
-| `environments` | `table` |  |
-| `environments_has_more` | `boolean` |  |
-| `pagination` | `table` |  |
-| `runs` | `table` |  |
-| `selected_environment` | `any` |  |
+| `archived_at` | `string|nil` |  |
+| `browser_seconds` | `number|nil` |  |
+| `can_archive` | `boolean` |  |
+| `can_restore` | `boolean` |  |
+| `cleanup_state` | `string` |  |
+| `commit_sha` | `string|nil` |  |
+| `created_at` | `string` |  |
+| `duration_seconds` | `number|nil` |  |
+| `environment_name` | `string|nil` |  |
+| `finished_at` | `string|nil` |  |
+| `id` | `string` |  |
+| `outcome` | `string|nil` |  |
+| `pull_request` | `any` |  |
+| `pull_request_label` | `string|nil` |  |
+| `scenario_count` | `number` |  |
+| `source_run` | `table|nil` |  |
+| `started_at` | `string|nil` |  |
+| `state` | `string` |  |
+| `title` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `triggered_by` | `string|nil` |  |
+| `web_path` | `string` |  |
 
 #### Example: List
 
@@ -24400,7 +24146,6 @@ Create an instance: `local pairing = client:Pairing(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -24413,12 +24158,6 @@ Create an instance: `local pairing = client:Pairing(nil)`
 
 ```lua
 local pairing, err = client:Pairing():load({ id = "pairing_id" })
-```
-
-#### Example: List
-
-```lua
-local pairings, err = client:Pairing():list()
 ```
 
 #### Example: Create
@@ -24437,12 +24176,12 @@ Create an instance: `local pairing_event = client:PairingEvent(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local pairing_events, err = client:PairingEvent():list({ pairing_id = "example" })
+local pairing_event, err = client:PairingEvent():load({ pairing_id = "pairing_id" })
 ```
 
 
@@ -24491,7 +24230,7 @@ Create an instance: `local personal_access_token = client:PersonalAccessToken(ni
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -24500,10 +24239,10 @@ Create an instance: `local personal_access_token = client:PersonalAccessToken(ni
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local personal_access_tokens, err = client:PersonalAccessToken():list()
+local personal_access_token, err = client:PersonalAccessToken():load({ id = "personal_access_token_id" })
 ```
 
 #### Example: Create
@@ -24522,12 +24261,12 @@ Create an instance: `local preview_operation = client:PreviewOperation(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local preview_operations, err = client:PreviewOperation():list({ app_id = "example", preview_id = "example" })
+local preview_operation, err = client:PreviewOperation():load({ app_id = "app_id", preview_id = "preview_id" })
 ```
 
 
@@ -24540,7 +24279,7 @@ Create an instance: `local preview_profile_secret_binding = client:PreviewProfil
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -24553,10 +24292,10 @@ Create an instance: `local preview_profile_secret_binding = client:PreviewProfil
 | `secret_id` | `string` |  |
 | `secret_version_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local preview_profile_secret_bindings, err = client:PreviewProfileSecretBinding():list({ app_id = "example", preview_profile_id = "example" })
+local preview_profile_secret_binding, err = client:PreviewProfileSecretBinding():load({ app_id = "app_id", preview_profile_id = "preview_profile_id" })
 ```
 
 #### Example: Create
@@ -24614,7 +24353,7 @@ Create an instance: `local preview_sharing_approval = client:PreviewSharingAppro
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -24633,10 +24372,10 @@ Create an instance: `local preview_sharing_approval = client:PreviewSharingAppro
 | `snapshot_version` | `number` |  |
 | `source_keys` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local preview_sharing_approvals, err = client:PreviewSharingApproval():list({ app_id = "example", preview_id = "example" })
+local preview_sharing_approval, err = client:PreviewSharingApproval():load({ app_id = "app_id", preview_id = "preview_id" })
 ```
 
 #### Example: Create
@@ -25247,18 +24986,11 @@ Create an instance: `local project_fixture = client:ProjectFixture(nil)`
 | `byte_size` | `number` |  |
 | `content_type` | `string` |  |
 | `credential_ids` | `table` |  |
-| `credentials` | `table` |  |
 | `environment_ids` | `table` |  |
-| `environments` | `table` |  |
-| `fixtures` | `table` |  |
 | `id` | `string` |  |
 | `lock_version` | `number` |  |
 | `name` | `string` |  |
-| `pagination` | `table` |  |
-| `permissions` | `table` |  |
 | `persona_ids` | `table` |  |
-| `personas` | `table` |  |
-| `project` | `table` |  |
 | `sha256` | `string` |  |
 | `url` | `string` |  |
 | `version` | `number` |  |
@@ -25640,7 +25372,7 @@ Create an instance: `local project_scenario_option = client:ProjectScenarioOptio
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25655,10 +25387,10 @@ Create an instance: `local project_scenario_option = client:ProjectScenarioOptio
 | `schedule_options` | `any` |  |
 | `schedules` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local project_scenario_options, err = client:ProjectScenarioOption():list({ organization_id = "example", project_id = "example" })
+local project_scenario_option, err = client:ProjectScenarioOption():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 
@@ -25701,7 +25433,7 @@ Create an instance: `local project_setting = client:ProjectSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25714,10 +25446,10 @@ Create an instance: `local project_setting = client:ProjectSetting(nil)`
 | `project` | `table` |  |
 | `tester_numbers` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local project_settings, err = client:ProjectSetting():list({ organization_id = "example", project_id = "example" })
+local project_setting, err = client:ProjectSetting():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 
@@ -25838,7 +25570,7 @@ Create an instance: `local pull_request_setting = client:PullRequestSetting(nil)
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25904,10 +25636,10 @@ Create an instance: `local pull_request_setting = client:PullRequestSetting(nil)
 | `verify_environment_id` | `string` |  |
 | `write_scenarios` | `boolean` | Draft and validate focused scenarios for each change on its preview. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local pull_request_settings, err = client:PullRequestSetting():list({ organization_id = "example" })
+local pull_request_setting, err = client:PullRequestSetting():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -26227,7 +25959,6 @@ Create an instance: `local release_rollout = client:ReleaseRollout(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -26240,12 +25971,6 @@ Create an instance: `local release_rollout = client:ReleaseRollout(nil)`
 
 ```lua
 local release_rollout, err = client:ReleaseRollout():load({ id = "release_rollout_id", release_id = "release_id" })
-```
-
-#### Example: List
-
-```lua
-local release_rollouts, err = client:ReleaseRollout():list({ release_id = "example" })
 ```
 
 #### Example: Create
@@ -26406,7 +26131,6 @@ Create an instance: `local repo_agent_session = client:RepoAgentSession(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -26426,12 +26150,6 @@ Create an instance: `local repo_agent_session = client:RepoAgentSession(nil)`
 
 ```lua
 local repo_agent_session, err = client:RepoAgentSession():load({ id = "repo_agent_session_id", organization_id = "organization_id", repo_id = "repo_id" })
-```
-
-#### Example: List
-
-```lua
-local repo_agent_sessions, err = client:RepoAgentSession():list({ organization_id = "example", repo_id = "example" })
 ```
 
 #### Example: Create
@@ -26552,7 +26270,6 @@ Create an instance: `local repo_cloud_workspace_backup = client:RepoCloudWorkspa
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -26565,12 +26282,6 @@ Create an instance: `local repo_cloud_workspace_backup = client:RepoCloudWorkspa
 
 ```lua
 local repo_cloud_workspace_backup, err = client:RepoCloudWorkspaceBackup():load({ id = "repo_cloud_workspace_backup_id", organization_id = "organization_id", repo_id = "repo_id" })
-```
-
-#### Example: List
-
-```lua
-local repo_cloud_workspace_backups, err = client:RepoCloudWorkspaceBackup():list({ organization_id = "example", repo_id = "example" })
 ```
 
 #### Example: Create
@@ -27041,7 +26752,6 @@ Create an instance: `local roder_code_repair = client:RoderCodeRepair(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -27067,12 +26777,6 @@ Create an instance: `local roder_code_repair = client:RoderCodeRepair(nil)`
 local roder_code_repair, err = client:RoderCodeRepair():load({ id = "roder_code_repair_id" })
 ```
 
-#### Example: List
-
-```lua
-local roder_code_repairs, err = client:RoderCodeRepair():list({ scenario_run_id = "example" })
-```
-
 #### Example: Create
 
 ```lua
@@ -27094,7 +26798,7 @@ Create an instance: `local roder_code_repair_setting = client:RoderCodeRepairSet
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27108,10 +26812,10 @@ Create an instance: `local roder_code_repair_setting = client:RoderCodeRepairSet
 | `organization_id` | `string` |  |
 | `repository_slug` | `string|nil` | Connected Composal repository required when enabling |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local roder_code_repair_settings, err = client:RoderCodeRepairSetting():list({ organization_id = "example" })
+local roder_code_repair_setting, err = client:RoderCodeRepairSetting():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -27198,12 +26902,12 @@ Create an instance: `local run_artifact = client:RunArtifact(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local run_artifacts, err = client:RunArtifact():list({ pipeline_id = "example", run_id = "example" })
+local run_artifact, err = client:RunArtifact():load({ pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 #### Example: Create
@@ -27225,7 +26929,6 @@ Create an instance: `local run_job = client:RunJob(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -27271,12 +26974,6 @@ Create an instance: `local run_job = client:RunJob(nil)`
 
 ```lua
 local run_job, err = client:RunJob():load({ id = "run_job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
-```
-
-#### Example: List
-
-```lua
-local run_jobs, err = client:RunJob():list({ pipeline_id = "example", run_id = "example" })
 ```
 
 #### Example: Create
@@ -27430,7 +27127,7 @@ Create an instance: `local runner_lease = client:RunnerLease(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27438,10 +27135,10 @@ Create an instance: `local runner_lease = client:RunnerLease(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local runner_leases, err = client:RunnerLease():list({ runner_id = "example", runner_pool_id = "example" })
+local runner_lease, err = client:RunnerLease():load({ runner_id = "runner_id", runner_pool_id = "runner_pool_id" })
 ```
 
 #### Example: Create
@@ -27517,7 +27214,6 @@ Create an instance: `local runner_pool_runner = client:RunnerPoolRunner(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -27532,12 +27228,6 @@ Create an instance: `local runner_pool_runner = client:RunnerPoolRunner(nil)`
 
 ```lua
 local runner_pool_runner, err = client:RunnerPoolRunner():load({ id = "runner_pool_runner_id", runner_pool_id = "runner_pool_id" })
-```
-
-#### Example: List
-
-```lua
-local runner_pool_runners, err = client:RunnerPoolRunner():list({ runner_pool_id = "example" })
 ```
 
 #### Example: Create
@@ -27558,12 +27248,12 @@ Create an instance: `local runtime_instance_health_snapshot = client:RuntimeInst
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local runtime_instance_health_snapshots, err = client:RuntimeInstanceHealthSnapshot():list({ runtime_instance_id = "example" })
+local runtime_instance_health_snapshot, err = client:RuntimeInstanceHealthSnapshot():load({ runtime_instance_id = "runtime_instance_id" })
 ```
 
 #### Example: Create
@@ -27584,7 +27274,7 @@ Create an instance: `local sandbox_integration = client:SandboxIntegration(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -27604,10 +27294,10 @@ Create an instance: `local sandbox_integration = client:SandboxIntegration(nil)`
 | `provider` | `string` |  |
 | `version` | `number` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local sandbox_integrations, err = client:SandboxIntegration():list({ organization_id = "example" })
+local sandbox_integration, err = client:SandboxIntegration():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -27705,7 +27395,6 @@ Create an instance: `local secret_grant = client:SecretGrant(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27721,12 +27410,6 @@ Create an instance: `local secret_grant = client:SecretGrant(nil)`
 
 ```lua
 local secret_grant, err = client:SecretGrant():load({ id = "secret_grant_id", organization_id = "organization_id", secret_id = "secret_id" })
-```
-
-#### Example: List
-
-```lua
-local secret_grants, err = client:SecretGrant():list({ organization_id = "example", secret_id = "example" })
 ```
 
 #### Example: Create
@@ -27748,7 +27431,6 @@ Create an instance: `local secret_version = client:SecretVersion(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27764,12 +27446,6 @@ Create an instance: `local secret_version = client:SecretVersion(nil)`
 
 ```lua
 local secret_version, err = client:SecretVersion():load({ id = "secret_version_id", organization_id = "organization_id", secret_id = "secret_id" })
-```
-
-#### Example: List
-
-```lua
-local secret_versions, err = client:SecretVersion():list({ organization_id = "example", secret_id = "example" })
 ```
 
 #### Example: Create
@@ -27791,7 +27467,6 @@ Create an instance: `local service_endpoint = client:ServiceEndpoint(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27807,12 +27482,6 @@ Create an instance: `local service_endpoint = client:ServiceEndpoint(nil)`
 
 ```lua
 local service_endpoint, err = client:ServiceEndpoint():load({ id = "service_endpoint_id", app_id = "app_id", service_id = "service_id" })
-```
-
-#### Example: List
-
-```lua
-local service_endpoints, err = client:ServiceEndpoint():list({ app_id = "example", service_id = "example" })
 ```
 
 #### Example: Create
@@ -27833,7 +27502,7 @@ Create an instance: `local setting = client:Setting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27846,10 +27515,10 @@ Create an instance: `local setting = client:Setting(nil)`
 | `organization` | `table` |  |
 | `sandbox_regions` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local settings, err = client:Setting():list({ organization_id = "example" })
+local setting, err = client:Setting():load({ organization_id = "organization_id" })
 ```
 
 
@@ -28084,7 +27753,6 @@ Create an instance: `local signal_subscription = client:SignalSubscription(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28100,12 +27768,6 @@ Create an instance: `local signal_subscription = client:SignalSubscription(nil)`
 
 ```lua
 local signal_subscription, err = client:SignalSubscription():load({ id = "signal_subscription_id", organization_id = "organization_id" })
-```
-
-#### Example: List
-
-```lua
-local signal_subscriptions, err = client:SignalSubscription():list({ organization_id = "example" })
 ```
 
 #### Example: Create
@@ -28174,7 +27836,7 @@ Create an instance: `local site_access_key = client:SiteAccessKey(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -28183,10 +27845,10 @@ Create an instance: `local site_access_key = client:SiteAccessKey(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local site_access_keys, err = client:SiteAccessKey():list({ organization_id = "example", site_id = "example" })
+local site_access_key, err = client:SiteAccessKey():load({ organization_id = "organization_id", site_id = "site_id" })
 ```
 
 #### Example: Create
@@ -28298,7 +27960,6 @@ Create an instance: `local space_alert_rule = client:SpaceAlertRule(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28314,12 +27975,6 @@ Create an instance: `local space_alert_rule = client:SpaceAlertRule(nil)`
 
 ```lua
 local space_alert_rule, err = client:SpaceAlertRule():load({ id = "space_alert_rule_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_alert_rules, err = client:SpaceAlertRule():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28340,12 +27995,12 @@ Create an instance: `local space_audit_event = client:SpaceAuditEvent(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_audit_events, err = client:SpaceAuditEvent():list({ space_id = "example" })
+local space_audit_event, err = client:SpaceAuditEvent():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28366,7 +28021,6 @@ Create an instance: `local space_dns_record = client:SpaceDnsRecord(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28382,12 +28036,6 @@ Create an instance: `local space_dns_record = client:SpaceDnsRecord(nil)`
 
 ```lua
 local space_dns_record, err = client:SpaceDnsRecord():load({ id = "space_dns_record_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_dns_records, err = client:SpaceDnsRecord():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28408,7 +28056,6 @@ Create an instance: `local space_enrollment_token = client:SpaceEnrollmentToken(
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28424,12 +28071,6 @@ Create an instance: `local space_enrollment_token = client:SpaceEnrollmentToken(
 
 ```lua
 local space_enrollment_token, err = client:SpaceEnrollmentToken():load({ id = "space_enrollment_token_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_enrollment_tokens, err = client:SpaceEnrollmentToken():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28450,7 +28091,6 @@ Create an instance: `local space_gateway = client:SpaceGateway(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28466,12 +28106,6 @@ Create an instance: `local space_gateway = client:SpaceGateway(nil)`
 
 ```lua
 local space_gateway, err = client:SpaceGateway():load({ id = "space_gateway_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_gateways, err = client:SpaceGateway():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28492,7 +28126,7 @@ Create an instance: `local space_group = client:SpaceGroup(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28503,10 +28137,10 @@ Create an instance: `local space_group = client:SpaceGroup(nil)`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_groups, err = client:SpaceGroup():list({ space_id = "example" })
+local space_group, err = client:SpaceGroup():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28527,7 +28161,7 @@ Create an instance: `local space_group_membership = client:SpaceGroupMembership(
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28538,10 +28172,10 @@ Create an instance: `local space_group_membership = client:SpaceGroupMembership(
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_group_memberships, err = client:SpaceGroupMembership():list({ space_id = "example" })
+local space_group_membership, err = client:SpaceGroupMembership():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28562,12 +28196,12 @@ Create an instance: `local space_log_stream = client:SpaceLogStream(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_log_streams, err = client:SpaceLogStream():list({ space_id = "example" })
+local space_log_stream, err = client:SpaceLogStream():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28588,12 +28222,12 @@ Create an instance: `local space_metric_sery = client:SpaceMetricSery(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_metric_serys, err = client:SpaceMetricSery():list({ space_id = "example" })
+local space_metric_sery, err = client:SpaceMetricSery():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28614,7 +28248,6 @@ Create an instance: `local space_otel_collector = client:SpaceOtelCollector(nil)
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28630,12 +28263,6 @@ Create an instance: `local space_otel_collector = client:SpaceOtelCollector(nil)
 
 ```lua
 local space_otel_collector, err = client:SpaceOtelCollector():load({ id = "space_otel_collector_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_otel_collectors, err = client:SpaceOtelCollector():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28656,7 +28283,6 @@ Create an instance: `local space_peer = client:SpacePeer(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28672,12 +28298,6 @@ Create an instance: `local space_peer = client:SpacePeer(nil)`
 
 ```lua
 local space_peer, err = client:SpacePeer():load({ id = "space_peer_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_peers, err = client:SpacePeer():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28698,7 +28318,7 @@ Create an instance: `local space_peer_attachment = client:SpacePeerAttachment(ni
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28709,10 +28329,10 @@ Create an instance: `local space_peer_attachment = client:SpacePeerAttachment(ni
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_peer_attachments, err = client:SpacePeerAttachment():list({ space_id = "example" })
+local space_peer_attachment, err = client:SpacePeerAttachment():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28733,7 +28353,6 @@ Create an instance: `local space_policy = client:SpacePolicy(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28749,12 +28368,6 @@ Create an instance: `local space_policy = client:SpacePolicy(nil)`
 
 ```lua
 local space_policy, err = client:SpacePolicy():load({ id = "space_policy_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_policys, err = client:SpacePolicy():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28775,7 +28388,6 @@ Create an instance: `local space_segment = client:SpaceSegment(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28791,12 +28403,6 @@ Create an instance: `local space_segment = client:SpaceSegment(nil)`
 
 ```lua
 local space_segment, err = client:SpaceSegment():load({ id = "space_segment_id", space_id = "space_id" })
-```
-
-#### Example: List
-
-```lua
-local space_segments, err = client:SpaceSegment():list({ space_id = "example" })
 ```
 
 #### Example: Create
@@ -28817,12 +28423,12 @@ Create an instance: `local space_trace_span = client:SpaceTraceSpan(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local space_trace_spans, err = client:SpaceTraceSpan():list({ space_id = "example" })
+local space_trace_span, err = client:SpaceTraceSpan():load({ space_id = "space_id" })
 ```
 
 #### Example: Create
@@ -28843,7 +28449,7 @@ Create an instance: `local spark = client:Spark(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -28882,10 +28488,10 @@ Create an instance: `local spark = client:Spark(nil)`
 | `updated_at_label` | `string|nil` |  |
 | `verify_pr_scenario_writing_enabled` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local sparks, err = client:Spark():list({ organization_id = "example" })
+local spark, err = client:Spark():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -28907,7 +28513,7 @@ Create an instance: `local spark_agent_integration = client:SparkAgentIntegratio
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -28937,10 +28543,10 @@ Create an instance: `local spark_agent_integration = client:SparkAgentIntegratio
 | `webhook_connections` | `table` |  |
 | `webhooks_available` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local spark_agent_integrations, err = client:SparkAgentIntegration():list({ agent_id = "example", organization_id = "example" })
+local spark_agent_integration, err = client:SparkAgentIntegration():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -29115,30 +28721,32 @@ Create an instance: `local spark_agent_thread = client:SparkAgentThread(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `number|nil` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` |  |
-| `execution` | `any` |  |
+| `archive_deletes_sandbox` | `boolean` |  |
+| `archived` | `boolean` |  |
+| `attention` | `table|nil` | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `boolean` |  |
+| `can_compact` | `boolean` |  |
+| `can_snooze` | `boolean` |  |
+| `coordination_status` | `string|nil` | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `any` | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `any` |  |
 | `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `group` | `string` | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `boolean` |  |
 | `id` | `string` |  |
 | `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
-| `local_activities` | `table` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string|nil` |  |
-| `local_scope_key` | `string|nil` |  |
-| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `table` |  |
-| `main_thread_id` | `string` |  |
+| `is_main` | `boolean` |  |
+| `kind` | `string` |  |
 | `message` | `string` | The thread's first message. |
-| `next_cursor` | `string|nil` |  |
+| `older` | `boolean` | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` |  |
-| `selected_thread` | `any` |  |
+| `snoozed_until` | `string|nil` | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `table` |  |
-| `threads` | `table` |  |
 | `title` | `string` |  |
-| `total_archived_count` | `number|nil` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `string|nil` |  |
 
 #### Example: List
 
@@ -29165,7 +28773,6 @@ Create an instance: `local spark_credit = client:SparkCredit(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -29187,7 +28794,7 @@ Create an instance: `local spark_credit = client:SparkCredit(nil)`
 | `kind` | `string` |  |
 | `payment_method` | `table|nil` |  |
 | `payments_enabled` | `boolean` |  |
-| `plan` | `string` |  |
+| `plan` | `string|nil` |  |
 | `plans` | `table` |  |
 | `quoted_credits_cents` | `number` | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `number` | Monthly cash price shown for a subscription, in USD cents. |
@@ -29200,10 +28807,10 @@ Create an instance: `local spark_credit = client:SparkCredit(nil)`
 | `top_up_max_cents` | `number` | Maximum manual top-up, in USD cents. |
 | `top_up_step_cents` | `number` | Minimum manual top-up and increment, in USD cents. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local spark_credits, err = client:SparkCredit():list({ organization_id = "example" })
+local spark_credit, err = client:SparkCredit():load({ organization_id = "organization_id" })
 ```
 
 #### Example: Create
@@ -29252,7 +28859,7 @@ Create an instance: `local spark_credit_usage_total = client:SparkCreditUsageTot
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -29262,10 +28869,10 @@ Create an instance: `local spark_credit_usage_total = client:SparkCreditUsageTot
 | `compute_usd` | `string` |  |
 | `inference_usd` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local spark_credit_usage_totals, err = client:SparkCreditUsageTotal():list({ organization_id = "example" })
+local spark_credit_usage_total, err = client:SparkCreditUsageTotal():load({ organization_id = "organization_id" })
 ```
 
 
@@ -30225,7 +29832,7 @@ Create an instance: `local vcs_setting = client:VcsSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -30238,10 +29845,10 @@ Create an instance: `local vcs_setting = client:VcsSetting(nil)`
 | `organization` | `table` |  |
 | `sandbox_regions` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local vcs_settings, err = client:VcsSetting():list({ organization_id = "example" })
+local vcs_setting, err = client:VcsSetting():load({ organization_id = "organization_id" })
 ```
 
 
@@ -30591,12 +30198,12 @@ Create an instance: `local verify_email_verification = client:VerifyEmailVerific
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local verify_email_verifications, err = client:VerifyEmailVerification():list()
+local verify_email_verification, err = client:VerifyEmailVerification():load()
 ```
 
 
@@ -31219,11 +30826,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local agentoperation = client:AgentOperation()
-agentoperation:load({ agent_id = "example", id = "example_id", organization_id = "example" })
+local githubonboarding = client:GithubOnboarding()
+githubonboarding:load({ organization_id = "example" })
 
--- agentoperation:data_get() now returns the agentoperation data from the last load
--- agentoperation:match_get() returns the last match criteria
+-- githubonboarding:data_get() now returns the githubonboarding data from the last load
+-- githubonboarding:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

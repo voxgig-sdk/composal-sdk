@@ -385,69 +385,6 @@ main: kit: entity: cache_namespace_entry: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "cache_namespace_id"
-                or: "cache_namespace_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
-          q: {
-            exist: [
-              "cache_namespace_id"
-            ]
-          }
-          r: {
-            param: {
-              cache_namespace_id: "cache_namespace_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "artifacts"
-            }
-            {
-              lit: "cache_namespaces"
-            }
-            {
-              var: "cache_namespace_id"
-            }
-            {
-              lit: "entries"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -514,6 +451,64 @@ main: kit: entity: cache_namespace_entry: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cache_namespace_id"
+                or: "cache_namespace_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries"
+          q: {
+            exist: [
+              "cache_namespace_id"
+            ]
+          }
+          r: {
+            param: {
+              cache_namespace_id: "cache_namespace_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "cache_namespaces"
+            }
+            {
+              var: "cache_namespace_id"
+            }
+            {
+              lit: "entries"
             }
           ]
           t: {

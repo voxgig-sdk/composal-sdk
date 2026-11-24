@@ -110,7 +110,7 @@ main: kit: entity: agreement: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.agreements`"
           }
         }
       ]

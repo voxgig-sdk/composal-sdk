@@ -3,7 +3,7 @@ id: "7441883a-451d-5437-9a8b-1c45d26c4ccb"
 description: |-
   The `load` operation of **space_alert_rule**.
 
-  SDK: `client.SpaceAlertRule().load({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpaceAlertRule().load({ space_id: "example" })`
 url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{space_alert_rule_id}}"
     description: The space_alert_rule this request addresses.
-order: 2000
+order: 1000

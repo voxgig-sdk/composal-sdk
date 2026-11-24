@@ -20,23 +20,6 @@ main: kit: flow: BasicAlertRuleEventFlow:
     }
 
     {
-      m: {
-        alert_rule_id: "alert_rule01",
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "alert_rule_event_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "alert_rule_event_ref01",
         srcdatavar: "alert_rule_event_ref01_data",
@@ -44,7 +27,6 @@ main: kit: flow: BasicAlertRuleEventFlow:
       }
 
       m: {
-        alert_rule_id: "alert_rule01",
         id: "alert_rule_event01",
         space_id: "space01"
       }
@@ -73,27 +55,6 @@ main: kit: flow: BasicAlertRuleEventFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        alert_rule_id: "alert_rule01",
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "alert_rule_event_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAlertRuleEventFlow"

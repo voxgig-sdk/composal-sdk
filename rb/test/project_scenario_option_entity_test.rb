@@ -25,7 +25,7 @@ class ProjectScenarioOptionEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ProjectScenarioOption(nil).list({ "organization_id" => 1, "project_id" => "x" }, nil)
+      client.ProjectScenarioOption(nil).load({ "organization_id" => 1, "project_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class ProjectScenarioOptionEntityTest < Minitest::Test
     setup = project_scenario_option_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "project_scenario_option." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,12 +42,9 @@ class ProjectScenarioOptionEntityTest < Minitest::Test
       end
     end
     if setup[:live]
-      ["organization01", "project01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_PROJECT_SCENARIO_OPTION_ENTID")
-        end
-      end
+      skip("Live coverage incomplete: the flow has no step to run")
     end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -57,17 +54,6 @@ class ProjectScenarioOptionEntityTest < Minitest::Test
     if project_scenario_option_ref01_data_raw.length > 0
       project_scenario_option_ref01_data = Helpers.to_map(project_scenario_option_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    project_scenario_option_ref01_ent = client.ProjectScenarioOption(nil)
-    project_scenario_option_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "project_id" => setup[:idmap]["project01"],
-    }
-
-    project_scenario_option_ref01_list_result = project_scenario_option_ref01_ent.list(project_scenario_option_ref01_match, nil)
-    assert project_scenario_option_ref01_list_result.is_a?(Array)
 
   end
 end

@@ -58,8 +58,8 @@ main: kit: entity: project_scenario_option: {
 
   name: "project_scenario_option"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

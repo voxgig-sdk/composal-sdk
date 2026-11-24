@@ -3,7 +3,7 @@ id: ce1c6799-1dcb-50a2-b6df-05a01ea92587
 description: |-
   The `load` operation of **space_policy**.
 
-  SDK: `client.SpacePolicy().load({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpacePolicy().load({ space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/policies/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{space_policy_id}}"
     description: The space_policy this request addresses.
-order: 2000
+order: 1000

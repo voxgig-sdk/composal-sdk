@@ -29,35 +29,18 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-repo_cloud_workspace_backup', setup.live))
             return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01", "repo01"], LIVE_STRICT))
+        if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["repo_cloud_workspace_backup01"]) {
+            console.log("LIVE STEP {\"id\":\"direct-load-repo_cloud_workspace_backup\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs repo_cloud_workspace_backup01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request gives\"}");
+            t.skip("Live coverage incomplete: direct-load-repo_cloud_workspace_backup excluded (GET-only live run: needs repo_cloud_workspace_backup01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request gives)");
+            return;
+        }
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["repo_cloud_workspace_backup01", "organization01", "repo01"], LIVE_STRICT))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            const listResult = await client.direct({
-                path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/cloud_workspace_backups',
-                method: 'GET',
-                params: {
-                    organization_id: setup.idmap['organization01'],
-                    repo_id: setup.idmap['repo01'],
-                },
-            });
-            if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list discovery failed: ' + (0, utility_1.describeLive)(listResult));
-            }
-            const listArr = unwrapListData(listResult.data);
-            if (null == listArr) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list discovery returned no list: ' + (0, utility_1.describeLive)(listResult));
-            }
-            if (0 === listArr.length) {
-                return void (0, utility_1.liveEmpty)(t, 'The account has no repo_cloud_workspace_backup record to load');
-            }
-            const candidateId = listArr[0]?.id;
-            if (null == candidateId) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity');
-            }
-            params.id = candidateId;
+            params.id = setup.idmap['repo_cloud_workspace_backup01'];
             params.organization_id = setup.idmap['organization01'];
             params.repo_id = setup.idmap['repo01'];
         }
@@ -90,54 +73,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
             (0, node_assert_1.default)(calls[0].url.includes('direct02'));
             (0, node_assert_1.default)(calls[0].url.includes('direct03'));
-        }
-    });
-    (0, node_test_1.test)('direct-list-repo_cloud_workspace_backup', async (t) => {
-        if (liveScenariosActive()) {
-            t.skip('Covered by live operation scenarios');
-            return;
-        }
-        const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-repo_cloud_workspace_backup', setup.live))
-            return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01", "repo01"], LIVE_STRICT))
-            return;
-        const { client, calls } = setup;
-        const params = {};
-        const query = {};
-        if (setup.live) {
-            params.organization_id = setup.idmap['organization01'];
-            params.repo_id = setup.idmap['repo01'];
-        }
-        else {
-            params.organization_id = 'direct01';
-            params.repo_id = 'direct02';
-        }
-        const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/repos/{repo_id}/cloud_workspace_backups',
-            method: 'GET',
-            params,
-            query,
-        });
-        if (setup.live) {
-            if (!result.ok || result.status < 200 || result.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list failed: ' + (0, utility_1.describeLive)(result));
-            }
-            if (!(Array.isArray(unwrapListData(result.data)))) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list returned no list: ' + (0, utility_1.describeLive)(result));
-            }
-        }
-        else {
-            (0, node_assert_1.default)(result.ok === true);
-            (0, node_assert_1.default)(result.status === 200);
-            (0, node_assert_1.default)(null != result.data);
-            const listArr = unwrapListData(result.data);
-            (0, node_assert_1.default)(Array.isArray(listArr));
-            (0, node_assert_1.default)(listArr.length === 2);
-            (0, node_assert_1.default)(calls.length === 1);
-            (0, node_assert_1.default)(calls[0].init.method === 'GET');
-            (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-            (0, node_assert_1.default)(calls[0].url.includes('direct02'));
         }
     });
 });

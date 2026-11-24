@@ -1,0 +1,18 @@
+$kind: http-request
+id: "96f04ca6-7b99-51ef-952d-ca5f7014f0b2"
+description: |-
+  The `load` operation of **preview_sharing_approval**.
+
+  SDK: `client.PreviewSharingApproval().load({ app_id: "example", preview_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/previews/:id/sharing_approvals"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this preview_sharing_approval belongs to.
+  - key: id
+    value: "{{preview_id}}"
+    description: "Input: preview_id."
+order: 1000

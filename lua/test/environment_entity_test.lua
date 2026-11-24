@@ -29,7 +29,7 @@ describe("EnvironmentEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:Environment(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:Environment(nil):load({ ["id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("EnvironmentEntity", function()
     local setup = environment_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "environment." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,70 +46,10 @@ describe("EnvironmentEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"environment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments\"}")
-      print("LIVE STEP {\"id\":\"environment.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}\"}")
-      print("LIVE STEP {\"id\":\"environment.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}\"}")
-      print("LIVE STEP {\"id\":\"environment.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_ENVIRONMENT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["environment01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "environment", function()
-        return client:Environment(nil):list({["organization_id"] = setup.idmap["organization01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local environment_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.environment")))
-    local environment_ref01_data = nil
-    if #environment_ref01_data_raw > 0 then
-      environment_ref01_data = helpers.to_map(environment_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local environment_ref01_ent = client:Environment(nil)
-    local environment_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local environment_ref01_list_result, err = environment_ref01_ent:list(environment_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(environment_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local environment_ref01_match_dt0 = {
-      id = environment_ref01_data["id"],
-    }
-    do
-      local own = environment_ref01_data["organization_id"]
-      if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
-        environment_ref01_match_dt0["organization_id"] = own
-      else
-        environment_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-      end
-    end
-    local environment_ref01_data_dt0_loaded, err = environment_ref01_ent:load(environment_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local environment_ref01_data_dt0_load_result = helpers.to_map(type(environment_ref01_data_dt0_loaded) == 'table' and environment_ref01_data_dt0_loaded.data_get and environment_ref01_data_dt0_loaded:data_get() or environment_ref01_data_dt0_loaded)
-    assert.is_not_nil(environment_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(environment_ref01_data_dt0_load_result["id"], environment_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"environment.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}\"}")
+      print("LIVE STEP {\"id\":\"environment.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"environment.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}\"}")
+      pending("Live coverage incomplete: environment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments); environment.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}); environment.load.2 excluded (GET-only live run: reads a record only environment.create.0 gives); environment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id})")
       return
     end
 
@@ -136,23 +76,6 @@ describe("EnvironmentEntity", function()
     environment_ref01_data = helpers.to_map(type(environment_ref01_data_result) == 'table' and environment_ref01_data_result.data_get and environment_ref01_data_result:data_get() or environment_ref01_data_result)
     assert.is_not_nil(environment_ref01_data)
     assert.is_not_nil(environment_ref01_data["id"])
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local environment_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local environment_ref01_list_result, err = environment_ref01_ent:list(environment_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(environment_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(environment_ref01_list_result),
-      { id = environment_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
 
     if setup.live then
       runner.live_pace()
@@ -186,7 +109,7 @@ describe("EnvironmentEntity", function()
       if type(own) == "string" or type(own) == "number" or type(own) == "boolean" then
         environment_ref01_match_dt0["organization_id"] = own
       else
-        environment_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+        environment_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"]
       end
     end
     local environment_ref01_data_dt0_loaded, err = environment_ref01_ent:load(environment_ref01_match_dt0, nil)
@@ -205,23 +128,6 @@ describe("EnvironmentEntity", function()
     environment_ref01_match_rm0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local _, err = environment_ref01_ent:remove(environment_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local environment_ref01_match_rt0 = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local environment_ref01_list_rt0_result, err = environment_ref01_ent:list(environment_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(environment_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(environment_ref01_list_rt0_result),
-      { id = environment_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

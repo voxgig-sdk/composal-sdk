@@ -5,30 +5,29 @@ main: kit: entity: deep_scan_finding: {
   alias: field: {}
 
   fields: {
-    finding_count: {
-      h: "Finding Count"
-      n: "finding_count"
+    actual: {
+      h: "Actual"
+      n: "actual"
       r: true
-      sh: "Findings at every priority; findings lists only the listed priority."
-      t: "`$INTEGER`"
+      t: "`$STRING`"
     }
-    finding_ids: {
-      h: "Finding Ids"
-      n: "finding_ids"
+    agent_id: {
+      h: "Agent Id"
+      n: "agent_id"
       r: true
-      sh: "Original team order used by legacy hash links and rerun indices."
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    findings: {
-      h: "Findings"
-      n: "findings"
+    agent_title: {
+      h: "Agent Title"
+      n: "agent_title"
       r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    findings_fix_prompt: {
-      h: "Findings Fix Prompt"
-      n: "findings_fix_prompt"
-      r: true
+    area: {
+      h: "Area"
+      n: "area"
+      r: false
+      sh: "On a locked finding, the first segment of the page it was seen on, such as Billing."
       t: [
         "`$ONE`"
         [
@@ -37,11 +36,62 @@ main: kit: entity: deep_scan_finding: {
         ]
       ]
     }
-    free_findings_pending: {
-      h: "Free Findings Pending"
-      n: "free_findings_pending"
+    checks: {
+      h: "Checks"
+      n: "checks"
       r: true
-      sh: "Whether a scan with locked findings has yet to choose which are free, so every row is locked for now."
+      sh: "Checks in the same tester report that this finding cites."
+      t: "`$ARRAY`"
+    }
+    confidence: {
+      h: "Confidence"
+      n: "confidence"
+      r: true
+      t: "`$STRING`"
+    }
+    confirmed: {
+      h: "Confirmed"
+      n: "confirmed"
+      r: false
+      sh: "On a locked finding, whether the automatic review confirmed it."
+      t: "`$BOOLEAN`"
+    }
+    evidence_step_ids: {
+      h: "Evidence Step Ids"
+      n: "evidence_step_ids"
+      r: false
+      t: "`$ARRAY`"
+    }
+    evidence_timestamp_ms: {
+      h: "Evidence Timestamp Ms"
+      n: "evidence_timestamp_ms"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    expected: {
+      h: "Expected"
+      n: "expected"
+      r: true
+      t: "`$STRING`"
+    }
+    fix_prompt: {
+      h: "Fix Prompt"
+      n: "fix_prompt"
+      r: true
+      sh: "A coding-agent prompt for this finding alone"
+      t: "`$STRING`"
+    }
+    has_recording: {
+      h: "Has Recording"
+      n: "has_recording"
+      r: false
+      sh: "On a locked finding, whether the tester recorded evidence for it."
       t: "`$BOOLEAN`"
     }
     id: {
@@ -50,78 +100,22 @@ main: kit: entity: deep_scan_finding: {
       r: true
       t: "`$STRING`"
     }
-    mode: {
-      h: "Mode"
-      n: "mode"
+    locked: {
+      h: "Locked"
+      n: "locked"
       r: true
-      t: "`$STRING`"
-    }
-    permissions: {
-      h: "Permissions"
-      n: "permissions"
-      r: true
-      t: "`$OBJECT`"
-    }
-    priority: {
-      h: "Priority"
-      n: "priority"
-      r: true
-      sh: "The priority findings are narrowed to, or null when they are not narrowed."
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    priority_counts: {
-      h: "Priority Counts"
-      n: "priority_counts"
-      r: true
-      t: "`$OBJECT`"
-    }
-    project_id: {
-      h: "Project Id"
-      n: "project_id"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    reproduction_of: {
-      h: "Reproduction Of"
-      n: "reproduction_of"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$OBJECT`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    reproductions: {
-      h: "Reproductions"
-      n: "reproductions"
-      r: true
-      sh: "Fresh-browser reruns of this scan's reported bugs."
-      t: "`$ARRAY`"
-    }
-    reruns_available: {
-      h: "Reruns Available"
-      n: "reruns_available"
-      r: true
-      sh: "Whether findings can be rerun; a scan with locked findings waits for a paid plan."
+      sh: "True for a locked finding of the workspace's included scan before it pays."
       t: "`$BOOLEAN`"
     }
-    status: {
-      h: "Status"
-      n: "status"
+    reproduction_steps: {
+      h: "Reproduction Steps"
+      n: "reproduction_steps"
+      r: true
+      t: "`$ARRAY`"
+    }
+    severity: {
+      h: "Severity"
+      n: "severity"
       r: true
       t: "`$STRING`"
     }
@@ -131,16 +125,22 @@ main: kit: entity: deep_scan_finding: {
       r: true
       t: "`$STRING`"
     }
-    unlock: {
-      h: "Unlock"
-      n: "unlock"
+    tracked: {
+      h: "Tracked"
+      n: "tracked"
       r: true
-      sh: "Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one."
-      t: "`$OBJECT`"
+      sh: "The finding record to resolve or ignore; null until the tester finishes."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
     }
-    web_url: {
-      h: "Web Url"
-      n: "web_url"
+    url: {
+      h: "Url"
+      n: "url"
       r: true
       t: "`$STRING`"
     }
@@ -245,7 +245,7 @@ main: kit: entity: deep_scan_finding: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.findings`"
           }
         }
       ]

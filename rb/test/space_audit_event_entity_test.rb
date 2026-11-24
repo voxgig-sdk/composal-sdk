@@ -25,7 +25,7 @@ class SpaceAuditEventEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SpaceAuditEvent(nil).list({ "space_id" => 1 }, nil)
+      client.SpaceAuditEvent(nil).load({ "space_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SpaceAuditEventEntityTest < Minitest::Test
     setup = space_audit_event_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "space_audit_event." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class SpaceAuditEventEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"space_audit_event.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/audit_events\"}"
-    if setup[:live]
-      ["space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPACE_AUDIT_EVENT_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,14 +54,11 @@ class SpaceAuditEventEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     space_audit_event_ref01_ent = client.SpaceAuditEvent(nil)
-    space_audit_event_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_audit_event_ref01_list_result = space_audit_event_ref01_ent.list(space_audit_event_ref01_match, nil)
-    assert space_audit_event_ref01_list_result.is_a?(Array)
+    space_audit_event_ref01_match_dt0 = {}
+    space_audit_event_ref01_data_dt0_loaded = space_audit_event_ref01_ent.load(space_audit_event_ref01_match_dt0, nil)
+    assert !space_audit_event_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -94,13 +84,10 @@ class SpaceAuditEventEntityTest < Minitest::Test
     assert !space_audit_event_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    space_audit_event_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_audit_event_ref01_list_result = space_audit_event_ref01_ent.list(space_audit_event_ref01_match, nil)
-    assert space_audit_event_ref01_list_result.is_a?(Array)
+    # LOAD
+    space_audit_event_ref01_match_dt0 = {}
+    space_audit_event_ref01_data_dt0_loaded = space_audit_event_ref01_ent.load(space_audit_event_ref01_match_dt0, nil)
+    assert !space_audit_event_ref01_data_dt0_loaded.nil?
 
   end
 end

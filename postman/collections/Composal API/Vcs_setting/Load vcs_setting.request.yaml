@@ -1,0 +1,15 @@
+$kind: http-request
+id: d7ade364-3048-5f3d-b911-3982b7646cf8
+description: |-
+  The `load` operation of **vcs_setting**.
+
+  SDK: `client.VcsSetting().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/vcs_settings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this vcs_setting belongs to.
+order: 1000

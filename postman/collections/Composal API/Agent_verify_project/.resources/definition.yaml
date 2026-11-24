@@ -8,8 +8,11 @@ description: |-
   | `available` | boolean | yes |  |
   | `can_manage` | boolean | yes |  |
   | `expected_version` | integer | yes |  |
+  | `id` | string | yes |  |
+  | `name` | string | yes |  |
   | `project_choices` | array | yes |  |
   | `project_choices_truncated` | boolean | yes |  |
+  | `slug` | string | yes |  |
   | `verify_projects` | array | yes |  |
   | `version` | integer | yes |  |
 order: 65000

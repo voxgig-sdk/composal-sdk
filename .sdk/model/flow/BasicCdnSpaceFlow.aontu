@@ -19,22 +19,6 @@ main: kit: flow: BasicCdnSpaceFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "cdn_space_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "cdn_space_ref01",
         srcdatavar: "cdn_space_ref01_data",
@@ -85,26 +69,6 @@ main: kit: flow: BasicCdnSpaceFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "cdn_space_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicCdnSpaceFlow"

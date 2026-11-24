@@ -25,7 +25,7 @@ class AgentSkillEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AgentSkill(nil).list({ "organization_id" => 1 }, nil)
+      client.AgentSkill(nil).load({ "id" => 1, "organization_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class AgentSkillEntityTest < Minitest::Test
     setup = agent_skill_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "load", "remove"].each do |_op|
+    ["create", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "agent_skill." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,54 +43,10 @@ class AgentSkillEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"agent_skill.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills\"}"
-      puts "LIVE STEP {\"id\":\"agent_skill.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}"
-      puts "LIVE STEP {\"id\":\"agent_skill.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}"
-      puts "LIVE STEP {\"id\":\"agent_skill.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_SKILL_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["agent_skill01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "agent_skill", "id", _live_id) do
-        client.AgentSkill(nil).list({"organization_id" => setup[:idmap]["organization01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    agent_skill_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.agent_skill")))
-    agent_skill_ref01_data = nil
-    if agent_skill_ref01_data_raw.length > 0
-      agent_skill_ref01_data = Helpers.to_map(agent_skill_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    agent_skill_ref01_ent = client.AgentSkill(nil)
-    agent_skill_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    agent_skill_ref01_list_result = agent_skill_ref01_ent.list(agent_skill_ref01_match, nil)
-    assert agent_skill_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    agent_skill_ref01_match_dt0 = {
-      "id" => agent_skill_ref01_data["id"],
-    }
-    agent_skill_ref01_data_dt0_loaded = agent_skill_ref01_ent.load(agent_skill_ref01_match_dt0, nil)
-    agent_skill_ref01_data_dt0_load_result = Helpers.to_map(agent_skill_ref01_data_dt0_loaded.respond_to?(:data_get) ? agent_skill_ref01_data_dt0_loaded.data_get : agent_skill_ref01_data_dt0_loaded)
-    assert !agent_skill_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(agent_skill_ref01_data_dt0_load_result["id"], agent_skill_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"agent_skill.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience\"}"
+      puts "LIVE STEP {\"id\":\"agent_skill.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_skill.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"agent_skill.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}\"}"
+      skip("Live coverage incomplete: agent_skill.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_skills); agent_skill.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience); agent_skill.load.2 excluded (GET-only live run: reads a record only agent_skill.create.0 gives); agent_skill.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_skills/{id})")
     end
 
     if setup[:live]
@@ -115,20 +71,6 @@ class AgentSkillEntityTest < Minitest::Test
     assert !agent_skill_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    agent_skill_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    agent_skill_ref01_list_result = agent_skill_ref01_ent.list(agent_skill_ref01_match, nil)
-    assert agent_skill_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(agent_skill_ref01_list_result),
-      { "id" => agent_skill_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # LOAD
     agent_skill_ref01_match_dt0 = {
       "id" => agent_skill_ref01_data["id"],
@@ -145,20 +87,6 @@ class AgentSkillEntityTest < Minitest::Test
     }
     agent_skill_ref01_match_rm0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     agent_skill_ref01_ent.remove(agent_skill_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    agent_skill_ref01_match_rt0 = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    agent_skill_ref01_list_rt0_result = agent_skill_ref01_ent.list(agent_skill_ref01_match_rt0, nil)
-    assert agent_skill_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(agent_skill_ref01_list_rt0_result),
-      { "id" => agent_skill_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

@@ -1,0 +1,15 @@
+$kind: http-request
+id: e3b1c2fb-0ce3-580f-a908-4111aa0eb022
+description: |-
+  The `load` operation of **space_policy**.
+
+  SDK: `client.SpacePolicy().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/policies"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

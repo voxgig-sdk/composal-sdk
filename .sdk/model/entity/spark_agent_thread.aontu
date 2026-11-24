@@ -5,29 +5,73 @@ main: kit: entity: spark_agent_thread: {
   alias: field: {}
 
   fields: {
-    archived_count: {
-      h: "Archived Count"
-      n: "archived_count"
+    archive_deletes_sandbox: {
+      h: "Archive Deletes Sandbox"
+      n: "archive_deletes_sandbox"
       r: false
-      sh: "Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions."
+      t: "`$BOOLEAN`"
+    }
+    archived: {
+      h: "Archived"
+      n: "archived"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    attention: {
+      h: "Attention"
+      n: "attention"
+      r: true
+      sh: "Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish."
       t: [
         "`$ONE`"
         [
-          "`$INTEGER`"
+          "`$OBJECT`"
           "`$NULL`"
         ]
       ]
     }
-    can_create: {
-      h: "Can Create"
-      n: "can_create"
+    can_archive: {
+      h: "Can Archive"
+      n: "can_archive"
       r: true
       t: "`$BOOLEAN`"
+    }
+    can_compact: {
+      h: "Can Compact"
+      n: "can_compact"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_snooze: {
+      h: "Can Snooze"
+      n: "can_snooze"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    coordination_status: {
+      h: "Coordination Status"
+      n: "coordination_status"
+      r: false
+      sh: "Durable work not represented by a native run: a queued input or an outstanding thread report."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
     execution: {
       h: "Execution"
       n: "execution"
+      op: {
+        list: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
       r: false
+      sh: "device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness."
       t: "`$ANY`"
       union: {
         branches: 2
@@ -60,11 +104,23 @@ main: kit: entity: spark_agent_thread: {
       sh: "Membership the first message was sent as, for input_delivery."
       t: "`$STRING`"
     }
+    group: {
+      h: "Group"
+      n: "group"
+      r: true
+      sh: "Rails-owned list group, in precedence order: attention, active run, coordination custody, then done."
+      t: "`$STRING`"
+    }
+    has_active_run: {
+      h: "Has Active Run"
+      n: "has_active_run"
+      r: true
+      t: "`$BOOLEAN`"
+    }
     id: {
       h: "Id"
       n: "id"
-      r: false
-      syn: true
+      r: true
       t: "`$STRING`"
     }
     inherit_context: {
@@ -74,65 +130,15 @@ main: kit: entity: spark_agent_thread: {
       sh: "Include the source conversation through its last completed reply."
       t: "`$BOOLEAN`"
     }
-    local_activities: {
-      h: "Local Activities"
-      n: "local_activities"
+    is_main: {
+      h: "Is Main"
+      n: "is_main"
       r: true
-      sh: "First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current."
-      t: "`$OBJECT`"
-    }
-    local_archived_count: {
-      h: "Local Archived Count"
-      n: "local_archived_count"
-      r: true
-      sh: "Local Claude Code and Codex threads archived on their computers."
-      t: "`$INTEGER`"
-    }
-    local_next_cursor: {
-      h: "Local Next Cursor"
-      n: "local_next_cursor"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    local_scope_key: {
-      h: "Local Scope Key"
-      n: "local_scope_key"
-      r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    local_status_pending: {
-      h: "Local Status Pending"
-      n: "local_status_pending"
-      r: true
-      sh: "A computer is reporting newer local thread statuses; read the page again shortly."
       t: "`$BOOLEAN`"
     }
-    local_threads: {
-      h: "Local Threads"
-      n: "local_threads"
-      r: true
-      t: "`$ARRAY`"
-      union: {
-        branches: 2
-        count: 1
-        depth: 6
-      }
-    }
-    main_thread_id: {
-      h: "Main Thread Id"
-      n: "main_thread_id"
+    kind: {
+      h: "Kind"
+      n: "kind"
       r: true
       t: "`$STRING`"
     }
@@ -143,17 +149,12 @@ main: kit: entity: spark_agent_thread: {
       sh: "The thread's first message."
       t: "`$STRING`"
     }
-    next_cursor: {
-      h: "Next Cursor"
-      n: "next_cursor"
+    older: {
+      h: "Older"
+      n: "older"
       r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
+      sh: "Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older."
+      t: "`$BOOLEAN`"
     }
     parent_conversation_id: {
       h: "Parent Conversation Id"
@@ -162,17 +163,32 @@ main: kit: entity: spark_agent_thread: {
       sh: "Optional source conversation belonging to this agent."
       t: "`$STRING`"
     }
+    parent_conversation_title: {
+      h: "Parent Conversation Title"
+      n: "parent_conversation_title"
+      r: false
+      sh: "Source conversation title, resolved independently of this page."
+      t: "`$STRING`"
+    }
     requester_membership_id: {
       h: "Requester Membership Id"
       n: "requester_membership_id"
       r: false
       t: "`$STRING`"
     }
-    selected_thread: {
-      h: "Selected Thread"
-      n: "selected_thread"
+    snoozed_until: {
+      fo: "date-time"
+      h: "Snoozed Until"
+      n: "snoozed_until"
       r: true
-      t: "`$ANY`"
+      sh: "When a snoozed thread returns to its usual group; null when it is not snoozed."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
     thread: {
       h: "Thread"
@@ -180,27 +196,26 @@ main: kit: entity: spark_agent_thread: {
       r: true
       t: "`$OBJECT`"
     }
-    threads: {
-      h: "Threads"
-      n: "threads"
-      r: true
-      t: "`$ARRAY`"
-    }
     title: {
       h: "Title"
       n: "title"
+      op: {
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
       r: false
       t: "`$STRING`"
     }
-    total_archived_count: {
-      h: "Total Archived Count"
-      n: "total_archived_count"
+    updated_at: {
+      h: "Updated At"
+      n: "updated_at"
       r: true
-      sh: "archived_count plus local_archived_count, computed by Rails for the Archived heading."
       t: [
         "`$ONE`"
         [
-          "`$INTEGER`"
+          "`$STRING`"
           "`$NULL`"
         ]
       ]
@@ -704,7 +719,7 @@ main: kit: entity: spark_agent_thread: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.threads`"
           }
         }
       ]

@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{artifact_package_mirror_id}}"
     description: The artifact_package_mirror this request addresses.
-order: 2000
+order: 1000

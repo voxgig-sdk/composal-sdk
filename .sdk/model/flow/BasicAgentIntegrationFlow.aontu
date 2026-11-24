@@ -19,22 +19,6 @@ main: kit: flow: BasicAgentIntegrationFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "agent_integration_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "agent_integration_ref01",
         srcdatavar: "agent_integration_ref01_data",
@@ -68,26 +52,6 @@ main: kit: flow: BasicAgentIntegrationFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "agent_integration_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAgentIntegrationFlow"

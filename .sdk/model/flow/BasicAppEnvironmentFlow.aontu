@@ -19,22 +19,6 @@ main: kit: flow: BasicAppEnvironmentFlow:
     }
 
     {
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "app_environment_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01"
       }
@@ -65,7 +49,6 @@ main: kit: flow: BasicAppEnvironmentFlow:
       }
 
       m: {
-        app_id: "app01",
         id: "app_environment01"
       }
 
@@ -92,26 +75,6 @@ main: kit: flow: BasicAppEnvironmentFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "app_environment_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAppEnvironmentFlow"

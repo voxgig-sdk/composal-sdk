@@ -8,7 +8,8 @@
         "default_trunk_bookmark": "s3f",
         "organization": {},
         "sandbox_regions": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "VCS_SETTING00"
       },
       "VCS_SETTING01": {
         "can_manage_pr_scenario_writing": true,
@@ -17,7 +18,8 @@
         "default_trunk_bookmark": "s7b",
         "organization": {},
         "sandbox_regions": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "VCS_SETTING01"
       },
       "VCS_SETTING02": {
         "can_manage_pr_scenario_writing": true,
@@ -26,7 +28,8 @@
         "default_trunk_bookmark": "sb7",
         "organization": {},
         "sandbox_regions": [],
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "VCS_SETTING02"
       }
     }
   },

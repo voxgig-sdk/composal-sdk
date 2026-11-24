@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{pairing_id}}"
     description: The pairing this request addresses.
-order: 2000
+order: 1000

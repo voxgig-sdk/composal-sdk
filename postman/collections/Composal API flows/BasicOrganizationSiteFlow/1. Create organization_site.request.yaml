@@ -50,8 +50,8 @@ scripts:
       const made = body
       pm.test("1. Create organization_site: the record carries its key", () => {
         pm.expect(made, "record").to.be.an("object")
-        pm.expect(at(made, "id"), "id").to.exist
+        pm.expect(at(made, "native_agent_id"), "native_agent_id").to.exist
       })
-      if (null != made && null != at(made, "id")) pm.variables.set("organization_site_ref01", String(at(made, "id")))
+      if (null != made && null != at(made, "native_agent_id")) pm.variables.set("organization_site_ref01", String(at(made, "native_agent_id")))
     language: text/javascript
 order: 1000

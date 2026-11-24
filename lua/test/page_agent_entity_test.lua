@@ -29,7 +29,7 @@ describe("PageAgentEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:PageAgent(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:PageAgent(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("PageAgentEntity", function()
     local setup = page_agent_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "page_agent." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,46 +46,15 @@ describe("PageAgentEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"page_agent.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/page/activity\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PAGE_AGENT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local page_agent_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.page_agent")))
-    local page_agent_ref01_data = nil
-    if #page_agent_ref01_data_raw > 0 then
-      page_agent_ref01_data = helpers.to_map(page_agent_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local page_agent_ref01_ent = client:PageAgent(nil)
-    local page_agent_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local page_agent_ref01_list_result, err = page_agent_ref01_ent:list(page_agent_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(page_agent_ref01_list_result)
-
+      pending("Live coverage incomplete: page_agent.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/page/activity)")
       return
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PAGE_AGENT_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -95,19 +64,6 @@ describe("PageAgentEntity", function()
     if #page_agent_ref01_data_raw > 0 then
       page_agent_ref01_data = helpers.to_map(page_agent_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local page_agent_ref01_ent = client:PageAgent(nil)
-    local page_agent_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local page_agent_ref01_list_result, err = page_agent_ref01_ent:list(page_agent_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(page_agent_ref01_list_result)
 
   end)
 end)

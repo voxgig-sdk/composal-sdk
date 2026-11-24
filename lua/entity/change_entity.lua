@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch ChangeListMatch
+---@param reqmatch ChangeLoadMatch
 ---@param ctrl? table
----@return ChangeEntity[]
+---@return ChangeEntity
 ---@return string? err
-function ChangeEntity:list(reqmatch, ctrl)
+function ChangeEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function ChangeEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

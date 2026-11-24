@@ -25,7 +25,7 @@ class PullRequestSettingEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.PullRequestSetting(nil).list({ "organization_id" => 1 }, nil)
+      client.PullRequestSetting(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class PullRequestSettingEntityTest < Minitest::Test
     setup = pull_request_setting_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "pull_request_setting." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,34 +43,8 @@ class PullRequestSettingEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"pull_request_setting.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_PULL_REQUEST_SETTING_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    pull_request_setting_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.pull_request_setting")))
-    pull_request_setting_ref01_data = nil
-    if pull_request_setting_ref01_data_raw.length > 0
-      pull_request_setting_ref01_data = Helpers.to_map(pull_request_setting_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    pull_request_setting_ref01_ent = client.PullRequestSetting(nil)
-    pull_request_setting_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    pull_request_setting_ref01_list_result = pull_request_setting_ref01_ent.list(pull_request_setting_ref01_match, nil)
-    assert pull_request_setting_ref01_list_result.is_a?(Array)
-
-      return
+      puts "LIVE STEP {\"id\":\"pull_request_setting.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only pull_request_setting.create.0 gives\"}"
+      skip("Live coverage incomplete: pull_request_setting.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings); pull_request_setting.load.1 excluded (GET-only live run: reads a record only pull_request_setting.create.0 gives)")
     end
 
     if setup[:live]
@@ -95,18 +69,14 @@ class PullRequestSettingEntityTest < Minitest::Test
     assert !pull_request_setting_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    pull_request_setting_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
+    # LOAD
+    pull_request_setting_ref01_match_dt0 = {
+      "id" => pull_request_setting_ref01_data["id"],
     }
-
-    pull_request_setting_ref01_list_result = pull_request_setting_ref01_ent.list(pull_request_setting_ref01_match, nil)
-    assert pull_request_setting_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(pull_request_setting_ref01_list_result),
-      { "id" => pull_request_setting_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    pull_request_setting_ref01_data_dt0_loaded = pull_request_setting_ref01_ent.load(pull_request_setting_ref01_match_dt0, nil)
+    pull_request_setting_ref01_data_dt0_load_result = Helpers.to_map(pull_request_setting_ref01_data_dt0_loaded.respond_to?(:data_get) ? pull_request_setting_ref01_data_dt0_loaded.data_get : pull_request_setting_ref01_data_dt0_loaded)
+    assert !pull_request_setting_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(pull_request_setting_ref01_data_dt0_load_result["id"], pull_request_setting_ref01_data["id"])
 
   end
 end

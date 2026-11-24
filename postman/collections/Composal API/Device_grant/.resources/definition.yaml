@@ -5,14 +5,16 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `active_grants` | array | yes |  |
-  | `agent_choices` | array | yes |  |
   | `agent_id` | string | yes |  |
-  | `all_agents_access` | boolean | yes |  |
+  | `agent_name` | string | yes |  |
+  | `can_edit` | boolean | yes |  |
+  | `can_revoke` | boolean | yes |  |
   | `capabilities` | array | yes |  |
-  | `execution_available` | boolean | yes |  |
-  | `grants` | array | yes |  |
-  | `id` | string |  |  |
-  | `next_cursor` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `id` | string | yes |  |
   | `principal_id` | string | yes |  |
+  | `principal_name` | string | yes |  |
+  | `revision` | integer | yes |  |
+  | `revoked_at` | string | yes |  |
+  | `updated_at` | string | yes |  |
 order: 221000

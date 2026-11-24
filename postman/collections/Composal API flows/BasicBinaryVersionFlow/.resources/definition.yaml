@@ -1,4 +1,4 @@
 $kind: collection
 id: "996ceb35-7fd6-5792-a04d-f3943196556e"
 description: "The `BasicBinaryVersionFlow` flow of **binary_version**."
-order: 110000
+order: 105000

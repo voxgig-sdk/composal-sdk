@@ -3,7 +3,7 @@ id: d71bdca3-5826-5f89-af20-20d52e38c29e
 description: |-
   The `load` operation of **cache_namespace_entry**.
 
-  SDK: `client.CacheNamespaceEntry().load({ cache_namespace_id: "example", id: "example_id" })`
+  SDK: `client.CacheNamespaceEntry().load({ cache_namespace_id: "example" })`
 url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{cache_namespace_entry_id}}"
     description: The cache_namespace_entry this request addresses.
-order: 2000
+order: 1000

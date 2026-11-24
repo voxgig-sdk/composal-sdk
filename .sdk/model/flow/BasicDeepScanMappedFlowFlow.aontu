@@ -7,16 +7,22 @@ main: kit: flow: BasicDeepScanMappedFlowFlow:
   name: "BasicDeepScanMappedFlowFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "deep_scan_mapped_flow_ref01",
+        srcdatavar: "deep_scan_mapped_flow_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "deep_scan_mapped_flow01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "deep_scan_mapped_flow_ref01"
+            mark: "Mark01-deep_scan_mapped_flow_ref01"
           }
         }
       ]

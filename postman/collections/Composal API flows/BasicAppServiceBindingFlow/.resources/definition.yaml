@@ -1,4 +1,4 @@
 $kind: collection
 id: "99e2541d-8445-5e2e-8302-7d1b0654084d"
 description: "The `BasicAppServiceBindingFlow` flow of **app_service_binding**."
-order: 78000
+order: 73000

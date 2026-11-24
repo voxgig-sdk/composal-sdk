@@ -62,12 +62,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
+    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

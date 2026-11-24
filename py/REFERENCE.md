@@ -2363,23 +2363,23 @@ admin_org = client.AdminOrg()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `billing_email` | - | - | - | - |
-| `billing_reason` | - | - | - | - |
-| `customize_onboarding_packages` | - | - | - | - |
-| `deployment_usage_visibility` | - | - | - | - |
-| `deployment_usage_visible` | - | - | - | - |
-| `id` | - | - | - | - |
-| `monthly_price_dollars` | - | - | - | - |
-| `monthly_price_override_cents` | - | - | - | - |
-| `name` | - | - | - | - |
-| `onboarding_custom_pricing` | - | - | - | - |
-| `onboarding_package_keys` | - | - | - | - |
-| `owner_email` | - | - | - | - |
-| `package_id` | - | - | Yes | - |
-| `skip_payment` | - | - | - | - |
-| `slug` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `billing_email` | - | - | - |
+| `billing_reason` | - | - | - |
+| `customize_onboarding_packages` | - | - | - |
+| `deployment_usage_visibility` | - | - | - |
+| `deployment_usage_visible` | - | - | - |
+| `id` | - | - | - |
+| `monthly_price_dollars` | - | - | - |
+| `monthly_price_override_cents` | - | - | - |
+| `name` | - | - | - |
+| `onboarding_custom_pricing` | - | - | - |
+| `onboarding_package_keys` | - | - | - |
+| `owner_email` | - | - | - |
+| `package_id` | - | Yes | - |
+| `skip_payment` | - | - | - |
+| `slug` | - | - | - |
 
 ### Operations
 
@@ -2393,16 +2393,6 @@ result = client.AdminOrg().create({
     "owner_email": "example_owner_email",  # str
     "slug": "example_slug",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AdminOrgEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AdminOrg().list()
-for admin_org in results:
-    print(admin_org.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AdminOrgEntity`
@@ -2635,12 +2625,9 @@ agent_app = client.AgentApp()
 | `hidden_install_count` | `int` | Yes | Installs by agents the viewer cannot open |
 | `id` | `str` | Yes |  |
 | `install_count` | `int` | Yes |  |
-| `install_targets` | `list` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `list` | Yes |  |
 | `installed_target_ids` | `list` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `list` | Yes |  |
 | `mcp_url` | `str | None` | Yes |  |
-| `next_cursor` | `str | None` | Yes | Pass as cursor to load older apps |
 | `owner` | `dict` | Yes | The person who controls the author agent |
 | `thread` | `Any` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `str` | Yes |  |
@@ -3821,14 +3808,12 @@ agent_event = client.AgentEvent()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentEventEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentEventEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentEvent().list({"agent_id": "example", "organization_id": "example"})
-for agent_event in results:
-    print(agent_event.data_get())
+result = client.AgentEvent().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -4034,16 +4019,6 @@ result = client.AgentIntegration().create({
     "name": "example_name",  # str
     "toolkit": "example_toolkit",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AgentIntegrationEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AgentIntegration().list({"organization_id": "example"})
-for agent_integration in results:
-    print(agent_integration.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AgentIntegrationEntity`
@@ -5175,14 +5150,12 @@ agent_repository = client.AgentRepository()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentRepositoryEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentRepositoryEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentRepository().list({"agent_id": "example", "organization_id": "example"})
-for agent_repository in results:
-    print(agent_repository.data_get())
+result = client.AgentRepository().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> AgentRepositoryEntity`
@@ -5591,16 +5564,6 @@ result = client.AgentSessionCheckpoint().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentSessionCheckpointEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AgentSessionCheckpoint().list({"agent_session_id": "example", "organization_id": "example", "repo_id": "example"})
-for agent_session_checkpoint in results:
-    print(agent_session_checkpoint.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> AgentSessionCheckpointEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -5711,14 +5674,12 @@ agent_setting = client.AgentSetting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentSetting().list({"agent_id": "example", "organization_id": "example"})
-for agent_setting in results:
-    print(agent_setting.data_get())
+result = client.AgentSetting().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> AgentSettingEntity`
@@ -5918,16 +5879,6 @@ result = client.AgentSkill().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentSkillEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AgentSkill().list({"organization_id": "example"})
-for agent_skill in results:
-    print(agent_skill.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> AgentSkillEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -6101,14 +6052,12 @@ result = client.AgentSubscription().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentSubscriptionEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentSubscriptionEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentSubscription().list({"agent_id": "example", "organization_id": "example"})
-for agent_subscription in results:
-    print(agent_subscription.data_get())
+result = client.AgentSubscription().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -6437,16 +6386,6 @@ result = client.AgentThread().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentThreadEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AgentThread().list()
-for agent_thread in results:
-    print(agent_thread.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> AgentThreadEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -6610,8 +6549,11 @@ agent_verify_project = client.AgentVerifyProject()
 | `available` | `bool` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `bool` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `int` | Yes |  |
+| `id` | `str` | Yes |  |
+| `name` | `str` | Yes |  |
 | `project_choices` | `list` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `bool` | Yes |  |
+| `slug` | `str` | Yes |  |
 | `verify_projects` | `list` | Yes |  |
 | `version` | `int` | Yes |  |
 
@@ -6732,14 +6674,12 @@ agent_web_preview = client.AgentWebPreview()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentWebPreviewEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentWebPreviewEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentWebPreview().list({"token": "example"})
-for agent_web_preview in results:
-    print(agent_web_preview.data_get())
+result = client.AgentWebPreview().load({"token": "token"})
 ```
 
 ### Common Methods
@@ -6940,14 +6880,12 @@ result = client.AgentWorkflow().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AgentWorkflowEntity]`
+#### `load(reqmatch, ctrl=None) -> AgentWorkflowEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AgentWorkflow().list({"agent_id": "example", "organization_id": "example"})
-for agent_workflow in results:
-    print(agent_workflow.data_get())
+result = client.AgentWorkflow().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> AgentWorkflowEntity`
@@ -7542,16 +7480,6 @@ result = client.AlertRuleEvent().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AlertRuleEventEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AlertRuleEvent().list({"alert_rule_id": "example", "space_id": "example"})
-for alert_rule_event in results:
-    print(alert_rule_event.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> AlertRuleEventEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -7621,14 +7549,12 @@ allocation_log = client.AllocationLog()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AllocationLogEntity]`
+#### `load(reqmatch, ctrl=None) -> AllocationLogEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AllocationLog().list({"allocation_id": "example", "app_id": "example"})
-for allocation_log in results:
-    print(allocation_log.data_get())
+result = client.AllocationLog().load({"allocation_id": "allocation_id", "app_id": "app_id"})
 ```
 
 ### Common Methods
@@ -7848,14 +7774,12 @@ app_access_jwk = client.AppAccessJwk()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AppAccessJwkEntity]`
+#### `load(reqmatch, ctrl=None) -> AppAccessJwkEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AppAccessJwk().list()
-for app_access_jwk in results:
-    print(app_access_jwk.data_get())
+result = client.AppAccessJwk().load()
 ```
 
 ### Common Methods
@@ -7927,35 +7851,35 @@ app_cdn = client.AppCdn()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -7970,16 +7894,6 @@ result = client.AppCdn().create({
     "origin_url": "example_origin_url",  # str
     "slug": "example_slug",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppCdnEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppCdn().list({"app_id": "example"})
-for app_cdn in results:
-    print(app_cdn.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppCdnEntity`
@@ -8077,21 +7991,21 @@ app_config_variable = client.AppConfigVariable()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Operations
 
@@ -8107,16 +8021,6 @@ result = client.AppConfigVariable().create({
     "scope_kind": "example_scope_kind",  # str
     "value_kind": "example_value_kind",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppConfigVariableEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppConfigVariable().list({"app_id": "example"})
-for app_config_variable in results:
-    print(app_config_variable.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppConfigVariableEntity`
@@ -8219,26 +8123,26 @@ app_data_resource = client.AppDataResource()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Operations
 
@@ -8254,16 +8158,6 @@ result = client.AppDataResource().create({
     "name": "example_name",  # str
     "slug": "example_slug",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppDataResourceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppDataResource().list({"app_id": "example"})
-for app_data_resource in results:
-    print(app_data_resource.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppDataResourceEntity`
@@ -8447,42 +8341,42 @@ app_deployment = client.AppDeployment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8494,16 +8388,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.AppDeployment().create({
     "app_id": "example_app_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppDeploymentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppDeployment().list({"app_id": "example"})
-for app_deployment in results:
-    print(app_deployment.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppDeploymentEntity`
@@ -8871,23 +8755,23 @@ app_environment = client.AppEnvironment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8905,16 +8789,6 @@ result = client.AppEnvironment().create({
     "slug": "example_slug",  # str
     "status": "example_status",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppEnvironmentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppEnvironment().list({"app_id": "example"})
-for app_environment in results:
-    print(app_environment.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppEnvironmentEntity`
@@ -9146,16 +9020,6 @@ result = client.AppPreview().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[AppPreviewEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppPreview().list({"app_id": "example"})
-for app_preview in results:
-    print(app_preview.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> AppPreviewEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -9248,18 +9112,18 @@ app_preview_profile = client.AppPreviewProfile()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -9274,16 +9138,6 @@ result = client.AppPreviewProfile().create({
     "slug": "example_slug",  # str
     "source_environment_id": "example_source_environment_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppPreviewProfileEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppPreviewProfile().list({"app_id": "example"})
-for app_preview_profile in results:
-    print(app_preview_profile.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppPreviewProfileEntity`
@@ -9377,16 +9231,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.AppRun().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppRunEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppRun().list()
-for app_run in results:
-    print(app_run.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppRunEntity`
@@ -9626,50 +9470,50 @@ app_service = client.AppService()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -9691,16 +9535,6 @@ result = client.AppService().create({
     "source_path": "example_source_path",  # str
     "start_command": "example_start_command",  # str | None
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppServiceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppService().list({"app_id": "example"})
-for app_service in results:
-    print(app_service.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppServiceEntity`
@@ -9794,16 +9628,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.AppServiceBinding().create({
     "app_id": "example_app_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppServiceBindingEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppServiceBinding().list({"app_id": "example"})
-for app_service_binding in results:
-    print(app_service_binding.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppServiceBindingEntity`
@@ -9987,29 +9811,29 @@ app_storage_resource = client.AppStorageResource()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -10027,16 +9851,6 @@ result = client.AppStorageResource().create({
     "slug": "example_slug",  # str
     "status": "example_status",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[AppStorageResourceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.AppStorageResource().list({"app_id": "example"})
-for app_storage_resource in results:
-    print(app_storage_resource.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> AppStorageResourceEntity`
@@ -10506,16 +10320,6 @@ result = client.Artifact().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ArtifactEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.Artifact().list()
-for artifact in results:
-    print(artifact.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ArtifactEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -10604,16 +10408,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.ArtifactCacheNamespace().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[ArtifactCacheNamespaceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ArtifactCacheNamespace().list()
-for artifact_cache_namespace in results:
-    print(artifact_cache_namespace.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> ArtifactCacheNamespaceEntity`
@@ -10706,16 +10500,6 @@ result = client.ArtifactImageRepository().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ArtifactImageRepositoryEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ArtifactImageRepository().list()
-for artifact_image_repository in results:
-    print(artifact_image_repository.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ArtifactImageRepositoryEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -10806,16 +10590,6 @@ result = client.ArtifactPackageMirror().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ArtifactPackageMirrorEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ArtifactPackageMirror().list()
-for artifact_package_mirror in results:
-    print(artifact_package_mirror.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ArtifactPackageMirrorEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -10904,16 +10678,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.ArtifactRetentionPolicy().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[ArtifactRetentionPolicyEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ArtifactRetentionPolicy().list()
-for artifact_retention_policy in results:
-    print(artifact_retention_policy.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> ArtifactRetentionPolicyEntity`
@@ -11404,14 +11168,12 @@ auth_registration_option = client.AuthRegistrationOption()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[AuthRegistrationOptionEntity]`
+#### `load(reqmatch, ctrl=None) -> AuthRegistrationOptionEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.AuthRegistrationOption().list()
-for auth_registration_option in results:
-    print(auth_registration_option.data_get())
+result = client.AuthRegistrationOption().load()
 ```
 
 ### Common Methods
@@ -11632,14 +11394,12 @@ result = client.BackendRunnerPool().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[BackendRunnerPoolEntity]`
+#### `load(reqmatch, ctrl=None) -> BackendRunnerPoolEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.BackendRunnerPool().list({"backend_id": "example"})
-for backend_runner_pool in results:
-    print(backend_runner_pool.data_get())
+result = client.BackendRunnerPool().load({"backend_id": "backend_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> BackendRunnerPoolEntity`
@@ -11647,7 +11407,7 @@ for backend_runner_pool in results:
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.BackendRunnerPool().remove({"id": "backend_runner_pool_id", "backend_id": "backend_id"})
+result = client.BackendRunnerPool().remove({"backend_id": "backend_id", "id": "id"})
 ```
 
 ### Common Methods
@@ -11804,16 +11564,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.BazelBackend().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[BazelBackendEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.BazelBackend().list()
-for bazel_backend in results:
-    print(bazel_backend.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> BazelBackendEntity`
@@ -13978,16 +13728,6 @@ result = client.CacheNamespaceEntry().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[CacheNamespaceEntryEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CacheNamespaceEntry().list({"cache_namespace_id": "example"})
-for cache_namespace_entry in results:
-    print(cache_namespace_entry.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CacheNamespaceEntryEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -14135,16 +13875,6 @@ result = client.CdnDeployment().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[CdnDeploymentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CdnDeployment().list({"app_id": "example", "cdn_id": "example"})
-for cdn_deployment in results:
-    print(cdn_deployment.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CdnDeploymentEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -14204,17 +13934,17 @@ cdn_hostname = client.CdnHostname()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -14228,16 +13958,6 @@ result = client.CdnHostname().create({
     "cdn_id": "example_cdn_id",  # str
     "hostname": "example_hostname",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[CdnHostnameEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CdnHostname().list({"app_id": "example", "cdn_id": "example"})
-for cdn_hostname in results:
-    print(cdn_hostname.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> CdnHostnameEntity`
@@ -14335,16 +14055,6 @@ result = client.CdnSpace().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[CdnSpaceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CdnSpace().list({"organization_id": "example"})
-for cdn_space in results:
-    print(cdn_space.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CdnSpaceEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -14426,16 +14136,6 @@ cdn_space_object = client.CdnSpaceObject()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[CdnSpaceObjectEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CdnSpaceObject().list({"cdn_space_id": "example"})
-for cdn_space_object in results:
-    print(cdn_space_object.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CdnSpaceObjectEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -14509,14 +14209,12 @@ change = client.Change()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[ChangeEntity]`
+#### `load(reqmatch, ctrl=None) -> ChangeEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.Change().list({"organization_id": "example"})
-for change in results:
-    print(change.data_get())
+result = client.Change().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -15808,16 +15506,6 @@ result = client.CiPipelineRun().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[CiPipelineRunEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CiPipelineRun().list({"pipeline_id": "example"})
-for ci_pipeline_run in results:
-    print(ci_pipeline_run.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CiPipelineRunEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -16108,19 +15796,13 @@ result = client.CliRelease().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[CliReleaseEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.CliRelease().list()
-for cli_release in results:
-    print(cli_release.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> CliReleaseEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.CliRelease().load()
+```
 
 ### Common Methods
 
@@ -17094,60 +16776,60 @@ deep_scan = client.DeepScan()
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Operations
 
@@ -17161,16 +16843,6 @@ result = client.DeepScan().create({
     "environment_id": "example_environment_id",  # str
     "goal": "example_goal",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[DeepScanEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.DeepScan().list({"organization_id": "example"})
-for deep_scan in results:
-    print(deep_scan.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> DeepScanEntity`
@@ -17220,24 +16892,25 @@ deep_scan_finding = client.DeepScanFinding()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `int` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `list` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `list` | Yes |  |
-| `findings_fix_prompt` | `str | None` | Yes |  |
-| `free_findings_pending` | `bool` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `str` | Yes |  |
+| `agent_id` | `str` | Yes |  |
+| `agent_title` | `str` | Yes |  |
+| `area` | `str | None` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `list` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `str` | Yes |  |
+| `confirmed` | `bool` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `list` | No |  |
+| `evidence_timestamp_ms` | `int | None` | Yes |  |
+| `expected` | `str` | Yes |  |
+| `fix_prompt` | `str` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `bool` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `str` | Yes |  |
-| `mode` | `str` | Yes |  |
-| `permissions` | `dict` | Yes |  |
-| `priority` | `str | None` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `dict` | Yes |  |
-| `project_id` | `str | None` | Yes |  |
-| `reproduction_of` | `dict | None` | Yes |  |
-| `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `bool` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `str` | Yes |  |
+| `locked` | `bool` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `list` | Yes |  |
+| `severity` | `str` | Yes |  |
 | `title` | `str` | Yes |  |
-| `unlock` | `dict` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `str` | Yes |  |
+| `tracked` | `dict | None` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `str` | Yes |  |
 
 ### Operations
 
@@ -17359,14 +17032,12 @@ deep_scan_mapped_flow = client.DeepScanMappedFlow()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[DeepScanMappedFlowEntity]`
+#### `load(reqmatch, ctrl=None) -> DeepScanMappedFlowEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.DeepScanMappedFlow().list({"organization_id": "example", "environment_id": "example"})
-for deep_scan_mapped_flow in results:
-    print(deep_scan_mapped_flow.data_get())
+result = client.DeepScanMappedFlow().load({"organization_id": "organization_id", "environment_id": "environment_id"})
 ```
 
 ### Common Methods
@@ -17724,14 +17395,12 @@ deployment_detail = client.DeploymentDetail()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[DeploymentDetailEntity]`
+#### `load(reqmatch, ctrl=None) -> DeploymentDetailEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.DeploymentDetail().list({"organization_id": "example"})
-for deployment_detail in results:
-    print(deployment_detail.data_get())
+result = client.DeploymentDetail().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -18481,14 +18150,12 @@ device_enterprise_relay = client.DeviceEnterpriseRelay()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[DeviceEnterpriseRelayEntity]`
+#### `load(reqmatch, ctrl=None) -> DeviceEnterpriseRelayEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.DeviceEnterpriseRelay().list()
-for device_enterprise_relay in results:
-    print(device_enterprise_relay.data_get())
+result = client.DeviceEnterpriseRelay().load()
 ```
 
 ### Common Methods
@@ -18616,16 +18283,18 @@ device_grant = client.DeviceGrant()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `list` | Yes |  |
-| `agent_choices` | `list` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `str` | Yes |  |
-| `all_agents_access` | `bool` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `str | None` | Yes |  |
+| `can_edit` | `bool` | Yes |  |
+| `can_revoke` | `bool` | Yes |  |
 | `capabilities` | `list` | Yes |  |
-| `execution_available` | `bool` | Yes |  |
-| `grants` | `list` | Yes |  |
-| `id` | `str` | No |  |
-| `next_cursor` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `id` | `str` | Yes |  |
 | `principal_id` | `str` | Yes |  |
+| `principal_name` | `str | None` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `revoked_at` | `str | None` | Yes |  |
+| `updated_at` | `str` | Yes |  |
 
 ### Operations
 
@@ -19686,49 +19355,49 @@ environment = client.Environment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Operations
 
@@ -19741,16 +19410,6 @@ result = client.Environment().create({
     "organization_id": "example_organization_id",  # str
     "slug": "example_slug",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[EnvironmentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.Environment().list({"organization_id": "example"})
-for environment in results:
-    print(environment.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> EnvironmentEntity`
@@ -20238,14 +19897,12 @@ result = client.EnvironmentSecretBinding().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[EnvironmentSecretBindingEntity]`
+#### `load(reqmatch, ctrl=None) -> EnvironmentSecretBindingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.EnvironmentSecretBinding().list({"app_id": "example", "environment_id": "example"})
-for environment_secret_binding in results:
-    print(environment_secret_binding.data_get())
+result = client.EnvironmentSecretBinding().load({"app_id": "app_id", "environment_id": "environment_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> EnvironmentSecretBindingEntity`
@@ -20253,7 +19910,7 @@ for environment_secret_binding in results:
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.EnvironmentSecretBinding().remove({"id": "environment_secret_binding_id", "app_id": "app_id", "environment_id": "environment_id"})
+result = client.EnvironmentSecretBinding().remove({"app_id": "app_id", "environment_id": "environment_id", "id": "id"})
 ```
 
 ### Common Methods
@@ -20446,16 +20103,6 @@ result = client.ExecutionDesiredState().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ExecutionDesiredStateEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ExecutionDesiredState().list()
-for execution_desired_state in results:
-    print(execution_desired_state.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ExecutionDesiredStateEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -20546,16 +20193,6 @@ result = client.ExecutionReconcilerTick().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ExecutionReconcilerTickEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ExecutionReconcilerTick().list()
-for execution_reconciler_tick in results:
-    print(execution_reconciler_tick.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ExecutionReconcilerTickEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -20614,16 +20251,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.ExecutionRelease().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[ExecutionReleaseEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ExecutionRelease().list()
-for execution_release in results:
-    print(execution_release.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> ExecutionReleaseEntity`
@@ -20805,20 +20432,21 @@ exploration = client.Exploration()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `str | None` | No |  |
-| `active` | `list` | Yes |  |
 | `agent_filters` | `dict` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `list` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `list` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `list` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `str` | Yes |  |
-| `deadline_at` | `str` | Yes |  |
+| `credential_name` | `str | None` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `str` | Yes | When the team's time limit ends. |
 | `demo_project` | `dict | None` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `int | None` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `str` | Yes |  |
 | `environment_name` | `str` | Yes |  |
-| `explorations` | `list` | Yes |  |
 | `explorer_activity` | `dict` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `list` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -20828,14 +20456,12 @@ exploration = client.Exploration()
 | `huntable_flows` | `list` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `str` | Yes |  |
 | `idempotency_key` | `str` | No |  |
-| `launch_options` | `dict` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `str` | No |  |
 | `next_scan_improvements` | `list` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `str` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `dict` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `dict` | Yes |  |
 | `persona_id` | `str | None` | No | Project persona whose role and observed access this discovery maps. |
@@ -20847,10 +20473,13 @@ exploration = client.Exploration()
 | `reproductions` | `list` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `list` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `dict` | Yes |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `str` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `str | None` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `str` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `str` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20863,37 +20492,36 @@ exploration = client.Exploration()
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -20905,14 +20533,17 @@ exploration = client.Exploration()
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -22091,14 +21722,12 @@ result = client.GithubConnection().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[GithubConnectionEntity]`
+#### `load(reqmatch, ctrl=None) -> GithubConnectionEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.GithubConnection().list({"organization_id": "example"})
-for github_connection in results:
-    print(github_connection.data_get())
+result = client.GithubConnection().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -23365,31 +22994,31 @@ hosting_app_domain = client.HostingAppDomain()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Operations
 
@@ -23404,16 +23033,6 @@ result = client.HostingAppDomain().create({
     "hostname": "example_hostname",  # str
     "kind": "example_kind",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[HostingAppDomainEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.HostingAppDomain().list({"app_id": "example"})
-for hosting_app_domain in results:
-    print(hosting_app_domain.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> HostingAppDomainEntity`
@@ -23782,14 +23401,12 @@ integration = client.Integration()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[IntegrationEntity]`
+#### `load(reqmatch, ctrl=None) -> IntegrationEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.Integration().list({"organization_id": "example"})
-for integration in results:
-    print(integration.data_get())
+result = client.Integration().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -24113,14 +23730,12 @@ result = client.JobStep().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[JobStepEntity]`
+#### `load(reqmatch, ctrl=None) -> JobStepEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.JobStep().list({"job_id": "example", "pipeline_id": "example", "run_id": "example"})
-for job_step in results:
-    print(job_step.data_get())
+result = client.JobStep().load({"job_id": "job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> JobStepEntity`
@@ -24206,14 +23821,12 @@ result = client.JobWorkspace().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[JobWorkspaceEntity]`
+#### `load(reqmatch, ctrl=None) -> JobWorkspaceEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.JobWorkspace().list({"job_id": "example", "pipeline_id": "example", "run_id": "example"})
-for job_workspace in results:
-    print(job_workspace.data_get())
+result = client.JobWorkspace().load({"job_id": "job_id", "pipeline_id": "pipeline_id", "run_id": "run_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> JobWorkspaceEntity`
@@ -25343,16 +24956,6 @@ result = client.LogStreamChunk().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[LogStreamChunkEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.LogStreamChunk().list({"log_stream_id": "example", "space_id": "example"})
-for log_stream_chunk in results:
-    print(log_stream_chunk.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> LogStreamChunkEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -25488,14 +25091,12 @@ marketing_setting = client.MarketingSetting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[MarketingSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> MarketingSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.MarketingSetting().list()
-for marketing_setting in results:
-    print(marketing_setting.data_get())
+result = client.MarketingSetting().load()
 ```
 
 ### Common Methods
@@ -26491,14 +26092,12 @@ metric_query = client.MetricQuery()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[MetricQueryEntity]`
+#### `load(reqmatch, ctrl=None) -> MetricQueryEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.MetricQuery().list()
-for metric_query in results:
-    print(metric_query.data_get())
+result = client.MetricQuery().load()
 ```
 
 ### Common Methods
@@ -26866,16 +26465,6 @@ result = client.NetworkingSpace().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[NetworkingSpaceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.NetworkingSpace().list()
-for networking_space in results:
-    print(networking_space.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> NetworkingSpaceEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -27072,19 +26661,13 @@ node_lease = client.NodeLease()
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch=None, ctrl=None) -> list[NodeLeaseEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.NodeLease().list({"node_id": "example"})
-for node_lease in results:
-    print(node_lease.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> NodeLeaseEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.NodeLease().load({"node_id": "node_id"})
+```
 
 ### Common Methods
 
@@ -27207,14 +26790,12 @@ nomad_log = client.NomadLog()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[NomadLogEntity]`
+#### `load(reqmatch, ctrl=None) -> NomadLogEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.NomadLog().list({"app_id": "example"})
-for nomad_log in results:
-    print(nomad_log.data_get())
+result = client.NomadLog().load({"app_id": "app_id"})
 ```
 
 ### Common Methods
@@ -27324,16 +26905,6 @@ result = client.ObservabilityClickhouseCluster().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ObservabilityClickhouseClusterEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ObservabilityClickhouseCluster().list()
-for observability_clickhouse_cluster in results:
-    print(observability_clickhouse_cluster.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ObservabilityClickhouseClusterEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -27424,16 +26995,6 @@ result = client.ObservabilityQuickwitCluster().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ObservabilityQuickwitClusterEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ObservabilityQuickwitCluster().list()
-for observability_quickwit_cluster in results:
-    print(observability_quickwit_cluster.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ObservabilityQuickwitClusterEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -27522,16 +27083,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```python
 result = client.ObservabilitySpace().create({
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[ObservabilitySpaceEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ObservabilitySpace().list()
-for observability_space in results:
-    print(observability_space.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> ObservabilitySpaceEntity`
@@ -27865,14 +27416,12 @@ organization_app = client.OrganizationApp()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationAppEntity]`
+#### `load(reqmatch, ctrl=None) -> OrganizationAppEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.OrganizationApp().list({"organization_id": "example", "native_agent_id": "example"})
-for organization_app in results:
-    print(organization_app.data_get())
+result = client.OrganizationApp().load({"organization_id": "organization_id", "native_agent_id": "native_agent_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> OrganizationAppEntity`
@@ -28022,16 +27571,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationIdentityCertificate().create({
     "organization_id": "example_organization_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationIdentityCertificateEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.OrganizationIdentityCertificate().list({"organization_id": "example"})
-for organization_identity_certificate in results:
-    print(organization_identity_certificate.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> OrganizationIdentityCertificateEntity`
@@ -28284,16 +27823,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationOidcTrust().create({
     "organization_id": "example_organization_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationOidcTrustEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.OrganizationOidcTrust().list({"organization_id": "example"})
-for organization_oidc_trust in results:
-    print(organization_oidc_trust.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> OrganizationOidcTrustEntity`
@@ -28698,16 +28227,6 @@ result = client.OrganizationServiceAccount().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationServiceAccountEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.OrganizationServiceAccount().list({"organization_id": "example"})
-for organization_service_account in results:
-    print(organization_service_account.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> OrganizationServiceAccountEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -28863,14 +28382,12 @@ result = client.OrganizationSite().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationSiteEntity]`
+#### `load(reqmatch, ctrl=None) -> OrganizationSiteEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.OrganizationSite().list({"organization_id": "example", "native_agent_id": "example"})
-for organization_site in results:
-    print(organization_site.data_get())
+result = client.OrganizationSite().load({"organization_id": "organization_id", "native_agent_id": "native_agent_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> OrganizationSiteEntity`
@@ -28878,7 +28395,7 @@ for organization_site in results:
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.OrganizationSite().remove({"id": "organization_site_id", "organization_id": "organization_id"})
+result = client.OrganizationSite().remove({"id": "id", "organization_id": "organization_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> OrganizationSiteEntity`
@@ -28887,7 +28404,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.OrganizationSite().update({
-    "id": "organization_site_id",
+    "id": "id",
     "organization_id": "organization_id",
     # Fields to update
 })
@@ -29043,16 +28560,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationWorkloadIdentity().create({
     "organization_id": "example_organization_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[OrganizationWorkloadIdentityEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.OrganizationWorkloadIdentity().list({"organization_id": "example"})
-for organization_workload_identity in results:
-    print(organization_workload_identity.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> OrganizationWorkloadIdentityEntity`
@@ -29269,19 +28776,13 @@ page_agent = client.PageAgent()
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch=None, ctrl=None) -> list[PageAgentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.PageAgent().list({"organization_id": "example"})
-for page_agent in results:
-    print(page_agent.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> PageAgentEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.PageAgent().load({"organization_id": "organization_id"})
+```
 
 ### Common Methods
 
@@ -29860,13 +29361,23 @@ pages_project_persona = client.PagesProjectPersona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `int` | Yes |  |
-| `credentials` | `list` | Yes |  |
-| `needs_attention_count` | `int` | Yes |  |
-| `permissions` | `dict` | Yes |  |
-| `persona_states` | `dict` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `list` | Yes |  |
-| `project` | `dict` | Yes |  |
+| `access_mode` | `str` | Yes |  |
+| `active_run_count` | `int` | Yes |  |
+| `archived_at` | `str | None` | Yes |  |
+| `attention` | `list` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `credential` | `Any` | Yes |  |
+| `credential_id` | `str | None` | Yes | The credential this persona signs in with. |
+| `goals` | `str | None` | Yes |  |
+| `health` | `dict` | Yes |  |
+| `id` | `str` | Yes |  |
+| `lock_version` | `int` | Yes |  |
+| `name` | `str` | Yes |  |
+| `project_id` | `str` | Yes |  |
+| `role` | `str` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `updated_at` | `str` | Yes |  |
 
 ### Operations
 
@@ -29919,12 +29430,28 @@ pages_project_run = client.PagesProjectRun()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `str` | Yes |  |
-| `environments` | `list` | Yes |  |
-| `environments_has_more` | `bool` | Yes |  |
-| `pagination` | `dict` | Yes |  |
-| `runs` | `list` | Yes |  |
-| `selected_environment` | `Any` | Yes |  |
+| `archived_at` | `str | None` | Yes |  |
+| `browser_seconds` | `float | None` | Yes |  |
+| `can_archive` | `bool` | Yes |  |
+| `can_restore` | `bool` | Yes |  |
+| `cleanup_state` | `str` | Yes |  |
+| `commit_sha` | `str | None` | Yes |  |
+| `created_at` | `str` | Yes |  |
+| `duration_seconds` | `float | None` | Yes |  |
+| `environment_name` | `str | None` | Yes |  |
+| `finished_at` | `str | None` | Yes |  |
+| `id` | `str` | Yes |  |
+| `outcome` | `str | None` | Yes |  |
+| `pull_request` | `Any` | Yes |  |
+| `pull_request_label` | `str | None` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `source_run` | `dict | None` | Yes |  |
+| `started_at` | `str | None` | Yes |  |
+| `state` | `str` | Yes |  |
+| `title` | `str` | Yes |  |
+| `trigger_kind` | `str` | Yes |  |
+| `triggered_by` | `str | None` | Yes |  |
+| `web_path` | `str` | Yes |  |
 
 ### Operations
 
@@ -30248,16 +29775,6 @@ result = client.Pairing().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[PairingEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.Pairing().list()
-for pairing in results:
-    print(pairing.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> PairingEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -30303,14 +29820,12 @@ pairing_event = client.PairingEvent()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[PairingEventEntity]`
+#### `load(reqmatch, ctrl=None) -> PairingEventEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PairingEvent().list({"pairing_id": "example"})
-for pairing_event in results:
-    print(pairing_event.data_get())
+result = client.PairingEvent().load({"pairing_id": "pairing_id"})
 ```
 
 ### Common Methods
@@ -30459,14 +29974,12 @@ result = client.PersonalAccessToken().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[PersonalAccessTokenEntity]`
+#### `load(reqmatch, ctrl=None) -> PersonalAccessTokenEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PersonalAccessToken().list()
-for personal_access_token in results:
-    print(personal_access_token.data_get())
+result = client.PersonalAccessToken().load({"id": "personal_access_token_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> PersonalAccessTokenEntity`
@@ -30514,14 +30027,12 @@ preview_operation = client.PreviewOperation()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[PreviewOperationEntity]`
+#### `load(reqmatch, ctrl=None) -> PreviewOperationEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PreviewOperation().list({"app_id": "example", "preview_id": "example"})
-for preview_operation in results:
-    print(preview_operation.data_get())
+result = client.PreviewOperation().load({"app_id": "app_id", "preview_id": "preview_id"})
 ```
 
 ### Common Methods
@@ -30583,14 +30094,12 @@ result = client.PreviewProfileSecretBinding().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[PreviewProfileSecretBindingEntity]`
+#### `load(reqmatch, ctrl=None) -> PreviewProfileSecretBindingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PreviewProfileSecretBinding().list({"app_id": "example", "preview_profile_id": "example"})
-for preview_profile_secret_binding in results:
-    print(preview_profile_secret_binding.data_get())
+result = client.PreviewProfileSecretBinding().load({"app_id": "app_id", "preview_profile_id": "preview_profile_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> PreviewProfileSecretBindingEntity`
@@ -30598,7 +30107,7 @@ for preview_profile_secret_binding in results:
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.PreviewProfileSecretBinding().remove({"id": "preview_profile_secret_binding_id", "app_id": "app_id", "preview_profile_id": "preview_profile_id"})
+result = client.PreviewProfileSecretBinding().remove({"app_id": "app_id", "id": "id", "preview_profile_id": "preview_profile_id"})
 ```
 
 ### Common Methods
@@ -30716,16 +30225,16 @@ preview_sharing_approval = client.PreviewSharingApproval()
 | `approved_default_secrets` | `list` | Yes |  |
 | `approved_source_keys` | `list` | Yes |  |
 | `build_keys` | `list` | No |  |
-| `build_secrets` | `list` | No |  |
-| `default_configuration` | `list` | No |  |
-| `default_secrets` | `list` | No |  |
+| `build_secrets` | `list` | Yes |  |
+| `default_configuration` | `list` | Yes |  |
+| `default_secrets` | `list` | Yes |  |
 | `services` | `list` | Yes |  |
 | `snapshot_version` | `int` | Yes |  |
-| `source_keys` | `list` | No |  |
+| `source_keys` | `list` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -30733,12 +30242,12 @@ preview_sharing_approval = client.PreviewSharingApproval()
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
@@ -30754,14 +30263,12 @@ result = client.PreviewSharingApproval().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[PreviewSharingApprovalEntity]`
+#### `load(reqmatch, ctrl=None) -> PreviewSharingApprovalEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PreviewSharingApproval().list({"app_id": "example", "preview_id": "example"})
-for preview_sharing_approval in results:
-    print(preview_sharing_approval.data_get())
+result = client.PreviewSharingApproval().load({"app_id": "app_id", "preview_id": "preview_id"})
 ```
 
 ### Common Methods
@@ -31881,18 +31388,11 @@ project_fixture = client.ProjectFixture()
 | `byte_size` | `int` | Yes |  |
 | `content_type` | `str` | Yes |  |
 | `credential_ids` | `list` | Yes |  |
-| `credentials` | `list` | Yes |  |
 | `environment_ids` | `list` | Yes |  |
-| `environments` | `list` | Yes |  |
-| `fixtures` | `list` | Yes |  |
 | `id` | `str` | No |  |
 | `lock_version` | `int` | Yes |  |
 | `name` | `str` | Yes |  |
-| `pagination` | `dict` | Yes |  |
-| `permissions` | `dict` | Yes |  |
 | `persona_ids` | `list` | Yes |  |
-| `personas` | `list` | Yes |  |
-| `project` | `dict` | Yes |  |
 | `sha256` | `str` | Yes |  |
 | `url` | `str` | Yes |  |
 | `version` | `int` | Yes |  |
@@ -31905,18 +31405,11 @@ project_fixture = client.ProjectFixture()
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -32729,14 +32222,12 @@ project_scenario_option = client.ProjectScenarioOption()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[ProjectScenarioOptionEntity]`
+#### `load(reqmatch, ctrl=None) -> ProjectScenarioOptionEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.ProjectScenarioOption().list({"organization_id": "example", "project_id": "example"})
-for project_scenario_option in results:
-    print(project_scenario_option.data_get())
+result = client.ProjectScenarioOption().load({"organization_id": "organization_id", "project_id": "project_id"})
 ```
 
 ### Common Methods
@@ -32848,14 +32339,12 @@ project_setting = client.ProjectSetting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[ProjectSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> ProjectSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.ProjectSetting().list({"organization_id": "example", "project_id": "example"})
-for project_setting in results:
-    print(project_setting.data_get())
+result = client.ProjectSetting().load({"organization_id": "organization_id", "project_id": "project_id"})
 ```
 
 ### Common Methods
@@ -33194,14 +32683,12 @@ result = client.PullRequestSetting().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[PullRequestSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> PullRequestSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.PullRequestSetting().list({"organization_id": "example"})
-for pull_request_setting in results:
-    print(pull_request_setting.data_get())
+result = client.PullRequestSetting().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -33870,16 +33357,6 @@ result = client.ReleaseRollout().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ReleaseRolloutEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ReleaseRollout().list({"release_id": "example"})
-for release_rollout in results:
-    print(release_rollout.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ReleaseRolloutEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -34247,16 +33724,6 @@ result = client.RepoAgentSession().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RepoAgentSessionEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.RepoAgentSession().list({"organization_id": "example", "repo_id": "example"})
-for repo_agent_session in results:
-    print(repo_agent_session.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> RepoAgentSessionEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -34555,16 +34022,6 @@ result = client.RepoCloudWorkspaceBackup().create({
     "organization_id": "example_organization_id",  # str
     "repo_id": "example_repo_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[RepoCloudWorkspaceBackupEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.RepoCloudWorkspaceBackup().list({"organization_id": "example", "repo_id": "example"})
-for repo_cloud_workspace_backup in results:
-    print(repo_cloud_workspace_backup.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> RepoCloudWorkspaceBackupEntity`
@@ -35635,16 +35092,6 @@ result = client.RoderCodeRepair().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RoderCodeRepairEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.RoderCodeRepair().list({"scenario_run_id": "example"})
-for roder_code_repair in results:
-    print(roder_code_repair.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> RoderCodeRepairEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -35702,7 +35149,7 @@ roder_code_repair_setting = client.RoderCodeRepairSetting()
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -35725,14 +35172,12 @@ result = client.RoderCodeRepairSetting().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RoderCodeRepairSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> RoderCodeRepairSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RoderCodeRepairSetting().list({"organization_id": "example"})
-for roder_code_repair_setting in results:
-    print(roder_code_repair_setting.data_get())
+result = client.RoderCodeRepairSetting().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -35943,14 +35388,12 @@ result = client.RunArtifact().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RunArtifactEntity]`
+#### `load(reqmatch, ctrl=None) -> RunArtifactEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RunArtifact().list({"pipeline_id": "example", "run_id": "example"})
-for run_artifact in results:
-    print(run_artifact.data_get())
+result = client.RunArtifact().load({"pipeline_id": "pipeline_id", "run_id": "run_id"})
 ```
 
 ### Common Methods
@@ -36038,16 +35481,6 @@ result = client.RunJob().create({
     "pipeline_id": "example_pipeline_id",  # str
     "run_id": "example_run_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[RunJobEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.RunJob().list({"pipeline_id": "example", "run_id": "example"})
-for run_job in results:
-    print(run_job.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> RunJobEntity`
@@ -36393,14 +35826,12 @@ result = client.RunnerLease().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RunnerLeaseEntity]`
+#### `load(reqmatch, ctrl=None) -> RunnerLeaseEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RunnerLease().list({"runner_id": "example", "runner_pool_id": "example"})
-for runner_lease in results:
-    print(runner_lease.data_get())
+result = client.RunnerLease().load({"runner_id": "runner_id", "runner_pool_id": "runner_pool_id"})
 ```
 
 ### Common Methods
@@ -36568,16 +35999,6 @@ result = client.RunnerPoolRunner().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RunnerPoolRunnerEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.RunnerPoolRunner().list({"runner_pool_id": "example"})
-for runner_pool_runner in results:
-    print(runner_pool_runner.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> RunnerPoolRunnerEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -36657,14 +36078,12 @@ result = client.RuntimeInstanceHealthSnapshot().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[RuntimeInstanceHealthSnapshotEntity]`
+#### `load(reqmatch, ctrl=None) -> RuntimeInstanceHealthSnapshotEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RuntimeInstanceHealthSnapshot().list({"runtime_instance_id": "example"})
-for runtime_instance_health_snapshot in results:
-    print(runtime_instance_health_snapshot.data_get())
+result = client.RuntimeInstanceHealthSnapshot().load({"runtime_instance_id": "runtime_instance_id"})
 ```
 
 ### Common Methods
@@ -36720,7 +36139,7 @@ sandbox_integration = client.SandboxIntegration()
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -36750,14 +36169,12 @@ result = client.SandboxIntegration().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SandboxIntegrationEntity]`
+#### `load(reqmatch, ctrl=None) -> SandboxIntegrationEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SandboxIntegration().list({"organization_id": "example"})
-for sandbox_integration in results:
-    print(sandbox_integration.data_get())
+result = client.SandboxIntegration().load({"organization_id": "organization_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> SandboxIntegrationEntity`
@@ -36999,16 +36416,6 @@ result = client.SecretGrant().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SecretGrantEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SecretGrant().list({"organization_id": "example", "secret_id": "example"})
-for secret_grant in results:
-    print(secret_grant.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SecretGrantEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -37103,16 +36510,6 @@ result = client.SecretVersion().create({
     "organization_id": "example_organization_id",  # str
     "secret_id": "example_secret_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[SecretVersionEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SecretVersion().list({"organization_id": "example", "secret_id": "example"})
-for secret_version in results:
-    print(secret_version.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> SecretVersionEntity`
@@ -37211,16 +36608,6 @@ result = client.ServiceEndpoint().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[ServiceEndpointEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.ServiceEndpoint().list({"app_id": "example", "service_id": "example"})
-for service_endpoint in results:
-    print(service_endpoint.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> ServiceEndpointEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -37311,14 +36698,12 @@ setting = client.Setting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[SettingEntity]`
+#### `load(reqmatch, ctrl=None) -> SettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.Setting().list({"organization_id": "example"})
-for setting in results:
-    print(setting.data_get())
+result = client.Setting().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -37854,16 +37239,6 @@ result = client.SignalSubscription().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SignalSubscriptionEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SignalSubscription().list({"organization_id": "example"})
-for signal_subscription in results:
-    print(signal_subscription.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SignalSubscriptionEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -38036,14 +37411,12 @@ result = client.SiteAccessKey().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SiteAccessKeyEntity]`
+#### `load(reqmatch, ctrl=None) -> SiteAccessKeyEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SiteAccessKey().list({"organization_id": "example", "site_id": "example"})
-for site_access_key in results:
-    print(site_access_key.data_get())
+result = client.SiteAccessKey().load({"organization_id": "organization_id", "site_id": "site_id"})
 ```
 
 #### `remove(reqmatch, ctrl=None) -> SiteAccessKeyEntity`
@@ -38051,7 +37424,7 @@ for site_access_key in results:
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.SiteAccessKey().remove({"id": "site_access_key_id", "organization_id": "organization_id", "site_id": "site_id"})
+result = client.SiteAccessKey().remove({"id": "id", "organization_id": "organization_id", "site_id": "site_id"})
 ```
 
 ### Common Methods
@@ -38331,16 +37704,6 @@ result = client.SpaceAlertRule().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceAlertRuleEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceAlertRule().list({"space_id": "example"})
-for space_alert_rule in results:
-    print(space_alert_rule.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SpaceAlertRuleEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -38428,14 +37791,12 @@ result = client.SpaceAuditEvent().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceAuditEventEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceAuditEventEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceAuditEvent().list({"space_id": "example"})
-for space_audit_event in results:
-    print(space_audit_event.data_get())
+result = client.SpaceAuditEvent().load({"space_id": "space_id"})
 ```
 
 ### Common Methods
@@ -38489,16 +37850,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceDnsRecord().create({
     "space_id": "example_space_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceDnsRecordEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceDnsRecord().list({"space_id": "example"})
-for space_dns_record in results:
-    print(space_dns_record.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> SpaceDnsRecordEntity`
@@ -38594,16 +37945,6 @@ result = client.SpaceEnrollmentToken().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceEnrollmentTokenEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceEnrollmentToken().list({"space_id": "example"})
-for space_enrollment_token in results:
-    print(space_enrollment_token.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SpaceEnrollmentTokenEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -38695,16 +38036,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceGateway().create({
     "space_id": "example_space_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceGatewayEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceGateway().list({"space_id": "example"})
-for space_gateway in results:
-    print(space_gateway.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> SpaceGatewayEntity`
@@ -38800,14 +38131,12 @@ result = client.SpaceGroup().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceGroupEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceGroupEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceGroup().list({"space_id": "example"})
-for space_group in results:
-    print(space_group.data_get())
+result = client.SpaceGroup().load({"space_id": "space_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> SpaceGroupEntity`
@@ -38816,7 +38145,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```python
 result = client.SpaceGroup().patch({
-    "id": "space_group_id",
+    "id": "id",
     "space_id": "space_id",
     # Only the fields to change
 })
@@ -38827,7 +38156,7 @@ result = client.SpaceGroup().patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.SpaceGroup().remove({"id": "space_group_id", "space_id": "space_id"})
+result = client.SpaceGroup().remove({"id": "id", "space_id": "space_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> SpaceGroupEntity`
@@ -38836,7 +38165,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.SpaceGroup().update({
-    "id": "space_group_id",
+    "id": "id",
     "space_id": "space_id",
     # Fields to update
 })
@@ -38895,14 +38224,12 @@ result = client.SpaceGroupMembership().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceGroupMembershipEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceGroupMembershipEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceGroupMembership().list({"space_id": "example"})
-for space_group_membership in results:
-    print(space_group_membership.data_get())
+result = client.SpaceGroupMembership().load({"space_id": "space_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> SpaceGroupMembershipEntity`
@@ -38911,7 +38238,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```python
 result = client.SpaceGroupMembership().patch({
-    "id": "space_group_membership_id",
+    "id": "id",
     "space_id": "space_id",
     # Only the fields to change
 })
@@ -38922,7 +38249,7 @@ result = client.SpaceGroupMembership().patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.SpaceGroupMembership().remove({"id": "space_group_membership_id", "space_id": "space_id"})
+result = client.SpaceGroupMembership().remove({"id": "id", "space_id": "space_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> SpaceGroupMembershipEntity`
@@ -38931,7 +38258,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.SpaceGroupMembership().update({
-    "id": "space_group_membership_id",
+    "id": "id",
     "space_id": "space_id",
     # Fields to update
 })
@@ -38984,14 +38311,12 @@ result = client.SpaceLogStream().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceLogStreamEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceLogStreamEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceLogStream().list({"space_id": "example"})
-for space_log_stream in results:
-    print(space_log_stream.data_get())
+result = client.SpaceLogStream().load({"space_id": "space_id"})
 ```
 
 ### Common Methods
@@ -39041,14 +38366,12 @@ result = client.SpaceMetricSery().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceMetricSeryEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceMetricSeryEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceMetricSery().list({"space_id": "example"})
-for space_metric_sery in results:
-    print(space_metric_sery.data_get())
+result = client.SpaceMetricSery().load({"space_id": "space_id"})
 ```
 
 ### Common Methods
@@ -39102,16 +38425,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceOtelCollector().create({
     "space_id": "example_space_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceOtelCollectorEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceOtelCollector().list({"space_id": "example"})
-for space_otel_collector in results:
-    print(space_otel_collector.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> SpaceOtelCollectorEntity`
@@ -39207,16 +38520,6 @@ result = client.SpacePeer().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpacePeerEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpacePeer().list({"space_id": "example"})
-for space_peer in results:
-    print(space_peer.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SpacePeerEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -39310,14 +38613,12 @@ result = client.SpacePeerAttachment().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpacePeerAttachmentEntity]`
+#### `load(reqmatch, ctrl=None) -> SpacePeerAttachmentEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpacePeerAttachment().list({"space_id": "example"})
-for space_peer_attachment in results:
-    print(space_peer_attachment.data_get())
+result = client.SpacePeerAttachment().load({"space_id": "space_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> SpacePeerAttachmentEntity`
@@ -39326,7 +38627,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```python
 result = client.SpacePeerAttachment().patch({
-    "id": "space_peer_attachment_id",
+    "id": "id",
     "space_id": "space_id",
     # Only the fields to change
 })
@@ -39337,7 +38638,7 @@ result = client.SpacePeerAttachment().patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```python
-result = client.SpacePeerAttachment().remove({"id": "space_peer_attachment_id", "space_id": "space_id"})
+result = client.SpacePeerAttachment().remove({"id": "id", "space_id": "space_id"})
 ```
 
 #### `update(reqdata, ctrl=None) -> SpacePeerAttachmentEntity`
@@ -39346,7 +38647,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```python
 result = client.SpacePeerAttachment().update({
-    "id": "space_peer_attachment_id",
+    "id": "id",
     "space_id": "space_id",
     # Fields to update
 })
@@ -39403,16 +38704,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpacePolicy().create({
     "space_id": "example_space_id",  # str
 })
-```
-
-#### `list(reqmatch=None, ctrl=None) -> list[SpacePolicyEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpacePolicy().list({"space_id": "example"})
-for space_policy in results:
-    print(space_policy.data_get())
 ```
 
 #### `load(reqmatch, ctrl=None) -> SpacePolicyEntity`
@@ -39508,16 +38799,6 @@ result = client.SpaceSegment().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceSegmentEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SpaceSegment().list({"space_id": "example"})
-for space_segment in results:
-    print(space_segment.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SpaceSegmentEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
@@ -39605,14 +38886,12 @@ result = client.SpaceTraceSpan().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SpaceTraceSpanEntity]`
+#### `load(reqmatch, ctrl=None) -> SpaceTraceSpanEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SpaceTraceSpan().list({"space_id": "example"})
-for space_trace_span in results:
-    print(space_trace_span.data_get())
+result = client.SpaceTraceSpan().load({"space_id": "space_id"})
 ```
 
 ### Common Methods
@@ -39689,7 +38968,7 @@ spark = client.Spark()
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -39737,14 +39016,12 @@ result = client.Spark().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SparkEntity]`
+#### `load(reqmatch, ctrl=None) -> SparkEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.Spark().list({"organization_id": "example"})
-for spark in results:
-    print(spark.data_get())
+result = client.Spark().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -39826,14 +39103,12 @@ result = client.SparkAgentIntegration().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SparkAgentIntegrationEntity]`
+#### `load(reqmatch, ctrl=None) -> SparkAgentIntegrationEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SparkAgentIntegration().list({"agent_id": "example", "organization_id": "example"})
-for spark_agent_integration in results:
-    print(spark_agent_integration.data_get())
+result = client.SparkAgentIntegration().load({"agent_id": "agent_id", "organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -40112,30 +39387,63 @@ spark_agent_thread = client.SparkAgentThread()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `int | None` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` | Yes |  |
-| `execution` | `Any` | No |  |
+| `archive_deletes_sandbox` | `bool` | No |  |
+| `archived` | `bool` | Yes |  |
+| `attention` | `dict | None` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `bool` | Yes |  |
+| `can_compact` | `bool` | Yes |  |
+| `can_snooze` | `bool` | Yes |  |
+| `coordination_status` | `str | None` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `Any` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `Any` | No |  |
 | `first_input_key` | `str` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `str` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `str` | No |  |
+| `group` | `str` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `bool` | Yes |  |
+| `id` | `str` | Yes |  |
 | `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `dict` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `str | None` | Yes |  |
-| `local_scope_key` | `str | None` | Yes |  |
-| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `list` | Yes |  |
-| `main_thread_id` | `str` | Yes |  |
+| `is_main` | `bool` | Yes |  |
+| `kind` | `str` | Yes |  |
 | `message` | `str` | No | The thread's first message. |
-| `next_cursor` | `str | None` | Yes |  |
+| `older` | `bool` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `str` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `str` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `str` | No |  |
-| `selected_thread` | `Any` | Yes |  |
+| `snoozed_until` | `str | None` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `dict` | Yes |  |
-| `threads` | `list` | Yes |  |
 | `title` | `str` | No |  |
-| `total_archived_count` | `int | None` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `str | None` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Operations
 
@@ -40212,7 +39520,7 @@ spark_credit = client.SparkCredit()
 | `kind` | `str` | Yes |  |
 | `payment_method` | `dict | None` | Yes |  |
 | `payments_enabled` | `bool` | Yes |  |
-| `plan` | `str` | No |  |
+| `plan` | `str | None` | Yes |  |
 | `plans` | `list` | Yes |  |
 | `quoted_credits_cents` | `int` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `int` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -40227,33 +39535,33 @@ spark_credit = client.SparkCredit()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch |
-| --- | --- | --- | --- | --- | --- |
-| `amount_cents` | - | - | - | - | - |
-| `autofill` | - | - | - | - | - |
-| `autofill_payment_unconfirmed` | - | - | - | - | - |
-| `available_usd` | - | - | - | - | - |
-| `billing_unit` | - | - | - | - | - |
-| `can_manage` | - | - | - | - | - |
-| `compute_minutes` | - | - | - | - | - |
-| `compute_usd` | - | - | - | - | - |
-| `credits_per_usd` | - | - | - | - | - |
-| `inference_usd` | - | - | - | - | - |
-| `kind` | - | - | - | - | - |
-| `payment_method` | - | - | - | - | - |
-| `payments_enabled` | - | - | - | - | - |
-| `plan` | - | Yes | - | - | Yes |
-| `plans` | - | - | - | - | - |
-| `quoted_credits_cents` | - | - | - | - | - |
-| `quoted_price_cents` | - | - | - | - | - |
-| `refill_limits_cents` | - | - | - | - | - |
-| `refill_options` | - | - | - | - | - |
-| `refill_thresholds_cents` | - | - | - | - | - |
-| `request_key` | - | - | - | - | - |
-| `settings` | - | - | - | - | - |
-| `starter_cents` | - | - | - | - | - |
-| `top_up_max_cents` | - | - | - | - | - |
-| `top_up_step_cents` | - | - | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - |
+| `autofill` | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - |
+| `available_usd` | - | - | - | - |
+| `billing_unit` | - | - | - | - |
+| `can_manage` | - | - | - | - |
+| `compute_minutes` | - | - | - | - |
+| `compute_usd` | - | - | - | - |
+| `credits_per_usd` | - | - | - | - |
+| `inference_usd` | - | - | - | - |
+| `kind` | - | - | - | - |
+| `payment_method` | - | - | - | - |
+| `payments_enabled` | - | - | - | - |
+| `plan` | - | Yes | - | - |
+| `plans` | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - |
+| `refill_options` | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - |
+| `request_key` | - | - | - | - |
+| `settings` | - | - | - | - |
+| `starter_cents` | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - |
 
 ### Operations
 
@@ -40269,19 +39577,13 @@ result = client.SparkCredit().create({
 })
 ```
 
-#### `list(reqmatch=None, ctrl=None) -> list[SparkCreditEntity]`
-
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
-
-```python
-results = client.SparkCredit().list({"organization_id": "example"})
-for spark_credit in results:
-    print(spark_credit.data_get())
-```
-
 #### `load(reqmatch, ctrl=None) -> SparkCreditEntity`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
+
+```python
+result = client.SparkCredit().load({"organization_id": "organization_id"})
+```
 
 #### `patch(reqdata, ctrl=None) -> SparkCreditEntity`
 
@@ -40405,14 +39707,12 @@ spark_credit_usage_total = client.SparkCreditUsageTotal()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[SparkCreditUsageTotalEntity]`
+#### `load(reqmatch, ctrl=None) -> SparkCreditUsageTotalEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.SparkCreditUsageTotal().list({"organization_id": "example"})
-for spark_credit_usage_total in results:
-    print(spark_credit_usage_total.data_get())
+result = client.SparkCreditUsageTotal().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -42367,14 +41667,12 @@ vcs_setting = client.VcsSetting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[VcsSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> VcsSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.VcsSetting().list({"organization_id": "example"})
-for vcs_setting in results:
-    print(vcs_setting.data_get())
+result = client.VcsSetting().load({"organization_id": "organization_id"})
 ```
 
 ### Common Methods
@@ -43133,14 +42431,12 @@ verify_email_verification = client.VerifyEmailVerification()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[VerifyEmailVerificationEntity]`
+#### `load(reqmatch, ctrl=None) -> VerifyEmailVerificationEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.VerifyEmailVerification().list()
-for verify_email_verification in results:
-    print(verify_email_verification.data_get())
+result = client.VerifyEmailVerification().load()
 ```
 
 ### Common Methods

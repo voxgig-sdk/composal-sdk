@@ -13,7 +13,7 @@ body:
   type: json
   content: |-
     {
-      "organization_id": "{{organization_id}}",
+      "organization_id": "{{roder_code_repair_setting_ref01}}",
       "enabled": true,
       "repository_slug": "example"
     }
@@ -23,7 +23,7 @@ scripts:
       const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
       const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
       const getonly = flag("getonly", false)
-      const missing = ["base","organization_id"].filter((name) => !given(name))
+      const missing = ["base"].filter((name) => !given(name))
       if (!given("apikey")) missing.unshift("apikey")
       const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
       if (getonly && "GET" !== pm.request.method) {
@@ -40,6 +40,7 @@ scripts:
         else pm.test("blocked: " + why, () => { throw new Error("blocked") })
         pm.execution.skipRequest()
       }
+      pm.variables.set("roder_code_repair_setting_ref01", "roder_code_repair_setting-" + Date.now().toString(36))
     language: text/javascript
   - type: afterResponse
     code: |-
@@ -49,10 +50,6 @@ scripts:
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       const made = body
-      pm.test("1. Create roder_code_repair_setting: the record carries its key", () => {
-        pm.expect(made, "record").to.be.an("object")
-        pm.expect(at(made, "id"), "id").to.exist
-      })
-      if (null != made && null != at(made, "id")) pm.variables.set("roder_code_repair_setting_ref01", String(at(made, "id")))
+      if (null != made && null != at(made, "organization_id")) pm.variables.set("roder_code_repair_setting_ref01", String(at(made, "organization_id")))
     language: text/javascript
 order: 1000

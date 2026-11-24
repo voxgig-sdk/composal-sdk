@@ -1,0 +1,18 @@
+$kind: http-request
+id: "9da11369-ef18-5a3f-b8ff-c42d2da0b59e"
+description: |-
+  The `load` operation of **run_job**.
+
+  SDK: `client.RunJob().load({ pipeline_id: "example", run_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+order: 2000

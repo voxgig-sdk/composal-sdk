@@ -22,58 +22,6 @@ class SecretVersionDirectTest extends TestCase
         return empty($result["err"]) && !empty($result["ok"]) && $status >= 200 && $status < 300;
     }
 
-    public function test_direct_list_secret_version(): void
-    {
-        $setup = secret_version_direct_setup([
-            ["id" => "direct01"],
-            ["id" => "direct02"],
-        ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-secret_version", $setup["live"] ? "live" : "unit");
-        if ($_shouldSkip) {
-            $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
-            return;
-        }
-        if ($setup["live"]) {
-            foreach (["organization01", "secret01"] as $_liveKey) {
-                if (null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SECRET_VERSION_ENTID");
-                }
-            }
-        }
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        $client = $setup["client"];
-
-        $params = [];
-        $query = [];
-        $params["organization_id"] = $setup["live"] ? ($setup["idmap"]["organization01"] ?? null) : "direct01";
-        $params["secret_id"] = $setup["live"] ? ($setup["idmap"]["secret01"] ?? null) : "direct02";
-
-        $result = $client->direct([
-            "path" => "api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions",
-            "method" => "GET",
-            "params" => $params,
-            "query" => $query,
-        ]);
-        if ($setup["live"]) {
-            if (!self::liveOk($result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list failed: " . Runner::live_describe($result));
-            }
-            if (null === Runner::live_list($result["data"] ?? null)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list returned no list: " . Runner::live_describe($result));
-            }
-            $this->assertIsArray(Runner::live_list($result["data"]));
-        } else {
-            $this->assertArrayNotHasKey("err", $result);
-            $this->assertTrue($result["ok"]);
-            $this->assertEquals(200, Helpers::to_int($result["status"]));
-            $this->assertIsArray($result["data"]);
-            $this->assertCount(2, $result["data"]);
-            $this->assertCount(1, $setup["calls"]);
-        }
-    }
-
     public function test_direct_load_secret_version(): void
     {
         $setup = secret_version_direct_setup(["id" => "direct01"]);
@@ -82,8 +30,12 @@ class SecretVersionDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
+        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['secret_version01'] ?? null)) {
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-secret_version","state":"excluded","attempted":false,"reason":"GET-only live run: needs secret_version01, which only POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-load-secret_version excluded (GET-only live run: needs secret_version01, which only POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact gives)');
+        }
         if ($setup["live"]) {
-            foreach (["organization01", "secret01"] as $_liveKey) {
+            foreach (["secret_version01", "organization01", "secret01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SECRET_VERSION_ENTID");
                 }
@@ -97,27 +49,7 @@ class SecretVersionDirectTest extends TestCase
         $params = [];
         $query = [];
         if ($setup["live"]) {
-            $list_result = $client->direct([
-                "path" => "api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions",
-                "method" => "GET",
-                "params" => ["organization_id" => $setup["idmap"]["organization01"] ?? null, "secret_id" => $setup["idmap"]["secret01"] ?? null],
-            ]);
-            if (!self::liveOk($list_result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list discovery failed: " . Runner::live_describe($list_result));
-            }
-            $records = Runner::live_list($list_result["data"] ?? null);
-            if (null === $records) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list discovery returned no list: " . Runner::live_describe($list_result));
-            }
-            if (0 === count($records)) {
-                Runner::live_empty("The account has no secret_version record to load");
-            }
-            $first = is_array($records[0]) ? $records[0] : [];
-            $found = $first["id"] ?? null;
-            if (null === $found) {
-                Runner::live_miss(self::LIVE_STRICT, "Live load blocked: discovery returned no usable identity");
-            }
-            $params["id"] = $found;
+            $params["id"] = $setup["idmap"]["secret_version01"] ?? null;
             $params["organization_id"] = $setup["idmap"]["organization01"] ?? null;
             $params["secret_id"] = $setup["idmap"]["secret01"] ?? null;
         } else {

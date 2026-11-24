@@ -607,7 +607,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idsandbox_integrations"><code>/api/v1/organizations/{organization_id}/sandbox_integrations</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Sandbox configuration</td>
 </tr>
 <tr>
@@ -628,11 +628,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">sandbox_integrations, err := client.SandboxIntegration(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">sandbox_integration, err := client.SandboxIntegration(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(sandbox_integrations)
+fmt.Println(sandbox_integration)
 created, err := client.SandboxIntegration(nil).Create(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;configuration&quot;: map[string]any{}, &quot;credentials&quot;: map[string]any{}, &quot;name&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -651,35 +651,35 @@ fmt.Println(patched)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local sandbox_integrations, err = client:SandboxIntegration():list({ organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local sandbox_integration, err = client:SandboxIntegration():load({ organization_id = &quot;example&quot; })
 local created, err = client:SandboxIntegration():create({ organization_id = &quot;example&quot;, configuration = {}, credentials = {}, name = &quot;example&quot;, provider = &quot;example&quot; })
 local updated, err = client:SandboxIntegration():update({ organization_id = &quot;example&quot;, credentials = {} })
 local patched, err = client:SandboxIntegration():patch({ organization_id = &quot;example&quot;, credentials = {} })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$sandbox_integrations = $client-&gt;SandboxIntegration()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$sandbox_integration = $client-&gt;SandboxIntegration()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SandboxIntegration()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;configuration&quot; =&gt; [], &quot;credentials&quot; =&gt; [], &quot;name&quot; =&gt; &quot;example&quot;, &quot;provider&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;SandboxIntegration()-&gt;update([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;credentials&quot; =&gt; []]);
 $patched = $client-&gt;SandboxIntegration()-&gt;patch([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;credentials&quot; =&gt; []]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">sandbox_integrations = client.SandboxIntegration().list({&quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">sandbox_integration = client.SandboxIntegration().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.SandboxIntegration().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;configuration&quot;: {}, &quot;credentials&quot;: {}, &quot;name&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot; })
 updated = client.SandboxIntegration().update({&quot;organization_id&quot;: &quot;example&quot;, &quot;credentials&quot;: {}})
 patched = client.SandboxIntegration().patch({&quot;organization_id&quot;: &quot;example&quot;, &quot;credentials&quot;: {}})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">sandbox_integrations = client.SandboxIntegration.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">sandbox_integration = client.SandboxIntegration.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.SandboxIntegration.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;configuration&quot; =&gt; {}, &quot;credentials&quot; =&gt; {}, &quot;name&quot; =&gt; &quot;example&quot;, &quot;provider&quot; =&gt; &quot;example&quot; })
 updated = client.SandboxIntegration.update({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;credentials&quot; =&gt; {} })
 patched = client.SandboxIntegration.patch({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;credentials&quot; =&gt; {} })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const sandbox_integrations = await client.SandboxIntegration().list({ organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const sandbox_integration = await client.SandboxIntegration().load({ organization_id: &quot;example&quot; })
 const created = await client.SandboxIntegration().create({ organization_id: &quot;example&quot;, configuration: {}, credentials: {}, name: &quot;example&quot;, provider: &quot;example&quot; })
 const updated = await client.SandboxIntegration().update({ organization_id: &quot;example&quot;, credentials: {} })
 const patched = await client.SandboxIntegration().patch({ organization_id: &quot;example&quot;, credentials: {} })
@@ -877,7 +877,7 @@ const patched = await client.SandboxIntegration().patch({ organization_id: &quot
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idsandbox_integrations" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/sandbox_integrations</h3>
 <p>Operation ID: <code>agentSandboxIntegrationsIndex</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

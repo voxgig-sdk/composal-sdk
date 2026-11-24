@@ -285,8 +285,8 @@ main: kit: entity: spark_agent_integration: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

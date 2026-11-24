@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1app_accessjwks"><code>/api/v1/app_access/jwks</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_access_jwks, err := client.AppAccessJwk(nil).List(nil, nil)
+<pre><code class="language-go">app_access_jwk, err := client.AppAccessJwk(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(app_access_jwks)
+fmt.Println(app_access_jwk)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_access_jwks, err = client:AppAccessJwk():list()
+<pre><code class="language-lua">local app_access_jwk, err = client:AppAccessJwk():load()
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_access_jwks = $client-&gt;AppAccessJwk()-&gt;list();
+<pre><code class="language-php">$app_access_jwk = $client-&gt;AppAccessJwk()-&gt;load();
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_access_jwks = client.AppAccessJwk().list()
+<pre><code class="language-py">app_access_jwk = client.AppAccessJwk().load()
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_access_jwks = client.AppAccessJwk.list()
+<pre><code class="language-rb">app_access_jwk = client.AppAccessJwk.load()
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_access_jwks = await client.AppAccessJwk().list()
+<pre><code class="language-ts">const app_access_jwk = await client.AppAccessJwk().load()
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -644,7 +644,7 @@ fmt.Println(app_access_jwks)
 </tr>
 </thead>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1app_accessjwks" class="operation" data-method="get"><code>GET</code> /api/v1/app_access/jwks</h3>
 <p>Operation ID: <code>api_v1_app_access_jwks</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

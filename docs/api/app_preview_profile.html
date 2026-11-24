@@ -97,8 +97,8 @@
 <a href="../api/app_metric.html">AppMetric</a>
 <a href="../api/app_preview.html">AppPreview</a>
 <a aria-current="page" href="../api/app_preview_profile.html">AppPreviewProfile</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingappsapp_idpreview_profiles">POST /api/v1/hosting/apps/{app_id}/preview_profiles</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idpreview_profiles">GET /api/v1/hosting/apps/{app_id}/preview_profiles</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idpreview_profilesid">GET /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idpreview_profiles">GET /api/v1/hosting/apps/{app_id}/preview_profiles</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idpreview_profilesid">PATCH /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idpreview_profilesid">DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idpreview_profilesid">PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</a></div>
@@ -608,13 +608,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idpreview_profiles"><code>/api/v1/hosting/apps/{app_id}/preview_profiles</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idpreview_profilesid"><code>/api/v1/hosting/apps/{app_id}/preview_profiles/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idpreview_profilesid"><code>/api/v1/hosting/apps/{app_id}/preview_profiles/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idpreview_profiles"><code>/api/v1/hosting/apps/{app_id}/preview_profiles</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -642,12 +642,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_preview_profiles, err := client.AppPreviewProfile(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_preview_profiles)
-app_preview_profile, err := client.AppPreviewProfile(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_preview_profile, err := client.AppPreviewProfile(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -675,8 +670,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_preview_profiles, err = client:AppPreviewProfile():list({ app_id = &quot;example&quot; })
-local app_preview_profile, err = client:AppPreviewProfile():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_preview_profile, err = client:AppPreviewProfile():load({ app_id = &quot;example&quot; })
 local created, err = client:AppPreviewProfile():create({ app_id = &quot;example&quot;, name = &quot;example&quot;, slug = &quot;example&quot;, source_environment_id = &quot;example&quot; })
 local updated, err = client:AppPreviewProfile():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
 local patched, err = client:AppPreviewProfile():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, automatic = true })
@@ -684,8 +678,7 @@ local removed, err = client:AppPreviewProfile():remove({ app_id = &quot;example&
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_preview_profiles = $client-&gt;AppPreviewProfile()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_preview_profile = $client-&gt;AppPreviewProfile()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_preview_profile = $client-&gt;AppPreviewProfile()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppPreviewProfile()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;source_environment_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppPreviewProfile()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;AppPreviewProfile()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;automatic&quot; =&gt; true]);
@@ -693,8 +686,7 @@ $client-&gt;AppPreviewProfile()-&gt;remove([&quot;app_id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_preview_profiles = client.AppPreviewProfile().list({&quot;app_id&quot;: &quot;example&quot;})
-app_preview_profile = client.AppPreviewProfile().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_preview_profile = client.AppPreviewProfile().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppPreviewProfile().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;slug&quot;: &quot;example&quot;, &quot;source_environment_id&quot;: &quot;example&quot; })
 updated = client.AppPreviewProfile().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
 patched = client.AppPreviewProfile().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;automatic&quot;: True})
@@ -702,8 +694,7 @@ client.AppPreviewProfile().remove({&quot;app_id&quot;: &quot;example&quot;, &quo
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_preview_profiles = client.AppPreviewProfile.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_preview_profile = client.AppPreviewProfile.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_preview_profile = client.AppPreviewProfile.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppPreviewProfile.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;source_environment_id&quot; =&gt; &quot;example&quot; })
 updated = client.AppPreviewProfile.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 patched = client.AppPreviewProfile.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;automatic&quot; =&gt; true })
@@ -711,8 +702,7 @@ client.AppPreviewProfile.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, 
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_preview_profiles = await client.AppPreviewProfile().list({ app_id: &quot;example&quot; })
-const app_preview_profile = await client.AppPreviewProfile().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_preview_profile = await client.AppPreviewProfile().load({ app_id: &quot;example&quot; })
 const created = await client.AppPreviewProfile().create({ app_id: &quot;example&quot;, name: &quot;example&quot;, slug: &quot;example&quot;, source_environment_id: &quot;example&quot; })
 const updated = await client.AppPreviewProfile().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
 const patched = await client.AppPreviewProfile().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, automatic: true })
@@ -1001,9 +991,9 @@ await client.AppPreviewProfile().remove({ app_id: &quot;example&quot;, id: &quot
 <h5 id="409-source-cannot-be-captured" class="status" data-status="4xx">409: Source cannot be captured</h5>
 <h5 id="422-invalid-preview-configuration" class="status" data-status="4xx">422: Invalid preview configuration</h5>
 <h5 id="502-hosting-dependency-unavailable" class="status" data-status="5xx">502: Hosting dependency unavailable</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idpreview_profiles" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/preview_profiles</h3>
-<p>Operation ID: <code>api_v1_app_preview_profiles</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idpreview_profilesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</h3>
+<p>Operation ID: <code>api_v1_app_preview_profile</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -1024,6 +1014,13 @@ await client.AppPreviewProfile().remove({ app_id: &quot;example&quot;, id: &quot
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-1">Responses</h4>
@@ -1035,9 +1032,8 @@ await client.AppPreviewProfile().remove({ app_id: &quot;example&quot;, id: &quot
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idpreview_profilesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/preview_profiles/{id}</h3>
-<p>Operation ID: <code>api_v1_app_preview_profile</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idpreview_profiles" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/preview_profiles</h3>
+<p>Operation ID: <code>api_v1_app_preview_profiles</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -1053,13 +1049,6 @@ await client.AppPreviewProfile().remove({ app_id: &quot;example&quot;, id: &quot
 <tbody>
 <tr>
 <td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

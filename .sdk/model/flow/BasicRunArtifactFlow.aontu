@@ -20,17 +20,23 @@ main: kit: flow: BasicRunArtifactFlow:
     }
 
     {
-      m: {
-        pipeline_id: "pipeline01",
-        run_id: "run01"
+      i: {
+        ref: "run_artifact_ref01",
+        srcdatavar: "run_artifact_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "run_artifact01",
+        pipeline_id: "pipeline01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "run_artifact_ref01"
+            mark: "Mark01-run_artifact_ref01"
           }
         }
       ]

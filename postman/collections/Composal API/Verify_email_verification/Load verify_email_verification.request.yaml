@@ -1,0 +1,11 @@
+$kind: http-request
+id: "453e64e4-9b32-5ce5-b6af-d049f06925b5"
+description: |-
+  The `load` operation of **verify_email_verification**.
+
+  SDK: `client.VerifyEmailVerification().load()`
+url: "{{base}}/api/v1/email_verifications/verify"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

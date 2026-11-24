@@ -1,0 +1,22 @@
+$kind: http-request
+id: "7ceef915-0c62-5c42-bcde-a61fc7db4d95"
+description: |-
+  The `load` operation of **github_connection**.
+
+  SDK: `client.GithubConnection().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/github_connections"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: github_app_installation_id
+    value: ""
+    disabled: true
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this github_connection belongs to.
+order: 1000

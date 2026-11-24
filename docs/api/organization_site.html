@@ -617,7 +617,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1sparkorganizationsorganization_idsites"><code>/api/v1/spark/organizations/{organization_id}/sites</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
@@ -656,22 +656,22 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">organization_sites, err := client.OrganizationSite(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">organization_site, err := client.OrganizationSite(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(organization_sites)
+fmt.Println(organization_site)
 created, err := client.OrganizationSite(nil).Create(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(created)
-updated, err := client.OrganizationSite(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+updated, err := client.OrganizationSite(nil).Update(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(updated)
-removed, err := client.OrganizationSite(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+removed, err := client.OrganizationSite(nil).Remove(map[string]any{&quot;id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -679,38 +679,38 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local organization_sites, err = client:OrganizationSite():list({ organization_id = &quot;example&quot;, native_agent_id = &quot;example&quot; })
+<pre><code class="language-lua">local organization_site, err = client:OrganizationSite():load({ organization_id = &quot;example&quot;, native_agent_id = &quot;example&quot; })
 local created, err = client:OrganizationSite():create({ organization_id = &quot;example&quot; })
-local updated, err = client:OrganizationSite():update({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
-local removed, err = client:OrganizationSite():remove({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+local updated, err = client:OrganizationSite():update({ organization_id = &quot;example&quot; })
+local removed, err = client:OrganizationSite():remove({ id = &quot;example&quot;, organization_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$organization_sites = $client-&gt;OrganizationSite()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$organization_site = $client-&gt;OrganizationSite()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;OrganizationSite()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$updated = $client-&gt;OrganizationSite()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$client-&gt;OrganizationSite()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;OrganizationSite()-&gt;update([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
+$client-&gt;OrganizationSite()-&gt;remove([&quot;id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">organization_sites = client.OrganizationSite().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">organization_site = client.OrganizationSite().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;})
 created = client.OrganizationSite().create({ &quot;organization_id&quot;: &quot;example&quot; })
-updated = client.OrganizationSite().update({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
-client.OrganizationSite().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+updated = client.OrganizationSite().update({&quot;organization_id&quot;: &quot;example&quot;})
+client.OrganizationSite().remove({&quot;id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">organization_sites = client.OrganizationSite.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">organization_site = client.OrganizationSite.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot; })
 created = client.OrganizationSite.create({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-updated = client.OrganizationSite.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
-client.OrganizationSite.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+updated = client.OrganizationSite.update({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
+client.OrganizationSite.remove({ &quot;id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const organization_sites = await client.OrganizationSite().list({ organization_id: &quot;example&quot;, native_agent_id: &quot;example&quot; })
+<pre><code class="language-ts">const organization_site = await client.OrganizationSite().load({ organization_id: &quot;example&quot;, native_agent_id: &quot;example&quot; })
 const created = await client.OrganizationSite().create({ organization_id: &quot;example&quot; })
-const updated = await client.OrganizationSite().update({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
-await client.OrganizationSite().remove({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+const updated = await client.OrganizationSite().update({ organization_id: &quot;example&quot; })
+await client.OrganizationSite().remove({ id: &quot;example&quot;, organization_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -811,7 +811,7 @@ await client.OrganizationSite().remove({ id: &quot;example_id&quot;, organizatio
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1sparkorganizationsorganization_idsites" class="operation" data-method="get"><code>GET</code> /api/v1/spark/organizations/{organization_id}/sites</h3>
 <p>Operation ID: <code>get_api_v1_spark_organizations_organization_id_sites</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

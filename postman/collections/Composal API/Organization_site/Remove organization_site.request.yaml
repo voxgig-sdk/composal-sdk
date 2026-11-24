@@ -3,7 +3,7 @@ id: ccc1dda6-905e-5156-aa0b-0bd3c78e36dc
 description: |-
   The `remove` operation of **organization_site**.
 
-  SDK: `client.OrganizationSite().remove({ id: "example_id", organization_id: "example" })`
+  SDK: `client.OrganizationSite().remove({ id: "example", organization_id: "example" })`
 url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name"
 method: DELETE
 headers:
@@ -13,8 +13,8 @@ pathVariables:
     value: "{{organization_id}}"
     description: The organization this organization_site belongs to.
   - key: name
-    value: "{{organization_site_id}}"
-    description: The organization_site this request addresses.
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
 scripts:
   - type: afterResponse
     code: |-

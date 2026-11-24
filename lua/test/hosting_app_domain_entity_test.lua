@@ -29,7 +29,7 @@ describe("HostingAppDomainEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:HostingAppDomain(nil):list({ ["app_id"] = 1 }, nil)
+    local _, err = client:HostingAppDomain(nil):load({ ["app_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("HostingAppDomainEntity", function()
     local setup = hosting_app_domain_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "hosting_app_domain." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,63 +46,10 @@ describe("HostingAppDomainEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"hosting_app_domain.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable\"}")
-      print("LIVE STEP {\"id\":\"hosting_app_domain.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
-      print("LIVE STEP {\"id\":\"hosting_app_domain.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
-      print("LIVE STEP {\"id\":\"hosting_app_domain.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"app01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_HOSTING_APP_DOMAIN_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["hosting_app_domain01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "hosting_app_domain", function()
-        return client:HostingAppDomain(nil):list({["app_id"] = setup.idmap["app01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local hosting_app_domain_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.hosting_app_domain")))
-    local hosting_app_domain_ref01_data = nil
-    if #hosting_app_domain_ref01_data_raw > 0 then
-      hosting_app_domain_ref01_data = helpers.to_map(hosting_app_domain_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local hosting_app_domain_ref01_ent = client:HostingAppDomain(nil)
-    local hosting_app_domain_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local hosting_app_domain_ref01_list_result, err = hosting_app_domain_ref01_ent:list(hosting_app_domain_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(hosting_app_domain_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local hosting_app_domain_ref01_match_dt0 = {
-      id = hosting_app_domain_ref01_data["id"],
-    }
-    hosting_app_domain_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
-    local hosting_app_domain_ref01_data_dt0_loaded, err = hosting_app_domain_ref01_ent:load(hosting_app_domain_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local hosting_app_domain_ref01_data_dt0_load_result = helpers.to_map(type(hosting_app_domain_ref01_data_dt0_loaded) == 'table' and hosting_app_domain_ref01_data_dt0_loaded.data_get and hosting_app_domain_ref01_data_dt0_loaded:data_get() or hosting_app_domain_ref01_data_dt0_loaded)
-    assert.is_not_nil(hosting_app_domain_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(hosting_app_domain_ref01_data_dt0_load_result["id"], hosting_app_domain_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"hosting_app_domain.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
+      print("LIVE STEP {\"id\":\"hosting_app_domain.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only hosting_app_domain.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"hosting_app_domain.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
+      pending("Live coverage incomplete: hosting_app_domain.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable); hosting_app_domain.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}); hosting_app_domain.load.2 excluded (GET-only live run: reads a record only hosting_app_domain.create.0 gives); hosting_app_domain.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id})")
       return
     end
 
@@ -133,23 +80,6 @@ describe("HostingAppDomainEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local hosting_app_domain_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local hosting_app_domain_ref01_list_result, err = hosting_app_domain_ref01_ent:list(hosting_app_domain_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(hosting_app_domain_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(hosting_app_domain_ref01_list_result),
-      { id = hosting_app_domain_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local hosting_app_domain_ref01_data_up0_up = {
       id = hosting_app_domain_ref01_data["id"],
@@ -174,7 +104,6 @@ describe("HostingAppDomainEntity", function()
     local hosting_app_domain_ref01_match_dt0 = {
       id = hosting_app_domain_ref01_data["id"],
     }
-    hosting_app_domain_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
     local hosting_app_domain_ref01_data_dt0_loaded, err = hosting_app_domain_ref01_ent:load(hosting_app_domain_ref01_match_dt0, nil)
     assert.is_nil(err)
     local hosting_app_domain_ref01_data_dt0_load_result = helpers.to_map(type(hosting_app_domain_ref01_data_dt0_loaded) == 'table' and hosting_app_domain_ref01_data_dt0_loaded.data_get and hosting_app_domain_ref01_data_dt0_loaded:data_get() or hosting_app_domain_ref01_data_dt0_loaded)
@@ -191,23 +120,6 @@ describe("HostingAppDomainEntity", function()
     hosting_app_domain_ref01_match_rm0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
     local _, err = hosting_app_domain_ref01_ent:remove(hosting_app_domain_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local hosting_app_domain_ref01_match_rt0 = {
-      ["app_id"] = setup.idmap["app01"],
-    }
-
-    local hosting_app_domain_ref01_list_rt0_result, err = hosting_app_domain_ref01_ent:list(hosting_app_domain_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(hosting_app_domain_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(hosting_app_domain_ref01_list_rt0_result),
-      { id = hosting_app_domain_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

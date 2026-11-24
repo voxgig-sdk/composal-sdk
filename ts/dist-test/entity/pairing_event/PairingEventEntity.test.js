@@ -60,28 +60,23 @@ const utility_1 = require("../../utility");
             return;
         }
         const client = __1.ComposalSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.PairingEvent().list({ "pairing_id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.PairingEvent().load({ "pairing_id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE;
-        for (const op of ['list']) {
+        for (const op of []) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'pairing_event.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "pairing_event", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/relay/pairings/{id}/events", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "pairing_id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings/{id}/events", "q": { "exist": ["pairing_id"] }, "r": { "param": { "id": "pairing_id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "var": "pairing_id" }, { "lit": "events" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [["$.main.kit.entity.pairing"]] }, "key$": "pairing_event", "name__orig": "pairing_event", "Name": "PairingEvent", "name_": "pairing_event", "name-": "pairing-event", "NAME": "PAIRING_EVENT", "index$": 375 }, { "active": true, "entity": "pairing_event", "key$": "BasicPairingEventFlow", "kind": "basic", "name": "BasicPairingEventFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": { "pairing_id": "pairing01" }, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "pairing_event_ref01" } }], "index$": 0 }] }, 'PairingEvent', { "GET /api/v1/relay/pairings/{id}/events": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": {}, "name": "pairing_event", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/relay/pairings/{id}/events", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "pairing_id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings/{id}/events", "q": { "exist": ["pairing_id"] }, "r": { "param": { "id": "pairing_id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "var": "pairing_id" }, { "lit": "events" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [["$.main.kit.entity.pairing"]] }, "key$": "pairing_event", "name__orig": "pairing_event", "Name": "PairingEvent", "name_": "pairing_event", "name-": "pairing-event", "NAME": "PAIRING_EVENT", "index$": 375 }, { "active": true, "entity": "pairing_event", "key$": "BasicPairingEventFlow", "kind": "basic", "name": "BasicPairingEventFlow", "param": {}, "step": [{ "a": false, "d": {}, "i": { "ref": "pairing_event_ref01", "srcdatavar": "pairing_event_ref01_data", "suffix": "_dt0" }, "m": { "id": "pairing_event01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-pairing_event_ref01" } }], "unreachable": true }] }, 'PairingEvent', { "GET /api/v1/relay/pairings/{id}/events": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         let pairing_event_ref01_data = Object.values(setup.data.existing.pairing_event)[0];
-        // LIST
-        const pairing_event_ref01_ent = client.PairingEvent();
-        const pairing_event_ref01_match = {};
-        pairing_event_ref01_match['pairing_id'] = setup.idmap['pairing01'];
-        const pairing_event_ref01_list = (await pairing_event_ref01_ent.list(pairing_event_ref01_match)).map((e) => e.data());
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live

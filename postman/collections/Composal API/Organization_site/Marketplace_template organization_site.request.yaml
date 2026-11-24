@@ -3,7 +3,7 @@ id: "6f5cffa5-c8c9-5e32-b363-31125341dbd9"
 description: |-
   The `marketplace_template` action of **organization_site**, a route of its `update` operation.
 
-  SDK: `client.OrganizationSite().update({ "organization_id": "organization_id", "id": "ID", $action: "marketplace_template" })`
+  SDK: `client.OrganizationSite().update({ "organization_id": "organization_id", "id": "id", $action: "marketplace_template" })`
 url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/marketplace_template"
 method: PUT
 headers:
@@ -14,8 +14,8 @@ pathVariables:
     value: "{{organization_id}}"
     description: The organization this organization_site belongs to.
   - key: name
-    value: "{{organization_site_id}}"
-    description: The organization_site this request addresses.
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
 body:
   type: json
   content: "{}"

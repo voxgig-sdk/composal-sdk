@@ -1,0 +1,15 @@
+$kind: http-request
+id: "90b8ee5c-2a5f-57a6-9c15-8a5727a8d776"
+description: |-
+  The `load` operation of **backend_runner_pool**.
+
+  SDK: `client.BackendRunnerPool().load({ backend_id: "example" })`
+url: "{{base}}/api/v1/bazel/backends/:backend_id/runner_pools"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: backend_id
+    value: "{{backend_id}}"
+    description: "Input: backend_id."
+order: 1000

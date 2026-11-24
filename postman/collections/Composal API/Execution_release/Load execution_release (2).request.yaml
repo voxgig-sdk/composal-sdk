@@ -1,0 +1,11 @@
+$kind: http-request
+id: "9e6299cc-e9d7-546d-91fa-81b347bf3225"
+description: |-
+  The `load` operation of **execution_release**.
+
+  SDK: `client.ExecutionRelease().load({ id: "example_id" })`
+url: "{{base}}/api/v1/execution/releases"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

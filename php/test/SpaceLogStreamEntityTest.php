@@ -33,7 +33,7 @@ class SpaceLogStreamEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SpaceLogStream(null)->list(["space_id" => 1], null);
+            $client->SpaceLogStream(null)->load(["space_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SpaceLogStreamEntityTest extends TestCase
         $setup = space_log_stream_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "space_log_stream." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class SpaceLogStreamEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"space_log_stream.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPACE_LOG_STREAM_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,14 +67,11 @@ class SpaceLogStreamEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $space_log_stream_ref01_ent = $client->SpaceLogStream(null);
-        $space_log_stream_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_log_stream_ref01_list_result = $space_log_stream_ref01_ent->list($space_log_stream_ref01_match, null);
-        $this->assertIsArray($space_log_stream_ref01_list_result);
+        $space_log_stream_ref01_match_dt0 = [];
+        $space_log_stream_ref01_data_dt0_loaded = $space_log_stream_ref01_ent->load($space_log_stream_ref01_match_dt0, null);
+        $this->assertNotNull($space_log_stream_ref01_data_dt0_loaded);
 
             return;
         }
@@ -111,13 +101,10 @@ class SpaceLogStreamEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $space_log_stream_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_log_stream_ref01_list_result = $space_log_stream_ref01_ent->list($space_log_stream_ref01_match, null);
-        $this->assertIsArray($space_log_stream_ref01_list_result);
+        // LOAD
+        $space_log_stream_ref01_match_dt0 = [];
+        $space_log_stream_ref01_data_dt0_loaded = $space_log_stream_ref01_ent->load($space_log_stream_ref01_match_dt0, null);
+        $this->assertNotNull($space_log_stream_ref01_data_dt0_loaded);
 
     }
 }

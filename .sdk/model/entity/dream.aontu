@@ -323,7 +323,7 @@ main: kit: entity: dream: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.dreams`"
           }
         }
       ]

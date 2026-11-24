@@ -1,0 +1,25 @@
+$kind: http-request
+id: "671cf192-30e8-530d-801e-474b31229552"
+description: |-
+  The `load` operation of **agent_workflow**.
+
+  SDK: `client.AgentWorkflow().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/workflows"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: view
+    value: ""
+    disabled: true
+  - key: workflow_path
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_workflow belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_workflow belongs to.
+order: 1000

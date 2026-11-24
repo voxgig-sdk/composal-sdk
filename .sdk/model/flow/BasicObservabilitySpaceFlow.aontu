@@ -15,18 +15,6 @@ main: kit: flow: BasicObservabilitySpaceFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "observability_space_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "observability_space_ref01",
         srcdatavar: "observability_space_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicObservabilitySpaceFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "observability_space01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicObservabilitySpaceFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "observability_space_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicObservabilitySpaceFlow"

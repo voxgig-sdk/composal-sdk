@@ -290,22 +290,20 @@ class EnvironmentSecretBindingEntity
     }
 
     
-
-    
     /**
-     * List EnvironmentSecretBinding items matching the given filter.
+     * Load a single EnvironmentSecretBinding.
      *
-     * @param EnvironmentSecretBindingListMatch|array|null $reqmatch Match filter (any subset
-     *   of EnvironmentSecretBinding fields) as an assoc-array; EnvironmentSecretBindingListMatch names the shape.
+     * @param EnvironmentSecretBindingLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed EnvironmentSecretBindingLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return EnvironmentSecretBindingEntity[] The EnvironmentSecretBinding entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return EnvironmentSecretBindingEntity The loaded EnvironmentSecretBinding entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class EnvironmentSecretBindingEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
     /**

@@ -7,12 +7,18 @@ main: kit: flow: BasicAuthRegistrationOptionFlow:
   name: "BasicAuthRegistrationOptionFlow",
   step: [
     {
-      o: "list",
+      i: {
+        ref: "auth_registration_option_ref01",
+        srcdatavar: "auth_registration_option_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "auth_registration_option_ref01"
+            mark: "Mark01-auth_registration_option_ref01"
           }
         }
       ]

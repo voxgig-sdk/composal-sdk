@@ -22,57 +22,6 @@ class RunnerPoolRunnerDirectTest extends TestCase
         return empty($result["err"]) && !empty($result["ok"]) && $status >= 200 && $status < 300;
     }
 
-    public function test_direct_list_runner_pool_runner(): void
-    {
-        $setup = runner_pool_runner_direct_setup([
-            ["id" => "direct01"],
-            ["id" => "direct02"],
-        ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-runner_pool_runner", $setup["live"] ? "live" : "unit");
-        if ($_shouldSkip) {
-            $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
-            return;
-        }
-        if ($setup["live"]) {
-            foreach (["runner_pool01"] as $_liveKey) {
-                if (null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID");
-                }
-            }
-        }
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        $client = $setup["client"];
-
-        $params = [];
-        $query = [];
-        $params["runner_pool_id"] = $setup["live"] ? ($setup["idmap"]["runner_pool01"] ?? null) : "direct01";
-
-        $result = $client->direct([
-            "path" => "api/v1/ci/runner_pools/{runner_pool_id}/runners",
-            "method" => "GET",
-            "params" => $params,
-            "query" => $query,
-        ]);
-        if ($setup["live"]) {
-            if (!self::liveOk($result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list failed: " . Runner::live_describe($result));
-            }
-            if (null === Runner::live_list($result["data"] ?? null)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list returned no list: " . Runner::live_describe($result));
-            }
-            $this->assertIsArray(Runner::live_list($result["data"]));
-        } else {
-            $this->assertArrayNotHasKey("err", $result);
-            $this->assertTrue($result["ok"]);
-            $this->assertEquals(200, Helpers::to_int($result["status"]));
-            $this->assertIsArray($result["data"]);
-            $this->assertCount(2, $result["data"]);
-            $this->assertCount(1, $setup["calls"]);
-        }
-    }
-
     public function test_direct_load_runner_pool_runner(): void
     {
         $setup = runner_pool_runner_direct_setup(["id" => "direct01"]);
@@ -81,8 +30,12 @@ class RunnerPoolRunnerDirectTest extends TestCase
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
         }
+        if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE" && null === ($setup["idmap"]['runner_pool_runner01'] ?? null)) {
+            fwrite(STDOUT, 'LIVE STEP {"id":"direct-load-runner_pool_runner","state":"excluded","attempted":false,"reason":"GET-only live run: needs runner_pool_runner01, which only POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: direct-load-runner_pool_runner excluded (GET-only live run: needs runner_pool_runner01, which only POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat gives)');
+        }
         if ($setup["live"]) {
-            foreach (["runner_pool01"] as $_liveKey) {
+            foreach (["runner_pool_runner01", "runner_pool01"] as $_liveKey) {
                 if (null === ($setup["idmap"][$_liveKey] ?? null)) {
                     Runner::live_miss(self::LIVE_STRICT, "Live test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID");
                 }
@@ -96,27 +49,7 @@ class RunnerPoolRunnerDirectTest extends TestCase
         $params = [];
         $query = [];
         if ($setup["live"]) {
-            $list_result = $client->direct([
-                "path" => "api/v1/ci/runner_pools/{runner_pool_id}/runners",
-                "method" => "GET",
-                "params" => ["runner_pool_id" => $setup["idmap"]["runner_pool01"] ?? null],
-            ]);
-            if (!self::liveOk($list_result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list discovery failed: " . Runner::live_describe($list_result));
-            }
-            $records = Runner::live_list($list_result["data"] ?? null);
-            if (null === $records) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list discovery returned no list: " . Runner::live_describe($list_result));
-            }
-            if (0 === count($records)) {
-                Runner::live_empty("The account has no runner_pool_runner record to load");
-            }
-            $first = is_array($records[0]) ? $records[0] : [];
-            $found = $first["id"] ?? null;
-            if (null === $found) {
-                Runner::live_miss(self::LIVE_STRICT, "Live load blocked: discovery returned no usable identity");
-            }
-            $params["id"] = $found;
+            $params["id"] = $setup["idmap"]["runner_pool_runner01"] ?? null;
             $params["runner_pool_id"] = $setup["idmap"]["runner_pool01"] ?? null;
         } else {
             $params["id"] = "direct01";

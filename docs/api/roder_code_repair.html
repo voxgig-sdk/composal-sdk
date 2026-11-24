@@ -454,8 +454,8 @@
 <a href="../api/repository_sandbox_environment.html">RepositorySandboxEnvironment</a>
 <a aria-current="page" href="../api/roder_code_repair.html">RoderCodeRepair</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1agentrodercode_repairsidcancel">POST /api/v1/agent/roder/code_repairs/{id}/cancel</a>
 <a class="nav-section" href="#post-apiv1agentrodercode_repairs">POST /api/v1/agent/roder/code_repairs</a>
-<a class="nav-section" href="#get-apiv1agentrodercode_repairs">GET /api/v1/agent/roder/code_repairs</a>
-<a class="nav-section" href="#get-apiv1agentrodercode_repairsid">GET /api/v1/agent/roder/code_repairs/{id}</a></div>
+<a class="nav-section" href="#get-apiv1agentrodercode_repairsid">GET /api/v1/agent/roder/code_repairs/{id}</a>
+<a class="nav-section" href="#get-apiv1agentrodercode_repairs">GET /api/v1/agent/roder/code_repairs</a></div>
 <a href="../api/roder_code_repair_setting.html">RoderCodeRepairSetting</a>
 <a href="../api/roder_machine.html">RoderMachine</a>
 <a href="../api/roder_run.html">RoderRun</a>
@@ -612,13 +612,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1agentrodercode_repairs"><code>/api/v1/agent/roder/code_repairs</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1agentrodercode_repairsid"><code>/api/v1/agent/roder/code_repairs/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Investigation launch record</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1agentrodercode_repairsid"><code>/api/v1/agent/roder/code_repairs/{id}</code></a></td>
+<td><a href="#get-apiv1agentrodercode_repairs"><code>/api/v1/agent/roder/code_repairs</code></a></td>
 <td><code>load</code></td>
 <td>Investigation launch record</td>
 </tr>
@@ -628,12 +628,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">roder_code_repairs, err := client.RoderCodeRepair(nil).List(map[string]any{&quot;scenario_run_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(roder_code_repairs)
-roder_code_repair, err := client.RoderCodeRepair(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">roder_code_repair, err := client.RoderCodeRepair(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -646,32 +641,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local roder_code_repairs, err = client:RoderCodeRepair():list({ scenario_run_id = &quot;example&quot; })
-local roder_code_repair, err = client:RoderCodeRepair():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local roder_code_repair, err = client:RoderCodeRepair():load({ id = &quot;example_id&quot; })
 local created, err = client:RoderCodeRepair():create({ base_sha = &quot;example&quot;, organization_id = &quot;example&quot;, repository_slug = &quot;example&quot;, scenario_run_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$roder_code_repairs = $client-&gt;RoderCodeRepair()-&gt;list([&quot;scenario_run_id&quot; =&gt; &quot;example&quot;]);
-$roder_code_repair = $client-&gt;RoderCodeRepair()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$roder_code_repair = $client-&gt;RoderCodeRepair()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;RoderCodeRepair()-&gt;create([&quot;base_sha&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repository_slug&quot; =&gt; &quot;example&quot;, &quot;scenario_run_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">roder_code_repairs = client.RoderCodeRepair().list({&quot;scenario_run_id&quot;: &quot;example&quot;})
-roder_code_repair = client.RoderCodeRepair().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">roder_code_repair = client.RoderCodeRepair().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.RoderCodeRepair().create({ &quot;base_sha&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repository_slug&quot;: &quot;example&quot;, &quot;scenario_run_id&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">roder_code_repairs = client.RoderCodeRepair.list({ &quot;scenario_run_id&quot; =&gt; &quot;example&quot; })
-roder_code_repair = client.RoderCodeRepair.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">roder_code_repair = client.RoderCodeRepair.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.RoderCodeRepair.create({ &quot;base_sha&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repository_slug&quot; =&gt; &quot;example&quot;, &quot;scenario_run_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const roder_code_repairs = await client.RoderCodeRepair().list({ scenario_run_id: &quot;example&quot; })
-const roder_code_repair = await client.RoderCodeRepair().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const roder_code_repair = await client.RoderCodeRepair().load({ id: &quot;example_id&quot; })
 const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&quot;, organization_id: &quot;example&quot;, repository_slug: &quot;example&quot;, scenario_run_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -1021,9 +1011,9 @@ const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&
 <h5 id="403-internal-operator-access-is-required-1" class="status" data-status="4xx">403: Internal operator access is required</h5>
 <h5 id="404-source-organization-or-scenario-is-unavailable" class="status" data-status="4xx">404: Source organization or scenario is unavailable</h5>
 <h5 id="422-disabled-ineligible-invalid-or-conflicting-request" class="status" data-status="4xx">422: Disabled, ineligible, invalid or conflicting request</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1agentrodercode_repairs" class="operation" data-method="get"><code>GET</code> /api/v1/agent/roder/code_repairs</h3>
-<p>Operation ID: <code>api_v1_roder_code_repairs</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1agentrodercode_repairsid" class="operation" data-method="get"><code>GET</code> /api/v1/agent/roder/code_repairs/{id}</h3>
+<p>Operation ID: <code>api_v1_code_repair</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-1">Parameters</h4>
 <table>
@@ -1038,8 +1028,8 @@ const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&
 </thead>
 <tbody>
 <tr>
-<td><code>scenario_run_id</code></td>
-<td><code>query</code></td>
+<td><code>id</code></td>
+<td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
 <td></td>
@@ -1139,13 +1129,12 @@ const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&
 </tr>
 </tbody>
 </table>
-<h5 id="400-scenario-execution-is-required" class="status" data-status="4xx">400: Scenario execution is required</h5>
 <h5 id="403-internal-operator-access-is-required-2" class="status" data-status="4xx">403: Internal operator access is required</h5>
 <h5 id="404-investigation-is-unavailable-to-this-operator-1" class="status" data-status="4xx">404: Investigation is unavailable to this operator</h5>
-<h5 id="422-source-organization-authority-is-unavailable" class="status" data-status="4xx">422: Source organization authority is unavailable</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1agentrodercode_repairsid" class="operation" data-method="get"><code>GET</code> /api/v1/agent/roder/code_repairs/{id}</h3>
-<p>Operation ID: <code>api_v1_code_repair</code>.</p>
+<h5 id="422-original-workspace-authority-is-unavailable-1" class="status" data-status="4xx">422: Original workspace authority is unavailable</h5>
+<h5 id="503-roder-status-is-temporarily-unavailable-no-new-task-was-started" class="status" data-status="5xx">503: Roder status is temporarily unavailable; no new task was started</h5>
+<h3 id="get-apiv1agentrodercode_repairs" class="operation" data-method="get"><code>GET</code> /api/v1/agent/roder/code_repairs</h3>
+<p>Operation ID: <code>api_v1_roder_code_repairs</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -1160,8 +1149,8 @@ const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&
 </thead>
 <tbody>
 <tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
+<td><code>scenario_run_id</code></td>
+<td><code>query</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
 <td></td>
@@ -1261,9 +1250,9 @@ const created = await client.RoderCodeRepair().create({ base_sha: &quot;example&
 </tr>
 </tbody>
 </table>
+<h5 id="400-scenario-execution-is-required" class="status" data-status="4xx">400: Scenario execution is required</h5>
 <h5 id="403-internal-operator-access-is-required-3" class="status" data-status="4xx">403: Internal operator access is required</h5>
 <h5 id="404-investigation-is-unavailable-to-this-operator-2" class="status" data-status="4xx">404: Investigation is unavailable to this operator</h5>
-<h5 id="422-original-workspace-authority-is-unavailable-1" class="status" data-status="4xx">422: Original workspace authority is unavailable</h5>
-<h5 id="503-roder-status-is-temporarily-unavailable-no-new-task-was-started" class="status" data-status="5xx">503: Roder status is temporarily unavailable; no new task was started</h5>
+<h5 id="422-source-organization-authority-is-unavailable" class="status" data-status="4xx">422: Source organization authority is unavailable</h5>
 </main></div>
 <script src="../assets/search.js" defer></script></body></html>

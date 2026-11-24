@@ -47,7 +47,7 @@ describe('DeepScanMappedFlowEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.DeepScanMappedFlow().list({"organization_id":1,"environment_id":"x"} as any),
+    await assert.rejects(client.DeepScanMappedFlow().load({"organization_id":1,"environment_id":"x"} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('DeepScanMappedFlowEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'deep_scan_mapped_flow.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"account_id":{"a":true,"h":"Account Id","n":"account_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"account_id","index$":0},"environment_id":{"a":true,"h":"Environment Id","n":"environment_id","r":true,"t":"`$STRING`","key$":"environment_id","index$":1},"flow_map":{"a":true,"h":"Flow Map","n":"flow_map","r":true,"t":["`$ONE`",["`$OBJECT`","`$NULL`"]],"key$":"flow_map","index$":2},"revision_id":{"a":true,"h":"Revision Id","n":"revision_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"revision_id","index$":3}},"name":"deep_scan_mapped_flow","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"explode":true,"k":"query","n":"account_id","or":"account_id","r":false,"style":"form","t":"`$STRING`","index$":0},{"a":true,"explode":true,"k":"query","n":"environment_id","or":"environment_id","r":true,"style":"form","t":"`$STRING`","index$":1},{"a":true,"explode":true,"k":"query","n":"project_id","or":"project_id","r":false,"style":"form","t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows","q":{"exist":["environment_id","organization_id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"verify"},{"lit":"deep_scans"},{"lit":"mapped_flows"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["$.main.kit.entity.organization"]]},"key$":"deep_scan_mapped_flow","name__orig":"deep_scan_mapped_flow","Name":"DeepScanMappedFlow","name_":"deep_scan_mapped_flow","name-":"deep-scan-mapped-flow","NAME":"DEEP_SCAN_MAPPED_FLOW","index$":196}, {"active":true,"entity":"deep_scan_mapped_flow","key$":"BasicDeepScanMappedFlowFlow","kind":"basic","name":"BasicDeepScanMappedFlowFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"organization_id":"organization01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"deep_scan_mapped_flow_ref01"}}],"index$":0}]}, 'DeepScanMappedFlow', {"GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"project_id","in":"query","schema":{"type":"string"},"index$":1},{"name":"environment_id","in":"query","required":true,"schema":{"type":"string"},"index$":2},{"name":"account_id","in":"query","schema":{"type":"string"},"index$":3}]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"account_id":{"a":true,"h":"Account Id","n":"account_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"account_id","index$":0},"environment_id":{"a":true,"h":"Environment Id","n":"environment_id","r":true,"t":"`$STRING`","key$":"environment_id","index$":1},"flow_map":{"a":true,"h":"Flow Map","n":"flow_map","r":true,"t":["`$ONE`",["`$OBJECT`","`$NULL`"]],"key$":"flow_map","index$":2},"revision_id":{"a":true,"h":"Revision Id","n":"revision_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"revision_id","index$":3}},"name":"deep_scan_mapped_flow","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"explode":true,"k":"query","n":"account_id","or":"account_id","r":false,"style":"form","t":"`$STRING`","index$":0},{"a":true,"explode":true,"k":"query","n":"environment_id","or":"environment_id","r":true,"style":"form","t":"`$STRING`","index$":1},{"a":true,"explode":true,"k":"query","n":"project_id","or":"project_id","r":false,"style":"form","t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows","q":{"exist":["environment_id","organization_id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"verify"},{"lit":"deep_scans"},{"lit":"mapped_flows"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["$.main.kit.entity.organization"]]},"key$":"deep_scan_mapped_flow","name__orig":"deep_scan_mapped_flow","Name":"DeepScanMappedFlow","name_":"deep_scan_mapped_flow","name-":"deep-scan-mapped-flow","NAME":"DEEP_SCAN_MAPPED_FLOW","index$":196}, {"active":true,"entity":"deep_scan_mapped_flow","key$":"BasicDeepScanMappedFlowFlow","kind":"basic","name":"BasicDeepScanMappedFlowFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"deep_scan_mapped_flow_ref01","srcdatavar":"deep_scan_mapped_flow_ref01_data","suffix":"_dt0"},"m":{"id":"deep_scan_mapped_flow01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-deep_scan_mapped_flow_ref01"}}],"unreachable":true}]}, 'DeepScanMappedFlow', {"GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"project_id","in":"query","schema":{"type":"string"},"index$":1},{"name":"environment_id","in":"query","required":true,"schema":{"type":"string"},"index$":2},{"name":"account_id","in":"query","schema":{"type":"string"},"index$":3}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,14 +72,6 @@ describe('DeepScanMappedFlowEntity', async () => {
     const select = struct.select
 
     let deep_scan_mapped_flow_ref01_data = Object.values(setup.data.existing.deep_scan_mapped_flow)[0] as any
-
-    // LIST
-    const deep_scan_mapped_flow_ref01_ent = client.DeepScanMappedFlow()
-    const deep_scan_mapped_flow_ref01_match: any = {}
-    deep_scan_mapped_flow_ref01_match['organization_id'] = setup.idmap['organization01']
-
-    const deep_scan_mapped_flow_ref01_list = (await deep_scan_mapped_flow_ref01_ent.list(deep_scan_mapped_flow_ref01_match)).map((e: any) => e.data())
-
 
   })
 })

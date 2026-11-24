@@ -37,7 +37,7 @@ class TestGithubConnectionEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.GithubConnection(None).list({"organization_id": 1}, None)
+            client.GithubConnection(None).load({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestGithubConnectionEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "github_connection." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -74,20 +74,13 @@ class TestGithubConnectionEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        github_connection_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        github_connection_ref01_list_result = github_connection_ref01_ent.list(github_connection_ref01_match, None)
-        assert isinstance(github_connection_ref01_list_result, list)
+        # LOAD
+        github_connection_ref01_match_dt0 = {}
+        github_connection_ref01_data_dt0_loaded = github_connection_ref01_ent.load(github_connection_ref01_match_dt0, None)
+        assert github_connection_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_GITHUB_CONNECTION_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -99,14 +92,11 @@ class TestGithubConnectionEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         github_connection_ref01_ent = client.GithubConnection(None)
-        github_connection_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        github_connection_ref01_list_result = github_connection_ref01_ent.list(github_connection_ref01_match, None)
-        assert isinstance(github_connection_ref01_list_result, list)
+        github_connection_ref01_match_dt0 = {}
+        github_connection_ref01_data_dt0_loaded = github_connection_ref01_ent.load(github_connection_ref01_match_dt0, None)
+        assert github_connection_ref01_data_dt0_loaded is not None
 
 
 

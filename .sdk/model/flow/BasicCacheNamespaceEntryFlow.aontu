@@ -19,22 +19,6 @@ main: kit: flow: BasicCacheNamespaceEntryFlow:
     }
 
     {
-      m: {
-        cache_namespace_id: "cache_namespace01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "cache_namespace_entry_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         cache_namespace_id: "cache_namespace01"
       }
@@ -64,7 +48,6 @@ main: kit: flow: BasicCacheNamespaceEntryFlow:
       }
 
       m: {
-        cache_namespace_id: "cache_namespace01",
         id: "cache_namespace_entry01"
       }
 
@@ -91,26 +74,6 @@ main: kit: flow: BasicCacheNamespaceEntryFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        cache_namespace_id: "cache_namespace01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "cache_namespace_entry_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicCacheNamespaceEntryFlow"

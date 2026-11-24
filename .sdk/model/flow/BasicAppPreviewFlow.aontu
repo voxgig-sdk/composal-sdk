@@ -19,22 +19,6 @@ main: kit: flow: BasicAppPreviewFlow:
     }
 
     {
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "app_preview_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01"
       }
@@ -91,26 +75,6 @@ main: kit: flow: BasicAppPreviewFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "app_preview_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAppPreviewFlow"

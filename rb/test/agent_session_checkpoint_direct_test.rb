@@ -17,56 +17,6 @@ class AgentSessionCheckpointDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_list_agent_session_checkpoint
-    setup = agent_session_checkpoint_direct_setup([
-      { "id" => "direct01" },
-      { "id" => "direct02" },
-    ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-agent_session_checkpoint", setup[:live] ? "live" : "unit")
-    if _should_skip
-      skip(_reason || "skipped via sdk-test-control.json")
-      return
-    end
-    if setup[:live]
-      ["agent_session01", "organization01", "repo01"].each do |_live_key|
-        if setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_SESSION_CHECKPOINT_ENTID")
-        end
-      end
-    end
-    Runner.live_pace if setup[:live]
-    client = setup[:client]
-
-    params = {}
-    query = {}
-    params["agent_session_id"] = setup[:live] ? setup[:idmap]["agent_session01"] : "direct01"
-    params["organization_id"] = setup[:live] ? setup[:idmap]["organization01"] : "direct02"
-    params["repo_id"] = setup[:live] ? setup[:idmap]["repo01"] : "direct03"
-
-    result = client.direct({
-      "path" => "api/v1/organizations/{organization_id}/repos/{repo_id}/agent_sessions/{agent_session_id}/checkpoints",
-      "method" => "GET",
-      "params" => params,
-      "query" => query,
-    })
-    if setup[:live]
-      unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
-      end
-      if Runner.live_list(result["data"]).nil?
-        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
-      end
-      assert Runner.live_list(result["data"]).is_a?(Array)
-    else
-      assert_nil result["err"]
-      assert result["ok"]
-      assert_equal 200, Helpers.to_int(result["status"])
-      assert result["data"].is_a?(Array)
-      assert_equal 2, result["data"].length
-      assert_equal 1, setup[:calls].length
-    end
-  end
-
   def test_direct_load_agent_session_checkpoint
     setup = agent_session_checkpoint_direct_setup({ "id" => "direct01" })
     _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-agent_session_checkpoint", setup[:live] ? "live" : "unit")
@@ -74,8 +24,12 @@ class AgentSessionCheckpointDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["agent_session_checkpoint01"].nil?
+      puts "LIVE STEP {\"id\":\"direct-load-agent_session_checkpoint\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs agent_session_checkpoint01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize gives\"}"
+      skip("Live coverage incomplete: direct-load-agent_session_checkpoint excluded (GET-only live run: needs agent_session_checkpoint01, which only POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize gives)")
+    end
     if setup[:live]
-      ["agent_session01", "organization01", "repo01"].each do |_live_key|
+      ["agent_session01", "agent_session_checkpoint01", "organization01", "repo01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?
           Runner.live_miss(LIVE_STRICT, "Live test blocked: needs #{_live_key} via COMPOSAL_TEST_AGENT_SESSION_CHECKPOINT_ENTID")
         end
@@ -87,28 +41,8 @@ class AgentSessionCheckpointDirectTest < Minitest::Test
     params = {}
     query = {}
     if setup[:live]
-      list_result = client.direct({
-        "path" => "api/v1/organizations/{organization_id}/repos/{repo_id}/agent_sessions/{agent_session_id}/checkpoints",
-        "method" => "GET",
-        "params" => {"agent_session_id" => setup[:idmap]["agent_session01"], "organization_id" => setup[:idmap]["organization01"], "repo_id" => setup[:idmap]["repo01"]},
-      })
-      unless live_ok(list_result)
-        Runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + Runner.live_describe(list_result))
-      end
-      records = Runner.live_list(list_result["data"])
-      if records.nil?
-        Runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + Runner.live_describe(list_result))
-      end
-      if records.empty?
-        Runner.live_empty("The account has no agent_session_checkpoint record to load")
-      end
-      first = records[0].is_a?(Hash) ? records[0] : {}
-      found = first["id"]
-      if found.nil?
-        Runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-      end
-      params["id"] = found
       params["agent_session_id"] = setup[:idmap]["agent_session01"]
+      params["id"] = setup[:idmap]["agent_session_checkpoint01"]
       params["organization_id"] = setup[:idmap]["organization01"]
       params["repo_id"] = setup[:idmap]["repo01"]
     else

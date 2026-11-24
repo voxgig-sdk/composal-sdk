@@ -1,4 +1,4 @@
 $kind: collection
 id: "2e87b938-8caa-5483-8d64-1e5119023779"
 description: "The `BasicSpacePeerAttachmentFlow` flow of **space_peer_attachment**."
-order: 402000
+order: 384000

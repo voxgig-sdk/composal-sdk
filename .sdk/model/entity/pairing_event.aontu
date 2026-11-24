@@ -6,8 +6,8 @@ main: kit: entity: pairing_event: {
 
   name: "pairing_event"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

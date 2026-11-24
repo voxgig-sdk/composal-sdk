@@ -29,7 +29,7 @@ describe("RunJobEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RunJob(nil):list({ ["pipeline_id"] = 1, ["run_id"] = "x" }, nil)
+    local _, err = client:RunJob(nil):load({ ["id"] = 1, ["pipeline_id"] = "x", ["run_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RunJobEntity", function()
     local setup = run_job_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "run_job." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,62 +46,8 @@ describe("RunJobEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"run_job.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"pipeline01", "run01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_RUN_JOB_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["run_job01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "run_job", function()
-        return client:RunJob(nil):list({["pipeline_id"] = setup.idmap["pipeline01"], ["run_id"] = setup.idmap["run01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local run_job_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.run_job")))
-    local run_job_ref01_data = nil
-    if #run_job_ref01_data_raw > 0 then
-      run_job_ref01_data = helpers.to_map(run_job_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local run_job_ref01_ent = client:RunJob(nil)
-    local run_job_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local run_job_ref01_list_result, err = run_job_ref01_ent:list(run_job_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(run_job_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local run_job_ref01_match_dt0 = {
-      id = run_job_ref01_data["id"],
-    }
-    run_job_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
-    run_job_ref01_match_dt0["run_id"] = setup.idmap["run_id"] or setup.idmap["run01"]
-    local run_job_ref01_data_dt0_loaded, err = run_job_ref01_ent:load(run_job_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local run_job_ref01_data_dt0_load_result = helpers.to_map(type(run_job_ref01_data_dt0_loaded) == 'table' and run_job_ref01_data_dt0_loaded.data_get and run_job_ref01_data_dt0_loaded:data_get() or run_job_ref01_data_dt0_loaded)
-    assert.is_not_nil(run_job_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(run_job_ref01_data_dt0_load_result["id"], run_job_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"run_job.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only run_job.create.0 gives\"}")
+      pending("Live coverage incomplete: run_job.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs); run_job.load.1 excluded (GET-only live run: reads a record only run_job.create.0 gives)")
       return
     end
 
@@ -133,30 +79,11 @@ describe("RunJobEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local run_job_ref01_match = {
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local run_job_ref01_list_result, err = run_job_ref01_ent:list(run_job_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(run_job_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(run_job_ref01_list_result),
-      { id = run_job_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local run_job_ref01_match_dt0 = {
       id = run_job_ref01_data["id"],
     }
     run_job_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
-    run_job_ref01_match_dt0["run_id"] = setup.idmap["run_id"] or setup.idmap["run01"]
     local run_job_ref01_data_dt0_loaded, err = run_job_ref01_ent:load(run_job_ref01_match_dt0, nil)
     assert.is_nil(err)
     local run_job_ref01_data_dt0_load_result = helpers.to_map(type(run_job_ref01_data_dt0_loaded) == 'table' and run_job_ref01_data_dt0_loaded.data_get and run_job_ref01_data_dt0_loaded:data_get() or run_job_ref01_data_dt0_loaded)

@@ -16,7 +16,7 @@ import type {
 
 import type {
   SpaceLogStream,
-  SpaceLogStreamListMatch,
+  SpaceLogStreamLoadMatch,
   SpaceLogStreamCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class SpaceLogStreamEntity extends ComposalEntityBase<SpaceLogStream> {
 
 
 
-
-  async list(this: any, reqmatch?: SpaceLogStreamListMatch, ctrl?: Control): Promise<SpaceLogStreamEntity[]> {
+  async load(this: any, reqmatch?: SpaceLogStreamLoadMatch, ctrl?: Control): Promise<SpaceLogStreamEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class SpaceLogStreamEntity extends ComposalEntityBase<SpaceLogStream> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class SpaceLogStreamEntity extends ComposalEntityBase<SpaceLogStream> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class SpaceLogStreamEntity extends ComposalEntityBase<SpaceLogStream> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<SpaceLogStreamEntity[]> return stays clean under strict null checks.
+        // Promise<SpaceLogStreamEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

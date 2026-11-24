@@ -606,7 +606,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idagentsidsparkworkflows"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Native Lobster workflow files for the selected agent</td>
 </tr>
 <tr>
@@ -621,11 +621,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">agent_workflows, err := client.AgentWorkflow(nil).List(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">agent_workflow, err := client.AgentWorkflow(nil).Load(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(agent_workflows)
+fmt.Println(agent_workflow)
 created, err := client.AgentWorkflow(nil).Create(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;path&quot;: &quot;example&quot;, &quot;template&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -639,31 +639,31 @@ fmt.Println(updated)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local agent_workflows, err = client:AgentWorkflow():list({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local agent_workflow, err = client:AgentWorkflow():load({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
 local created, err = client:AgentWorkflow():create({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot;, path = &quot;example&quot;, template = &quot;example&quot; })
 local updated, err = client:AgentWorkflow():update({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$agent_workflows = $client-&gt;AgentWorkflow()-&gt;list([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$agent_workflow = $client-&gt;AgentWorkflow()-&gt;load([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AgentWorkflow()-&gt;create([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;path&quot; =&gt; &quot;example&quot;, &quot;template&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AgentWorkflow()-&gt;update([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">agent_workflows = client.AgentWorkflow().list({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">agent_workflow = client.AgentWorkflow().load({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 created = client.AgentWorkflow().create({ &quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;path&quot;: &quot;example&quot;, &quot;template&quot;: &quot;example&quot; })
 updated = client.AgentWorkflow().update({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">agent_workflows = client.AgentWorkflow.list({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">agent_workflow = client.AgentWorkflow.load({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.AgentWorkflow.create({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;path&quot; =&gt; &quot;example&quot;, &quot;template&quot; =&gt; &quot;example&quot; })
 updated = client.AgentWorkflow.update({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const agent_workflows = await client.AgentWorkflow().list({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const agent_workflow = await client.AgentWorkflow().load({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
 const created = await client.AgentWorkflow().create({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot;, path: &quot;example&quot;, template: &quot;example&quot; })
 const updated = await client.AgentWorkflow().update({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
 </code></pre>
@@ -958,7 +958,7 @@ const updated = await client.AgentWorkflow().update({ agent_id: &quot;example&qu
 <h5 id="410-this-gateway-uses-saved-temporal-workflows-workflow_files_retired" class="status" data-status="4xx">410: This gateway uses saved Temporal workflows (<code>workflow_files_retired</code>)</h5>
 <h5 id="422-invalid-path-or-unknown-template" class="status" data-status="4xx">422: Invalid path or unknown template</h5>
 <h5 id="503-the-agent-is-unavailable" class="status" data-status="5xx">503: The agent is unavailable</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idagentsidsparkworkflows" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows</h3>
 <p>Operation ID: <code>spark_workflows_api_v1_organization_persistent_agent</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

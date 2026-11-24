@@ -38,7 +38,7 @@ func TestJobStepEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.JobStep(nil).List(map[string]any{"job_id": 1, "pipeline_id": "x", "run_id": "x"}, nil)
+		_, err := client.JobStep(nil).Load(map[string]any{"job_id": 1, "pipeline_id": "x", "run_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestJobStepEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "job_step." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,10 @@ func TestJobStepEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"job_step.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps\"}")
-			t.Log("LIVE STEP {\"id\":\"job_step.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"job01", "pipeline01", "run01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, job_stepEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_JOB_STEP_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		jobStepRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.job_step")))
-		var jobStepRef01Data map[string]any
-		if len(jobStepRef01DataRaw) > 0 {
-			jobStepRef01Data = core.ToMapAny(jobStepRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = jobStepRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		jobStepRef01Ent := client.JobStep(nil)
-		jobStepRef01Match := map[string]any{
-			"job_id": setup.idmap["job01"],
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		jobStepRef01ListResult, err := jobStepRef01Ent.List(jobStepRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, jobStepRef01ListOk := jobStepRef01ListResult.([]any)
-		if !jobStepRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", jobStepRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"job_step.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"job_step.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only job_step.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: job_step.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps); job_step.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}); job_step.load.2 excluded (GET-only live run: reads a record only job_step.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -144,30 +106,6 @@ func TestJobStepEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		jobStepRef01Match := map[string]any{
-			"job_id": setup.idmap["job01"],
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		jobStepRef01ListResult, err := jobStepRef01Ent.List(jobStepRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		jobStepRef01List, jobStepRef01ListOk := jobStepRef01ListResult.([]any)
-		if !jobStepRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", jobStepRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(jobStepRef01List), map[string]any{"id": jobStepRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		jobStepRef01DataUp0Up := map[string]any{
 			"id": jobStepRef01Data["id"],
@@ -186,6 +124,35 @@ func TestJobStepEntity(t *testing.T) {
 		}
 		if !setup.live && !liveSameId(jobStepRef01ResdataUp0["id"], jobStepRef01DataUp0Up["id"]) {
 			t.Fatal("expected update result id to match")
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		jobStepRef01MatchDt0 := map[string]any{
+			"id": jobStepRef01Data["id"],
+		}
+		if v := setup.idmap["pipeline_id"]; v != nil {
+			jobStepRef01MatchDt0["pipeline_id"] = v
+		} else {
+			jobStepRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
+		}
+		if v := setup.idmap["run_id"]; v != nil {
+			jobStepRef01MatchDt0["run_id"] = v
+		} else {
+			jobStepRef01MatchDt0["run_id"] = setup.idmap["run01"]
+		}
+		jobStepRef01DataDt0Loaded, err := jobStepRef01Ent.Load(jobStepRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		jobStepRef01DataDt0LoadResult := core.ToMapAny(entityData(jobStepRef01DataDt0Loaded))
+		if jobStepRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(jobStepRef01DataDt0LoadResult["id"], jobStepRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

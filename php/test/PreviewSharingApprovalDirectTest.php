@@ -22,13 +22,10 @@ class PreviewSharingApprovalDirectTest extends TestCase
         return empty($result["err"]) && !empty($result["ok"]) && $status >= 200 && $status < 300;
     }
 
-    public function test_direct_list_preview_sharing_approval(): void
+    public function test_direct_load_preview_sharing_approval(): void
     {
-        $setup = preview_sharing_approval_direct_setup([
-            ["id" => "direct01"],
-            ["id" => "direct02"],
-        ]);
-        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-list-preview_sharing_approval", $setup["live"] ? "live" : "unit");
+        $setup = preview_sharing_approval_direct_setup(["id" => "direct01"]);
+        [$_shouldSkip, $_reason] = Runner::is_control_skipped("direct", "direct-load-preview_sharing_approval", $setup["live"] ? "live" : "unit");
         if ($_shouldSkip) {
             $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
             return;
@@ -47,8 +44,13 @@ class PreviewSharingApprovalDirectTest extends TestCase
 
         $params = [];
         $query = [];
-        $params["app_id"] = $setup["live"] ? ($setup["idmap"]["app01"] ?? null) : "direct01";
-        $params["preview_id"] = $setup["live"] ? ($setup["idmap"]["preview01"] ?? null) : "direct02";
+        if ($setup["live"]) {
+            $params["app_id"] = $setup["idmap"]["app01"] ?? null;
+            $params["preview_id"] = $setup["idmap"]["preview01"] ?? null;
+        } else {
+            $params["app_id"] = "direct01";
+            $params["preview_id"] = "direct02";
+        }
 
         $result = $client->direct([
             "path" => "api/v1/hosting/apps/{app_id}/previews/{preview_id}/sharing_approvals",
@@ -58,18 +60,20 @@ class PreviewSharingApprovalDirectTest extends TestCase
         ]);
         if ($setup["live"]) {
             if (!self::liveOk($result)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list failed: " . Runner::live_describe($result));
+                Runner::live_miss(self::LIVE_STRICT, "Live load failed: " . Runner::live_describe($result));
             }
-            if (null === Runner::live_list($result["data"] ?? null)) {
-                Runner::live_miss(self::LIVE_STRICT, "Live list returned no list: " . Runner::live_describe($result));
+            if (null === ($result["data"] ?? null)) {
+                Runner::live_miss(self::LIVE_STRICT, "Live load returned no data: " . Runner::live_describe($result));
             }
-            $this->assertIsArray(Runner::live_list($result["data"]));
+            $this->assertNotNull($result["data"]);
         } else {
             $this->assertArrayNotHasKey("err", $result);
             $this->assertTrue($result["ok"]);
             $this->assertEquals(200, Helpers::to_int($result["status"]));
-            $this->assertIsArray($result["data"]);
-            $this->assertCount(2, $result["data"]);
+            $this->assertNotNull($result["data"]);
+            if (is_array($result["data"]) && isset($result["data"]["id"])) {
+                $this->assertEquals("direct01", $result["data"]["id"]);
+            }
             $this->assertCount(1, $setup["calls"]);
         }
     }

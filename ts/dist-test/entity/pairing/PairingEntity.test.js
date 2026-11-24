@@ -54,62 +54,23 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Pairing();
         (0, node_assert_1.default)(null != ent);
     });
-    class FailHook extends __1.BaseFeature {
-        name = 'failhook';
-        version = '0.0.1';
-        active = true;
-        unexpected = 0;
-        init() { }
-        PreSpec() { throw new Error('pairing hook failed'); }
-        PreUnexpected() { this.unexpected++; }
-    }
-    (0, node_test_1.test)('stream-error', async () => {
-        const offline = { net: { offline: true } };
-        await node_assert_1.default.rejects(async () => {
-            for await (const _item of __1.ComposalSDK.test(offline).Pairing().stream('list')) { }
-        }, /offline/);
-        for await (const _item of __1.ComposalSDK.test(offline).Pairing()
-            .stream('list', undefined, { ctrl: { throw: false } })) { }
-        if (null != __1.config.feature?.rbac) {
-            const denied = __1.ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
-            await node_assert_1.default.rejects(async () => {
-                for await (const _item of denied.Pairing().stream('list')) { }
-            }, (err) => 'rbac_denied' === err.code);
-        }
-    });
-    (0, node_test_1.test)('stream-ctrl', async () => {
-        const explain = {};
-        const ctrl = { explain };
-        for await (const _item of __1.ComposalSDK.test().Pairing().stream('list', undefined, { ctrl })) { }
-        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
-        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
-    });
-    (0, node_test_1.test)('unexpected', async () => {
-        const hook = new FailHook();
-        const client = new __1.ComposalSDK({ feature: { test: { active: true } }, extend: [hook] });
-        await node_assert_1.default.rejects(client.Pairing().list(), /hook failed/);
-        (0, node_assert_1.default)(0 < hook.unexpected);
-        const fired = hook.unexpected;
-        node_assert_1.default.strictEqual(await client.Pairing().list(undefined, { throw: false }), undefined);
-        (0, node_assert_1.default)(fired < hook.unexpected);
-    });
     (0, node_test_1.test)('validate', async (t) => {
         if (null == __1.config.feature?.validate) {
             t.skip('feature not present in this SDK: validate');
             return;
         }
         const client = __1.ComposalSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.Pairing().list({ "id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.Pairing().load({ "id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE;
-        for (const op of ['create', 'list', 'load']) {
+        for (const op of ['create', 'load']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'pairing.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "pairing", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/relay/pairings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/relay/pairings", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "bf": false, "co": { "id": "POST /api/v1/relay/pairings/claim", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/relay/pairings/claim", "q": { "$action": "claim" }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "lit": "claim" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "create" }, "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/relay/pairings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/relay/pairings/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings/{id}", "q": { "exist": ["id"] }, "r": { "param": { "id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "pairing", "name__orig": "pairing", "Name": "Pairing", "name_": "pairing", "name-": "pairing", "NAME": "PAIRING", "index$": 374 }, { "active": true, "entity": "pairing", "key$": "BasicPairingFlow", "kind": "basic", "name": "BasicPairingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "pairing_ref01" }, "m": {}, "o": "create", "s": [], "v": [], "index$": 0 }, { "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "pairing_ref01" } }], "index$": 1 }, { "a": true, "d": {}, "i": { "ref": "pairing_ref01", "srcdatavar": "pairing_ref01_data", "suffix": "_dt0" }, "m": { "id": "pairing01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-pairing_ref01" } }], "index$": 2, "route": "GET /api/v1/relay/pairings/{id}", "record": {} }] }, 'Pairing', { "POST /api/v1/relay/pairings": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "POST /api/v1/relay/pairings/claim": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "GET /api/v1/relay/pairings": { "protocol": "http", "parameters": [] }, "GET /api/v1/relay/pairings/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "pairing.create.0": "GET-only live run: needs POST /api/v1/relay/pairings" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "pairing", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/relay/pairings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/relay/pairings", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "bf": false, "co": { "id": "POST /api/v1/relay/pairings/claim", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/relay/pairings/claim", "q": { "$action": "claim" }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "lit": "claim" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "create" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/relay/pairings/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings/{id}", "q": { "exist": ["id"] }, "r": { "param": { "id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "co": { "id": "GET /api/v1/relay/pairings", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/relay/pairings", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "relay" }, { "lit": "pairings" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "pairing", "name__orig": "pairing", "Name": "Pairing", "name_": "pairing", "name-": "pairing", "NAME": "PAIRING", "index$": 374 }, { "active": true, "entity": "pairing", "key$": "BasicPairingFlow", "kind": "basic", "name": "BasicPairingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "pairing_ref01" }, "m": {}, "o": "create", "s": [], "v": [], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "pairing_ref01", "srcdatavar": "pairing_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-pairing_ref01" } }], "index$": 1, "route": "GET /api/v1/relay/pairings/{id}", "record": {} }] }, 'Pairing', { "POST /api/v1/relay/pairings": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "POST /api/v1/relay/pairings/claim": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "GET /api/v1/relay/pairings/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] }, "GET /api/v1/relay/pairings": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "pairing.create.0": "GET-only live run: needs POST /api/v1/relay/pairings", "pairing.load.1": "GET-only live run: reads a record only pairing.create.0 gives" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -120,10 +81,6 @@ const utility_1 = require("../../utility");
         let pairing_ref01_data = setup.data.new.pairing['pairing_ref01'];
         pairing_ref01_data = (await pairing_ref01_ent.create(pairing_ref01_data)).data();
         (0, node_assert_1.default)(null != pairing_ref01_data.id);
-        // LIST
-        const pairing_ref01_match = {};
-        const pairing_ref01_list = (await pairing_ref01_ent.list(pairing_ref01_match)).map((e) => e.data());
-        (0, node_assert_1.default)(!isempty(select(pairing_ref01_list, { id: pairing_ref01_data.id })));
         // LOAD
         const pairing_ref01_match_dt0 = {};
         pairing_ref01_match_dt0.id = pairing_ref01_data.id;

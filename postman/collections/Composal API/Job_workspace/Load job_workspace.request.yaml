@@ -1,0 +1,21 @@
+$kind: http-request
+id: ce626354-5e22-590d-b6f0-8125f5e48952
+description: |-
+  The `load` operation of **job_workspace**.
+
+  SDK: `client.JobWorkspace().load({ job_id: "example", pipeline_id: "example", run_id: "example" })`
+url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs/:job_id/workspaces"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: pipeline_id
+    value: "{{pipeline_id}}"
+    description: "Input: pipeline_id."
+  - key: run_id
+    value: "{{run_id}}"
+    description: "Input: run_id."
+  - key: job_id
+    value: "{{job_id}}"
+    description: "Input: job_id."
+order: 1000

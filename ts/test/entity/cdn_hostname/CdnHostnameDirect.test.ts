@@ -43,37 +43,20 @@ describe('CdnHostnameDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-cdn_hostname', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["app01","cdn01"], LIVE_STRICT)) return
+    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["cdn_hostname01"]) {
+      console.log("LIVE STEP {\"id\":\"direct-load-cdn_hostname\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cdn_hostname01, which only POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames gives\"}")
+      t.skip("Live coverage incomplete: direct-load-cdn_hostname excluded (GET-only live run: needs cdn_hostname01, which only POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames gives)")
+      return
+    }
+    if (skipIfMissingIds(t, setup, ["app01","cdn01","cdn_hostname01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      const listResult: any = await client.direct({
-        path: 'api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames',
-        method: 'GET',
-        params: {
-        app_id: setup.idmap['app01'],
-        cdn_id: setup.idmap['cdn01'],
-        },
-      })
-      if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery failed: ' + describeLive(listResult))
-      }
-      const listArr = unwrapListData(listResult.data)
-      if (null == listArr) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery returned no list: ' + describeLive(listResult))
-      }
-      if (0 === listArr.length) {
-        return void liveEmpty(t, 'The account has no cdn_hostname record to load')
-      }
-      const candidateId = listArr[0]?.id
-      if (null == candidateId) {
-        return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
-      }
-      params.id = candidateId
       params.app_id = setup.idmap['app01']
       params.cdn_id = setup.idmap['cdn01']
+      params.id = setup.idmap['cdn_hostname01']
     } else {
       params.app_id = 'direct01'
       params.cdn_id = 'direct02'
@@ -104,51 +87,6 @@ describe('CdnHostnameDirect', async () => {
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
       assert(calls[0].url.includes('direct03'))
-    }
-  })
-
-  test('direct-list-cdn_hostname', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-cdn_hostname', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["app01","cdn01"], LIVE_STRICT)) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-    if (setup.live) {
-      params.app_id = setup.idmap['app01']
-      params.cdn_id = setup.idmap['cdn01']
-    } else {
-      params.app_id = 'direct01'
-      params.cdn_id = 'direct02'
-    }
-
-    const result: any = await client.direct({
-      path: 'api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
-      }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
-      }
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
-      assert(calls[0].url.includes('direct02'))
     }
   })
 

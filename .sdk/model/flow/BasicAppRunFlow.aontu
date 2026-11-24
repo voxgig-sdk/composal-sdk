@@ -15,26 +15,10 @@ main: kit: flow: BasicAppRunFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "app_run_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "app_run_ref01",
         srcdatavar: "app_run_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "app_run01"
       }
 
       o: "load",

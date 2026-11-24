@@ -3,7 +3,7 @@ id: "234ac93c-20ec-5e11-bedc-92b6e162b8ae"
 description: |-
   The `remove` operation of **site_access_key**.
 
-  SDK: `client.SiteAccessKey().remove({ id: "example_id", organization_id: "example", site_id: "example" })`
+  SDK: `client.SiteAccessKey().remove({ id: "example", organization_id: "example", site_id: "example" })`
 url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/access_keys/:key_id"
 method: DELETE
 headers:

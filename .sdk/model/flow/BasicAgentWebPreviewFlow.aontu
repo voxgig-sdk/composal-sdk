@@ -7,12 +7,18 @@ main: kit: flow: BasicAgentWebPreviewFlow:
   name: "BasicAgentWebPreviewFlow",
   step: [
     {
-      o: "list",
+      i: {
+        ref: "agent_web_preview_ref01",
+        srcdatavar: "agent_web_preview_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "agent_web_preview_ref01"
+            mark: "Mark01-agent_web_preview_ref01"
           }
         }
       ]

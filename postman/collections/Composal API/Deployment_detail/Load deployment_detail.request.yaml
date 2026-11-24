@@ -1,0 +1,25 @@
+$kind: http-request
+id: b71a4404-52ce-5f1c-a359-6da3f1e5e41e
+description: |-
+  The `load` operation of **deployment_detail**.
+
+  SDK: `client.DeploymentDetail().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/deployments/details"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app
+    value: ""
+    disabled: true
+  - key: environment
+    value: ""
+    disabled: true
+  - key: service
+    value: ""
+    disabled: true
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this deployment_detail belongs to.
+order: 1000

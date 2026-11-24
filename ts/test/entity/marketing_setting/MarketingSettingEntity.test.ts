@@ -41,59 +41,13 @@ describe('MarketingSettingEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('marketing_setting hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).MarketingSetting().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).MarketingSetting()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.MarketingSetting().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().MarketingSetting().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.MarketingSetting().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.MarketingSetting().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.MarketingSetting().list({"call_first":"x"} as any),
+    await assert.rejects(client.MarketingSetting().load({"call_first":"x"} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('MarketingSettingEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of ['load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'marketing_setting.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"call_first":{"a":true,"h":"Call First","n":"call_first","r":true,"t":"`$BOOLEAN`","key$":"call_first","index$":0}},"name":"marketing_setting","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/marketing_settings","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/marketing_settings","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"marketing_settings"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"marketing_setting","name__orig":"marketing_setting","Name":"MarketingSetting","name_":"marketing_setting","name-":"marketing-setting","NAME":"MARKETING_SETTING","index$":308}, {"active":true,"entity":"marketing_setting","key$":"BasicMarketingSettingFlow","kind":"basic","name":"BasicMarketingSettingFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"marketing_setting_ref01"}}],"index$":0}]}, 'MarketingSetting', {"GET /api/v1/marketing_settings":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"call_first":{"a":true,"h":"Call First","n":"call_first","r":true,"t":"`$BOOLEAN`","key$":"call_first","index$":0}},"name":"marketing_setting","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/marketing_settings","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/marketing_settings","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"marketing_settings"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"marketing_setting","name__orig":"marketing_setting","Name":"MarketingSetting","name_":"marketing_setting","name-":"marketing-setting","NAME":"MARKETING_SETTING","index$":308}, {"active":true,"entity":"marketing_setting","key$":"BasicMarketingSettingFlow","kind":"basic","name":"BasicMarketingSettingFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"marketing_setting_ref01","srcdatavar":"marketing_setting_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-marketing_setting_ref01"}}],"index$":0}]}, 'MarketingSetting', {"GET /api/v1/marketing_settings":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -119,11 +73,11 @@ describe('MarketingSettingEntity', async () => {
 
     let marketing_setting_ref01_data = Object.values(setup.data.existing.marketing_setting)[0] as any
 
-    // LIST
+    // LOAD
     const marketing_setting_ref01_ent = client.MarketingSetting()
-    const marketing_setting_ref01_match: any = {}
-
-    const marketing_setting_ref01_list = (await marketing_setting_ref01_ent.list(marketing_setting_ref01_match)).map((e: any) => e.data())
+    const marketing_setting_ref01_match_dt0: any = {}
+    const marketing_setting_ref01_data_dt0 = (await marketing_setting_ref01_ent.load(marketing_setting_ref01_match_dt0)).data()
+    assert(null != marketing_setting_ref01_data_dt0)
 
 
   })

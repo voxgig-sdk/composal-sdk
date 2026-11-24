@@ -19,16 +19,22 @@ main: kit: flow: BasicBackendRunnerPoolFlow:
     }
 
     {
-      m: {
-        backend_id: "backend01"
+      i: {
+        ref: "backend_runner_pool_ref01",
+        srcdatavar: "backend_runner_pool_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "backend_runner_pool01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "backend_runner_pool_ref01"
+            mark: "Mark01-backend_runner_pool_ref01"
           }
         }
       ]
@@ -46,26 +52,6 @@ main: kit: flow: BasicBackendRunnerPoolFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        backend_id: "backend01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "backend_runner_pool_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicBackendRunnerPoolFlow"

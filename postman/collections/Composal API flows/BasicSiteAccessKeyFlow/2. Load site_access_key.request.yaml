@@ -1,0 +1,56 @@
+$kind: http-request
+id: "652033c4-f343-54cf-862a-459b901128e3"
+description: |-
+  The `load` operation of **site_access_key**.
+
+  SDK: `client.SiteAccessKey().load({ organization_id: "example", site_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/access_keys"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this site_access_key belongs to.
+  - key: name
+    value: "{{site_id}}"
+    description: The site this site_access_key belongs to.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","organization_id","site_id"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Load site_access_key: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-site_access_key_ref01" === pm.variables.get("site_access_key_ref01_marked")) pm.test("2. Load site_access_key: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-site_access_key_ref01")
+      })
+      pm.test("2. Load site_access_key: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("site_access_key_ref01")))
+      })
+    language: text/javascript
+order: 2000

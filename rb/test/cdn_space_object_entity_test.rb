@@ -25,7 +25,7 @@ class CdnSpaceObjectEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.CdnSpaceObject(nil).list({ "cdn_space_id" => 1 }, nil)
+      client.CdnSpaceObject(nil).load({ "cdn_space_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class CdnSpaceObjectEntityTest < Minitest::Test
     setup = cdn_space_object_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list", "load"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "cdn_space_object." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,22 +42,15 @@ class CdnSpaceObjectEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"cdn_space_object.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects\"}"
-    if setup[:live]
-      ["cdn_space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID")
-        end
-      end
+      puts "LIVE STEP {\"id\":\"cdn_space_object.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects\"}"
+      skip("Live coverage incomplete: cdn_space_object.update.0 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects)")
     end
+
+    if setup[:live]
+      skip("Live coverage incomplete: the flow has no step to run")
+    end
+
     client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["cdn_space_object01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "cdn_space_object", "id", _live_id) do
-        client.CdnSpaceObject(nil).list({"cdn_space_id" => setup[:idmap]["cdn_space01"]}, nil)
-      end
-    end
 
     # Bootstrap entity data from existing test data.
     cdn_space_object_ref01_data_raw = Vs.items(Helpers.to_map(
@@ -66,75 +59,6 @@ class CdnSpaceObjectEntityTest < Minitest::Test
     if cdn_space_object_ref01_data_raw.length > 0
       cdn_space_object_ref01_data = Helpers.to_map(cdn_space_object_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_space_object_ref01_ent = client.CdnSpaceObject(nil)
-    cdn_space_object_ref01_match = {
-      "cdn_space_id" => setup[:idmap]["cdn_space01"],
-    }
-
-    cdn_space_object_ref01_list_result = cdn_space_object_ref01_ent.list(cdn_space_object_ref01_match, nil)
-    assert cdn_space_object_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    cdn_space_object_ref01_match_dt0 = {
-      "id" => cdn_space_object_ref01_data["id"],
-    }
-    cdn_space_object_ref01_match_dt0["cdn_space_id"] = setup[:idmap]["cdn_space_id"] || setup[:idmap]["cdn_space01"]
-    cdn_space_object_ref01_data_dt0_loaded = cdn_space_object_ref01_ent.load(cdn_space_object_ref01_match_dt0, nil)
-    cdn_space_object_ref01_data_dt0_load_result = Helpers.to_map(cdn_space_object_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_space_object_ref01_data_dt0_loaded.data_get : cdn_space_object_ref01_data_dt0_loaded)
-    assert !cdn_space_object_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(cdn_space_object_ref01_data_dt0_load_result["id"], cdn_space_object_ref01_data["id"]) unless setup[:live]
-
-      return
-    end
-
-    if setup[:live]
-      ["cdn_space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["cdn_space_object01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "cdn_space_object", "id", _live_id) do
-        client.CdnSpaceObject(nil).list({"cdn_space_id" => setup[:idmap]["cdn_space01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    cdn_space_object_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.cdn_space_object")))
-    cdn_space_object_ref01_data = nil
-    if cdn_space_object_ref01_data_raw.length > 0
-      cdn_space_object_ref01_data = Helpers.to_map(cdn_space_object_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    cdn_space_object_ref01_ent = client.CdnSpaceObject(nil)
-    cdn_space_object_ref01_match = {
-      "cdn_space_id" => setup[:idmap]["cdn_space01"],
-    }
-
-    cdn_space_object_ref01_list_result = cdn_space_object_ref01_ent.list(cdn_space_object_ref01_match, nil)
-    assert cdn_space_object_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    cdn_space_object_ref01_match_dt0 = {
-      "id" => cdn_space_object_ref01_data["id"],
-    }
-    cdn_space_object_ref01_match_dt0["cdn_space_id"] = setup[:idmap]["cdn_space_id"] || setup[:idmap]["cdn_space01"]
-    cdn_space_object_ref01_data_dt0_loaded = cdn_space_object_ref01_ent.load(cdn_space_object_ref01_match_dt0, nil)
-    cdn_space_object_ref01_data_dt0_load_result = Helpers.to_map(cdn_space_object_ref01_data_dt0_loaded.respond_to?(:data_get) ? cdn_space_object_ref01_data_dt0_loaded.data_get : cdn_space_object_ref01_data_dt0_loaded)
-    assert !cdn_space_object_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(cdn_space_object_ref01_data_dt0_load_result["id"], cdn_space_object_ref01_data["id"]) unless setup[:live]
 
   end
 end

@@ -62,7 +62,7 @@ scripts:
       })
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const recs = body || []
+      const recs = body?.["target_branches"] || []
       const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
       if (null == pm.variables.get("vc_merge_queue_ref01") && (true || "true" === String(pm.variables.get("getonly")).toLowerCase())) {
         if (Array.isArray(recs) && null != recs[0]) {

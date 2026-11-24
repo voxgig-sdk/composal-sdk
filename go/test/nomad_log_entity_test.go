@@ -38,7 +38,7 @@ func TestNomadLogEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.NomadLog(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.NomadLog(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestNomadLogEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "nomad_log." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestNomadLogEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, nomad_logEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_NOMAD_LOG_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		nomadLogRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.nomad_log")))
@@ -81,24 +76,6 @@ func TestNomadLogEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = nomadLogRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		nomadLogRef01Ent := client.NomadLog(nil)
-		nomadLogRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		nomadLogRef01ListResult, err := nomadLogRef01Ent.List(nomadLogRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, nomadLogRef01ListOk := nomadLogRef01ListResult.([]any)
-		if !nomadLogRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", nomadLogRef01ListResult)
-		}
 
 	})
 }

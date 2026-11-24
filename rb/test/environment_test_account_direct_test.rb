@@ -27,6 +27,10 @@ class EnvironmentTestAccountDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["environment01"].nil?
+      puts "LIVE STEP {\"id\":\"direct-list-environment_test_account\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}"
+      skip("Live coverage incomplete: direct-list-environment_test_account excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
+    end
     if setup[:live]
       ["environment01", "organization01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?

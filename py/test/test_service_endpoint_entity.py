@@ -37,7 +37,7 @@ class TestServiceEndpointEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ServiceEndpoint(None).list({"app_id": 1, "service_id": "x"}, None)
+            client.ServiceEndpoint(None).load({"app_id": 1, "service_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,17 @@ class TestServiceEndpointEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load", "remove"]:
+        for _op in ["create", "update", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "service_endpoint." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"service_endpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints\"}")
-            print("LIVE STEP {\"id\":\"service_endpoint.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-            print("LIVE STEP {\"id\":\"service_endpoint.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-            print("LIVE STEP {\"id\":\"service_endpoint.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"service_endpoint.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+            print("LIVE STEP {\"id\":\"service_endpoint.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only service_endpoint.create.0 gives\"}")
+            print("LIVE STEP {\"id\":\"service_endpoint.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+            pytest.skip("Live coverage incomplete: service_endpoint.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints); service_endpoint.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}); service_endpoint.load.2 excluded (GET-only live run: reads a record only service_endpoint.create.0 gives); service_endpoint.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id})")
 
         if setup["live"]:
             for _live_key in ["app01", "service01"]:
@@ -79,22 +79,6 @@ class TestServiceEndpointEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        service_endpoint_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "service_id": setup["idmap"]["service01"],
-        }
-
-        service_endpoint_ref01_list_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match, None)
-        assert isinstance(service_endpoint_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(service_endpoint_ref01_list_result),
-            {"id": service_endpoint_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         service_endpoint_ref01_data_up0_up = {
             "id": service_endpoint_ref01_data["id"],
@@ -114,7 +98,6 @@ class TestServiceEndpointEntity:
             "id": service_endpoint_ref01_data["id"],
         }
         service_endpoint_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
-        service_endpoint_ref01_match_dt0["service_id"] = setup["idmap"].get("service_id") or setup["idmap"].get("service01")
         service_endpoint_ref01_data_dt0_loaded = service_endpoint_ref01_ent.load(service_endpoint_ref01_match_dt0, None)
         service_endpoint_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(service_endpoint_ref01_data_dt0_loaded))
         assert service_endpoint_ref01_data_dt0_load_result is not None
@@ -130,69 +113,6 @@ class TestServiceEndpointEntity:
         service_endpoint_ref01_match_rm0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         service_endpoint_ref01_match_rm0["service_id"] = setup["idmap"].get("service_id") or setup["idmap"].get("service01")
         service_endpoint_ref01_ent.remove(service_endpoint_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        service_endpoint_ref01_match_rt0 = {
-            "app_id": setup["idmap"]["app01"],
-            "service_id": setup["idmap"]["service01"],
-        }
-
-        service_endpoint_ref01_list_rt0_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match_rt0, None)
-        assert isinstance(service_endpoint_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(service_endpoint_ref01_list_rt0_result),
-            {"id": service_endpoint_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["app01", "service01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SERVICE_ENDPOINT_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("service_endpoint01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "service_endpoint",
-                                 lambda: client.ServiceEndpoint(None).list({"app_id": setup["idmap"].get("app01"), "service_id": setup["idmap"].get("service01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        service_endpoint_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.service_endpoint")))
-        service_endpoint_ref01_data = None
-        if len(service_endpoint_ref01_data_raw) > 0:
-            service_endpoint_ref01_data = helpers.to_map(service_endpoint_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        service_endpoint_ref01_ent = client.ServiceEndpoint(None)
-        service_endpoint_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "service_id": setup["idmap"]["service01"],
-        }
-
-        service_endpoint_ref01_list_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match, None)
-        assert isinstance(service_endpoint_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        service_endpoint_ref01_match_dt0 = {
-            "id": service_endpoint_ref01_data["id"],
-        }
-        service_endpoint_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
-        service_endpoint_ref01_match_dt0["service_id"] = setup["idmap"].get("service_id") or setup["idmap"].get("service01")
-        service_endpoint_ref01_data_dt0_loaded = service_endpoint_ref01_ent.load(service_endpoint_ref01_match_dt0, None)
-        service_endpoint_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(service_endpoint_ref01_data_dt0_loaded))
-        assert service_endpoint_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(service_endpoint_ref01_data_dt0_load_result.get("id"), service_endpoint_ref01_data["id"])
 
 
 

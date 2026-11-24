@@ -1,0 +1,18 @@
+$kind: http-request
+id: b3d7a642-2a3b-5eba-a4dd-7954fed0a07b
+description: |-
+  The `load` operation of **project_scenario_option**.
+
+  SDK: `client.ProjectScenarioOption().load({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/scenario_options"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_scenario_option belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_scenario_option belongs to.
+order: 1000

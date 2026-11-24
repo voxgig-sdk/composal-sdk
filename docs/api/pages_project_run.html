@@ -645,40 +645,136 @@ fmt.Println(pages_project_runs)
 </thead>
 <tbody>
 <tr>
-<td><code>environment_query</code></td>
-<td><code>string</code></td>
+<td><code>archived_at</code></td>
+<td><code>one,string,null</code></td>
 <td>Yes</td>
-<td>Environment Query</td>
+<td>Archived At</td>
 </tr>
 <tr>
-<td><code>environments</code></td>
-<td><code>array</code></td>
+<td><code>browser_seconds</code></td>
+<td><code>one,number,null</code></td>
 <td>Yes</td>
-<td>Environments</td>
+<td>Browser Seconds</td>
 </tr>
 <tr>
-<td><code>environments_has_more</code></td>
+<td><code>can_archive</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td>Environments Has More</td>
+<td>Can Archive</td>
 </tr>
 <tr>
-<td><code>pagination</code></td>
-<td><code>object</code></td>
+<td><code>can_restore</code></td>
+<td><code>boolean</code></td>
 <td>Yes</td>
-<td>Pagination</td>
+<td>Can Restore</td>
 </tr>
 <tr>
-<td><code>runs</code></td>
-<td><code>array</code></td>
+<td><code>cleanup_state</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Runs</td>
+<td>Cleanup State</td>
 </tr>
 <tr>
-<td><code>selected_environment</code></td>
+<td><code>commit_sha</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Commit Sha</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Created At</td>
+</tr>
+<tr>
+<td><code>duration_seconds</code></td>
+<td><code>one,number,null</code></td>
+<td>Yes</td>
+<td>Duration Seconds</td>
+</tr>
+<tr>
+<td><code>environment_name</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Environment Name</td>
+</tr>
+<tr>
+<td><code>finished_at</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Finished At</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>outcome</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Outcome</td>
+</tr>
+<tr>
+<td><code>pull_request</code></td>
 <td><code>any</code></td>
 <td>Yes</td>
-<td>Selected Environment</td>
+<td>Pull Request</td>
+</tr>
+<tr>
+<td><code>pull_request_label</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Pull Request Label</td>
+</tr>
+<tr>
+<td><code>scenario_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Scenario Count</td>
+</tr>
+<tr>
+<td><code>source_run</code></td>
+<td><code>one,object,null</code></td>
+<td>Yes</td>
+<td>Source Run</td>
+</tr>
+<tr>
+<td><code>started_at</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Started At</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>State</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Title</td>
+</tr>
+<tr>
+<td><code>trigger_kind</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Trigger Kind</td>
+</tr>
+<tr>
+<td><code>triggered_by</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Triggered By</td>
+</tr>
+<tr>
+<td><code>web_path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Web Path</td>
 </tr>
 </tbody>
 </table>

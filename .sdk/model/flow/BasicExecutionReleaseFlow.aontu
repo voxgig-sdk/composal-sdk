@@ -15,26 +15,10 @@ main: kit: flow: BasicExecutionReleaseFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "execution_release_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "execution_release_ref01",
         srcdatavar: "execution_release_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "execution_release01"
       }
 
       o: "load",

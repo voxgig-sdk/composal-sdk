@@ -1,0 +1,15 @@
+$kind: http-request
+id: "4dcdaa11-bc2e-5082-b208-d740feef01e6"
+description: |-
+  The `load` operation of **cache_namespace_entry**.
+
+  SDK: `client.CacheNamespaceEntry().load({ cache_namespace_id: "example" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces/:cache_namespace_id/entries"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: cache_namespace_id
+    value: "{{cache_namespace_id}}"
+    description: "Input: cache_namespace_id."
+order: 2000

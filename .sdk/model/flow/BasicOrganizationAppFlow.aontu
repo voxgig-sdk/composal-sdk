@@ -7,22 +7,6 @@ main: kit: flow: BasicOrganizationAppFlow:
   name: "BasicOrganizationAppFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "organization_app_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         organization_id: "organization01"
       }
@@ -35,6 +19,28 @@ main: kit: flow: BasicOrganizationAppFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-organization_app_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "organization_app_ref01",
+        srcdatavar: "organization_app_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "organization_app01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

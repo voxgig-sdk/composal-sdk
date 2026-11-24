@@ -1,9 +1,15 @@
 {
   "existing": {
     "app_access_jwk": {
-      "APP_ACCESS_JWK00": {},
-      "APP_ACCESS_JWK01": {},
-      "APP_ACCESS_JWK02": {}
+      "APP_ACCESS_JWK00": {
+        "id": "APP_ACCESS_JWK00"
+      },
+      "APP_ACCESS_JWK01": {
+        "id": "APP_ACCESS_JWK01"
+      },
+      "APP_ACCESS_JWK02": {
+        "id": "APP_ACCESS_JWK02"
+      }
     }
   },
   "new": {

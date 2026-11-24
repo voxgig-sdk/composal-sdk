@@ -1,0 +1,15 @@
+$kind: http-request
+id: e2bbae8d-54e6-57e4-9418-ed79c055b23e
+description: |-
+  The `load` operation of **app_preview_profile**.
+
+  SDK: `client.AppPreviewProfile().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/preview_profiles"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_preview_profile belongs to.
+order: 2000

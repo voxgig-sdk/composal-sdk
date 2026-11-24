@@ -3,7 +3,7 @@ id: d3035a28-0fb4-50a1-9ae8-7bb09523916c
 description: |-
   The `app` action of **organization_site**, a route of its `update` operation.
 
-  SDK: `client.OrganizationSite().update({ "organization_id": "organization_id", "id": "ID", $action: "app" })`
+  SDK: `client.OrganizationSite().update({ "organization_id": "organization_id", "id": "id", $action: "app" })`
 url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/app"
 method: PUT
 headers:
@@ -14,8 +14,8 @@ pathVariables:
     value: "{{organization_id}}"
     description: The organization this organization_site belongs to.
   - key: name
-    value: "{{organization_site_id}}"
-    description: The organization_site this request addresses.
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
 body:
   type: json
   content: "{}"

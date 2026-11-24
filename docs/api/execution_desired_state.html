@@ -246,8 +246,8 @@
 <a href="../api/evidence.html">Evidence</a>
 <a aria-current="page" href="../api/execution_desired_state.html">ExecutionDesiredState</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1executiondesired_statesidreconcile">POST /api/v1/execution/desired_states/{id}/reconcile</a>
 <a class="nav-section" href="#post-apiv1executiondesired_states">POST /api/v1/execution/desired_states</a>
-<a class="nav-section" href="#get-apiv1executiondesired_states">GET /api/v1/execution/desired_states</a>
 <a class="nav-section" href="#get-apiv1executiondesired_statesid">GET /api/v1/execution/desired_states/{id}</a>
+<a class="nav-section" href="#get-apiv1executiondesired_states">GET /api/v1/execution/desired_states</a>
 <a class="nav-section" href="#patch-apiv1executiondesired_statesid">PATCH /api/v1/execution/desired_states/{id}</a>
 <a class="nav-section" href="#delete-apiv1executiondesired_statesid">DELETE /api/v1/execution/desired_states/{id}</a>
 <a class="nav-section" href="#put-apiv1executiondesired_statesid">PUT /api/v1/execution/desired_states/{id}</a></div>
@@ -615,15 +615,15 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1executiondesired_states"><code>/api/v1/execution/desired_states</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1executiondesired_statesid"><code>/api/v1/execution/desired_states/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Desired state and current scheduler termination proof</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1executiondesired_states"><code>/api/v1/execution/desired_states</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
 </tr>
 <tr>
 <td><code>PATCH</code></td>
@@ -649,12 +649,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">execution_desired_states, err := client.ExecutionDesiredState(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(execution_desired_states)
-execution_desired_state, err := client.ExecutionDesiredState(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">execution_desired_state, err := client.ExecutionDesiredState(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -682,8 +677,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local execution_desired_states, err = client:ExecutionDesiredState():list()
-local execution_desired_state, err = client:ExecutionDesiredState():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local execution_desired_state, err = client:ExecutionDesiredState():load({ id = &quot;example_id&quot; })
 local created, err = client:ExecutionDesiredState():create({  })
 local updated, err = client:ExecutionDesiredState():update({ id = &quot;example_id&quot; })
 local patched, err = client:ExecutionDesiredState():patch({ id = &quot;example_id&quot; })
@@ -691,8 +685,7 @@ local removed, err = client:ExecutionDesiredState():remove({ id = &quot;example_
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$execution_desired_states = $client-&gt;ExecutionDesiredState()-&gt;list();
-$execution_desired_state = $client-&gt;ExecutionDesiredState()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$execution_desired_state = $client-&gt;ExecutionDesiredState()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;ExecutionDesiredState()-&gt;create([]);
 $updated = $client-&gt;ExecutionDesiredState()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;ExecutionDesiredState()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -700,8 +693,7 @@ $client-&gt;ExecutionDesiredState()-&gt;remove([&quot;id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">execution_desired_states = client.ExecutionDesiredState().list()
-execution_desired_state = client.ExecutionDesiredState().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">execution_desired_state = client.ExecutionDesiredState().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.ExecutionDesiredState().create({  })
 updated = client.ExecutionDesiredState().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.ExecutionDesiredState().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -709,8 +701,7 @@ client.ExecutionDesiredState().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">execution_desired_states = client.ExecutionDesiredState.list()
-execution_desired_state = client.ExecutionDesiredState.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">execution_desired_state = client.ExecutionDesiredState.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.ExecutionDesiredState.create({  })
 updated = client.ExecutionDesiredState.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.ExecutionDesiredState.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -718,8 +709,7 @@ client.ExecutionDesiredState.remove({ &quot;id&quot; =&gt; &quot;example_id&quot
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const execution_desired_states = await client.ExecutionDesiredState().list()
-const execution_desired_state = await client.ExecutionDesiredState().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const execution_desired_state = await client.ExecutionDesiredState().load({ id: &quot;example_id&quot; })
 const created = await client.ExecutionDesiredState().create({  })
 const updated = await client.ExecutionDesiredState().update({ id: &quot;example_id&quot; })
 const patched = await client.ExecutionDesiredState().patch({ id: &quot;example_id&quot; })
@@ -808,19 +798,6 @@ await client.ExecutionDesiredState().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1executiondesired_states" class="operation" data-method="get"><code>GET</code> /api/v1/execution/desired_states</h3>
-<p>Operation ID: <code>api_v1_desired_states</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1executiondesired_statesid" class="operation" data-method="get"><code>GET</code> /api/v1/execution/desired_states/{id}</h3>
 <p>Operation ID: <code>api_v1_desired_state</code>.</p>
@@ -846,7 +823,7 @@ await client.ExecutionDesiredState().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
-<h4 id="responses-3">Responses</h4>
+<h4 id="responses-2">Responses</h4>
 <h5 id="200-desired-state-and-current-scheduler-termination-proof" class="status" data-status="2xx">200: Desired state and current scheduler termination proof</h5>
 <p><code>application/json</code></p>
 <table>
@@ -873,6 +850,18 @@ await client.ExecutionDesiredState().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1executiondesired_states" class="operation" data-method="get"><code>GET</code> /api/v1/execution/desired_states</h3>
+<p>Operation ID: <code>api_v1_desired_states</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
 <h5 id="401-unauthorized-3" class="status" data-status="4xx">401: Unauthorized</h5>
 <h5 id="403-forbidden-3" class="status" data-status="4xx">403: Forbidden</h5>
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>

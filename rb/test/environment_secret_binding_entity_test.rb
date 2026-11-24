@@ -25,7 +25,7 @@ class EnvironmentSecretBindingEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.EnvironmentSecretBinding(nil).list({ "app_id" => 1, "environment_id" => "x" }, nil)
+      client.EnvironmentSecretBinding(nil).load({ "app_id" => 1, "environment_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class EnvironmentSecretBindingEntityTest < Minitest::Test
     setup = environment_secret_binding_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "remove"].each do |_op|
+    ["create", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "environment_secret_binding." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,37 +43,9 @@ class EnvironmentSecretBindingEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"environment_secret_binding.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings\"}"
+      puts "LIVE STEP {\"id\":\"environment_secret_binding.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment_secret_binding.create.0 gives\"}"
       puts "LIVE STEP {\"id\":\"environment_secret_binding.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id}\"}"
-      puts "LIVE STEP {\"id\":\"environment_secret_binding.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["app01", "environment01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_ENVIRONMENT_SECRET_BINDING_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    environment_secret_binding_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.environment_secret_binding")))
-    environment_secret_binding_ref01_data = nil
-    if environment_secret_binding_ref01_data_raw.length > 0
-      environment_secret_binding_ref01_data = Helpers.to_map(environment_secret_binding_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    environment_secret_binding_ref01_ent = client.EnvironmentSecretBinding(nil)
-    environment_secret_binding_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "environment_id" => setup[:idmap]["environment01"],
-    }
-
-    environment_secret_binding_ref01_list_result = environment_secret_binding_ref01_ent.list(environment_secret_binding_ref01_match, nil)
-    assert environment_secret_binding_ref01_list_result.is_a?(Array)
-
-      return
+      skip("Live coverage incomplete: environment_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings); environment_secret_binding.load.1 excluded (GET-only live run: reads a record only environment_secret_binding.create.0 gives); environment_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id})")
     end
 
     if setup[:live]
@@ -99,19 +71,15 @@ class EnvironmentSecretBindingEntityTest < Minitest::Test
     assert !environment_secret_binding_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    environment_secret_binding_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "environment_id" => setup[:idmap]["environment01"],
+    # LOAD
+    environment_secret_binding_ref01_match_dt0 = {
+      "id" => environment_secret_binding_ref01_data["id"],
     }
-
-    environment_secret_binding_ref01_list_result = environment_secret_binding_ref01_ent.list(environment_secret_binding_ref01_match, nil)
-    assert environment_secret_binding_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(environment_secret_binding_ref01_list_result),
-      { "id" => environment_secret_binding_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    environment_secret_binding_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
+    environment_secret_binding_ref01_data_dt0_loaded = environment_secret_binding_ref01_ent.load(environment_secret_binding_ref01_match_dt0, nil)
+    environment_secret_binding_ref01_data_dt0_load_result = Helpers.to_map(environment_secret_binding_ref01_data_dt0_loaded.respond_to?(:data_get) ? environment_secret_binding_ref01_data_dt0_loaded.data_get : environment_secret_binding_ref01_data_dt0_loaded)
+    assert !environment_secret_binding_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(environment_secret_binding_ref01_data_dt0_load_result["id"], environment_secret_binding_ref01_data["id"]) unless setup[:live]
 
     Runner.live_pace if setup[:live]
     # REMOVE
@@ -121,21 +89,6 @@ class EnvironmentSecretBindingEntityTest < Minitest::Test
     environment_secret_binding_ref01_match_rm0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     environment_secret_binding_ref01_match_rm0["environment_id"] = setup[:idmap]["environment_id"] || setup[:idmap]["environment01"]
     environment_secret_binding_ref01_ent.remove(environment_secret_binding_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    environment_secret_binding_ref01_match_rt0 = {
-      "app_id" => setup[:idmap]["app01"],
-      "environment_id" => setup[:idmap]["environment01"],
-    }
-
-    environment_secret_binding_ref01_list_rt0_result = environment_secret_binding_ref01_ent.list(environment_secret_binding_ref01_match_rt0, nil)
-    assert environment_secret_binding_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(environment_secret_binding_ref01_list_rt0_result),
-      { "id" => environment_secret_binding_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

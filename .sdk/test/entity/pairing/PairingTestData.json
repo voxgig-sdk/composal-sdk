@@ -28,12 +28,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/relay/pairings": {
+    "GET /api/v1/relay/pairings/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/relay/pairings/{id}": {
+    "GET /api/v1/relay/pairings": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

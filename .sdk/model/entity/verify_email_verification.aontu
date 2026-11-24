@@ -6,8 +6,8 @@ main: kit: entity: verify_email_verification: {
 
   name: "verify_email_verification"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

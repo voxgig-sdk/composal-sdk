@@ -38,7 +38,7 @@ func TestSpacePolicyEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpacePolicy(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpacePolicy(nil).Load(map[string]any{"id": 1, "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpacePolicyEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_policy." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSpacePolicyEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_policy.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/policies/{id}/activate\"}")
-			t.Log("LIVE STEP {\"id\":\"space_policy.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_policy.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_policy.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_policyEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_POLICY_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["space_policy01"]
-			}
-			livePace()
-			liveExisting(t, space_policyEntityLiveStrict, setup.data, "space_policy", "id", _liveId,
-				func() (any, error) {
-					return client.SpacePolicy(nil).List(map[string]any{"space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spacePolicyRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_policy")))
-		var spacePolicyRef01Data map[string]any
-		if len(spacePolicyRef01DataRaw) > 0 {
-			spacePolicyRef01Data = core.ToMapAny(spacePolicyRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spacePolicyRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePolicyRef01Ent := client.SpacePolicy(nil)
-		spacePolicyRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePolicyRef01ListResult, err := spacePolicyRef01Ent.List(spacePolicyRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spacePolicyRef01ListOk := spacePolicyRef01ListResult.([]any)
-		if !spacePolicyRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePolicyRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		spacePolicyRef01MatchDt0 := map[string]any{
-			"id": spacePolicyRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spacePolicyRef01MatchDt0["space_id"] = v
-		} else {
-			spacePolicyRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		spacePolicyRef01DataDt0Loaded, err := spacePolicyRef01Ent.Load(spacePolicyRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		spacePolicyRef01DataDt0LoadResult := core.ToMapAny(entityData(spacePolicyRef01DataDt0Loaded))
-		if spacePolicyRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(spacePolicyRef01DataDt0LoadResult["id"], spacePolicyRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"space_policy.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_policy.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_policy.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"space_policy.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id}\"}")
+			t.Skip("Live coverage incomplete: space_policy.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/policies/{id}/activate); space_policy.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/policies/{id}); space_policy.load.2 excluded (GET-only live run: reads a record only space_policy.create.0 gives); space_policy.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/policies/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSpacePolicyEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spacePolicyRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePolicyRef01ListResult, err := spacePolicyRef01Ent.List(spacePolicyRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePolicyRef01List, spacePolicyRef01ListOk := spacePolicyRef01ListResult.([]any)
-		if !spacePolicyRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePolicyRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spacePolicyRef01List), map[string]any{"id": spacePolicyRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spacePolicyRef01DataUp0Up := map[string]any{
 			"id": spacePolicyRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSpacePolicyEntity(t *testing.T) {
 		// LOAD
 		spacePolicyRef01MatchDt0 := map[string]any{
 			"id": spacePolicyRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spacePolicyRef01MatchDt0["space_id"] = v
-		} else {
-			spacePolicyRef01MatchDt0["space_id"] = setup.idmap["space01"]
 		}
 		spacePolicyRef01DataDt0Loaded, err := spacePolicyRef01Ent.Load(spacePolicyRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSpacePolicyEntity(t *testing.T) {
 		_, err = spacePolicyRef01Ent.Remove(spacePolicyRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePolicyRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePolicyRef01ListRt0Result, err := spacePolicyRef01Ent.List(spacePolicyRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePolicyRef01ListRt0, spacePolicyRef01ListRt0Ok := spacePolicyRef01ListRt0Result.([]any)
-		if !spacePolicyRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spacePolicyRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spacePolicyRef01ListRt0), map[string]any{"id": spacePolicyRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

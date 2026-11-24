@@ -13,7 +13,8 @@
         "service": "s76",
         "task": "s77",
         "type": "s78",
-        "app_id": "APP01"
+        "app_id": "APP01",
+        "id": "ALLOCATION_LOG00"
       },
       "ALLOCATION_LOG01": {
         "allocation_id": "ALLOCATION01",
@@ -27,7 +28,8 @@
         "service": "se4",
         "task": "se5",
         "type": "se6",
-        "app_id": "APP01"
+        "app_id": "APP01",
+        "id": "ALLOCATION_LOG01"
       },
       "ALLOCATION_LOG02": {
         "allocation_id": "ALLOCATION01",
@@ -41,7 +43,8 @@
         "service": "s152",
         "task": "s153",
         "type": "s154",
-        "app_id": "APP01"
+        "app_id": "APP01",
+        "id": "ALLOCATION_LOG02"
       }
     }
   },

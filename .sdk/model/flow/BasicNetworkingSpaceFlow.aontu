@@ -15,18 +15,6 @@ main: kit: flow: BasicNetworkingSpaceFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "networking_space_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "networking_space_ref01",
         srcdatavar: "networking_space_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicNetworkingSpaceFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "networking_space01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicNetworkingSpaceFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "networking_space_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicNetworkingSpaceFlow"

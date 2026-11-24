@@ -39,7 +39,7 @@ func TestSparkCreditEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SparkCredit(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.SparkCredit(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestSparkCreditEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "spark_credit." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,14 +65,7 @@ func TestSparkCreditEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"spark_credit.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/spark_credits\"}")
-			t.Log("LIVE STEP {\"id\":\"spark_credit.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, spark_creditEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPARK_CREDIT_ENTID", _liveKey)
-				}
-			}
-		}
+			t.Log("LIVE STEP {\"id\":\"spark_credit.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
 		client := setup.client
 		_ = client
 
@@ -89,19 +82,15 @@ func TestSparkCreditEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		sparkCreditRef01Ent := client.SparkCredit(nil)
-		sparkCreditRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		sparkCreditRef01ListResult, err := sparkCreditRef01Ent.List(sparkCreditRef01Match, nil)
+		sparkCreditRef01MatchDt0 := map[string]any{}
+		sparkCreditRef01DataDt0Loaded, err := sparkCreditRef01Ent.Load(sparkCreditRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, sparkCreditRef01ListOk := sparkCreditRef01ListResult.([]any)
-		if !sparkCreditRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkCreditRef01ListResult)
+		if sparkCreditRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -138,23 +127,6 @@ func TestSparkCreditEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		sparkCreditRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		sparkCreditRef01ListResult, err := sparkCreditRef01Ent.List(sparkCreditRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, sparkCreditRef01ListOk := sparkCreditRef01ListResult.([]any)
-		if !sparkCreditRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkCreditRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		sparkCreditRef01DataUp0Up := map[string]any{
 		}
@@ -173,6 +145,19 @@ func TestSparkCreditEntity(t *testing.T) {
 		}
 		if sparkCreditRef01ResdataUp0[sparkCreditRef01MarkdefUp0Name] != sparkCreditRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", sparkCreditRef01MarkdefUp0Name, sparkCreditRef01ResdataUp0[sparkCreditRef01MarkdefUp0Name])
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		sparkCreditRef01MatchDt0 := map[string]any{}
+		sparkCreditRef01DataDt0Loaded, err := sparkCreditRef01Ent.Load(sparkCreditRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		if sparkCreditRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

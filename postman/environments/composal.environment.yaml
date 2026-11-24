@@ -48,9 +48,6 @@ values:
   - key: org
     value: ""
     enabled: true
-  - key: token
-    value: ""
-    enabled: true
   - key: space_id
     value: ""
     enabled: true
@@ -175,9 +172,6 @@ values:
     value: ""
     enabled: true
   - key: messaging_conversation_id
-    value: ""
-    enabled: true
-  - key: native_agent_id
     value: ""
     enabled: true
   - key: x_vex_organization

@@ -2369,23 +2369,23 @@ $admin_org = $client->AdminOrg();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `billing_email` | - | - | - | - |
-| `billing_reason` | - | - | - | - |
-| `customize_onboarding_packages` | - | - | - | - |
-| `deployment_usage_visibility` | - | - | - | - |
-| `deployment_usage_visible` | - | - | - | - |
-| `id` | - | - | - | - |
-| `monthly_price_dollars` | - | - | - | - |
-| `monthly_price_override_cents` | - | - | - | - |
-| `name` | - | - | - | - |
-| `onboarding_custom_pricing` | - | - | - | - |
-| `onboarding_package_keys` | - | - | - | - |
-| `owner_email` | - | - | - | - |
-| `package_id` | - | - | Yes | - |
-| `skip_payment` | - | - | - | - |
-| `slug` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `billing_email` | - | - | - |
+| `billing_reason` | - | - | - |
+| `customize_onboarding_packages` | - | - | - |
+| `deployment_usage_visibility` | - | - | - |
+| `deployment_usage_visible` | - | - | - |
+| `id` | - | - | - |
+| `monthly_price_dollars` | - | - | - |
+| `monthly_price_override_cents` | - | - | - |
+| `name` | - | - | - |
+| `onboarding_custom_pricing` | - | - | - |
+| `onboarding_package_keys` | - | - | - |
+| `owner_email` | - | - | - |
+| `package_id` | - | Yes | - |
+| `skip_payment` | - | - | - |
+| `slug` | - | - | - |
 
 ### Operations
 
@@ -2399,14 +2399,6 @@ $result = $client->AdminOrg()->create([
   "owner_email" => null, // string
   "slug" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AdminOrg()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -2639,12 +2631,9 @@ $agent_app = $client->AgentApp();
 | `hidden_install_count` | `int` | Yes | Installs by agents the viewer cannot open |
 | `id` | `string` | Yes |  |
 | `install_count` | `int` | Yes |  |
-| `install_targets` | `array` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `array` | Yes |  |
 | `installed_target_ids` | `array` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `array` | Yes |  |
 | `mcp_url` | `mixed` | Yes |  |
-| `next_cursor` | `mixed` | Yes | Pass as cursor to load older apps |
 | `owner` | `array` | Yes | The person who controls the author agent |
 | `thread` | `mixed` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` | Yes |  |
@@ -3824,12 +3813,12 @@ $agent_event = $client->AgentEvent();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentEvent()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->AgentEvent()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -4038,14 +4027,6 @@ $result = $client->AgentIntegration()->create([
   "name" => null, // string
   "toolkit" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AgentIntegration()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -5181,12 +5162,12 @@ $agent_repository = $client->AgentRepository();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentRepository()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->AgentRepository()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -5598,14 +5579,6 @@ $result = $client->AgentSessionCheckpoint()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AgentSessionCheckpoint()->list(["agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -5718,12 +5691,12 @@ $agent_setting = $client->AgentSetting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentSetting()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->AgentSetting()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -5924,14 +5897,6 @@ $result = $client->AgentSkill()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AgentSkill()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -6106,12 +6071,12 @@ $result = $client->AgentSubscription()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentSubscription()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->AgentSubscription()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -6440,14 +6405,6 @@ $result = $client->AgentThread()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AgentThread()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -6612,8 +6569,11 @@ $agent_verify_project = $client->AgentVerifyProject();
 | `available` | `bool` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `bool` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `int` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `project_choices` | `array` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `bool` | Yes |  |
+| `slug` | `string` | Yes |  |
 | `verify_projects` | `array` | Yes |  |
 | `version` | `int` | Yes |  |
 
@@ -6734,12 +6694,12 @@ $agent_web_preview = $client->AgentWebPreview();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentWebPreview()->list(["token" => "example"]);
+$result = $client->AgentWebPreview()->load(["token" => "token"]);
 ```
 
 ### Common Methods
@@ -6943,12 +6903,12 @@ $result = $client->AgentWorkflow()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AgentWorkflow()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->AgentWorkflow()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -7541,14 +7501,6 @@ $result = $client->AlertRuleEvent()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AlertRuleEvent()->list(["alert_rule_id" => "example", "space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -7619,12 +7571,12 @@ $allocation_log = $client->AllocationLog();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AllocationLog()->list(["allocation_id" => "example", "app_id" => "example"]);
+$result = $client->AllocationLog()->load(["allocation_id" => "allocation_id", "app_id" => "app_id"]);
 ```
 
 ### Common Methods
@@ -7845,12 +7797,12 @@ $app_access_jwk = $client->AppAccessJwk();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AppAccessJwk()->list();
+$result = $client->AppAccessJwk()->load();
 ```
 
 ### Common Methods
@@ -7923,35 +7875,35 @@ $app_cdn = $client->AppCdn();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -7966,14 +7918,6 @@ $result = $client->AppCdn()->create([
   "origin_url" => null, // string
   "slug" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppCdn()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -8072,21 +8016,21 @@ $app_config_variable = $client->AppConfigVariable();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Operations
 
@@ -8102,14 +8046,6 @@ $result = $client->AppConfigVariable()->create([
   "scope_kind" => null, // string
   "value_kind" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppConfigVariable()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -8213,26 +8149,26 @@ $app_data_resource = $client->AppDataResource();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Operations
 
@@ -8248,14 +8184,6 @@ $result = $client->AppDataResource()->create([
   "name" => null, // string
   "slug" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppDataResource()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -8441,42 +8369,42 @@ $app_deployment = $client->AppDeployment();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8488,14 +8416,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->AppDeployment()->create([
   "app_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppDeployment()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -8864,23 +8784,23 @@ $app_environment = $client->AppEnvironment();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8898,14 +8818,6 @@ $result = $client->AppEnvironment()->create([
   "slug" => null, // string
   "status" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppEnvironment()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9138,14 +9050,6 @@ $result = $client->AppPreview()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppPreview()->list(["app_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -9239,18 +9143,18 @@ $app_preview_profile = $client->AppPreviewProfile();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -9265,14 +9169,6 @@ $result = $client->AppPreviewProfile()->create([
   "slug" => null, // string
   "source_environment_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppPreviewProfile()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9367,14 +9263,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->AppRun()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppRun()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9614,50 +9502,50 @@ $app_service = $client->AppService();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -9679,14 +9567,6 @@ $result = $client->AppService()->create([
   "source_path" => null, // string
   "start_command" => null, // mixed
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppService()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9781,14 +9661,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->AppServiceBinding()->create([
   "app_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppServiceBinding()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -9972,29 +9844,29 @@ $app_storage_resource = $client->AppStorageResource();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -10012,14 +9884,6 @@ $result = $client->AppStorageResource()->create([
   "slug" => null, // string
   "status" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->AppStorageResource()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -10490,14 +10354,6 @@ $result = $client->Artifact()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->Artifact()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -10587,14 +10443,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->ArtifactCacheNamespace()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ArtifactCacheNamespace()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -10688,14 +10536,6 @@ $result = $client->ArtifactImageRepository()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ArtifactImageRepository()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -10787,14 +10627,6 @@ $result = $client->ArtifactPackageMirror()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ArtifactPackageMirror()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -10884,14 +10716,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->ArtifactRetentionPolicy()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ArtifactRetentionPolicy()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -11389,12 +11213,12 @@ $auth_registration_option = $client->AuthRegistrationOption();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->AuthRegistrationOption()->list();
+$result = $client->AuthRegistrationOption()->load();
 ```
 
 ### Common Methods
@@ -11618,12 +11442,12 @@ $result = $client->BackendRunnerPool()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->BackendRunnerPool()->list(["backend_id" => "example"]);
+$result = $client->BackendRunnerPool()->load(["backend_id" => "backend_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -11631,7 +11455,7 @@ $results = $client->BackendRunnerPool()->list(["backend_id" => "example"]);
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->BackendRunnerPool()->remove(["id" => "backend_runner_pool_id", "backend_id" => "backend_id"]);
+$result = $client->BackendRunnerPool()->remove(["backend_id" => "backend_id", "id" => "id"]);
 ```
 
 ### Common Methods
@@ -11791,14 +11615,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->BazelBackend()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->BazelBackend()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -13979,14 +13795,6 @@ $result = $client->CacheNamespaceEntry()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CacheNamespaceEntry()->list(["cache_namespace_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -14134,14 +13942,6 @@ $result = $client->CdnDeployment()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CdnDeployment()->list(["app_id" => "example", "cdn_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -14202,17 +14002,17 @@ $cdn_hostname = $client->CdnHostname();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -14226,14 +14026,6 @@ $result = $client->CdnHostname()->create([
   "cdn_id" => null, // string
   "hostname" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CdnHostname()->list(["app_id" => "example", "cdn_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -14332,14 +14124,6 @@ $result = $client->CdnSpace()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CdnSpace()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -14422,14 +14206,6 @@ $cdn_space_object = $client->CdnSpaceObject();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CdnSpaceObject()->list(["cdn_space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -14504,12 +14280,12 @@ $change = $client->Change();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->Change()->list(["organization_id" => "example"]);
+$result = $client->Change()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -15809,14 +15585,6 @@ $result = $client->CiPipelineRun()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CiPipelineRun()->list(["pipeline_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -16109,17 +15877,13 @@ $result = $client->CliRelease()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->CliRelease()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->CliRelease()->load();
+```
 
 ### Common Methods
 
@@ -17102,60 +16866,60 @@ $deep_scan = $client->DeepScan();
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Operations
 
@@ -17169,14 +16933,6 @@ $result = $client->DeepScan()->create([
   "environment_id" => null, // string
   "goal" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->DeepScan()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -17227,24 +16983,25 @@ $deep_scan_finding = $client->DeepScanFinding();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `int` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `array` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `array` | Yes |  |
-| `findings_fix_prompt` | `mixed` | Yes |  |
-| `free_findings_pending` | `bool` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` | Yes |  |
+| `agent_id` | `string` | Yes |  |
+| `agent_title` | `string` | Yes |  |
+| `area` | `mixed` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `array` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` | Yes |  |
+| `confirmed` | `bool` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `array` | No |  |
+| `evidence_timestamp_ms` | `mixed` | Yes |  |
+| `expected` | `string` | Yes |  |
+| `fix_prompt` | `string` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `bool` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` | Yes |  |
-| `mode` | `string` | Yes |  |
-| `permissions` | `array` | Yes |  |
-| `priority` | `mixed` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `array` | Yes |  |
-| `project_id` | `mixed` | Yes |  |
-| `reproduction_of` | `mixed` | Yes |  |
-| `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `bool` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` | Yes |  |
+| `locked` | `bool` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `array` | Yes |  |
+| `severity` | `string` | Yes |  |
 | `title` | `string` | Yes |  |
-| `unlock` | `array` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` | Yes |  |
+| `tracked` | `mixed` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -17366,12 +17123,12 @@ $deep_scan_mapped_flow = $client->DeepScanMappedFlow();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->DeepScanMappedFlow()->list(["organization_id" => "example", "environment_id" => "example"]);
+$result = $client->DeepScanMappedFlow()->load(["organization_id" => "organization_id", "environment_id" => "environment_id"]);
 ```
 
 ### Common Methods
@@ -17733,12 +17490,12 @@ $deployment_detail = $client->DeploymentDetail();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->DeploymentDetail()->list(["organization_id" => "example"]);
+$result = $client->DeploymentDetail()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -18484,12 +18241,12 @@ $device_enterprise_relay = $client->DeviceEnterpriseRelay();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->DeviceEnterpriseRelay()->list();
+$result = $client->DeviceEnterpriseRelay()->load();
 ```
 
 ### Common Methods
@@ -18619,16 +18376,18 @@ $device_grant = $client->DeviceGrant();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `array` | Yes |  |
-| `agent_choices` | `array` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` | Yes |  |
-| `all_agents_access` | `bool` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `mixed` | Yes |  |
+| `can_edit` | `bool` | Yes |  |
+| `can_revoke` | `bool` | Yes |  |
 | `capabilities` | `array` | Yes |  |
-| `execution_available` | `bool` | Yes |  |
-| `grants` | `array` | Yes |  |
-| `id` | `string` | No |  |
-| `next_cursor` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
 | `principal_id` | `string` | Yes |  |
+| `principal_name` | `mixed` | Yes |  |
+| `revision` | `int` | Yes |  |
+| `revoked_at` | `mixed` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -19691,49 +19450,49 @@ $environment = $client->Environment();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Operations
 
@@ -19746,14 +19505,6 @@ $result = $client->Environment()->create([
   "organization_id" => null, // string
   "slug" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->Environment()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -20246,12 +19997,12 @@ $result = $client->EnvironmentSecretBinding()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->EnvironmentSecretBinding()->list(["app_id" => "example", "environment_id" => "example"]);
+$result = $client->EnvironmentSecretBinding()->load(["app_id" => "app_id", "environment_id" => "environment_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -20259,7 +20010,7 @@ $results = $client->EnvironmentSecretBinding()->list(["app_id" => "example", "en
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->EnvironmentSecretBinding()->remove(["id" => "environment_secret_binding_id", "app_id" => "app_id", "environment_id" => "environment_id"]);
+$result = $client->EnvironmentSecretBinding()->remove(["app_id" => "app_id", "environment_id" => "environment_id", "id" => "id"]);
 ```
 
 ### Common Methods
@@ -20453,14 +20204,6 @@ $result = $client->ExecutionDesiredState()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ExecutionDesiredState()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -20552,14 +20295,6 @@ $result = $client->ExecutionReconcilerTick()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ExecutionReconcilerTick()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -20619,14 +20354,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->ExecutionRelease()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ExecutionRelease()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -20808,20 +20535,21 @@ $exploration = $client->Exploration();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `mixed` | No |  |
-| `active` | `array` | Yes |  |
 | `agent_filters` | `array` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `array` | Yes |  |
 | `can_continue` | `bool` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `array` | No |  |
+| `check_count` | `int` | Yes |  |
 | `concurrency` | `int` | Yes |  |
 | `covered_areas` | `array` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `mixed` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `mixed` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `mixed` | Yes |  |
 | `ended_early` | `bool` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `array` | Yes |  |
 | `explorer_activity` | `array` | Yes | What the team is doing now. |
 | `finding_count` | `int` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `array` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -20831,14 +20559,12 @@ $exploration = $client->Exploration();
 | `huntable_flows` | `array` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `array` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `int` | Yes |  |
 | `max_testers` | `int` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `array` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `bool` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `array` | Yes |  |
 | `paywalled` | `bool` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `array` | Yes |  |
 | `persona_id` | `mixed` | No | Project persona whose role and observed access this discovery maps. |
@@ -20850,10 +20576,13 @@ $exploration = $client->Exploration();
 | `reproductions` | `array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `bool` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `int` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `array` | Yes |  |
+| `scenarios_pending` | `bool` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `bool` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `mixed` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `bool` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `bool` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20866,37 +20595,36 @@ $exploration = $client->Exploration();
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -20908,14 +20636,17 @@ $exploration = $client->Exploration();
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -22097,12 +21828,12 @@ $result = $client->GithubConnection()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->GithubConnection()->list(["organization_id" => "example"]);
+$result = $client->GithubConnection()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -23381,31 +23112,31 @@ $hosting_app_domain = $client->HostingAppDomain();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Operations
 
@@ -23420,14 +23151,6 @@ $result = $client->HostingAppDomain()->create([
   "hostname" => null, // string
   "kind" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->HostingAppDomain()->list(["app_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -23797,12 +23520,12 @@ $integration = $client->Integration();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->Integration()->list(["organization_id" => "example"]);
+$result = $client->Integration()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -24127,12 +23850,12 @@ $result = $client->JobStep()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->JobStep()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+$result = $client->JobStep()->load(["job_id" => "job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -24219,12 +23942,12 @@ $result = $client->JobWorkspace()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->JobWorkspace()->list(["job_id" => "example", "pipeline_id" => "example", "run_id" => "example"]);
+$result = $client->JobWorkspace()->load(["job_id" => "job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -25368,14 +25091,6 @@ $result = $client->LogStreamChunk()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->LogStreamChunk()->list(["log_stream_id" => "example", "space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -25513,12 +25228,12 @@ $marketing_setting = $client->MarketingSetting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->MarketingSetting()->list();
+$result = $client->MarketingSetting()->load();
 ```
 
 ### Common Methods
@@ -26521,12 +26236,12 @@ $metric_query = $client->MetricQuery();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->MetricQuery()->list();
+$result = $client->MetricQuery()->load();
 ```
 
 ### Common Methods
@@ -26897,14 +26612,6 @@ $result = $client->NetworkingSpace()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->NetworkingSpace()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -27102,17 +26809,13 @@ $node_lease = $client->NodeLease();
 
 Create a new entity with the given data. Returns the created entity and throws on error.
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->NodeLease()->list(["node_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->NodeLease()->load(["node_id" => "node_id"]);
+```
 
 ### Common Methods
 
@@ -27237,12 +26940,12 @@ $nomad_log = $client->NomadLog();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->NomadLog()->list(["app_id" => "example"]);
+$result = $client->NomadLog()->load(["app_id" => "app_id"]);
 ```
 
 ### Common Methods
@@ -27354,14 +27057,6 @@ $result = $client->ObservabilityClickhouseCluster()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ObservabilityClickhouseCluster()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -27453,14 +27148,6 @@ $result = $client->ObservabilityQuickwitCluster()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ObservabilityQuickwitCluster()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -27550,14 +27237,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 ```php
 $result = $client->ObservabilitySpace()->create([
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ObservabilitySpace()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -27893,12 +27572,12 @@ $organization_app = $client->OrganizationApp();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->OrganizationApp()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+$result = $client->OrganizationApp()->load(["organization_id" => "organization_id", "native_agent_id" => "native_agent_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -28051,14 +27730,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->OrganizationIdentityCertificate()->create([
   "organization_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->OrganizationIdentityCertificate()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -28315,14 +27986,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->OrganizationOidcTrust()->create([
   "organization_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->OrganizationOidcTrust()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -28731,14 +28394,6 @@ $result = $client->OrganizationServiceAccount()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->OrganizationServiceAccount()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -28896,12 +28551,12 @@ $result = $client->OrganizationSite()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->OrganizationSite()->list(["organization_id" => "example", "native_agent_id" => "example"]);
+$result = $client->OrganizationSite()->load(["organization_id" => "organization_id", "native_agent_id" => "native_agent_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -28909,7 +28564,7 @@ $results = $client->OrganizationSite()->list(["organization_id" => "example", "n
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->OrganizationSite()->remove(["id" => "organization_site_id", "organization_id" => "organization_id"]);
+$result = $client->OrganizationSite()->remove(["id" => "id", "organization_id" => "organization_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -28918,7 +28573,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```php
 $result = $client->OrganizationSite()->update([
-  "id" => "organization_site_id",
+  "id" => "id",
   "organization_id" => "organization_id",
   // Fields to update
 ]);
@@ -29077,14 +28732,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->OrganizationWorkloadIdentity()->create([
   "organization_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->OrganizationWorkloadIdentity()->list(["organization_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -29304,17 +28951,13 @@ $page_agent = $client->PageAgent();
 
 Create a new entity with the given data. Returns the created entity and throws on error.
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->PageAgent()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->PageAgent()->load(["organization_id" => "organization_id"]);
+```
 
 ### Common Methods
 
@@ -29896,13 +29539,23 @@ $pages_project_persona = $client->PagesProjectPersona();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `int` | Yes |  |
-| `credentials` | `array` | Yes |  |
-| `needs_attention_count` | `int` | Yes |  |
-| `permissions` | `array` | Yes |  |
-| `persona_states` | `array` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `array` | Yes |  |
-| `project` | `array` | Yes |  |
+| `access_mode` | `string` | Yes |  |
+| `active_run_count` | `int` | Yes |  |
+| `archived_at` | `mixed` | Yes |  |
+| `attention` | `array` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `credential` | `mixed` | Yes |  |
+| `credential_id` | `mixed` | Yes | The credential this persona signs in with. |
+| `goals` | `mixed` | Yes |  |
+| `health` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `lock_version` | `int` | Yes |  |
+| `name` | `string` | Yes |  |
+| `project_id` | `string` | Yes |  |
+| `role` | `string` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -29954,12 +29607,28 @@ $pages_project_run = $client->PagesProjectRun();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `string` | Yes |  |
-| `environments` | `array` | Yes |  |
-| `environments_has_more` | `bool` | Yes |  |
-| `pagination` | `array` | Yes |  |
-| `runs` | `array` | Yes |  |
-| `selected_environment` | `mixed` | Yes |  |
+| `archived_at` | `mixed` | Yes |  |
+| `browser_seconds` | `mixed` | Yes |  |
+| `can_archive` | `bool` | Yes |  |
+| `can_restore` | `bool` | Yes |  |
+| `cleanup_state` | `string` | Yes |  |
+| `commit_sha` | `mixed` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `duration_seconds` | `mixed` | Yes |  |
+| `environment_name` | `mixed` | Yes |  |
+| `finished_at` | `mixed` | Yes |  |
+| `id` | `string` | Yes |  |
+| `outcome` | `mixed` | Yes |  |
+| `pull_request` | `mixed` | Yes |  |
+| `pull_request_label` | `mixed` | Yes |  |
+| `scenario_count` | `int` | Yes |  |
+| `source_run` | `mixed` | Yes |  |
+| `started_at` | `mixed` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `triggered_by` | `mixed` | Yes |  |
+| `web_path` | `string` | Yes |  |
 
 ### Operations
 
@@ -30281,14 +29950,6 @@ $result = $client->Pairing()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->Pairing()->list();
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -30335,12 +29996,12 @@ $pairing_event = $client->PairingEvent();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PairingEvent()->list(["pairing_id" => "example"]);
+$result = $client->PairingEvent()->load(["pairing_id" => "pairing_id"]);
 ```
 
 ### Common Methods
@@ -30492,12 +30153,12 @@ $result = $client->PersonalAccessToken()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PersonalAccessToken()->list();
+$result = $client->PersonalAccessToken()->load(["id" => "personal_access_token_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -30546,12 +30207,12 @@ $preview_operation = $client->PreviewOperation();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PreviewOperation()->list(["app_id" => "example", "preview_id" => "example"]);
+$result = $client->PreviewOperation()->load(["app_id" => "app_id", "preview_id" => "preview_id"]);
 ```
 
 ### Common Methods
@@ -30614,12 +30275,12 @@ $result = $client->PreviewProfileSecretBinding()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PreviewProfileSecretBinding()->list(["app_id" => "example", "preview_profile_id" => "example"]);
+$result = $client->PreviewProfileSecretBinding()->load(["app_id" => "app_id", "preview_profile_id" => "preview_profile_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -30627,7 +30288,7 @@ $results = $client->PreviewProfileSecretBinding()->list(["app_id" => "example", 
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->PreviewProfileSecretBinding()->remove(["id" => "preview_profile_secret_binding_id", "app_id" => "app_id", "preview_profile_id" => "preview_profile_id"]);
+$result = $client->PreviewProfileSecretBinding()->remove(["app_id" => "app_id", "id" => "id", "preview_profile_id" => "preview_profile_id"]);
 ```
 
 ### Common Methods
@@ -30747,16 +30408,16 @@ $preview_sharing_approval = $client->PreviewSharingApproval();
 | `approved_default_secrets` | `array` | Yes |  |
 | `approved_source_keys` | `array` | Yes |  |
 | `build_keys` | `array` | No |  |
-| `build_secrets` | `array` | No |  |
-| `default_configuration` | `array` | No |  |
-| `default_secrets` | `array` | No |  |
+| `build_secrets` | `array` | Yes |  |
+| `default_configuration` | `array` | Yes |  |
+| `default_secrets` | `array` | Yes |  |
 | `services` | `array` | Yes |  |
 | `snapshot_version` | `int` | Yes |  |
-| `source_keys` | `array` | No |  |
+| `source_keys` | `array` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -30764,12 +30425,12 @@ $preview_sharing_approval = $client->PreviewSharingApproval();
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
@@ -30785,12 +30446,12 @@ $result = $client->PreviewSharingApproval()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PreviewSharingApproval()->list(["app_id" => "example", "preview_id" => "example"]);
+$result = $client->PreviewSharingApproval()->load(["app_id" => "app_id", "preview_id" => "preview_id"]);
 ```
 
 ### Common Methods
@@ -31912,18 +31573,11 @@ $project_fixture = $client->ProjectFixture();
 | `byte_size` | `int` | Yes |  |
 | `content_type` | `string` | Yes |  |
 | `credential_ids` | `array` | Yes |  |
-| `credentials` | `array` | Yes |  |
 | `environment_ids` | `array` | Yes |  |
-| `environments` | `array` | Yes |  |
-| `fixtures` | `array` | Yes |  |
 | `id` | `string` | No |  |
 | `lock_version` | `int` | Yes |  |
 | `name` | `string` | Yes |  |
-| `pagination` | `array` | Yes |  |
-| `permissions` | `array` | Yes |  |
 | `persona_ids` | `array` | Yes |  |
-| `personas` | `array` | Yes |  |
-| `project` | `array` | Yes |  |
 | `sha256` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
 | `version` | `int` | Yes |  |
@@ -31936,18 +31590,11 @@ $project_fixture = $client->ProjectFixture();
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -32759,12 +32406,12 @@ $project_scenario_option = $client->ProjectScenarioOption();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->ProjectScenarioOption()->list(["organization_id" => "example", "project_id" => "example"]);
+$result = $client->ProjectScenarioOption()->load(["organization_id" => "organization_id", "project_id" => "project_id"]);
 ```
 
 ### Common Methods
@@ -32876,12 +32523,12 @@ $project_setting = $client->ProjectSetting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->ProjectSetting()->list(["organization_id" => "example", "project_id" => "example"]);
+$result = $client->ProjectSetting()->load(["organization_id" => "organization_id", "project_id" => "project_id"]);
 ```
 
 ### Common Methods
@@ -33224,12 +32871,12 @@ $result = $client->PullRequestSetting()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->PullRequestSetting()->list(["organization_id" => "example"]);
+$result = $client->PullRequestSetting()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -33903,14 +33550,6 @@ $result = $client->ReleaseRollout()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ReleaseRollout()->list(["release_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -34277,14 +33916,6 @@ $result = $client->RepoAgentSession()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->RepoAgentSession()->list(["organization_id" => "example", "repo_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -34582,14 +34213,6 @@ $result = $client->RepoCloudWorkspaceBackup()->create([
   "organization_id" => null, // string
   "repo_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->RepoCloudWorkspaceBackup()->list(["organization_id" => "example", "repo_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -35666,14 +35289,6 @@ $result = $client->RoderCodeRepair()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->RoderCodeRepair()->list(["scenario_run_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -35732,7 +35347,7 @@ $roder_code_repair_setting = $client->RoderCodeRepairSetting();
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -35755,12 +35370,12 @@ $result = $client->RoderCodeRepairSetting()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RoderCodeRepairSetting()->list(["organization_id" => "example"]);
+$result = $client->RoderCodeRepairSetting()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -35975,12 +35590,12 @@ $result = $client->RunArtifact()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RunArtifact()->list(["pipeline_id" => "example", "run_id" => "example"]);
+$result = $client->RunArtifact()->load(["pipeline_id" => "pipeline_id", "run_id" => "run_id"]);
 ```
 
 ### Common Methods
@@ -36069,14 +35684,6 @@ $result = $client->RunJob()->create([
   "pipeline_id" => null, // string
   "run_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->RunJob()->list(["pipeline_id" => "example", "run_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -36424,12 +36031,12 @@ $result = $client->RunnerLease()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RunnerLease()->list(["runner_id" => "example", "runner_pool_id" => "example"]);
+$result = $client->RunnerLease()->load(["runner_id" => "runner_id", "runner_pool_id" => "runner_pool_id"]);
 ```
 
 ### Common Methods
@@ -36597,14 +36204,6 @@ $result = $client->RunnerPoolRunner()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->RunnerPoolRunner()->list(["runner_pool_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -36685,12 +36284,12 @@ $result = $client->RuntimeInstanceHealthSnapshot()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RuntimeInstanceHealthSnapshot()->list(["runtime_instance_id" => "example"]);
+$result = $client->RuntimeInstanceHealthSnapshot()->load(["runtime_instance_id" => "runtime_instance_id"]);
 ```
 
 ### Common Methods
@@ -36747,7 +36346,7 @@ $sandbox_integration = $client->SandboxIntegration();
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -36777,12 +36376,12 @@ $result = $client->SandboxIntegration()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SandboxIntegration()->list(["organization_id" => "example"]);
+$result = $client->SandboxIntegration()->load(["organization_id" => "organization_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -37026,14 +36625,6 @@ $result = $client->SecretGrant()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SecretGrant()->list(["organization_id" => "example", "secret_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -37129,14 +36720,6 @@ $result = $client->SecretVersion()->create([
   "organization_id" => null, // string
   "secret_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SecretVersion()->list(["organization_id" => "example", "secret_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -37236,14 +36819,6 @@ $result = $client->ServiceEndpoint()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->ServiceEndpoint()->list(["app_id" => "example", "service_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -37335,12 +36910,12 @@ $setting = $client->Setting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->Setting()->list(["organization_id" => "example"]);
+$result = $client->Setting()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -37875,14 +37450,6 @@ $result = $client->SignalSubscription()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SignalSubscription()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -38055,12 +37622,12 @@ $result = $client->SiteAccessKey()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SiteAccessKey()->list(["organization_id" => "example", "site_id" => "example"]);
+$result = $client->SiteAccessKey()->load(["organization_id" => "organization_id", "site_id" => "site_id"]);
 ```
 
 #### `remove(array $reqmatch, ?array $ctrl = null): mixed`
@@ -38068,7 +37635,7 @@ $results = $client->SiteAccessKey()->list(["organization_id" => "example", "site
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->SiteAccessKey()->remove(["id" => "site_access_key_id", "organization_id" => "organization_id", "site_id" => "site_id"]);
+$result = $client->SiteAccessKey()->remove(["id" => "id", "organization_id" => "organization_id", "site_id" => "site_id"]);
 ```
 
 ### Common Methods
@@ -38351,14 +37918,6 @@ $result = $client->SpaceAlertRule()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceAlertRule()->list(["space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -38447,12 +38006,12 @@ $result = $client->SpaceAuditEvent()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceAuditEvent()->list(["space_id" => "example"]);
+$result = $client->SpaceAuditEvent()->load(["space_id" => "space_id"]);
 ```
 
 ### Common Methods
@@ -38507,14 +38066,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->SpaceDnsRecord()->create([
   "space_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceDnsRecord()->list(["space_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -38611,14 +38162,6 @@ $result = $client->SpaceEnrollmentToken()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceEnrollmentToken()->list(["space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -38711,14 +38254,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->SpaceGateway()->create([
   "space_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceGateway()->list(["space_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -38815,12 +38350,12 @@ $result = $client->SpaceGroup()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceGroup()->list(["space_id" => "example"]);
+$result = $client->SpaceGroup()->load(["space_id" => "space_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -38829,7 +38364,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```php
 $result = $client->SpaceGroup()->patch([
-  "id" => "space_group_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Only the fields to change
 ]);
@@ -38840,7 +38375,7 @@ $result = $client->SpaceGroup()->patch([
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->SpaceGroup()->remove(["id" => "space_group_id", "space_id" => "space_id"]);
+$result = $client->SpaceGroup()->remove(["id" => "id", "space_id" => "space_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -38849,7 +38384,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```php
 $result = $client->SpaceGroup()->update([
-  "id" => "space_group_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Fields to update
 ]);
@@ -38909,12 +38444,12 @@ $result = $client->SpaceGroupMembership()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceGroupMembership()->list(["space_id" => "example"]);
+$result = $client->SpaceGroupMembership()->load(["space_id" => "space_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -38923,7 +38458,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```php
 $result = $client->SpaceGroupMembership()->patch([
-  "id" => "space_group_membership_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Only the fields to change
 ]);
@@ -38934,7 +38469,7 @@ $result = $client->SpaceGroupMembership()->patch([
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->SpaceGroupMembership()->remove(["id" => "space_group_membership_id", "space_id" => "space_id"]);
+$result = $client->SpaceGroupMembership()->remove(["id" => "id", "space_id" => "space_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -38943,7 +38478,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```php
 $result = $client->SpaceGroupMembership()->update([
-  "id" => "space_group_membership_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Fields to update
 ]);
@@ -38997,12 +38532,12 @@ $result = $client->SpaceLogStream()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceLogStream()->list(["space_id" => "example"]);
+$result = $client->SpaceLogStream()->load(["space_id" => "space_id"]);
 ```
 
 ### Common Methods
@@ -39053,12 +38588,12 @@ $result = $client->SpaceMetricSery()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceMetricSery()->list(["space_id" => "example"]);
+$result = $client->SpaceMetricSery()->load(["space_id" => "space_id"]);
 ```
 
 ### Common Methods
@@ -39113,14 +38648,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->SpaceOtelCollector()->create([
   "space_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceOtelCollector()->list(["space_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -39217,14 +38744,6 @@ $result = $client->SpacePeer()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpacePeer()->list(["space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -39319,12 +38838,12 @@ $result = $client->SpacePeerAttachment()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpacePeerAttachment()->list(["space_id" => "example"]);
+$result = $client->SpacePeerAttachment()->load(["space_id" => "space_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -39333,7 +38852,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```php
 $result = $client->SpacePeerAttachment()->patch([
-  "id" => "space_peer_attachment_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Only the fields to change
 ]);
@@ -39344,7 +38863,7 @@ $result = $client->SpacePeerAttachment()->patch([
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and throws on error.
 
 ```php
-$result = $client->SpacePeerAttachment()->remove(["id" => "space_peer_attachment_id", "space_id" => "space_id"]);
+$result = $client->SpacePeerAttachment()->remove(["id" => "id", "space_id" => "space_id"]);
 ```
 
 #### `update(array $reqdata, ?array $ctrl = null): mixed`
@@ -39353,7 +38872,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```php
 $result = $client->SpacePeerAttachment()->update([
-  "id" => "space_peer_attachment_id",
+  "id" => "id",
   "space_id" => "space_id",
   // Fields to update
 ]);
@@ -39411,14 +38930,6 @@ Create a new entity with the given data. Returns the created entity and throws o
 $result = $client->SpacePolicy()->create([
   "space_id" => null, // string
 ]);
-```
-
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpacePolicy()->list(["space_id" => "example"]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -39515,14 +39026,6 @@ $result = $client->SpaceSegment()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SpaceSegment()->list(["space_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
@@ -39611,12 +39114,12 @@ $result = $client->SpaceTraceSpan()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SpaceTraceSpan()->list(["space_id" => "example"]);
+$result = $client->SpaceTraceSpan()->load(["space_id" => "space_id"]);
 ```
 
 ### Common Methods
@@ -39694,7 +39197,7 @@ $spark = $client->Spark();
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -39742,12 +39245,12 @@ $result = $client->Spark()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->Spark()->list(["organization_id" => "example"]);
+$result = $client->Spark()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -39830,12 +39333,12 @@ $result = $client->SparkAgentIntegration()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SparkAgentIntegration()->list(["agent_id" => "example", "organization_id" => "example"]);
+$result = $client->SparkAgentIntegration()->load(["agent_id" => "agent_id", "organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -40114,30 +39617,63 @@ $spark_agent_thread = $client->SparkAgentThread();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `mixed` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `bool` | Yes |  |
-| `execution` | `mixed` | No |  |
+| `archive_deletes_sandbox` | `bool` | No |  |
+| `archived` | `bool` | Yes |  |
+| `attention` | `mixed` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `bool` | Yes |  |
+| `can_compact` | `bool` | Yes |  |
+| `can_snooze` | `bool` | Yes |  |
+| `coordination_status` | `mixed` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `mixed` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `mixed` | No |  |
 | `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `string` | No |  |
+| `group` | `string` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `bool` | Yes |  |
+| `id` | `string` | Yes |  |
 | `inherit_context` | `bool` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `array` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `int` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `mixed` | Yes |  |
-| `local_scope_key` | `mixed` | Yes |  |
-| `local_status_pending` | `bool` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `array` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
+| `is_main` | `bool` | Yes |  |
+| `kind` | `string` | Yes |  |
 | `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `mixed` | Yes |  |
+| `older` | `bool` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `mixed` | Yes |  |
+| `snoozed_until` | `mixed` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `array` | Yes |  |
-| `threads` | `array` | Yes |  |
 | `title` | `string` | No |  |
-| `total_archived_count` | `mixed` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `mixed` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Operations
 
@@ -40213,7 +39749,7 @@ $spark_credit = $client->SparkCredit();
 | `kind` | `string` | Yes |  |
 | `payment_method` | `mixed` | Yes |  |
 | `payments_enabled` | `bool` | Yes |  |
-| `plan` | `string` | No |  |
+| `plan` | `mixed` | Yes |  |
 | `plans` | `array` | Yes |  |
 | `quoted_credits_cents` | `int` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `int` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -40228,33 +39764,33 @@ $spark_credit = $client->SparkCredit();
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch |
-| --- | --- | --- | --- | --- | --- |
-| `amount_cents` | - | - | - | - | - |
-| `autofill` | - | - | - | - | - |
-| `autofill_payment_unconfirmed` | - | - | - | - | - |
-| `available_usd` | - | - | - | - | - |
-| `billing_unit` | - | - | - | - | - |
-| `can_manage` | - | - | - | - | - |
-| `compute_minutes` | - | - | - | - | - |
-| `compute_usd` | - | - | - | - | - |
-| `credits_per_usd` | - | - | - | - | - |
-| `inference_usd` | - | - | - | - | - |
-| `kind` | - | - | - | - | - |
-| `payment_method` | - | - | - | - | - |
-| `payments_enabled` | - | - | - | - | - |
-| `plan` | - | Yes | - | - | Yes |
-| `plans` | - | - | - | - | - |
-| `quoted_credits_cents` | - | - | - | - | - |
-| `quoted_price_cents` | - | - | - | - | - |
-| `refill_limits_cents` | - | - | - | - | - |
-| `refill_options` | - | - | - | - | - |
-| `refill_thresholds_cents` | - | - | - | - | - |
-| `request_key` | - | - | - | - | - |
-| `settings` | - | - | - | - | - |
-| `starter_cents` | - | - | - | - | - |
-| `top_up_max_cents` | - | - | - | - | - |
-| `top_up_step_cents` | - | - | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - |
+| `autofill` | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - |
+| `available_usd` | - | - | - | - |
+| `billing_unit` | - | - | - | - |
+| `can_manage` | - | - | - | - |
+| `compute_minutes` | - | - | - | - |
+| `compute_usd` | - | - | - | - |
+| `credits_per_usd` | - | - | - | - |
+| `inference_usd` | - | - | - | - |
+| `kind` | - | - | - | - |
+| `payment_method` | - | - | - | - |
+| `payments_enabled` | - | - | - | - |
+| `plan` | - | Yes | - | - |
+| `plans` | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - |
+| `refill_options` | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - |
+| `request_key` | - | - | - | - |
+| `settings` | - | - | - | - |
+| `starter_cents` | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - |
 
 ### Operations
 
@@ -40270,17 +39806,13 @@ $result = $client->SparkCredit()->create([
 ]);
 ```
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
-
-```php
-$results = $client->SparkCredit()->list(["organization_id" => "example"]);
-```
-
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
+
+```php
+$result = $client->SparkCredit()->load(["organization_id" => "organization_id"]);
+```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
 
@@ -40406,12 +39938,12 @@ $spark_credit_usage_total = $client->SparkCreditUsageTotal();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->SparkCreditUsageTotal()->list(["organization_id" => "example"]);
+$result = $client->SparkCreditUsageTotal()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -42366,12 +41898,12 @@ $vcs_setting = $client->VcsSetting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->VcsSetting()->list(["organization_id" => "example"]);
+$result = $client->VcsSetting()->load(["organization_id" => "organization_id"]);
 ```
 
 ### Common Methods
@@ -43129,12 +42661,12 @@ $verify_email_verification = $client->VerifyEmailVerification();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->VerifyEmailVerification()->list();
+$result = $client->VerifyEmailVerification()->load();
 ```
 
 ### Common Methods

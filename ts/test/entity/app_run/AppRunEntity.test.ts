@@ -41,59 +41,13 @@ describe('AppRunEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('app_run hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).AppRun().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).AppRun()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.AppRun().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().AppRun().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.AppRun().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.AppRun().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.AppRun().list({"id":1} as any),
+    await assert.rejects(client.AppRun().load({"id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('AppRunEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list', 'load']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'app_run.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0},"image":{"a":true,"h":"Image","n":"image","r":false,"sh":"Optional fully qualified digest-pinned image from the deployed service's registry and repository.","t":"`$STRING`","key$":"image","index$":1}},"id":{"field":"id","name":"id"},"name":"app_run","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/hosting/app_runs/{id}/cancel","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/hosting/app_runs/{id}/cancel","q":{"$action":"cancel","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"},{"var":"id"},{"lit":"cancel"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["image"],"co":{"id":"POST /api/v1/hosting/app_runs","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/hosting/app_runs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/app_runs","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/hosting/app_runs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/app_runs/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/hosting/app_runs/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"app_run","name__orig":"app_run","Name":"AppRun","name_":"app_run","name-":"app-run","NAME":"APP_RUN","index$":91}, {"active":true,"entity":"app_run","key$":"BasicAppRunFlow","kind":"basic","name":"BasicAppRunFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"app_run_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"app_run_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"app_run_ref01","srcdatavar":"app_run_ref01_data","suffix":"_dt0"},"m":{"id":"app_run01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-app_run_ref01"}}],"index$":2,"route":"GET /api/v1/hosting/app_runs/{id}","record":{}}]}, 'AppRun', {"POST /api/v1/hosting/app_runs/{id}/cancel":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/hosting/app_runs":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"properties":{"image":{"type":"string","description":"Optional fully qualified digest-pinned image from the deployed service's registry and repository. Uses the active release's execution context without deploying. Mutable tags are rejected.","key$":"image"}}}}}},"parameters":[]},"GET /api/v1/hosting/app_runs":{"protocol":"http","parameters":[]},"GET /api/v1/hosting/app_runs/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"app_run.create.0":"GET-only live run: needs POST /api/v1/hosting/app_runs/{id}/cancel"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0},"image":{"a":true,"h":"Image","n":"image","r":false,"sh":"Optional fully qualified digest-pinned image from the deployed service's registry and repository.","t":"`$STRING`","key$":"image","index$":1}},"id":{"field":"id","name":"id"},"name":"app_run","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/hosting/app_runs/{id}/cancel","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/hosting/app_runs/{id}/cancel","q":{"$action":"cancel","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"},{"var":"id"},{"lit":"cancel"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["image"],"co":{"id":"POST /api/v1/hosting/app_runs","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/hosting/app_runs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/app_runs/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/hosting/app_runs/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /api/v1/hosting/app_runs","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/hosting/app_runs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"app_runs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"app_run","name__orig":"app_run","Name":"AppRun","name_":"app_run","name-":"app-run","NAME":"APP_RUN","index$":91}, {"active":true,"entity":"app_run","key$":"BasicAppRunFlow","kind":"basic","name":"BasicAppRunFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"app_run_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"app_run_ref01","srcdatavar":"app_run_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-app_run_ref01"}}],"index$":1,"route":"GET /api/v1/hosting/app_runs/{id}","record":{}}]}, 'AppRun', {"POST /api/v1/hosting/app_runs/{id}/cancel":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/hosting/app_runs":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"properties":{"image":{"type":"string","description":"Optional fully qualified digest-pinned image from the deployed service's registry and repository. Uses the active release's execution context without deploying. Mutable tags are rejected.","key$":"image"}}}}}},"parameters":[]},"GET /api/v1/hosting/app_runs/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/hosting/app_runs":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"app_run.create.0":"GET-only live run: needs POST /api/v1/hosting/app_runs/{id}/cancel","app_run.load.1":"GET-only live run: reads a record only app_run.create.0 gives"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -124,14 +78,6 @@ describe('AppRunEntity', async () => {
 
     app_run_ref01_data = (await app_run_ref01_ent.create(app_run_ref01_data)).data()
     assert(null != app_run_ref01_data.id)
-
-
-    // LIST
-    const app_run_ref01_match: any = {}
-
-    const app_run_ref01_list = (await app_run_ref01_ent.list(app_run_ref01_match)).map((e: any) => e.data())
-
-    assert(!isempty(select(app_run_ref01_list, { id: app_run_ref01_data.id })))
 
 
     // LOAD

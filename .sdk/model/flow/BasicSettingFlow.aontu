@@ -7,16 +7,22 @@ main: kit: flow: BasicSettingFlow:
   name: "BasicSettingFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "setting_ref01",
+        srcdatavar: "setting_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "setting01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "setting_ref01"
+            mark: "Mark01-setting_ref01"
           }
         }
       ]

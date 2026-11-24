@@ -612,7 +612,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idverifypull_request_settings"><code>/api/v1/organizations/{organization_id}/verify/pull_request_settings</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>PR verification response</td>
 </tr>
 </tbody>
@@ -621,11 +621,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">pull_request_settings, err := client.PullRequestSetting(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">pull_request_setting, err := client.PullRequestSetting(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(pull_request_settings)
+fmt.Println(pull_request_setting)
 created, err := client.PullRequestSetting(nil).Create(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;bots&quot;: []any{}, &quot;demo_videos&quot;: true, &quot;deployment&quot;: &quot;example&quot;, &quot;enabled&quot;: true, &quot;environment&quot;: &quot;example&quot;, &quot;imessage_comment_prefix&quot;: &quot;example&quot;, &quot;imessage_number&quot;: &quot;example&quot;, &quot;imessage_number_source&quot;: &quot;example&quot;, &quot;limits&quot;: map[string]any{}, &quot;link_pattern&quot;: &quot;example&quot;, &quot;links&quot;: &quot;example&quot;, &quot;messaging_tester_number&quot;: &quot;example&quot;, &quot;pr_check&quot;: true, &quot;preview_comment_wildcard&quot;: &quot;example&quot;, &quot;preview_profile&quot;: &quot;example&quot;, &quot;previews&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot;, &quot;repository&quot;: &quot;example&quot;, &quot;repository_id&quot;: &quot;example&quot;, &quot;repository_kind&quot;: &quot;example&quot;, &quot;service&quot;: &quot;example&quot;, &quot;target_mode&quot;: &quot;example&quot;, &quot;trigger_label&quot;: &quot;example&quot;, &quot;triggers&quot;: map[string]any{}, &quot;verify_environment_id&quot;: &quot;example&quot;, &quot;write_scenarios&quot;: true}, nil)
 if err != nil {
     panic(err)
@@ -634,27 +634,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local pull_request_settings, err = client:PullRequestSetting():list({ organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local pull_request_setting, err = client:PullRequestSetting():load({ organization_id = &quot;example&quot; })
 local created, err = client:PullRequestSetting():create({ organization_id = &quot;example&quot;, bots = {}, demo_videos = true, deployment = &quot;example&quot;, enabled = true, environment = &quot;example&quot;, imessage_comment_prefix = &quot;example&quot;, imessage_number = &quot;example&quot;, imessage_number_source = &quot;example&quot;, limits = {}, link_pattern = &quot;example&quot;, links = &quot;example&quot;, messaging_tester_number = &quot;example&quot;, pr_check = true, preview_comment_wildcard = &quot;example&quot;, preview_profile = &quot;example&quot;, previews = &quot;example&quot;, project_id = &quot;example&quot;, provider = &quot;example&quot;, repository = &quot;example&quot;, repository_id = &quot;example&quot;, repository_kind = &quot;example&quot;, service = &quot;example&quot;, target_mode = &quot;example&quot;, trigger_label = &quot;example&quot;, triggers = {}, verify_environment_id = &quot;example&quot;, write_scenarios = true })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$pull_request_settings = $client-&gt;PullRequestSetting()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$pull_request_setting = $client-&gt;PullRequestSetting()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;PullRequestSetting()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;bots&quot; =&gt; [], &quot;demo_videos&quot; =&gt; true, &quot;deployment&quot; =&gt; &quot;example&quot;, &quot;enabled&quot; =&gt; true, &quot;environment&quot; =&gt; &quot;example&quot;, &quot;imessage_comment_prefix&quot; =&gt; &quot;example&quot;, &quot;imessage_number&quot; =&gt; &quot;example&quot;, &quot;imessage_number_source&quot; =&gt; &quot;example&quot;, &quot;limits&quot; =&gt; [], &quot;link_pattern&quot; =&gt; &quot;example&quot;, &quot;links&quot; =&gt; &quot;example&quot;, &quot;messaging_tester_number&quot; =&gt; &quot;example&quot;, &quot;pr_check&quot; =&gt; true, &quot;preview_comment_wildcard&quot; =&gt; &quot;example&quot;, &quot;preview_profile&quot; =&gt; &quot;example&quot;, &quot;previews&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;provider&quot; =&gt; &quot;example&quot;, &quot;repository&quot; =&gt; &quot;example&quot;, &quot;repository_id&quot; =&gt; &quot;example&quot;, &quot;repository_kind&quot; =&gt; &quot;example&quot;, &quot;service&quot; =&gt; &quot;example&quot;, &quot;target_mode&quot; =&gt; &quot;example&quot;, &quot;trigger_label&quot; =&gt; &quot;example&quot;, &quot;triggers&quot; =&gt; [], &quot;verify_environment_id&quot; =&gt; &quot;example&quot;, &quot;write_scenarios&quot; =&gt; true]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">pull_request_settings = client.PullRequestSetting().list({&quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">pull_request_setting = client.PullRequestSetting().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.PullRequestSetting().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;bots&quot;: [], &quot;demo_videos&quot;: True, &quot;deployment&quot;: &quot;example&quot;, &quot;enabled&quot;: True, &quot;environment&quot;: &quot;example&quot;, &quot;imessage_comment_prefix&quot;: &quot;example&quot;, &quot;imessage_number&quot;: &quot;example&quot;, &quot;imessage_number_source&quot;: &quot;example&quot;, &quot;limits&quot;: {}, &quot;link_pattern&quot;: &quot;example&quot;, &quot;links&quot;: &quot;example&quot;, &quot;messaging_tester_number&quot;: &quot;example&quot;, &quot;pr_check&quot;: True, &quot;preview_comment_wildcard&quot;: &quot;example&quot;, &quot;preview_profile&quot;: &quot;example&quot;, &quot;previews&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;, &quot;provider&quot;: &quot;example&quot;, &quot;repository&quot;: &quot;example&quot;, &quot;repository_id&quot;: &quot;example&quot;, &quot;repository_kind&quot;: &quot;example&quot;, &quot;service&quot;: &quot;example&quot;, &quot;target_mode&quot;: &quot;example&quot;, &quot;trigger_label&quot;: &quot;example&quot;, &quot;triggers&quot;: {}, &quot;verify_environment_id&quot;: &quot;example&quot;, &quot;write_scenarios&quot;: True })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">pull_request_settings = client.PullRequestSetting.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">pull_request_setting = client.PullRequestSetting.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.PullRequestSetting.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;bots&quot; =&gt; [], &quot;demo_videos&quot; =&gt; true, &quot;deployment&quot; =&gt; &quot;example&quot;, &quot;enabled&quot; =&gt; true, &quot;environment&quot; =&gt; &quot;example&quot;, &quot;imessage_comment_prefix&quot; =&gt; &quot;example&quot;, &quot;imessage_number&quot; =&gt; &quot;example&quot;, &quot;imessage_number_source&quot; =&gt; &quot;example&quot;, &quot;limits&quot; =&gt; {}, &quot;link_pattern&quot; =&gt; &quot;example&quot;, &quot;links&quot; =&gt; &quot;example&quot;, &quot;messaging_tester_number&quot; =&gt; &quot;example&quot;, &quot;pr_check&quot; =&gt; true, &quot;preview_comment_wildcard&quot; =&gt; &quot;example&quot;, &quot;preview_profile&quot; =&gt; &quot;example&quot;, &quot;previews&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;, &quot;provider&quot; =&gt; &quot;example&quot;, &quot;repository&quot; =&gt; &quot;example&quot;, &quot;repository_id&quot; =&gt; &quot;example&quot;, &quot;repository_kind&quot; =&gt; &quot;example&quot;, &quot;service&quot; =&gt; &quot;example&quot;, &quot;target_mode&quot; =&gt; &quot;example&quot;, &quot;trigger_label&quot; =&gt; &quot;example&quot;, &quot;triggers&quot; =&gt; {}, &quot;verify_environment_id&quot; =&gt; &quot;example&quot;, &quot;write_scenarios&quot; =&gt; true })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const pull_request_settings = await client.PullRequestSetting().list({ organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const pull_request_setting = await client.PullRequestSetting().load({ organization_id: &quot;example&quot; })
 const created = await client.PullRequestSetting().create({ organization_id: &quot;example&quot;, bots: [], demo_videos: true, deployment: &quot;example&quot;, enabled: true, environment: &quot;example&quot;, imessage_comment_prefix: &quot;example&quot;, imessage_number: &quot;example&quot;, imessage_number_source: &quot;example&quot;, limits: {}, link_pattern: &quot;example&quot;, links: &quot;example&quot;, messaging_tester_number: &quot;example&quot;, pr_check: true, preview_comment_wildcard: &quot;example&quot;, preview_profile: &quot;example&quot;, previews: &quot;example&quot;, project_id: &quot;example&quot;, provider: &quot;example&quot;, repository: &quot;example&quot;, repository_id: &quot;example&quot;, repository_kind: &quot;example&quot;, service: &quot;example&quot;, target_mode: &quot;example&quot;, trigger_label: &quot;example&quot;, triggers: {}, verify_environment_id: &quot;example&quot;, write_scenarios: true })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -1185,7 +1185,7 @@ const created = await client.PullRequestSetting().create({ organization_id: &quo
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idverifypull_request_settings" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verify/pull_request_settings</h3>
 <p>Operation ID: <code>api_v1_pull_request_settings</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

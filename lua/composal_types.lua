@@ -31,23 +31,6 @@
 ---@class AdminOrgLoadMatch
 ---@field id string
 
----@class AdminOrgListMatch
----@field billing_email? string|nil
----@field billing_reason? string
----@field customize_onboarding_packages? boolean
----@field deployment_usage_visibility? string
----@field deployment_usage_visible? boolean
----@field id? string
----@field monthly_price_dollars? string|number
----@field monthly_price_override_cents? number|nil
----@field name? string
----@field onboarding_custom_pricing? boolean
----@field onboarding_package_keys? table|nil
----@field owner_email? string
----@field package_id? string|nil
----@field skip_payment? boolean
----@field slug? string
-
 ---@class AdminOrgCreateData
 ---@field billing_reason? string
 ---@field customize_onboarding_packages? boolean
@@ -168,12 +151,9 @@
 ---@field hidden_install_count number
 ---@field id string
 ---@field install_count number
----@field install_targets table
 ---@field installed_by table
 ---@field installed_target_ids table
----@field items table
 ---@field mcp_url string|nil
----@field next_cursor string|nil
 ---@field owner table
 ---@field thread any
 ---@field title string
@@ -567,7 +547,7 @@
 
 ---@class AgentEvent
 
----@class AgentEventListMatch
+---@class AgentEventLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 ---@field conversation_id? string
@@ -642,10 +622,7 @@
 ---@field toolkit string
 
 ---@class AgentIntegrationLoadMatch
----@field id string
----@field organization_id string
-
----@class AgentIntegrationListMatch
+---@field id? string
 ---@field organization_id string
 ---@field cursor? string
 ---@field enableable? boolean
@@ -1033,7 +1010,7 @@
 ---@field version number
 ---@field work_repositories table
 
----@class AgentRepositoryListMatch
+---@class AgentRepositoryLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 ---@field q? string
@@ -1145,12 +1122,7 @@
 
 ---@class AgentSessionCheckpointLoadMatch
 ---@field agent_session_id string
----@field id string
----@field organization_id string
----@field repo_id string
-
----@class AgentSessionCheckpointListMatch
----@field agent_session_id string
+---@field id? string
 ---@field organization_id string
 ---@field repo_id string
 
@@ -1176,7 +1148,7 @@
 ---@field instructions string
 ---@field version string
 
----@class AgentSettingListMatch
+---@class AgentSettingLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 
@@ -1236,10 +1208,7 @@
 ---@field source? string
 
 ---@class AgentSkillLoadMatch
----@field id string
----@field organization_id string
-
----@class AgentSkillListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class AgentSkillCreateData
@@ -1298,7 +1267,7 @@
 
 ---@class AgentSubscription
 
----@class AgentSubscriptionListMatch
+---@class AgentSubscriptionLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 ---@field refresh_provider? string
@@ -1424,9 +1393,6 @@
 ---@class AgentThreadLoadMatch
 ---@field id string
 
----@class AgentThreadListMatch
----@field id? string
-
 ---@class AgentThreadCreateData
 
 ---@class AgentTool
@@ -1456,8 +1422,11 @@
 ---@field available boolean
 ---@field can_manage boolean
 ---@field expected_version number
+---@field id string
+---@field name string
 ---@field project_choices table
 ---@field project_choices_truncated boolean
+---@field slug string
 ---@field verify_projects table
 ---@field version number
 
@@ -1485,7 +1454,7 @@
 ---@field image_url string|nil
 ---@field title string|nil
 
----@class AgentWebPreviewListMatch
+---@class AgentWebPreviewLoadMatch
 ---@field asset? string
 ---@field token string
 
@@ -1540,7 +1509,7 @@
 ---@field truncated boolean
 ---@field workflows table
 
----@class AgentWorkflowListMatch
+---@class AgentWorkflowLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 ---@field view? string
@@ -1767,11 +1736,7 @@
 
 ---@class AlertRuleEventLoadMatch
 ---@field alert_rule_id string
----@field id string
----@field space_id string
-
----@class AlertRuleEventListMatch
----@field alert_rule_id string
+---@field id? string
 ---@field space_id string
 
 ---@class AlertRuleEventCreateData
@@ -1796,7 +1761,7 @@
 ---@field task string
 ---@field type string
 
----@class AllocationLogListMatch
+---@class AllocationLogLoadMatch
 ---@field allocation_id string
 ---@field app_id string
 ---@field offset? number
@@ -1868,7 +1833,7 @@
 
 ---@class AppAccessJwk
 
----@class AppAccessJwkListMatch
+---@class AppAccessJwkLoadMatch
 
 ---@class AppCdn
 ---@field app_environment_id string|nil
@@ -1901,10 +1866,7 @@
 
 ---@class AppCdnLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppCdnListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppCdnCreateData
 ---@field app_id string
@@ -1971,10 +1933,7 @@
 
 ---@class AppConfigVariableLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppConfigVariableListMatch
----@field app_id string
+---@field id? string
 ---@field app_environment_id? string
 
 ---@class AppConfigVariableCreateData
@@ -2022,10 +1981,7 @@
 
 ---@class AppDataResourceLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppDataResourceListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppDataResourceCreateData
 ---@field app_id string
@@ -2119,10 +2075,7 @@
 
 ---@class AppDeploymentLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppDeploymentListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppDeploymentCreateData
 ---@field app_id string
@@ -2280,10 +2233,7 @@
 
 ---@class AppEnvironmentLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppEnvironmentListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppEnvironmentCreateData
 ---@field app_id string
@@ -2368,10 +2318,7 @@
 
 ---@class AppPreviewLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppPreviewListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppPreviewCreateData
 ---@field app_id string
@@ -2416,10 +2363,7 @@
 
 ---@class AppPreviewProfileLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppPreviewProfileListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppPreviewProfileCreateData
 ---@field app_id string
@@ -2454,10 +2398,6 @@
 
 ---@class AppRunLoadMatch
 ---@field id string
-
----@class AppRunListMatch
----@field id? string
----@field image? string
 
 ---@class AppRunCreateData
 ---@field image? string
@@ -2568,10 +2508,7 @@
 
 ---@class AppServiceLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppServiceListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppServiceCreateData
 ---@field app_id string
@@ -2680,10 +2617,7 @@
 
 ---@class AppServiceBindingLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppServiceBindingListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppServiceBindingCreateData
 ---@field app_id string
@@ -2761,10 +2695,7 @@
 
 ---@class AppStorageResourceLoadMatch
 ---@field app_id string
----@field id string
-
----@class AppStorageResourceListMatch
----@field app_id string
+---@field id? string
 
 ---@class AppStorageResourceCreateData
 ---@field app_id string
@@ -2915,9 +2846,6 @@
 ---@class ArtifactLoadMatch
 ---@field id string
 
----@class ArtifactListMatch
----@field id? string
-
 ---@class ArtifactCreateData
 
 ---@class ArtifactUpdateData
@@ -2934,9 +2862,6 @@
 
 ---@class ArtifactCacheNamespaceLoadMatch
 ---@field id string
-
----@class ArtifactCacheNamespaceListMatch
----@field id? string
 
 ---@class ArtifactCacheNamespaceCreateData
 
@@ -2955,9 +2880,6 @@
 ---@class ArtifactImageRepositoryLoadMatch
 ---@field id string
 
----@class ArtifactImageRepositoryListMatch
----@field id? string
-
 ---@class ArtifactImageRepositoryCreateData
 
 ---@class ArtifactImageRepositoryUpdateData
@@ -2975,9 +2897,6 @@
 ---@class ArtifactPackageMirrorLoadMatch
 ---@field id string
 
----@class ArtifactPackageMirrorListMatch
----@field id? string
-
 ---@class ArtifactPackageMirrorCreateData
 
 ---@class ArtifactPackageMirrorUpdateData
@@ -2994,9 +2913,6 @@
 
 ---@class ArtifactRetentionPolicyLoadMatch
 ---@field id string
-
----@class ArtifactRetentionPolicyListMatch
----@field id? string
 
 ---@class ArtifactRetentionPolicyCreateData
 
@@ -3105,7 +3021,7 @@
 ---@field turnstile_site_key string|nil
 ---@field waitlist_enabled boolean
 
----@class AuthRegistrationOptionListMatch
+---@class AuthRegistrationOptionLoadMatch
 ---@field email_password_signup_enabled? boolean
 ---@field openai_sign_in_enabled? boolean
 ---@field turnstile_site_key? string|nil
@@ -3188,7 +3104,7 @@
 ---@class BackendRunnerPool
 ---@field id? string
 
----@class BackendRunnerPoolListMatch
+---@class BackendRunnerPoolLoadMatch
 ---@field backend_id string
 
 ---@class BackendRunnerPoolCreateData
@@ -3218,9 +3134,6 @@
 
 ---@class BazelBackendLoadMatch
 ---@field id string
-
----@class BazelBackendListMatch
----@field id? string
 
 ---@class BazelBackendCreateData
 
@@ -3892,10 +3805,7 @@
 
 ---@class CacheNamespaceEntryLoadMatch
 ---@field cache_namespace_id string
----@field id string
-
----@class CacheNamespaceEntryListMatch
----@field cache_namespace_id string
+---@field id? string
 
 ---@class CacheNamespaceEntryCreateData
 ---@field cache_namespace_id string
@@ -3924,11 +3834,7 @@
 ---@class CdnDeploymentLoadMatch
 ---@field app_id string
 ---@field cdn_id string
----@field id string
-
----@class CdnDeploymentListMatch
----@field app_id string
----@field cdn_id string
+---@field id? string
 
 ---@class CdnDeploymentCreateData
 ---@field app_id string
@@ -3948,11 +3854,7 @@
 ---@class CdnHostnameLoadMatch
 ---@field app_id string
 ---@field cdn_id string
----@field id string
-
----@class CdnHostnameListMatch
----@field app_id string
----@field cdn_id string
+---@field id? string
 
 ---@class CdnHostnameCreateData
 ---@field app_id string
@@ -3983,9 +3885,6 @@
 ---@class CdnSpaceLoadMatch
 ---@field id string
 
----@class CdnSpaceListMatch
----@field organization_id string
-
 ---@class CdnSpaceCreateData
 ---@field organization_id string
 
@@ -4003,10 +3902,7 @@
 
 ---@class CdnSpaceObjectLoadMatch
 ---@field cdn_space_id string
----@field id string
-
----@class CdnSpaceObjectListMatch
----@field cdn_space_id string
+---@field id? string
 
 ---@class CdnSpaceObjectUpdateData
 ---@field cdn_space_id string
@@ -4021,7 +3917,7 @@
 ---@field github_sync table
 ---@field result any
 
----@class ChangeListMatch
+---@class ChangeLoadMatch
 ---@field organization_id string
 ---@field author? string
 ---@field awaiting_review? boolean
@@ -4490,10 +4386,7 @@
 ---@field updated_at string
 
 ---@class CiPipelineRunLoadMatch
----@field id string
----@field pipeline_id string
-
----@class CiPipelineRunListMatch
+---@field id? string
 ---@field pipeline_id string
 
 ---@class CiPipelineRunCreateData
@@ -4564,8 +4457,6 @@
 ---@class CliRelease
 
 ---@class CliReleaseLoadMatch
-
----@class CliReleaseListMatch
 
 ---@class CliReleaseCreateData
 
@@ -4883,18 +4774,14 @@
 ---@field web_url string
 
 ---@class DeepScanLoadMatch
----@field id string
+---@field id? string
 ---@field organization_id string
 ---@field agent_id? string
 ---@field evidence? string
 ---@field finding_id? string
 ---@field project_id? string
-
----@class DeepScanListMatch
----@field organization_id string
 ---@field finding? string
 ---@field page? number
----@field project_id? string
 ---@field query? string
 ---@field status? string
 
@@ -4910,24 +4797,25 @@
 ---@field max_testers? number
 
 ---@class DeepScanFinding
----@field finding_count number
----@field finding_ids table
----@field findings table
----@field findings_fix_prompt string|nil
----@field free_findings_pending boolean
+---@field actual string
+---@field agent_id string
+---@field agent_title string
+---@field area? string|nil
+---@field checks table
+---@field confidence string
+---@field confirmed? boolean
+---@field evidence_step_ids? table
+---@field evidence_timestamp_ms number|nil
+---@field expected string
+---@field fix_prompt string
+---@field has_recording? boolean
 ---@field id string
----@field mode string
----@field permissions table
----@field priority string|nil
----@field priority_counts table
----@field project_id string|nil
----@field reproduction_of table|nil
----@field reproductions table
----@field reruns_available boolean
----@field status string
+---@field locked boolean
+---@field reproduction_steps table
+---@field severity string
 ---@field title string
----@field unlock table
----@field web_url string
+---@field tracked table|nil
+---@field url string
 
 ---@class DeepScanFindingListMatch
 ---@field deep_scan_id string
@@ -4965,7 +4853,7 @@
 ---@field flow_map table|nil
 ---@field revision_id string|nil
 
----@class DeepScanMappedFlowListMatch
+---@class DeepScanMappedFlowLoadMatch
 ---@field organization_id string
 ---@field account_id? string
 ---@field environment_id string
@@ -5075,7 +4963,7 @@
 ---@field service_views table
 ---@field storage_resources table
 
----@class DeploymentDetailListMatch
+---@class DeploymentDetailLoadMatch
 ---@field organization_id string
 ---@field app? string
 ---@field environment? string
@@ -5315,7 +5203,7 @@
 
 ---@class DeviceEnterpriseRelay
 
----@class DeviceEnterpriseRelayListMatch
+---@class DeviceEnterpriseRelayLoadMatch
 
 ---@class DeviceFolderListing
 ---@field code? string
@@ -5340,16 +5228,18 @@
 ---@field path string
 
 ---@class DeviceGrant
----@field active_grants table
----@field agent_choices table
 ---@field agent_id string
----@field all_agents_access boolean
+---@field agent_name string|nil
+---@field can_edit boolean
+---@field can_revoke boolean
 ---@field capabilities table
----@field execution_available boolean
----@field grants table
----@field id? string
----@field next_cursor string|nil
+---@field created_at string
+---@field id string
 ---@field principal_id string
+---@field principal_name string|nil
+---@field revision number
+---@field revoked_at string|nil
+---@field updated_at string
 
 ---@class DeviceGrantListMatch
 ---@field device_id string
@@ -5674,11 +5564,7 @@
 ---@field version? number
 
 ---@class EnvironmentLoadMatch
----@field id string
----@field organization_id string
----@field project_id? string
-
----@class EnvironmentListMatch
+---@field id? string
 ---@field organization_id string
 ---@field project_id? string
 
@@ -5857,7 +5743,7 @@
 ---@field secret_id? string
 ---@field secret_version_id? string
 
----@class EnvironmentSecretBindingListMatch
+---@class EnvironmentSecretBindingLoadMatch
 ---@field app_id string
 ---@field environment_id string
 
@@ -5921,11 +5807,6 @@
 ---@class ExecutionDesiredStateLoadMatch
 ---@field id string
 
----@class ExecutionDesiredStateListMatch
----@field desired_state? table
----@field id? string
----@field stop_observed? boolean
-
 ---@class ExecutionDesiredStateCreateData
 
 ---@class ExecutionDesiredStateUpdateData
@@ -5943,9 +5824,6 @@
 ---@class ExecutionReconcilerTickLoadMatch
 ---@field id string
 
----@class ExecutionReconcilerTickListMatch
----@field id? string
-
 ---@class ExecutionReconcilerTickCreateData
 
 ---@class ExecutionRelease
@@ -5953,9 +5831,6 @@
 
 ---@class ExecutionReleaseLoadMatch
 ---@field id string
-
----@class ExecutionReleaseListMatch
----@field id? string
 
 ---@class ExecutionReleaseCreateData
 
@@ -6016,20 +5891,21 @@
 
 ---@class Exploration
 ---@field account_id? string|nil
----@field active table
 ---@field agent_filters table
 ---@field agents table
 ---@field can_continue? boolean
 ---@field chat_messages? table
+---@field check_count number
 ---@field concurrency number
 ---@field covered_areas table
 ---@field created_at string
+---@field credential_name? string|nil
 ---@field deadline_at string
 ---@field demo_project table|nil
+---@field duration_ms number|nil
 ---@field ended_early boolean
 ---@field environment_id string
 ---@field environment_name string
----@field explorations table
 ---@field explorer_activity table
 ---@field finding_count number
 ---@field findings table
@@ -6039,14 +5915,12 @@
 ---@field huntable_flows table
 ---@field id string
 ---@field idempotency_key? string
----@field launch_options table
 ---@field max_seconds number
 ---@field max_testers number
 ---@field mode? string
 ---@field next_scan_improvements table
 ---@field observed_at? string
 ---@field onboarding boolean
----@field pagination table
 ---@field paywalled boolean
 ---@field permissions table
 ---@field persona_id? string|nil
@@ -6058,10 +5932,13 @@
 ---@field reproductions table
 ---@field saves_scenarios boolean
 ---@field scannable_flows table
+---@field scenario_count? number
 ---@field scenario_generation table
+---@field scenarios_pending? boolean
 ---@field sign_in_needs_answer boolean
 ---@field sign_in_outcome string
 ---@field sign_in_question? string|nil
+---@field started_at string
 ---@field startup_retryable? boolean
 ---@field status string
 ---@field time_limit_reached boolean
@@ -6522,7 +6399,7 @@
 ---@field replace? boolean
 ---@field repositories table
 
----@class GithubConnectionListMatch
+---@class GithubConnectionLoadMatch
 ---@field organization_id string
 ---@field github_app_installation_id? string
 ---@field project_id? string
@@ -6880,10 +6757,7 @@
 
 ---@class HostingAppDomainLoadMatch
 ---@field app_id string
----@field id string
-
----@class HostingAppDomainListMatch
----@field app_id string
+---@field id? string
 ---@field app_environment_id? string
 
 ---@class HostingAppDomainCreateData
@@ -6978,7 +6852,7 @@
 ---@field permissions table
 ---@field slack table
 
----@class IntegrationListMatch
+---@class IntegrationLoadMatch
 ---@field organization_id string
 
 ---@class InteractionResponse
@@ -7063,7 +6937,7 @@
 ---@class JobStep
 ---@field id? string
 
----@class JobStepListMatch
+---@class JobStepLoadMatch
 ---@field job_id string
 ---@field pipeline_id string
 ---@field run_id string
@@ -7088,7 +6962,7 @@
 ---@class JobWorkspace
 ---@field id? string
 
----@class JobWorkspaceListMatch
+---@class JobWorkspaceLoadMatch
 ---@field job_id string
 ---@field pipeline_id string
 ---@field run_id string
@@ -7370,11 +7244,7 @@
 ---@field id? string
 
 ---@class LogStreamChunkLoadMatch
----@field id string
----@field log_stream_id string
----@field space_id string
-
----@class LogStreamChunkListMatch
+---@field id? string
 ---@field log_stream_id string
 ---@field space_id string
 
@@ -7416,7 +7286,7 @@
 ---@class MarketingSetting
 ---@field call_first boolean
 
----@class MarketingSettingListMatch
+---@class MarketingSettingLoadMatch
 ---@field call_first? boolean
 
 ---@class McpOauth
@@ -7802,7 +7672,7 @@
 
 ---@class MetricQuery
 
----@class MetricQueryListMatch
+---@class MetricQueryLoadMatch
 
 ---@class MetronomeWebhook
 
@@ -7908,9 +7778,6 @@
 ---@class NetworkingSpaceLoadMatch
 ---@field id string
 
----@class NetworkingSpaceListMatch
----@field id? string
-
 ---@class NetworkingSpaceCreateData
 
 ---@class NetworkingSpaceUpdateData
@@ -7954,10 +7821,6 @@
 ---@field id? string
 
 ---@class NodeLeaseLoadMatch
----@field id string
----@field node_id string
-
----@class NodeLeaseListMatch
 ---@field node_id string
 
 ---@class NodeLeaseCreateData
@@ -8001,7 +7864,7 @@
 ---@field task string
 ---@field type string
 
----@class NomadLogListMatch
+---@class NomadLogLoadMatch
 ---@field app_id string
 ---@field environment? string
 ---@field location? string
@@ -8028,9 +7891,6 @@
 ---@class ObservabilityClickhouseClusterLoadMatch
 ---@field id string
 
----@class ObservabilityClickhouseClusterListMatch
----@field id? string
-
 ---@class ObservabilityClickhouseClusterCreateData
 
 ---@class ObservabilityClickhouseClusterUpdateData
@@ -8048,9 +7908,6 @@
 ---@class ObservabilityQuickwitClusterLoadMatch
 ---@field id string
 
----@class ObservabilityQuickwitClusterListMatch
----@field id? string
-
 ---@class ObservabilityQuickwitClusterCreateData
 
 ---@class ObservabilityQuickwitClusterUpdateData
@@ -8067,9 +7924,6 @@
 
 ---@class ObservabilitySpaceLoadMatch
 ---@field id string
-
----@class ObservabilitySpaceListMatch
----@field id? string
 
 ---@class ObservabilitySpaceCreateData
 
@@ -8184,7 +8038,7 @@
 ---@class OrganizationApp
 ---@field id? string
 
----@class OrganizationAppListMatch
+---@class OrganizationAppLoadMatch
 ---@field organization_id string
 ---@field context? boolean
 ---@field installed? boolean
@@ -8219,10 +8073,7 @@
 ---@field id? string
 
 ---@class OrganizationIdentityCertificateLoadMatch
----@field id string
----@field organization_id string
-
----@class OrganizationIdentityCertificateListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class OrganizationIdentityCertificateCreateData
@@ -8268,10 +8119,7 @@
 ---@field id? string
 
 ---@class OrganizationOidcTrustLoadMatch
----@field id string
----@field organization_id string
-
----@class OrganizationOidcTrustListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class OrganizationOidcTrustCreateData
@@ -8362,10 +8210,7 @@
 ---@field id? string
 
 ---@class OrganizationServiceAccountLoadMatch
----@field id string
----@field organization_id string
-
----@class OrganizationServiceAccountListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class OrganizationServiceAccountCreateData
@@ -8409,7 +8254,7 @@
 ---@class OrganizationSite
 ---@field id? string
 
----@class OrganizationSiteListMatch
+---@class OrganizationSiteLoadMatch
 ---@field organization_id string
 ---@field native_agent_id string
 
@@ -8444,10 +8289,7 @@
 ---@field id? string
 
 ---@class OrganizationWorkloadIdentityLoadMatch
----@field id string
----@field organization_id string
-
----@class OrganizationWorkloadIdentityListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class OrganizationWorkloadIdentityCreateData
@@ -8520,14 +8362,6 @@
 ---@field viewer_id string
 
 ---@class PageAgentLoadMatch
----@field organization_id string
----@field agent? string
----@field agent_search? string
----@field agent_visibility? string
----@field cursor? string
----@field limit? number
-
----@class PageAgentListMatch
 ---@field organization_id string
 ---@field agent? string
 ---@field agent_search? string
@@ -8733,25 +8567,51 @@
 ---@field project_id string
 
 ---@class PagesProjectPersona
----@field active_count number
----@field credentials table
----@field needs_attention_count number
----@field permissions table
----@field persona_states table
----@field personas table
----@field project table
+---@field access_mode string
+---@field active_run_count number
+---@field archived_at string|nil
+---@field attention table
+---@field capabilities string|nil
+---@field created_at string
+---@field credential any
+---@field credential_id string|nil
+---@field goals string|nil
+---@field health table
+---@field id string
+---@field lock_version number
+---@field name string
+---@field project_id string
+---@field role string
+---@field scenario_count number
+---@field updated_at string
 
 ---@class PagesProjectPersonaListMatch
 ---@field organization_id string
 ---@field project_id string
 
 ---@class PagesProjectRun
----@field environment_query string
----@field environments table
----@field environments_has_more boolean
----@field pagination table
----@field runs table
----@field selected_environment any
+---@field archived_at string|nil
+---@field browser_seconds number|nil
+---@field can_archive boolean
+---@field can_restore boolean
+---@field cleanup_state string
+---@field commit_sha string|nil
+---@field created_at string
+---@field duration_seconds number|nil
+---@field environment_name string|nil
+---@field finished_at string|nil
+---@field id string
+---@field outcome string|nil
+---@field pull_request any
+---@field pull_request_label string|nil
+---@field scenario_count number
+---@field source_run table|nil
+---@field started_at string|nil
+---@field state string
+---@field title string
+---@field trigger_kind string
+---@field triggered_by string|nil
+---@field web_path string
 
 ---@class PagesProjectRunListMatch
 ---@field organization_id string
@@ -8864,14 +8724,11 @@
 ---@class PairingLoadMatch
 ---@field id string
 
----@class PairingListMatch
----@field id? string
-
 ---@class PairingCreateData
 
 ---@class PairingEvent
 
----@class PairingEventListMatch
+---@class PairingEventLoadMatch
 ---@field pairing_id string
 
 ---@class ParallelV1
@@ -8894,8 +8751,8 @@
 ---@class PersonalAccessToken
 ---@field id? string
 
----@class PersonalAccessTokenListMatch
----@field id? string
+---@class PersonalAccessTokenLoadMatch
+---@field id string
 
 ---@class PersonalAccessTokenCreateData
 
@@ -8904,7 +8761,7 @@
 
 ---@class PreviewOperation
 
----@class PreviewOperationListMatch
+---@class PreviewOperationLoadMatch
 ---@field app_id string
 ---@field preview_id string
 
@@ -8915,7 +8772,7 @@
 ---@field secret_id? string
 ---@field secret_version_id? string
 
----@class PreviewProfileSecretBindingListMatch
+---@class PreviewProfileSecretBindingLoadMatch
 ---@field app_id string
 ---@field preview_profile_id string
 
@@ -8959,14 +8816,14 @@
 ---@field approved_default_secrets table
 ---@field approved_source_keys table
 ---@field build_keys? table
----@field build_secrets? table
----@field default_configuration? table
----@field default_secrets? table
+---@field build_secrets table
+---@field default_configuration table
+---@field default_secrets table
 ---@field services table
 ---@field snapshot_version number
----@field source_keys? table
+---@field source_keys table
 
----@class PreviewSharingApprovalListMatch
+---@class PreviewSharingApprovalLoadMatch
 ---@field app_id string
 ---@field preview_id string
 
@@ -9448,18 +9305,11 @@
 ---@field byte_size number
 ---@field content_type string
 ---@field credential_ids table
----@field credentials table
 ---@field environment_ids table
----@field environments table
----@field fixtures table
 ---@field id? string
 ---@field lock_version number
 ---@field name string
----@field pagination table
----@field permissions table
 ---@field persona_ids table
----@field personas table
----@field project table
 ---@field sha256 string
 ---@field url string
 ---@field version number
@@ -9802,7 +9652,7 @@
 ---@field schedule_options? any
 ---@field schedules? table
 
----@class ProjectScenarioOptionListMatch
+---@class ProjectScenarioOptionLoadMatch
 ---@field organization_id string
 ---@field project_id string
 
@@ -9832,7 +9682,7 @@
 ---@field project table
 ---@field tester_numbers table
 
----@class ProjectSettingListMatch
+---@class ProjectSettingLoadMatch
 ---@field organization_id string
 ---@field project_id string
 
@@ -9990,7 +9840,7 @@
 ---@field verify_environment_id string
 ---@field write_scenarios boolean
 
----@class PullRequestSettingListMatch
+---@class PullRequestSettingLoadMatch
 ---@field organization_id string
 ---@field project_id? string
 ---@field provider? string
@@ -10194,10 +10044,7 @@
 ---@field id? string
 
 ---@class ReleaseRolloutLoadMatch
----@field id string
----@field release_id string
-
----@class ReleaseRolloutListMatch
+---@field id? string
 ---@field release_id string
 
 ---@class ReleaseRolloutCreateData
@@ -10301,11 +10148,7 @@
 ---@field title? string|nil
 
 ---@class RepoAgentSessionLoadMatch
----@field id string
----@field organization_id string
----@field repo_id string
-
----@class RepoAgentSessionListMatch
+---@field id? string
 ---@field organization_id string
 ---@field repo_id string
 
@@ -10425,11 +10268,7 @@
 ---@field id? string
 
 ---@class RepoCloudWorkspaceBackupLoadMatch
----@field id string
----@field organization_id string
----@field repo_id string
-
----@class RepoCloudWorkspaceBackupListMatch
+---@field id? string
 ---@field organization_id string
 ---@field repo_id string
 
@@ -10734,9 +10573,6 @@
 ---@class RoderCodeRepairLoadMatch
 ---@field id string
 
----@class RoderCodeRepairListMatch
----@field scenario_run_id string
-
 ---@class RoderCodeRepairCreateData
 ---@field base_sha string
 ---@field organization_id string
@@ -10752,7 +10588,7 @@
 ---@field organization_id string
 ---@field repository_slug string|nil
 
----@class RoderCodeRepairSettingListMatch
+---@class RoderCodeRepairSettingLoadMatch
 ---@field organization_id string
 
 ---@class RoderCodeRepairSettingCreateData
@@ -10791,7 +10627,7 @@
 
 ---@class RunArtifact
 
----@class RunArtifactListMatch
+---@class RunArtifactLoadMatch
 ---@field pipeline_id string
 ---@field run_id string
 
@@ -10836,11 +10672,7 @@
 ---@field updated_at string
 
 ---@class RunJobLoadMatch
----@field id string
----@field pipeline_id string
----@field run_id string
-
----@class RunJobListMatch
+---@field id? string
 ---@field pipeline_id string
 ---@field run_id string
 
@@ -10924,7 +10756,7 @@
 ---@class RunnerLease
 ---@field id? string
 
----@class RunnerLeaseListMatch
+---@class RunnerLeaseLoadMatch
 ---@field runner_id string
 ---@field runner_pool_id string
 
@@ -10971,10 +10803,7 @@
 ---@field id? string
 
 ---@class RunnerPoolRunnerLoadMatch
----@field id string
----@field runner_pool_id string
-
----@class RunnerPoolRunnerListMatch
+---@field id? string
 ---@field runner_pool_id string
 
 ---@class RunnerPoolRunnerCreateData
@@ -10990,7 +10819,7 @@
 
 ---@class RuntimeInstanceHealthSnapshot
 
----@class RuntimeInstanceHealthSnapshotListMatch
+---@class RuntimeInstanceHealthSnapshotLoadMatch
 ---@field runtime_instance_id string
 
 ---@class RuntimeInstanceHealthSnapshotCreateData
@@ -11009,7 +10838,7 @@
 ---@field provider string
 ---@field version number
 
----@class SandboxIntegrationListMatch
+---@class SandboxIntegrationLoadMatch
 ---@field organization_id string
 ---@field provider? string
 
@@ -11084,11 +10913,7 @@
 ---@field id? string
 
 ---@class SecretGrantLoadMatch
----@field id string
----@field organization_id string
----@field secret_id string
-
----@class SecretGrantListMatch
+---@field id? string
 ---@field organization_id string
 ---@field secret_id string
 
@@ -11115,11 +10940,7 @@
 ---@field id? string
 
 ---@class SecretVersionLoadMatch
----@field id string
----@field organization_id string
----@field secret_id string
-
----@class SecretVersionListMatch
+---@field id? string
 ---@field organization_id string
 ---@field secret_id string
 
@@ -11147,11 +10968,7 @@
 
 ---@class ServiceEndpointLoadMatch
 ---@field app_id string
----@field id string
----@field service_id string
-
----@class ServiceEndpointListMatch
----@field app_id string
+---@field id? string
 ---@field service_id string
 
 ---@class ServiceEndpointCreateData
@@ -11181,7 +10998,7 @@
 ---@field organization table
 ---@field sandbox_regions table
 
----@class SettingListMatch
+---@class SettingLoadMatch
 ---@field organization_id string
 
 ---@class SettingMutationLease
@@ -11355,10 +11172,7 @@
 ---@field id? string
 
 ---@class SignalSubscriptionLoadMatch
----@field id string
----@field organization_id string
-
----@class SignalSubscriptionListMatch
+---@field id? string
 ---@field organization_id string
 
 ---@class SignalSubscriptionCreateData
@@ -11411,7 +11225,7 @@
 ---@class SiteAccessKey
 ---@field id? string
 
----@class SiteAccessKeyListMatch
+---@class SiteAccessKeyLoadMatch
 ---@field organization_id string
 ---@field site_id string
 
@@ -11476,10 +11290,7 @@
 ---@field id? string
 
 ---@class SpaceAlertRuleLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceAlertRuleListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceAlertRuleCreateData
@@ -11499,7 +11310,7 @@
 
 ---@class SpaceAuditEvent
 
----@class SpaceAuditEventListMatch
+---@class SpaceAuditEventLoadMatch
 ---@field space_id string
 
 ---@class SpaceAuditEventCreateData
@@ -11509,10 +11320,7 @@
 ---@field id? string
 
 ---@class SpaceDnsRecordLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceDnsRecordListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceDnsRecordCreateData
@@ -11534,10 +11342,7 @@
 ---@field id? string
 
 ---@class SpaceEnrollmentTokenLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceEnrollmentTokenListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceEnrollmentTokenCreateData
@@ -11559,10 +11364,7 @@
 ---@field id? string
 
 ---@class SpaceGatewayLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceGatewayListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceGatewayCreateData
@@ -11583,7 +11385,7 @@
 ---@class SpaceGroup
 ---@field id? string
 
----@class SpaceGroupListMatch
+---@class SpaceGroupLoadMatch
 ---@field space_id string
 
 ---@class SpaceGroupCreateData
@@ -11604,7 +11406,7 @@
 ---@class SpaceGroupMembership
 ---@field id? string
 
----@class SpaceGroupMembershipListMatch
+---@class SpaceGroupMembershipLoadMatch
 ---@field space_id string
 
 ---@class SpaceGroupMembershipCreateData
@@ -11624,7 +11426,7 @@
 
 ---@class SpaceLogStream
 
----@class SpaceLogStreamListMatch
+---@class SpaceLogStreamLoadMatch
 ---@field space_id string
 
 ---@class SpaceLogStreamCreateData
@@ -11632,7 +11434,7 @@
 
 ---@class SpaceMetricSery
 
----@class SpaceMetricSeryListMatch
+---@class SpaceMetricSeryLoadMatch
 ---@field space_id string
 
 ---@class SpaceMetricSeryCreateData
@@ -11642,10 +11444,7 @@
 ---@field id? string
 
 ---@class SpaceOtelCollectorLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceOtelCollectorListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceOtelCollectorCreateData
@@ -11667,10 +11466,7 @@
 ---@field id? string
 
 ---@class SpacePeerLoadMatch
----@field id string
----@field space_id string
-
----@class SpacePeerListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpacePeerCreateData
@@ -11691,7 +11487,7 @@
 ---@class SpacePeerAttachment
 ---@field id? string
 
----@class SpacePeerAttachmentListMatch
+---@class SpacePeerAttachmentLoadMatch
 ---@field space_id string
 
 ---@class SpacePeerAttachmentCreateData
@@ -11713,10 +11509,7 @@
 ---@field id? string
 
 ---@class SpacePolicyLoadMatch
----@field id string
----@field space_id string
-
----@class SpacePolicyListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpacePolicyCreateData
@@ -11738,10 +11531,7 @@
 ---@field id? string
 
 ---@class SpaceSegmentLoadMatch
----@field id string
----@field space_id string
-
----@class SpaceSegmentListMatch
+---@field id? string
 ---@field space_id string
 
 ---@class SpaceSegmentCreateData
@@ -11761,7 +11551,7 @@
 
 ---@class SpaceTraceSpan
 
----@class SpaceTraceSpanListMatch
+---@class SpaceTraceSpanLoadMatch
 ---@field space_id string
 
 ---@class SpaceTraceSpanCreateData
@@ -11801,7 +11591,7 @@
 ---@field updated_at_label string|nil
 ---@field verify_pr_scenario_writing_enabled boolean
 
----@class SparkListMatch
+---@class SparkLoadMatch
 ---@field organization_id string
 
 ---@class SparkCreateData
@@ -11835,7 +11625,7 @@
 ---@field webhook_connections table
 ---@field webhooks_available boolean
 
----@class SparkAgentIntegrationListMatch
+---@class SparkAgentIntegrationLoadMatch
 ---@field agent_id string
 ---@field organization_id string
 ---@field catalog_q? string
@@ -11953,30 +11743,32 @@
 ---@field version string
 
 ---@class SparkAgentThread
----@field archived_count? number|nil
----@field can_create boolean
+---@field archive_deletes_sandbox? boolean
+---@field archived boolean
+---@field attention table|nil
+---@field can_archive boolean
+---@field can_compact boolean
+---@field can_snooze boolean
+---@field coordination_status? string|nil
 ---@field execution? any
 ---@field first_input? any
 ---@field first_input_key? string
 ---@field first_input_requester_membership_id? string
----@field id? string
+---@field group string
+---@field has_active_run boolean
+---@field id string
 ---@field inherit_context? boolean
----@field local_activities table
----@field local_archived_count number
----@field local_next_cursor string|nil
----@field local_scope_key string|nil
----@field local_status_pending boolean
----@field local_threads table
----@field main_thread_id string
+---@field is_main boolean
+---@field kind string
 ---@field message? string
----@field next_cursor string|nil
+---@field older boolean
 ---@field parent_conversation_id? string
+---@field parent_conversation_title? string
 ---@field requester_membership_id? string
----@field selected_thread any
+---@field snoozed_until string|nil
 ---@field thread table
----@field threads table
 ---@field title? string
----@field total_archived_count number|nil
+---@field updated_at string|nil
 
 ---@class SparkAgentThreadListMatch
 ---@field agent_id string
@@ -12010,7 +11802,7 @@
 ---@field kind string
 ---@field payment_method table|nil
 ---@field payments_enabled boolean
----@field plan? string
+---@field plan string|nil
 ---@field plans table
 ---@field quoted_credits_cents? number
 ---@field quoted_price_cents? number
@@ -12025,9 +11817,6 @@
 
 ---@class SparkCreditLoadMatch
 ---@field organization_id string
-
----@class SparkCreditListMatch
----@field organization_id string
 ---@field view? string
 
 ---@class SparkCreditCreateData
@@ -12035,7 +11824,7 @@
 ---@field amount_cents? number
 ---@field billing_unit? string
 ---@field kind string
----@field plan? string
+---@field plan? string|nil
 ---@field quoted_credits_cents? number
 ---@field quoted_price_cents? number
 ---@field request_key string
@@ -12064,7 +11853,7 @@
 ---@field compute_usd string
 ---@field inference_usd string
 
----@class SparkCreditUsageTotalListMatch
+---@class SparkCreditUsageTotalLoadMatch
 ---@field organization_id string
 
 ---@class StaticSite
@@ -12706,7 +12495,7 @@
 ---@field organization table
 ---@field sandbox_regions table
 
----@class VcsSettingListMatch
+---@class VcsSettingLoadMatch
 ---@field organization_id string
 
 ---@class VerificationProjectCredential
@@ -13094,7 +12883,7 @@
 
 ---@class VerifyEmailVerification
 
----@class VerifyEmailVerificationListMatch
+---@class VerifyEmailVerificationLoadMatch
 
 ---@class VerifySignalIntegration
 ---@field api_token_stored boolean

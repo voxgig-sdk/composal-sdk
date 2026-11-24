@@ -41,65 +41,19 @@ describe('MetricQueryEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('metric_query hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).MetricQuery().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).MetricQuery()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.MetricQuery().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().MetricQuery().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.MetricQuery().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.MetricQuery().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
 
 
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of ['load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'metric_query.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"metric_query","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/metrics/queries","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/hosting/metrics/queries","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"metrics"},{"lit":"queries"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"metric_query","name__orig":"metric_query","Name":"MetricQuery","name_":"metric_query","name-":"metric-query","NAME":"METRIC_QUERY","index$":321}, {"active":true,"entity":"metric_query","key$":"BasicMetricQueryFlow","kind":"basic","name":"BasicMetricQueryFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"metric_query_ref01"}}],"index$":0}]}, 'MetricQuery', {"GET /api/v1/hosting/metrics/queries":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"metric_query","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/metrics/queries","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/hosting/metrics/queries","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"metrics"},{"lit":"queries"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"metric_query","name__orig":"metric_query","Name":"MetricQuery","name_":"metric_query","name-":"metric-query","NAME":"METRIC_QUERY","index$":321}, {"active":true,"entity":"metric_query","key$":"BasicMetricQueryFlow","kind":"basic","name":"BasicMetricQueryFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"metric_query_ref01","srcdatavar":"metric_query_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-metric_query_ref01"}}],"index$":0}]}, 'MetricQuery', {"GET /api/v1/hosting/metrics/queries":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,11 +63,11 @@ describe('MetricQueryEntity', async () => {
 
     let metric_query_ref01_data = Object.values(setup.data.existing.metric_query)[0] as any
 
-    // LIST
+    // LOAD
     const metric_query_ref01_ent = client.MetricQuery()
-    const metric_query_ref01_match: any = {}
-
-    const metric_query_ref01_list = (await metric_query_ref01_ent.list(metric_query_ref01_match)).map((e: any) => e.data())
+    const metric_query_ref01_match_dt0: any = {}
+    const metric_query_ref01_data_dt0 = (await metric_query_ref01_ent.load(metric_query_ref01_match_dt0)).data()
+    assert(null != metric_query_ref01_data_dt0)
 
 
   })

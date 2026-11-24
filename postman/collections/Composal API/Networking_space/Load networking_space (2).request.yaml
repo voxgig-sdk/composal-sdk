@@ -1,0 +1,11 @@
+$kind: http-request
+id: b00cea91-7448-5a97-840e-bd9843eb60c7
+description: |-
+  The `load` operation of **networking_space**.
+
+  SDK: `client.NetworkingSpace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/networking/spaces"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

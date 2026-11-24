@@ -37,8 +37,8 @@
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagent_integrationsidsharing">POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagent_integrationsidsync">POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sync</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagent_integrations">POST /api/v1/organizations/{organization_id}/agent_integrations</a>
-<a class="nav-section" href="#get-apiv1organizationsorganization_idagent_integrations">GET /api/v1/organizations/{organization_id}/agent_integrations</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagent_integrationsid">GET /api/v1/organizations/{organization_id}/agent_integrations/{id}</a>
+<a class="nav-section" href="#get-apiv1organizationsorganization_idagent_integrations">GET /api/v1/organizations/{organization_id}/agent_integrations</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagent_integrationscatalog">GET /api/v1/organizations/{organization_id}/agent_integrations/catalog</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagent_integrationsgithub">GET /api/v1/organizations/{organization_id}/agent_integrations/github</a>
 <a class="nav-section" href="#delete-apiv1organizationsorganization_idagent_integrationsid">DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id}</a></div>
@@ -657,13 +657,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorganization_idagent_integrations"><code>/api/v1/organizations/{organization_id}/agent_integrations</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1organizationsorganization_idagent_integrationsid"><code>/api/v1/organizations/{organization_id}/agent_integrations/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Connection response</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorganization_idagent_integrationsid"><code>/api/v1/organizations/{organization_id}/agent_integrations/{id}</code></a></td>
+<td><a href="#get-apiv1organizationsorganization_idagent_integrations"><code>/api/v1/organizations/{organization_id}/agent_integrations</code></a></td>
 <td><code>load</code></td>
 <td>Connection response</td>
 </tr>
@@ -691,12 +691,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">agent_integrations, err := client.AgentIntegration(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(agent_integrations)
-agent_integration, err := client.AgentIntegration(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">agent_integration, err := client.AgentIntegration(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -714,36 +709,31 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local agent_integrations, err = client:AgentIntegration():list({ organization_id = &quot;example&quot; })
-local agent_integration, err = client:AgentIntegration():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local agent_integration, err = client:AgentIntegration():load({ organization_id = &quot;example&quot; })
 local created, err = client:AgentIntegration():create({ organization_id = &quot;example&quot;, name = &quot;example&quot;, toolkit = &quot;example&quot; })
 local removed, err = client:AgentIntegration():remove({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$agent_integrations = $client-&gt;AgentIntegration()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$agent_integration = $client-&gt;AgentIntegration()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$agent_integration = $client-&gt;AgentIntegration()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AgentIntegration()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;toolkit&quot; =&gt; &quot;example&quot;]);
 $client-&gt;AgentIntegration()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">agent_integrations = client.AgentIntegration().list({&quot;organization_id&quot;: &quot;example&quot;})
-agent_integration = client.AgentIntegration().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">agent_integration = client.AgentIntegration().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.AgentIntegration().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;toolkit&quot;: &quot;example&quot; })
 client.AgentIntegration().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">agent_integrations = client.AgentIntegration.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-agent_integration = client.AgentIntegration.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">agent_integration = client.AgentIntegration.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.AgentIntegration.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;toolkit&quot; =&gt; &quot;example&quot; })
 client.AgentIntegration.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const agent_integrations = await client.AgentIntegration().list({ organization_id: &quot;example&quot; })
-const agent_integration = await client.AgentIntegration().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const agent_integration = await client.AgentIntegration().load({ organization_id: &quot;example&quot; })
 const created = await client.AgentIntegration().create({ organization_id: &quot;example&quot;, name: &quot;example&quot;, toolkit: &quot;example&quot; })
 await client.AgentIntegration().remove({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
 </code></pre>
@@ -2799,11 +2789,225 @@ await client.AgentIntegration().remove({ id: &quot;example_id&quot;, organizatio
 <h5 id="422-invalid-connection-input-5" class="status" data-status="4xx">422: Invalid connection input</h5>
 <h5 id="502-bad-gateway-7" class="status" data-status="5xx">502: Bad gateway</h5>
 <h5 id="503-connection-provider-unavailable-5" class="status" data-status="5xx">503: Connection provider unavailable</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1organizationsorganization_idagent_integrationsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_integrations/{id}</h3>
+<p>Operation ID: <code>organizationAgentIntegrationGet</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-connection-response-6" class="status" data-status="2xx">200: Connection response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>connection</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_cancel_sign_in</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>The viewer can cancel the unfinished authorization attempt.</td>
+</tr>
+<tr>
+<td><code>connection.can_delete</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_disconnect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_enable</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_manage_sharing</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_reconnect</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.can_sync</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished.</td>
+</tr>
+<tr>
+<td><code>connection.connected_by</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td>Name of the person whose sign-in this account is.</td>
+</tr>
+<tr>
+<td><code>connection.connected_by_you</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>True when the viewer is the person whose sign-in this account is.</td>
+</tr>
+<tr>
+<td><code>connection.creation_key_digest</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>SHA-256 of the unfinished setup key for its original creator.</td>
+</tr>
+<tr>
+<td><code>connection.generation</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_disabled_reason</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_identity</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_identity.account_label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_identity.checked_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_identity.status</code></td>
+<td><code>enum: verified, unavailable</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_identity.workspace_label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.provider_name</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td>The app's display name; null for a custom MCP server, which uses the account name.</td>
+</tr>
+<tr>
+<td><code>connection.reference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Pins this account's current authorization, as <code>agent_connection_ID</code>:GENERATION.</td>
+</tr>
+<tr>
+<td><code>connection.sharing_status</code></td>
+<td><code>enum: team, private, personal, paused</code></td>
+<td>No</td>
+<td>Agent account audience, including legacy personal and paused access.</td>
+</tr>
+<tr>
+<td><code>connection.status</code></td>
+<td><code>enum: pending, active, expired, revoked, error</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.team_sharing_enabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.team_sharing_version</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>connection.toolkit</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-authentication-required-6" class="status" data-status="4xx">401: Authentication required</h5>
+<h5 id="403-connection-owner-access-required-5" class="status" data-status="4xx">403: Connection owner access required</h5>
+<h5 id="404-connection-or-feature-not-found-6" class="status" data-status="4xx">404: Connection or feature not found</h5>
+<h5 id="422-invalid-connection-input-6" class="status" data-status="4xx">422: Invalid connection input</h5>
+<h5 id="502-bad-gateway-8" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="503-connection-provider-unavailable-6" class="status" data-status="5xx">503: Connection provider unavailable</h5>
 <h3 id="get-apiv1organizationsorganization_idagent_integrations" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_integrations</h3>
 <p>Operation ID: <code>organizationAgentIntegrationsGet</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-8">Parameters</h4>
+<h4 id="parameters-9">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -2859,8 +3063,8 @@ await client.AgentIntegration().remove({ id: &quot;example_id&quot;, organizatio
 </tr>
 </tbody>
 </table>
-<h4 id="responses-8">Responses</h4>
-<h5 id="200-connection-response-6" class="status" data-status="2xx">200: Connection response</h5>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-connection-response-7" class="status" data-status="2xx">200: Connection response</h5>
 <p><code>application/json</code></p>
 <table>
 <thead>
@@ -3369,221 +3573,6 @@ await client.AgentIntegration().remove({ id: &quot;example_id&quot;, organizatio
 <td><code>object</code></td>
 <td>Yes</td>
 <td>Accounts per toolkit whose sign-in was started but not finished, across all account pages.</td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-authentication-required-6" class="status" data-status="4xx">401: Authentication required</h5>
-<h5 id="403-connection-owner-access-required-5" class="status" data-status="4xx">403: Connection owner access required</h5>
-<h5 id="404-connection-or-feature-not-found-6" class="status" data-status="4xx">404: Connection or feature not found</h5>
-<h5 id="422-invalid-connection-input-6" class="status" data-status="4xx">422: Invalid connection input</h5>
-<h5 id="502-bad-gateway-8" class="status" data-status="5xx">502: Bad gateway</h5>
-<h5 id="503-connection-provider-unavailable-6" class="status" data-status="5xx">503: Connection provider unavailable</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1organizationsorganization_idagent_integrationsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_integrations/{id}</h3>
-<p>Operation ID: <code>organizationAgentIntegrationGet</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-9">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-9">Responses</h4>
-<h5 id="200-connection-response-7" class="status" data-status="2xx">200: Connection response</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>connection</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_cancel_sign_in</code></td>
-<td><code>boolean</code></td>
-<td>No</td>
-<td>The viewer can cancel the unfinished authorization attempt.</td>
-</tr>
-<tr>
-<td><code>connection.can_delete</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_disconnect</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_enable</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_manage_sharing</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_reconnect</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.can_sync</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td>The viewer's own sign-in is waiting; their app may ask Rails whether the browser finished.</td>
-</tr>
-<tr>
-<td><code>connection.connected_by</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td>Name of the person whose sign-in this account is.</td>
-</tr>
-<tr>
-<td><code>connection.connected_by_you</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td>True when the viewer is the person whose sign-in this account is.</td>
-</tr>
-<tr>
-<td><code>connection.creation_key_digest</code></td>
-<td><code>string,null</code></td>
-<td>No</td>
-<td>SHA-256 of the unfinished setup key for its original creator.</td>
-</tr>
-<tr>
-<td><code>connection.generation</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_disabled_reason</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_identity</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_identity.account_label</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_identity.checked_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_identity.status</code></td>
-<td><code>enum: verified, unavailable</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_identity.workspace_label</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.provider_name</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td>The app's display name; null for a custom MCP server, which uses the account name.</td>
-</tr>
-<tr>
-<td><code>connection.reference</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>Pins this account's current authorization, as <code>agent_connection_ID</code>:GENERATION.</td>
-</tr>
-<tr>
-<td><code>connection.sharing_status</code></td>
-<td><code>enum: team, private, personal, paused</code></td>
-<td>No</td>
-<td>Agent account audience, including legacy personal and paused access.</td>
-</tr>
-<tr>
-<td><code>connection.status</code></td>
-<td><code>enum: pending, active, expired, revoked, error</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.team_sharing_enabled</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.team_sharing_version</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>connection.toolkit</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
 </tr>
 </tbody>
 </table>

@@ -29,7 +29,7 @@ describe("PullRequestSettingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:PullRequestSetting(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:PullRequestSetting(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("PullRequestSettingEntity", function()
     local setup = pull_request_setting_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "pull_request_setting." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,36 +46,8 @@ describe("PullRequestSettingEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"pull_request_setting.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PULL_REQUEST_SETTING_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local pull_request_setting_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.pull_request_setting")))
-    local pull_request_setting_ref01_data = nil
-    if #pull_request_setting_ref01_data_raw > 0 then
-      pull_request_setting_ref01_data = helpers.to_map(pull_request_setting_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local pull_request_setting_ref01_ent = client:PullRequestSetting(nil)
-    local pull_request_setting_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local pull_request_setting_ref01_list_result, err = pull_request_setting_ref01_ent:list(pull_request_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(pull_request_setting_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"pull_request_setting.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only pull_request_setting.create.0 gives\"}")
+      pending("Live coverage incomplete: pull_request_setting.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings); pull_request_setting.load.1 excluded (GET-only live run: reads a record only pull_request_setting.create.0 gives)")
       return
     end
 
@@ -106,19 +78,15 @@ describe("PullRequestSettingEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local pull_request_setting_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
+    -- LOAD
+    local pull_request_setting_ref01_match_dt0 = {
+      id = pull_request_setting_ref01_data["id"],
     }
-
-    local pull_request_setting_ref01_list_result, err = pull_request_setting_ref01_ent:list(pull_request_setting_ref01_match, nil)
+    local pull_request_setting_ref01_data_dt0_loaded, err = pull_request_setting_ref01_ent:load(pull_request_setting_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(pull_request_setting_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(pull_request_setting_ref01_list_result),
-      { id = pull_request_setting_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
+    local pull_request_setting_ref01_data_dt0_load_result = helpers.to_map(type(pull_request_setting_ref01_data_dt0_loaded) == 'table' and pull_request_setting_ref01_data_dt0_loaded.data_get and pull_request_setting_ref01_data_dt0_loaded:data_get() or pull_request_setting_ref01_data_dt0_loaded)
+    assert.is_not_nil(pull_request_setting_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(pull_request_setting_ref01_data_dt0_load_result["id"], pull_request_setting_ref01_data["id"]))
 
   end)
 end)

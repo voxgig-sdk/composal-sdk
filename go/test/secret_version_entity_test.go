@@ -38,7 +38,7 @@ func TestSecretVersionEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SecretVersion(nil).List(map[string]any{"organization_id": 1, "secret_id": "x"}, nil)
+		_, err := client.SecretVersion(nil).Load(map[string]any{"id": 1, "organization_id": "x", "secret_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSecretVersionEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "secret_version." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,89 +64,11 @@ func TestSecretVersionEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"secret_version.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_version.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_version.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_version.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "secret01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, secret_versionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SECRET_VERSION_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["secret_version01"]
-			}
-			livePace()
-			liveExisting(t, secret_versionEntityLiveStrict, setup.data, "secret_version", "id", _liveId,
-				func() (any, error) {
-					return client.SecretVersion(nil).List(map[string]any{"organization_id": setup.idmap["organization01"], "secret_id": setup.idmap["secret01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		secretVersionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.secret_version")))
-		var secretVersionRef01Data map[string]any
-		if len(secretVersionRef01DataRaw) > 0 {
-			secretVersionRef01Data = core.ToMapAny(secretVersionRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = secretVersionRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		secretVersionRef01Ent := client.SecretVersion(nil)
-		secretVersionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretVersionRef01ListResult, err := secretVersionRef01Ent.List(secretVersionRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, secretVersionRef01ListOk := secretVersionRef01ListResult.([]any)
-		if !secretVersionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", secretVersionRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		secretVersionRef01MatchDt0 := map[string]any{
-			"id": secretVersionRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			secretVersionRef01MatchDt0["organization_id"] = v
-		} else {
-			secretVersionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["secret_id"]; v != nil {
-			secretVersionRef01MatchDt0["secret_id"] = v
-		} else {
-			secretVersionRef01MatchDt0["secret_id"] = setup.idmap["secret01"]
-		}
-		secretVersionRef01DataDt0Loaded, err := secretVersionRef01Ent.Load(secretVersionRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		secretVersionRef01DataDt0LoadResult := core.ToMapAny(entityData(secretVersionRef01DataDt0Loaded))
-		if secretVersionRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(secretVersionRef01DataDt0LoadResult["id"], secretVersionRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"secret_version.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"secret_version.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only secret_version.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"secret_version.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}\"}")
+			t.Skip("Live coverage incomplete: secret_version.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact); secret_version.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}); secret_version.load.2 excluded (GET-only live run: reads a record only secret_version.create.0 gives); secret_version.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id})")
+			return
 		}
 
 		if setup.live {
@@ -184,29 +106,6 @@ func TestSecretVersionEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		secretVersionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretVersionRef01ListResult, err := secretVersionRef01Ent.List(secretVersionRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		secretVersionRef01List, secretVersionRef01ListOk := secretVersionRef01ListResult.([]any)
-		if !secretVersionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", secretVersionRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(secretVersionRef01List), map[string]any{"id": secretVersionRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		secretVersionRef01DataUp0Up := map[string]any{
 			"id": secretVersionRef01Data["id"],
@@ -237,11 +136,6 @@ func TestSecretVersionEntity(t *testing.T) {
 			secretVersionRef01MatchDt0["organization_id"] = v
 		} else {
 			secretVersionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["secret_id"]; v != nil {
-			secretVersionRef01MatchDt0["secret_id"] = v
-		} else {
-			secretVersionRef01MatchDt0["secret_id"] = setup.idmap["secret01"]
 		}
 		secretVersionRef01DataDt0Loaded, err := secretVersionRef01Ent.Load(secretVersionRef01MatchDt0, nil)
 		if err != nil {
@@ -275,29 +169,6 @@ func TestSecretVersionEntity(t *testing.T) {
 		_, err = secretVersionRef01Ent.Remove(secretVersionRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		secretVersionRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretVersionRef01ListRt0Result, err := secretVersionRef01Ent.List(secretVersionRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		secretVersionRef01ListRt0, secretVersionRef01ListRt0Ok := secretVersionRef01ListRt0Result.([]any)
-		if !secretVersionRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", secretVersionRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(secretVersionRef01ListRt0), map[string]any{"id": secretVersionRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -29,7 +29,7 @@ describe("OrganizationAppEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:OrganizationApp(nil):list({ ["organization_id"] = 1, ["native_agent_id"] = "x" }, nil)
+    local _, err = client:OrganizationApp(nil):load({ ["organization_id"] = 1, ["native_agent_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("OrganizationAppEntity", function()
     local setup = organization_app_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "organization_app." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,47 +45,16 @@ describe("OrganizationAppEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"organization_app.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_ORGANIZATION_APP_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local organization_app_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.organization_app")))
-    local organization_app_ref01_data = nil
-    if #organization_app_ref01_data_raw > 0 then
-      organization_app_ref01_data = helpers.to_map(organization_app_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local organization_app_ref01_ent = client:OrganizationApp(nil)
-    local organization_app_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local organization_app_ref01_list_result, err = organization_app_ref01_ent:list(organization_app_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(organization_app_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"organization_app.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
+      pending("Live coverage incomplete: organization_app.update.0 excluded (GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install)")
       return
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_ORGANIZATION_APP_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -95,19 +64,6 @@ describe("OrganizationAppEntity", function()
     if #organization_app_ref01_data_raw > 0 then
       organization_app_ref01_data = helpers.to_map(organization_app_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local organization_app_ref01_ent = client:OrganizationApp(nil)
-    local organization_app_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local organization_app_ref01_list_result, err = organization_app_ref01_ent:list(organization_app_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(organization_app_ref01_list_result)
 
   end)
 end)

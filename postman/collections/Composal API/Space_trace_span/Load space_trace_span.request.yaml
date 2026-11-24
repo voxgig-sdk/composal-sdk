@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5ccd93af-806f-57f1-909c-4b057819b0f5"
+description: |-
+  The `load` operation of **space_trace_span**.
+
+  SDK: `client.SpaceTraceSpan().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/trace_spans"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

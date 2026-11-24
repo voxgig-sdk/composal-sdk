@@ -290,22 +290,20 @@ class RunArtifactEntity
     }
 
     
-
-    
     /**
-     * List RunArtifact items matching the given filter.
+     * Load a single RunArtifact.
      *
-     * @param RunArtifactListMatch|array|null $reqmatch Match filter (any subset
-     *   of RunArtifact fields) as an assoc-array; RunArtifactListMatch names the shape.
+     * @param RunArtifactLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed RunArtifactLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return RunArtifactEntity[] The RunArtifact entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return RunArtifactEntity The loaded RunArtifact entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class RunArtifactEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
     /**

@@ -33,7 +33,7 @@ class NodeLeaseEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->NodeLease(null)->list(["node_id" => 1], null);
+            $client->NodeLease(null)->load(["node_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class NodeLeaseEntityTest extends TestCase
         $setup = node_lease_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "node_lease." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,14 @@ class NodeLeaseEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"node_lease.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["node01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_NODE_LEASE_ENTID");
-                }
-            }
+            fwrite(STDOUT, 'LIVE STEP {"id":"node_lease.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only node_lease.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: node_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim); node_lease.load.1 excluded (GET-only live run: reads a record only node_lease.create.0 gives)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -70,50 +71,6 @@ class NodeLeaseEntityTest extends TestCase
         if (count($node_lease_ref01_data_raw) > 0) {
             $node_lease_ref01_data = Helpers::to_map($node_lease_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $node_lease_ref01_ent = $client->NodeLease(null);
-        $node_lease_ref01_match = [
-            "node_id" => $setup["idmap"]["node01"],
-        ];
-
-        $node_lease_ref01_list_result = $node_lease_ref01_ent->list($node_lease_ref01_match, null);
-        $this->assertIsArray($node_lease_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["node01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_NODE_LEASE_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $node_lease_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.node_lease")));
-        $node_lease_ref01_data = null;
-        if (count($node_lease_ref01_data_raw) > 0) {
-            $node_lease_ref01_data = Helpers::to_map($node_lease_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $node_lease_ref01_ent = $client->NodeLease(null);
-        $node_lease_ref01_match = [
-            "node_id" => $setup["idmap"]["node01"],
-        ];
-
-        $node_lease_ref01_list_result = $node_lease_ref01_ent->list($node_lease_ref01_match, null);
-        $this->assertIsArray($node_lease_ref01_list_result);
 
     }
 }

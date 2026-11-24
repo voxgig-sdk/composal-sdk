@@ -357,7 +357,7 @@ main: kit: entity: vc_merge_queue: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.target_branches`"
           }
         }
       ]

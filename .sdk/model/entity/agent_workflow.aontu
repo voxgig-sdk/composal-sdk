@@ -143,8 +143,8 @@ main: kit: entity: agent_workflow: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

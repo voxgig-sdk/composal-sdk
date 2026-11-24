@@ -1,4 +1,4 @@
 $kind: collection
 id: "69bb16f2-1600-5fe2-b9b2-a84c8def07f3"
 description: "The `BasicAgentIntegrationAccountFlow` flow of **agent_integration_account**."
-order: 23000
+order: 21000

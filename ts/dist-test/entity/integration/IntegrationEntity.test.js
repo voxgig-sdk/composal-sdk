@@ -60,28 +60,23 @@ const utility_1 = require("../../utility");
             return;
         }
         const client = __1.ComposalSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.Integration().list({ "organization_id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.Integration().load({ "organization_id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE;
-        for (const op of ['list']) {
+        for (const op of []) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'integration.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "github": { "a": true, "h": "Github", "n": "github", "r": true, "t": "`$OBJECT`", "key$": "github", "index$": 0 }, "gitlab": { "a": true, "h": "Gitlab", "n": "gitlab", "r": true, "t": "`$OBJECT`", "key$": "gitlab", "index$": 1 }, "permissions": { "a": true, "h": "Permissions", "n": "permissions", "r": true, "t": "`$OBJECT`", "key$": "permissions", "index$": 2 }, "slack": { "a": true, "h": "Slack", "n": "slack", "r": true, "t": "`$OBJECT`", "key$": "slack", "index$": 3 } }, "name": "integration", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/organizations/{organization_id}/verification/integrations", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "organization_id", "or": "organization_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/organizations/{organization_id}/verification/integrations", "q": { "exist": ["organization_id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "organizations" }, { "var": "organization_id" }, { "lit": "verification" }, { "lit": "integrations" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [["$.main.kit.entity.organization"]] }, "key$": "integration", "name__orig": "integration", "Name": "Integration", "name_": "integration", "name-": "integration", "NAME": "INTEGRATION", "index$": 282 }, { "active": true, "entity": "integration", "key$": "BasicIntegrationFlow", "kind": "basic", "name": "BasicIntegrationFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": { "organization_id": "organization01" }, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "integration_ref01" } }], "index$": 0 }] }, 'Integration', { "GET /api/v1/organizations/{organization_id}/verification/integrations": { "protocol": "http", "parameters": [{ "name": "organization_id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "github": { "a": true, "h": "Github", "n": "github", "r": true, "t": "`$OBJECT`", "key$": "github", "index$": 0 }, "gitlab": { "a": true, "h": "Gitlab", "n": "gitlab", "r": true, "t": "`$OBJECT`", "key$": "gitlab", "index$": 1 }, "permissions": { "a": true, "h": "Permissions", "n": "permissions", "r": true, "t": "`$OBJECT`", "key$": "permissions", "index$": 2 }, "slack": { "a": true, "h": "Slack", "n": "slack", "r": true, "t": "`$OBJECT`", "key$": "slack", "index$": 3 } }, "name": "integration", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/organizations/{organization_id}/verification/integrations", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "organization_id", "or": "organization_id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/organizations/{organization_id}/verification/integrations", "q": { "exist": ["organization_id"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "organizations" }, { "var": "organization_id" }, { "lit": "verification" }, { "lit": "integrations" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [["$.main.kit.entity.organization"]] }, "key$": "integration", "name__orig": "integration", "Name": "Integration", "name_": "integration", "name-": "integration", "NAME": "INTEGRATION", "index$": 282 }, { "active": true, "entity": "integration", "key$": "BasicIntegrationFlow", "kind": "basic", "name": "BasicIntegrationFlow", "param": {}, "step": [{ "a": false, "d": {}, "i": { "ref": "integration_ref01", "srcdatavar": "integration_ref01_data", "suffix": "_dt0" }, "m": { "id": "integration01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-integration_ref01" } }], "unreachable": true }] }, 'Integration', { "GET /api/v1/organizations/{organization_id}/verification/integrations": { "protocol": "http", "parameters": [{ "name": "organization_id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         let integration_ref01_data = Object.values(setup.data.existing.integration)[0];
-        // LIST
-        const integration_ref01_ent = client.Integration();
-        const integration_ref01_match = {};
-        integration_ref01_match['organization_id'] = setup.idmap['organization01'];
-        const integration_ref01_list = (await integration_ref01_ent.list(integration_ref01_match)).map((e) => e.data());
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live

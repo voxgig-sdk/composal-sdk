@@ -19,22 +19,6 @@ main: kit: flow: BasicCiPipelineRunFlow:
     }
 
     {
-      m: {
-        pipeline_id: "pipeline01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "ci_pipeline_run_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "ci_pipeline_run_ref01",
         srcdatavar: "ci_pipeline_run_ref01_data",
@@ -42,8 +26,7 @@ main: kit: flow: BasicCiPipelineRunFlow:
       }
 
       m: {
-        id: "ci_pipeline_run01",
-        pipeline_id: "pipeline01"
+        id: "ci_pipeline_run01"
       }
 
       o: "load",

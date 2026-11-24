@@ -103,8 +103,8 @@
 <a class="nav-section" href="#post-apiv1hostingappsapp_idservicesidpause">POST /api/v1/hosting/apps/{app_id}/services/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idservicesidresume">POST /api/v1/hosting/apps/{app_id}/services/{id}/resume</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idservices">POST /api/v1/hosting/apps/{app_id}/services</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idservices">GET /api/v1/hosting/apps/{app_id}/services</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idservicesid">GET /api/v1/hosting/apps/{app_id}/services/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idservices">GET /api/v1/hosting/apps/{app_id}/services</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idservicesid">PATCH /api/v1/hosting/apps/{app_id}/services/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idservicesid">DELETE /api/v1/hosting/apps/{app_id}/services/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idservicesid">PUT /api/v1/hosting/apps/{app_id}/services/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservices"><code>/api/v1/hosting/apps/{app_id}/services</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idservicesid"><code>/api/v1/hosting/apps/{app_id}/services/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idservicesid"><code>/api/v1/hosting/apps/{app_id}/services/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idservices"><code>/api/v1/hosting/apps/{app_id}/services</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_services, err := client.AppService(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_services)
-app_service, err := client.AppService(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_service, err := client.AppService(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_services, err = client:AppService():list({ app_id = &quot;example&quot; })
-local app_service, err = client:AppService():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_service, err = client:AppService():load({ app_id = &quot;example&quot; })
 local created, err = client:AppService():create({ app_id = &quot;example&quot;, auto_deploy = true, desired_instances = 1, kind = &quot;example&quot;, name = &quot;example&quot;, publicly_accessible = true, runtime = &quot;example&quot;, runtime_adapter_kind = &quot;example&quot;, slug = &quot;example&quot;, source_path = &quot;example&quot;, start_command = &quot;example&quot; })
 local updated, err = client:AppService():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, auto_deploy = true })
 local patched, err = client:AppService():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, auto_deploy = true })
@@ -705,8 +699,7 @@ local removed, err = client:AppService():remove({ app_id = &quot;example&quot;, 
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_services = $client-&gt;AppService()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_service = $client-&gt;AppService()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_service = $client-&gt;AppService()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppService()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true, &quot;desired_instances&quot; =&gt; 1, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;publicly_accessible&quot; =&gt; true, &quot;runtime&quot; =&gt; &quot;example&quot;, &quot;runtime_adapter_kind&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;source_path&quot; =&gt; &quot;example&quot;, &quot;start_command&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppService()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true]);
 $patched = $client-&gt;AppService()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true]);
@@ -714,8 +707,7 @@ $client-&gt;AppService()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example&quot
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_services = client.AppService().list({&quot;app_id&quot;: &quot;example&quot;})
-app_service = client.AppService().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_service = client.AppService().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppService().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True, &quot;desired_instances&quot;: 1, &quot;kind&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;publicly_accessible&quot;: True, &quot;runtime&quot;: &quot;example&quot;, &quot;runtime_adapter_kind&quot;: &quot;example&quot;, &quot;slug&quot;: &quot;example&quot;, &quot;source_path&quot;: &quot;example&quot;, &quot;start_command&quot;: &quot;example&quot; })
 updated = client.AppService().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True})
 patched = client.AppService().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True})
@@ -723,8 +715,7 @@ client.AppService().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;id&qu
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_services = client.AppService.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_service = client.AppService.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_service = client.AppService.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppService.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true, &quot;desired_instances&quot; =&gt; 1, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;publicly_accessible&quot; =&gt; true, &quot;runtime&quot; =&gt; &quot;example&quot;, &quot;runtime_adapter_kind&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;source_path&quot; =&gt; &quot;example&quot;, &quot;start_command&quot; =&gt; &quot;example&quot; })
 updated = client.AppService.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true })
 patched = client.AppService.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true })
@@ -732,8 +723,7 @@ client.AppService.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;i
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_services = await client.AppService().list({ app_id: &quot;example&quot; })
-const app_service = await client.AppService().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_service = await client.AppService().load({ app_id: &quot;example&quot; })
 const created = await client.AppService().create({ app_id: &quot;example&quot;, auto_deploy: true, desired_instances: 1, kind: &quot;example&quot;, name: &quot;example&quot;, publicly_accessible: true, runtime: &quot;example&quot;, runtime_adapter_kind: &quot;example&quot;, slug: &quot;example&quot;, source_path: &quot;example&quot;, start_command: &quot;example&quot; })
 const updated = await client.AppService().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, auto_deploy: true })
 const patched = await client.AppService().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, auto_deploy: true })
@@ -3088,9 +3078,9 @@ await client.AppService().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 </tbody>
 </table>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idservices" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services</h3>
-<p>Operation ID: <code>api_v1_app_services</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idservicesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{id}</h3>
+<p>Operation ID: <code>api_v1_app_service</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -3111,6 +3101,13 @@ await client.AppService().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-4">Responses</h4>
@@ -3122,9 +3119,8 @@ await client.AppService().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idservicesid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services/{id}</h3>
-<p>Operation ID: <code>api_v1_app_service</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idservices" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/services</h3>
+<p>Operation ID: <code>api_v1_app_services</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -3140,13 +3136,6 @@ await client.AppService().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <tbody>
 <tr>
 <td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

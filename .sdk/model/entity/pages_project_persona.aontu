@@ -5,49 +5,142 @@ main: kit: entity: pages_project_persona: {
   alias: field: {}
 
   fields: {
-    active_count: {
-      h: "Active Count"
-      n: "active_count"
+    access_mode: {
+      h: "Access Mode"
+      n: "access_mode"
+      r: true
+      t: "`$STRING`"
+    }
+    active_run_count: {
+      h: "Active Run Count"
+      n: "active_run_count"
       r: true
       t: "`$INTEGER`"
     }
-    credentials: {
-      h: "Credentials"
-      n: "credentials"
+    archived_at: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archived_at"
       r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    attention: {
+      h: "Attention"
+      n: "attention"
+      r: true
+      sh: "What needs an operator's eye, problems before notices"
       t: "`$ARRAY`"
     }
-    needs_attention_count: {
-      h: "Needs Attention Count"
-      n: "needs_attention_count"
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    credential: {
+      h: "Credential"
+      n: "credential"
+      r: true
+      t: "`$ANY`"
+    }
+    credential_id: {
+      h: "Credential Id"
+      n: "credential_id"
+      r: true
+      sh: "The credential this persona signs in with."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    goals: {
+      h: "Goals"
+      n: "goals"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    health: {
+      h: "Health"
+      n: "health"
+      r: true
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    lock_version: {
+      h: "Lock Version"
+      n: "lock_version"
       r: true
       t: "`$INTEGER`"
     }
-    permissions: {
-      h: "Permissions"
-      n: "permissions"
+    name: {
+      h: "Name"
+      n: "name"
       r: true
-      t: "`$OBJECT`"
+      t: "`$STRING`"
     }
-    persona_states: {
-      h: "Persona States"
-      n: "persona_states"
+    project_id: {
+      h: "Project Id"
+      n: "project_id"
       r: true
-      sh: "Scenarios by the state of their latest execution."
-      t: "`$OBJECT`"
+      t: "`$STRING`"
     }
-    personas: {
-      h: "Personas"
-      n: "personas"
+    role: {
+      h: "Role"
+      n: "role"
       r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    project: {
-      h: "Project"
-      n: "project"
+    scenario_count: {
+      h: "Scenario Count"
+      n: "scenario_count"
       r: true
-      t: "`$OBJECT`"
+      t: "`$INTEGER`"
     }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "pages_project_persona"
@@ -127,7 +220,7 @@ main: kit: entity: pages_project_persona: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.personas`"
           }
         }
       ]

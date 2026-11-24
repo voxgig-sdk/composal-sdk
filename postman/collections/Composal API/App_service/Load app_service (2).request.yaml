@@ -1,0 +1,15 @@
+$kind: http-request
+id: "5e4cadb2-254e-5fe7-a2b8-33f23a9fd203"
+description: |-
+  The `load` operation of **app_service**.
+
+  SDK: `client.AppService().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/services"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service belongs to.
+order: 2000

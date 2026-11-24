@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1sparkdevicesenterprise_relays"><code>/api/v1/spark/devices/enterprise_relays</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">device_enterprise_relays, err := client.DeviceEnterpriseRelay(nil).List(nil, nil)
+<pre><code class="language-go">device_enterprise_relay, err := client.DeviceEnterpriseRelay(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(device_enterprise_relays)
+fmt.Println(device_enterprise_relay)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local device_enterprise_relays, err = client:DeviceEnterpriseRelay():list()
+<pre><code class="language-lua">local device_enterprise_relay, err = client:DeviceEnterpriseRelay():load()
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$device_enterprise_relays = $client-&gt;DeviceEnterpriseRelay()-&gt;list();
+<pre><code class="language-php">$device_enterprise_relay = $client-&gt;DeviceEnterpriseRelay()-&gt;load();
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">device_enterprise_relays = client.DeviceEnterpriseRelay().list()
+<pre><code class="language-py">device_enterprise_relay = client.DeviceEnterpriseRelay().load()
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">device_enterprise_relays = client.DeviceEnterpriseRelay.list()
+<pre><code class="language-rb">device_enterprise_relay = client.DeviceEnterpriseRelay.load()
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const device_enterprise_relays = await client.DeviceEnterpriseRelay().list()
+<pre><code class="language-ts">const device_enterprise_relay = await client.DeviceEnterpriseRelay().load()
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -644,7 +644,7 @@ fmt.Println(device_enterprise_relays)
 </tr>
 </thead>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1sparkdevicesenterprise_relays" class="operation" data-method="get"><code>GET</code> /api/v1/spark/devices/enterprise_relays</h3>
 <p>Operation ID: <code>api_v1_spark_devices_enterprise_relays</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

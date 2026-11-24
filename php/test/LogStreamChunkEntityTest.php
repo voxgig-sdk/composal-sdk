@@ -33,7 +33,7 @@ class LogStreamChunkEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->LogStreamChunk(null)->list(["log_stream_id" => 1, "space_id" => 'x'], null);
+            $client->LogStreamChunk(null)->load(["id" => 1, "log_stream_id" => 'x', "space_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class LogStreamChunkEntityTest extends TestCase
         $setup = log_stream_chunk_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "log_stream_chunk." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,59 +54,8 @@ class LogStreamChunkEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"log_stream_chunk.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["log_stream01", "space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["log_stream_chunk01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "log_stream_chunk",
-                fn() => $client->LogStreamChunk(null)->list(["log_stream_id" => $setup["idmap"]["log_stream01"] ?? null, "space_id" => $setup["idmap"]["space01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $log_stream_chunk_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.log_stream_chunk")));
-        $log_stream_chunk_ref01_data = null;
-        if (count($log_stream_chunk_ref01_data_raw) > 0) {
-            $log_stream_chunk_ref01_data = Helpers::to_map($log_stream_chunk_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $log_stream_chunk_ref01_ent = $client->LogStreamChunk(null);
-        $log_stream_chunk_ref01_match = [
-            "log_stream_id" => $setup["idmap"]["log_stream01"],
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $log_stream_chunk_ref01_list_result = $log_stream_chunk_ref01_ent->list($log_stream_chunk_ref01_match, null);
-        $this->assertIsArray($log_stream_chunk_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $log_stream_chunk_ref01_match_dt0 = [
-            "id" => $log_stream_chunk_ref01_data["id"],
-        ];
-        $log_stream_chunk_ref01_match_dt0["log_stream_id"] = $setup["idmap"]["log_stream_id"] ?? $setup["idmap"]["log_stream01"] ?? null;
-        $log_stream_chunk_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
-        $log_stream_chunk_ref01_data_dt0_loaded = $log_stream_chunk_ref01_ent->load($log_stream_chunk_ref01_match_dt0, null);
-        $log_stream_chunk_ref01_data_dt0_load_result = Helpers::to_map(is_object($log_stream_chunk_ref01_data_dt0_loaded) && method_exists($log_stream_chunk_ref01_data_dt0_loaded, 'data_get') ? $log_stream_chunk_ref01_data_dt0_loaded->data_get() : $log_stream_chunk_ref01_data_dt0_loaded);
-        $this->assertNotNull($log_stream_chunk_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($log_stream_chunk_ref01_data_dt0_load_result["id"] ?? null, $log_stream_chunk_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"log_stream_chunk.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only log_stream_chunk.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: log_stream_chunk.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks); log_stream_chunk.load.1 excluded (GET-only live run: reads a record only log_stream_chunk.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -136,28 +85,10 @@ class LogStreamChunkEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $log_stream_chunk_ref01_match = [
-            "log_stream_id" => $setup["idmap"]["log_stream01"],
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $log_stream_chunk_ref01_list_result = $log_stream_chunk_ref01_ent->list($log_stream_chunk_ref01_match, null);
-        $this->assertIsArray($log_stream_chunk_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($log_stream_chunk_ref01_list_result),
-            ["id" => $log_stream_chunk_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $log_stream_chunk_ref01_match_dt0 = [
             "id" => $log_stream_chunk_ref01_data["id"],
         ];
-        $log_stream_chunk_ref01_match_dt0["log_stream_id"] = $setup["idmap"]["log_stream_id"] ?? $setup["idmap"]["log_stream01"] ?? null;
         $log_stream_chunk_ref01_match_dt0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $log_stream_chunk_ref01_data_dt0_loaded = $log_stream_chunk_ref01_ent->load($log_stream_chunk_ref01_match_dt0, null);
         $log_stream_chunk_ref01_data_dt0_load_result = Helpers::to_map(is_object($log_stream_chunk_ref01_data_dt0_loaded) && method_exists($log_stream_chunk_ref01_data_dt0_loaded, 'data_get') ? $log_stream_chunk_ref01_data_dt0_loaded->data_get() : $log_stream_chunk_ref01_data_dt0_loaded);

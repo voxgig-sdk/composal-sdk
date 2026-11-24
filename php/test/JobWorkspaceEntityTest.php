@@ -33,7 +33,7 @@ class JobWorkspaceEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->JobWorkspace(null)->list(["job_id" => 1, "pipeline_id" => 'x', "run_id" => 'x'], null);
+            $client->JobWorkspace(null)->load(["job_id" => 1, "pipeline_id" => 'x', "run_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class JobWorkspaceEntityTest extends TestCase
         $setup = job_workspace_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "job_workspace." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,39 +54,9 @@ class JobWorkspaceEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"job_workspace.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"job_workspace.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["job01", "pipeline01", "run01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_JOB_WORKSPACE_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $job_workspace_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.job_workspace")));
-        $job_workspace_ref01_data = null;
-        if (count($job_workspace_ref01_data_raw) > 0) {
-            $job_workspace_ref01_data = Helpers::to_map($job_workspace_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $job_workspace_ref01_ent = $client->JobWorkspace(null);
-        $job_workspace_ref01_match = [
-            "job_id" => $setup["idmap"]["job01"],
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $job_workspace_ref01_list_result = $job_workspace_ref01_ent->list($job_workspace_ref01_match, null);
-        $this->assertIsArray($job_workspace_ref01_list_result);
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"job_workspace.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"job_workspace.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only job_workspace.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: job_workspace.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces); job_workspace.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}); job_workspace.load.2 excluded (GET-only live run: reads a record only job_workspace.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -117,24 +87,6 @@ class JobWorkspaceEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $job_workspace_ref01_match = [
-            "job_id" => $setup["idmap"]["job01"],
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $job_workspace_ref01_list_result = $job_workspace_ref01_ent->list($job_workspace_ref01_match, null);
-        $this->assertIsArray($job_workspace_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($job_workspace_ref01_list_result),
-            ["id" => $job_workspace_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $job_workspace_ref01_data_up0_up = [
             "id" => $job_workspace_ref01_data["id"],
@@ -148,6 +100,22 @@ class JobWorkspaceEntityTest extends TestCase
         $this->assertNotNull($job_workspace_ref01_resdata_up0);
         if (empty($setup["live"])) {
             $this->assertTrue(Runner::live_same_id($job_workspace_ref01_resdata_up0["id"] ?? null, $job_workspace_ref01_data_up0_up["id"]));
+        }
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $job_workspace_ref01_match_dt0 = [
+            "id" => $job_workspace_ref01_data["id"],
+        ];
+        $job_workspace_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
+        $job_workspace_ref01_match_dt0["run_id"] = $setup["idmap"]["run_id"] ?? $setup["idmap"]["run01"] ?? null;
+        $job_workspace_ref01_data_dt0_loaded = $job_workspace_ref01_ent->load($job_workspace_ref01_match_dt0, null);
+        $job_workspace_ref01_data_dt0_load_result = Helpers::to_map(is_object($job_workspace_ref01_data_dt0_loaded) && method_exists($job_workspace_ref01_data_dt0_loaded, 'data_get') ? $job_workspace_ref01_data_dt0_loaded->data_get() : $job_workspace_ref01_data_dt0_loaded);
+        $this->assertNotNull($job_workspace_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($job_workspace_ref01_data_dt0_load_result["id"] ?? null, $job_workspace_ref01_data["id"]));
         }
 
     }

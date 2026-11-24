@@ -37,7 +37,7 @@ class TestRepoAgentSessionEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.RepoAgentSession(None).list({"organization_id": 1, "repo_id": "x"}, None)
+            client.RepoAgentSession(None).load({"id": 1, "organization_id": "x", "repo_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,16 @@ class TestRepoAgentSessionEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "repo_agent_session." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"repo_agent_session.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete\"}")
-            print("LIVE STEP {\"id\":\"repo_agent_session.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"repo_agent_session.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}")
+            print("LIVE STEP {\"id\":\"repo_agent_session.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repo_agent_session.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: repo_agent_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete); repo_agent_session.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}); repo_agent_session.load.2 excluded (GET-only live run: reads a record only repo_agent_session.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["organization01", "repo01"]:
@@ -74,22 +75,6 @@ class TestRepoAgentSessionEntity:
         repo_agent_session_ref01_data = helpers.to_map(runner.entity_data(repo_agent_session_ref01_ent.create(repo_agent_session_ref01_data, None)))
         assert repo_agent_session_ref01_data is not None
         assert repo_agent_session_ref01_data["id"] is not None
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        repo_agent_session_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-            "repo_id": setup["idmap"]["repo01"],
-        }
-
-        repo_agent_session_ref01_list_result = repo_agent_session_ref01_ent.list(repo_agent_session_ref01_match, None)
-        assert isinstance(repo_agent_session_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(repo_agent_session_ref01_list_result),
-            {"id": repo_agent_session_ref01_data["id"]})
-        assert not vs.isempty(found_item)
 
         if setup["live"]:
             runner.live_pace()
@@ -116,53 +101,6 @@ class TestRepoAgentSessionEntity:
             "id": repo_agent_session_ref01_data["id"],
         }
         repo_agent_session_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        repo_agent_session_ref01_match_dt0["repo_id"] = setup["idmap"].get("repo_id") or setup["idmap"].get("repo01")
-        repo_agent_session_ref01_data_dt0_loaded = repo_agent_session_ref01_ent.load(repo_agent_session_ref01_match_dt0, None)
-        repo_agent_session_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(repo_agent_session_ref01_data_dt0_loaded))
-        assert repo_agent_session_ref01_data_dt0_load_result is not None
-        assert runner.live_same_id(repo_agent_session_ref01_data_dt0_load_result.get("id"), repo_agent_session_ref01_data["id"])
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01", "repo01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_REPO_AGENT_SESSION_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("repo_agent_session01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "repo_agent_session",
-                                 lambda: client.RepoAgentSession(None).list({"organization_id": setup["idmap"].get("organization01"), "repo_id": setup["idmap"].get("repo01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        repo_agent_session_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.repo_agent_session")))
-        repo_agent_session_ref01_data = None
-        if len(repo_agent_session_ref01_data_raw) > 0:
-            repo_agent_session_ref01_data = helpers.to_map(repo_agent_session_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        repo_agent_session_ref01_ent = client.RepoAgentSession(None)
-        repo_agent_session_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-            "repo_id": setup["idmap"]["repo01"],
-        }
-
-        repo_agent_session_ref01_list_result = repo_agent_session_ref01_ent.list(repo_agent_session_ref01_match, None)
-        assert isinstance(repo_agent_session_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        repo_agent_session_ref01_match_dt0 = {
-            "id": repo_agent_session_ref01_data["id"],
-        }
-        repo_agent_session_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
-        repo_agent_session_ref01_match_dt0["repo_id"] = setup["idmap"].get("repo_id") or setup["idmap"].get("repo01")
         repo_agent_session_ref01_data_dt0_loaded = repo_agent_session_ref01_ent.load(repo_agent_session_ref01_match_dt0, None)
         repo_agent_session_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(repo_agent_session_ref01_data_dt0_loaded))
         assert repo_agent_session_ref01_data_dt0_load_result is not None

@@ -606,7 +606,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1cli_releases"><code>/api/v1/cli_releases</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
@@ -621,11 +621,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">cli_releases, err := client.CliRelease(nil).List(nil, nil)
+<pre><code class="language-go">cli_release, err := client.CliRelease(nil).Load(nil, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(cli_releases)
+fmt.Println(cli_release)
 created, err := client.CliRelease(nil).Create(map[string]any{}, nil)
 if err != nil {
     panic(err)
@@ -634,27 +634,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local cli_releases, err = client:CliRelease():list()
+<pre><code class="language-lua">local cli_release, err = client:CliRelease():load()
 local created, err = client:CliRelease():create({  })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$cli_releases = $client-&gt;CliRelease()-&gt;list();
+<pre><code class="language-php">$cli_release = $client-&gt;CliRelease()-&gt;load();
 $created = $client-&gt;CliRelease()-&gt;create([]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">cli_releases = client.CliRelease().list()
+<pre><code class="language-py">cli_release = client.CliRelease().load()
 created = client.CliRelease().create({  })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">cli_releases = client.CliRelease.list()
+<pre><code class="language-rb">cli_release = client.CliRelease.load()
 created = client.CliRelease.create({  })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const cli_releases = await client.CliRelease().list()
+<pre><code class="language-ts">const cli_release = await client.CliRelease().load()
 const created = await client.CliRelease().create({  })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -684,7 +684,7 @@ const created = await client.CliRelease().create({  })
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1cli_releases" class="operation" data-method="get"><code>GET</code> /api/v1/cli_releases</h3>
 <p>Operation ID: <code>api_v1_cli_releases</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
@@ -697,7 +697,6 @@ const created = await client.CliRelease().create({  })
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
 <h3 id="get-apiv1cli_releaseslatest" class="operation" data-method="get"><code>GET</code> /api/v1/cli_releases/latest</h3>
 <p>Operation ID: <code>latest_api_v1_cli_releases</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

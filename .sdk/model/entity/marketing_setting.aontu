@@ -15,8 +15,8 @@ main: kit: entity: marketing_setting: {
 
   name: "marketing_setting"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

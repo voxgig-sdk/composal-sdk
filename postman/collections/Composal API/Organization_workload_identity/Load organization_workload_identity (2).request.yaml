@@ -1,0 +1,15 @@
+$kind: http-request
+id: "36695af2-f6cd-5c1a-b09e-8925461627f0"
+description: |-
+  The `load` operation of **organization_workload_identity**.
+
+  SDK: `client.OrganizationWorkloadIdentity().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/workload_identities"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_workload_identity belongs to.
+order: 2000

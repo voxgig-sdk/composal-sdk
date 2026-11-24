@@ -21,24 +21,6 @@ main: kit: flow: BasicJobWorkspaceFlow:
     }
 
     {
-      m: {
-        job_id: "job01",
-        pipeline_id: "pipeline01",
-        run_id: "run01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "job_workspace_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         job_id: "job01",
         pipeline_id: "pipeline01",
@@ -53,6 +35,30 @@ main: kit: flow: BasicJobWorkspaceFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-job_workspace_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "job_workspace_ref01",
+        srcdatavar: "job_workspace_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "job_workspace01",
+        pipeline_id: "pipeline01",
+        run_id: "run01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

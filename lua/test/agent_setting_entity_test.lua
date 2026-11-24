@@ -29,7 +29,7 @@ describe("AgentSettingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentSetting(nil):list({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:AgentSetting(nil):load({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AgentSettingEntity", function()
     local setup = agent_setting_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_setting." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,48 +45,16 @@ describe("AgentSettingEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"agent_setting.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SETTING_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local agent_setting_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.agent_setting")))
-    local agent_setting_ref01_data = nil
-    if #agent_setting_ref01_data_raw > 0 then
-      agent_setting_ref01_data = helpers.to_map(agent_setting_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_setting_ref01_ent = client:AgentSetting(nil)
-    local agent_setting_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_setting_ref01_list_result, err = agent_setting_ref01_ent:list(agent_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_setting_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"agent_setting.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings\"}")
+      pending("Live coverage incomplete: agent_setting.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings)")
       return
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_SETTING_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -96,20 +64,6 @@ describe("AgentSettingEntity", function()
     if #agent_setting_ref01_data_raw > 0 then
       agent_setting_ref01_data = helpers.to_map(agent_setting_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_setting_ref01_ent = client:AgentSetting(nil)
-    local agent_setting_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_setting_ref01_list_result, err = agent_setting_ref01_ent:list(agent_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_setting_ref01_list_result)
 
   end)
 end)

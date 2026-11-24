@@ -25,7 +25,7 @@ class ServiceEndpointEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ServiceEndpoint(nil).list({ "app_id" => 1, "service_id" => "x" }, nil)
+      client.ServiceEndpoint(nil).load({ "app_id" => 1, "service_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class ServiceEndpointEntityTest < Minitest::Test
     setup = service_endpoint_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "service_endpoint." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,57 +43,10 @@ class ServiceEndpointEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"service_endpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints\"}"
-      puts "LIVE STEP {\"id\":\"service_endpoint.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}"
-      puts "LIVE STEP {\"id\":\"service_endpoint.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}"
-      puts "LIVE STEP {\"id\":\"service_endpoint.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["app01", "service01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SERVICE_ENDPOINT_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["service_endpoint01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "service_endpoint", "id", _live_id) do
-        client.ServiceEndpoint(nil).list({"app_id" => setup[:idmap]["app01"], "service_id" => setup[:idmap]["service01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    service_endpoint_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.service_endpoint")))
-    service_endpoint_ref01_data = nil
-    if service_endpoint_ref01_data_raw.length > 0
-      service_endpoint_ref01_data = Helpers.to_map(service_endpoint_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    service_endpoint_ref01_ent = client.ServiceEndpoint(nil)
-    service_endpoint_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "service_id" => setup[:idmap]["service01"],
-    }
-
-    service_endpoint_ref01_list_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match, nil)
-    assert service_endpoint_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    service_endpoint_ref01_match_dt0 = {
-      "id" => service_endpoint_ref01_data["id"],
-    }
-    service_endpoint_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    service_endpoint_ref01_match_dt0["service_id"] = setup[:idmap]["service_id"] || setup[:idmap]["service01"]
-    service_endpoint_ref01_data_dt0_loaded = service_endpoint_ref01_ent.load(service_endpoint_ref01_match_dt0, nil)
-    service_endpoint_ref01_data_dt0_load_result = Helpers.to_map(service_endpoint_ref01_data_dt0_loaded.respond_to?(:data_get) ? service_endpoint_ref01_data_dt0_loaded.data_get : service_endpoint_ref01_data_dt0_loaded)
-    assert !service_endpoint_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(service_endpoint_ref01_data_dt0_load_result["id"], service_endpoint_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"service_endpoint.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}"
+      puts "LIVE STEP {\"id\":\"service_endpoint.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only service_endpoint.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"service_endpoint.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}"
+      skip("Live coverage incomplete: service_endpoint.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints); service_endpoint.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}); service_endpoint.load.2 excluded (GET-only live run: reads a record only service_endpoint.create.0 gives); service_endpoint.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id})")
     end
 
     if setup[:live]
@@ -119,21 +72,6 @@ class ServiceEndpointEntityTest < Minitest::Test
     assert !service_endpoint_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    service_endpoint_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "service_id" => setup[:idmap]["service01"],
-    }
-
-    service_endpoint_ref01_list_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match, nil)
-    assert service_endpoint_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(service_endpoint_ref01_list_result),
-      { "id" => service_endpoint_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     service_endpoint_ref01_data_up0_up = {
       "id" => service_endpoint_ref01_data["id"],
@@ -152,7 +90,6 @@ class ServiceEndpointEntityTest < Minitest::Test
       "id" => service_endpoint_ref01_data["id"],
     }
     service_endpoint_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    service_endpoint_ref01_match_dt0["service_id"] = setup[:idmap]["service_id"] || setup[:idmap]["service01"]
     service_endpoint_ref01_data_dt0_loaded = service_endpoint_ref01_ent.load(service_endpoint_ref01_match_dt0, nil)
     service_endpoint_ref01_data_dt0_load_result = Helpers.to_map(service_endpoint_ref01_data_dt0_loaded.respond_to?(:data_get) ? service_endpoint_ref01_data_dt0_loaded.data_get : service_endpoint_ref01_data_dt0_loaded)
     assert !service_endpoint_ref01_data_dt0_load_result.nil?
@@ -166,21 +103,6 @@ class ServiceEndpointEntityTest < Minitest::Test
     service_endpoint_ref01_match_rm0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     service_endpoint_ref01_match_rm0["service_id"] = setup[:idmap]["service_id"] || setup[:idmap]["service01"]
     service_endpoint_ref01_ent.remove(service_endpoint_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    service_endpoint_ref01_match_rt0 = {
-      "app_id" => setup[:idmap]["app01"],
-      "service_id" => setup[:idmap]["service01"],
-    }
-
-    service_endpoint_ref01_list_rt0_result = service_endpoint_ref01_ent.list(service_endpoint_ref01_match_rt0, nil)
-    assert service_endpoint_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(service_endpoint_ref01_list_rt0_result),
-      { "id" => service_endpoint_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

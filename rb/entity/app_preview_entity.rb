@@ -253,33 +253,6 @@ class AppPreviewEntity
 
 
   
-  # List AppPreview items matching the given filter.
-  #
-  # @param reqmatch [AppPreviewListMatch, Hash, nil] match filter (any subset of
-  #   AppPreview fields); defaults to nil, treated as an empty match that lists all.
-  # @param ctrl [Object, nil] optional per-call control
-  # @return [Array<AppPreviewEntity>] the matching AppPreview items, one entity per
-  #   record (data_get reads the record); raises ComposalError on failure
-  def list(reqmatch = nil, ctrl = nil)
-    utility = @_utility
-    ctx = utility.make_context.call({
-      "opname" => "list",
-      "ctrl" => ctrl,
-      "match" => @_match,
-      "data" => @_data,
-      "reqmatch" => reqmatch,
-    }, @_entctx)
-
-    records = _run_op(ctx) do
-      if ctx.result
-        @_match = ctx.result.resmatch if ctx.result.resmatch
-      end
-    end
-
-    records
-  end
-
-
 
   
   # Create a new AppPreview.

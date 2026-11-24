@@ -17,15 +17,16 @@ class EnvironmentSecretBindingDirectTest < Minitest::Test
     result["err"].nil? && result["ok"] && status >= 200 && status < 300
   end
 
-  def test_direct_list_environment_secret_binding
-    setup = environment_secret_binding_direct_setup([
-      { "id" => "direct01" },
-      { "id" => "direct02" },
-    ])
-    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-list-environment_secret_binding", setup[:live] ? "live" : "unit")
+  def test_direct_load_environment_secret_binding
+    setup = environment_secret_binding_direct_setup({ "id" => "direct01" })
+    _should_skip, _reason = Runner.is_control_skipped("direct", "direct-load-environment_secret_binding", setup[:live] ? "live" : "unit")
     if _should_skip
       skip(_reason || "skipped via sdk-test-control.json")
       return
+    end
+    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["environment01"].nil?
+      puts "LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}"
+      skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
     end
     if setup[:live]
       ["app01", "environment01"].each do |_live_key|
@@ -39,8 +40,13 @@ class EnvironmentSecretBindingDirectTest < Minitest::Test
 
     params = {}
     query = {}
-    params["app_id"] = setup[:live] ? setup[:idmap]["app01"] : "direct01"
-    params["environment_id"] = setup[:live] ? setup[:idmap]["environment01"] : "direct02"
+    if setup[:live]
+      params["app_id"] = setup[:idmap]["app01"]
+      params["environment_id"] = setup[:idmap]["environment01"]
+    else
+      params["app_id"] = "direct01"
+      params["environment_id"] = "direct02"
+    end
 
     result = client.direct({
       "path" => "api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings",
@@ -50,18 +56,20 @@ class EnvironmentSecretBindingDirectTest < Minitest::Test
     })
     if setup[:live]
       unless live_ok(result)
-        Runner.live_miss(LIVE_STRICT, "Live list failed: " + Runner.live_describe(result))
+        Runner.live_miss(LIVE_STRICT, "Live load failed: " + Runner.live_describe(result))
       end
-      if Runner.live_list(result["data"]).nil?
-        Runner.live_miss(LIVE_STRICT, "Live list returned no list: " + Runner.live_describe(result))
+      if result["data"].nil?
+        Runner.live_miss(LIVE_STRICT, "Live load returned no data: " + Runner.live_describe(result))
       end
-      assert Runner.live_list(result["data"]).is_a?(Array)
+      assert !result["data"].nil?
     else
       assert_nil result["err"]
       assert result["ok"]
       assert_equal 200, Helpers.to_int(result["status"])
-      assert result["data"].is_a?(Array)
-      assert_equal 2, result["data"].length
+      assert !result["data"].nil?
+      if result["data"].is_a?(Hash)
+        assert_equal "direct01", result["data"]["id"]
+      end
       assert_equal 1, setup[:calls].length
     end
   end

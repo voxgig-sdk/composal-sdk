@@ -3,7 +3,7 @@ id: "329ca74f-b6e8-53fb-9188-62232f22dc9a"
 description: |-
   The `remove` operation of **space_peer_attachment**.
 
-  SDK: `client.SpacePeerAttachment().remove({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpacePeerAttachment().remove({ id: "example", space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/peer_attachments/:id"
 method: DELETE
 headers:

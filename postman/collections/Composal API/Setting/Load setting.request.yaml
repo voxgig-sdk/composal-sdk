@@ -1,0 +1,15 @@
+$kind: http-request
+id: d6778362-4fd2-50dd-92e4-413df9361f1f
+description: |-
+  The `load` operation of **setting**.
+
+  SDK: `client.Setting().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/pages/settings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this setting belongs to.
+order: 1000

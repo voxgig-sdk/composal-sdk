@@ -31,7 +31,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var source_operation_id=... \
   --env-var source=... \
   --env-var org=... \
-  --env-var token=... \
   --env-var space_id=... \
   --env-var alert_rule_id=... \
   --env-var allocation_id=... \
@@ -74,7 +73,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var media_id=... \
   --env-var merge_queue_id=... \
   --env-var messaging_conversation_id=... \
-  --env-var native_agent_id=... \
   --env-var x_vex_organization=... \
   --env-var patchset_id=... \
   --env-var preview_id=... \
@@ -110,6 +108,7 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var agent_run_id=... \
   --env-var repo_id=... \
   --env-var agent_session_id=... \
+  --env-var agent_web_preview_id=... \
   --env-var agent_workflow_proposal_id=... \
   --env-var app_id=... \
   --env-var app_environment_id=... \
@@ -131,7 +130,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var browser_session_id=... \
   --env-var browser_session_control_id=... \
   --env-var browser_session_media_id=... \
-  --env-var cdn_space_id=... \
   --env-var change_id=... \
   --env-var ci_node_id=... \
   --env-var cloud_workspace_backup_object_id=... \
@@ -167,7 +165,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var page_ci_pipeline_run_id=... \
   --env-var page_project_run_id=... \
   --env-var page_repo_vc_commit_id=... \
-  --env-var pairing_id=... \
   --env-var patchset_diff_id=... \
   --env-var product_map_journey_replay_id=... \
   --env-var product_map_observation_id=... \

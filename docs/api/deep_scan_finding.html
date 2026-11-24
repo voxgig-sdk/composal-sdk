@@ -645,34 +645,76 @@ fmt.Println(deep_scan_findings)
 </thead>
 <tbody>
 <tr>
-<td><code>finding_count</code></td>
-<td><code>integer</code></td>
+<td><code>actual</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Findings at every priority; findings lists only the listed priority.</td>
+<td>Actual</td>
 </tr>
 <tr>
-<td><code>finding_ids</code></td>
-<td><code>array</code></td>
+<td><code>agent_id</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Original team order used by legacy hash links and rerun indices.</td>
+<td>Agent Id</td>
 </tr>
 <tr>
-<td><code>findings</code></td>
-<td><code>array</code></td>
+<td><code>agent_title</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Findings</td>
+<td>Agent Title</td>
 </tr>
 <tr>
-<td><code>findings_fix_prompt</code></td>
+<td><code>area</code></td>
 <td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>Findings Fix Prompt</td>
+<td>No</td>
+<td>On a locked finding, the first segment of the page it was seen on, such as Billing.</td>
 </tr>
 <tr>
-<td><code>free_findings_pending</code></td>
-<td><code>boolean</code></td>
+<td><code>checks</code></td>
+<td><code>array</code></td>
 <td>Yes</td>
-<td>Whether a scan with locked findings has yet to choose which are free, so every row is locked for now.</td>
+<td>Checks in the same tester report that this finding cites.</td>
+</tr>
+<tr>
+<td><code>confidence</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Confidence</td>
+</tr>
+<tr>
+<td><code>confirmed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>On a locked finding, whether the automatic review confirmed it.</td>
+</tr>
+<tr>
+<td><code>evidence_step_ids</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Evidence Step Ids</td>
+</tr>
+<tr>
+<td><code>evidence_timestamp_ms</code></td>
+<td><code>one,integer,null</code></td>
+<td>Yes</td>
+<td>Evidence Timestamp Ms</td>
+</tr>
+<tr>
+<td><code>expected</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Expected</td>
+</tr>
+<tr>
+<td><code>fix_prompt</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A coding-agent prompt for this finding alone</td>
+</tr>
+<tr>
+<td><code>has_recording</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>On a locked finding, whether the tester recorded evidence for it.</td>
 </tr>
 <tr>
 <td><code>id</code></td>
@@ -681,58 +723,22 @@ fmt.Println(deep_scan_findings)
 <td>Id</td>
 </tr>
 <tr>
-<td><code>mode</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td>Mode</td>
-</tr>
-<tr>
-<td><code>permissions</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>Permissions</td>
-</tr>
-<tr>
-<td><code>priority</code></td>
-<td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>The priority findings are narrowed to, or null when they are not narrowed.</td>
-</tr>
-<tr>
-<td><code>priority_counts</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>Priority Counts</td>
-</tr>
-<tr>
-<td><code>project_id</code></td>
-<td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>Project Id</td>
-</tr>
-<tr>
-<td><code>reproduction_of</code></td>
-<td><code>one,object,null</code></td>
-<td>Yes</td>
-<td>Reproduction Of</td>
-</tr>
-<tr>
-<td><code>reproductions</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Fresh-browser reruns of this scan's reported bugs.</td>
-</tr>
-<tr>
-<td><code>reruns_available</code></td>
+<td><code>locked</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td>Whether findings can be rerun; a scan with locked findings waits for a paid plan.</td>
+<td>True for a locked finding of the workspace's included scan before it pays.</td>
 </tr>
 <tr>
-<td><code>status</code></td>
+<td><code>reproduction_steps</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Reproduction Steps</td>
+</tr>
+<tr>
+<td><code>severity</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Status</td>
+<td>Severity</td>
 </tr>
 <tr>
 <td><code>title</code></td>
@@ -741,16 +747,16 @@ fmt.Println(deep_scan_findings)
 <td>Title</td>
 </tr>
 <tr>
-<td><code>unlock</code></td>
-<td><code>object</code></td>
+<td><code>tracked</code></td>
+<td><code>one,object,null</code></td>
 <td>Yes</td>
-<td>Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one.</td>
+<td>The finding record to resolve or ignore; null until the tester finishes.</td>
 </tr>
 <tr>
-<td><code>web_url</code></td>
+<td><code>url</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Web Url</td>
+<td>Url</td>
 </tr>
 </tbody>
 </table>

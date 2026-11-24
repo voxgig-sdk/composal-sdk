@@ -37,7 +37,7 @@ class TestPreviewProfileSecretBindingEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.PreviewProfileSecretBinding(None).list({"app_id": 1, "preview_profile_id": "x"}, None)
+            client.PreviewProfileSecretBinding(None).load({"app_id": 1, "preview_profile_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,16 +46,16 @@ class TestPreviewProfileSecretBindingEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "remove"]:
+        for _op in ["create", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "preview_profile_secret_binding." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"preview_profile_secret_binding.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings\"}")
+            print("LIVE STEP {\"id\":\"preview_profile_secret_binding.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives\"}")
             print("LIVE STEP {\"id\":\"preview_profile_secret_binding.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}\"}")
-            print("LIVE STEP {\"id\":\"preview_profile_secret_binding.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            pytest.skip("Live coverage incomplete: preview_profile_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings); preview_profile_secret_binding.load.1 excluded (GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives); preview_profile_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id})")
 
         if setup["live"]:
             for _live_key in ["app01", "preview_profile01"]:
@@ -78,19 +78,16 @@ class TestPreviewProfileSecretBindingEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        preview_profile_secret_binding_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_profile_id": setup["idmap"]["preview_profile01"],
+        # LOAD
+        preview_profile_secret_binding_ref01_match_dt0 = {
+            "id": preview_profile_secret_binding_ref01_data["id"],
         }
-
-        preview_profile_secret_binding_ref01_list_result = preview_profile_secret_binding_ref01_ent.list(preview_profile_secret_binding_ref01_match, None)
-        assert isinstance(preview_profile_secret_binding_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(preview_profile_secret_binding_ref01_list_result),
-            {"id": preview_profile_secret_binding_ref01_data["id"]})
-        assert not vs.isempty(found_item)
+        preview_profile_secret_binding_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
+        preview_profile_secret_binding_ref01_data_dt0_loaded = preview_profile_secret_binding_ref01_ent.load(preview_profile_secret_binding_ref01_match_dt0, None)
+        preview_profile_secret_binding_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(preview_profile_secret_binding_ref01_data_dt0_loaded))
+        assert preview_profile_secret_binding_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(preview_profile_secret_binding_ref01_data_dt0_load_result.get("id"), preview_profile_secret_binding_ref01_data["id"])
 
         if setup["live"]:
             runner.live_pace()
@@ -101,49 +98,6 @@ class TestPreviewProfileSecretBindingEntity:
         preview_profile_secret_binding_ref01_match_rm0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         preview_profile_secret_binding_ref01_match_rm0["preview_profile_id"] = setup["idmap"].get("preview_profile_id") or setup["idmap"].get("preview_profile01")
         preview_profile_secret_binding_ref01_ent.remove(preview_profile_secret_binding_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        preview_profile_secret_binding_ref01_match_rt0 = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_profile_id": setup["idmap"]["preview_profile01"],
-        }
-
-        preview_profile_secret_binding_ref01_list_rt0_result = preview_profile_secret_binding_ref01_ent.list(preview_profile_secret_binding_ref01_match_rt0, None)
-        assert isinstance(preview_profile_secret_binding_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(preview_profile_secret_binding_ref01_list_rt0_result),
-            {"id": preview_profile_secret_binding_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["app01", "preview_profile01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PREVIEW_PROFILE_SECRET_BINDING_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        preview_profile_secret_binding_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.preview_profile_secret_binding")))
-        preview_profile_secret_binding_ref01_data = None
-        if len(preview_profile_secret_binding_ref01_data_raw) > 0:
-            preview_profile_secret_binding_ref01_data = helpers.to_map(preview_profile_secret_binding_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        preview_profile_secret_binding_ref01_ent = client.PreviewProfileSecretBinding(None)
-        preview_profile_secret_binding_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_profile_id": setup["idmap"]["preview_profile01"],
-        }
-
-        preview_profile_secret_binding_ref01_list_result = preview_profile_secret_binding_ref01_ent.list(preview_profile_secret_binding_ref01_match, None)
-        assert isinstance(preview_profile_secret_binding_ref01_list_result, list)
 
 
 

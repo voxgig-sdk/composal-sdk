@@ -25,7 +25,7 @@ class SparkCreditEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SparkCredit(nil).list({ "organization_id" => 1 }, nil)
+      client.SparkCredit(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SparkCreditEntityTest < Minitest::Test
     setup = spark_credit_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update"].each do |_op|
+    ["create", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "spark_credit." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,14 +43,7 @@ class SparkCreditEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"spark_credit.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/spark_credits\"}"
-      puts "LIVE STEP {\"id\":\"spark_credit.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPARK_CREDIT_ENTID")
-        end
-      end
-    end
+      puts "LIVE STEP {\"id\":\"spark_credit.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}"
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -62,14 +55,11 @@ class SparkCreditEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     spark_credit_ref01_ent = client.SparkCredit(nil)
-    spark_credit_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_credit_ref01_list_result = spark_credit_ref01_ent.list(spark_credit_ref01_match, nil)
-    assert spark_credit_ref01_list_result.is_a?(Array)
+    spark_credit_ref01_match_dt0 = {}
+    spark_credit_ref01_data_dt0_loaded = spark_credit_ref01_ent.load(spark_credit_ref01_match_dt0, nil)
+    assert !spark_credit_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -95,15 +85,6 @@ class SparkCreditEntityTest < Minitest::Test
     assert !spark_credit_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    spark_credit_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_credit_ref01_list_result = spark_credit_ref01_ent.list(spark_credit_ref01_match, nil)
-    assert spark_credit_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     spark_credit_ref01_data_up0_up = {
     }
@@ -116,6 +97,12 @@ class SparkCreditEntityTest < Minitest::Test
     spark_credit_ref01_resdata_up0 = Helpers.to_map(spark_credit_ref01_resdata_up0_result.respond_to?(:data_get) ? spark_credit_ref01_resdata_up0_result.data_get : spark_credit_ref01_resdata_up0_result)
     assert !spark_credit_ref01_resdata_up0.nil?
     assert_equal spark_credit_ref01_resdata_up0[spark_credit_ref01_markdef_up0_name], spark_credit_ref01_markdef_up0_value
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    spark_credit_ref01_match_dt0 = {}
+    spark_credit_ref01_data_dt0_loaded = spark_credit_ref01_ent.load(spark_credit_ref01_match_dt0, nil)
+    assert !spark_credit_ref01_data_dt0_loaded.nil?
 
   end
 end

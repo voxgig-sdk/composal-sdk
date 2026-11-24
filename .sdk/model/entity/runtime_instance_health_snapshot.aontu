@@ -70,8 +70,8 @@ main: kit: entity: runtime_instance_health_snapshot: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

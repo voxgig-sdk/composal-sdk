@@ -39,7 +39,7 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentWorkflow(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentWorkflow(nil).Load(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_workflow." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,14 +65,7 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"agent_workflow.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
-			t.Log("LIVE STEP {\"id\":\"agent_workflow.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_workflowEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_WORKFLOW_ENTID", _liveKey)
-				}
-			}
-		}
+			t.Log("LIVE STEP {\"id\":\"agent_workflow.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
 		client := setup.client
 		_ = client
 
@@ -89,20 +82,20 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		agentWorkflowRef01Ent := client.AgentWorkflow(nil)
-		agentWorkflowRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
+		agentWorkflowRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentWorkflowRef01MatchDt0["organization_id"] = v
+		} else {
+			agentWorkflowRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
-
-		agentWorkflowRef01ListResult, err := agentWorkflowRef01Ent.List(agentWorkflowRef01Match, nil)
+		agentWorkflowRef01DataDt0Loaded, err := agentWorkflowRef01Ent.Load(agentWorkflowRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, agentWorkflowRef01ListOk := agentWorkflowRef01ListResult.([]any)
-		if !agentWorkflowRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentWorkflowRef01ListResult)
+		if agentWorkflowRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -140,24 +133,6 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		agentWorkflowRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentWorkflowRef01ListResult, err := agentWorkflowRef01Ent.List(agentWorkflowRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentWorkflowRef01ListOk := agentWorkflowRef01ListResult.([]any)
-		if !agentWorkflowRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentWorkflowRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		agentWorkflowRef01DataUp0Up := map[string]any{
 			"organization_id": setup.idmap["organization_id"],
@@ -177,6 +152,24 @@ func TestAgentWorkflowEntity(t *testing.T) {
 		}
 		if agentWorkflowRef01ResdataUp0[agentWorkflowRef01MarkdefUp0Name] != agentWorkflowRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", agentWorkflowRef01MarkdefUp0Name, agentWorkflowRef01ResdataUp0[agentWorkflowRef01MarkdefUp0Name])
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		agentWorkflowRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["organization_id"]; v != nil {
+			agentWorkflowRef01MatchDt0["organization_id"] = v
+		} else {
+			agentWorkflowRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
+		}
+		agentWorkflowRef01DataDt0Loaded, err := agentWorkflowRef01Ent.Load(agentWorkflowRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		if agentWorkflowRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

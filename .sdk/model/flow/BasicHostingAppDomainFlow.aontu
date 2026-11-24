@@ -19,22 +19,6 @@ main: kit: flow: BasicHostingAppDomainFlow:
     }
 
     {
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "hosting_app_domain_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01"
       }
@@ -65,7 +49,6 @@ main: kit: flow: BasicHostingAppDomainFlow:
       }
 
       m: {
-        app_id: "app01",
         id: "hosting_app_domain01"
       }
 
@@ -92,26 +75,6 @@ main: kit: flow: BasicHostingAppDomainFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "hosting_app_domain_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicHostingAppDomainFlow"

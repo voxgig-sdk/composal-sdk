@@ -33,7 +33,7 @@ class SparkEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->Spark(null)->list(["organization_id" => 1], null);
+            $client->Spark(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SparkEntityTest extends TestCase
         $setup = spark_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "spark." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,45 +54,10 @@ class SparkEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"spark.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPARK_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $spark_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.spark")));
-        $spark_ref01_data = null;
-        if (count($spark_ref01_data_raw) > 0) {
-            $spark_ref01_data = Helpers::to_map($spark_ref01_data_raw[0][1]);
+            fwrite(STDOUT, 'LIVE STEP {"id":"spark.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only spark.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: spark.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks); spark.load.1 excluded (GET-only live run: reads a record only spark.create.0 gives)');
         }
 
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $spark_ref01_ent = $client->Spark(null);
-        $spark_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $spark_ref01_list_result = $spark_ref01_ent->list($spark_ref01_match, null);
-        $this->assertIsArray($spark_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPARK_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         if (!empty($setup["live"])) {
@@ -102,28 +67,11 @@ class SparkEntityTest extends TestCase
         $spark_ref01_ent = $client->Spark(null);
         $spark_ref01_data = Helpers::to_map(Vs::getprop(
             Vs::getpath($setup["data"], "new.spark"), "spark_ref01"));
-        $spark_ref01_data["organization_id"] = $setup["idmap"]["organization01"];
 
         $spark_ref01_data_result = $spark_ref01_ent->create($spark_ref01_data, null);
         $spark_ref01_data = Helpers::to_map(is_object($spark_ref01_data_result) && method_exists($spark_ref01_data_result, 'data_get') ? $spark_ref01_data_result->data_get() : $spark_ref01_data_result);
         $this->assertNotNull($spark_ref01_data);
         $this->assertNotNull($spark_ref01_data["id"]);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $spark_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $spark_ref01_list_result = $spark_ref01_ent->list($spark_ref01_match, null);
-        $this->assertIsArray($spark_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($spark_ref01_list_result),
-            ["id" => $spark_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
 
     }
 }

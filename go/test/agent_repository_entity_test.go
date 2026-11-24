@@ -38,7 +38,7 @@ func TestAgentRepositoryEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentRepository(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentRepository(nil).Load(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentRepositoryEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_repository." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,16 +63,15 @@ func TestAgentRepositoryEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"agent_repository.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_repositoryEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_REPOSITORY_ENTID", _liveKey)
-				}
-			}
+			t.Log("LIVE STEP {\"id\":\"agent_repository.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment\"}")
+			t.Skip("Live coverage incomplete: agent_repository.update.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentRepositoryRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_repository")))
@@ -83,67 +82,6 @@ func TestAgentRepositoryEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentRepositoryRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentRepositoryRef01Ent := client.AgentRepository(nil)
-		agentRepositoryRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentRepositoryRef01ListResult, err := agentRepositoryRef01Ent.List(agentRepositoryRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentRepositoryRef01ListOk := agentRepositoryRef01ListResult.([]any)
-		if !agentRepositoryRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentRepositoryRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_repositoryEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_REPOSITORY_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		agentRepositoryRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_repository")))
-		var agentRepositoryRef01Data map[string]any
-		if len(agentRepositoryRef01DataRaw) > 0 {
-			agentRepositoryRef01Data = core.ToMapAny(agentRepositoryRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = agentRepositoryRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentRepositoryRef01Ent := client.AgentRepository(nil)
-		agentRepositoryRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentRepositoryRef01ListResult, err := agentRepositoryRef01Ent.List(agentRepositoryRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentRepositoryRef01ListOk := agentRepositoryRef01ListResult.([]any)
-		if !agentRepositoryRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentRepositoryRef01ListResult)
-		}
 
 	})
 }

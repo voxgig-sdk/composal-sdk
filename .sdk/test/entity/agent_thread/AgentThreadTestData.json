@@ -28,12 +28,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/agent/threads": {
+    "GET /api/v1/agent/threads/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/agent/threads/{id}": {
+    "GET /api/v1/agent/threads": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

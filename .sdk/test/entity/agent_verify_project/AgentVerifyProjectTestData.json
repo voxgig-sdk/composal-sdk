@@ -4,38 +4,44 @@
       "AGENT_VERIFY_PROJECT00": {
         "available": true,
         "can_manage": false,
-        "expected_version": 72,
+        "expected_version": 102,
+        "id": "AGENT_VERIFY_PROJECT00",
+        "name": "s68",
         "project_choices": [],
         "project_choices_truncated": true,
+        "slug": "s6b",
         "verify_projects": [],
-        "version": 76,
+        "version": 109,
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_VERIFY_PROJECT00"
+        "organization_id": "ORGANIZATION01"
       },
       "AGENT_VERIFY_PROJECT01": {
         "available": true,
         "can_manage": false,
-        "expected_version": 142,
+        "expected_version": 202,
+        "id": "AGENT_VERIFY_PROJECT01",
+        "name": "scc",
         "project_choices": [],
         "project_choices_truncated": true,
+        "slug": "scf",
         "verify_projects": [],
-        "version": 146,
+        "version": 209,
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_VERIFY_PROJECT01"
+        "organization_id": "ORGANIZATION01"
       },
       "AGENT_VERIFY_PROJECT02": {
         "available": true,
         "can_manage": false,
-        "expected_version": 212,
+        "expected_version": 302,
+        "id": "AGENT_VERIFY_PROJECT02",
+        "name": "s130",
         "project_choices": [],
         "project_choices_truncated": true,
+        "slug": "s133",
         "verify_projects": [],
-        "version": 216,
+        "version": 309,
         "agent_id": "AGENT01",
-        "organization_id": "ORGANIZATION01",
-        "id": "AGENT_VERIFY_PROJECT02"
+        "organization_id": "ORGANIZATION01"
       }
     }
   },
@@ -44,11 +50,13 @@
       "agent_verify_project_ref01": {
         "available": true,
         "can_manage": false,
-        "expected_version": 282,
+        "expected_version": 402,
+        "name": "s194",
         "project_choices": [],
         "project_choices_truncated": true,
+        "slug": "s197",
         "verify_projects": [],
-        "version": 286
+        "version": 409
       }
     }
   },

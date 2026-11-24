@@ -7,17 +7,23 @@ main: kit: flow: BasicAllocationLogFlow:
   name: "BasicAllocationLogFlow",
   step: [
     {
-      m: {
-        allocation_id: "allocation01",
-        app_id: "app01"
+      i: {
+        ref: "allocation_log_ref01",
+        srcdatavar: "allocation_log_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        app_id: "app01",
+        id: "allocation_log01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "allocation_log_ref01"
+            mark: "Mark01-allocation_log_ref01"
           }
         }
       ]

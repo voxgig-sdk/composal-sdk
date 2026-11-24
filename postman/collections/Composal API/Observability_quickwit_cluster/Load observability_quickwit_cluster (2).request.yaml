@@ -1,0 +1,11 @@
+$kind: http-request
+id: "8870d183-5dab-5642-b397-dda77399f690"
+description: |-
+  The `load` operation of **observability_quickwit_cluster**.
+
+  SDK: `client.ObservabilityQuickwitCluster().load({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/quickwit_clusters"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

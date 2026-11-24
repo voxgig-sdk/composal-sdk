@@ -92,7 +92,7 @@ main: kit: entity: image_repository_tag: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.tags`"
           }
         }
       ]

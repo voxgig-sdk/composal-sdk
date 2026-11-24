@@ -37,7 +37,7 @@ class TestProjectScenarioOptionEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ProjectScenarioOption(None).list({"organization_id": 1, "project_id": "x"}, None)
+            client.ProjectScenarioOption(None).load({"organization_id": 1, "project_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,14 @@ class TestProjectScenarioOptionEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "project_scenario_option." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["organization01", "project01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PROJECT_SCENARIO_OPTION_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -63,18 +62,6 @@ class TestProjectScenarioOptionEntity:
         project_scenario_option_ref01_data = None
         if len(project_scenario_option_ref01_data_raw) > 0:
             project_scenario_option_ref01_data = helpers.to_map(project_scenario_option_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        project_scenario_option_ref01_ent = client.ProjectScenarioOption(None)
-        project_scenario_option_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-            "project_id": setup["idmap"]["project01"],
-        }
-
-        project_scenario_option_ref01_list_result = project_scenario_option_ref01_ent.list(project_scenario_option_ref01_match, None)
-        assert isinstance(project_scenario_option_ref01_list_result, list)
 
 
 

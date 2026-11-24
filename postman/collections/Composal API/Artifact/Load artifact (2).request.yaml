@@ -1,0 +1,11 @@
+$kind: http-request
+id: fe51da46-910a-5ecd-ba8d-c4f5b2ef6e54
+description: |-
+  The `load` operation of **artifact**.
+
+  SDK: `client.Artifact().load({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/artifacts"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

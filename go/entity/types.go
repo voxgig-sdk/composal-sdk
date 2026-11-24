@@ -30,25 +30,6 @@ type AdminOrgLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// AdminOrgListMatch is the typed request payload for AdminOrg.ListTyped.
-type AdminOrgListMatch struct {
-	BillingEmail *any `json:"billing_email,omitempty"`
-	BillingReason *string `json:"billing_reason,omitempty"`
-	CustomizeOnboardingPackages *bool `json:"customize_onboarding_packages,omitempty"`
-	DeploymentUsageVisibility *string `json:"deployment_usage_visibility,omitempty"`
-	DeploymentUsageVisible *bool `json:"deployment_usage_visible,omitempty"`
-	Id *string `json:"id,omitempty"`
-	MonthlyPriceDollars *any `json:"monthly_price_dollars,omitempty"`
-	MonthlyPriceOverrideCents *any `json:"monthly_price_override_cents,omitempty"`
-	Name *string `json:"name,omitempty"`
-	OnboardingCustomPricing *bool `json:"onboarding_custom_pricing,omitempty"`
-	OnboardingPackageKeys *any `json:"onboarding_package_keys,omitempty"`
-	OwnerEmail *string `json:"owner_email,omitempty"`
-	PackageId *any `json:"package_id,omitempty"`
-	SkipPayment *bool `json:"skip_payment,omitempty"`
-	Slug *string `json:"slug,omitempty"`
-}
-
 // AdminOrgCreateData is the typed request payload for AdminOrg.CreateTyped.
 type AdminOrgCreateData struct {
 	BillingReason *string `json:"billing_reason,omitempty"`
@@ -469,8 +450,8 @@ type AgentEmailLoadMatch struct {
 type AgentEvent struct {
 }
 
-// AgentEventListMatch is the typed request payload for AgentEvent.ListTyped.
-type AgentEventListMatch struct {
+// AgentEventLoadMatch is the typed request payload for AgentEvent.LoadTyped.
+type AgentEventLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 	ConversationId *string `json:"conversation_id,omitempty"`
@@ -513,12 +494,7 @@ type AgentIntegration struct {
 
 // AgentIntegrationLoadMatch is the typed request payload for AgentIntegration.LoadTyped.
 type AgentIntegrationLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// AgentIntegrationListMatch is the typed request payload for AgentIntegration.ListTyped.
-type AgentIntegrationListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	Cursor *string `json:"cursor,omitempty"`
 	Enableable *bool `json:"enableable,omitempty"`
@@ -819,8 +795,8 @@ type AgentRelayFileGrantAccountListMatch struct {
 type AgentRepository struct {
 }
 
-// AgentRepositoryListMatch is the typed request payload for AgentRepository.ListTyped.
-type AgentRepositoryListMatch struct {
+// AgentRepositoryLoadMatch is the typed request payload for AgentRepository.LoadTyped.
+type AgentRepositoryLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 	Q *string `json:"q,omitempty"`
@@ -930,14 +906,7 @@ type AgentSessionCheckpoint struct {
 // AgentSessionCheckpointLoadMatch is the typed request payload for AgentSessionCheckpoint.LoadTyped.
 type AgentSessionCheckpointLoadMatch struct {
 	AgentSessionId string `json:"agent_session_id"`
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	RepoId string `json:"repo_id"`
-}
-
-// AgentSessionCheckpointListMatch is the typed request payload for AgentSessionCheckpoint.ListTyped.
-type AgentSessionCheckpointListMatch struct {
-	AgentSessionId string `json:"agent_session_id"`
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
 }
@@ -966,8 +935,8 @@ type AgentSessionRoderHandoffCreateData struct {
 type AgentSetting struct {
 }
 
-// AgentSettingListMatch is the typed request payload for AgentSetting.ListTyped.
-type AgentSettingListMatch struct {
+// AgentSettingLoadMatch is the typed request payload for AgentSetting.LoadTyped.
+type AgentSettingLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 }
@@ -1020,12 +989,7 @@ type AgentSkill struct {
 
 // AgentSkillLoadMatch is the typed request payload for AgentSkill.LoadTyped.
 type AgentSkillLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// AgentSkillListMatch is the typed request payload for AgentSkill.ListTyped.
-type AgentSkillListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -1089,8 +1053,8 @@ type AgentSubagentListMatch struct {
 type AgentSubscription struct {
 }
 
-// AgentSubscriptionListMatch is the typed request payload for AgentSubscription.ListTyped.
-type AgentSubscriptionListMatch struct {
+// AgentSubscriptionLoadMatch is the typed request payload for AgentSubscription.LoadTyped.
+type AgentSubscriptionLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 	RefreshProvider *string `json:"refresh_provider,omitempty"`
@@ -1187,11 +1151,6 @@ type AgentThreadLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// AgentThreadListMatch is the typed request payload for AgentThread.ListTyped.
-type AgentThreadListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // AgentThreadCreateData is the typed request payload for AgentThread.CreateTyped.
 type AgentThreadCreateData struct {
 }
@@ -1249,8 +1208,8 @@ type AgentWaitCreateData struct {
 type AgentWebPreview struct {
 }
 
-// AgentWebPreviewListMatch is the typed request payload for AgentWebPreview.ListTyped.
-type AgentWebPreviewListMatch struct {
+// AgentWebPreviewLoadMatch is the typed request payload for AgentWebPreview.LoadTyped.
+type AgentWebPreviewLoadMatch struct {
 	Asset *string `json:"asset,omitempty"`
 	Token string `json:"token"`
 }
@@ -1301,8 +1260,8 @@ type AgentWorkCreateData struct {
 type AgentWorkflow struct {
 }
 
-// AgentWorkflowListMatch is the typed request payload for AgentWorkflow.ListTyped.
-type AgentWorkflowListMatch struct {
+// AgentWorkflowLoadMatch is the typed request payload for AgentWorkflow.LoadTyped.
+type AgentWorkflowLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 	View *string `json:"view,omitempty"`
@@ -1477,13 +1436,7 @@ type AlertRuleEvent struct {
 // AlertRuleEventLoadMatch is the typed request payload for AlertRuleEvent.LoadTyped.
 type AlertRuleEventLoadMatch struct {
 	AlertRuleId string `json:"alert_rule_id"`
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// AlertRuleEventListMatch is the typed request payload for AlertRuleEvent.ListTyped.
-type AlertRuleEventListMatch struct {
-	AlertRuleId string `json:"alert_rule_id"`
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -1504,8 +1457,8 @@ type AlertRuleEventRemoveMatch struct {
 type AllocationLog struct {
 }
 
-// AllocationLogListMatch is the typed request payload for AllocationLog.ListTyped.
-type AllocationLogListMatch struct {
+// AllocationLogLoadMatch is the typed request payload for AllocationLog.LoadTyped.
+type AllocationLogLoadMatch struct {
 	AllocationId string `json:"allocation_id"`
 	AppId string `json:"app_id"`
 	Offset *int `json:"offset,omitempty"`
@@ -1583,8 +1536,8 @@ type AppAccessLoadMatch struct {
 type AppAccessJwk struct {
 }
 
-// AppAccessJwkListMatch is the typed request payload for AppAccessJwk.ListTyped.
-type AppAccessJwkListMatch struct {
+// AppAccessJwkLoadMatch is the typed request payload for AppAccessJwk.LoadTyped.
+type AppAccessJwkLoadMatch struct {
 }
 
 // AppCdn is the typed data model for the app_cdn entity.
@@ -1594,12 +1547,7 @@ type AppCdn struct {
 // AppCdnLoadMatch is the typed request payload for AppCdn.LoadTyped.
 type AppCdnLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppCdnListMatch is the typed request payload for AppCdn.ListTyped.
-type AppCdnListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppCdnCreateData is the typed request payload for AppCdn.CreateTyped.
@@ -1665,12 +1613,7 @@ type AppConfigVariable struct {
 // AppConfigVariableLoadMatch is the typed request payload for AppConfigVariable.LoadTyped.
 type AppConfigVariableLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppConfigVariableListMatch is the typed request payload for AppConfigVariable.ListTyped.
-type AppConfigVariableListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 	AppEnvironmentId *string `json:"app_environment_id,omitempty"`
 }
 
@@ -1712,12 +1655,7 @@ type AppDataResource struct {
 // AppDataResourceLoadMatch is the typed request payload for AppDataResource.LoadTyped.
 type AppDataResourceLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppDataResourceListMatch is the typed request payload for AppDataResource.ListTyped.
-type AppDataResourceListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppDataResourceCreateData is the typed request payload for AppDataResource.CreateTyped.
@@ -1781,12 +1719,7 @@ type AppDeployment struct {
 // AppDeploymentLoadMatch is the typed request payload for AppDeployment.LoadTyped.
 type AppDeploymentLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppDeploymentListMatch is the typed request payload for AppDeployment.ListTyped.
-type AppDeploymentListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppDeploymentCreateData is the typed request payload for AppDeployment.CreateTyped.
@@ -1885,12 +1818,7 @@ type AppEnvironment struct {
 // AppEnvironmentLoadMatch is the typed request payload for AppEnvironment.LoadTyped.
 type AppEnvironmentLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppEnvironmentListMatch is the typed request payload for AppEnvironment.ListTyped.
-type AppEnvironmentListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppEnvironmentCreateData is the typed request payload for AppEnvironment.CreateTyped.
@@ -1977,12 +1905,7 @@ type AppPreview struct {
 // AppPreviewLoadMatch is the typed request payload for AppPreview.LoadTyped.
 type AppPreviewLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppPreviewListMatch is the typed request payload for AppPreview.ListTyped.
-type AppPreviewListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppPreviewCreateData is the typed request payload for AppPreview.CreateTyped.
@@ -2029,12 +1952,7 @@ type AppPreviewProfile struct {
 // AppPreviewProfileLoadMatch is the typed request payload for AppPreviewProfile.LoadTyped.
 type AppPreviewProfileLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppPreviewProfileListMatch is the typed request payload for AppPreviewProfile.ListTyped.
-type AppPreviewProfileListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppPreviewProfileCreateData is the typed request payload for AppPreviewProfile.CreateTyped.
@@ -2079,12 +1997,6 @@ type AppRun struct {
 // AppRunLoadMatch is the typed request payload for AppRun.LoadTyped.
 type AppRunLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// AppRunListMatch is the typed request payload for AppRun.ListTyped.
-type AppRunListMatch struct {
-	Id *string `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
 }
 
 // AppRunCreateData is the typed request payload for AppRun.CreateTyped.
@@ -2155,12 +2067,7 @@ type AppService struct {
 // AppServiceLoadMatch is the typed request payload for AppService.LoadTyped.
 type AppServiceLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppServiceListMatch is the typed request payload for AppService.ListTyped.
-type AppServiceListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppServiceCreateData is the typed request payload for AppService.CreateTyped.
@@ -2280,12 +2187,7 @@ type AppServiceBinding struct {
 // AppServiceBindingLoadMatch is the typed request payload for AppServiceBinding.LoadTyped.
 type AppServiceBindingLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppServiceBindingListMatch is the typed request payload for AppServiceBinding.ListTyped.
-type AppServiceBindingListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppServiceBindingCreateData is the typed request payload for AppServiceBinding.CreateTyped.
@@ -2348,12 +2250,7 @@ type AppStorageResource struct {
 // AppStorageResourceLoadMatch is the typed request payload for AppStorageResource.LoadTyped.
 type AppStorageResourceLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// AppStorageResourceListMatch is the typed request payload for AppStorageResource.ListTyped.
-type AppStorageResourceListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // AppStorageResourceCreateData is the typed request payload for AppStorageResource.CreateTyped.
@@ -2504,11 +2401,6 @@ type ArtifactLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ArtifactListMatch is the typed request payload for Artifact.ListTyped.
-type ArtifactListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // ArtifactCreateData is the typed request payload for Artifact.CreateTyped.
 type ArtifactCreateData struct {
 }
@@ -2535,11 +2427,6 @@ type ArtifactCacheNamespace struct {
 // ArtifactCacheNamespaceLoadMatch is the typed request payload for ArtifactCacheNamespace.LoadTyped.
 type ArtifactCacheNamespaceLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// ArtifactCacheNamespaceListMatch is the typed request payload for ArtifactCacheNamespace.ListTyped.
-type ArtifactCacheNamespaceListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ArtifactCacheNamespaceCreateData is the typed request payload for ArtifactCacheNamespace.CreateTyped.
@@ -2570,11 +2457,6 @@ type ArtifactImageRepositoryLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ArtifactImageRepositoryListMatch is the typed request payload for ArtifactImageRepository.ListTyped.
-type ArtifactImageRepositoryListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // ArtifactImageRepositoryCreateData is the typed request payload for ArtifactImageRepository.CreateTyped.
 type ArtifactImageRepositoryCreateData struct {
 }
@@ -2603,11 +2485,6 @@ type ArtifactPackageMirrorLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ArtifactPackageMirrorListMatch is the typed request payload for ArtifactPackageMirror.ListTyped.
-type ArtifactPackageMirrorListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // ArtifactPackageMirrorCreateData is the typed request payload for ArtifactPackageMirror.CreateTyped.
 type ArtifactPackageMirrorCreateData struct {
 }
@@ -2634,11 +2511,6 @@ type ArtifactRetentionPolicy struct {
 // ArtifactRetentionPolicyLoadMatch is the typed request payload for ArtifactRetentionPolicy.LoadTyped.
 type ArtifactRetentionPolicyLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// ArtifactRetentionPolicyListMatch is the typed request payload for ArtifactRetentionPolicy.ListTyped.
-type ArtifactRetentionPolicyListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ArtifactRetentionPolicyCreateData is the typed request payload for ArtifactRetentionPolicy.CreateTyped.
@@ -2771,8 +2643,8 @@ type AuthPasswordResetUpdateData struct {
 type AuthRegistrationOption struct {
 }
 
-// AuthRegistrationOptionListMatch is the typed request payload for AuthRegistrationOption.ListTyped.
-type AuthRegistrationOptionListMatch struct {
+// AuthRegistrationOptionLoadMatch is the typed request payload for AuthRegistrationOption.LoadTyped.
+type AuthRegistrationOptionLoadMatch struct {
 	EmailPasswordSignupEnabled *bool `json:"email_password_signup_enabled,omitempty"`
 	OpenaiSignInEnabled *bool `json:"openai_sign_in_enabled,omitempty"`
 	TurnstileSiteKey *any `json:"turnstile_site_key,omitempty"`
@@ -2812,8 +2684,8 @@ type AutomationRunCreateData struct {
 type BackendRunnerPool struct {
 }
 
-// BackendRunnerPoolListMatch is the typed request payload for BackendRunnerPool.ListTyped.
-type BackendRunnerPoolListMatch struct {
+// BackendRunnerPoolLoadMatch is the typed request payload for BackendRunnerPool.LoadTyped.
+type BackendRunnerPoolLoadMatch struct {
 	BackendId string `json:"backend_id"`
 }
 
@@ -2859,11 +2731,6 @@ type BazelBackend struct {
 // BazelBackendLoadMatch is the typed request payload for BazelBackend.LoadTyped.
 type BazelBackendLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// BazelBackendListMatch is the typed request payload for BazelBackend.ListTyped.
-type BazelBackendListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // BazelBackendCreateData is the typed request payload for BazelBackend.CreateTyped.
@@ -3350,12 +3217,7 @@ type CacheNamespaceEntry struct {
 // CacheNamespaceEntryLoadMatch is the typed request payload for CacheNamespaceEntry.LoadTyped.
 type CacheNamespaceEntryLoadMatch struct {
 	CacheNamespaceId string `json:"cache_namespace_id"`
-	Id string `json:"id"`
-}
-
-// CacheNamespaceEntryListMatch is the typed request payload for CacheNamespaceEntry.ListTyped.
-type CacheNamespaceEntryListMatch struct {
-	CacheNamespaceId string `json:"cache_namespace_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // CacheNamespaceEntryCreateData is the typed request payload for CacheNamespaceEntry.CreateTyped.
@@ -3398,13 +3260,7 @@ type CdnDeployment struct {
 type CdnDeploymentLoadMatch struct {
 	AppId string `json:"app_id"`
 	CdnId string `json:"cdn_id"`
-	Id string `json:"id"`
-}
-
-// CdnDeploymentListMatch is the typed request payload for CdnDeployment.ListTyped.
-type CdnDeploymentListMatch struct {
-	AppId string `json:"app_id"`
-	CdnId string `json:"cdn_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // CdnDeploymentCreateData is the typed request payload for CdnDeployment.CreateTyped.
@@ -3421,13 +3277,7 @@ type CdnHostname struct {
 type CdnHostnameLoadMatch struct {
 	AppId string `json:"app_id"`
 	CdnId string `json:"cdn_id"`
-	Id string `json:"id"`
-}
-
-// CdnHostnameListMatch is the typed request payload for CdnHostname.ListTyped.
-type CdnHostnameListMatch struct {
-	AppId string `json:"app_id"`
-	CdnId string `json:"cdn_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // CdnHostnameCreateData is the typed request payload for CdnHostname.CreateTyped.
@@ -3470,11 +3320,6 @@ type CdnSpaceLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// CdnSpaceListMatch is the typed request payload for CdnSpace.ListTyped.
-type CdnSpaceListMatch struct {
-	OrganizationId string `json:"organization_id"`
-}
-
 // CdnSpaceCreateData is the typed request payload for CdnSpace.CreateTyped.
 type CdnSpaceCreateData struct {
 	OrganizationId string `json:"organization_id"`
@@ -3502,12 +3347,7 @@ type CdnSpaceObject struct {
 // CdnSpaceObjectLoadMatch is the typed request payload for CdnSpaceObject.LoadTyped.
 type CdnSpaceObjectLoadMatch struct {
 	CdnSpaceId string `json:"cdn_space_id"`
-	Id string `json:"id"`
-}
-
-// CdnSpaceObjectListMatch is the typed request payload for CdnSpaceObject.ListTyped.
-type CdnSpaceObjectListMatch struct {
-	CdnSpaceId string `json:"cdn_space_id"`
+	Id *string `json:"id,omitempty"`
 }
 
 // CdnSpaceObjectUpdateData is the typed request payload for CdnSpaceObject.UpdateTyped.
@@ -3525,8 +3365,8 @@ type CdnSpaceObjectRemoveMatch struct {
 type Change struct {
 }
 
-// ChangeListMatch is the typed request payload for Change.ListTyped.
-type ChangeListMatch struct {
+// ChangeLoadMatch is the typed request payload for Change.LoadTyped.
+type ChangeLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Author *string `json:"author,omitempty"`
 	AwaitingReview *bool `json:"awaiting_review,omitempty"`
@@ -3846,12 +3686,7 @@ type CiPipelineRun struct {
 
 // CiPipelineRunLoadMatch is the typed request payload for CiPipelineRun.LoadTyped.
 type CiPipelineRunLoadMatch struct {
-	Id string `json:"id"`
-	PipelineId string `json:"pipeline_id"`
-}
-
-// CiPipelineRunListMatch is the typed request payload for CiPipelineRun.ListTyped.
-type CiPipelineRunListMatch struct {
+	Id *string `json:"id,omitempty"`
 	PipelineId string `json:"pipeline_id"`
 }
 
@@ -3924,10 +3759,6 @@ type CliRelease struct {
 
 // CliReleaseLoadMatch is the typed request payload for CliRelease.LoadTyped.
 type CliReleaseLoadMatch struct {
-}
-
-// CliReleaseListMatch is the typed request payload for CliRelease.ListTyped.
-type CliReleaseListMatch struct {
 }
 
 // CliReleaseCreateData is the typed request payload for CliRelease.CreateTyped.
@@ -4125,20 +3956,14 @@ type DeepScan struct {
 
 // DeepScanLoadMatch is the typed request payload for DeepScan.LoadTyped.
 type DeepScanLoadMatch struct {
-	Id string `json:"id"`
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	AgentId *string `json:"agent_id,omitempty"`
 	Evidence *string `json:"evidence,omitempty"`
 	FindingId *string `json:"finding_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
-}
-
-// DeepScanListMatch is the typed request payload for DeepScan.ListTyped.
-type DeepScanListMatch struct {
-	OrganizationId string `json:"organization_id"`
 	Finding *string `json:"finding,omitempty"`
 	Page *int `json:"page,omitempty"`
-	ProjectId *string `json:"project_id,omitempty"`
 	Query *string `json:"query,omitempty"`
 	Status *string `json:"status,omitempty"`
 }
@@ -4191,8 +4016,8 @@ type DeepScanFlowCreateData struct {
 type DeepScanMappedFlow struct {
 }
 
-// DeepScanMappedFlowListMatch is the typed request payload for DeepScanMappedFlow.ListTyped.
-type DeepScanMappedFlowListMatch struct {
+// DeepScanMappedFlowLoadMatch is the typed request payload for DeepScanMappedFlow.LoadTyped.
+type DeepScanMappedFlowLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	AccountId *string `json:"account_id,omitempty"`
 	EnvironmentId string `json:"environment_id"`
@@ -4255,8 +4080,8 @@ type DeploymentDashboardNomadLoadMatch struct {
 type DeploymentDetail struct {
 }
 
-// DeploymentDetailListMatch is the typed request payload for DeploymentDetail.ListTyped.
-type DeploymentDetailListMatch struct {
+// DeploymentDetailLoadMatch is the typed request payload for DeploymentDetail.LoadTyped.
+type DeploymentDetailLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	App *string `json:"app,omitempty"`
 	Environment *string `json:"environment,omitempty"`
@@ -4442,8 +4267,8 @@ type DeviceControlOperationCreateData struct {
 type DeviceEnterpriseRelay struct {
 }
 
-// DeviceEnterpriseRelayListMatch is the typed request payload for DeviceEnterpriseRelay.ListTyped.
-type DeviceEnterpriseRelayListMatch struct {
+// DeviceEnterpriseRelayLoadMatch is the typed request payload for DeviceEnterpriseRelay.LoadTyped.
+type DeviceEnterpriseRelayLoadMatch struct {
 }
 
 // DeviceFolderListing is the typed data model for the device_folder_listing entity.
@@ -4763,13 +4588,7 @@ type Environment struct {
 
 // EnvironmentLoadMatch is the typed request payload for Environment.LoadTyped.
 type EnvironmentLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	ProjectId *string `json:"project_id,omitempty"`
-}
-
-// EnvironmentListMatch is the typed request payload for Environment.ListTyped.
-type EnvironmentListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	ProjectId *string `json:"project_id,omitempty"`
 }
@@ -4891,8 +4710,8 @@ type EnvironmentRevisionUpdateData struct {
 type EnvironmentSecretBinding struct {
 }
 
-// EnvironmentSecretBindingListMatch is the typed request payload for EnvironmentSecretBinding.ListTyped.
-type EnvironmentSecretBindingListMatch struct {
+// EnvironmentSecretBindingLoadMatch is the typed request payload for EnvironmentSecretBinding.LoadTyped.
+type EnvironmentSecretBindingLoadMatch struct {
 	AppId string `json:"app_id"`
 	EnvironmentId string `json:"environment_id"`
 }
@@ -4966,13 +4785,6 @@ type ExecutionDesiredStateLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ExecutionDesiredStateListMatch is the typed request payload for ExecutionDesiredState.ListTyped.
-type ExecutionDesiredStateListMatch struct {
-	DesiredState *map[string]any `json:"desired_state,omitempty"`
-	Id *string `json:"id,omitempty"`
-	StopObserved *bool `json:"stop_observed,omitempty"`
-}
-
 // ExecutionDesiredStateCreateData is the typed request payload for ExecutionDesiredState.CreateTyped.
 type ExecutionDesiredStateCreateData struct {
 }
@@ -5001,11 +4813,6 @@ type ExecutionReconcilerTickLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ExecutionReconcilerTickListMatch is the typed request payload for ExecutionReconcilerTick.ListTyped.
-type ExecutionReconcilerTickListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // ExecutionReconcilerTickCreateData is the typed request payload for ExecutionReconcilerTick.CreateTyped.
 type ExecutionReconcilerTickCreateData struct {
 }
@@ -5017,11 +4824,6 @@ type ExecutionRelease struct {
 // ExecutionReleaseLoadMatch is the typed request payload for ExecutionRelease.LoadTyped.
 type ExecutionReleaseLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// ExecutionReleaseListMatch is the typed request payload for ExecutionRelease.ListTyped.
-type ExecutionReleaseListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ExecutionReleaseCreateData is the typed request payload for ExecutionRelease.CreateTyped.
@@ -5381,8 +5183,8 @@ type GithubCiRepositoryCompatibilityReportListMatch struct {
 type GithubConnection struct {
 }
 
-// GithubConnectionListMatch is the typed request payload for GithubConnection.ListTyped.
-type GithubConnectionListMatch struct {
+// GithubConnectionLoadMatch is the typed request payload for GithubConnection.LoadTyped.
+type GithubConnectionLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	GithubAppInstallationId *string `json:"github_app_installation_id,omitempty"`
 	ProjectId *string `json:"project_id,omitempty"`
@@ -5687,12 +5489,7 @@ type HostingAppDomain struct {
 // HostingAppDomainLoadMatch is the typed request payload for HostingAppDomain.LoadTyped.
 type HostingAppDomainLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-}
-
-// HostingAppDomainListMatch is the typed request payload for HostingAppDomain.ListTyped.
-type HostingAppDomainListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 	AppEnvironmentId *string `json:"app_environment_id,omitempty"`
 }
 
@@ -5790,8 +5587,8 @@ type ImportBranchPolicyPatchData struct {
 type Integration struct {
 }
 
-// IntegrationListMatch is the typed request payload for Integration.ListTyped.
-type IntegrationListMatch struct {
+// IntegrationLoadMatch is the typed request payload for Integration.LoadTyped.
+type IntegrationLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -5868,8 +5665,8 @@ type JobLogChunkCreateData struct {
 type JobStep struct {
 }
 
-// JobStepListMatch is the typed request payload for JobStep.ListTyped.
-type JobStepListMatch struct {
+// JobStepLoadMatch is the typed request payload for JobStep.LoadTyped.
+type JobStepLoadMatch struct {
 	JobId string `json:"job_id"`
 	PipelineId string `json:"pipeline_id"`
 	RunId string `json:"run_id"`
@@ -5902,8 +5699,8 @@ type JobStepPatchData struct {
 type JobWorkspace struct {
 }
 
-// JobWorkspaceListMatch is the typed request payload for JobWorkspace.ListTyped.
-type JobWorkspaceListMatch struct {
+// JobWorkspaceLoadMatch is the typed request payload for JobWorkspace.LoadTyped.
+type JobWorkspaceLoadMatch struct {
 	JobId string `json:"job_id"`
 	PipelineId string `json:"pipeline_id"`
 	RunId string `json:"run_id"`
@@ -6188,13 +5985,7 @@ type LogStreamChunk struct {
 
 // LogStreamChunkLoadMatch is the typed request payload for LogStreamChunk.LoadTyped.
 type LogStreamChunkLoadMatch struct {
-	Id string `json:"id"`
-	LogStreamId string `json:"log_stream_id"`
-	SpaceId string `json:"space_id"`
-}
-
-// LogStreamChunkListMatch is the typed request payload for LogStreamChunk.ListTyped.
-type LogStreamChunkListMatch struct {
+	Id *string `json:"id,omitempty"`
 	LogStreamId string `json:"log_stream_id"`
 	SpaceId string `json:"space_id"`
 }
@@ -6223,8 +6014,8 @@ type LogoImageRemoveMatch struct {
 type MarketingSetting struct {
 }
 
-// MarketingSettingListMatch is the typed request payload for MarketingSetting.ListTyped.
-type MarketingSettingListMatch struct {
+// MarketingSettingLoadMatch is the typed request payload for MarketingSetting.LoadTyped.
+type MarketingSettingLoadMatch struct {
 	CallFirst *bool `json:"call_first,omitempty"`
 }
 
@@ -6547,8 +6338,8 @@ type MessagingConversationUploadCreateData struct {
 type MetricQuery struct {
 }
 
-// MetricQueryListMatch is the typed request payload for MetricQuery.ListTyped.
-type MetricQueryListMatch struct {
+// MetricQueryLoadMatch is the typed request payload for MetricQuery.LoadTyped.
+type MetricQueryLoadMatch struct {
 }
 
 // MetronomeWebhook is the typed data model for the metronome_webhook entity.
@@ -6666,11 +6457,6 @@ type NetworkingSpaceLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// NetworkingSpaceListMatch is the typed request payload for NetworkingSpace.ListTyped.
-type NetworkingSpaceListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // NetworkingSpaceCreateData is the typed request payload for NetworkingSpace.CreateTyped.
 type NetworkingSpaceCreateData struct {
 }
@@ -6714,12 +6500,6 @@ type NodeLease struct {
 
 // NodeLeaseLoadMatch is the typed request payload for NodeLease.LoadTyped.
 type NodeLeaseLoadMatch struct {
-	Id string `json:"id"`
-	NodeId string `json:"node_id"`
-}
-
-// NodeLeaseListMatch is the typed request payload for NodeLease.ListTyped.
-type NodeLeaseListMatch struct {
 	NodeId string `json:"node_id"`
 }
 
@@ -6743,8 +6523,8 @@ type NomadAllocationLoadMatch struct {
 type NomadLog struct {
 }
 
-// NomadLogListMatch is the typed request payload for NomadLog.ListTyped.
-type NomadLogListMatch struct {
+// NomadLogLoadMatch is the typed request payload for NomadLog.LoadTyped.
+type NomadLogLoadMatch struct {
 	AppId string `json:"app_id"`
 	Environment *string `json:"environment,omitempty"`
 	Location *string `json:"location,omitempty"`
@@ -6772,11 +6552,6 @@ type ObservabilityClickhouseCluster struct {
 // ObservabilityClickhouseClusterLoadMatch is the typed request payload for ObservabilityClickhouseCluster.LoadTyped.
 type ObservabilityClickhouseClusterLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// ObservabilityClickhouseClusterListMatch is the typed request payload for ObservabilityClickhouseCluster.ListTyped.
-type ObservabilityClickhouseClusterListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ObservabilityClickhouseClusterCreateData is the typed request payload for ObservabilityClickhouseCluster.CreateTyped.
@@ -6807,11 +6582,6 @@ type ObservabilityQuickwitClusterLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// ObservabilityQuickwitClusterListMatch is the typed request payload for ObservabilityQuickwitCluster.ListTyped.
-type ObservabilityQuickwitClusterListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // ObservabilityQuickwitClusterCreateData is the typed request payload for ObservabilityQuickwitCluster.CreateTyped.
 type ObservabilityQuickwitClusterCreateData struct {
 }
@@ -6838,11 +6608,6 @@ type ObservabilitySpace struct {
 // ObservabilitySpaceLoadMatch is the typed request payload for ObservabilitySpace.LoadTyped.
 type ObservabilitySpaceLoadMatch struct {
 	Id string `json:"id"`
-}
-
-// ObservabilitySpaceListMatch is the typed request payload for ObservabilitySpace.ListTyped.
-type ObservabilitySpaceListMatch struct {
-	Id *string `json:"id,omitempty"`
 }
 
 // ObservabilitySpaceCreateData is the typed request payload for ObservabilitySpace.CreateTyped.
@@ -6960,8 +6725,8 @@ type OrganizationPatchData struct {
 type OrganizationApp struct {
 }
 
-// OrganizationAppListMatch is the typed request payload for OrganizationApp.ListTyped.
-type OrganizationAppListMatch struct {
+// OrganizationAppLoadMatch is the typed request payload for OrganizationApp.LoadTyped.
+type OrganizationAppLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Context *bool `json:"context,omitempty"`
 	Installed *bool `json:"installed,omitempty"`
@@ -7010,12 +6775,7 @@ type OrganizationIdentityCertificate struct {
 
 // OrganizationIdentityCertificateLoadMatch is the typed request payload for OrganizationIdentityCertificate.LoadTyped.
 type OrganizationIdentityCertificateLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// OrganizationIdentityCertificateListMatch is the typed request payload for OrganizationIdentityCertificate.ListTyped.
-type OrganizationIdentityCertificateListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -7083,12 +6843,7 @@ type OrganizationOidcTrust struct {
 
 // OrganizationOidcTrustLoadMatch is the typed request payload for OrganizationOidcTrust.LoadTyped.
 type OrganizationOidcTrustLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// OrganizationOidcTrustListMatch is the typed request payload for OrganizationOidcTrust.ListTyped.
-type OrganizationOidcTrustListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -7195,12 +6950,7 @@ type OrganizationServiceAccount struct {
 
 // OrganizationServiceAccountLoadMatch is the typed request payload for OrganizationServiceAccount.LoadTyped.
 type OrganizationServiceAccountLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// OrganizationServiceAccountListMatch is the typed request payload for OrganizationServiceAccount.ListTyped.
-type OrganizationServiceAccountListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -7249,8 +6999,8 @@ type OrganizationSettingUpdateData struct {
 type OrganizationSite struct {
 }
 
-// OrganizationSiteListMatch is the typed request payload for OrganizationSite.ListTyped.
-type OrganizationSiteListMatch struct {
+// OrganizationSiteLoadMatch is the typed request payload for OrganizationSite.LoadTyped.
+type OrganizationSiteLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	NativeAgentId string `json:"native_agent_id"`
 }
@@ -7299,12 +7049,7 @@ type OrganizationWorkloadIdentity struct {
 
 // OrganizationWorkloadIdentityLoadMatch is the typed request payload for OrganizationWorkloadIdentity.LoadTyped.
 type OrganizationWorkloadIdentityLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// OrganizationWorkloadIdentityListMatch is the typed request payload for OrganizationWorkloadIdentity.ListTyped.
-type OrganizationWorkloadIdentityListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -7360,16 +7105,6 @@ type PageAgent struct {
 
 // PageAgentLoadMatch is the typed request payload for PageAgent.LoadTyped.
 type PageAgentLoadMatch struct {
-	OrganizationId string `json:"organization_id"`
-	Agent *string `json:"agent,omitempty"`
-	AgentSearch *string `json:"agent_search,omitempty"`
-	AgentVisibility *string `json:"agent_visibility,omitempty"`
-	Cursor *string `json:"cursor,omitempty"`
-	Limit *int `json:"limit,omitempty"`
-}
-
-// PageAgentListMatch is the typed request payload for PageAgent.ListTyped.
-type PageAgentListMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Agent *string `json:"agent,omitempty"`
 	AgentSearch *string `json:"agent_search,omitempty"`
@@ -7588,11 +7323,6 @@ type PairingLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// PairingListMatch is the typed request payload for Pairing.ListTyped.
-type PairingListMatch struct {
-	Id *string `json:"id,omitempty"`
-}
-
 // PairingCreateData is the typed request payload for Pairing.CreateTyped.
 type PairingCreateData struct {
 }
@@ -7601,8 +7331,8 @@ type PairingCreateData struct {
 type PairingEvent struct {
 }
 
-// PairingEventListMatch is the typed request payload for PairingEvent.ListTyped.
-type PairingEventListMatch struct {
+// PairingEventLoadMatch is the typed request payload for PairingEvent.LoadTyped.
+type PairingEventLoadMatch struct {
 	PairingId string `json:"pairing_id"`
 }
 
@@ -7632,9 +7362,9 @@ type PatchsetDiffLoadMatch struct {
 type PersonalAccessToken struct {
 }
 
-// PersonalAccessTokenListMatch is the typed request payload for PersonalAccessToken.ListTyped.
-type PersonalAccessTokenListMatch struct {
-	Id *string `json:"id,omitempty"`
+// PersonalAccessTokenLoadMatch is the typed request payload for PersonalAccessToken.LoadTyped.
+type PersonalAccessTokenLoadMatch struct {
+	Id string `json:"id"`
 }
 
 // PersonalAccessTokenCreateData is the typed request payload for PersonalAccessToken.CreateTyped.
@@ -7650,8 +7380,8 @@ type PersonalAccessTokenRemoveMatch struct {
 type PreviewOperation struct {
 }
 
-// PreviewOperationListMatch is the typed request payload for PreviewOperation.ListTyped.
-type PreviewOperationListMatch struct {
+// PreviewOperationLoadMatch is the typed request payload for PreviewOperation.LoadTyped.
+type PreviewOperationLoadMatch struct {
 	AppId string `json:"app_id"`
 	PreviewId string `json:"preview_id"`
 }
@@ -7660,8 +7390,8 @@ type PreviewOperationListMatch struct {
 type PreviewProfileSecretBinding struct {
 }
 
-// PreviewProfileSecretBindingListMatch is the typed request payload for PreviewProfileSecretBinding.ListTyped.
-type PreviewProfileSecretBindingListMatch struct {
+// PreviewProfileSecretBindingLoadMatch is the typed request payload for PreviewProfileSecretBinding.LoadTyped.
+type PreviewProfileSecretBindingLoadMatch struct {
 	AppId string `json:"app_id"`
 	PreviewProfileId string `json:"preview_profile_id"`
 }
@@ -7708,8 +7438,8 @@ type PreviewSecretRemoveMatch struct {
 type PreviewSharingApproval struct {
 }
 
-// PreviewSharingApprovalListMatch is the typed request payload for PreviewSharingApproval.ListTyped.
-type PreviewSharingApprovalListMatch struct {
+// PreviewSharingApprovalLoadMatch is the typed request payload for PreviewSharingApproval.LoadTyped.
+type PreviewSharingApprovalLoadMatch struct {
 	AppId string `json:"app_id"`
 	PreviewId string `json:"preview_id"`
 }
@@ -8378,8 +8108,8 @@ type ProjectRunSchedulePatchData struct {
 type ProjectScenarioOption struct {
 }
 
-// ProjectScenarioOptionListMatch is the typed request payload for ProjectScenarioOption.ListTyped.
-type ProjectScenarioOptionListMatch struct {
+// ProjectScenarioOptionLoadMatch is the typed request payload for ProjectScenarioOption.LoadTyped.
+type ProjectScenarioOptionLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
 }
@@ -8401,8 +8131,8 @@ type ProjectScenarioRowListMatch struct {
 type ProjectSetting struct {
 }
 
-// ProjectSettingListMatch is the typed request payload for ProjectSetting.ListTyped.
-type ProjectSettingListMatch struct {
+// ProjectSettingLoadMatch is the typed request payload for ProjectSetting.LoadTyped.
+type ProjectSettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
 }
@@ -8484,8 +8214,8 @@ type PullRequestMagicMergeCreateData struct {
 type PullRequestSetting struct {
 }
 
-// PullRequestSettingListMatch is the typed request payload for PullRequestSetting.ListTyped.
-type PullRequestSettingListMatch struct {
+// PullRequestSettingLoadMatch is the typed request payload for PullRequestSetting.LoadTyped.
+type PullRequestSettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId *string `json:"project_id,omitempty"`
 	Provider *string `json:"provider,omitempty"`
@@ -8687,12 +8417,7 @@ type ReleaseRollout struct {
 
 // ReleaseRolloutLoadMatch is the typed request payload for ReleaseRollout.LoadTyped.
 type ReleaseRolloutLoadMatch struct {
-	Id string `json:"id"`
-	ReleaseId string `json:"release_id"`
-}
-
-// ReleaseRolloutListMatch is the typed request payload for ReleaseRollout.ListTyped.
-type ReleaseRolloutListMatch struct {
+	Id *string `json:"id,omitempty"`
 	ReleaseId string `json:"release_id"`
 }
 
@@ -8782,13 +8507,7 @@ type RepoAgentSession struct {
 
 // RepoAgentSessionLoadMatch is the typed request payload for RepoAgentSession.LoadTyped.
 type RepoAgentSessionLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	RepoId string `json:"repo_id"`
-}
-
-// RepoAgentSessionListMatch is the typed request payload for RepoAgentSession.ListTyped.
-type RepoAgentSessionListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
 }
@@ -8900,13 +8619,7 @@ type RepoCloudWorkspaceBackup struct {
 
 // RepoCloudWorkspaceBackupLoadMatch is the typed request payload for RepoCloudWorkspaceBackup.LoadTyped.
 type RepoCloudWorkspaceBackupLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	RepoId string `json:"repo_id"`
-}
-
-// RepoCloudWorkspaceBackupListMatch is the typed request payload for RepoCloudWorkspaceBackup.ListTyped.
-type RepoCloudWorkspaceBackupListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
 }
@@ -9181,11 +8894,6 @@ type RoderCodeRepairLoadMatch struct {
 	Id string `json:"id"`
 }
 
-// RoderCodeRepairListMatch is the typed request payload for RoderCodeRepair.ListTyped.
-type RoderCodeRepairListMatch struct {
-	ScenarioRunId string `json:"scenario_run_id"`
-}
-
 // RoderCodeRepairCreateData is the typed request payload for RoderCodeRepair.CreateTyped.
 type RoderCodeRepairCreateData struct {
 	BaseSha string `json:"base_sha"`
@@ -9198,8 +8906,8 @@ type RoderCodeRepairCreateData struct {
 type RoderCodeRepairSetting struct {
 }
 
-// RoderCodeRepairSettingListMatch is the typed request payload for RoderCodeRepairSetting.ListTyped.
-type RoderCodeRepairSettingListMatch struct {
+// RoderCodeRepairSettingLoadMatch is the typed request payload for RoderCodeRepairSetting.LoadTyped.
+type RoderCodeRepairSettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -9241,8 +8949,8 @@ type RoderWorkspaceCredentialCreateData struct {
 type RunArtifact struct {
 }
 
-// RunArtifactListMatch is the typed request payload for RunArtifact.ListTyped.
-type RunArtifactListMatch struct {
+// RunArtifactLoadMatch is the typed request payload for RunArtifact.LoadTyped.
+type RunArtifactLoadMatch struct {
 	PipelineId string `json:"pipeline_id"`
 	RunId string `json:"run_id"`
 }
@@ -9259,13 +8967,7 @@ type RunJob struct {
 
 // RunJobLoadMatch is the typed request payload for RunJob.LoadTyped.
 type RunJobLoadMatch struct {
-	Id string `json:"id"`
-	PipelineId string `json:"pipeline_id"`
-	RunId string `json:"run_id"`
-}
-
-// RunJobListMatch is the typed request payload for RunJob.ListTyped.
-type RunJobListMatch struct {
+	Id *string `json:"id,omitempty"`
 	PipelineId string `json:"pipeline_id"`
 	RunId string `json:"run_id"`
 }
@@ -9344,8 +9046,8 @@ type RunWorkspaceCredentialCreateData struct {
 type RunnerLease struct {
 }
 
-// RunnerLeaseListMatch is the typed request payload for RunnerLease.ListTyped.
-type RunnerLeaseListMatch struct {
+// RunnerLeaseLoadMatch is the typed request payload for RunnerLease.LoadTyped.
+type RunnerLeaseLoadMatch struct {
 	RunnerId string `json:"runner_id"`
 	RunnerPoolId string `json:"runner_pool_id"`
 }
@@ -9381,12 +9083,7 @@ type RunnerPoolRunner struct {
 
 // RunnerPoolRunnerLoadMatch is the typed request payload for RunnerPoolRunner.LoadTyped.
 type RunnerPoolRunnerLoadMatch struct {
-	Id string `json:"id"`
-	RunnerPoolId string `json:"runner_pool_id"`
-}
-
-// RunnerPoolRunnerListMatch is the typed request payload for RunnerPoolRunner.ListTyped.
-type RunnerPoolRunnerListMatch struct {
+	Id *string `json:"id,omitempty"`
 	RunnerPoolId string `json:"runner_pool_id"`
 }
 
@@ -9411,8 +9108,8 @@ type RunnerPoolRunnerPatchData struct {
 type RuntimeInstanceHealthSnapshot struct {
 }
 
-// RuntimeInstanceHealthSnapshotListMatch is the typed request payload for RuntimeInstanceHealthSnapshot.ListTyped.
-type RuntimeInstanceHealthSnapshotListMatch struct {
+// RuntimeInstanceHealthSnapshotLoadMatch is the typed request payload for RuntimeInstanceHealthSnapshot.LoadTyped.
+type RuntimeInstanceHealthSnapshotLoadMatch struct {
 	RuntimeInstanceId string `json:"runtime_instance_id"`
 }
 
@@ -9425,8 +9122,8 @@ type RuntimeInstanceHealthSnapshotCreateData struct {
 type SandboxIntegration struct {
 }
 
-// SandboxIntegrationListMatch is the typed request payload for SandboxIntegration.ListTyped.
-type SandboxIntegrationListMatch struct {
+// SandboxIntegrationLoadMatch is the typed request payload for SandboxIntegration.LoadTyped.
+type SandboxIntegrationLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Provider *string `json:"provider,omitempty"`
 }
@@ -9511,13 +9208,7 @@ type SecretGrant struct {
 
 // SecretGrantLoadMatch is the typed request payload for SecretGrant.LoadTyped.
 type SecretGrantLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	SecretId string `json:"secret_id"`
-}
-
-// SecretGrantListMatch is the typed request payload for SecretGrant.ListTyped.
-type SecretGrantListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	SecretId string `json:"secret_id"`
 }
@@ -9555,13 +9246,7 @@ type SecretVersion struct {
 
 // SecretVersionLoadMatch is the typed request payload for SecretVersion.LoadTyped.
 type SecretVersionLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-	SecretId string `json:"secret_id"`
-}
-
-// SecretVersionListMatch is the typed request payload for SecretVersion.ListTyped.
-type SecretVersionListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 	SecretId string `json:"secret_id"`
 }
@@ -9600,13 +9285,7 @@ type ServiceEndpoint struct {
 // ServiceEndpointLoadMatch is the typed request payload for ServiceEndpoint.LoadTyped.
 type ServiceEndpointLoadMatch struct {
 	AppId string `json:"app_id"`
-	Id string `json:"id"`
-	ServiceId string `json:"service_id"`
-}
-
-// ServiceEndpointListMatch is the typed request payload for ServiceEndpoint.ListTyped.
-type ServiceEndpointListMatch struct {
-	AppId string `json:"app_id"`
+	Id *string `json:"id,omitempty"`
 	ServiceId string `json:"service_id"`
 }
 
@@ -9641,8 +9320,8 @@ type ServiceEndpointRemoveMatch struct {
 type Setting struct {
 }
 
-// SettingListMatch is the typed request payload for Setting.ListTyped.
-type SettingListMatch struct {
+// SettingLoadMatch is the typed request payload for Setting.LoadTyped.
+type SettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -9789,12 +9468,7 @@ type SignalSubscription struct {
 
 // SignalSubscriptionLoadMatch is the typed request payload for SignalSubscription.LoadTyped.
 type SignalSubscriptionLoadMatch struct {
-	Id string `json:"id"`
-	OrganizationId string `json:"organization_id"`
-}
-
-// SignalSubscriptionListMatch is the typed request payload for SignalSubscription.ListTyped.
-type SignalSubscriptionListMatch struct {
+	Id *string `json:"id,omitempty"`
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -9835,8 +9509,8 @@ type SiteListMatch struct {
 type SiteAccessKey struct {
 }
 
-// SiteAccessKeyListMatch is the typed request payload for SiteAccessKey.ListTyped.
-type SiteAccessKeyListMatch struct {
+// SiteAccessKeyLoadMatch is the typed request payload for SiteAccessKey.LoadTyped.
+type SiteAccessKeyLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	SiteId string `json:"site_id"`
 }
@@ -9913,12 +9587,7 @@ type SpaceAlertRule struct {
 
 // SpaceAlertRuleLoadMatch is the typed request payload for SpaceAlertRule.LoadTyped.
 type SpaceAlertRuleLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceAlertRuleListMatch is the typed request payload for SpaceAlertRule.ListTyped.
-type SpaceAlertRuleListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -9949,8 +9618,8 @@ type SpaceAlertRuleRemoveMatch struct {
 type SpaceAuditEvent struct {
 }
 
-// SpaceAuditEventListMatch is the typed request payload for SpaceAuditEvent.ListTyped.
-type SpaceAuditEventListMatch struct {
+// SpaceAuditEventLoadMatch is the typed request payload for SpaceAuditEvent.LoadTyped.
+type SpaceAuditEventLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -9965,12 +9634,7 @@ type SpaceDnsRecord struct {
 
 // SpaceDnsRecordLoadMatch is the typed request payload for SpaceDnsRecord.LoadTyped.
 type SpaceDnsRecordLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceDnsRecordListMatch is the typed request payload for SpaceDnsRecord.ListTyped.
-type SpaceDnsRecordListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10003,12 +9667,7 @@ type SpaceEnrollmentToken struct {
 
 // SpaceEnrollmentTokenLoadMatch is the typed request payload for SpaceEnrollmentToken.LoadTyped.
 type SpaceEnrollmentTokenLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceEnrollmentTokenListMatch is the typed request payload for SpaceEnrollmentToken.ListTyped.
-type SpaceEnrollmentTokenListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10041,12 +9700,7 @@ type SpaceGateway struct {
 
 // SpaceGatewayLoadMatch is the typed request payload for SpaceGateway.LoadTyped.
 type SpaceGatewayLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceGatewayListMatch is the typed request payload for SpaceGateway.ListTyped.
-type SpaceGatewayListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10077,8 +9731,8 @@ type SpaceGatewayRemoveMatch struct {
 type SpaceGroup struct {
 }
 
-// SpaceGroupListMatch is the typed request payload for SpaceGroup.ListTyped.
-type SpaceGroupListMatch struct {
+// SpaceGroupLoadMatch is the typed request payload for SpaceGroup.LoadTyped.
+type SpaceGroupLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10109,8 +9763,8 @@ type SpaceGroupRemoveMatch struct {
 type SpaceGroupMembership struct {
 }
 
-// SpaceGroupMembershipListMatch is the typed request payload for SpaceGroupMembership.ListTyped.
-type SpaceGroupMembershipListMatch struct {
+// SpaceGroupMembershipLoadMatch is the typed request payload for SpaceGroupMembership.LoadTyped.
+type SpaceGroupMembershipLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10141,8 +9795,8 @@ type SpaceGroupMembershipRemoveMatch struct {
 type SpaceLogStream struct {
 }
 
-// SpaceLogStreamListMatch is the typed request payload for SpaceLogStream.ListTyped.
-type SpaceLogStreamListMatch struct {
+// SpaceLogStreamLoadMatch is the typed request payload for SpaceLogStream.LoadTyped.
+type SpaceLogStreamLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10155,8 +9809,8 @@ type SpaceLogStreamCreateData struct {
 type SpaceMetricSery struct {
 }
 
-// SpaceMetricSeryListMatch is the typed request payload for SpaceMetricSery.ListTyped.
-type SpaceMetricSeryListMatch struct {
+// SpaceMetricSeryLoadMatch is the typed request payload for SpaceMetricSery.LoadTyped.
+type SpaceMetricSeryLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10171,12 +9825,7 @@ type SpaceOtelCollector struct {
 
 // SpaceOtelCollectorLoadMatch is the typed request payload for SpaceOtelCollector.LoadTyped.
 type SpaceOtelCollectorLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceOtelCollectorListMatch is the typed request payload for SpaceOtelCollector.ListTyped.
-type SpaceOtelCollectorListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10209,12 +9858,7 @@ type SpacePeer struct {
 
 // SpacePeerLoadMatch is the typed request payload for SpacePeer.LoadTyped.
 type SpacePeerLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpacePeerListMatch is the typed request payload for SpacePeer.ListTyped.
-type SpacePeerListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10245,8 +9889,8 @@ type SpacePeerRemoveMatch struct {
 type SpacePeerAttachment struct {
 }
 
-// SpacePeerAttachmentListMatch is the typed request payload for SpacePeerAttachment.ListTyped.
-type SpacePeerAttachmentListMatch struct {
+// SpacePeerAttachmentLoadMatch is the typed request payload for SpacePeerAttachment.LoadTyped.
+type SpacePeerAttachmentLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10279,12 +9923,7 @@ type SpacePolicy struct {
 
 // SpacePolicyLoadMatch is the typed request payload for SpacePolicy.LoadTyped.
 type SpacePolicyLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpacePolicyListMatch is the typed request payload for SpacePolicy.ListTyped.
-type SpacePolicyListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10317,12 +9956,7 @@ type SpaceSegment struct {
 
 // SpaceSegmentLoadMatch is the typed request payload for SpaceSegment.LoadTyped.
 type SpaceSegmentLoadMatch struct {
-	Id string `json:"id"`
-	SpaceId string `json:"space_id"`
-}
-
-// SpaceSegmentListMatch is the typed request payload for SpaceSegment.ListTyped.
-type SpaceSegmentListMatch struct {
+	Id *string `json:"id,omitempty"`
 	SpaceId string `json:"space_id"`
 }
 
@@ -10353,8 +9987,8 @@ type SpaceSegmentRemoveMatch struct {
 type SpaceTraceSpan struct {
 }
 
-// SpaceTraceSpanListMatch is the typed request payload for SpaceTraceSpan.ListTyped.
-type SpaceTraceSpanListMatch struct {
+// SpaceTraceSpanLoadMatch is the typed request payload for SpaceTraceSpan.LoadTyped.
+type SpaceTraceSpanLoadMatch struct {
 	SpaceId string `json:"space_id"`
 }
 
@@ -10367,8 +10001,8 @@ type SpaceTraceSpanCreateData struct {
 type Spark struct {
 }
 
-// SparkListMatch is the typed request payload for Spark.ListTyped.
-type SparkListMatch struct {
+// SparkLoadMatch is the typed request payload for Spark.LoadTyped.
+type SparkLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -10384,8 +10018,8 @@ type SparkCreateData struct {
 type SparkAgentIntegration struct {
 }
 
-// SparkAgentIntegrationListMatch is the typed request payload for SparkAgentIntegration.ListTyped.
-type SparkAgentIntegrationListMatch struct {
+// SparkAgentIntegrationLoadMatch is the typed request payload for SparkAgentIntegration.LoadTyped.
+type SparkAgentIntegrationLoadMatch struct {
 	AgentId string `json:"agent_id"`
 	OrganizationId string `json:"organization_id"`
 	CatalogQ *string `json:"catalog_q,omitempty"`
@@ -10506,11 +10140,6 @@ type SparkCredit struct {
 // SparkCreditLoadMatch is the typed request payload for SparkCredit.LoadTyped.
 type SparkCreditLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
-}
-
-// SparkCreditListMatch is the typed request payload for SparkCredit.ListTyped.
-type SparkCreditListMatch struct {
-	OrganizationId string `json:"organization_id"`
 	View *string `json:"view,omitempty"`
 }
 
@@ -10520,7 +10149,7 @@ type SparkCreditCreateData struct {
 	AmountCents *int `json:"amount_cents,omitempty"`
 	BillingUnit *string `json:"billing_unit,omitempty"`
 	Kind string `json:"kind"`
-	Plan *string `json:"plan,omitempty"`
+	Plan *any `json:"plan,omitempty"`
 	QuotedCreditsCents *int `json:"quoted_credits_cents,omitempty"`
 	QuotedPriceCents *int `json:"quoted_price_cents,omitempty"`
 	RequestKey string `json:"request_key"`
@@ -10552,8 +10181,8 @@ type SparkCreditAgentUsageLoadMatch struct {
 type SparkCreditUsageTotal struct {
 }
 
-// SparkCreditUsageTotalListMatch is the typed request payload for SparkCreditUsageTotal.ListTyped.
-type SparkCreditUsageTotalListMatch struct {
+// SparkCreditUsageTotalLoadMatch is the typed request payload for SparkCreditUsageTotal.LoadTyped.
+type SparkCreditUsageTotalLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -11097,8 +10726,8 @@ type VcsNodeListMatch struct {
 type VcsSetting struct {
 }
 
-// VcsSettingListMatch is the typed request payload for VcsSetting.ListTyped.
-type VcsSettingListMatch struct {
+// VcsSettingLoadMatch is the typed request payload for VcsSetting.LoadTyped.
+type VcsSettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -11430,8 +11059,8 @@ type VerifyBrowserSessionRemoveMatch struct {
 type VerifyEmailVerification struct {
 }
 
-// VerifyEmailVerificationListMatch is the typed request payload for VerifyEmailVerification.ListTyped.
-type VerifyEmailVerificationListMatch struct {
+// VerifyEmailVerificationLoadMatch is the typed request payload for VerifyEmailVerification.LoadTyped.
+type VerifyEmailVerificationLoadMatch struct {
 }
 
 // VerifySignalIntegration is the typed data model for the verify_signal_integration entity.

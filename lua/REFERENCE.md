@@ -2367,23 +2367,23 @@ local admin_org = client:AdminOrg(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `billing_email` | - | - | - | - |
-| `billing_reason` | - | - | - | - |
-| `customize_onboarding_packages` | - | - | - | - |
-| `deployment_usage_visibility` | - | - | - | - |
-| `deployment_usage_visible` | - | - | - | - |
-| `id` | - | - | - | - |
-| `monthly_price_dollars` | - | - | - | - |
-| `monthly_price_override_cents` | - | - | - | - |
-| `name` | - | - | - | - |
-| `onboarding_custom_pricing` | - | - | - | - |
-| `onboarding_package_keys` | - | - | - | - |
-| `owner_email` | - | - | - | - |
-| `package_id` | - | - | Yes | - |
-| `skip_payment` | - | - | - | - |
-| `slug` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `billing_email` | - | - | - |
+| `billing_reason` | - | - | - |
+| `customize_onboarding_packages` | - | - | - |
+| `deployment_usage_visibility` | - | - | - |
+| `deployment_usage_visible` | - | - | - |
+| `id` | - | - | - |
+| `monthly_price_dollars` | - | - | - |
+| `monthly_price_override_cents` | - | - | - |
+| `name` | - | - | - |
+| `onboarding_custom_pricing` | - | - | - |
+| `onboarding_package_keys` | - | - | - |
+| `owner_email` | - | - | - |
+| `package_id` | - | Yes | - |
+| `skip_payment` | - | - | - |
+| `slug` | - | - | - |
 
 ### Operations
 
@@ -2397,14 +2397,6 @@ local result, err = client:AdminOrg():create({
   owner_email = --[[ string ]],
   slug = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AdminOrg():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -2637,12 +2629,9 @@ local agent_app = client:AgentApp(nil)
 | `hidden_install_count` | `number` | Yes | Installs by agents the viewer cannot open |
 | `id` | `string` | Yes |  |
 | `install_count` | `number` | Yes |  |
-| `install_targets` | `table` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `table` | Yes |  |
 | `installed_target_ids` | `table` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `table` | Yes |  |
 | `mcp_url` | `string|nil` | Yes |  |
-| `next_cursor` | `string|nil` | Yes | Pass as cursor to load older apps |
 | `owner` | `table` | Yes | The person who controls the author agent |
 | `thread` | `any` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` | Yes |  |
@@ -3822,12 +3811,12 @@ local agent_event = client:AgentEvent(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentEvent():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:AgentEvent():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -4036,14 +4025,6 @@ local result, err = client:AgentIntegration():create({
   name = --[[ string ]],
   toolkit = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AgentIntegration():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -5179,12 +5160,12 @@ local agent_repository = client:AgentRepository(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentRepository():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:AgentRepository():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -5596,14 +5577,6 @@ local result, err = client:AgentSessionCheckpoint():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AgentSessionCheckpoint():list({ agent_session_id = "example", organization_id = "example", repo_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -5716,12 +5689,12 @@ local agent_setting = client:AgentSetting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentSetting():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:AgentSetting():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -5922,14 +5895,6 @@ local result, err = client:AgentSkill():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AgentSkill():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -6104,12 +6069,12 @@ local result, err = client:AgentSubscription():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentSubscription():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:AgentSubscription():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -6438,14 +6403,6 @@ local result, err = client:AgentThread():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AgentThread():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -6610,8 +6567,11 @@ local agent_verify_project = client:AgentVerifyProject(nil)
 | `available` | `boolean` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `boolean` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `project_choices` | `table` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
 | `verify_projects` | `table` | Yes |  |
 | `version` | `number` | Yes |  |
 
@@ -6732,12 +6692,12 @@ local agent_web_preview = client:AgentWebPreview(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentWebPreview():list({ token = "example" })
+local result, err = client:AgentWebPreview():load({ token = "token" })
 ```
 
 ### Common Methods
@@ -6941,12 +6901,12 @@ local result, err = client:AgentWorkflow():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AgentWorkflow():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:AgentWorkflow():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -7539,14 +7499,6 @@ local result, err = client:AlertRuleEvent():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AlertRuleEvent():list({ alert_rule_id = "example", space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -7617,12 +7569,12 @@ local allocation_log = client:AllocationLog(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AllocationLog():list({ allocation_id = "example", app_id = "example" })
+local result, err = client:AllocationLog():load({ allocation_id = "allocation_id", app_id = "app_id" })
 ```
 
 ### Common Methods
@@ -7843,12 +7795,12 @@ local app_access_jwk = client:AppAccessJwk(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AppAccessJwk():list()
+local result, err = client:AppAccessJwk():load()
 ```
 
 ### Common Methods
@@ -7921,35 +7873,35 @@ local app_cdn = client:AppCdn(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -7964,14 +7916,6 @@ local result, err = client:AppCdn():create({
   origin_url = --[[ string ]],
   slug = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppCdn():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -8070,21 +8014,21 @@ local app_config_variable = client:AppConfigVariable(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Operations
 
@@ -8100,14 +8044,6 @@ local result, err = client:AppConfigVariable():create({
   scope_kind = --[[ string ]],
   value_kind = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppConfigVariable():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -8211,26 +8147,26 @@ local app_data_resource = client:AppDataResource(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Operations
 
@@ -8246,14 +8182,6 @@ local result, err = client:AppDataResource():create({
   name = --[[ string ]],
   slug = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppDataResource():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -8439,42 +8367,42 @@ local app_deployment = client:AppDeployment(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8486,14 +8414,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:AppDeployment():create({
   app_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppDeployment():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -8862,23 +8782,23 @@ local app_environment = client:AppEnvironment(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8896,14 +8816,6 @@ local result, err = client:AppEnvironment():create({
   slug = --[[ string ]],
   status = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppEnvironment():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9136,14 +9048,6 @@ local result, err = client:AppPreview():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppPreview():list({ app_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -9237,18 +9141,18 @@ local app_preview_profile = client:AppPreviewProfile(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -9263,14 +9167,6 @@ local result, err = client:AppPreviewProfile():create({
   slug = --[[ string ]],
   source_environment_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppPreviewProfile():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9365,14 +9261,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:AppRun():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppRun():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9612,50 +9500,50 @@ local app_service = client:AppService(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -9677,14 +9565,6 @@ local result, err = client:AppService():create({
   source_path = --[[ string ]],
   start_command = --[[ string|nil ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppService():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9779,14 +9659,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:AppServiceBinding():create({
   app_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppServiceBinding():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -9970,29 +9842,29 @@ local app_storage_resource = client:AppStorageResource(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -10010,14 +9882,6 @@ local result, err = client:AppStorageResource():create({
   slug = --[[ string ]],
   status = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:AppStorageResource():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -10488,14 +10352,6 @@ local result, err = client:Artifact():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:Artifact():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -10585,14 +10441,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:ArtifactCacheNamespace():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ArtifactCacheNamespace():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -10686,14 +10534,6 @@ local result, err = client:ArtifactImageRepository():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ArtifactImageRepository():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -10785,14 +10625,6 @@ local result, err = client:ArtifactPackageMirror():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ArtifactPackageMirror():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -10882,14 +10714,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:ArtifactRetentionPolicy():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ArtifactRetentionPolicy():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -11387,12 +11211,12 @@ local auth_registration_option = client:AuthRegistrationOption(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:AuthRegistrationOption():list()
+local result, err = client:AuthRegistrationOption():load()
 ```
 
 ### Common Methods
@@ -11616,12 +11440,12 @@ local result, err = client:BackendRunnerPool():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:BackendRunnerPool():list({ backend_id = "example" })
+local result, err = client:BackendRunnerPool():load({ backend_id = "backend_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -11629,7 +11453,7 @@ local results, err = client:BackendRunnerPool():list({ backend_id = "example" })
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:BackendRunnerPool():remove({ id = "backend_runner_pool_id", backend_id = "backend_id" })
+local result, err = client:BackendRunnerPool():remove({ backend_id = "backend_id", id = "id" })
 ```
 
 ### Common Methods
@@ -11789,14 +11613,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:BazelBackend():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:BazelBackend():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -13977,14 +13793,6 @@ local result, err = client:CacheNamespaceEntry():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CacheNamespaceEntry():list({ cache_namespace_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -14132,14 +13940,6 @@ local result, err = client:CdnDeployment():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CdnDeployment():list({ app_id = "example", cdn_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -14200,17 +14000,17 @@ local cdn_hostname = client:CdnHostname(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -14224,14 +14024,6 @@ local result, err = client:CdnHostname():create({
   cdn_id = --[[ string ]],
   hostname = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CdnHostname():list({ app_id = "example", cdn_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -14330,14 +14122,6 @@ local result, err = client:CdnSpace():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CdnSpace():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -14420,14 +14204,6 @@ local cdn_space_object = client:CdnSpaceObject(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CdnSpaceObject():list({ cdn_space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -14502,12 +14278,12 @@ local change = client:Change(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Change():list({ organization_id = "example" })
+local result, err = client:Change():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -15807,14 +15583,6 @@ local result, err = client:CiPipelineRun():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CiPipelineRun():list({ pipeline_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -16107,17 +15875,13 @@ local result, err = client:CliRelease():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:CliRelease():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:CliRelease():load()
+```
 
 ### Common Methods
 
@@ -17100,60 +16864,60 @@ local deep_scan = client:DeepScan(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Operations
 
@@ -17167,14 +16931,6 @@ local result, err = client:DeepScan():create({
   environment_id = --[[ string ]],
   goal = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:DeepScan():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -17225,24 +16981,25 @@ local deep_scan_finding = client:DeepScanFinding(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `number` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `table` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `table` | Yes |  |
-| `findings_fix_prompt` | `string|nil` | Yes |  |
-| `free_findings_pending` | `boolean` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` | Yes |  |
+| `agent_id` | `string` | Yes |  |
+| `agent_title` | `string` | Yes |  |
+| `area` | `string|nil` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `table` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` | Yes |  |
+| `confirmed` | `boolean` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `table` | No |  |
+| `evidence_timestamp_ms` | `number|nil` | Yes |  |
+| `expected` | `string` | Yes |  |
+| `fix_prompt` | `string` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `boolean` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` | Yes |  |
-| `mode` | `string` | Yes |  |
-| `permissions` | `table` | Yes |  |
-| `priority` | `string|nil` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `table` | Yes |  |
-| `project_id` | `string|nil` | Yes |  |
-| `reproduction_of` | `table|nil` | Yes |  |
-| `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `boolean` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` | Yes |  |
+| `locked` | `boolean` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `table` | Yes |  |
+| `severity` | `string` | Yes |  |
 | `title` | `string` | Yes |  |
-| `unlock` | `table` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` | Yes |  |
+| `tracked` | `table|nil` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -17364,12 +17121,12 @@ local deep_scan_mapped_flow = client:DeepScanMappedFlow(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:DeepScanMappedFlow():list({ organization_id = "example", environment_id = "example" })
+local result, err = client:DeepScanMappedFlow():load({ organization_id = "organization_id", environment_id = "environment_id" })
 ```
 
 ### Common Methods
@@ -17731,12 +17488,12 @@ local deployment_detail = client:DeploymentDetail(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:DeploymentDetail():list({ organization_id = "example" })
+local result, err = client:DeploymentDetail():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -18482,12 +18239,12 @@ local device_enterprise_relay = client:DeviceEnterpriseRelay(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:DeviceEnterpriseRelay():list()
+local result, err = client:DeviceEnterpriseRelay():load()
 ```
 
 ### Common Methods
@@ -18617,16 +18374,18 @@ local device_grant = client:DeviceGrant(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `table` | Yes |  |
-| `agent_choices` | `table` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` | Yes |  |
-| `all_agents_access` | `boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `string|nil` | Yes |  |
+| `can_edit` | `boolean` | Yes |  |
+| `can_revoke` | `boolean` | Yes |  |
 | `capabilities` | `table` | Yes |  |
-| `execution_available` | `boolean` | Yes |  |
-| `grants` | `table` | Yes |  |
-| `id` | `string` | No |  |
-| `next_cursor` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
 | `principal_id` | `string` | Yes |  |
+| `principal_name` | `string|nil` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `revoked_at` | `string|nil` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -19689,49 +19448,49 @@ local environment = client:Environment(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Operations
 
@@ -19744,14 +19503,6 @@ local result, err = client:Environment():create({
   organization_id = --[[ string ]],
   slug = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:Environment():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -20244,12 +19995,12 @@ local result, err = client:EnvironmentSecretBinding():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:EnvironmentSecretBinding():list({ app_id = "example", environment_id = "example" })
+local result, err = client:EnvironmentSecretBinding():load({ app_id = "app_id", environment_id = "environment_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -20257,7 +20008,7 @@ local results, err = client:EnvironmentSecretBinding():list({ app_id = "example"
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:EnvironmentSecretBinding():remove({ id = "environment_secret_binding_id", app_id = "app_id", environment_id = "environment_id" })
+local result, err = client:EnvironmentSecretBinding():remove({ app_id = "app_id", environment_id = "environment_id", id = "id" })
 ```
 
 ### Common Methods
@@ -20451,14 +20202,6 @@ local result, err = client:ExecutionDesiredState():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ExecutionDesiredState():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -20550,14 +20293,6 @@ local result, err = client:ExecutionReconcilerTick():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ExecutionReconcilerTick():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -20617,14 +20352,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:ExecutionRelease():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ExecutionRelease():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -20806,20 +20533,21 @@ local exploration = client:Exploration(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `string|nil` | No |  |
-| `active` | `table` | Yes |  |
 | `agent_filters` | `table` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `table` | Yes |  |
 | `can_continue` | `boolean` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `table` | No |  |
+| `check_count` | `number` | Yes |  |
 | `concurrency` | `number` | Yes |  |
 | `covered_areas` | `table` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `string|nil` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `table|nil` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number|nil` | Yes |  |
 | `ended_early` | `boolean` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `table` | Yes |  |
 | `explorer_activity` | `table` | Yes | What the team is doing now. |
 | `finding_count` | `number` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `table` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -20829,14 +20557,12 @@ local exploration = client:Exploration(nil)
 | `huntable_flows` | `table` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `table` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `number` | Yes |  |
 | `max_testers` | `number` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `table` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `table` | Yes |  |
 | `paywalled` | `boolean` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `table` | Yes |  |
 | `persona_id` | `string|nil` | No | Project persona whose role and observed access this discovery maps. |
@@ -20848,10 +20574,13 @@ local exploration = client:Exploration(nil)
 | `reproductions` | `table` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `table` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `table` | Yes |  |
+| `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string|nil` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `boolean` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `boolean` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20864,37 +20593,36 @@ local exploration = client:Exploration(nil)
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -20906,14 +20634,17 @@ local exploration = client:Exploration(nil)
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -22095,12 +21826,12 @@ local result, err = client:GithubConnection():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:GithubConnection():list({ organization_id = "example" })
+local result, err = client:GithubConnection():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -23379,31 +23110,31 @@ local hosting_app_domain = client:HostingAppDomain(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Operations
 
@@ -23418,14 +23149,6 @@ local result, err = client:HostingAppDomain():create({
   hostname = --[[ string ]],
   kind = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:HostingAppDomain():list({ app_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -23795,12 +23518,12 @@ local integration = client:Integration(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Integration():list({ organization_id = "example" })
+local result, err = client:Integration():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -24125,12 +23848,12 @@ local result, err = client:JobStep():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:JobStep():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+local result, err = client:JobStep():load({ job_id = "job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -24217,12 +23940,12 @@ local result, err = client:JobWorkspace():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:JobWorkspace():list({ job_id = "example", pipeline_id = "example", run_id = "example" })
+local result, err = client:JobWorkspace():load({ job_id = "job_id", pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -25366,14 +25089,6 @@ local result, err = client:LogStreamChunk():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:LogStreamChunk():list({ log_stream_id = "example", space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -25511,12 +25226,12 @@ local marketing_setting = client:MarketingSetting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:MarketingSetting():list()
+local result, err = client:MarketingSetting():load()
 ```
 
 ### Common Methods
@@ -26519,12 +26234,12 @@ local metric_query = client:MetricQuery(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:MetricQuery():list()
+local result, err = client:MetricQuery():load()
 ```
 
 ### Common Methods
@@ -26895,14 +26610,6 @@ local result, err = client:NetworkingSpace():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:NetworkingSpace():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -27100,17 +26807,13 @@ local node_lease = client:NodeLease(nil)
 
 Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:NodeLease():list({ node_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:NodeLease():load({ node_id = "node_id" })
+```
 
 ### Common Methods
 
@@ -27235,12 +26938,12 @@ local nomad_log = client:NomadLog(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:NomadLog():list({ app_id = "example" })
+local result, err = client:NomadLog():load({ app_id = "app_id" })
 ```
 
 ### Common Methods
@@ -27352,14 +27055,6 @@ local result, err = client:ObservabilityClickhouseCluster():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ObservabilityClickhouseCluster():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -27451,14 +27146,6 @@ local result, err = client:ObservabilityQuickwitCluster():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ObservabilityQuickwitCluster():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -27548,14 +27235,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 ```lua
 local result, err = client:ObservabilitySpace():create({
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ObservabilitySpace():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -27891,12 +27570,12 @@ local organization_app = client:OrganizationApp(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:OrganizationApp():list({ organization_id = "example", native_agent_id = "example" })
+local result, err = client:OrganizationApp():load({ organization_id = "organization_id", native_agent_id = "native_agent_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -28049,14 +27728,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:OrganizationIdentityCertificate():create({
   organization_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:OrganizationIdentityCertificate():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -28313,14 +27984,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:OrganizationOidcTrust():create({
   organization_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:OrganizationOidcTrust():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -28729,14 +28392,6 @@ local result, err = client:OrganizationServiceAccount():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:OrganizationServiceAccount():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -28894,12 +28549,12 @@ local result, err = client:OrganizationSite():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:OrganizationSite():list({ organization_id = "example", native_agent_id = "example" })
+local result, err = client:OrganizationSite():load({ organization_id = "organization_id", native_agent_id = "native_agent_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -28907,7 +28562,7 @@ local results, err = client:OrganizationSite():list({ organization_id = "example
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:OrganizationSite():remove({ id = "organization_site_id", organization_id = "organization_id" })
+local result, err = client:OrganizationSite():remove({ id = "id", organization_id = "organization_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -28916,7 +28571,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```lua
 local result, err = client:OrganizationSite():update({
-  id = "organization_site_id",
+  id = "id",
   organization_id = "organization_id",
   -- Fields to update
 })
@@ -29075,14 +28730,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:OrganizationWorkloadIdentity():create({
   organization_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:OrganizationWorkloadIdentity():list({ organization_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -29302,17 +28949,13 @@ local page_agent = client:PageAgent(nil)
 
 Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:PageAgent():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:PageAgent():load({ organization_id = "organization_id" })
+```
 
 ### Common Methods
 
@@ -29894,13 +29537,23 @@ local pages_project_persona = client:PagesProjectPersona(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `number` | Yes |  |
-| `credentials` | `table` | Yes |  |
-| `needs_attention_count` | `number` | Yes |  |
-| `permissions` | `table` | Yes |  |
-| `persona_states` | `table` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `table` | Yes |  |
-| `project` | `table` | Yes |  |
+| `access_mode` | `string` | Yes |  |
+| `active_run_count` | `number` | Yes |  |
+| `archived_at` | `string|nil` | Yes |  |
+| `attention` | `table` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `credential` | `any` | Yes |  |
+| `credential_id` | `string|nil` | Yes | The credential this persona signs in with. |
+| `goals` | `string|nil` | Yes |  |
+| `health` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `lock_version` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `project_id` | `string` | Yes |  |
+| `role` | `string` | Yes |  |
+| `scenario_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -29952,12 +29605,28 @@ local pages_project_run = client:PagesProjectRun(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `string` | Yes |  |
-| `environments` | `table` | Yes |  |
-| `environments_has_more` | `boolean` | Yes |  |
-| `pagination` | `table` | Yes |  |
-| `runs` | `table` | Yes |  |
-| `selected_environment` | `any` | Yes |  |
+| `archived_at` | `string|nil` | Yes |  |
+| `browser_seconds` | `number|nil` | Yes |  |
+| `can_archive` | `boolean` | Yes |  |
+| `can_restore` | `boolean` | Yes |  |
+| `cleanup_state` | `string` | Yes |  |
+| `commit_sha` | `string|nil` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `duration_seconds` | `number|nil` | Yes |  |
+| `environment_name` | `string|nil` | Yes |  |
+| `finished_at` | `string|nil` | Yes |  |
+| `id` | `string` | Yes |  |
+| `outcome` | `string|nil` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `pull_request_label` | `string|nil` | Yes |  |
+| `scenario_count` | `number` | Yes |  |
+| `source_run` | `table|nil` | Yes |  |
+| `started_at` | `string|nil` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `triggered_by` | `string|nil` | Yes |  |
+| `web_path` | `string` | Yes |  |
 
 ### Operations
 
@@ -30279,14 +29948,6 @@ local result, err = client:Pairing():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:Pairing():list()
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -30333,12 +29994,12 @@ local pairing_event = client:PairingEvent(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PairingEvent():list({ pairing_id = "example" })
+local result, err = client:PairingEvent():load({ pairing_id = "pairing_id" })
 ```
 
 ### Common Methods
@@ -30490,12 +30151,12 @@ local result, err = client:PersonalAccessToken():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PersonalAccessToken():list()
+local result, err = client:PersonalAccessToken():load({ id = "personal_access_token_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -30544,12 +30205,12 @@ local preview_operation = client:PreviewOperation(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PreviewOperation():list({ app_id = "example", preview_id = "example" })
+local result, err = client:PreviewOperation():load({ app_id = "app_id", preview_id = "preview_id" })
 ```
 
 ### Common Methods
@@ -30612,12 +30273,12 @@ local result, err = client:PreviewProfileSecretBinding():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PreviewProfileSecretBinding():list({ app_id = "example", preview_profile_id = "example" })
+local result, err = client:PreviewProfileSecretBinding():load({ app_id = "app_id", preview_profile_id = "preview_profile_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -30625,7 +30286,7 @@ local results, err = client:PreviewProfileSecretBinding():list({ app_id = "examp
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:PreviewProfileSecretBinding():remove({ id = "preview_profile_secret_binding_id", app_id = "app_id", preview_profile_id = "preview_profile_id" })
+local result, err = client:PreviewProfileSecretBinding():remove({ app_id = "app_id", id = "id", preview_profile_id = "preview_profile_id" })
 ```
 
 ### Common Methods
@@ -30745,16 +30406,16 @@ local preview_sharing_approval = client:PreviewSharingApproval(nil)
 | `approved_default_secrets` | `table` | Yes |  |
 | `approved_source_keys` | `table` | Yes |  |
 | `build_keys` | `table` | No |  |
-| `build_secrets` | `table` | No |  |
-| `default_configuration` | `table` | No |  |
-| `default_secrets` | `table` | No |  |
+| `build_secrets` | `table` | Yes |  |
+| `default_configuration` | `table` | Yes |  |
+| `default_secrets` | `table` | Yes |  |
 | `services` | `table` | Yes |  |
 | `snapshot_version` | `number` | Yes |  |
-| `source_keys` | `table` | No |  |
+| `source_keys` | `table` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -30762,12 +30423,12 @@ local preview_sharing_approval = client:PreviewSharingApproval(nil)
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
@@ -30783,12 +30444,12 @@ local result, err = client:PreviewSharingApproval():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PreviewSharingApproval():list({ app_id = "example", preview_id = "example" })
+local result, err = client:PreviewSharingApproval():load({ app_id = "app_id", preview_id = "preview_id" })
 ```
 
 ### Common Methods
@@ -31910,18 +31571,11 @@ local project_fixture = client:ProjectFixture(nil)
 | `byte_size` | `number` | Yes |  |
 | `content_type` | `string` | Yes |  |
 | `credential_ids` | `table` | Yes |  |
-| `credentials` | `table` | Yes |  |
 | `environment_ids` | `table` | Yes |  |
-| `environments` | `table` | Yes |  |
-| `fixtures` | `table` | Yes |  |
 | `id` | `string` | No |  |
 | `lock_version` | `number` | Yes |  |
 | `name` | `string` | Yes |  |
-| `pagination` | `table` | Yes |  |
-| `permissions` | `table` | Yes |  |
 | `persona_ids` | `table` | Yes |  |
-| `personas` | `table` | Yes |  |
-| `project` | `table` | Yes |  |
 | `sha256` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
 | `version` | `number` | Yes |  |
@@ -31934,18 +31588,11 @@ local project_fixture = client:ProjectFixture(nil)
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -32757,12 +32404,12 @@ local project_scenario_option = client:ProjectScenarioOption(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:ProjectScenarioOption():list({ organization_id = "example", project_id = "example" })
+local result, err = client:ProjectScenarioOption():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 ### Common Methods
@@ -32874,12 +32521,12 @@ local project_setting = client:ProjectSetting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:ProjectSetting():list({ organization_id = "example", project_id = "example" })
+local result, err = client:ProjectSetting():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 ### Common Methods
@@ -33222,12 +32869,12 @@ local result, err = client:PullRequestSetting():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:PullRequestSetting():list({ organization_id = "example" })
+local result, err = client:PullRequestSetting():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -33901,14 +33548,6 @@ local result, err = client:ReleaseRollout():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ReleaseRollout():list({ release_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -34275,14 +33914,6 @@ local result, err = client:RepoAgentSession():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:RepoAgentSession():list({ organization_id = "example", repo_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -34580,14 +34211,6 @@ local result, err = client:RepoCloudWorkspaceBackup():create({
   organization_id = --[[ string ]],
   repo_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:RepoCloudWorkspaceBackup():list({ organization_id = "example", repo_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -35664,14 +35287,6 @@ local result, err = client:RoderCodeRepair():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:RoderCodeRepair():list({ scenario_run_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -35730,7 +35345,7 @@ local roder_code_repair_setting = client:RoderCodeRepairSetting(nil)
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -35753,12 +35368,12 @@ local result, err = client:RoderCodeRepairSetting():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RoderCodeRepairSetting():list({ organization_id = "example" })
+local result, err = client:RoderCodeRepairSetting():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -35973,12 +35588,12 @@ local result, err = client:RunArtifact():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RunArtifact():list({ pipeline_id = "example", run_id = "example" })
+local result, err = client:RunArtifact():load({ pipeline_id = "pipeline_id", run_id = "run_id" })
 ```
 
 ### Common Methods
@@ -36067,14 +35682,6 @@ local result, err = client:RunJob():create({
   pipeline_id = --[[ string ]],
   run_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:RunJob():list({ pipeline_id = "example", run_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -36422,12 +36029,12 @@ local result, err = client:RunnerLease():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RunnerLease():list({ runner_id = "example", runner_pool_id = "example" })
+local result, err = client:RunnerLease():load({ runner_id = "runner_id", runner_pool_id = "runner_pool_id" })
 ```
 
 ### Common Methods
@@ -36595,14 +36202,6 @@ local result, err = client:RunnerPoolRunner():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:RunnerPoolRunner():list({ runner_pool_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -36683,12 +36282,12 @@ local result, err = client:RuntimeInstanceHealthSnapshot():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RuntimeInstanceHealthSnapshot():list({ runtime_instance_id = "example" })
+local result, err = client:RuntimeInstanceHealthSnapshot():load({ runtime_instance_id = "runtime_instance_id" })
 ```
 
 ### Common Methods
@@ -36745,7 +36344,7 @@ local sandbox_integration = client:SandboxIntegration(nil)
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -36775,12 +36374,12 @@ local result, err = client:SandboxIntegration():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SandboxIntegration():list({ organization_id = "example" })
+local result, err = client:SandboxIntegration():load({ organization_id = "organization_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -37024,14 +36623,6 @@ local result, err = client:SecretGrant():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SecretGrant():list({ organization_id = "example", secret_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -37127,14 +36718,6 @@ local result, err = client:SecretVersion():create({
   organization_id = --[[ string ]],
   secret_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SecretVersion():list({ organization_id = "example", secret_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -37234,14 +36817,6 @@ local result, err = client:ServiceEndpoint():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:ServiceEndpoint():list({ app_id = "example", service_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -37333,12 +36908,12 @@ local setting = client:Setting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Setting():list({ organization_id = "example" })
+local result, err = client:Setting():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -37873,14 +37448,6 @@ local result, err = client:SignalSubscription():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SignalSubscription():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -38053,12 +37620,12 @@ local result, err = client:SiteAccessKey():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SiteAccessKey():list({ organization_id = "example", site_id = "example" })
+local result, err = client:SiteAccessKey():load({ organization_id = "organization_id", site_id = "site_id" })
 ```
 
 #### `remove(reqmatch, ctrl) -> any, err`
@@ -38066,7 +37633,7 @@ local results, err = client:SiteAccessKey():list({ organization_id = "example", 
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:SiteAccessKey():remove({ id = "site_access_key_id", organization_id = "organization_id", site_id = "site_id" })
+local result, err = client:SiteAccessKey():remove({ id = "id", organization_id = "organization_id", site_id = "site_id" })
 ```
 
 ### Common Methods
@@ -38349,14 +37916,6 @@ local result, err = client:SpaceAlertRule():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceAlertRule():list({ space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -38445,12 +38004,12 @@ local result, err = client:SpaceAuditEvent():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceAuditEvent():list({ space_id = "example" })
+local result, err = client:SpaceAuditEvent():load({ space_id = "space_id" })
 ```
 
 ### Common Methods
@@ -38505,14 +38064,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:SpaceDnsRecord():create({
   space_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceDnsRecord():list({ space_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -38609,14 +38160,6 @@ local result, err = client:SpaceEnrollmentToken():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceEnrollmentToken():list({ space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -38709,14 +38252,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:SpaceGateway():create({
   space_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceGateway():list({ space_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -38813,12 +38348,12 @@ local result, err = client:SpaceGroup():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceGroup():list({ space_id = "example" })
+local result, err = client:SpaceGroup():load({ space_id = "space_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -38827,7 +38362,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```lua
 local result, err = client:SpaceGroup():patch({
-  id = "space_group_id",
+  id = "id",
   space_id = "space_id",
   -- Only the fields to change
 })
@@ -38838,7 +38373,7 @@ local result, err = client:SpaceGroup():patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:SpaceGroup():remove({ id = "space_group_id", space_id = "space_id" })
+local result, err = client:SpaceGroup():remove({ id = "id", space_id = "space_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -38847,7 +38382,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```lua
 local result, err = client:SpaceGroup():update({
-  id = "space_group_id",
+  id = "id",
   space_id = "space_id",
   -- Fields to update
 })
@@ -38907,12 +38442,12 @@ local result, err = client:SpaceGroupMembership():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceGroupMembership():list({ space_id = "example" })
+local result, err = client:SpaceGroupMembership():load({ space_id = "space_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -38921,7 +38456,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```lua
 local result, err = client:SpaceGroupMembership():patch({
-  id = "space_group_membership_id",
+  id = "id",
   space_id = "space_id",
   -- Only the fields to change
 })
@@ -38932,7 +38467,7 @@ local result, err = client:SpaceGroupMembership():patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:SpaceGroupMembership():remove({ id = "space_group_membership_id", space_id = "space_id" })
+local result, err = client:SpaceGroupMembership():remove({ id = "id", space_id = "space_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -38941,7 +38476,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```lua
 local result, err = client:SpaceGroupMembership():update({
-  id = "space_group_membership_id",
+  id = "id",
   space_id = "space_id",
   -- Fields to update
 })
@@ -38995,12 +38530,12 @@ local result, err = client:SpaceLogStream():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceLogStream():list({ space_id = "example" })
+local result, err = client:SpaceLogStream():load({ space_id = "space_id" })
 ```
 
 ### Common Methods
@@ -39051,12 +38586,12 @@ local result, err = client:SpaceMetricSery():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceMetricSery():list({ space_id = "example" })
+local result, err = client:SpaceMetricSery():load({ space_id = "space_id" })
 ```
 
 ### Common Methods
@@ -39111,14 +38646,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:SpaceOtelCollector():create({
   space_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceOtelCollector():list({ space_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -39215,14 +38742,6 @@ local result, err = client:SpacePeer():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpacePeer():list({ space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -39317,12 +38836,12 @@ local result, err = client:SpacePeerAttachment():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpacePeerAttachment():list({ space_id = "example" })
+local result, err = client:SpacePeerAttachment():load({ space_id = "space_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -39331,7 +38850,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```lua
 local result, err = client:SpacePeerAttachment():patch({
-  id = "space_peer_attachment_id",
+  id = "id",
   space_id = "space_id",
   -- Only the fields to change
 })
@@ -39342,7 +38861,7 @@ local result, err = client:SpacePeerAttachment():patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, or `nil` and an error on failure.
 
 ```lua
-local result, err = client:SpacePeerAttachment():remove({ id = "space_peer_attachment_id", space_id = "space_id" })
+local result, err = client:SpacePeerAttachment():remove({ id = "id", space_id = "space_id" })
 ```
 
 #### `update(reqdata, ctrl) -> any, err`
@@ -39351,7 +38870,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```lua
 local result, err = client:SpacePeerAttachment():update({
-  id = "space_peer_attachment_id",
+  id = "id",
   space_id = "space_id",
   -- Fields to update
 })
@@ -39409,14 +38928,6 @@ Create a new entity with the given data. Returns the created entity, or `nil` an
 local result, err = client:SpacePolicy():create({
   space_id = --[[ string ]],
 })
-```
-
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpacePolicy():list({ space_id = "example" })
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -39513,14 +39024,6 @@ local result, err = client:SpaceSegment():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SpaceSegment():list({ space_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
@@ -39609,12 +39112,12 @@ local result, err = client:SpaceTraceSpan():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SpaceTraceSpan():list({ space_id = "example" })
+local result, err = client:SpaceTraceSpan():load({ space_id = "space_id" })
 ```
 
 ### Common Methods
@@ -39692,7 +39195,7 @@ local spark = client:Spark(nil)
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -39740,12 +39243,12 @@ local result, err = client:Spark():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Spark():list({ organization_id = "example" })
+local result, err = client:Spark():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -39828,12 +39331,12 @@ local result, err = client:SparkAgentIntegration():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SparkAgentIntegration():list({ agent_id = "example", organization_id = "example" })
+local result, err = client:SparkAgentIntegration():load({ agent_id = "agent_id", organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -40112,30 +39615,63 @@ local spark_agent_thread = client:SparkAgentThread(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `number|nil` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` | Yes |  |
-| `execution` | `any` | No |  |
+| `archive_deletes_sandbox` | `boolean` | No |  |
+| `archived` | `boolean` | Yes |  |
+| `attention` | `table|nil` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `boolean` | Yes |  |
+| `can_compact` | `boolean` | Yes |  |
+| `can_snooze` | `boolean` | Yes |  |
+| `coordination_status` | `string|nil` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `any` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `any` | No |  |
 | `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `string` | No |  |
+| `group` | `string` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
 | `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `table` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string|nil` | Yes |  |
-| `local_scope_key` | `string|nil` | Yes |  |
-| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `table` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
+| `is_main` | `boolean` | Yes |  |
+| `kind` | `string` | Yes |  |
 | `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `string|nil` | Yes |  |
+| `older` | `boolean` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `any` | Yes |  |
+| `snoozed_until` | `string|nil` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `table` | Yes |  |
-| `threads` | `table` | Yes |  |
 | `title` | `string` | No |  |
-| `total_archived_count` | `number|nil` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `string|nil` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Operations
 
@@ -40211,7 +39747,7 @@ local spark_credit = client:SparkCredit(nil)
 | `kind` | `string` | Yes |  |
 | `payment_method` | `table|nil` | Yes |  |
 | `payments_enabled` | `boolean` | Yes |  |
-| `plan` | `string` | No |  |
+| `plan` | `string|nil` | Yes |  |
 | `plans` | `table` | Yes |  |
 | `quoted_credits_cents` | `number` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `number` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -40226,33 +39762,33 @@ local spark_credit = client:SparkCredit(nil)
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch |
-| --- | --- | --- | --- | --- | --- |
-| `amount_cents` | - | - | - | - | - |
-| `autofill` | - | - | - | - | - |
-| `autofill_payment_unconfirmed` | - | - | - | - | - |
-| `available_usd` | - | - | - | - | - |
-| `billing_unit` | - | - | - | - | - |
-| `can_manage` | - | - | - | - | - |
-| `compute_minutes` | - | - | - | - | - |
-| `compute_usd` | - | - | - | - | - |
-| `credits_per_usd` | - | - | - | - | - |
-| `inference_usd` | - | - | - | - | - |
-| `kind` | - | - | - | - | - |
-| `payment_method` | - | - | - | - | - |
-| `payments_enabled` | - | - | - | - | - |
-| `plan` | - | Yes | - | - | Yes |
-| `plans` | - | - | - | - | - |
-| `quoted_credits_cents` | - | - | - | - | - |
-| `quoted_price_cents` | - | - | - | - | - |
-| `refill_limits_cents` | - | - | - | - | - |
-| `refill_options` | - | - | - | - | - |
-| `refill_thresholds_cents` | - | - | - | - | - |
-| `request_key` | - | - | - | - | - |
-| `settings` | - | - | - | - | - |
-| `starter_cents` | - | - | - | - | - |
-| `top_up_max_cents` | - | - | - | - | - |
-| `top_up_step_cents` | - | - | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - |
+| `autofill` | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - |
+| `available_usd` | - | - | - | - |
+| `billing_unit` | - | - | - | - |
+| `can_manage` | - | - | - | - |
+| `compute_minutes` | - | - | - | - |
+| `compute_usd` | - | - | - | - |
+| `credits_per_usd` | - | - | - | - |
+| `inference_usd` | - | - | - | - |
+| `kind` | - | - | - | - |
+| `payment_method` | - | - | - | - |
+| `payments_enabled` | - | - | - | - |
+| `plan` | - | Yes | - | - |
+| `plans` | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - |
+| `refill_options` | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - |
+| `request_key` | - | - | - | - |
+| `settings` | - | - | - | - |
+| `starter_cents` | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - |
 
 ### Operations
 
@@ -40268,17 +39804,13 @@ local result, err = client:SparkCredit():create({
 })
 ```
 
-#### `list(reqmatch, ctrl) -> any, err`
-
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
-
-```lua
-local results, err = client:SparkCredit():list({ organization_id = "example" })
-```
-
 #### `load(reqmatch, ctrl) -> any, err`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
+
+```lua
+local result, err = client:SparkCredit():load({ organization_id = "organization_id" })
+```
 
 #### `patch(reqdata, ctrl) -> any, err`
 
@@ -40404,12 +39936,12 @@ local spark_credit_usage_total = client:SparkCreditUsageTotal(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:SparkCreditUsageTotal():list({ organization_id = "example" })
+local result, err = client:SparkCreditUsageTotal():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -42364,12 +41896,12 @@ local vcs_setting = client:VcsSetting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:VcsSetting():list({ organization_id = "example" })
+local result, err = client:VcsSetting():load({ organization_id = "organization_id" })
 ```
 
 ### Common Methods
@@ -43127,12 +42659,12 @@ local verify_email_verification = client:VerifyEmailVerification(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:VerifyEmailVerification():list()
+local result, err = client:VerifyEmailVerification():load()
 ```
 
 ### Common Methods

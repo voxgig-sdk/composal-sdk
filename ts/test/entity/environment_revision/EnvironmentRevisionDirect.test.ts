@@ -43,6 +43,11 @@ describe('EnvironmentRevisionDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-environment_revision', setup.live)) return
+    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["environment01"]) {
+      console.log("LIVE STEP {\"id\":\"direct-load-environment_revision\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
+      t.skip("Live coverage incomplete: direct-load-environment_revision excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
+      return
+    }
     if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["environment_revision01"]) {
       console.log("LIVE STEP {\"id\":\"direct-load-environment_revision\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment_revision01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision gives\"}")
       t.skip("Live coverage incomplete: direct-load-environment_revision excluded (GET-only live run: needs environment_revision01, which only POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision gives)")

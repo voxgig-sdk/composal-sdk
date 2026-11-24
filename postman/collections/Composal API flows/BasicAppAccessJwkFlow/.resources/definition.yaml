@@ -1,4 +1,4 @@
 $kind: collection
 id: ec43fc6c-3a5d-5917-b547-4e3ce5051df6
 description: "The `BasicAppAccessJwkFlow` flow of **app_access_jwk**."
-order: 63000
+order: 58000

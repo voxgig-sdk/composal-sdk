@@ -34,12 +34,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}": {
+    "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

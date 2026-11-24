@@ -19,16 +19,22 @@ main: kit: flow: BasicSpaceTraceSpanFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
+      i: {
+        ref: "space_trace_span_ref01",
+        srcdatavar: "space_trace_span_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "space_trace_span01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "space_trace_span_ref01"
+            mark: "Mark01-space_trace_span_ref01"
           }
         }
       ]

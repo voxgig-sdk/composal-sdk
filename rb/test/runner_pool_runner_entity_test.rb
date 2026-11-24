@@ -25,7 +25,7 @@ class RunnerPoolRunnerEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RunnerPoolRunner(nil).list({ "runner_pool_id" => 1 }, nil)
+      client.RunnerPoolRunner(nil).load({ "id" => 1, "runner_pool_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class RunnerPoolRunnerEntityTest < Minitest::Test
     setup = runner_pool_runner_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load"].each do |_op|
+    ["create", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "runner_pool_runner." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,53 +43,9 @@ class RunnerPoolRunnerEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"runner_pool_runner.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat\"}"
-      puts "LIVE STEP {\"id\":\"runner_pool_runner.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}\"}"
-    if setup[:live]
-      ["runner_pool01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_RUNNER_POOL_RUNNER_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["runner_pool_runner01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "runner_pool_runner", "id", _live_id) do
-        client.RunnerPoolRunner(nil).list({"runner_pool_id" => setup[:idmap]["runner_pool01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    runner_pool_runner_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.runner_pool_runner")))
-    runner_pool_runner_ref01_data = nil
-    if runner_pool_runner_ref01_data_raw.length > 0
-      runner_pool_runner_ref01_data = Helpers.to_map(runner_pool_runner_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    runner_pool_runner_ref01_ent = client.RunnerPoolRunner(nil)
-    runner_pool_runner_ref01_match = {
-      "runner_pool_id" => setup[:idmap]["runner_pool01"],
-    }
-
-    runner_pool_runner_ref01_list_result = runner_pool_runner_ref01_ent.list(runner_pool_runner_ref01_match, nil)
-    assert runner_pool_runner_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    runner_pool_runner_ref01_match_dt0 = {
-      "id" => runner_pool_runner_ref01_data["id"],
-    }
-    runner_pool_runner_ref01_match_dt0["runner_pool_id"] = setup[:idmap]["runner_pool_id"] || setup[:idmap]["runner_pool01"]
-    runner_pool_runner_ref01_data_dt0_loaded = runner_pool_runner_ref01_ent.load(runner_pool_runner_ref01_match_dt0, nil)
-    runner_pool_runner_ref01_data_dt0_load_result = Helpers.to_map(runner_pool_runner_ref01_data_dt0_loaded.respond_to?(:data_get) ? runner_pool_runner_ref01_data_dt0_loaded.data_get : runner_pool_runner_ref01_data_dt0_loaded)
-    assert !runner_pool_runner_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(runner_pool_runner_ref01_data_dt0_load_result["id"], runner_pool_runner_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"runner_pool_runner.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}\"}"
+      puts "LIVE STEP {\"id\":\"runner_pool_runner.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only runner_pool_runner.create.0 gives\"}"
+      skip("Live coverage incomplete: runner_pool_runner.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat); runner_pool_runner.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}); runner_pool_runner.load.2 excluded (GET-only live run: reads a record only runner_pool_runner.create.0 gives)")
     end
 
     if setup[:live]
@@ -114,20 +70,6 @@ class RunnerPoolRunnerEntityTest < Minitest::Test
     assert !runner_pool_runner_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    runner_pool_runner_ref01_match = {
-      "runner_pool_id" => setup[:idmap]["runner_pool01"],
-    }
-
-    runner_pool_runner_ref01_list_result = runner_pool_runner_ref01_ent.list(runner_pool_runner_ref01_match, nil)
-    assert runner_pool_runner_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(runner_pool_runner_ref01_list_result),
-      { "id" => runner_pool_runner_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     runner_pool_runner_ref01_data_up0_up = {
       "id" => runner_pool_runner_ref01_data["id"],
@@ -144,7 +86,6 @@ class RunnerPoolRunnerEntityTest < Minitest::Test
     runner_pool_runner_ref01_match_dt0 = {
       "id" => runner_pool_runner_ref01_data["id"],
     }
-    runner_pool_runner_ref01_match_dt0["runner_pool_id"] = setup[:idmap]["runner_pool_id"] || setup[:idmap]["runner_pool01"]
     runner_pool_runner_ref01_data_dt0_loaded = runner_pool_runner_ref01_ent.load(runner_pool_runner_ref01_match_dt0, nil)
     runner_pool_runner_ref01_data_dt0_load_result = Helpers.to_map(runner_pool_runner_ref01_data_dt0_loaded.respond_to?(:data_get) ? runner_pool_runner_ref01_data_dt0_loaded.data_get : runner_pool_runner_ref01_data_dt0_loaded)
     assert !runner_pool_runner_ref01_data_dt0_load_result.nil?

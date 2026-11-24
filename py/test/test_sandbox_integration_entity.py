@@ -37,7 +37,7 @@ class TestSandboxIntegrationEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SandboxIntegration(None).list({"organization_id": 1}, None)
+            client.SandboxIntegration(None).load({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,16 @@ class TestSandboxIntegrationEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "sandbox_integration." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"sandbox_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations\"}")
-            print("LIVE STEP {\"id\":\"sandbox_integration.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"sandbox_integration.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
+            print("LIVE STEP {\"id\":\"sandbox_integration.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only sandbox_integration.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: sandbox_integration.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations); sandbox_integration.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}); sandbox_integration.load.2 excluded (GET-only live run: reads a record only sandbox_integration.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["organization01"]:
@@ -76,21 +77,6 @@ class TestSandboxIntegrationEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        sandbox_integration_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        sandbox_integration_ref01_list_result = sandbox_integration_ref01_ent.list(sandbox_integration_ref01_match, None)
-        assert isinstance(sandbox_integration_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(sandbox_integration_ref01_list_result),
-            {"id": sandbox_integration_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         sandbox_integration_ref01_data_up0_up = {
             "id": sandbox_integration_ref01_data["id"],
@@ -106,31 +92,16 @@ class TestSandboxIntegrationEntity:
         assert runner.live_same_id(sandbox_integration_ref01_resdata_up0.get("id"), sandbox_integration_ref01_data_up0_up["id"])
         assert sandbox_integration_ref01_resdata_up0[sandbox_integration_ref01_markdef_up0_name] == sandbox_integration_ref01_markdef_up0_value
 
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SANDBOX_INTEGRATION_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        sandbox_integration_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.sandbox_integration")))
-        sandbox_integration_ref01_data = None
-        if len(sandbox_integration_ref01_data_raw) > 0:
-            sandbox_integration_ref01_data = helpers.to_map(sandbox_integration_ref01_data_raw[0][1])
-
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        sandbox_integration_ref01_ent = client.SandboxIntegration(None)
-        sandbox_integration_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
+        # LOAD
+        sandbox_integration_ref01_match_dt0 = {
+            "id": sandbox_integration_ref01_data["id"],
         }
-
-        sandbox_integration_ref01_list_result = sandbox_integration_ref01_ent.list(sandbox_integration_ref01_match, None)
-        assert isinstance(sandbox_integration_ref01_list_result, list)
+        sandbox_integration_ref01_data_dt0_loaded = sandbox_integration_ref01_ent.load(sandbox_integration_ref01_match_dt0, None)
+        sandbox_integration_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(sandbox_integration_ref01_data_dt0_loaded))
+        assert sandbox_integration_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(sandbox_integration_ref01_data_dt0_load_result.get("id"), sandbox_integration_ref01_data["id"])
 
 
 

@@ -33,7 +33,7 @@ class AppDeploymentEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AppDeployment(null)->list(["app_id" => 1], null);
+            $client->AppDeployment(null)->load(["app_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AppDeploymentEntityTest extends TestCase
         $setup = app_deployment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "app_deployment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,58 +54,10 @@ class AppDeploymentEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/deployments/{id}/cancel"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/deployments/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_APP_DEPLOYMENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["app_deployment01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "app_deployment",
-                fn() => $client->AppDeployment(null)->list(["app_id" => $setup["idmap"]["app01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $app_deployment_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.app_deployment")));
-        $app_deployment_ref01_data = null;
-        if (count($app_deployment_ref01_data_raw) > 0) {
-            $app_deployment_ref01_data = Helpers::to_map($app_deployment_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $app_deployment_ref01_ent = $client->AppDeployment(null);
-        $app_deployment_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_deployment_ref01_list_result = $app_deployment_ref01_ent->list($app_deployment_ref01_match, null);
-        $this->assertIsArray($app_deployment_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $app_deployment_ref01_match_dt0 = [
-            "id" => $app_deployment_ref01_data["id"],
-        ];
-        $app_deployment_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
-        $app_deployment_ref01_data_dt0_loaded = $app_deployment_ref01_ent->load($app_deployment_ref01_match_dt0, null);
-        $app_deployment_ref01_data_dt0_load_result = Helpers::to_map(is_object($app_deployment_ref01_data_dt0_loaded) && method_exists($app_deployment_ref01_data_dt0_loaded, 'data_get') ? $app_deployment_ref01_data_dt0_loaded->data_get() : $app_deployment_ref01_data_dt0_loaded);
-        $this->assertNotNull($app_deployment_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($app_deployment_ref01_data_dt0_load_result["id"] ?? null, $app_deployment_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/deployments/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only app_deployment.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_deployment.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: app_deployment.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/deployments/{id}/cancel); app_deployment.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/deployments/{id}); app_deployment.load.2 excluded (GET-only live run: reads a record only app_deployment.create.0 gives); app_deployment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/deployments/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -134,22 +86,6 @@ class AppDeploymentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $app_deployment_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_deployment_ref01_list_result = $app_deployment_ref01_ent->list($app_deployment_ref01_match, null);
-        $this->assertIsArray($app_deployment_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($app_deployment_ref01_list_result),
-            ["id" => $app_deployment_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $app_deployment_ref01_data_up0_up = [
             "id" => $app_deployment_ref01_data["id"],
@@ -173,7 +109,6 @@ class AppDeploymentEntityTest extends TestCase
         $app_deployment_ref01_match_dt0 = [
             "id" => $app_deployment_ref01_data["id"],
         ];
-        $app_deployment_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $app_deployment_ref01_data_dt0_loaded = $app_deployment_ref01_ent->load($app_deployment_ref01_match_dt0, null);
         $app_deployment_ref01_data_dt0_load_result = Helpers::to_map(is_object($app_deployment_ref01_data_dt0_loaded) && method_exists($app_deployment_ref01_data_dt0_loaded, 'data_get') ? $app_deployment_ref01_data_dt0_loaded->data_get() : $app_deployment_ref01_data_dt0_loaded);
         $this->assertNotNull($app_deployment_ref01_data_dt0_load_result);
@@ -188,22 +123,6 @@ class AppDeploymentEntityTest extends TestCase
         ];
         $app_deployment_ref01_match_rm0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $app_deployment_ref01_ent->remove($app_deployment_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $app_deployment_ref01_match_rt0 = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_deployment_ref01_list_rt0_result = $app_deployment_ref01_ent->list($app_deployment_ref01_match_rt0, null);
-        $this->assertIsArray($app_deployment_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($app_deployment_ref01_list_rt0_result),
-            ["id" => $app_deployment_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

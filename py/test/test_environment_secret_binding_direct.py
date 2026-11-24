@@ -24,15 +24,16 @@ def _live_ok(result):
 
 class TestEnvironmentSecretBindingDirect:
 
-    def test_should_direct_list_environment_secret_binding(self):
-        setup = _environment_secret_binding_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-environment_secret_binding", "live" if setup["live"] else "unit")
+    def test_should_direct_load_environment_secret_binding(self):
+        setup = _environment_secret_binding_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-environment_secret_binding", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("environment01") is None:
+            print("LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
+
         if setup["live"]:
             for _live_key in ["app01", "environment01"]:
                 if setup["idmap"].get(_live_key) is None:
@@ -46,12 +47,12 @@ class TestEnvironmentSecretBindingDirect:
         query = {}
         if setup["live"]:
             params["app_id"] = setup["idmap"].get("app01")
+            params["environment_id"] = setup["idmap"].get("environment01")
+            pass
         else:
             params["app_id"] = "direct01"
-        if setup["live"]:
-            params["environment_id"] = setup["idmap"].get("environment01")
-        else:
             params["environment_id"] = "direct02"
+            pass
 
         result = client.direct({
             "path": "api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings",
@@ -61,14 +62,15 @@ class TestEnvironmentSecretBindingDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

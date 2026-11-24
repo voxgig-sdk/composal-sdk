@@ -222,35 +222,37 @@ class PersonalAccessTokenEntity
   end
 
   
-
-  
-  # List PersonalAccessToken items matching the given filter.
+  # Load a single PersonalAccessToken.
   #
-  # @param reqmatch [PersonalAccessTokenListMatch, Hash, nil] match filter (any subset of
-  #   PersonalAccessToken fields); defaults to nil, treated as an empty match that lists all.
+  # @param reqmatch [PersonalAccessTokenLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.PersonalAccessToken.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
-  # @return [Array<PersonalAccessTokenEntity>] the matching PersonalAccessToken items, one entity per
-  #   record (data_get reads the record); raises ComposalError on failure
-  def list(reqmatch = nil, ctrl = nil)
+  # @return [PersonalAccessTokenEntity] the loaded PersonalAccessToken entity (data_get reads its record);
+  #   raises ComposalError on failure
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
-      "opname" => "list",
+      "opname" => "load",
       "ctrl" => ctrl,
       "match" => @_match,
       "data" => @_data,
       "reqmatch" => reqmatch,
     }, @_entctx)
 
-    records = _run_op(ctx) do
+    _run_op(ctx) do
       if ctx.result
         @_match = ctx.result.resmatch if ctx.result.resmatch
+        if ctx.result.resdata
+          @_data = ComposalHelpers.to_map(VoxgigStruct.clone(ctx.result.resdata)) || {}
+        end
       end
     end
-
-    records
   end
 
 
+
+  
 
   
   # Create a new PersonalAccessToken.

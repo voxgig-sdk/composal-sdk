@@ -9,31 +9,6 @@ require_once __DIR__ . '/Runner.php';
 use PHPUnit\Framework\TestCase;
 use Voxgig\Struct\Struct as Vs;
 
-class AgentThreadEntityTestFailHook extends ComposalBaseFeature
-{
-    public int $unexpected = 0;
-
-    public function __construct()
-    {
-        parent::__construct();
-        $this->name = 'failhook';
-    }
-
-    public function init(ComposalContext $ctx, array $options): void
-    {
-    }
-
-    public function PreSpec(ComposalContext $ctx): void
-    {
-        throw new \RuntimeException('agent_thread hook failed');
-    }
-
-    public function PreUnexpected(ComposalContext $ctx): void
-    {
-        $this->unexpected++;
-    }
-}
-
 class AgentThreadEntityTest extends TestCase
 {
     // main.kit.test.live.strict is true (the default is true): a live
@@ -49,141 +24,6 @@ class AgentThreadEntityTest extends TestCase
         $this->assertNotNull($ent);
     }
 
-    // Feature #4: the entity stream(action, ...) method runs the op pipeline
-    // and yields result items. With the streaming feature active it yields the
-    // feature's incremental output; otherwise it falls back to the materialised
-    // list so stream always yields.
-    public function test_stream(): void
-    {
-        $seed = [
-            "entity" => [
-                "agent_thread" => [
-                    "s1" => ["id" => "s1"],
-                    "s2" => ["id" => "s2"],
-                    "s3" => ["id" => "s3"],
-                ],
-            ],
-        ];
-
-        // Fallback: streaming inactive -> yields the materialised list items.
-        $base = ComposalSDK::test($seed, null);
-        $seen = iterator_to_array($base->AgentThread(null)->stream("list", null, null), false);
-        $this->assertCount(3, $seen);
-
-        // Inbound: streaming active -> yields each item from the feature.
-        $cfg = ComposalConfig::shared_config();
-        if (isset($cfg["feature"]) && is_array($cfg["feature"]) && isset($cfg["feature"]["streaming"])) {
-            $sdk = ComposalSDK::test($seed, ["feature" => ["streaming" => ["active" => true]]]);
-            $got = [];
-            foreach ($sdk->AgentThread(null)->stream("list", null, null) as $item) {
-                if (is_array($item) && array_is_list($item)) {
-                    foreach ($item as $sub) {
-                        $got[] = $sub;
-                    }
-                } else {
-                    $got[] = $item;
-                }
-            }
-            $this->assertCount(3, $got);
-        }
-    }
-
-    public function test_stream_error(): void
-    {
-        $offline = ["net" => ["offline" => true]];
-        $streamerr = null;
-        try {
-            iterator_to_array(ComposalSDK::test($offline, null)->AgentThread(null)
-                ->stream("list", null, null), false);
-        } catch (\Throwable $e) {
-            $streamerr = $e;
-        }
-        $this->assertNotNull($streamerr, 'the stream should raise the transport failure');
-        $this->assertStringContainsString('offline', $streamerr->getMessage());
-
-        iterator_to_array(ComposalSDK::test($offline, null)->AgentThread(null)
-            ->stream("list", null, ["ctrl" => ["throw" => false]]), false);
-
-        $cfg = ComposalConfig::shared_config();
-        if (isset($cfg["feature"]["rbac"])) {
-            $denied = ComposalSDK::test(null, ["feature" => ["rbac" => ["active" => true, "deny" => true]]]);
-            $denyerr = null;
-            try {
-                iterator_to_array($denied->AgentThread(null)->stream("list", null, null), false);
-            } catch (\Throwable $e) {
-                $denyerr = $e;
-            }
-            $this->assertSame('rbac_denied', $denyerr->sdk_code ?? null);
-        }
-    }
-
-    public function test_stream_ctrl(): void
-    {
-        $ctrl = ["explain" => []];
-        iterator_to_array(ComposalSDK::test(null, null)->AgentThread(null)
-            ->stream("list", null, ["ctrl" => $ctrl]), false);
-        $this->assertSame(["explain"], array_keys($ctrl));
-    }
-
-    public function test_unexpected(): void
-    {
-        $hook = new AgentThreadEntityTestFailHook();
-        $client = new ComposalSDK(["feature" => ["test" => ["active" => true]], "extend" => [$hook]]);
-
-        $err = null;
-        try {
-            $client->AgentThread(null)->list(null, null);
-        } catch (\Throwable $e) {
-            $err = $e;
-        }
-        $this->assertNotNull($err, 'the throwing hook should fail the operation');
-        $this->assertStringContainsString('hook failed', $err->getMessage());
-        $this->assertGreaterThan(0, $hook->unexpected, 'PreUnexpected did not fire');
-
-        $fired = $hook->unexpected;
-        $this->assertNull($client->AgentThread(null)->list(null, ["throw" => false]));
-        $this->assertGreaterThan($fired, $hook->unexpected, 'PreUnexpected did not fire');
-    }
-
-    public function test_cost_commits_a_throwing_transport(): void
-    {
-        $cfg = ComposalConfig::shared_config();
-        if (!isset($cfg["feature"]["cost"])) {
-            $this->markTestSkipped('feature not present in this SDK: cost');
-        }
-        $client = new ComposalSDK([
-            "test" => ["active" => true],
-            "feature" => ["cost" => ["active" => true, "unit" => 1]],
-            "utility" => ["fetcher" => function ($ctx, $url, $fetchdef) {
-                throw new \RuntimeException('agent_thread transport failed');
-            }],
-        ]);
-
-        $err = null;
-        try {
-            $client->AgentThread(null)->list(null, null);
-        } catch (\Throwable $e) {
-            $err = $e;
-        }
-        $this->assertInstanceOf(ComposalError::class, $err);
-        $this->assertStringContainsString('transport failed', $err->getMessage());
-
-        $client->AgentThread(null)->list(null, ["throw" => false]);
-        $this->assertSame(2, $client->_cost["total"]["calls"]);
-        $this->assertSame(2, $client->_cost["total"]["attempts"]);
-    }
-
-    public function test_validate_list_response(): void
-    {
-        $cfg = ComposalConfig::shared_config();
-        if (!isset($cfg["feature"]["validate"])) {
-            $this->markTestSkipped('feature not present in this SDK: validate');
-        }
-        $opts = ["feature" => ["validate" => ["active" => true, "request" => false, "response" => true]]];
-        $listed = ComposalSDK::test(['entity' => ['agent_thread' => ['v1' => []]]], $opts)->AgentThread(null)->list(null, null);
-        $this->assertSame(['v1'], array_map(fn($ent) => $ent->data_get()['id'] ?? null, $listed));
-    }
-
     public function test_validate(): void
     {
         $cfg = ComposalConfig::shared_config();
@@ -193,7 +33,7 @@ class AgentThreadEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentThread(null)->list(["id" => 1], null);
+            $client->AgentThread(null)->load(["id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -205,7 +45,7 @@ class AgentThreadEntityTest extends TestCase
         $setup = agent_thread_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_thread." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -214,47 +54,8 @@ class AgentThreadEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"agent_thread.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/agent/threads/{id}/archive"}' . "\n");
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_thread01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "agent_thread",
-                fn() => $client->AgentThread(null)->list([], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $agent_thread_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.agent_thread")));
-        $agent_thread_ref01_data = null;
-        if (count($agent_thread_ref01_data_raw) > 0) {
-            $agent_thread_ref01_data = Helpers::to_map($agent_thread_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $agent_thread_ref01_ent = $client->AgentThread(null);
-        $agent_thread_ref01_match = [];
-
-        $agent_thread_ref01_list_result = $agent_thread_ref01_ent->list($agent_thread_ref01_match, null);
-        $this->assertIsArray($agent_thread_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $agent_thread_ref01_match_dt0 = [
-            "id" => $agent_thread_ref01_data["id"],
-        ];
-        $agent_thread_ref01_data_dt0_loaded = $agent_thread_ref01_ent->load($agent_thread_ref01_match_dt0, null);
-        $agent_thread_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_thread_ref01_data_dt0_loaded) && method_exists($agent_thread_ref01_data_dt0_loaded, 'data_get') ? $agent_thread_ref01_data_dt0_loaded->data_get() : $agent_thread_ref01_data_dt0_loaded);
-        $this->assertNotNull($agent_thread_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($agent_thread_ref01_data_dt0_load_result["id"] ?? null, $agent_thread_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_thread.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only agent_thread.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: agent_thread.create.0 excluded (GET-only live run: needs POST /api/v1/agent/threads/{id}/archive); agent_thread.load.1 excluded (GET-only live run: reads a record only agent_thread.create.0 gives)');
         }
 
         $client = $setup["client"];
@@ -271,20 +72,6 @@ class AgentThreadEntityTest extends TestCase
         $agent_thread_ref01_data = Helpers::to_map(is_object($agent_thread_ref01_data_result) && method_exists($agent_thread_ref01_data_result, 'data_get') ? $agent_thread_ref01_data_result->data_get() : $agent_thread_ref01_data_result);
         $this->assertNotNull($agent_thread_ref01_data);
         $this->assertNotNull($agent_thread_ref01_data["id"]);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $agent_thread_ref01_match = [];
-
-        $agent_thread_ref01_list_result = $agent_thread_ref01_ent->list($agent_thread_ref01_match, null);
-        $this->assertIsArray($agent_thread_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($agent_thread_ref01_list_result),
-            ["id" => $agent_thread_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
 
         if (!empty($setup["live"])) {
             Runner::live_pace();

@@ -5,28 +5,30 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `archived_count` | integer |  |  |
-  | `can_create` | boolean | yes |  |
+  | `archive_deletes_sandbox` | boolean |  |  |
+  | `archived` | boolean | yes |  |
+  | `attention` | object | yes |  |
+  | `can_archive` | boolean | yes |  |
+  | `can_compact` | boolean | yes |  |
+  | `can_snooze` | boolean | yes |  |
+  | `coordination_status` | string |  |  |
   | `execution` | any |  |  |
   | `first_input` | any |  |  |
   | `first_input_key` | string |  |  |
   | `first_input_requester_membership_id` | string |  |  |
-  | `id` | string |  |  |
+  | `group` | string | yes |  |
+  | `has_active_run` | boolean | yes |  |
+  | `id` | string | yes |  |
   | `inherit_context` | boolean |  |  |
-  | `local_activities` | object | yes |  |
-  | `local_archived_count` | integer | yes |  |
-  | `local_next_cursor` | string | yes |  |
-  | `local_scope_key` | string | yes |  |
-  | `local_status_pending` | boolean | yes |  |
-  | `local_threads` | array | yes |  |
-  | `main_thread_id` | string | yes |  |
+  | `is_main` | boolean | yes |  |
+  | `kind` | string | yes |  |
   | `message` | string |  |  |
-  | `next_cursor` | string | yes |  |
+  | `older` | boolean | yes |  |
   | `parent_conversation_id` | string |  |  |
+  | `parent_conversation_title` | string |  |  |
   | `requester_membership_id` | string |  |  |
-  | `selected_thread` | any | yes |  |
+  | `snoozed_until` | string | yes |  |
   | `thread` | object | yes |  |
-  | `threads` | array | yes |  |
   | `title` | string |  |  |
-  | `total_archived_count` | integer | yes |  |
+  | `updated_at` | string | yes |  |
 order: 505000

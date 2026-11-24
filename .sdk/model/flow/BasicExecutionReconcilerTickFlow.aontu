@@ -15,26 +15,10 @@ main: kit: flow: BasicExecutionReconcilerTickFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "execution_reconciler_tick_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "execution_reconciler_tick_ref01",
         srcdatavar: "execution_reconciler_tick_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "execution_reconciler_tick01"
       }
 
       o: "load",

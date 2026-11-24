@@ -37,7 +37,7 @@ class TestNodeLeaseEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.NodeLease(None).list({"node_id": 1}, None)
+            client.NodeLease(None).load({"node_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,19 +46,19 @@ class TestNodeLeaseEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "node_lease." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"node_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"node_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only node_lease.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: node_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim); node_lease.load.1 excluded (GET-only live run: reads a record only node_lease.create.0 gives)")
 
         if setup["live"]:
-            for _live_key in ["node01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_NODE_LEASE_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -67,43 +67,6 @@ class TestNodeLeaseEntity:
         node_lease_ref01_data = None
         if len(node_lease_ref01_data_raw) > 0:
             node_lease_ref01_data = helpers.to_map(node_lease_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        node_lease_ref01_ent = client.NodeLease(None)
-        node_lease_ref01_match = {
-            "node_id": setup["idmap"]["node01"],
-        }
-
-        node_lease_ref01_list_result = node_lease_ref01_ent.list(node_lease_ref01_match, None)
-        assert isinstance(node_lease_ref01_list_result, list)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["node01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_NODE_LEASE_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        node_lease_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.node_lease")))
-        node_lease_ref01_data = None
-        if len(node_lease_ref01_data_raw) > 0:
-            node_lease_ref01_data = helpers.to_map(node_lease_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        node_lease_ref01_ent = client.NodeLease(None)
-        node_lease_ref01_match = {
-            "node_id": setup["idmap"]["node01"],
-        }
-
-        node_lease_ref01_list_result = node_lease_ref01_ent.list(node_lease_ref01_match, None)
-        assert isinstance(node_lease_ref01_list_result, list)
 
 
 

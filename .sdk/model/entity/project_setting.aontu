@@ -45,8 +45,8 @@ main: kit: entity: project_setting: {
 
   name: "project_setting"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

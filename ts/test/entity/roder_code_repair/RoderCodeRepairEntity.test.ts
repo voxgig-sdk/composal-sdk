@@ -41,59 +41,13 @@ describe('RoderCodeRepairEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('roder_code_repair hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).RoderCodeRepair().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).RoderCodeRepair()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.RoderCodeRepair().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().RoderCodeRepair().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.RoderCodeRepair().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.RoderCodeRepair().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.RoderCodeRepair().list({"scenario_run_id":1} as any),
+    await assert.rejects(client.RoderCodeRepair().load({"id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('RoderCodeRepairEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list', 'load']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'roder_code_repair.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"base_sha":{"a":true,"h":"Base Sha","n":"base_sha","r":true,"t":"`$STRING`","key$":"base_sha","index$":0},"cancel_requested":{"a":true,"h":"Cancel Requested","n":"cancel_requested","r":true,"t":"`$BOOLEAN`","key$":"cancel_requested","index$":1},"failure_code":{"a":true,"h":"Failure Code","n":"failure_code","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"failure_code","index$":2},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":3},"launch_state":{"a":true,"h":"Launch State","n":"launch_state","r":true,"t":"`$STRING`","key$":"launch_state","index$":4},"organization_id":{"a":true,"h":"Organization Id","n":"organization_id","r":true,"t":"`$STRING`","key$":"organization_id","index$":5},"repository_slug":{"a":true,"h":"Repository Slug","n":"repository_slug","r":true,"t":"`$STRING`","key$":"repository_slug","index$":6},"roder_thread_id":{"a":true,"h":"Roder Thread Id","n":"roder_thread_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"roder_thread_id","index$":7},"roder_turn_id":{"a":true,"h":"Roder Turn Id","n":"roder_turn_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"roder_turn_id","index$":8},"scenario_run_id":{"a":true,"h":"Scenario Run Id","n":"scenario_run_id","r":true,"t":"`$STRING`","key$":"scenario_run_id","index$":9},"task":{"a":true,"h":"Task","n":"task","r":true,"t":["`$ONE`",["`$OBJECT`","`$NULL`"]],"key$":"task","index$":10},"trigger_kind":{"a":true,"h":"Trigger Kind","n":"trigger_kind","r":true,"t":"`$STRING`","key$":"trigger_kind","index$":11}},"id":{"field":"id","name":"id"},"name":"roder_code_repair","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/agent/roder/code_repairs/{id}/cancel","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/agent/roder/code_repairs/{id}/cancel","q":{"$action":"cancel","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"},{"var":"id"},{"lit":"cancel"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["base_sha","organization_id","repository_slug","scenario_run_id"],"co":{"id":"POST /api/v1/agent/roder/code_repairs","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/agent/roder/code_repairs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/agent/roder/code_repairs","source":"openapi3","version":2},"g":{"query":[{"a":true,"explode":true,"k":"query","n":"scenario_run_id","or":"scenario_run_id","r":true,"style":"form","t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/agent/roder/code_repairs","q":{"exist":["scenario_run_id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/agent/roder/code_repairs/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/agent/roder/code_repairs/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"roder_code_repair","name__orig":"roder_code_repair","Name":"RoderCodeRepair","name_":"roder_code_repair","name-":"roder-code-repair","NAME":"RODER_CODE_REPAIR","index$":446}, {"active":true,"entity":"roder_code_repair","key$":"BasicRoderCodeRepairFlow","kind":"basic","name":"BasicRoderCodeRepairFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"roder_code_repair_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"roder_code_repair_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"roder_code_repair_ref01","srcdatavar":"roder_code_repair_ref01_data","suffix":"_dt0"},"m":{"id":"roder_code_repair01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-roder_code_repair_ref01"}}],"index$":2,"route":"GET /api/v1/agent/roder/code_repairs/{id}","record":{}}]}, 'RoderCodeRepair', {"POST /api/v1/agent/roder/code_repairs/{id}/cancel":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/agent/roder/code_repairs":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"required":["organization_id","scenario_run_id","repository_slug","base_sha"],"properties":{"organization_id":{"type":"string","key$":"organization_id"},"scenario_run_id":{"type":"string","key$":"scenario_run_id"},"repository_slug":{"type":"string","key$":"repository_slug"},"base_sha":{"type":"string","pattern":"^[0-9a-f]{40}$","key$":"base_sha"}}}}}},"parameters":[]},"GET /api/v1/agent/roder/code_repairs":{"protocol":"http","parameters":[{"in":"query","name":"scenario_run_id","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/agent/roder/code_repairs/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"roder_code_repair.create.0":"GET-only live run: needs POST /api/v1/agent/roder/code_repairs/{id}/cancel"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"base_sha":{"a":true,"h":"Base Sha","n":"base_sha","r":true,"t":"`$STRING`","key$":"base_sha","index$":0},"cancel_requested":{"a":true,"h":"Cancel Requested","n":"cancel_requested","r":true,"t":"`$BOOLEAN`","key$":"cancel_requested","index$":1},"failure_code":{"a":true,"h":"Failure Code","n":"failure_code","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"failure_code","index$":2},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":3},"launch_state":{"a":true,"h":"Launch State","n":"launch_state","r":true,"t":"`$STRING`","key$":"launch_state","index$":4},"organization_id":{"a":true,"h":"Organization Id","n":"organization_id","r":true,"t":"`$STRING`","key$":"organization_id","index$":5},"repository_slug":{"a":true,"h":"Repository Slug","n":"repository_slug","r":true,"t":"`$STRING`","key$":"repository_slug","index$":6},"roder_thread_id":{"a":true,"h":"Roder Thread Id","n":"roder_thread_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"roder_thread_id","index$":7},"roder_turn_id":{"a":true,"h":"Roder Turn Id","n":"roder_turn_id","r":true,"t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"roder_turn_id","index$":8},"scenario_run_id":{"a":true,"h":"Scenario Run Id","n":"scenario_run_id","r":true,"t":"`$STRING`","key$":"scenario_run_id","index$":9},"task":{"a":true,"h":"Task","n":"task","r":true,"t":["`$ONE`",["`$OBJECT`","`$NULL`"]],"key$":"task","index$":10},"trigger_kind":{"a":true,"h":"Trigger Kind","n":"trigger_kind","r":true,"t":"`$STRING`","key$":"trigger_kind","index$":11}},"id":{"field":"id","name":"id"},"name":"roder_code_repair","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/agent/roder/code_repairs/{id}/cancel","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/agent/roder/code_repairs/{id}/cancel","q":{"$action":"cancel","exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"},{"var":"id"},{"lit":"cancel"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"bf":["base_sha","organization_id","repository_slug","scenario_run_id"],"co":{"id":"POST /api/v1/agent/roder/code_repairs","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/agent/roder/code_repairs","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/agent/roder/code_repairs/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/agent/roder/code_repairs/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /api/v1/agent/roder/code_repairs","source":"openapi3","version":2},"g":{"query":[{"a":true,"explode":true,"k":"query","n":"scenario_run_id","or":"scenario_run_id","r":true,"style":"form","t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/agent/roder/code_repairs","q":{"exist":["scenario_run_id"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"agent"},{"lit":"roder"},{"lit":"code_repairs"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"roder_code_repair","name__orig":"roder_code_repair","Name":"RoderCodeRepair","name_":"roder_code_repair","name-":"roder-code-repair","NAME":"RODER_CODE_REPAIR","index$":446}, {"active":true,"entity":"roder_code_repair","key$":"BasicRoderCodeRepairFlow","kind":"basic","name":"BasicRoderCodeRepairFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"roder_code_repair_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"roder_code_repair_ref01","srcdatavar":"roder_code_repair_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-roder_code_repair_ref01"}}],"index$":1,"route":"GET /api/v1/agent/roder/code_repairs/{id}","record":{}}]}, 'RoderCodeRepair', {"POST /api/v1/agent/roder/code_repairs/{id}/cancel":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"POST /api/v1/agent/roder/code_repairs":{"protocol":"http","requestBody":{"required":true,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true,"required":["organization_id","scenario_run_id","repository_slug","base_sha"],"properties":{"organization_id":{"type":"string","key$":"organization_id"},"scenario_run_id":{"type":"string","key$":"scenario_run_id"},"repository_slug":{"type":"string","key$":"repository_slug"},"base_sha":{"type":"string","pattern":"^[0-9a-f]{40}$","key$":"base_sha"}}}}}},"parameters":[]},"GET /api/v1/agent/roder/code_repairs/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/agent/roder/code_repairs":{"protocol":"http","parameters":[{"in":"query","name":"scenario_run_id","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"roder_code_repair.create.0":"GET-only live run: needs POST /api/v1/agent/roder/code_repairs/{id}/cancel","roder_code_repair.load.1":"GET-only live run: reads a record only roder_code_repair.create.0 gives"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -124,14 +78,6 @@ describe('RoderCodeRepairEntity', async () => {
 
     roder_code_repair_ref01_data = (await roder_code_repair_ref01_ent.create(roder_code_repair_ref01_data)).data()
     assert(null != roder_code_repair_ref01_data.id)
-
-
-    // LIST
-    const roder_code_repair_ref01_match: any = {}
-
-    const roder_code_repair_ref01_list = (await roder_code_repair_ref01_ent.list(roder_code_repair_ref01_match)).map((e: any) => e.data())
-
-    assert(!isempty(select(roder_code_repair_ref01_list, { id: roder_code_repair_ref01_data.id })))
 
 
     // LOAD

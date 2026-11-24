@@ -6854,23 +6854,23 @@ const admin_org = client.AdminOrg()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `billing_email` | - | - | - | - |
-| `billing_reason` | - | - | - | - |
-| `customize_onboarding_packages` | - | - | - | - |
-| `deployment_usage_visibility` | - | - | - | - |
-| `deployment_usage_visible` | - | - | - | - |
-| `id` | - | - | - | - |
-| `monthly_price_dollars` | - | - | - | - |
-| `monthly_price_override_cents` | - | - | - | - |
-| `name` | - | - | - | - |
-| `onboarding_custom_pricing` | - | - | - | - |
-| `onboarding_package_keys` | - | - | - | - |
-| `owner_email` | - | - | - | - |
-| `package_id` | - | - | Yes | - |
-| `skip_payment` | - | - | - | - |
-| `slug` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `billing_email` | - | - | - |
+| `billing_reason` | - | - | - |
+| `customize_onboarding_packages` | - | - | - |
+| `deployment_usage_visibility` | - | - | - |
+| `deployment_usage_visible` | - | - | - |
+| `id` | - | - | - |
+| `monthly_price_dollars` | - | - | - |
+| `monthly_price_override_cents` | - | - | - |
+| `name` | - | - | - |
+| `onboarding_custom_pricing` | - | - | - |
+| `onboarding_package_keys` | - | - | - |
+| `owner_email` | - | - | - |
+| `package_id` | - | Yes | - |
+| `skip_payment` | - | - | - |
+| `slug` | - | - | - |
 
 ### Actions
 
@@ -6907,14 +6907,6 @@ const result = await client.AdminOrg().create({
   owner_email: 'example_owner_email',
   slug: 'example_slug',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AdminOrg().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -7201,12 +7193,9 @@ const agent_app = client.AgentApp()
 | `hidden_install_count` | `number` | Yes | Installs by agents the viewer cannot open |
 | `id` | `string` | Yes |  |
 | `install_count` | `number` | Yes |  |
-| `install_targets` | `any[]` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `any[]` | Yes |  |
 | `installed_target_ids` | `any[]` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `any[]` | Yes |  |
 | `mcp_url` | `string | null` | Yes |  |
-| `next_cursor` | `string | null` | Yes | Pass as cursor to load older apps |
 | `owner` | `Record<string, any>` | Yes | The person who controls the author agent |
 | `thread` | `any` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` | Yes |  |
@@ -8571,12 +8560,12 @@ const agent_event = client.AgentEvent()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentEvent().list({ agent_id: "example", organization_id: "example" })
+const result = await client.AgentEvent().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -8807,14 +8796,6 @@ const result = await client.AgentIntegration().create({
   name: 'example_name',
   toolkit: 'example_toolkit',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AgentIntegration().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -10081,12 +10062,12 @@ const result = await client.AgentRepository().update({
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentRepository().list({ agent_id: "example", organization_id: "example" })
+const result = await client.AgentRepository().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -10569,14 +10550,6 @@ const result = await client.AgentSessionCheckpoint().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AgentSessionCheckpoint().list({ agent_session_id: "example", organization_id: "example", repo_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -10685,12 +10658,12 @@ const agent_setting = client.AgentSetting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentSetting().list({ agent_id: "example", organization_id: "example" })
+const result = await client.AgentSetting().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -10948,14 +10921,6 @@ const result = await client.AgentSkill().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AgentSkill().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -11145,12 +11110,12 @@ const result = await client.AgentSubscription().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentSubscription().list({ agent_id: "example", organization_id: "example" })
+const result = await client.AgentSubscription().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -11534,14 +11499,6 @@ const result = await client.AgentThread().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AgentThread().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -11700,8 +11657,11 @@ const agent_verify_project = client.AgentVerifyProject()
 | `available` | `boolean` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `boolean` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `number` | Yes |  |
+| `id` | `string` | Yes |  |
+| `name` | `string` | Yes |  |
 | `project_choices` | `any[]` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `boolean` | Yes |  |
+| `slug` | `string` | Yes |  |
 | `verify_projects` | `any[]` | Yes |  |
 | `version` | `number` | Yes |  |
 
@@ -11838,12 +11798,12 @@ const agent_web_preview = client.AgentWebPreview()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentWebPreview().list({ token: "example" })
+const result = await client.AgentWebPreview().load({ token: 'token' })
 ```
 
 ### Common Methods
@@ -12061,12 +12021,12 @@ const result = await client.AgentWorkflow().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AgentWorkflow().list({ agent_id: "example", organization_id: "example" })
+const result = await client.AgentWorkflow().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -12734,14 +12694,6 @@ const result = await client.AlertRuleEvent().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AlertRuleEvent().list({ alert_rule_id: "example", space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -12810,12 +12762,12 @@ const allocation_log = client.AllocationLog()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AllocationLog().list({ allocation_id: "example", app_id: "example" })
+const result = await client.AllocationLog().load({ allocation_id: 'allocation_id', app_id: 'app_id' })
 ```
 
 ### Common Methods
@@ -13074,12 +13026,12 @@ const app_access_jwk = client.AppAccessJwk()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AppAccessJwk().list()
+const result = await client.AppAccessJwk().load()
 ```
 
 ### Common Methods
@@ -13150,35 +13102,35 @@ const app_cdn = client.AppCdn()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Actions
 
@@ -13218,14 +13170,6 @@ const result = await client.AppCdn().create({
   origin_url: 'example_origin_url',
   slug: 'example_slug',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppCdn().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -13322,21 +13266,21 @@ const app_config_variable = client.AppConfigVariable()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Actions
 
@@ -13373,14 +13317,6 @@ const result = await client.AppConfigVariable().create({
   scope_kind: 'example_scope_kind',
   value_kind: 'example_value_kind',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppConfigVariable().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -13482,26 +13418,26 @@ const app_data_resource = client.AppDataResource()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Actions
 
@@ -13541,14 +13477,6 @@ const result = await client.AppDataResource().create({
   name: 'example_name',
   slug: 'example_slug',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppDataResource().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -13730,42 +13658,42 @@ const app_deployment = client.AppDeployment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Actions
 
@@ -13800,14 +13728,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.AppDeployment().create({
   app_id: 'example_app_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppDeployment().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -14213,23 +14133,23 @@ const app_environment = client.AppEnvironment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Actions
 
@@ -14269,14 +14189,6 @@ const result = await client.AppEnvironment().create({
   slug: 'example_slug',
   status: 'example_status',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppEnvironment().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -14553,14 +14465,6 @@ const result = await client.AppPreview().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppPreview().list({ app_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -14652,18 +14556,18 @@ const app_preview_profile = client.AppPreviewProfile()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -14678,14 +14582,6 @@ const result = await client.AppPreviewProfile().create({
   slug: 'example_slug',
   source_environment_id: 'example_source_environment_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppPreviewProfile().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -14798,14 +14694,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.AppRun().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppRun().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -15064,50 +14952,50 @@ const app_service = client.AppService()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Actions
 
@@ -15151,14 +15039,6 @@ const result = await client.AppService().create({
   source_path: 'example_source_path',
   start_command: 'example_start_command',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppService().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -15272,14 +15152,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.AppServiceBinding().create({
   app_id: 'example_app_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppServiceBinding().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -15479,29 +15351,29 @@ const app_storage_resource = client.AppStorageResource()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Actions
 
@@ -15542,14 +15414,6 @@ const result = await client.AppStorageResource().create({
   slug: 'example_slug',
   status: 'example_status',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.AppStorageResource().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -16053,14 +15917,6 @@ const result = await client.Artifact().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.Artifact().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -16170,14 +16026,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.ArtifactCacheNamespace().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ArtifactCacheNamespace().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -16292,14 +16140,6 @@ const result = await client.ArtifactImageRepository().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ArtifactImageRepository().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -16411,14 +16251,6 @@ const result = await client.ArtifactPackageMirror().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ArtifactPackageMirror().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -16506,14 +16338,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.ArtifactRetentionPolicy().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ArtifactRetentionPolicy().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -17105,12 +16929,12 @@ const auth_registration_option = client.AuthRegistrationOption()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.AuthRegistrationOption().list()
+const result = await client.AuthRegistrationOption().load()
 ```
 
 ### Common Methods
@@ -17328,12 +17152,12 @@ const result = await client.BackendRunnerPool().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.BackendRunnerPool().list({ backend_id: "example" })
+const result = await client.BackendRunnerPool().load({ backend_id: 'backend_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -17341,7 +17165,7 @@ const results = await client.BackendRunnerPool().list({ backend_id: "example" })
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.BackendRunnerPool().remove({ id: 'backend_runner_pool_id', backend_id: 'backend_id' })
+const result = await client.BackendRunnerPool().remove({ backend_id: 'backend_id', id: 'id' })
 ```
 
 ### Common Methods
@@ -17537,14 +17361,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.BazelBackend().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.BazelBackend().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -19894,14 +19710,6 @@ const result = await client.CacheNamespaceEntry().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CacheNamespaceEntry().list({ cache_namespace_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -20045,14 +19853,6 @@ const result = await client.CdnDeployment().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CdnDeployment().list({ app_id: "example", cdn_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -20111,17 +19911,17 @@ const cdn_hostname = client.CdnHostname()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -20135,14 +19935,6 @@ const result = await client.CdnHostname().create({
   cdn_id: 'example_cdn_id',
   hostname: 'example_hostname',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CdnHostname().list({ app_id: "example", cdn_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -20260,14 +20052,6 @@ const result = await client.CdnSpace().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CdnSpace().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -20348,14 +20132,6 @@ const cdn_space_object = client.CdnSpaceObject()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CdnSpaceObject().list({ cdn_space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -20428,12 +20204,12 @@ const change = client.Change()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.Change().list({ organization_id: "example" })
+const result = await client.Change().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -21802,14 +21578,6 @@ const result = await client.CiPipelineRun().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CiPipelineRun().list({ pipeline_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -22154,17 +21922,13 @@ const result = await client.CliRelease().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.CliRelease().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.CliRelease().load()
+```
 
 ### Common Methods
 
@@ -23198,60 +22962,60 @@ const deep_scan = client.DeepScan()
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Actions
 
@@ -23288,14 +23052,6 @@ const result = await client.DeepScan().create({
   environment_id: 'example_environment_id',
   goal: 'example_goal',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.DeepScan().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -23344,24 +23100,25 @@ const deep_scan_finding = client.DeepScanFinding()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `number` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `any[]` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `any[]` | Yes |  |
-| `findings_fix_prompt` | `string | null` | Yes |  |
-| `free_findings_pending` | `boolean` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` | Yes |  |
+| `agent_id` | `string` | Yes |  |
+| `agent_title` | `string` | Yes |  |
+| `area` | `string | null` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `any[]` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` | Yes |  |
+| `confirmed` | `boolean` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `any[]` | No |  |
+| `evidence_timestamp_ms` | `number | null` | Yes |  |
+| `expected` | `string` | Yes |  |
+| `fix_prompt` | `string` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `boolean` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` | Yes |  |
-| `mode` | `string` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `priority` | `string | null` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `Record<string, any>` | Yes |  |
-| `project_id` | `string | null` | Yes |  |
-| `reproduction_of` | `Record<string, any> | null` | Yes |  |
-| `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `boolean` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` | Yes |  |
+| `locked` | `boolean` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `any[]` | Yes |  |
+| `severity` | `string` | Yes |  |
 | `title` | `string` | Yes |  |
-| `unlock` | `Record<string, any>` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` | Yes |  |
+| `tracked` | `Record<string, any> | null` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` | Yes |  |
 
 ### Operations
 
@@ -23479,12 +23236,12 @@ const deep_scan_mapped_flow = client.DeepScanMappedFlow()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.DeepScanMappedFlow().list({ organization_id: "example", environment_id: "example" })
+const result = await client.DeepScanMappedFlow().load({ organization_id: 'organization_id', environment_id: 'environment_id' })
 ```
 
 ### Common Methods
@@ -23895,12 +23652,12 @@ const deployment_detail = client.DeploymentDetail()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.DeploymentDetail().list({ organization_id: "example" })
+const result = await client.DeploymentDetail().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -24695,12 +24452,12 @@ const device_enterprise_relay = client.DeviceEnterpriseRelay()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.DeviceEnterpriseRelay().list()
+const result = await client.DeviceEnterpriseRelay().load()
 ```
 
 ### Common Methods
@@ -24826,16 +24583,18 @@ const device_grant = client.DeviceGrant()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `any[]` | Yes |  |
-| `agent_choices` | `any[]` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` | Yes |  |
-| `all_agents_access` | `boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `string | null` | Yes |  |
+| `can_edit` | `boolean` | Yes |  |
+| `can_revoke` | `boolean` | Yes |  |
 | `capabilities` | `any[]` | Yes |  |
-| `execution_available` | `boolean` | Yes |  |
-| `grants` | `any[]` | Yes |  |
-| `id` | `string` | No |  |
-| `next_cursor` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `id` | `string` | Yes |  |
 | `principal_id` | `string` | Yes |  |
+| `principal_name` | `string | null` | Yes |  |
+| `revision` | `number` | Yes |  |
+| `revoked_at` | `string | null` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Actions
 
@@ -26035,49 +25794,49 @@ const environment = client.Environment()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Actions
 
@@ -26111,14 +25870,6 @@ const result = await client.Environment().create({
   organization_id: 'example_organization_id',
   slug: 'example_slug',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.Environment().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -26684,12 +26435,12 @@ const result = await client.EnvironmentSecretBinding().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.EnvironmentSecretBinding().list({ app_id: "example", environment_id: "example" })
+const result = await client.EnvironmentSecretBinding().load({ app_id: 'app_id', environment_id: 'environment_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -26697,7 +26448,7 @@ const results = await client.EnvironmentSecretBinding().list({ app_id: "example"
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.EnvironmentSecretBinding().remove({ id: 'environment_secret_binding_id', app_id: 'app_id', environment_id: 'environment_id' })
+const result = await client.EnvironmentSecretBinding().remove({ app_id: 'app_id', environment_id: 'environment_id', id: 'id' })
 ```
 
 ### Common Methods
@@ -26926,14 +26677,6 @@ const result = await client.ExecutionDesiredState().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ExecutionDesiredState().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -27023,14 +26766,6 @@ const result = await client.ExecutionReconcilerTick().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ExecutionReconcilerTick().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -27110,14 +26845,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.ExecutionRelease().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ExecutionRelease().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -27316,20 +27043,21 @@ const exploration = client.Exploration()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `string | null` | No |  |
-| `active` | `any[]` | Yes |  |
 | `agent_filters` | `Record<string, any>` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `any[]` | Yes |  |
 | `can_continue` | `boolean` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `any[]` | No |  |
+| `check_count` | `number` | Yes |  |
 | `concurrency` | `number` | Yes |  |
 | `covered_areas` | `any[]` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` | Yes |  |
-| `deadline_at` | `string` | Yes |  |
+| `credential_name` | `string | null` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | Yes | When the team's time limit ends. |
 | `demo_project` | `Record<string, any> | null` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number | null` | Yes |  |
 | `ended_early` | `boolean` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` | Yes |  |
 | `environment_name` | `string` | Yes |  |
-| `explorations` | `any[]` | Yes |  |
 | `explorer_activity` | `Record<string, any>` | Yes | What the team is doing now. |
 | `finding_count` | `number` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `any[]` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -27339,14 +27067,12 @@ const exploration = client.Exploration()
 | `huntable_flows` | `any[]` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` | Yes |  |
 | `idempotency_key` | `string` | No |  |
-| `launch_options` | `Record<string, any>` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `number` | Yes |  |
 | `max_testers` | `number` | Yes |  |
 | `mode` | `string` | No |  |
 | `next_scan_improvements` | `any[]` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `Record<string, any>` | Yes |  |
 | `paywalled` | `boolean` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `Record<string, any>` | Yes |  |
 | `persona_id` | `string | null` | No | Project persona whose role and observed access this discovery maps. |
@@ -27358,10 +27084,13 @@ const exploration = client.Exploration()
 | `reproductions` | `any[]` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `Record<string, any>` | Yes |  |
+| `scenarios_pending` | `boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` | Yes |  |
 | `startup_retryable` | `boolean` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` | Yes |  |
 | `time_limit_reached` | `boolean` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -27374,37 +27103,36 @@ const exploration = client.Exploration()
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -27416,14 +27144,17 @@ const exploration = client.Exploration()
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -28724,12 +28455,12 @@ const result = await client.GithubConnection().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.GithubConnection().list({ organization_id: "example" })
+const result = await client.GithubConnection().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -30129,31 +29860,31 @@ const hosting_app_domain = client.HostingAppDomain()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Actions
 
@@ -30189,14 +29920,6 @@ const result = await client.HostingAppDomain().create({
   hostname: 'example_hostname',
   kind: 'example_kind',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.HostingAppDomain().list({ app_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -30576,12 +30299,12 @@ const integration = client.Integration()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.Integration().list({ organization_id: "example" })
+const result = await client.Integration().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -30917,12 +30640,12 @@ const result = await client.JobStep().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.JobStep().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+const result = await client.JobStep().load({ job_id: 'job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -31007,12 +30730,12 @@ const result = await client.JobWorkspace().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.JobWorkspace().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+const result = await client.JobWorkspace().load({ job_id: 'job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -32181,14 +31904,6 @@ const result = await client.LogStreamChunk().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.LogStreamChunk().list({ log_stream_id: "example", space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -32322,12 +32037,12 @@ const marketing_setting = client.MarketingSetting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.MarketingSetting().list()
+const result = await client.MarketingSetting().load()
 ```
 
 ### Common Methods
@@ -33463,12 +33178,12 @@ const metric_query = client.MetricQuery()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.MetricQuery().list()
+const result = await client.MetricQuery().load()
 ```
 
 ### Common Methods
@@ -33853,14 +33568,6 @@ const result = await client.NetworkingSpace().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.NetworkingSpace().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -34096,17 +33803,13 @@ const result = await client.NodeLease().create({
 
 Create a new entity with the given data. Resolves to the created entity.
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.NodeLease().list({ node_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.NodeLease().load({ node_id: 'node_id' })
+```
 
 ### Common Methods
 
@@ -34227,12 +33930,12 @@ const nomad_log = client.NomadLog()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.NomadLog().list({ app_id: "example" })
+const result = await client.NomadLog().load({ app_id: 'app_id' })
 ```
 
 ### Common Methods
@@ -34363,14 +34066,6 @@ const result = await client.ObservabilityClickhouseCluster().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ObservabilityClickhouseCluster().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -34483,14 +34178,6 @@ const result = await client.ObservabilityQuickwitCluster().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ObservabilityQuickwitCluster().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -34600,14 +34287,6 @@ Create a new entity with the given data. Resolves to the created entity.
 ```ts
 const result = await client.ObservabilitySpace().create({
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ObservabilitySpace().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -34976,12 +34655,12 @@ const result = await client.OrganizationApp().remove({
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.OrganizationApp().list({ organization_id: "example", native_agent_id: "example" })
+const result = await client.OrganizationApp().load({ organization_id: 'organization_id', native_agent_id: 'native_agent_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -35189,14 +34868,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.OrganizationIdentityCertificate().create({
   organization_id: 'example_organization_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.OrganizationIdentityCertificate().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -35467,14 +35138,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.OrganizationOidcTrust().create({
   organization_id: 'example_organization_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.OrganizationOidcTrust().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -35938,14 +35601,6 @@ const result = await client.OrganizationServiceAccount().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.OrganizationServiceAccount().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -36122,12 +35777,12 @@ const result = await client.OrganizationSite().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.OrganizationSite().list({ organization_id: "example", native_agent_id: "example" })
+const result = await client.OrganizationSite().load({ organization_id: 'organization_id', native_agent_id: 'native_agent_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -36135,7 +35790,7 @@ const results = await client.OrganizationSite().list({ organization_id: "example
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.OrganizationSite().remove({ id: 'organization_site_id', organization_id: 'organization_id' })
+const result = await client.OrganizationSite().remove({ id: 'id', organization_id: 'organization_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -36144,7 +35799,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 
 ```ts
 const result = await client.OrganizationSite().update({
-  id: 'organization_site_id',
+  id: 'id',
   organization_id: 'organization_id',
   // Fields to update
 })
@@ -36342,14 +35997,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.OrganizationWorkloadIdentity().create({
   organization_id: 'example_organization_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.OrganizationWorkloadIdentity().list({ organization_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -36604,17 +36251,13 @@ const result = await client.PageAgent().create({
 
 Create a new entity with the given data. Resolves to the created entity.
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.PageAgent().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.PageAgent().load({ organization_id: 'organization_id' })
+```
 
 ### Common Methods
 
@@ -37178,13 +36821,23 @@ const pages_project_persona = client.PagesProjectPersona()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `number` | Yes |  |
-| `credentials` | `any[]` | Yes |  |
-| `needs_attention_count` | `number` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
-| `persona_states` | `Record<string, any>` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `any[]` | Yes |  |
-| `project` | `Record<string, any>` | Yes |  |
+| `access_mode` | `string` | Yes |  |
+| `active_run_count` | `number` | Yes |  |
+| `archived_at` | `string | null` | Yes |  |
+| `attention` | `any[]` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `credential` | `any` | Yes |  |
+| `credential_id` | `string | null` | Yes | The credential this persona signs in with. |
+| `goals` | `string | null` | Yes |  |
+| `health` | `Record<string, any>` | Yes |  |
+| `id` | `string` | Yes |  |
+| `lock_version` | `number` | Yes |  |
+| `name` | `string` | Yes |  |
+| `project_id` | `string` | Yes |  |
+| `role` | `string` | Yes |  |
+| `scenario_count` | `number` | Yes |  |
+| `updated_at` | `string` | Yes |  |
 
 ### Operations
 
@@ -37234,12 +36887,28 @@ const pages_project_run = client.PagesProjectRun()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `string` | Yes |  |
-| `environments` | `any[]` | Yes |  |
-| `environments_has_more` | `boolean` | Yes |  |
-| `pagination` | `Record<string, any>` | Yes |  |
-| `runs` | `any[]` | Yes |  |
-| `selected_environment` | `any` | Yes |  |
+| `archived_at` | `string | null` | Yes |  |
+| `browser_seconds` | `number | null` | Yes |  |
+| `can_archive` | `boolean` | Yes |  |
+| `can_restore` | `boolean` | Yes |  |
+| `cleanup_state` | `string` | Yes |  |
+| `commit_sha` | `string | null` | Yes |  |
+| `created_at` | `string` | Yes |  |
+| `duration_seconds` | `number | null` | Yes |  |
+| `environment_name` | `string | null` | Yes |  |
+| `finished_at` | `string | null` | Yes |  |
+| `id` | `string` | Yes |  |
+| `outcome` | `string | null` | Yes |  |
+| `pull_request` | `any` | Yes |  |
+| `pull_request_label` | `string | null` | Yes |  |
+| `scenario_count` | `number` | Yes |  |
+| `source_run` | `Record<string, any> | null` | Yes |  |
+| `started_at` | `string | null` | Yes |  |
+| `state` | `string` | Yes |  |
+| `title` | `string` | Yes |  |
+| `trigger_kind` | `string` | Yes |  |
+| `triggered_by` | `string | null` | Yes |  |
+| `web_path` | `string` | Yes |  |
 
 ### Operations
 
@@ -37573,14 +37242,6 @@ const result = await client.Pairing().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.Pairing().list()
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -37625,12 +37286,12 @@ const pairing_event = client.PairingEvent()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PairingEvent().list({ pairing_id: "example" })
+const result = await client.PairingEvent().load({ pairing_id: 'pairing_id' })
 ```
 
 ### Common Methods
@@ -37797,12 +37458,12 @@ const result = await client.PersonalAccessToken().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PersonalAccessToken().list()
+const result = await client.PersonalAccessToken().load({ id: 'personal_access_token_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -37849,12 +37510,12 @@ const preview_operation = client.PreviewOperation()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PreviewOperation().list({ app_id: "example", preview_id: "example" })
+const result = await client.PreviewOperation().load({ app_id: 'app_id', preview_id: 'preview_id' })
 ```
 
 ### Common Methods
@@ -37915,12 +37576,12 @@ const result = await client.PreviewProfileSecretBinding().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PreviewProfileSecretBinding().list({ app_id: "example", preview_profile_id: "example" })
+const result = await client.PreviewProfileSecretBinding().load({ app_id: 'app_id', preview_profile_id: 'preview_profile_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -37928,7 +37589,7 @@ const results = await client.PreviewProfileSecretBinding().list({ app_id: "examp
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.PreviewProfileSecretBinding().remove({ id: 'preview_profile_secret_binding_id', app_id: 'app_id', preview_profile_id: 'preview_profile_id' })
+const result = await client.PreviewProfileSecretBinding().remove({ app_id: 'app_id', id: 'id', preview_profile_id: 'preview_profile_id' })
 ```
 
 ### Common Methods
@@ -38064,16 +37725,16 @@ const preview_sharing_approval = client.PreviewSharingApproval()
 | `approved_default_secrets` | `any[]` | Yes |  |
 | `approved_source_keys` | `any[]` | Yes |  |
 | `build_keys` | `any[]` | No |  |
-| `build_secrets` | `any[]` | No |  |
-| `default_configuration` | `any[]` | No |  |
-| `default_secrets` | `any[]` | No |  |
+| `build_secrets` | `any[]` | Yes |  |
+| `default_configuration` | `any[]` | Yes |  |
+| `default_secrets` | `any[]` | Yes |  |
 | `services` | `any[]` | Yes |  |
 | `snapshot_version` | `number` | Yes |  |
-| `source_keys` | `any[]` | No |  |
+| `source_keys` | `any[]` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -38081,12 +37742,12 @@ const preview_sharing_approval = client.PreviewSharingApproval()
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
@@ -38102,12 +37763,12 @@ const result = await client.PreviewSharingApproval().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PreviewSharingApproval().list({ app_id: "example", preview_id: "example" })
+const result = await client.PreviewSharingApproval().load({ app_id: 'app_id', preview_id: 'preview_id' })
 ```
 
 ### Common Methods
@@ -39317,18 +38978,11 @@ const project_fixture = client.ProjectFixture()
 | `byte_size` | `number` | Yes |  |
 | `content_type` | `string` | Yes |  |
 | `credential_ids` | `any[]` | Yes |  |
-| `credentials` | `any[]` | Yes |  |
 | `environment_ids` | `any[]` | Yes |  |
-| `environments` | `any[]` | Yes |  |
-| `fixtures` | `any[]` | Yes |  |
 | `id` | `string` | No |  |
 | `lock_version` | `number` | Yes |  |
 | `name` | `string` | Yes |  |
-| `pagination` | `Record<string, any>` | Yes |  |
-| `permissions` | `Record<string, any>` | Yes |  |
 | `persona_ids` | `any[]` | Yes |  |
-| `personas` | `any[]` | Yes |  |
-| `project` | `Record<string, any>` | Yes |  |
 | `sha256` | `string` | Yes |  |
 | `url` | `string` | Yes |  |
 | `version` | `number` | Yes |  |
@@ -39341,18 +38995,11 @@ const project_fixture = client.ProjectFixture()
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -40256,12 +39903,12 @@ const project_scenario_option = client.ProjectScenarioOption()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.ProjectScenarioOption().list({ organization_id: "example", project_id: "example" })
+const result = await client.ProjectScenarioOption().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 ### Common Methods
@@ -40369,12 +40016,12 @@ const project_setting = client.ProjectSetting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.ProjectSetting().list({ organization_id: "example", project_id: "example" })
+const result = await client.ProjectSetting().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 ### Common Methods
@@ -40775,12 +40422,12 @@ const result = await client.PullRequestSetting().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.PullRequestSetting().list({ organization_id: "example" })
+const result = await client.PullRequestSetting().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -41515,14 +41162,6 @@ const result = await client.ReleaseRollout().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ReleaseRollout().list({ release_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -41943,14 +41582,6 @@ const result = await client.RepoAgentSession().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.RepoAgentSession().list({ organization_id: "example", repo_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -42282,14 +41913,6 @@ const result = await client.RepoCloudWorkspaceBackup().create({
   organization_id: 'example_organization_id',
   repo_id: 'example_repo_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.RepoCloudWorkspaceBackup().list({ organization_id: "example", repo_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -43528,14 +43151,6 @@ const result = await client.RoderCodeRepair().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.RoderCodeRepair().list({ scenario_run_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -43592,7 +43207,7 @@ const roder_code_repair_setting = client.RoderCodeRepairSetting()
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -43615,12 +43230,12 @@ const result = await client.RoderCodeRepairSetting().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RoderCodeRepairSetting().list({ organization_id: "example" })
+const result = await client.RoderCodeRepairSetting().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -43850,12 +43465,12 @@ const result = await client.RunArtifact().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RunArtifact().list({ pipeline_id: "example", run_id: "example" })
+const result = await client.RunArtifact().load({ pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 ### Common Methods
@@ -43942,14 +43557,6 @@ const result = await client.RunJob().create({
   pipeline_id: 'example_pipeline_id',
   run_id: 'example_run_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.RunJob().list({ pipeline_id: "example", run_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -44329,12 +43936,12 @@ const result = await client.RunnerLease().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RunnerLease().list({ runner_id: "example", runner_pool_id: "example" })
+const result = await client.RunnerLease().load({ runner_id: 'runner_id', runner_pool_id: 'runner_pool_id' })
 ```
 
 ### Common Methods
@@ -44538,14 +44145,6 @@ const result = await client.RunnerPoolRunner().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.RunnerPoolRunner().list({ runner_pool_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -44624,12 +44223,12 @@ const result = await client.RuntimeInstanceHealthSnapshot().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RuntimeInstanceHealthSnapshot().list({ runtime_instance_id: "example" })
+const result = await client.RuntimeInstanceHealthSnapshot().load({ runtime_instance_id: 'runtime_instance_id' })
 ```
 
 ### Common Methods
@@ -44684,7 +44283,7 @@ const sandbox_integration = client.SandboxIntegration()
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -44714,12 +44313,12 @@ const result = await client.SandboxIntegration().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SandboxIntegration().list({ organization_id: "example" })
+const result = await client.SandboxIntegration().load({ organization_id: 'organization_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -44999,14 +44598,6 @@ const result = await client.SecretGrant().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SecretGrant().list({ organization_id: "example", secret_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -45123,14 +44714,6 @@ const result = await client.SecretVersion().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SecretVersion().list({ organization_id: "example", secret_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -45226,14 +44809,6 @@ const result = await client.ServiceEndpoint().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.ServiceEndpoint().list({ app_id: "example", service_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -45323,12 +44898,12 @@ const setting = client.Setting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.Setting().list({ organization_id: "example" })
+const result = await client.Setting().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -45911,14 +45486,6 @@ const result = await client.SignalSubscription().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SignalSubscription().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -46087,12 +45654,12 @@ const result = await client.SiteAccessKey().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SiteAccessKey().list({ organization_id: "example", site_id: "example" })
+const result = await client.SiteAccessKey().load({ organization_id: 'organization_id', site_id: 'site_id' })
 ```
 
 #### `remove(match: object, ctrl?: object)`
@@ -46100,7 +45667,7 @@ const results = await client.SiteAccessKey().list({ organization_id: "example", 
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.SiteAccessKey().remove({ id: 'site_access_key_id', organization_id: 'organization_id', site_id: 'site_id' })
+const result = await client.SiteAccessKey().remove({ id: 'id', organization_id: 'organization_id', site_id: 'site_id' })
 ```
 
 ### Common Methods
@@ -46415,14 +45982,6 @@ const result = await client.SpaceAlertRule().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceAlertRule().list({ space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -46509,12 +46068,12 @@ const result = await client.SpaceAuditEvent().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceAuditEvent().list({ space_id: "example" })
+const result = await client.SpaceAuditEvent().load({ space_id: 'space_id' })
 ```
 
 ### Common Methods
@@ -46588,14 +46147,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.SpaceDnsRecord().create({
   space_id: 'example_space_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceDnsRecord().list({ space_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -46708,14 +46259,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.SpaceEnrollmentToken().create({
   space_id: 'example_space_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceEnrollmentToken().list({ space_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -46832,14 +46375,6 @@ const result = await client.SpaceGateway().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceGateway().list({ space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -46932,12 +46467,12 @@ const result = await client.SpaceGroup().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceGroup().list({ space_id: "example" })
+const result = await client.SpaceGroup().load({ space_id: 'space_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -46946,7 +46481,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ts
 const result = await client.SpaceGroup().patch({
-  id: 'space_group_id',
+  id: 'id',
   space_id: 'space_id',
   // Only the fields to change
 })
@@ -46957,7 +46492,7 @@ const result = await client.SpaceGroup().patch({
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.SpaceGroup().remove({ id: 'space_group_id', space_id: 'space_id' })
+const result = await client.SpaceGroup().remove({ id: 'id', space_id: 'space_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -46966,7 +46501,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 
 ```ts
 const result = await client.SpaceGroup().update({
-  id: 'space_group_id',
+  id: 'id',
   space_id: 'space_id',
   // Fields to update
 })
@@ -47024,12 +46559,12 @@ const result = await client.SpaceGroupMembership().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceGroupMembership().list({ space_id: "example" })
+const result = await client.SpaceGroupMembership().load({ space_id: 'space_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -47038,7 +46573,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ts
 const result = await client.SpaceGroupMembership().patch({
-  id: 'space_group_membership_id',
+  id: 'id',
   space_id: 'space_id',
   // Only the fields to change
 })
@@ -47049,7 +46584,7 @@ const result = await client.SpaceGroupMembership().patch({
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.SpaceGroupMembership().remove({ id: 'space_group_membership_id', space_id: 'space_id' })
+const result = await client.SpaceGroupMembership().remove({ id: 'id', space_id: 'space_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -47058,7 +46593,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 
 ```ts
 const result = await client.SpaceGroupMembership().update({
-  id: 'space_group_membership_id',
+  id: 'id',
   space_id: 'space_id',
   // Fields to update
 })
@@ -47110,12 +46645,12 @@ const result = await client.SpaceLogStream().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceLogStream().list({ space_id: "example" })
+const result = await client.SpaceLogStream().load({ space_id: 'space_id' })
 ```
 
 ### Common Methods
@@ -47164,12 +46699,12 @@ const result = await client.SpaceMetricSery().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceMetricSery().list({ space_id: "example" })
+const result = await client.SpaceMetricSery().load({ space_id: 'space_id' })
 ```
 
 ### Common Methods
@@ -47249,14 +46784,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.SpaceOtelCollector().create({
   space_id: 'example_space_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceOtelCollector().list({ space_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -47375,14 +46902,6 @@ const result = await client.SpacePeer().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpacePeer().list({ space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -47475,12 +46994,12 @@ const result = await client.SpacePeerAttachment().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpacePeerAttachment().list({ space_id: "example" })
+const result = await client.SpacePeerAttachment().load({ space_id: 'space_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -47489,7 +47008,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ts
 const result = await client.SpacePeerAttachment().patch({
-  id: 'space_peer_attachment_id',
+  id: 'id',
   space_id: 'space_id',
   // Only the fields to change
 })
@@ -47500,7 +47019,7 @@ const result = await client.SpacePeerAttachment().patch({
 Remove the entity matching the given criteria. Resolves to the entity, marked as deleted.
 
 ```ts
-const result = await client.SpacePeerAttachment().remove({ id: 'space_peer_attachment_id', space_id: 'space_id' })
+const result = await client.SpacePeerAttachment().remove({ id: 'id', space_id: 'space_id' })
 ```
 
 #### `update(data: object, ctrl?: object)`
@@ -47509,7 +47028,7 @@ Update an existing entity. The data must include the entity `id`. Resolves to th
 
 ```ts
 const result = await client.SpacePeerAttachment().update({
-  id: 'space_peer_attachment_id',
+  id: 'id',
   space_id: 'space_id',
   // Fields to update
 })
@@ -47587,14 +47106,6 @@ Create a new entity with the given data. Resolves to the created entity.
 const result = await client.SpacePolicy().create({
   space_id: 'example_space_id',
 })
-```
-
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpacePolicy().list({ space_id: "example" })
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -47689,14 +47200,6 @@ const result = await client.SpaceSegment().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SpaceSegment().list({ space_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
@@ -47783,12 +47286,12 @@ const result = await client.SpaceTraceSpan().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SpaceTraceSpan().list({ space_id: "example" })
+const result = await client.SpaceTraceSpan().load({ space_id: 'space_id' })
 ```
 
 ### Common Methods
@@ -47864,7 +47367,7 @@ const spark = client.Spark()
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -47912,12 +47415,12 @@ const result = await client.Spark().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.Spark().list({ organization_id: "example" })
+const result = await client.Spark().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -47998,12 +47501,12 @@ const result = await client.SparkAgentIntegration().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SparkAgentIntegration().list({ agent_id: "example", organization_id: "example" })
+const result = await client.SparkAgentIntegration().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -48296,30 +47799,63 @@ const spark_agent_thread = client.SparkAgentThread()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `number | null` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` | Yes |  |
-| `execution` | `any` | No |  |
+| `archive_deletes_sandbox` | `boolean` | No |  |
+| `archived` | `boolean` | Yes |  |
+| `attention` | `Record<string, any> | null` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `boolean` | Yes |  |
+| `can_compact` | `boolean` | Yes |  |
+| `can_snooze` | `boolean` | Yes |  |
+| `coordination_status` | `string | null` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `any` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `any` | No |  |
 | `first_input_key` | `string` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `string` | No |  |
+| `group` | `string` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `boolean` | Yes |  |
+| `id` | `string` | Yes |  |
 | `inherit_context` | `boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `Record<string, any>` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string | null` | Yes |  |
-| `local_scope_key` | `string | null` | Yes |  |
-| `local_status_pending` | `boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `any[]` | Yes |  |
-| `main_thread_id` | `string` | Yes |  |
+| `is_main` | `boolean` | Yes |  |
+| `kind` | `string` | Yes |  |
 | `message` | `string` | No | The thread's first message. |
-| `next_cursor` | `string | null` | Yes |  |
+| `older` | `boolean` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` | No |  |
-| `selected_thread` | `any` | Yes |  |
+| `snoozed_until` | `string | null` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `Record<string, any>` | Yes |  |
-| `threads` | `any[]` | Yes |  |
 | `title` | `string` | No |  |
-| `total_archived_count` | `number | null` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `string | null` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Actions
 
@@ -48415,7 +47951,7 @@ const spark_credit = client.SparkCredit()
 | `kind` | `string` | Yes |  |
 | `payment_method` | `Record<string, any> | null` | Yes |  |
 | `payments_enabled` | `boolean` | Yes |  |
-| `plan` | `string` | No |  |
+| `plan` | `string | null` | Yes |  |
 | `plans` | `any[]` | Yes |  |
 | `quoted_credits_cents` | `number` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `number` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -48430,33 +47966,33 @@ const spark_credit = client.SparkCredit()
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch |
-| --- | --- | --- | --- | --- | --- |
-| `amount_cents` | - | - | - | - | - |
-| `autofill` | - | - | - | - | - |
-| `autofill_payment_unconfirmed` | - | - | - | - | - |
-| `available_usd` | - | - | - | - | - |
-| `billing_unit` | - | - | - | - | - |
-| `can_manage` | - | - | - | - | - |
-| `compute_minutes` | - | - | - | - | - |
-| `compute_usd` | - | - | - | - | - |
-| `credits_per_usd` | - | - | - | - | - |
-| `inference_usd` | - | - | - | - | - |
-| `kind` | - | - | - | - | - |
-| `payment_method` | - | - | - | - | - |
-| `payments_enabled` | - | - | - | - | - |
-| `plan` | - | Yes | - | - | Yes |
-| `plans` | - | - | - | - | - |
-| `quoted_credits_cents` | - | - | - | - | - |
-| `quoted_price_cents` | - | - | - | - | - |
-| `refill_limits_cents` | - | - | - | - | - |
-| `refill_options` | - | - | - | - | - |
-| `refill_thresholds_cents` | - | - | - | - | - |
-| `request_key` | - | - | - | - | - |
-| `settings` | - | - | - | - | - |
-| `starter_cents` | - | - | - | - | - |
-| `top_up_max_cents` | - | - | - | - | - |
-| `top_up_step_cents` | - | - | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - |
+| `autofill` | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - |
+| `available_usd` | - | - | - | - |
+| `billing_unit` | - | - | - | - |
+| `can_manage` | - | - | - | - |
+| `compute_minutes` | - | - | - | - |
+| `compute_usd` | - | - | - | - |
+| `credits_per_usd` | - | - | - | - |
+| `inference_usd` | - | - | - | - |
+| `kind` | - | - | - | - |
+| `payment_method` | - | - | - | - |
+| `payments_enabled` | - | - | - | - |
+| `plan` | - | Yes | - | - |
+| `plans` | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - |
+| `refill_options` | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - |
+| `request_key` | - | - | - | - |
+| `settings` | - | - | - | - |
+| `starter_cents` | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - |
 
 ### Actions
 
@@ -48492,17 +48028,13 @@ const result = await client.SparkCredit().create({
 })
 ```
 
-#### `list(match: object, ctrl?: object)`
-
-List entities matching the given criteria. Resolves to an array of entities, one per record.
-
-```ts
-const results = await client.SparkCredit().list({ organization_id: "example" })
-```
-
 #### `load(match: object, ctrl?: object)`
 
 Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
+
+```ts
+const result = await client.SparkCredit().load({ organization_id: 'organization_id' })
+```
 
 #### `patch(data: object, ctrl?: object)`
 
@@ -48624,12 +48156,12 @@ const spark_credit_usage_total = client.SparkCreditUsageTotal()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.SparkCreditUsageTotal().list({ organization_id: "example" })
+const result = await client.SparkCreditUsageTotal().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -50804,12 +50336,12 @@ const vcs_setting = client.VcsSetting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.VcsSetting().list({ organization_id: "example" })
+const result = await client.VcsSetting().load({ organization_id: 'organization_id' })
 ```
 
 ### Common Methods
@@ -51664,12 +51196,12 @@ const verify_email_verification = client.VerifyEmailVerification()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.VerifyEmailVerification().list()
+const result = await client.VerifyEmailVerification().load()
 ```
 
 ### Common Methods

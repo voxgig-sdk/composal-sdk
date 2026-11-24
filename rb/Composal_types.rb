@@ -95,71 +95,6 @@ AdminOrgLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AdminOrg#list.
-#
-# @!attribute [rw] billing_email
-#   @return [Object, nil]
-#
-# @!attribute [rw] billing_reason
-#   @return [String, nil]
-#
-# @!attribute [rw] customize_onboarding_packages
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] deployment_usage_visibility
-#   @return [String, nil]
-#
-# @!attribute [rw] deployment_usage_visible
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] monthly_price_dollars
-#   @return [Object, nil]
-#
-# @!attribute [rw] monthly_price_override_cents
-#   @return [Object, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] onboarding_custom_pricing
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] onboarding_package_keys
-#   @return [Object, nil]
-#
-# @!attribute [rw] owner_email
-#   @return [String, nil]
-#
-# @!attribute [rw] package_id
-#   @return [Object, nil]
-#
-# @!attribute [rw] skip_payment
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] slug
-#   @return [String, nil]
-AdminOrgListMatch = Struct.new(
-  :billing_email,
-  :billing_reason,
-  :customize_onboarding_packages,
-  :deployment_usage_visibility,
-  :deployment_usage_visible,
-  :id,
-  :monthly_price_dollars,
-  :monthly_price_override_cents,
-  :name,
-  :onboarding_custom_pricing,
-  :onboarding_package_keys,
-  :owner_email,
-  :package_id,
-  :skip_payment,
-  :slug,
-  keyword_init: true
-)
-
 # Request payload for AdminOrg#create.
 #
 # @!attribute [rw] billing_reason
@@ -607,22 +542,13 @@ AgentRemoveMatch = Struct.new(
 # @!attribute [rw] install_count
 #   @return [Integer]
 #
-# @!attribute [rw] install_targets
-#   @return [Array]
-#
 # @!attribute [rw] installed_by
 #   @return [Array]
 #
 # @!attribute [rw] installed_target_ids
 #   @return [Array]
 #
-# @!attribute [rw] items
-#   @return [Array]
-#
 # @!attribute [rw] mcp_url
-#   @return [Object]
-#
-# @!attribute [rw] next_cursor
 #   @return [Object]
 #
 # @!attribute [rw] owner
@@ -647,12 +573,9 @@ AgentApp = Struct.new(
   :hidden_install_count,
   :id,
   :install_count,
-  :install_targets,
   :installed_by,
   :installed_target_ids,
-  :items,
   :mcp_url,
-  :next_cursor,
   :owner,
   :thread,
   :title,
@@ -2050,7 +1973,7 @@ AgentEmailLoadMatch = Struct.new(
 class AgentEvent
 end
 
-# Request payload for AgentEvent#list.
+# Request payload for AgentEvent#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
@@ -2063,7 +1986,7 @@ end
 #
 # @!attribute [rw] device_activity_provider
 #   @return [String, nil]
-AgentEventListMatch = Struct.new(
+AgentEventLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   :conversation_id,
@@ -2331,17 +2254,7 @@ AgentIntegration = Struct.new(
 # Request payload for AgentIntegration#load.
 #
 # @!attribute [rw] id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-AgentIntegrationLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for AgentIntegration#list.
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -2360,7 +2273,8 @@ AgentIntegrationLoadMatch = Struct.new(
 #
 # @!attribute [rw] toolkit
 #   @return [String, nil]
-AgentIntegrationListMatch = Struct.new(
+AgentIntegrationLoadMatch = Struct.new(
+  :id,
   :organization_id,
   :cursor,
   :enableable,
@@ -3752,7 +3666,7 @@ AgentRepository = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AgentRepository#list.
+# Request payload for AgentRepository#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
@@ -3762,7 +3676,7 @@ AgentRepository = Struct.new(
 #
 # @!attribute [rw] q
 #   @return [String, nil]
-AgentRepositoryListMatch = Struct.new(
+AgentRepositoryLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   :q,
@@ -4146,7 +4060,7 @@ AgentSessionCheckpoint = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -4156,23 +4070,6 @@ AgentSessionCheckpoint = Struct.new(
 AgentSessionCheckpointLoadMatch = Struct.new(
   :agent_session_id,
   :id,
-  :organization_id,
-  :repo_id,
-  keyword_init: true
-)
-
-# Request payload for AgentSessionCheckpoint#list.
-#
-# @!attribute [rw] agent_session_id
-#   @return [String]
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] repo_id
-#   @return [String]
-AgentSessionCheckpointListMatch = Struct.new(
-  :agent_session_id,
   :organization_id,
   :repo_id,
   keyword_init: true
@@ -4254,14 +4151,14 @@ AgentSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AgentSetting#list.
+# Request payload for AgentSetting#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-AgentSettingListMatch = Struct.new(
+AgentSettingLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   keyword_init: true
@@ -4465,21 +4362,12 @@ AgentSkill = Struct.new(
 # Request payload for AgentSkill#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 AgentSkillLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for AgentSkill#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-AgentSkillListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -4682,7 +4570,7 @@ AgentSubagentListMatch = Struct.new(
 class AgentSubscription
 end
 
-# Request payload for AgentSubscription#list.
+# Request payload for AgentSubscription#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
@@ -4692,7 +4580,7 @@ end
 #
 # @!attribute [rw] refresh_provider
 #   @return [String, nil]
-AgentSubscriptionListMatch = Struct.new(
+AgentSubscriptionLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   :refresh_provider,
@@ -5146,15 +5034,6 @@ AgentThreadLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AgentThread#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-AgentThreadListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for AgentThread#create.
 class AgentThreadCreateData
 end
@@ -5250,11 +5129,20 @@ AgentUsageLoadMatch = Struct.new(
 # @!attribute [rw] expected_version
 #   @return [Integer]
 #
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] name
+#   @return [String]
+#
 # @!attribute [rw] project_choices
 #   @return [Array]
 #
 # @!attribute [rw] project_choices_truncated
 #   @return [Boolean]
+#
+# @!attribute [rw] slug
+#   @return [String]
 #
 # @!attribute [rw] verify_projects
 #   @return [Array]
@@ -5265,8 +5153,11 @@ AgentVerifyProject = Struct.new(
   :available,
   :can_manage,
   :expected_version,
+  :id,
+  :name,
   :project_choices,
   :project_choices_truncated,
+  :slug,
   :verify_projects,
   :version,
   keyword_init: true
@@ -5353,14 +5244,14 @@ AgentWebPreview = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AgentWebPreview#list.
+# Request payload for AgentWebPreview#load.
 #
 # @!attribute [rw] asset
 #   @return [String, nil]
 #
 # @!attribute [rw] token
 #   @return [String]
-AgentWebPreviewListMatch = Struct.new(
+AgentWebPreviewLoadMatch = Struct.new(
   :asset,
   :token,
   keyword_init: true
@@ -5549,7 +5440,7 @@ AgentWorkflow = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AgentWorkflow#list.
+# Request payload for AgentWorkflow#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
@@ -5562,7 +5453,7 @@ AgentWorkflow = Struct.new(
 #
 # @!attribute [rw] workflow_path
 #   @return [String, nil]
-AgentWorkflowListMatch = Struct.new(
+AgentWorkflowLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   :view,
@@ -6376,26 +6267,13 @@ AlertRuleEvent = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 AlertRuleEventLoadMatch = Struct.new(
   :alert_rule_id,
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for AlertRuleEvent#list.
-#
-# @!attribute [rw] alert_rule_id
-#   @return [String]
-#
-# @!attribute [rw] space_id
-#   @return [String]
-AlertRuleEventListMatch = Struct.new(
-  :alert_rule_id,
   :space_id,
   keyword_init: true
 )
@@ -6479,7 +6357,7 @@ AllocationLog = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AllocationLog#list.
+# Request payload for AllocationLog#load.
 #
 # @!attribute [rw] allocation_id
 #   @return [String]
@@ -6498,7 +6376,7 @@ AllocationLog = Struct.new(
 #
 # @!attribute [rw] type
 #   @return [String, nil]
-AllocationLogListMatch = Struct.new(
+AllocationLogLoadMatch = Struct.new(
   :allocation_id,
   :app_id,
   :offset,
@@ -6731,8 +6609,8 @@ end
 class AppAccessJwk
 end
 
-# Request payload for AppAccessJwk#list.
-class AppAccessJwkListMatch
+# Request payload for AppAccessJwk#load.
+class AppAccessJwkLoadMatch
 end
 
 # AppCdn entity data model.
@@ -6854,19 +6732,10 @@ AppCdn = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppCdnLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppCdn#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppCdnListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -7113,22 +6982,13 @@ AppConfigVariable = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
-AppConfigVariableLoadMatch = Struct.new(
-  :app_id,
-  :id,
-  keyword_init: true
-)
-
-# Request payload for AppConfigVariable#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] app_environment_id
 #   @return [String, nil]
-AppConfigVariableListMatch = Struct.new(
+AppConfigVariableLoadMatch = Struct.new(
   :app_id,
+  :id,
   :app_environment_id,
   keyword_init: true
 )
@@ -7296,19 +7156,10 @@ AppDataResource = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppDataResourceLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppDataResource#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppDataResourceListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -7657,19 +7508,10 @@ AppDeployment = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppDeploymentLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppDeployment#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppDeploymentListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -8262,19 +8104,10 @@ AppEnvironment = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppEnvironmentLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppEnvironment#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppEnvironmentListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -8574,19 +8407,10 @@ AppPreview = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppPreviewLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppPreview#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppPreviewListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -8745,19 +8569,10 @@ AppPreviewProfile = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppPreviewProfileLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppPreviewProfile#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppPreviewProfileListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -8876,19 +8691,6 @@ AppRun = Struct.new(
 #   @return [String]
 AppRunLoadMatch = Struct.new(
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppRun#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] image
-#   @return [String, nil]
-AppRunListMatch = Struct.new(
-  :id,
-  :image,
   keyword_init: true
 )
 
@@ -9299,19 +9101,10 @@ AppService = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppServiceLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppService#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppServiceListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -9726,19 +9519,10 @@ AppServiceBinding = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppServiceBindingLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppServiceBinding#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppServiceBindingListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -10017,19 +9801,10 @@ AppStorageResource = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 AppStorageResourceLoadMatch = Struct.new(
   :app_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for AppStorageResource#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-AppStorageResourceListMatch = Struct.new(
-  :app_id,
   keyword_init: true
 )
 
@@ -10566,15 +10341,6 @@ ArtifactLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Artifact#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ArtifactListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for Artifact#create.
 class ArtifactCreateData
 end
@@ -10620,15 +10386,6 @@ ArtifactCacheNamespace = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 ArtifactCacheNamespaceLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for ArtifactCacheNamespace#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ArtifactCacheNamespaceListMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -10682,15 +10439,6 @@ ArtifactImageRepositoryLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ArtifactImageRepository#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ArtifactImageRepositoryListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for ArtifactImageRepository#create.
 class ArtifactImageRepositoryCreateData
 end
@@ -10740,15 +10488,6 @@ ArtifactPackageMirrorLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ArtifactPackageMirror#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ArtifactPackageMirrorListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for ArtifactPackageMirror#create.
 class ArtifactPackageMirrorCreateData
 end
@@ -10794,15 +10533,6 @@ ArtifactRetentionPolicy = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 ArtifactRetentionPolicyLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for ArtifactRetentionPolicy#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ArtifactRetentionPolicyListMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -11155,7 +10885,7 @@ AuthRegistrationOption = Struct.new(
   keyword_init: true
 )
 
-# Request payload for AuthRegistrationOption#list.
+# Request payload for AuthRegistrationOption#load.
 #
 # @!attribute [rw] email_password_signup_enabled
 #   @return [Boolean, nil]
@@ -11168,7 +10898,7 @@ AuthRegistrationOption = Struct.new(
 #
 # @!attribute [rw] waitlist_enabled
 #   @return [Boolean, nil]
-AuthRegistrationOptionListMatch = Struct.new(
+AuthRegistrationOptionLoadMatch = Struct.new(
   :email_password_signup_enabled,
   :openai_sign_in_enabled,
   :turnstile_site_key,
@@ -11469,11 +11199,11 @@ BackendRunnerPool = Struct.new(
   keyword_init: true
 )
 
-# Request payload for BackendRunnerPool#list.
+# Request payload for BackendRunnerPool#load.
 #
 # @!attribute [rw] backend_id
 #   @return [String]
-BackendRunnerPoolListMatch = Struct.new(
+BackendRunnerPoolLoadMatch = Struct.new(
   :backend_id,
   keyword_init: true
 )
@@ -11557,15 +11287,6 @@ BazelBackend = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 BazelBackendLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for BazelBackend#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-BazelBackendListMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -14006,19 +13727,10 @@ CacheNamespaceEntry = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CacheNamespaceEntryLoadMatch = Struct.new(
   :cache_namespace_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for CacheNamespaceEntry#list.
-#
-# @!attribute [rw] cache_namespace_id
-#   @return [String]
-CacheNamespaceEntryListMatch = Struct.new(
-  :cache_namespace_id,
   keyword_init: true
 )
 
@@ -14106,24 +13818,11 @@ CdnDeployment = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CdnDeploymentLoadMatch = Struct.new(
   :app_id,
   :cdn_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for CdnDeployment#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-#
-# @!attribute [rw] cdn_id
-#   @return [String]
-CdnDeploymentListMatch = Struct.new(
-  :app_id,
-  :cdn_id,
   keyword_init: true
 )
 
@@ -14190,24 +13889,11 @@ CdnHostname = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CdnHostnameLoadMatch = Struct.new(
   :app_id,
   :cdn_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for CdnHostname#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-#
-# @!attribute [rw] cdn_id
-#   @return [String]
-CdnHostnameListMatch = Struct.new(
-  :app_id,
-  :cdn_id,
   keyword_init: true
 )
 
@@ -14309,15 +13995,6 @@ CdnSpaceLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for CdnSpace#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-CdnSpaceListMatch = Struct.new(
-  :organization_id,
-  keyword_init: true
-)
-
 # Request payload for CdnSpace#create.
 #
 # @!attribute [rw] organization_id
@@ -14369,19 +14046,10 @@ CdnSpaceObject = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 CdnSpaceObjectLoadMatch = Struct.new(
   :cdn_space_id,
   :id,
-  keyword_init: true
-)
-
-# Request payload for CdnSpaceObject#list.
-#
-# @!attribute [rw] cdn_space_id
-#   @return [String]
-CdnSpaceObjectListMatch = Struct.new(
-  :cdn_space_id,
   keyword_init: true
 )
 
@@ -14428,7 +14096,7 @@ Change = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Change#list.
+# Request payload for Change#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -14483,7 +14151,7 @@ Change = Struct.new(
 #
 # @!attribute [rw] view
 #   @return [String, nil]
-ChangeListMatch = Struct.new(
+ChangeLoadMatch = Struct.new(
   :organization_id,
   :author,
   :awaiting_review,
@@ -16163,21 +15831,12 @@ CiPipelineRun = Struct.new(
 # Request payload for CiPipelineRun#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] pipeline_id
 #   @return [String]
 CiPipelineRunLoadMatch = Struct.new(
   :id,
-  :pipeline_id,
-  keyword_init: true
-)
-
-# Request payload for CiPipelineRun#list.
-#
-# @!attribute [rw] pipeline_id
-#   @return [String]
-CiPipelineRunListMatch = Struct.new(
   :pipeline_id,
   keyword_init: true
 )
@@ -16413,10 +16072,6 @@ end
 
 # Request payload for CliRelease#load.
 class CliReleaseLoadMatch
-end
-
-# Request payload for CliRelease#list.
-class CliReleaseListMatch
 end
 
 # Request payload for CliRelease#create.
@@ -17581,7 +17236,7 @@ DeepScan = Struct.new(
 # Request payload for DeepScan#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -17597,20 +17252,6 @@ DeepScan = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
-DeepScanLoadMatch = Struct.new(
-  :id,
-  :organization_id,
-  :agent_id,
-  :evidence,
-  :finding_id,
-  :project_id,
-  keyword_init: true
-)
-
-# Request payload for DeepScan#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
 #
 # @!attribute [rw] finding
 #   @return [String, nil]
@@ -17618,19 +17259,20 @@ DeepScanLoadMatch = Struct.new(
 # @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] project_id
-#   @return [String, nil]
-#
 # @!attribute [rw] query
 #   @return [String, nil]
 #
 # @!attribute [rw] status
 #   @return [String, nil]
-DeepScanListMatch = Struct.new(
+DeepScanLoadMatch = Struct.new(
+  :id,
   :organization_id,
+  :agent_id,
+  :evidence,
+  :finding_id,
+  :project_id,
   :finding,
   :page,
-  :project_id,
   :query,
   :status,
   keyword_init: true
@@ -17679,78 +17321,82 @@ DeepScanCreateData = Struct.new(
 
 # DeepScanFinding entity data model.
 #
-# @!attribute [rw] finding_count
-#   @return [Integer]
+# @!attribute [rw] actual
+#   @return [String]
 #
-# @!attribute [rw] finding_ids
+# @!attribute [rw] agent_id
+#   @return [String]
+#
+# @!attribute [rw] agent_title
+#   @return [String]
+#
+# @!attribute [rw] area
+#   @return [Object, nil]
+#
+# @!attribute [rw] checks
 #   @return [Array]
 #
-# @!attribute [rw] findings
-#   @return [Array]
+# @!attribute [rw] confidence
+#   @return [String]
 #
-# @!attribute [rw] findings_fix_prompt
+# @!attribute [rw] confirmed
+#   @return [Boolean, nil]
+#
+# @!attribute [rw] evidence_step_ids
+#   @return [Array, nil]
+#
+# @!attribute [rw] evidence_timestamp_ms
 #   @return [Object]
 #
-# @!attribute [rw] free_findings_pending
-#   @return [Boolean]
+# @!attribute [rw] expected
+#   @return [String]
+#
+# @!attribute [rw] fix_prompt
+#   @return [String]
+#
+# @!attribute [rw] has_recording
+#   @return [Boolean, nil]
 #
 # @!attribute [rw] id
 #   @return [String]
 #
-# @!attribute [rw] mode
-#   @return [String]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
-# @!attribute [rw] priority
-#   @return [Object]
-#
-# @!attribute [rw] priority_counts
-#   @return [Hash]
-#
-# @!attribute [rw] project_id
-#   @return [Object]
-#
-# @!attribute [rw] reproduction_of
-#   @return [Object]
-#
-# @!attribute [rw] reproductions
-#   @return [Array]
-#
-# @!attribute [rw] reruns_available
+# @!attribute [rw] locked
 #   @return [Boolean]
 #
-# @!attribute [rw] status
+# @!attribute [rw] reproduction_steps
+#   @return [Array]
+#
+# @!attribute [rw] severity
 #   @return [String]
 #
 # @!attribute [rw] title
 #   @return [String]
 #
-# @!attribute [rw] unlock
-#   @return [Hash]
+# @!attribute [rw] tracked
+#   @return [Object]
 #
-# @!attribute [rw] web_url
+# @!attribute [rw] url
 #   @return [String]
 DeepScanFinding = Struct.new(
-  :finding_count,
-  :finding_ids,
-  :findings,
-  :findings_fix_prompt,
-  :free_findings_pending,
+  :actual,
+  :agent_id,
+  :agent_title,
+  :area,
+  :checks,
+  :confidence,
+  :confirmed,
+  :evidence_step_ids,
+  :evidence_timestamp_ms,
+  :expected,
+  :fix_prompt,
+  :has_recording,
   :id,
-  :mode,
-  :permissions,
-  :priority,
-  :priority_counts,
-  :project_id,
-  :reproduction_of,
-  :reproductions,
-  :reruns_available,
-  :status,
+  :locked,
+  :reproduction_steps,
+  :severity,
   :title,
-  :unlock,
-  :web_url,
+  :tracked,
+  :url,
   keyword_init: true
 )
 
@@ -17886,7 +17532,7 @@ DeepScanMappedFlow = Struct.new(
   keyword_init: true
 )
 
-# Request payload for DeepScanMappedFlow#list.
+# Request payload for DeepScanMappedFlow#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -17899,7 +17545,7 @@ DeepScanMappedFlow = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
-DeepScanMappedFlowListMatch = Struct.new(
+DeepScanMappedFlowLoadMatch = Struct.new(
   :organization_id,
   :account_id,
   :environment_id,
@@ -18289,7 +17935,7 @@ DeploymentDetail = Struct.new(
   keyword_init: true
 )
 
-# Request payload for DeploymentDetail#list.
+# Request payload for DeploymentDetail#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -18302,7 +17948,7 @@ DeploymentDetail = Struct.new(
 #
 # @!attribute [rw] service
 #   @return [String, nil]
-DeploymentDetailListMatch = Struct.new(
+DeploymentDetailLoadMatch = Struct.new(
   :organization_id,
   :app,
   :environment,
@@ -19163,8 +18809,8 @@ DeviceControlOperationCreateData = Struct.new(
 class DeviceEnterpriseRelay
 end
 
-# Request payload for DeviceEnterpriseRelay#list.
-class DeviceEnterpriseRelayListMatch
+# Request payload for DeviceEnterpriseRelay#load.
+class DeviceEnterpriseRelayLoadMatch
 end
 
 # DeviceFolderListing entity data model.
@@ -19248,46 +18894,54 @@ DeviceFolderListingCreateData = Struct.new(
 
 # DeviceGrant entity data model.
 #
-# @!attribute [rw] active_grants
-#   @return [Array]
-#
-# @!attribute [rw] agent_choices
-#   @return [Array]
-#
 # @!attribute [rw] agent_id
 #   @return [String]
 #
-# @!attribute [rw] all_agents_access
+# @!attribute [rw] agent_name
+#   @return [Object]
+#
+# @!attribute [rw] can_edit
+#   @return [Boolean]
+#
+# @!attribute [rw] can_revoke
 #   @return [Boolean]
 #
 # @!attribute [rw] capabilities
 #   @return [Array]
 #
-# @!attribute [rw] execution_available
-#   @return [Boolean]
-#
-# @!attribute [rw] grants
-#   @return [Array]
+# @!attribute [rw] created_at
+#   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] next_cursor
-#   @return [Object]
+#   @return [String]
 #
 # @!attribute [rw] principal_id
 #   @return [String]
+#
+# @!attribute [rw] principal_name
+#   @return [Object]
+#
+# @!attribute [rw] revision
+#   @return [Integer]
+#
+# @!attribute [rw] revoked_at
+#   @return [Object]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
 DeviceGrant = Struct.new(
-  :active_grants,
-  :agent_choices,
   :agent_id,
-  :all_agents_access,
+  :agent_name,
+  :can_edit,
+  :can_revoke,
   :capabilities,
-  :execution_available,
-  :grants,
+  :created_at,
   :id,
-  :next_cursor,
   :principal_id,
+  :principal_name,
+  :revision,
+  :revoked_at,
+  :updated_at,
   keyword_init: true
 )
 
@@ -20443,7 +20097,7 @@ Environment = Struct.new(
 # Request payload for Environment#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -20452,19 +20106,6 @@ Environment = Struct.new(
 #   @return [String, nil]
 EnvironmentLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  :project_id,
-  keyword_init: true
-)
-
-# Request payload for Environment#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] project_id
-#   @return [String, nil]
-EnvironmentListMatch = Struct.new(
   :organization_id,
   :project_id,
   keyword_init: true
@@ -21121,14 +20762,14 @@ EnvironmentSecretBinding = Struct.new(
   keyword_init: true
 )
 
-# Request payload for EnvironmentSecretBinding#list.
+# Request payload for EnvironmentSecretBinding#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
 #
 # @!attribute [rw] environment_id
 #   @return [String]
-EnvironmentSecretBindingListMatch = Struct.new(
+EnvironmentSecretBindingLoadMatch = Struct.new(
   :app_id,
   :environment_id,
   keyword_init: true
@@ -21344,23 +20985,6 @@ ExecutionDesiredStateLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ExecutionDesiredState#list.
-#
-# @!attribute [rw] desired_state
-#   @return [Hash, nil]
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-#
-# @!attribute [rw] stop_observed
-#   @return [Boolean, nil]
-ExecutionDesiredStateListMatch = Struct.new(
-  :desired_state,
-  :id,
-  :stop_observed,
-  keyword_init: true
-)
-
 # Request payload for ExecutionDesiredState#create.
 class ExecutionDesiredStateCreateData
 end
@@ -21410,15 +21034,6 @@ ExecutionReconcilerTickLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ExecutionReconcilerTick#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ExecutionReconcilerTickListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for ExecutionReconcilerTick#create.
 class ExecutionReconcilerTickCreateData
 end
@@ -21437,15 +21052,6 @@ ExecutionRelease = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 ExecutionReleaseLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for ExecutionRelease#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ExecutionReleaseListMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -21657,9 +21263,6 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 # @!attribute [rw] account_id
 #   @return [Object, nil]
 #
-# @!attribute [rw] active
-#   @return [Array]
-#
 # @!attribute [rw] agent_filters
 #   @return [Hash]
 #
@@ -21672,6 +21275,9 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 # @!attribute [rw] chat_messages
 #   @return [Array, nil]
 #
+# @!attribute [rw] check_count
+#   @return [Integer]
+#
 # @!attribute [rw] concurrency
 #   @return [Integer]
 #
@@ -21681,10 +21287,16 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 # @!attribute [rw] created_at
 #   @return [String]
 #
+# @!attribute [rw] credential_name
+#   @return [Object, nil]
+#
 # @!attribute [rw] deadline_at
 #   @return [String]
 #
 # @!attribute [rw] demo_project
+#   @return [Object]
+#
+# @!attribute [rw] duration_ms
 #   @return [Object]
 #
 # @!attribute [rw] ended_early
@@ -21695,9 +21307,6 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 #
 # @!attribute [rw] environment_name
 #   @return [String]
-#
-# @!attribute [rw] explorations
-#   @return [Array]
 #
 # @!attribute [rw] explorer_activity
 #   @return [Hash]
@@ -21726,9 +21335,6 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 # @!attribute [rw] idempotency_key
 #   @return [String, nil]
 #
-# @!attribute [rw] launch_options
-#   @return [Hash]
-#
 # @!attribute [rw] max_seconds
 #   @return [Integer]
 #
@@ -21746,9 +21352,6 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 #
 # @!attribute [rw] onboarding
 #   @return [Boolean]
-#
-# @!attribute [rw] pagination
-#   @return [Hash]
 #
 # @!attribute [rw] paywalled
 #   @return [Boolean]
@@ -21783,8 +21386,14 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 # @!attribute [rw] scannable_flows
 #   @return [Array]
 #
+# @!attribute [rw] scenario_count
+#   @return [Integer, nil]
+#
 # @!attribute [rw] scenario_generation
 #   @return [Hash]
+#
+# @!attribute [rw] scenarios_pending
+#   @return [Boolean, nil]
 #
 # @!attribute [rw] sign_in_needs_answer
 #   @return [Boolean]
@@ -21794,6 +21403,9 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 #
 # @!attribute [rw] sign_in_question
 #   @return [Object, nil]
+#
+# @!attribute [rw] started_at
+#   @return [String]
 #
 # @!attribute [rw] startup_retryable
 #   @return [Boolean, nil]
@@ -21814,20 +21426,21 @@ ExecutionRuntimeInstanceRemoveMatch = Struct.new(
 #   @return [String]
 Exploration = Struct.new(
   :account_id,
-  :active,
   :agent_filters,
   :agents,
   :can_continue,
   :chat_messages,
+  :check_count,
   :concurrency,
   :covered_areas,
   :created_at,
+  :credential_name,
   :deadline_at,
   :demo_project,
+  :duration_ms,
   :ended_early,
   :environment_id,
   :environment_name,
-  :explorations,
   :explorer_activity,
   :finding_count,
   :findings,
@@ -21837,14 +21450,12 @@ Exploration = Struct.new(
   :huntable_flows,
   :id,
   :idempotency_key,
-  :launch_options,
   :max_seconds,
   :max_testers,
   :mode,
   :next_scan_improvements,
   :observed_at,
   :onboarding,
-  :pagination,
   :paywalled,
   :permissions,
   :persona_id,
@@ -21856,10 +21467,13 @@ Exploration = Struct.new(
   :reproductions,
   :saves_scenarios,
   :scannable_flows,
+  :scenario_count,
   :scenario_generation,
+  :scenarios_pending,
   :sign_in_needs_answer,
   :sign_in_outcome,
   :sign_in_question,
+  :started_at,
   :startup_retryable,
   :status,
   :time_limit_reached,
@@ -23543,7 +23157,7 @@ GithubConnection = Struct.new(
   keyword_init: true
 )
 
-# Request payload for GithubConnection#list.
+# Request payload for GithubConnection#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -23553,7 +23167,7 @@ GithubConnection = Struct.new(
 #
 # @!attribute [rw] project_id
 #   @return [String, nil]
-GithubConnectionListMatch = Struct.new(
+GithubConnectionLoadMatch = Struct.new(
   :organization_id,
   :github_app_installation_id,
   :project_id,
@@ -24819,22 +24433,13 @@ HostingAppDomain = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
-HostingAppDomainLoadMatch = Struct.new(
-  :app_id,
-  :id,
-  keyword_init: true
-)
-
-# Request payload for HostingAppDomain#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] app_environment_id
 #   @return [String, nil]
-HostingAppDomainListMatch = Struct.new(
+HostingAppDomainLoadMatch = Struct.new(
   :app_id,
+  :id,
   :app_environment_id,
   keyword_init: true
 )
@@ -25159,11 +24764,11 @@ Integration = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Integration#list.
+# Request payload for Integration#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-IntegrationListMatch = Struct.new(
+IntegrationLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -25459,7 +25064,7 @@ JobStep = Struct.new(
   keyword_init: true
 )
 
-# Request payload for JobStep#list.
+# Request payload for JobStep#load.
 #
 # @!attribute [rw] job_id
 #   @return [String]
@@ -25469,7 +25074,7 @@ JobStep = Struct.new(
 #
 # @!attribute [rw] run_id
 #   @return [String]
-JobStepListMatch = Struct.new(
+JobStepLoadMatch = Struct.new(
   :job_id,
   :pipeline_id,
   :run_id,
@@ -25544,7 +25149,7 @@ JobWorkspace = Struct.new(
   keyword_init: true
 )
 
-# Request payload for JobWorkspace#list.
+# Request payload for JobWorkspace#load.
 #
 # @!attribute [rw] job_id
 #   @return [String]
@@ -25554,7 +25159,7 @@ JobWorkspace = Struct.new(
 #
 # @!attribute [rw] run_id
 #   @return [String]
-JobWorkspaceListMatch = Struct.new(
+JobWorkspaceLoadMatch = Struct.new(
   :job_id,
   :pipeline_id,
   :run_id,
@@ -26530,7 +26135,7 @@ LogStreamChunk = Struct.new(
 # Request payload for LogStreamChunk#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] log_stream_id
 #   @return [String]
@@ -26539,19 +26144,6 @@ LogStreamChunk = Struct.new(
 #   @return [String]
 LogStreamChunkLoadMatch = Struct.new(
   :id,
-  :log_stream_id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for LogStreamChunk#list.
-#
-# @!attribute [rw] log_stream_id
-#   @return [String]
-#
-# @!attribute [rw] space_id
-#   @return [String]
-LogStreamChunkListMatch = Struct.new(
   :log_stream_id,
   :space_id,
   keyword_init: true
@@ -26694,11 +26286,11 @@ MarketingSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for MarketingSetting#list.
+# Request payload for MarketingSetting#load.
 #
 # @!attribute [rw] call_first
 #   @return [Boolean, nil]
-MarketingSettingListMatch = Struct.new(
+MarketingSettingLoadMatch = Struct.new(
   :call_first,
   keyword_init: true
 )
@@ -28108,8 +27700,8 @@ MessagingConversationUploadCreateData = Struct.new(
 class MetricQuery
 end
 
-# Request payload for MetricQuery#list.
-class MetricQueryListMatch
+# Request payload for MetricQuery#load.
+class MetricQueryLoadMatch
 end
 
 # MetronomeWebhook entity data model.
@@ -28475,15 +28067,6 @@ NetworkingSpaceLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for NetworkingSpace#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-NetworkingSpaceListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for NetworkingSpace#create.
 class NetworkingSpaceCreateData
 end
@@ -28625,22 +28208,9 @@ NodeLease = Struct.new(
 
 # Request payload for NodeLease#load.
 #
-# @!attribute [rw] id
-#   @return [String]
-#
 # @!attribute [rw] node_id
 #   @return [String]
 NodeLeaseLoadMatch = Struct.new(
-  :id,
-  :node_id,
-  keyword_init: true
-)
-
-# Request payload for NodeLease#list.
-#
-# @!attribute [rw] node_id
-#   @return [String]
-NodeLeaseListMatch = Struct.new(
   :node_id,
   keyword_init: true
 )
@@ -28797,7 +28367,7 @@ NomadLog = Struct.new(
   keyword_init: true
 )
 
-# Request payload for NomadLog#list.
+# Request payload for NomadLog#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
@@ -28822,7 +28392,7 @@ NomadLog = Struct.new(
 #
 # @!attribute [rw] type
 #   @return [String, nil]
-NomadLogListMatch = Struct.new(
+NomadLogLoadMatch = Struct.new(
   :app_id,
   :environment,
   :location,
@@ -28890,15 +28460,6 @@ ObservabilityClickhouseClusterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ObservabilityClickhouseCluster#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ObservabilityClickhouseClusterListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for ObservabilityClickhouseCluster#create.
 class ObservabilityClickhouseClusterCreateData
 end
@@ -28948,15 +28509,6 @@ ObservabilityQuickwitClusterLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ObservabilityQuickwitCluster#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ObservabilityQuickwitClusterListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for ObservabilityQuickwitCluster#create.
 class ObservabilityQuickwitClusterCreateData
 end
@@ -29002,15 +28554,6 @@ ObservabilitySpace = Struct.new(
 # @!attribute [rw] id
 #   @return [String]
 ObservabilitySpaceLoadMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
-# Request payload for ObservabilitySpace#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-ObservabilitySpaceListMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -29416,7 +28959,7 @@ OrganizationApp = Struct.new(
   keyword_init: true
 )
 
-# Request payload for OrganizationApp#list.
+# Request payload for OrganizationApp#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -29429,7 +28972,7 @@ OrganizationApp = Struct.new(
 #
 # @!attribute [rw] native_agent_id
 #   @return [String]
-OrganizationAppListMatch = Struct.new(
+OrganizationAppLoadMatch = Struct.new(
   :organization_id,
   :context,
   :installed,
@@ -29530,21 +29073,12 @@ OrganizationIdentityCertificate = Struct.new(
 # Request payload for OrganizationIdentityCertificate#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 OrganizationIdentityCertificateLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for OrganizationIdentityCertificate#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-OrganizationIdentityCertificateListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -29682,21 +29216,12 @@ OrganizationOidcTrust = Struct.new(
 # Request payload for OrganizationOidcTrust#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 OrganizationOidcTrustLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for OrganizationOidcTrust#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-OrganizationOidcTrustListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -29988,21 +29513,12 @@ OrganizationServiceAccount = Struct.new(
 # Request payload for OrganizationServiceAccount#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 OrganizationServiceAccountLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for OrganizationServiceAccount#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-OrganizationServiceAccountListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -30150,14 +29666,14 @@ OrganizationSite = Struct.new(
   keyword_init: true
 )
 
-# Request payload for OrganizationSite#list.
+# Request payload for OrganizationSite#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] native_agent_id
 #   @return [String]
-OrganizationSiteListMatch = Struct.new(
+OrganizationSiteLoadMatch = Struct.new(
   :organization_id,
   :native_agent_id,
   keyword_init: true
@@ -30261,21 +29777,12 @@ OrganizationWorkloadIdentity = Struct.new(
 # Request payload for OrganizationWorkloadIdentity#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 OrganizationWorkloadIdentityLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for OrganizationWorkloadIdentity#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-OrganizationWorkloadIdentityListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -30544,41 +30051,12 @@ PageAgent = Struct.new(
 # @!attribute [rw] cursor
 #   @return [String, nil]
 #
-# @!attribute [rw] limit
-#   @return [Integer, nil]
-PageAgentLoadMatch = Struct.new(
-  :organization_id,
-  :agent,
-  :agent_search,
-  :agent_visibility,
-  :cursor,
-  :limit,
-  keyword_init: true
-)
-
-# Request payload for PageAgent#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] agent
-#   @return [String, nil]
-#
-# @!attribute [rw] agent_search
-#   @return [String, nil]
-#
-# @!attribute [rw] agent_visibility
-#   @return [String, nil]
-#
-# @!attribute [rw] cursor
-#   @return [String, nil]
-#
 # @!attribute [rw] integration_search
 #   @return [String, nil]
 #
 # @!attribute [rw] limit
 #   @return [Integer, nil]
-PageAgentListMatch = Struct.new(
+PageAgentLoadMatch = Struct.new(
   :organization_id,
   :agent,
   :agent_search,
@@ -31321,34 +30799,74 @@ PagesProjectCredentialListMatch = Struct.new(
 
 # PagesProjectPersona entity data model.
 #
-# @!attribute [rw] active_count
+# @!attribute [rw] access_mode
+#   @return [String]
+#
+# @!attribute [rw] active_run_count
 #   @return [Integer]
 #
-# @!attribute [rw] credentials
+# @!attribute [rw] archived_at
+#   @return [Object]
+#
+# @!attribute [rw] attention
 #   @return [Array]
 #
-# @!attribute [rw] needs_attention_count
+# @!attribute [rw] capabilities
+#   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] credential
+#   @return [Object]
+#
+# @!attribute [rw] credential_id
+#   @return [Object]
+#
+# @!attribute [rw] goals
+#   @return [Object]
+#
+# @!attribute [rw] health
+#   @return [Hash]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] lock_version
 #   @return [Integer]
 #
-# @!attribute [rw] permissions
-#   @return [Hash]
+# @!attribute [rw] name
+#   @return [String]
 #
-# @!attribute [rw] persona_states
-#   @return [Hash]
+# @!attribute [rw] project_id
+#   @return [String]
 #
-# @!attribute [rw] personas
-#   @return [Array]
+# @!attribute [rw] role
+#   @return [String]
 #
-# @!attribute [rw] project
-#   @return [Hash]
+# @!attribute [rw] scenario_count
+#   @return [Integer]
+#
+# @!attribute [rw] updated_at
+#   @return [String]
 PagesProjectPersona = Struct.new(
-  :active_count,
-  :credentials,
-  :needs_attention_count,
-  :permissions,
-  :persona_states,
-  :personas,
-  :project,
+  :access_mode,
+  :active_run_count,
+  :archived_at,
+  :attention,
+  :capabilities,
+  :created_at,
+  :credential,
+  :credential_id,
+  :goals,
+  :health,
+  :id,
+  :lock_version,
+  :name,
+  :project_id,
+  :role,
+  :scenario_count,
+  :updated_at,
   keyword_init: true
 )
 
@@ -31367,30 +30885,94 @@ PagesProjectPersonaListMatch = Struct.new(
 
 # PagesProjectRun entity data model.
 #
-# @!attribute [rw] environment_query
-#   @return [String]
+# @!attribute [rw] archived_at
+#   @return [Object]
 #
-# @!attribute [rw] environments
-#   @return [Array]
+# @!attribute [rw] browser_seconds
+#   @return [Object]
 #
-# @!attribute [rw] environments_has_more
+# @!attribute [rw] can_archive
 #   @return [Boolean]
 #
-# @!attribute [rw] pagination
-#   @return [Hash]
+# @!attribute [rw] can_restore
+#   @return [Boolean]
 #
-# @!attribute [rw] runs
-#   @return [Array]
+# @!attribute [rw] cleanup_state
+#   @return [String]
 #
-# @!attribute [rw] selected_environment
+# @!attribute [rw] commit_sha
 #   @return [Object]
+#
+# @!attribute [rw] created_at
+#   @return [String]
+#
+# @!attribute [rw] duration_seconds
+#   @return [Object]
+#
+# @!attribute [rw] environment_name
+#   @return [Object]
+#
+# @!attribute [rw] finished_at
+#   @return [Object]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] outcome
+#   @return [Object]
+#
+# @!attribute [rw] pull_request
+#   @return [Object]
+#
+# @!attribute [rw] pull_request_label
+#   @return [Object]
+#
+# @!attribute [rw] scenario_count
+#   @return [Integer]
+#
+# @!attribute [rw] source_run
+#   @return [Object]
+#
+# @!attribute [rw] started_at
+#   @return [Object]
+#
+# @!attribute [rw] state
+#   @return [String]
+#
+# @!attribute [rw] title
+#   @return [String]
+#
+# @!attribute [rw] trigger_kind
+#   @return [String]
+#
+# @!attribute [rw] triggered_by
+#   @return [Object]
+#
+# @!attribute [rw] web_path
+#   @return [String]
 PagesProjectRun = Struct.new(
-  :environment_query,
-  :environments,
-  :environments_has_more,
-  :pagination,
-  :runs,
-  :selected_environment,
+  :archived_at,
+  :browser_seconds,
+  :can_archive,
+  :can_restore,
+  :cleanup_state,
+  :commit_sha,
+  :created_at,
+  :duration_seconds,
+  :environment_name,
+  :finished_at,
+  :id,
+  :outcome,
+  :pull_request,
+  :pull_request_label,
+  :scenario_count,
+  :source_run,
+  :started_at,
+  :state,
+  :title,
+  :trigger_kind,
+  :triggered_by,
+  :web_path,
   keyword_init: true
 )
 
@@ -31805,15 +31387,6 @@ PairingLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Pairing#list.
-#
-# @!attribute [rw] id
-#   @return [String, nil]
-PairingListMatch = Struct.new(
-  :id,
-  keyword_init: true
-)
-
 # Request payload for Pairing#create.
 class PairingCreateData
 end
@@ -31822,11 +31395,11 @@ end
 class PairingEvent
 end
 
-# Request payload for PairingEvent#list.
+# Request payload for PairingEvent#load.
 #
 # @!attribute [rw] pairing_id
 #   @return [String]
-PairingEventListMatch = Struct.new(
+PairingEventLoadMatch = Struct.new(
   :pairing_id,
   keyword_init: true
 )
@@ -31895,11 +31468,11 @@ PersonalAccessToken = Struct.new(
   keyword_init: true
 )
 
-# Request payload for PersonalAccessToken#list.
+# Request payload for PersonalAccessToken#load.
 #
 # @!attribute [rw] id
-#   @return [String, nil]
-PersonalAccessTokenListMatch = Struct.new(
+#   @return [String]
+PersonalAccessTokenLoadMatch = Struct.new(
   :id,
   keyword_init: true
 )
@@ -31921,14 +31494,14 @@ PersonalAccessTokenRemoveMatch = Struct.new(
 class PreviewOperation
 end
 
-# Request payload for PreviewOperation#list.
+# Request payload for PreviewOperation#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
 #
 # @!attribute [rw] preview_id
 #   @return [String]
-PreviewOperationListMatch = Struct.new(
+PreviewOperationLoadMatch = Struct.new(
   :app_id,
   :preview_id,
   keyword_init: true
@@ -31959,14 +31532,14 @@ PreviewProfileSecretBinding = Struct.new(
   keyword_init: true
 )
 
-# Request payload for PreviewProfileSecretBinding#list.
+# Request payload for PreviewProfileSecretBinding#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
 #
 # @!attribute [rw] preview_profile_id
 #   @return [String]
-PreviewProfileSecretBindingListMatch = Struct.new(
+PreviewProfileSecretBindingLoadMatch = Struct.new(
   :app_id,
   :preview_profile_id,
   keyword_init: true
@@ -32110,13 +31683,13 @@ PreviewSecretRemoveMatch = Struct.new(
 #   @return [Array, nil]
 #
 # @!attribute [rw] build_secrets
-#   @return [Array, nil]
+#   @return [Array]
 #
 # @!attribute [rw] default_configuration
-#   @return [Array, nil]
+#   @return [Array]
 #
 # @!attribute [rw] default_secrets
-#   @return [Array, nil]
+#   @return [Array]
 #
 # @!attribute [rw] services
 #   @return [Array]
@@ -32125,7 +31698,7 @@ PreviewSecretRemoveMatch = Struct.new(
 #   @return [Integer]
 #
 # @!attribute [rw] source_keys
-#   @return [Array, nil]
+#   @return [Array]
 PreviewSharingApproval = Struct.new(
   :approved_build_keys,
   :approved_build_secrets,
@@ -32142,14 +31715,14 @@ PreviewSharingApproval = Struct.new(
   keyword_init: true
 )
 
-# Request payload for PreviewSharingApproval#list.
+# Request payload for PreviewSharingApproval#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
 #
 # @!attribute [rw] preview_id
 #   @return [String]
-PreviewSharingApprovalListMatch = Struct.new(
+PreviewSharingApprovalLoadMatch = Struct.new(
   :app_id,
   :preview_id,
   keyword_init: true
@@ -33941,16 +33514,7 @@ ProjectFindingListMatch = Struct.new(
 # @!attribute [rw] credential_ids
 #   @return [Array]
 #
-# @!attribute [rw] credentials
-#   @return [Array]
-#
 # @!attribute [rw] environment_ids
-#   @return [Array]
-#
-# @!attribute [rw] environments
-#   @return [Array]
-#
-# @!attribute [rw] fixtures
 #   @return [Array]
 #
 # @!attribute [rw] id
@@ -33962,20 +33526,8 @@ ProjectFindingListMatch = Struct.new(
 # @!attribute [rw] name
 #   @return [String]
 #
-# @!attribute [rw] pagination
-#   @return [Hash]
-#
-# @!attribute [rw] permissions
-#   @return [Hash]
-#
 # @!attribute [rw] persona_ids
 #   @return [Array]
-#
-# @!attribute [rw] personas
-#   @return [Array]
-#
-# @!attribute [rw] project
-#   @return [Hash]
 #
 # @!attribute [rw] sha256
 #   @return [String]
@@ -33990,18 +33542,11 @@ ProjectFixture = Struct.new(
   :byte_size,
   :content_type,
   :credential_ids,
-  :credentials,
   :environment_ids,
-  :environments,
-  :fixtures,
   :id,
   :lock_version,
   :name,
-  :pagination,
-  :permissions,
   :persona_ids,
-  :personas,
-  :project,
   :sha256,
   :url,
   :version,
@@ -35248,14 +34793,14 @@ ProjectScenarioOption = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ProjectScenarioOption#list.
+# Request payload for ProjectScenarioOption#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] project_id
 #   @return [String]
-ProjectScenarioOptionListMatch = Struct.new(
+ProjectScenarioOptionLoadMatch = Struct.new(
   :organization_id,
   :project_id,
   keyword_init: true
@@ -35356,14 +34901,14 @@ ProjectSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for ProjectSetting#list.
+# Request payload for ProjectSetting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] project_id
 #   @return [String]
-ProjectSettingListMatch = Struct.new(
+ProjectSettingLoadMatch = Struct.new(
   :organization_id,
   :project_id,
   keyword_init: true
@@ -35957,7 +35502,7 @@ PullRequestSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for PullRequestSetting#list.
+# Request payload for PullRequestSetting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -35970,7 +35515,7 @@ PullRequestSetting = Struct.new(
 #
 # @!attribute [rw] repository_id
 #   @return [String, nil]
-PullRequestSettingListMatch = Struct.new(
+PullRequestSettingLoadMatch = Struct.new(
   :organization_id,
   :project_id,
   :provider,
@@ -36685,21 +36230,12 @@ ReleaseRollout = Struct.new(
 # Request payload for ReleaseRollout#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] release_id
 #   @return [String]
 ReleaseRolloutLoadMatch = Struct.new(
   :id,
-  :release_id,
-  keyword_init: true
-)
-
-# Request payload for ReleaseRollout#list.
-#
-# @!attribute [rw] release_id
-#   @return [String]
-ReleaseRolloutListMatch = Struct.new(
   :release_id,
   keyword_init: true
 )
@@ -37065,7 +36601,7 @@ RepoAgentSession = Struct.new(
 # Request payload for RepoAgentSession#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -37074,19 +36610,6 @@ RepoAgentSession = Struct.new(
 #   @return [String]
 RepoAgentSessionLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  :repo_id,
-  keyword_init: true
-)
-
-# Request payload for RepoAgentSession#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] repo_id
-#   @return [String]
-RepoAgentSessionListMatch = Struct.new(
   :organization_id,
   :repo_id,
   keyword_init: true
@@ -37516,7 +37039,7 @@ RepoCloudWorkspaceBackup = Struct.new(
 # Request payload for RepoCloudWorkspaceBackup#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -37525,19 +37048,6 @@ RepoCloudWorkspaceBackup = Struct.new(
 #   @return [String]
 RepoCloudWorkspaceBackupLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  :repo_id,
-  keyword_init: true
-)
-
-# Request payload for RepoCloudWorkspaceBackup#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] repo_id
-#   @return [String]
-RepoCloudWorkspaceBackupListMatch = Struct.new(
   :organization_id,
   :repo_id,
   keyword_init: true
@@ -38607,15 +38117,6 @@ RoderCodeRepairLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Request payload for RoderCodeRepair#list.
-#
-# @!attribute [rw] scenario_run_id
-#   @return [String]
-RoderCodeRepairListMatch = Struct.new(
-  :scenario_run_id,
-  keyword_init: true
-)
-
 # Request payload for RoderCodeRepair#create.
 #
 # @!attribute [rw] base_sha
@@ -38670,11 +38171,11 @@ RoderCodeRepairSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for RoderCodeRepairSetting#list.
+# Request payload for RoderCodeRepairSetting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-RoderCodeRepairSettingListMatch = Struct.new(
+RoderCodeRepairSettingLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -38797,14 +38298,14 @@ RoderWorkspaceCredentialCreateData = Struct.new(
 class RunArtifact
 end
 
-# Request payload for RunArtifact#list.
+# Request payload for RunArtifact#load.
 #
 # @!attribute [rw] pipeline_id
 #   @return [String]
 #
 # @!attribute [rw] run_id
 #   @return [String]
-RunArtifactListMatch = Struct.new(
+RunArtifactLoadMatch = Struct.new(
   :pipeline_id,
   :run_id,
   keyword_init: true
@@ -38967,7 +38468,7 @@ RunJob = Struct.new(
 # Request payload for RunJob#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] pipeline_id
 #   @return [String]
@@ -38976,19 +38477,6 @@ RunJob = Struct.new(
 #   @return [String]
 RunJobLoadMatch = Struct.new(
   :id,
-  :pipeline_id,
-  :run_id,
-  keyword_init: true
-)
-
-# Request payload for RunJob#list.
-#
-# @!attribute [rw] pipeline_id
-#   @return [String]
-#
-# @!attribute [rw] run_id
-#   @return [String]
-RunJobListMatch = Struct.new(
   :pipeline_id,
   :run_id,
   keyword_init: true
@@ -39273,14 +38761,14 @@ RunnerLease = Struct.new(
   keyword_init: true
 )
 
-# Request payload for RunnerLease#list.
+# Request payload for RunnerLease#load.
 #
 # @!attribute [rw] runner_id
 #   @return [String]
 #
 # @!attribute [rw] runner_pool_id
 #   @return [String]
-RunnerLeaseListMatch = Struct.new(
+RunnerLeaseLoadMatch = Struct.new(
   :runner_id,
   :runner_pool_id,
   keyword_init: true
@@ -39442,21 +38930,12 @@ RunnerPoolRunner = Struct.new(
 # Request payload for RunnerPoolRunner#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] runner_pool_id
 #   @return [String]
 RunnerPoolRunnerLoadMatch = Struct.new(
   :id,
-  :runner_pool_id,
-  keyword_init: true
-)
-
-# Request payload for RunnerPoolRunner#list.
-#
-# @!attribute [rw] runner_pool_id
-#   @return [String]
-RunnerPoolRunnerListMatch = Struct.new(
   :runner_pool_id,
   keyword_init: true
 )
@@ -39500,11 +38979,11 @@ RunnerPoolRunnerPatchData = Struct.new(
 class RuntimeInstanceHealthSnapshot
 end
 
-# Request payload for RuntimeInstanceHealthSnapshot#list.
+# Request payload for RuntimeInstanceHealthSnapshot#load.
 #
 # @!attribute [rw] runtime_instance_id
 #   @return [String]
-RuntimeInstanceHealthSnapshotListMatch = Struct.new(
+RuntimeInstanceHealthSnapshotLoadMatch = Struct.new(
   :runtime_instance_id,
   keyword_init: true
 )
@@ -39567,14 +39046,14 @@ SandboxIntegration = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SandboxIntegration#list.
+# Request payload for SandboxIntegration#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] provider
 #   @return [String, nil]
-SandboxIntegrationListMatch = Struct.new(
+SandboxIntegrationLoadMatch = Struct.new(
   :organization_id,
   :provider,
   keyword_init: true
@@ -39832,7 +39311,7 @@ SecretGrant = Struct.new(
 # Request payload for SecretGrant#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -39841,19 +39320,6 @@ SecretGrant = Struct.new(
 #   @return [String]
 SecretGrantLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  :secret_id,
-  keyword_init: true
-)
-
-# Request payload for SecretGrant#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] secret_id
-#   @return [String]
-SecretGrantListMatch = Struct.new(
   :organization_id,
   :secret_id,
   keyword_init: true
@@ -39935,7 +39401,7 @@ SecretVersion = Struct.new(
 # Request payload for SecretVersion#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
@@ -39944,19 +39410,6 @@ SecretVersion = Struct.new(
 #   @return [String]
 SecretVersionLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  :secret_id,
-  keyword_init: true
-)
-
-# Request payload for SecretVersion#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-#
-# @!attribute [rw] secret_id
-#   @return [String]
-SecretVersionListMatch = Struct.new(
   :organization_id,
   :secret_id,
   keyword_init: true
@@ -40041,26 +39494,13 @@ ServiceEndpoint = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] service_id
 #   @return [String]
 ServiceEndpointLoadMatch = Struct.new(
   :app_id,
   :id,
-  :service_id,
-  keyword_init: true
-)
-
-# Request payload for ServiceEndpoint#list.
-#
-# @!attribute [rw] app_id
-#   @return [String]
-#
-# @!attribute [rw] service_id
-#   @return [String]
-ServiceEndpointListMatch = Struct.new(
-  :app_id,
   :service_id,
   keyword_init: true
 )
@@ -40158,11 +39598,11 @@ Setting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Setting#list.
+# Request payload for Setting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-SettingListMatch = Struct.new(
+SettingLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -40785,21 +40225,12 @@ SignalSubscription = Struct.new(
 # Request payload for SignalSubscription#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 SignalSubscriptionLoadMatch = Struct.new(
   :id,
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for SignalSubscription#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
-SignalSubscriptionListMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -40983,14 +40414,14 @@ SiteAccessKey = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SiteAccessKey#list.
+# Request payload for SiteAccessKey#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] site_id
 #   @return [String]
-SiteAccessKeyListMatch = Struct.new(
+SiteAccessKeyLoadMatch = Struct.new(
   :organization_id,
   :site_id,
   keyword_init: true
@@ -41203,21 +40634,12 @@ SpaceAlertRule = Struct.new(
 # Request payload for SpaceAlertRule#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceAlertRuleLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceAlertRule#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceAlertRuleListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41274,11 +40696,11 @@ SpaceAlertRuleRemoveMatch = Struct.new(
 class SpaceAuditEvent
 end
 
-# Request payload for SpaceAuditEvent#list.
+# Request payload for SpaceAuditEvent#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceAuditEventListMatch = Struct.new(
+SpaceAuditEventLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41304,21 +40726,12 @@ SpaceDnsRecord = Struct.new(
 # Request payload for SpaceDnsRecord#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceDnsRecordLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceDnsRecord#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceDnsRecordListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41383,21 +40796,12 @@ SpaceEnrollmentToken = Struct.new(
 # Request payload for SpaceEnrollmentToken#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceEnrollmentTokenLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceEnrollmentToken#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceEnrollmentTokenListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41462,21 +40866,12 @@ SpaceGateway = Struct.new(
 # Request payload for SpaceGateway#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceGatewayLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceGateway#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceGatewayListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41538,11 +40933,11 @@ SpaceGroup = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SpaceGroup#list.
+# Request payload for SpaceGroup#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceGroupListMatch = Struct.new(
+SpaceGroupLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41604,11 +40999,11 @@ SpaceGroupMembership = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SpaceGroupMembership#list.
+# Request payload for SpaceGroupMembership#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceGroupMembershipListMatch = Struct.new(
+SpaceGroupMembershipLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41665,11 +41060,11 @@ SpaceGroupMembershipRemoveMatch = Struct.new(
 class SpaceLogStream
 end
 
-# Request payload for SpaceLogStream#list.
+# Request payload for SpaceLogStream#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceLogStreamListMatch = Struct.new(
+SpaceLogStreamLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41687,11 +41082,11 @@ SpaceLogStreamCreateData = Struct.new(
 class SpaceMetricSery
 end
 
-# Request payload for SpaceMetricSery#list.
+# Request payload for SpaceMetricSery#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceMetricSeryListMatch = Struct.new(
+SpaceMetricSeryLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41717,21 +41112,12 @@ SpaceOtelCollector = Struct.new(
 # Request payload for SpaceOtelCollector#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceOtelCollectorLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceOtelCollector#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceOtelCollectorListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41796,21 +41182,12 @@ SpacePeer = Struct.new(
 # Request payload for SpacePeer#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpacePeerLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpacePeer#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpacePeerListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41872,11 +41249,11 @@ SpacePeerAttachment = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SpacePeerAttachment#list.
+# Request payload for SpacePeerAttachment#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpacePeerAttachmentListMatch = Struct.new(
+SpacePeerAttachmentLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -41941,21 +41318,12 @@ SpacePolicy = Struct.new(
 # Request payload for SpacePolicy#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpacePolicyLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpacePolicy#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpacePolicyListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -42020,21 +41388,12 @@ SpaceSegment = Struct.new(
 # Request payload for SpaceSegment#load.
 #
 # @!attribute [rw] id
-#   @return [String]
+#   @return [String, nil]
 #
 # @!attribute [rw] space_id
 #   @return [String]
 SpaceSegmentLoadMatch = Struct.new(
   :id,
-  :space_id,
-  keyword_init: true
-)
-
-# Request payload for SpaceSegment#list.
-#
-# @!attribute [rw] space_id
-#   @return [String]
-SpaceSegmentListMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -42091,11 +41450,11 @@ SpaceSegmentRemoveMatch = Struct.new(
 class SpaceTraceSpan
 end
 
-# Request payload for SpaceTraceSpan#list.
+# Request payload for SpaceTraceSpan#load.
 #
 # @!attribute [rw] space_id
 #   @return [String]
-SpaceTraceSpanListMatch = Struct.new(
+SpaceTraceSpanLoadMatch = Struct.new(
   :space_id,
   keyword_init: true
 )
@@ -42242,11 +41601,11 @@ Spark = Struct.new(
   keyword_init: true
 )
 
-# Request payload for Spark#list.
+# Request payload for Spark#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-SparkListMatch = Struct.new(
+SparkLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -42369,7 +41728,7 @@ SparkAgentIntegration = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SparkAgentIntegration#list.
+# Request payload for SparkAgentIntegration#load.
 #
 # @!attribute [rw] agent_id
 #   @return [String]
@@ -42391,7 +41750,7 @@ SparkAgentIntegration = Struct.new(
 #
 # @!attribute [rw] toolkit
 #   @return [String, nil]
-SparkAgentIntegrationListMatch = Struct.new(
+SparkAgentIntegrationLoadMatch = Struct.new(
   :agent_id,
   :organization_id,
   :catalog_q,
@@ -42806,11 +42165,26 @@ SparkAgentSkillCreateData = Struct.new(
 
 # SparkAgentThread entity data model.
 #
-# @!attribute [rw] archived_count
-#   @return [Object, nil]
+# @!attribute [rw] archive_deletes_sandbox
+#   @return [Boolean, nil]
 #
-# @!attribute [rw] can_create
+# @!attribute [rw] archived
 #   @return [Boolean]
+#
+# @!attribute [rw] attention
+#   @return [Object]
+#
+# @!attribute [rw] can_archive
+#   @return [Boolean]
+#
+# @!attribute [rw] can_compact
+#   @return [Boolean]
+#
+# @!attribute [rw] can_snooze
+#   @return [Boolean]
+#
+# @!attribute [rw] coordination_status
+#   @return [Object, nil]
 #
 # @!attribute [rw] execution
 #   @return [Object, nil]
@@ -42824,84 +42198,77 @@ SparkAgentSkillCreateData = Struct.new(
 # @!attribute [rw] first_input_requester_membership_id
 #   @return [String, nil]
 #
+# @!attribute [rw] group
+#   @return [String]
+#
+# @!attribute [rw] has_active_run
+#   @return [Boolean]
+#
 # @!attribute [rw] id
-#   @return [String, nil]
+#   @return [String]
 #
 # @!attribute [rw] inherit_context
 #   @return [Boolean, nil]
 #
-# @!attribute [rw] local_activities
-#   @return [Hash]
-#
-# @!attribute [rw] local_archived_count
-#   @return [Integer]
-#
-# @!attribute [rw] local_next_cursor
-#   @return [Object]
-#
-# @!attribute [rw] local_scope_key
-#   @return [Object]
-#
-# @!attribute [rw] local_status_pending
+# @!attribute [rw] is_main
 #   @return [Boolean]
 #
-# @!attribute [rw] local_threads
-#   @return [Array]
-#
-# @!attribute [rw] main_thread_id
+# @!attribute [rw] kind
 #   @return [String]
 #
 # @!attribute [rw] message
 #   @return [String, nil]
 #
-# @!attribute [rw] next_cursor
-#   @return [Object]
+# @!attribute [rw] older
+#   @return [Boolean]
 #
 # @!attribute [rw] parent_conversation_id
+#   @return [String, nil]
+#
+# @!attribute [rw] parent_conversation_title
 #   @return [String, nil]
 #
 # @!attribute [rw] requester_membership_id
 #   @return [String, nil]
 #
-# @!attribute [rw] selected_thread
+# @!attribute [rw] snoozed_until
 #   @return [Object]
 #
 # @!attribute [rw] thread
 #   @return [Hash]
 #
-# @!attribute [rw] threads
-#   @return [Array]
-#
 # @!attribute [rw] title
 #   @return [String, nil]
 #
-# @!attribute [rw] total_archived_count
+# @!attribute [rw] updated_at
 #   @return [Object]
 SparkAgentThread = Struct.new(
-  :archived_count,
-  :can_create,
+  :archive_deletes_sandbox,
+  :archived,
+  :attention,
+  :can_archive,
+  :can_compact,
+  :can_snooze,
+  :coordination_status,
   :execution,
   :first_input,
   :first_input_key,
   :first_input_requester_membership_id,
+  :group,
+  :has_active_run,
   :id,
   :inherit_context,
-  :local_activities,
-  :local_archived_count,
-  :local_next_cursor,
-  :local_scope_key,
-  :local_status_pending,
-  :local_threads,
-  :main_thread_id,
+  :is_main,
+  :kind,
   :message,
-  :next_cursor,
+  :older,
   :parent_conversation_id,
+  :parent_conversation_title,
   :requester_membership_id,
-  :selected_thread,
+  :snoozed_until,
   :thread,
-  :threads,
   :title,
-  :total_archived_count,
+  :updated_at,
   keyword_init: true
 )
 
@@ -43013,7 +42380,7 @@ SparkAgentThreadCreateData = Struct.new(
 #   @return [Boolean]
 #
 # @!attribute [rw] plan
-#   @return [String, nil]
+#   @return [Object]
 #
 # @!attribute [rw] plans
 #   @return [Array]
@@ -43080,19 +42447,10 @@ SparkCredit = Struct.new(
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-SparkCreditLoadMatch = Struct.new(
-  :organization_id,
-  keyword_init: true
-)
-
-# Request payload for SparkCredit#list.
-#
-# @!attribute [rw] organization_id
-#   @return [String]
 #
 # @!attribute [rw] view
 #   @return [String, nil]
-SparkCreditListMatch = Struct.new(
+SparkCreditLoadMatch = Struct.new(
   :organization_id,
   :view,
   keyword_init: true
@@ -43113,7 +42471,7 @@ SparkCreditListMatch = Struct.new(
 #   @return [String]
 #
 # @!attribute [rw] plan
-#   @return [String, nil]
+#   @return [Object, nil]
 #
 # @!attribute [rw] quoted_credits_cents
 #   @return [Integer, nil]
@@ -43216,11 +42574,11 @@ SparkCreditUsageTotal = Struct.new(
   keyword_init: true
 )
 
-# Request payload for SparkCreditUsageTotal#list.
+# Request payload for SparkCreditUsageTotal#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-SparkCreditUsageTotalListMatch = Struct.new(
+SparkCreditUsageTotalLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -45521,11 +44879,11 @@ VcsSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for VcsSetting#list.
+# Request payload for VcsSetting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-VcsSettingListMatch = Struct.new(
+VcsSettingLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -46976,8 +46334,8 @@ VerifyBrowserSessionRemoveMatch = Struct.new(
 class VerifyEmailVerification
 end
 
-# Request payload for VerifyEmailVerification#list.
-class VerifyEmailVerificationListMatch
+# Request payload for VerifyEmailVerification#load.
+class VerifyEmailVerificationLoadMatch
 end
 
 # VerifySignalIntegration entity data model.

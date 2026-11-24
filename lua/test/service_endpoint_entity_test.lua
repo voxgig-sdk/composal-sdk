@@ -29,7 +29,7 @@ describe("ServiceEndpointEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:ServiceEndpoint(nil):list({ ["app_id"] = 1, ["service_id"] = "x" }, nil)
+    local _, err = client:ServiceEndpoint(nil):load({ ["app_id"] = 1, ["service_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("ServiceEndpointEntity", function()
     local setup = service_endpoint_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "service_endpoint." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,67 +46,10 @@ describe("ServiceEndpointEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"service_endpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints\"}")
-      print("LIVE STEP {\"id\":\"service_endpoint.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-      print("LIVE STEP {\"id\":\"service_endpoint.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-      print("LIVE STEP {\"id\":\"service_endpoint.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"app01", "service01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SERVICE_ENDPOINT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["service_endpoint01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "service_endpoint", function()
-        return client:ServiceEndpoint(nil):list({["app_id"] = setup.idmap["app01"], ["service_id"] = setup.idmap["service01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local service_endpoint_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.service_endpoint")))
-    local service_endpoint_ref01_data = nil
-    if #service_endpoint_ref01_data_raw > 0 then
-      service_endpoint_ref01_data = helpers.to_map(service_endpoint_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local service_endpoint_ref01_ent = client:ServiceEndpoint(nil)
-    local service_endpoint_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["service_id"] = setup.idmap["service01"],
-    }
-
-    local service_endpoint_ref01_list_result, err = service_endpoint_ref01_ent:list(service_endpoint_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(service_endpoint_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local service_endpoint_ref01_match_dt0 = {
-      id = service_endpoint_ref01_data["id"],
-    }
-    service_endpoint_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
-    service_endpoint_ref01_match_dt0["service_id"] = setup.idmap["service_id"] or setup.idmap["service01"]
-    local service_endpoint_ref01_data_dt0_loaded, err = service_endpoint_ref01_ent:load(service_endpoint_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local service_endpoint_ref01_data_dt0_load_result = helpers.to_map(type(service_endpoint_ref01_data_dt0_loaded) == 'table' and service_endpoint_ref01_data_dt0_loaded.data_get and service_endpoint_ref01_data_dt0_loaded:data_get() or service_endpoint_ref01_data_dt0_loaded)
-    assert.is_not_nil(service_endpoint_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(service_endpoint_ref01_data_dt0_load_result["id"], service_endpoint_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"service_endpoint.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+      print("LIVE STEP {\"id\":\"service_endpoint.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only service_endpoint.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"service_endpoint.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+      pending("Live coverage incomplete: service_endpoint.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints); service_endpoint.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}); service_endpoint.load.2 excluded (GET-only live run: reads a record only service_endpoint.create.0 gives); service_endpoint.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id})")
       return
     end
 
@@ -138,24 +81,6 @@ describe("ServiceEndpointEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local service_endpoint_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["service_id"] = setup.idmap["service01"],
-    }
-
-    local service_endpoint_ref01_list_result, err = service_endpoint_ref01_ent:list(service_endpoint_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(service_endpoint_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(service_endpoint_ref01_list_result),
-      { id = service_endpoint_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local service_endpoint_ref01_data_up0_up = {
       id = service_endpoint_ref01_data["id"],
@@ -179,7 +104,6 @@ describe("ServiceEndpointEntity", function()
       id = service_endpoint_ref01_data["id"],
     }
     service_endpoint_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
-    service_endpoint_ref01_match_dt0["service_id"] = setup.idmap["service_id"] or setup.idmap["service01"]
     local service_endpoint_ref01_data_dt0_loaded, err = service_endpoint_ref01_ent:load(service_endpoint_ref01_match_dt0, nil)
     assert.is_nil(err)
     local service_endpoint_ref01_data_dt0_load_result = helpers.to_map(type(service_endpoint_ref01_data_dt0_loaded) == 'table' and service_endpoint_ref01_data_dt0_loaded.data_get and service_endpoint_ref01_data_dt0_loaded:data_get() or service_endpoint_ref01_data_dt0_loaded)
@@ -199,24 +123,6 @@ describe("ServiceEndpointEntity", function()
     service_endpoint_ref01_match_rm0["service_id"] = setup.idmap["service_id"] or setup.idmap["service01"]
     local _, err = service_endpoint_ref01_ent:remove(service_endpoint_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local service_endpoint_ref01_match_rt0 = {
-      ["app_id"] = setup.idmap["app01"],
-      ["service_id"] = setup.idmap["service01"],
-    }
-
-    local service_endpoint_ref01_list_rt0_result, err = service_endpoint_ref01_ent:list(service_endpoint_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(service_endpoint_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(service_endpoint_ref01_list_rt0_result),
-      { id = service_endpoint_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

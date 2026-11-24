@@ -16,7 +16,7 @@ import type {
 
 import type {
   PreviewSharingApproval,
-  PreviewSharingApprovalListMatch,
+  PreviewSharingApprovalLoadMatch,
   PreviewSharingApprovalCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class PreviewSharingApprovalEntity extends ComposalEntityBase<PreviewSharingAppr
 
 
 
-
-  async list(this: any, reqmatch?: PreviewSharingApprovalListMatch, ctrl?: Control): Promise<PreviewSharingApprovalEntity[]> {
+  async load(this: any, reqmatch?: PreviewSharingApprovalLoadMatch, ctrl?: Control): Promise<PreviewSharingApprovalEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class PreviewSharingApprovalEntity extends ComposalEntityBase<PreviewSharingAppr
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class PreviewSharingApprovalEntity extends ComposalEntityBase<PreviewSharingAppr
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class PreviewSharingApprovalEntity extends ComposalEntityBase<PreviewSharingAppr
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<PreviewSharingApprovalEntity[]> return stays clean under strict null checks.
+        // Promise<PreviewSharingApprovalEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

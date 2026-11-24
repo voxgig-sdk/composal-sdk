@@ -3,7 +3,7 @@ id: a1aec206-ebae-5cfd-95fc-dc67f495669b
 description: |-
   The `remove` operation of **space_group**.
 
-  SDK: `client.SpaceGroup().remove({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpaceGroup().remove({ id: "example", space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/groups/:id"
 method: DELETE
 headers:

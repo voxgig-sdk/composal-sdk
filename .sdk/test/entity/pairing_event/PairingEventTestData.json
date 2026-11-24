@@ -2,13 +2,16 @@
   "existing": {
     "pairing_event": {
       "PAIRING_EVENT00": {
-        "pairing_id": "PAIRING01"
+        "pairing_id": "PAIRING01",
+        "id": "PAIRING_EVENT00"
       },
       "PAIRING_EVENT01": {
-        "pairing_id": "PAIRING01"
+        "pairing_id": "PAIRING01",
+        "id": "PAIRING_EVENT01"
       },
       "PAIRING_EVENT02": {
-        "pairing_id": "PAIRING01"
+        "pairing_id": "PAIRING01",
+        "id": "PAIRING_EVENT02"
       }
     }
   },

@@ -645,46 +645,106 @@ fmt.Println(pages_project_personas)
 </thead>
 <tbody>
 <tr>
-<td><code>active_count</code></td>
+<td><code>access_mode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Access Mode</td>
+</tr>
+<tr>
+<td><code>active_run_count</code></td>
 <td><code>integer</code></td>
 <td>Yes</td>
-<td>Active Count</td>
+<td>Active Run Count</td>
 </tr>
 <tr>
-<td><code>credentials</code></td>
+<td><code>archived_at</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Archived At</td>
+</tr>
+<tr>
+<td><code>attention</code></td>
 <td><code>array</code></td>
 <td>Yes</td>
-<td>Credentials</td>
+<td>What needs an operator's eye, problems before notices</td>
 </tr>
 <tr>
-<td><code>needs_attention_count</code></td>
+<td><code>capabilities</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Capabilities</td>
+</tr>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Created At</td>
+</tr>
+<tr>
+<td><code>credential</code></td>
+<td><code>any</code></td>
+<td>Yes</td>
+<td>Credential</td>
+</tr>
+<tr>
+<td><code>credential_id</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>The credential this persona signs in with.</td>
+</tr>
+<tr>
+<td><code>goals</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Goals</td>
+</tr>
+<tr>
+<td><code>health</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Health</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>lock_version</code></td>
 <td><code>integer</code></td>
 <td>Yes</td>
-<td>Needs Attention Count</td>
+<td>Lock Version</td>
 </tr>
 <tr>
-<td><code>permissions</code></td>
-<td><code>object</code></td>
+<td><code>name</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Permissions</td>
+<td>Name</td>
 </tr>
 <tr>
-<td><code>persona_states</code></td>
-<td><code>object</code></td>
+<td><code>project_id</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Scenarios by the state of their latest execution.</td>
+<td>Project Id</td>
 </tr>
 <tr>
-<td><code>personas</code></td>
-<td><code>array</code></td>
+<td><code>role</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Personas</td>
+<td>Role</td>
 </tr>
 <tr>
-<td><code>project</code></td>
-<td><code>object</code></td>
+<td><code>scenario_count</code></td>
+<td><code>integer</code></td>
 <td>Yes</td>
-<td>Project</td>
+<td>Scenario Count</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Updated At</td>
 </tr>
 </tbody>
 </table>

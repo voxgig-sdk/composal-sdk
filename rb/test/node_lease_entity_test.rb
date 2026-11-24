@@ -25,7 +25,7 @@ class NodeLeaseEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.NodeLease(nil).list({ "node_id" => 1 }, nil)
+      client.NodeLease(nil).load({ "node_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class NodeLeaseEntityTest < Minitest::Test
     setup = node_lease_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "node_lease." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,14 @@ class NodeLeaseEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"node_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim\"}"
-    if setup[:live]
-      ["node01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_NODE_LEASE_ENTID")
-        end
-      end
+      puts "LIVE STEP {\"id\":\"node_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only node_lease.create.0 gives\"}"
+      skip("Live coverage incomplete: node_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim); node_lease.load.1 excluded (GET-only live run: reads a record only node_lease.create.0 gives)")
     end
+
+    if setup[:live]
+      skip("Live coverage incomplete: the flow has no step to run")
+    end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -59,46 +60,6 @@ class NodeLeaseEntityTest < Minitest::Test
     if node_lease_ref01_data_raw.length > 0
       node_lease_ref01_data = Helpers.to_map(node_lease_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    node_lease_ref01_ent = client.NodeLease(nil)
-    node_lease_ref01_match = {
-      "node_id" => setup[:idmap]["node01"],
-    }
-
-    node_lease_ref01_list_result = node_lease_ref01_ent.list(node_lease_ref01_match, nil)
-    assert node_lease_ref01_list_result.is_a?(Array)
-
-      return
-    end
-
-    if setup[:live]
-      ["node01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_NODE_LEASE_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    node_lease_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.node_lease")))
-    node_lease_ref01_data = nil
-    if node_lease_ref01_data_raw.length > 0
-      node_lease_ref01_data = Helpers.to_map(node_lease_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    node_lease_ref01_ent = client.NodeLease(nil)
-    node_lease_ref01_match = {
-      "node_id" => setup[:idmap]["node01"],
-    }
-
-    node_lease_ref01_list_result = node_lease_ref01_ent.list(node_lease_ref01_match, nil)
-    assert node_lease_ref01_list_result.is_a?(Array)
 
   end
 end

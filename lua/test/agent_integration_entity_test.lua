@@ -29,7 +29,7 @@ describe("AgentIntegrationEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:AgentIntegration(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:AgentIntegration(nil):load({ ["id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("AgentIntegrationEntity", function()
     local setup = agent_integration_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load", "remove"}) do
+    for _, _op in ipairs({"create", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "agent_integration." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,61 +46,9 @@ describe("AgentIntegrationEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"agent_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize\"}")
-      print("LIVE STEP {\"id\":\"agent_integration.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id}\"}")
-      print("LIVE STEP {\"id\":\"agent_integration.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_AGENT_INTEGRATION_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["agent_integration01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "agent_integration", function()
-        return client:AgentIntegration(nil):list({["organization_id"] = setup.idmap["organization01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local agent_integration_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.agent_integration")))
-    local agent_integration_ref01_data = nil
-    if #agent_integration_ref01_data_raw > 0 then
-      agent_integration_ref01_data = helpers.to_map(agent_integration_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_integration_ref01_ent = client:AgentIntegration(nil)
-    local agent_integration_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_integration_ref01_list_result, err = agent_integration_ref01_ent:list(agent_integration_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_integration_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local agent_integration_ref01_match_dt0 = {
-      id = agent_integration_ref01_data["id"],
-    }
-    local agent_integration_ref01_data_dt0_loaded, err = agent_integration_ref01_ent:load(agent_integration_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local agent_integration_ref01_data_dt0_load_result = helpers.to_map(type(agent_integration_ref01_data_dt0_loaded) == 'table' and agent_integration_ref01_data_dt0_loaded.data_get and agent_integration_ref01_data_dt0_loaded:data_get() or agent_integration_ref01_data_dt0_loaded)
-    assert.is_not_nil(agent_integration_ref01_data_dt0_load_result)
-    assert.is_true(runner.live_same_id(agent_integration_ref01_data_dt0_load_result["id"], agent_integration_ref01_data["id"]))
-
+      print("LIVE STEP {\"id\":\"agent_integration.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_integration.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"agent_integration.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id}\"}")
+      pending("Live coverage incomplete: agent_integration.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize); agent_integration.load.1 excluded (GET-only live run: reads a record only agent_integration.create.0 gives); agent_integration.remove.2 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id})")
       return
     end
 
@@ -131,23 +79,6 @@ describe("AgentIntegrationEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local agent_integration_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_integration_ref01_list_result, err = agent_integration_ref01_ent:list(agent_integration_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_integration_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(agent_integration_ref01_list_result),
-      { id = agent_integration_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local agent_integration_ref01_match_dt0 = {
       id = agent_integration_ref01_data["id"],
@@ -168,23 +99,6 @@ describe("AgentIntegrationEntity", function()
     agent_integration_ref01_match_rm0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local _, err = agent_integration_ref01_ent:remove(agent_integration_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local agent_integration_ref01_match_rt0 = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local agent_integration_ref01_list_rt0_result, err = agent_integration_ref01_ent:list(agent_integration_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(agent_integration_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(agent_integration_ref01_list_rt0_result),
-      { id = agent_integration_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

@@ -496,9 +496,9 @@
 <a aria-current="page" href="../api/space_gateway.html">SpaceGateway</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1networkingspacesspace_idgatewaysidheartbeat">POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat</a>
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idgatewaysidsync">POST /api/v1/networking/spaces/{space_id}/gateways/{id}/sync</a>
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idgateways">POST /api/v1/networking/spaces/{space_id}/gateways</a>
-<a class="nav-section" href="#get-apiv1networkingspacesspace_idgateways">GET /api/v1/networking/spaces/{space_id}/gateways</a>
 <a class="nav-section" href="#get-apiv1networkingspacesspace_idgatewaysid">GET /api/v1/networking/spaces/{space_id}/gateways/{id}</a>
 <a class="nav-section" href="#get-apiv1networkingspacesspace_idgatewaysidconfig">GET /api/v1/networking/spaces/{space_id}/gateways/{id}/config</a>
+<a class="nav-section" href="#get-apiv1networkingspacesspace_idgateways">GET /api/v1/networking/spaces/{space_id}/gateways</a>
 <a class="nav-section" href="#patch-apiv1networkingspacesspace_idgatewaysid">PATCH /api/v1/networking/spaces/{space_id}/gateways/{id}</a>
 <a class="nav-section" href="#delete-apiv1networkingspacesspace_idgatewaysid">DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}</a>
 <a class="nav-section" href="#put-apiv1networkingspacesspace_idgatewaysid">PUT /api/v1/networking/spaces/{space_id}/gateways/{id}</a></div>
@@ -623,12 +623,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspacesspace_idgateways"><code>/api/v1/networking/spaces/{space_id}/gateways</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1networkingspacesspace_idgatewaysid"><code>/api/v1/networking/spaces/{space_id}/gateways/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
@@ -636,6 +630,12 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1networkingspacesspace_idgatewaysidconfig"><code>/api/v1/networking/spaces/{space_id}/gateways/{id}/config</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1networkingspacesspace_idgateways"><code>/api/v1/networking/spaces/{space_id}/gateways</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">space_gateways, err := client.SpaceGateway(nil).List(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(space_gateways)
-space_gateway, err := client.SpaceGateway(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">space_gateway, err := client.SpaceGateway(nil).Load(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local space_gateways, err = client:SpaceGateway():list({ space_id = &quot;example&quot; })
-local space_gateway, err = client:SpaceGateway():load({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
+<pre><code class="language-lua">local space_gateway, err = client:SpaceGateway():load({ space_id = &quot;example&quot; })
 local created, err = client:SpaceGateway():create({ space_id = &quot;example&quot; })
 local updated, err = client:SpaceGateway():update({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
 local patched, err = client:SpaceGateway():patch({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:SpaceGateway():remove({ id = &quot;example_id&quot;,
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$space_gateways = $client-&gt;SpaceGateway()-&gt;list([&quot;space_id&quot; =&gt; &quot;example&quot;]);
-$space_gateway = $client-&gt;SpaceGateway()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$space_gateway = $client-&gt;SpaceGateway()-&gt;load([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SpaceGateway()-&gt;create([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;SpaceGateway()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;SpaceGateway()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;SpaceGateway()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quo
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">space_gateways = client.SpaceGateway().list({&quot;space_id&quot;: &quot;example&quot;})
-space_gateway = client.SpaceGateway().load({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">space_gateway = client.SpaceGateway().load({&quot;space_id&quot;: &quot;example&quot;})
 created = client.SpaceGateway().create({ &quot;space_id&quot;: &quot;example&quot; })
 updated = client.SpaceGateway().update({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
 patched = client.SpaceGateway().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
@@ -723,8 +715,7 @@ client.SpaceGateway().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;spac
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">space_gateways = client.SpaceGateway.list({ &quot;space_id&quot; =&gt; &quot;example&quot; })
-space_gateway = client.SpaceGateway.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">space_gateway = client.SpaceGateway.load({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 created = client.SpaceGateway.create({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 updated = client.SpaceGateway.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
 patched = client.SpaceGateway.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
@@ -732,8 +723,7 @@ client.SpaceGateway.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const space_gateways = await client.SpaceGateway().list({ space_id: &quot;example&quot; })
-const space_gateway = await client.SpaceGateway().load({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
+<pre><code class="language-ts">const space_gateway = await client.SpaceGateway().load({ space_id: &quot;example&quot; })
 const created = await client.SpaceGateway().create({ space_id: &quot;example&quot; })
 const updated = await client.SpaceGateway().update({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
 const patched = await client.SpaceGateway().patch({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
@@ -881,9 +871,9 @@ await client.SpaceGateway().remove({ id: &quot;example_id&quot;, space_id: &quot
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1networkingspacesspace_idgateways" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways</h3>
-<p>Operation ID: <code>api_v1_space_gateways</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1networkingspacesspace_idgatewaysid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways/{id}</h3>
+<p>Operation ID: <code>api_v1_space_gateway</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -904,6 +894,13 @@ await client.SpaceGateway().remove({ id: &quot;example_id&quot;, space_id: &quot
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-3">Responses</h4>
@@ -915,9 +912,8 @@ await client.SpaceGateway().remove({ id: &quot;example_id&quot;, space_id: &quot
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1networkingspacesspace_idgatewaysid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways/{id}</h3>
-<p>Operation ID: <code>api_v1_space_gateway</code>.</p>
+<h3 id="get-apiv1networkingspacesspace_idgatewaysidconfig" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways/{id}/config</h3>
+<p>Operation ID: <code>config_api_v1_space_gateway</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -956,8 +952,8 @@ await client.SpaceGateway().remove({ id: &quot;example_id&quot;, space_id: &quot
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="get-apiv1networkingspacesspace_idgatewaysidconfig" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways/{id}/config</h3>
-<p>Operation ID: <code>config_api_v1_space_gateway</code>.</p>
+<h3 id="get-apiv1networkingspacesspace_idgateways" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/gateways</h3>
+<p>Operation ID: <code>api_v1_space_gateways</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -973,13 +969,6 @@ await client.SpaceGateway().remove({ id: &quot;example_id&quot;, space_id: &quot
 <tbody>
 <tr>
 <td><code>space_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

@@ -111,8 +111,8 @@
 <a class="nav-section" href="#post-apiv1artifactsartifactsidissue_contract">POST /api/v1/artifacts/artifacts/{id}/issue_contract</a>
 <a class="nav-section" href="#post-apiv1artifactsartifactsidrestore">POST /api/v1/artifacts/artifacts/{id}/restore</a>
 <a class="nav-section" href="#post-apiv1artifactsartifacts">POST /api/v1/artifacts/artifacts</a>
-<a class="nav-section" href="#get-apiv1artifactsartifacts">GET /api/v1/artifacts/artifacts</a>
 <a class="nav-section" href="#get-apiv1artifactsartifactsid">GET /api/v1/artifacts/artifacts/{id}</a>
+<a class="nav-section" href="#get-apiv1artifactsartifacts">GET /api/v1/artifacts/artifacts</a>
 <a class="nav-section" href="#patch-apiv1artifactsartifactsid">PATCH /api/v1/artifacts/artifacts/{id}</a>
 <a class="nav-section" href="#delete-apiv1artifactsartifactsid">DELETE /api/v1/artifacts/artifacts/{id}</a>
 <a class="nav-section" href="#put-apiv1artifactsartifactsid">PUT /api/v1/artifacts/artifacts/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactsartifacts"><code>/api/v1/artifacts/artifacts</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1artifactsartifactsid"><code>/api/v1/artifacts/artifacts/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactsartifactsid"><code>/api/v1/artifacts/artifacts/{id}</code></a></td>
+<td><a href="#get-apiv1artifactsartifacts"><code>/api/v1/artifacts/artifacts</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">artifacts, err := client.Artifact(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(artifacts)
-artifact, err := client.Artifact(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">artifact, err := client.Artifact(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local artifacts, err = client:Artifact():list()
-local artifact, err = client:Artifact():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local artifact, err = client:Artifact():load({ id = &quot;example_id&quot; })
 local created, err = client:Artifact():create({  })
 local updated, err = client:Artifact():update({ id = &quot;example_id&quot; })
 local patched, err = client:Artifact():patch({ id = &quot;example_id&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:Artifact():remove({ id = &quot;example_id&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$artifacts = $client-&gt;Artifact()-&gt;list();
-$artifact = $client-&gt;Artifact()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$artifact = $client-&gt;Artifact()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;Artifact()-&gt;create([]);
 $updated = $client-&gt;Artifact()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;Artifact()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;Artifact()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;])
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">artifacts = client.Artifact().list()
-artifact = client.Artifact().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">artifact = client.Artifact().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.Artifact().create({  })
 updated = client.Artifact().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.Artifact().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -723,8 +715,7 @@ client.Artifact().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">artifacts = client.Artifact.list()
-artifact = client.Artifact.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">artifact = client.Artifact.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.Artifact.create({  })
 updated = client.Artifact.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.Artifact.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -732,8 +723,7 @@ client.Artifact.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const artifacts = await client.Artifact().list()
-const artifact = await client.Artifact().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const artifact = await client.Artifact().load({ id: &quot;example_id&quot; })
 const created = await client.Artifact().create({  })
 const updated = await client.Artifact().update({ id: &quot;example_id&quot; })
 const patched = await client.Artifact().patch({ id: &quot;example_id&quot; })
@@ -882,19 +872,6 @@ await client.Artifact().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1artifactsartifacts" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/artifacts</h3>
-<p>Operation ID: <code>api_v1_artifacts</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-4">Responses</h4>
-<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1artifactsartifactsid" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/artifacts/{id}</h3>
 <p>Operation ID: <code>api_v1_artifact</code>.</p>
@@ -920,6 +897,18 @@ await client.Artifact().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1artifactsartifacts" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/artifacts</h3>
+<p>Operation ID: <code>api_v1_artifacts</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-5">Responses</h4>
 <h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

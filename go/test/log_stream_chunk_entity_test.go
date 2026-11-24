@@ -38,7 +38,7 @@ func TestLogStreamChunkEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.LogStreamChunk(nil).List(map[string]any{"log_stream_id": 1, "space_id": "x"}, nil)
+		_, err := client.LogStreamChunk(nil).Load(map[string]any{"id": 1, "log_stream_id": "x", "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestLogStreamChunkEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "log_stream_chunk." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,86 +64,9 @@ func TestLogStreamChunkEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"log_stream_chunk.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"log_stream01", "space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, log_stream_chunkEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["log_stream_chunk01"]
-			}
-			livePace()
-			liveExisting(t, log_stream_chunkEntityLiveStrict, setup.data, "log_stream_chunk", "id", _liveId,
-				func() (any, error) {
-					return client.LogStreamChunk(nil).List(map[string]any{"log_stream_id": setup.idmap["log_stream01"], "space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		logStreamChunkRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.log_stream_chunk")))
-		var logStreamChunkRef01Data map[string]any
-		if len(logStreamChunkRef01DataRaw) > 0 {
-			logStreamChunkRef01Data = core.ToMapAny(logStreamChunkRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = logStreamChunkRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		logStreamChunkRef01Ent := client.LogStreamChunk(nil)
-		logStreamChunkRef01Match := map[string]any{
-			"log_stream_id": setup.idmap["log_stream01"],
-			"space_id": setup.idmap["space01"],
-		}
-
-		logStreamChunkRef01ListResult, err := logStreamChunkRef01Ent.List(logStreamChunkRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, logStreamChunkRef01ListOk := logStreamChunkRef01ListResult.([]any)
-		if !logStreamChunkRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", logStreamChunkRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		logStreamChunkRef01MatchDt0 := map[string]any{
-			"id": logStreamChunkRef01Data["id"],
-		}
-		if v := setup.idmap["log_stream_id"]; v != nil {
-			logStreamChunkRef01MatchDt0["log_stream_id"] = v
-		} else {
-			logStreamChunkRef01MatchDt0["log_stream_id"] = setup.idmap["log_stream01"]
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			logStreamChunkRef01MatchDt0["space_id"] = v
-		} else {
-			logStreamChunkRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		logStreamChunkRef01DataDt0Loaded, err := logStreamChunkRef01Ent.Load(logStreamChunkRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		logStreamChunkRef01DataDt0LoadResult := core.ToMapAny(entityData(logStreamChunkRef01DataDt0Loaded))
-		if logStreamChunkRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(logStreamChunkRef01DataDt0LoadResult["id"], logStreamChunkRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"log_stream_chunk.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only log_stream_chunk.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: log_stream_chunk.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks); log_stream_chunk.load.1 excluded (GET-only live run: reads a record only log_stream_chunk.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -181,37 +104,9 @@ func TestLogStreamChunkEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		logStreamChunkRef01Match := map[string]any{
-			"log_stream_id": setup.idmap["log_stream01"],
-			"space_id": setup.idmap["space01"],
-		}
-
-		logStreamChunkRef01ListResult, err := logStreamChunkRef01Ent.List(logStreamChunkRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		logStreamChunkRef01List, logStreamChunkRef01ListOk := logStreamChunkRef01ListResult.([]any)
-		if !logStreamChunkRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", logStreamChunkRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(logStreamChunkRef01List), map[string]any{"id": logStreamChunkRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		logStreamChunkRef01MatchDt0 := map[string]any{
 			"id": logStreamChunkRef01Data["id"],
-		}
-		if v := setup.idmap["log_stream_id"]; v != nil {
-			logStreamChunkRef01MatchDt0["log_stream_id"] = v
-		} else {
-			logStreamChunkRef01MatchDt0["log_stream_id"] = setup.idmap["log_stream01"]
 		}
 		if v := setup.idmap["space_id"]; v != nil {
 			logStreamChunkRef01MatchDt0["space_id"] = v

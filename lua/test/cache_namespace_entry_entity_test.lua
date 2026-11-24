@@ -29,7 +29,7 @@ describe("CacheNamespaceEntryEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:CacheNamespaceEntry(nil):list({ ["cache_namespace_id"] = 1 }, nil)
+    local _, err = client:CacheNamespaceEntry(nil):load({ ["cache_namespace_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("CacheNamespaceEntryEntity", function()
     local setup = cache_namespace_entry_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "cache_namespace_entry." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,65 +46,10 @@ describe("CacheNamespaceEntryEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"cache_namespace_entry.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict\"}")
-      print("LIVE STEP {\"id\":\"cache_namespace_entry.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
-      print("LIVE STEP {\"id\":\"cache_namespace_entry.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
-      print("LIVE STEP {\"id\":\"cache_namespace_entry.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"cache_namespace01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_CACHE_NAMESPACE_ENTRY_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["cache_namespace_entry01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "cache_namespace_entry", function()
-        return client:CacheNamespaceEntry(nil):list({["cache_namespace_id"] = setup.idmap["cache_namespace01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local cache_namespace_entry_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.cache_namespace_entry")))
-    local cache_namespace_entry_ref01_data = nil
-    if #cache_namespace_entry_ref01_data_raw > 0 then
-      cache_namespace_entry_ref01_data = helpers.to_map(cache_namespace_entry_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local cache_namespace_entry_ref01_ent = client:CacheNamespaceEntry(nil)
-    local cache_namespace_entry_ref01_match = {
-      ["cache_namespace_id"] = setup.idmap["cache_namespace01"],
-    }
-
-    local cache_namespace_entry_ref01_list_result, err = cache_namespace_entry_ref01_ent:list(cache_namespace_entry_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(cache_namespace_entry_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local cache_namespace_entry_ref01_match_dt0 = {
-      id = cache_namespace_entry_ref01_data["id"],
-    }
-    cache_namespace_entry_ref01_match_dt0["cache_namespace_id"] = setup.idmap["cache_namespace_id"] or setup.idmap["cache_namespace01"]
-    local cache_namespace_entry_ref01_data_dt0_loaded, err = cache_namespace_entry_ref01_ent:load(cache_namespace_entry_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local cache_namespace_entry_ref01_data_dt0_load_result = helpers.to_map(type(cache_namespace_entry_ref01_data_dt0_loaded) == 'table' and cache_namespace_entry_ref01_data_dt0_loaded.data_get and cache_namespace_entry_ref01_data_dt0_loaded:data_get() or cache_namespace_entry_ref01_data_dt0_loaded)
-    assert.is_not_nil(cache_namespace_entry_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(cache_namespace_entry_ref01_data_dt0_load_result["id"], cache_namespace_entry_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"cache_namespace_entry.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
+      print("LIVE STEP {\"id\":\"cache_namespace_entry.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cache_namespace_entry.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"cache_namespace_entry.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
+      pending("Live coverage incomplete: cache_namespace_entry.create.0 excluded (GET-only live run: needs POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict); cache_namespace_entry.update.1 excluded (GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}); cache_namespace_entry.load.2 excluded (GET-only live run: reads a record only cache_namespace_entry.create.0 gives); cache_namespace_entry.remove.3 excluded (GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id})")
       return
     end
 
@@ -135,23 +80,6 @@ describe("CacheNamespaceEntryEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local cache_namespace_entry_ref01_match = {
-      ["cache_namespace_id"] = setup.idmap["cache_namespace01"],
-    }
-
-    local cache_namespace_entry_ref01_list_result, err = cache_namespace_entry_ref01_ent:list(cache_namespace_entry_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(cache_namespace_entry_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(cache_namespace_entry_ref01_list_result),
-      { id = cache_namespace_entry_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local cache_namespace_entry_ref01_data_up0_up = {
       id = cache_namespace_entry_ref01_data["id"],
@@ -173,7 +101,6 @@ describe("CacheNamespaceEntryEntity", function()
     local cache_namespace_entry_ref01_match_dt0 = {
       id = cache_namespace_entry_ref01_data["id"],
     }
-    cache_namespace_entry_ref01_match_dt0["cache_namespace_id"] = setup.idmap["cache_namespace_id"] or setup.idmap["cache_namespace01"]
     local cache_namespace_entry_ref01_data_dt0_loaded, err = cache_namespace_entry_ref01_ent:load(cache_namespace_entry_ref01_match_dt0, nil)
     assert.is_nil(err)
     local cache_namespace_entry_ref01_data_dt0_load_result = helpers.to_map(type(cache_namespace_entry_ref01_data_dt0_loaded) == 'table' and cache_namespace_entry_ref01_data_dt0_loaded.data_get and cache_namespace_entry_ref01_data_dt0_loaded:data_get() or cache_namespace_entry_ref01_data_dt0_loaded)
@@ -192,23 +119,6 @@ describe("CacheNamespaceEntryEntity", function()
     cache_namespace_entry_ref01_match_rm0["cache_namespace_id"] = setup.idmap["cache_namespace_id"] or setup.idmap["cache_namespace01"]
     local _, err = cache_namespace_entry_ref01_ent:remove(cache_namespace_entry_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local cache_namespace_entry_ref01_match_rt0 = {
-      ["cache_namespace_id"] = setup.idmap["cache_namespace01"],
-    }
-
-    local cache_namespace_entry_ref01_list_rt0_result, err = cache_namespace_entry_ref01_ent:list(cache_namespace_entry_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(cache_namespace_entry_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(cache_namespace_entry_ref01_list_rt0_result),
-      { id = cache_namespace_entry_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

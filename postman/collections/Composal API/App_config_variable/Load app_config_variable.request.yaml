@@ -3,7 +3,7 @@ id: ad06157a-ae2c-53df-ad4a-fb21e12abeb6
 description: |-
   The `load` operation of **app_config_variable**.
 
-  SDK: `client.AppConfigVariable().load({ app_id: "example", id: "example_id" })`
+  SDK: `client.AppConfigVariable().load({ app_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/config_variables/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{app_config_variable_id}}"
     description: The app_config_variable this request addresses.
-order: 2000
+order: 1000

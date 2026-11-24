@@ -1,0 +1,24 @@
+$kind: http-request
+id: "8970ce20-3a37-50d6-a88a-4e9c838ac650"
+description: |-
+  The `load` operation of **deep_scan_mapped_flow**.
+
+  SDK: `client.DeepScanMappedFlow().load({ organization_id: "example", environment_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/mapped_flows?environment_id={{deep_scan_mapped_flow_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: account_id
+    value: ""
+    disabled: true
+  - key: environment_id
+    value: "{{deep_scan_mapped_flow_id}}"
+  - key: project_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this deep_scan_mapped_flow belongs to.
+order: 1000

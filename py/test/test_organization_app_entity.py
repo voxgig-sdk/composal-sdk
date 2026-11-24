@@ -37,7 +37,7 @@ class TestOrganizationAppEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.OrganizationApp(None).list({"organization_id": 1, "native_agent_id": "x"}, None)
+            client.OrganizationApp(None).load({"organization_id": 1, "native_agent_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,19 +46,18 @@ class TestOrganizationAppEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "organization_app." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"organization_app.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"organization_app.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
+            pytest.skip("Live coverage incomplete: organization_app.update.0 excluded (GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install)")
 
         if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_ORGANIZATION_APP_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -67,43 +66,6 @@ class TestOrganizationAppEntity:
         organization_app_ref01_data = None
         if len(organization_app_ref01_data_raw) > 0:
             organization_app_ref01_data = helpers.to_map(organization_app_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        organization_app_ref01_ent = client.OrganizationApp(None)
-        organization_app_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        organization_app_ref01_list_result = organization_app_ref01_ent.list(organization_app_ref01_match, None)
-        assert isinstance(organization_app_ref01_list_result, list)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_ORGANIZATION_APP_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        organization_app_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.organization_app")))
-        organization_app_ref01_data = None
-        if len(organization_app_ref01_data_raw) > 0:
-            organization_app_ref01_data = helpers.to_map(organization_app_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        organization_app_ref01_ent = client.OrganizationApp(None)
-        organization_app_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        organization_app_ref01_list_result = organization_app_ref01_ent.list(organization_app_ref01_match, None)
-        assert isinstance(organization_app_ref01_list_result, list)
 
 
 

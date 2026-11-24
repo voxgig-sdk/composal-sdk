@@ -33,7 +33,7 @@ class SiteAccessKeyEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SiteAccessKey(null)->list(["organization_id" => 1, "site_id" => 'x'], null);
+            $client->SiteAccessKey(null)->load(["organization_id" => 1, "site_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SiteAccessKeyEntityTest extends TestCase
         $setup = site_access_key_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "remove"] as $_op) {
+        foreach (["create", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "site_access_key." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,39 +54,9 @@ class SiteAccessKeyEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"site_access_key.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"site_access_key.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only site_access_key.create.0 gives"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"site_access_key.remove.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"site_access_key.list.3","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01", "site01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SITE_ACCESS_KEY_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $site_access_key_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.site_access_key")));
-        $site_access_key_ref01_data = null;
-        if (count($site_access_key_ref01_data_raw) > 0) {
-            $site_access_key_ref01_data = Helpers::to_map($site_access_key_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $site_access_key_ref01_ent = $client->SiteAccessKey(null);
-        $site_access_key_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "site_id" => $setup["idmap"]["site01"],
-        ];
-
-        $site_access_key_ref01_list_result = $site_access_key_ref01_ent->list($site_access_key_ref01_match, null);
-        $this->assertIsArray($site_access_key_ref01_list_result);
-
-            return;
+            $this->markTestSkipped('Live coverage incomplete: site_access_key.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys); site_access_key.load.1 excluded (GET-only live run: reads a record only site_access_key.create.0 gives); site_access_key.remove.2 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id})');
         }
 
         if (!empty($setup["live"])) {
@@ -116,19 +86,17 @@ class SiteAccessKeyEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $site_access_key_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "site_id" => $setup["idmap"]["site01"],
+        // LOAD
+        $site_access_key_ref01_match_dt0 = [
+            "id" => $site_access_key_ref01_data["id"],
         ];
-
-        $site_access_key_ref01_list_result = $site_access_key_ref01_ent->list($site_access_key_ref01_match, null);
-        $this->assertIsArray($site_access_key_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($site_access_key_ref01_list_result),
-            ["id" => $site_access_key_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $site_access_key_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $site_access_key_ref01_data_dt0_loaded = $site_access_key_ref01_ent->load($site_access_key_ref01_match_dt0, null);
+        $site_access_key_ref01_data_dt0_load_result = Helpers::to_map(is_object($site_access_key_ref01_data_dt0_loaded) && method_exists($site_access_key_ref01_data_dt0_loaded, 'data_get') ? $site_access_key_ref01_data_dt0_loaded->data_get() : $site_access_key_ref01_data_dt0_loaded);
+        $this->assertNotNull($site_access_key_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($site_access_key_ref01_data_dt0_load_result["id"] ?? null, $site_access_key_ref01_data["id"]));
+        }
 
         if (!empty($setup["live"])) {
             Runner::live_pace();
@@ -140,23 +108,6 @@ class SiteAccessKeyEntityTest extends TestCase
         $site_access_key_ref01_match_rm0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $site_access_key_ref01_match_rm0["site_id"] = $setup["idmap"]["site_id"] ?? $setup["idmap"]["site01"] ?? null;
         $site_access_key_ref01_ent->remove($site_access_key_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $site_access_key_ref01_match_rt0 = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "site_id" => $setup["idmap"]["site01"],
-        ];
-
-        $site_access_key_ref01_list_rt0_result = $site_access_key_ref01_ent->list($site_access_key_ref01_match_rt0, null);
-        $this->assertIsArray($site_access_key_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($site_access_key_ref01_list_rt0_result),
-            ["id" => $site_access_key_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

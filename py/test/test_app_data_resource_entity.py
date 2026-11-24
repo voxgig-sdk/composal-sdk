@@ -37,7 +37,7 @@ class TestAppDataResourceEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AppDataResource(None).list({"app_id": 1}, None)
+            client.AppDataResource(None).load({"app_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,17 @@ class TestAppDataResourceEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load", "remove"]:
+        for _op in ["create", "update", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "app_data_resource." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"app_data_resource.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/archive\"}")
-            print("LIVE STEP {\"id\":\"app_data_resource.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/data_resources/{id}\"}")
-            print("LIVE STEP {\"id\":\"app_data_resource.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/data_resources/{id}\"}")
-            print("LIVE STEP {\"id\":\"app_data_resource.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"app_data_resource.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/data_resources/{id}\"}")
+            print("LIVE STEP {\"id\":\"app_data_resource.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_data_resource.create.0 gives\"}")
+            print("LIVE STEP {\"id\":\"app_data_resource.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/data_resources/{id}\"}")
+            pytest.skip("Live coverage incomplete: app_data_resource.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/archive); app_data_resource.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/data_resources/{id}); app_data_resource.load.2 excluded (GET-only live run: reads a record only app_data_resource.create.0 gives); app_data_resource.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/data_resources/{id})")
 
         if setup["live"]:
             for _live_key in ["app01"]:
@@ -75,21 +75,6 @@ class TestAppDataResourceEntity:
         app_data_resource_ref01_data = helpers.to_map(runner.entity_data(app_data_resource_ref01_ent.create(app_data_resource_ref01_data, None)))
         assert app_data_resource_ref01_data is not None
         assert app_data_resource_ref01_data["id"] is not None
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        app_data_resource_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-        }
-
-        app_data_resource_ref01_list_result = app_data_resource_ref01_ent.list(app_data_resource_ref01_match, None)
-        assert isinstance(app_data_resource_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(app_data_resource_ref01_list_result),
-            {"id": app_data_resource_ref01_data["id"]})
-        assert not vs.isempty(found_item)
 
         if setup["live"]:
             runner.live_pace()
@@ -114,7 +99,6 @@ class TestAppDataResourceEntity:
         app_data_resource_ref01_match_dt0 = {
             "id": app_data_resource_ref01_data["id"],
         }
-        app_data_resource_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         app_data_resource_ref01_data_dt0_loaded = app_data_resource_ref01_ent.load(app_data_resource_ref01_match_dt0, None)
         app_data_resource_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(app_data_resource_ref01_data_dt0_loaded))
         assert app_data_resource_ref01_data_dt0_load_result is not None
@@ -128,65 +112,6 @@ class TestAppDataResourceEntity:
         }
         app_data_resource_ref01_match_rm0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
         app_data_resource_ref01_ent.remove(app_data_resource_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        app_data_resource_ref01_match_rt0 = {
-            "app_id": setup["idmap"]["app01"],
-        }
-
-        app_data_resource_ref01_list_rt0_result = app_data_resource_ref01_ent.list(app_data_resource_ref01_match_rt0, None)
-        assert isinstance(app_data_resource_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(app_data_resource_ref01_list_rt0_result),
-            {"id": app_data_resource_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["app01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_APP_DATA_RESOURCE_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("app_data_resource01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "app_data_resource",
-                                 lambda: client.AppDataResource(None).list({"app_id": setup["idmap"].get("app01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        app_data_resource_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.app_data_resource")))
-        app_data_resource_ref01_data = None
-        if len(app_data_resource_ref01_data_raw) > 0:
-            app_data_resource_ref01_data = helpers.to_map(app_data_resource_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        app_data_resource_ref01_ent = client.AppDataResource(None)
-        app_data_resource_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-        }
-
-        app_data_resource_ref01_list_result = app_data_resource_ref01_ent.list(app_data_resource_ref01_match, None)
-        assert isinstance(app_data_resource_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        app_data_resource_ref01_match_dt0 = {
-            "id": app_data_resource_ref01_data["id"],
-        }
-        app_data_resource_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
-        app_data_resource_ref01_data_dt0_loaded = app_data_resource_ref01_ent.load(app_data_resource_ref01_match_dt0, None)
-        app_data_resource_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(app_data_resource_ref01_data_dt0_loaded))
-        assert app_data_resource_ref01_data_dt0_load_result is not None
-        assert runner.live_same_id(app_data_resource_ref01_data_dt0_load_result.get("id"), app_data_resource_ref01_data["id"])
 
 
 

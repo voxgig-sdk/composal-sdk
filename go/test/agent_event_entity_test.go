@@ -38,7 +38,7 @@ func TestAgentEventEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentEvent(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentEvent(nil).Load(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentEventEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_event." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestAgentEventEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_eventEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_EVENT_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentEventRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_event")))
@@ -81,25 +76,6 @@ func TestAgentEventEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentEventRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentEventRef01Ent := client.AgentEvent(nil)
-		agentEventRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentEventRef01ListResult, err := agentEventRef01Ent.List(agentEventRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentEventRef01ListOk := agentEventRef01ListResult.([]any)
-		if !agentEventRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentEventRef01ListResult)
-		}
 
 	})
 }

@@ -1,0 +1,31 @@
+$kind: http-request
+id: "3bd54eaf-ca7c-5774-a269-76e315b3fee7"
+description: |-
+  The `load` operation of **allocation_log**.
+
+  SDK: `client.AllocationLog().load({ allocation_id: "example", app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/deployment_dashboard/nomad/allocations/:allocation_id/logs"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: offset
+    value: "65536"
+    disabled: true
+  - key: origin
+    value: end
+    disabled: true
+  - key: task
+    value: ""
+    disabled: true
+  - key: type
+    value: stdout
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this allocation_log belongs to.
+  - key: allocation_id
+    value: "{{allocation_id}}"
+    description: "Input: allocation_id."
+order: 1000

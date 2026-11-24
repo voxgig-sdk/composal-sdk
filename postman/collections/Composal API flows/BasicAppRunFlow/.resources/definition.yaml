@@ -1,4 +1,4 @@
 $kind: collection
 id: "35eaf738-fb4e-537f-af24-750b9606e9f0"
 description: "The `BasicAppRunFlow` flow of **app_run**."
-order: 75000
+order: 70000

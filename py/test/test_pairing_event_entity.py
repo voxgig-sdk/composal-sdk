@@ -37,7 +37,7 @@ class TestPairingEventEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.PairingEvent(None).list({"pairing_id": 1}, None)
+            client.PairingEvent(None).load({"pairing_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,14 @@ class TestPairingEventEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "pairing_event." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["pairing01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PAIRING_EVENT_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -63,17 +62,6 @@ class TestPairingEventEntity:
         pairing_event_ref01_data = None
         if len(pairing_event_ref01_data_raw) > 0:
             pairing_event_ref01_data = helpers.to_map(pairing_event_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        pairing_event_ref01_ent = client.PairingEvent(None)
-        pairing_event_ref01_match = {
-            "pairing_id": setup["idmap"]["pairing01"],
-        }
-
-        pairing_event_ref01_list_result = pairing_event_ref01_ent.list(pairing_event_ref01_match, None)
-        assert isinstance(pairing_event_ref01_list_result, list)
 
 
 

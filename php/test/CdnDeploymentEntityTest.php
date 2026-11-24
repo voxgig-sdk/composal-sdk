@@ -33,7 +33,7 @@ class CdnDeploymentEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->CdnDeployment(null)->list(["app_id" => 1, "cdn_id" => 'x'], null);
+            $client->CdnDeployment(null)->load(["app_id" => 1, "cdn_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class CdnDeploymentEntityTest extends TestCase
         $setup = cdn_deployment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "cdn_deployment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,59 +54,8 @@ class CdnDeploymentEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"cdn_deployment.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01", "cdn01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CDN_DEPLOYMENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["cdn_deployment01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "cdn_deployment",
-                fn() => $client->CdnDeployment(null)->list(["app_id" => $setup["idmap"]["app01"] ?? null, "cdn_id" => $setup["idmap"]["cdn01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $cdn_deployment_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.cdn_deployment")));
-        $cdn_deployment_ref01_data = null;
-        if (count($cdn_deployment_ref01_data_raw) > 0) {
-            $cdn_deployment_ref01_data = Helpers::to_map($cdn_deployment_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_deployment_ref01_ent = $client->CdnDeployment(null);
-        $cdn_deployment_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "cdn_id" => $setup["idmap"]["cdn01"],
-        ];
-
-        $cdn_deployment_ref01_list_result = $cdn_deployment_ref01_ent->list($cdn_deployment_ref01_match, null);
-        $this->assertIsArray($cdn_deployment_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $cdn_deployment_ref01_match_dt0 = [
-            "id" => $cdn_deployment_ref01_data["id"],
-        ];
-        $cdn_deployment_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
-        $cdn_deployment_ref01_match_dt0["cdn_id"] = $setup["idmap"]["cdn_id"] ?? $setup["idmap"]["cdn01"] ?? null;
-        $cdn_deployment_ref01_data_dt0_loaded = $cdn_deployment_ref01_ent->load($cdn_deployment_ref01_match_dt0, null);
-        $cdn_deployment_ref01_data_dt0_load_result = Helpers::to_map(is_object($cdn_deployment_ref01_data_dt0_loaded) && method_exists($cdn_deployment_ref01_data_dt0_loaded, 'data_get') ? $cdn_deployment_ref01_data_dt0_loaded->data_get() : $cdn_deployment_ref01_data_dt0_loaded);
-        $this->assertNotNull($cdn_deployment_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($cdn_deployment_ref01_data_dt0_load_result["id"] ?? null, $cdn_deployment_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_deployment.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only cdn_deployment.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: cdn_deployment.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments); cdn_deployment.load.1 excluded (GET-only live run: reads a record only cdn_deployment.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -136,29 +85,11 @@ class CdnDeploymentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $cdn_deployment_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "cdn_id" => $setup["idmap"]["cdn01"],
-        ];
-
-        $cdn_deployment_ref01_list_result = $cdn_deployment_ref01_ent->list($cdn_deployment_ref01_match, null);
-        $this->assertIsArray($cdn_deployment_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($cdn_deployment_ref01_list_result),
-            ["id" => $cdn_deployment_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $cdn_deployment_ref01_match_dt0 = [
             "id" => $cdn_deployment_ref01_data["id"],
         ];
         $cdn_deployment_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
-        $cdn_deployment_ref01_match_dt0["cdn_id"] = $setup["idmap"]["cdn_id"] ?? $setup["idmap"]["cdn01"] ?? null;
         $cdn_deployment_ref01_data_dt0_loaded = $cdn_deployment_ref01_ent->load($cdn_deployment_ref01_match_dt0, null);
         $cdn_deployment_ref01_data_dt0_load_result = Helpers::to_map(is_object($cdn_deployment_ref01_data_dt0_loaded) && method_exists($cdn_deployment_ref01_data_dt0_loaded, 'data_get') ? $cdn_deployment_ref01_data_dt0_loaded->data_get() : $cdn_deployment_ref01_data_dt0_loaded);
         $this->assertNotNull($cdn_deployment_ref01_data_dt0_load_result);

@@ -6,8 +6,8 @@ main: kit: entity: metric_query: {
 
   name: "metric_query"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

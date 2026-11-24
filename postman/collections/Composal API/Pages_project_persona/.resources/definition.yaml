@@ -5,11 +5,21 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `active_count` | integer | yes |  |
-  | `credentials` | array | yes |  |
-  | `needs_attention_count` | integer | yes |  |
-  | `permissions` | object | yes |  |
-  | `persona_states` | object | yes |  |
-  | `personas` | array | yes |  |
-  | `project` | object | yes |  |
+  | `access_mode` | string | yes |  |
+  | `active_run_count` | integer | yes |  |
+  | `archived_at` | string | yes |  |
+  | `attention` | array | yes |  |
+  | `capabilities` | string | yes |  |
+  | `created_at` | string | yes |  |
+  | `credential` | any | yes |  |
+  | `credential_id` | string | yes |  |
+  | `goals` | string | yes |  |
+  | `health` | object | yes |  |
+  | `id` | string | yes |  |
+  | `lock_version` | integer | yes |  |
+  | `name` | string | yes |  |
+  | `project_id` | string | yes |  |
+  | `role` | string | yes |  |
+  | `scenario_count` | integer | yes |  |
+  | `updated_at` | string | yes |  |
 order: 374000

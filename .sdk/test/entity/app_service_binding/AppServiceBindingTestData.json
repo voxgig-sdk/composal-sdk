@@ -36,12 +36,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/service_bindings": {
+    "GET /api/v1/hosting/apps/{app_id}/service_bindings/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/service_bindings/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/service_bindings": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

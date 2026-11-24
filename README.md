@@ -137,22 +137,22 @@ network, and no credentials:
 // Shape: { entity: { <entity-name>: { <id>: <record> } } }
 const client = ComposalSDK.test({
   entity: {
-    agent_operation: {
-      test01: { id: 'test01', agent_id: 'example_agent_id', organization_id: 'example_organization_id', arguments: {} },
+    github_onboarding: {
+      test01: { id: 'test01' },
     },
   },
 })
-const agentoperation = await client.AgentOperation().load({ id: 'test01', agent_id: 'example_agent_id', organization_id: 'example_organization_id' })
-// agentoperation is the AgentOperation entity; .data() reads its mock record
-console.log(agentoperation.data())
+const githubonboarding = await client.GithubOnboarding().load({ organization_id: 'example_organization_id' })
+// githubonboarding is the GithubOnboarding entity; .data() reads its mock record
+console.log(githubonboarding.data())
 ```
 
 ### Python
 
 ```python
 client = ComposalSDK.test()
-agentoperation = client.AgentOperation().load({"id": "test01", "agent_id": "example", "organization_id": "example"})
-print(agentoperation.data_get())
+githubonboarding = client.GithubOnboarding().load({"organization_id": "example"})
+print(githubonboarding.data_get())
 ```
 
 ### PHP
@@ -160,17 +160,17 @@ print(agentoperation.data_get())
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = ComposalSDK::test([
-    "entity" => ["agent_operation" => ["test01" => ["id" => "test01"]]],
+    "entity" => ["github_onboarding" => ["test01" => []]],
 ]);
-$agentoperation = $client->AgentOperation()->load(["id" => "test01", "agent_id" => "example", "organization_id" => "example"]);
+$githubonboarding = $client->GithubOnboarding()->load(["organization_id" => "example"]);
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.AgentOperation(nil).Load(
-    map[string]any{"id": "test01", "agent_id": "example", "organization_id": "example"}, nil,
+result, err := client.GithubOnboarding(nil).Load(
+    map[string]any{"organization_id": "example"}, nil,
 )
 ```
 
@@ -179,16 +179,16 @@ result, err := client.AgentOperation(nil).Load(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = ComposalSDK.test({
-  "entity" => { "agent_operation" => { "test01" => { "id" => "test01" } } },
+  "entity" => { "github_onboarding" => { "test01" => {} } },
 })
-agentoperation = client.AgentOperation.load({ "id" => "test01", "agent_id" => "example", "organization_id" => "example" })
+githubonboarding = client.GithubOnboarding.load({ "organization_id" => "example" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:AgentOperation():load({ id = "test01", agent_id = "example", organization_id = "example" })
+local result, err = client:GithubOnboarding():load({ organization_id = "example" })
 ```
 
 ## Packages
@@ -265,7 +265,7 @@ The API exposes 555 entities:
 | Entity | Description | API path |
 | --- | --- | --- |
 | **A2aWellKnown** | The A2aWellKnown entity (load). | `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json` |
-| **AdminOrg** | The AdminOrg entity (create, list, load, update). | `/api/v1/admin/organizations` |
+| **AdminOrg** | The AdminOrg entity (create, load, update). | `/api/v1/admin/organizations/{org_slug}` |
 | **Agent** | A persistent agent: list, create, read or delete one, rename it, change who can see it, and read its conversation, usage and runtime (actions). | `/api/v1/organizations/{organization_id}/agents` |
 | **AgentApp** | The AgentApp entity (create, list, load). | `/api/v1/organizations/{organization_id}/agent_apps` |
 | **AgentAppInstall** | The AgentAppInstall entity (remove, update). | `/api/v1/organizations/{organization_id}/agent_apps/{id}/installs/{agent_id}` |
@@ -284,10 +284,10 @@ The API exposes 555 entities:
 | **AgentControlFlow** | The AgentControlFlow entity (create, list, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/control_flows` |
 | **AgentCoordination** | The AgentCoordination entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/stop` |
 | **AgentEmail** | The AgentEmail entity (load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}` |
-| **AgentEvent** | The AgentEvent entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/events` |
+| **AgentEvent** | The AgentEvent entity (load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/events` |
 | **AgentFile** | The AgentFile entity (load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/files/{file_id}` |
 | **AgentInput** | A message sent to an agent in a conversation. Accepting it starts a run; the reply arrives in the conversation. | `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs` |
-| **AgentIntegration** | The AgentIntegration entity (create, list, load, remove). | `/api/v1/organizations/{organization_id}/agent_integrations` |
+| **AgentIntegration** | The AgentIntegration entity (create, load, remove). | `/api/v1/organizations/{organization_id}/agent_integrations/{id}` |
 | **AgentIntegrationAccount** | The AgentIntegrationAccount entity (list). | `/api/v1/organizations/{organization_id}/agent_integrations/accounts` |
 | **AgentIntegrationCallback** | The AgentIntegrationCallback entity (load). | `/api/v1/agent_integration_callback` |
 | **AgentInteraction** | The AgentInteraction entity (create, list, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/interactions` |
@@ -303,34 +303,34 @@ The API exposes 555 entities:
 | **AgentQuestion** | The AgentQuestion entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/questions/{question_id}/answer` |
 | **AgentRelayFileGrant** | The AgentRelayFileGrant entity (create, list, load, remove). | `/api/v1/organizations/{organization_id}/agent_relay_file_grants` |
 | **AgentRelayFileGrantAccount** | The AgentRelayFileGrantAccount entity (list). | `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts` |
-| **AgentRepository** | The AgentRepository entity (list, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories` |
+| **AgentRepository** | The AgentRepository entity (load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories` |
 | **AgentResource** | The AgentResource entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources` |
 | **AgentRoder** | The AgentRoder entity (create, load). | `/api/v1/agent/roder/browser_authorization` |
 | **AgentRoutine** | An agent's scheduled routines and heartbeat: list them, or change one (pause or enable it). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/routines` |
 | **AgentRun** | One run of an agent's work, with its status. | `/api/v1/organizations/{organization_id}/agents/{id}/spark/runs/{run_id}` |
 | **AgentRuntime** | The AgentRuntime entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime/reset` |
 | **AgentSession** | The AgentSession entity (load). | `/api/v1/agent_sessions/{session_id}/transcript` |
-| **AgentSessionCheckpoint** | The AgentSessionCheckpoint entity (create, list, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints` |
+| **AgentSessionCheckpoint** | The AgentSessionCheckpoint entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}` |
 | **AgentSessionRoderHandoff** | The AgentSessionRoderHandoff entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs` |
-| **AgentSetting** | The AgentSetting entity (list, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/settings` |
+| **AgentSetting** | The AgentSetting entity (load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/settings` |
 | **AgentSharing** | The AgentSharing entity (load). | `/api/v1/organizations/{organization_id}/agents/{id}/sharing/review` |
 | **AgentSite** | The AgentSite entity (create, list, load). | `/api/v1/organizations/{organization_id}/agent_sites` |
-| **AgentSkill** | The AgentSkill entity (create, list, load, remove, update). | `/api/v1/organizations/{organization_id}/agent_skills` |
+| **AgentSkill** | The AgentSkill entity (create, load, remove, update). | `/api/v1/organizations/{organization_id}/agent_skills/{id}` |
 | **AgentSlack** | The AgentSlack entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/app` |
 | **AgentSubagent** | The AgentSubagent entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/subagents` |
-| **AgentSubscription** | The AgentSubscription entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions` |
+| **AgentSubscription** | The AgentSubscription entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions` |
 | **AgentSwarm** | The AgentSwarm entity (create, list, load, update). | `/api/v1/agent/swarms` |
 | **AgentTeammate** | The AgentTeammate entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/teammates` |
 | **AgentTerminal** | The AgentTerminal entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/connect` |
-| **AgentThread** | An agent's conversations: list or start one, or archive, compact or snooze it (actions). | `/api/v1/agent/threads` |
+| **AgentThread** | An agent's conversations: list or start one, or archive, compact or snooze it (actions). | `/api/v1/agent/threads/{id}` |
 | **AgentTool** | The AgentTool entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools` |
 | **AgentUsage** | The AgentUsage entity (load). | `/api/v1/organizations/{org_slug}/pages/agent_usage` |
 | **AgentVerifyProject** | The AgentVerifyProject entity (list, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects` |
 | **AgentWait** | The AgentWait entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop` |
-| **AgentWebPreview** | The AgentWebPreview entity (list). | `/api/v1/agent_web_previews` |
+| **AgentWebPreview** | The AgentWebPreview entity (load). | `/api/v1/agent_web_previews` |
 | **AgentWebhook** | The AgentWebhook entity (create, load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks/{endpoint_id}` |
 | **AgentWork** | The AgentWork entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/work/{work_id}/handled` |
-| **AgentWorkflow** | The AgentWorkflow entity (create, list, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` |
+| **AgentWorkflow** | The AgentWorkflow entity (create, load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` |
 | **AgentWorkflowProposal** | The AgentWorkflowProposal entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}` |
 | **AgentWorkflowRun** | The AgentWorkflowRun entity (create, list, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_runs` |
 | **AgentWorkflowTrigger** | The triggers that start an agent's workflows: list, read, change or remove one, or pause or resume it (actions). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_triggers` |
@@ -338,38 +338,38 @@ The API exposes 555 entities:
 | **AgentWritePermission** | The AgentWritePermission entity (list, remove). | `/api/v1/organizations/{organization_id}/agents/{id}/write_permissions` |
 | **Agreement** | The Agreement entity (list). | `/api/v1/organizations/{org_slug}/pages/agreements` |
 | **AgreementAccessRequest** | The AgreementAccessRequest entity (create). | `/api/v1/organizations/{organization_id}/agreement_access_request` |
-| **AlertRuleEvent** | The AlertRuleEvent entity (create, list, load, remove). | `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events` |
-| **AllocationLog** | The AllocationLog entity (list). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs` |
+| **AlertRuleEvent** | The AlertRuleEvent entity (create, load, remove). | `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}` |
+| **AllocationLog** | The AllocationLog entity (load). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs` |
 | **App** | An app hosted by Composal: list, create, read, change, activate, archive or delete one. | `/api/v1/hosting/apps` |
 | **AppAccess** | The AppAccess entity (load). | `/api/v1/app_access/callback` |
-| **AppAccessJwk** | The AppAccessJwk entity (list). | `/api/v1/app_access/jwks` |
-| **AppCdn** | The AppCdn entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/cdns` |
-| **AppConfigVariable** | The AppConfigVariable entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/config_variables` |
-| **AppDataResource** | The AppDataResource entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/data_resources` |
+| **AppAccessJwk** | The AppAccessJwk entity (load). | `/api/v1/app_access/jwks` |
+| **AppCdn** | The AppCdn entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/cdns/{id}` |
+| **AppConfigVariable** | The AppConfigVariable entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/config_variables/{id}` |
+| **AppDataResource** | The AppDataResource entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/data_resources/{id}` |
 | **AppDeploy** | The AppDeploy entity (create). | `/api/v1/hosting/apps/{app_id}/deploys` |
-| **AppDeployment** | A deployment of a hosted app: list, start, read or cancel one. | `/api/v1/hosting/apps/{app_id}/deployments` |
+| **AppDeployment** | A deployment of a hosted app: list, start, read or cancel one. | `/api/v1/hosting/apps/{app_id}/deployments/{id}` |
 | **AppDeploymentOperation** | The AppDeploymentOperation entity (create, list, load). | `/api/v1/hosting/apps/{app_id}/deployment_operations` |
 | **AppDeploymentRollback** | The AppDeploymentRollback entity (create). | `/api/v1/hosting/apps/{app_id}/deployment_rollbacks` |
-| **AppEnvironment** | A hosted app's environments: list, create, read, change, pause, resume, archive or remove one. | `/api/v1/hosting/apps/{app_id}/environments` |
+| **AppEnvironment** | A hosted app's environments: list, create, read, change, pause, resume, archive or remove one. | `/api/v1/hosting/apps/{app_id}/environments/{id}` |
 | **AppLocation** | The AppLocation entity (create, list, remove). | `/api/v1/hosting/apps/{app_id}/locations` |
 | **AppMetric** | The AppMetric entity (load). | `/api/v1/hosting/apps/{app_id}/metrics/query_range` |
-| **AppPreview** | The AppPreview entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/previews` |
-| **AppPreviewProfile** | The AppPreviewProfile entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/preview_profiles` |
-| **AppRun** | The AppRun entity (create, list, load). | `/api/v1/hosting/app_runs` |
+| **AppPreview** | The AppPreview entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/previews/{id}` |
+| **AppPreviewProfile** | The AppPreviewProfile entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/preview_profiles/{id}` |
+| **AppRun** | The AppRun entity (create, load). | `/api/v1/hosting/app_runs/{id}` |
 | **AppSecret** | The AppSecret entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/secrets` |
-| **AppService** | The AppService entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/services` |
-| **AppServiceBinding** | The AppServiceBinding entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/service_bindings` |
+| **AppService** | The AppService entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/services/{id}` |
+| **AppServiceBinding** | The AppServiceBinding entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/service_bindings/{id}` |
 | **AppServicePlacement** | The AppServicePlacement entity (list, load, update). | `/api/v1/hosting/apps/{app_id}/service_placements` |
-| **AppStorageResource** | The AppStorageResource entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/storage_resources` |
+| **AppStorageResource** | The AppStorageResource entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/storage_resources/{id}` |
 | **Artefact** | The Artefact entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/artefacts` |
 | **ArtefactCommentThread** | The ArtefactCommentThread entity (create, list, update). | `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/comment_threads` |
 | **ArtefactRevision** | The ArtefactRevision entity (create). | `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/revisions` |
 | **ArtefactViewToken** | The ArtefactViewToken entity (create). | `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view_tokens` |
-| **Artifact** | The Artifact entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/artifacts` |
-| **ArtifactCacheNamespace** | The ArtifactCacheNamespace entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/cache_namespaces` |
-| **ArtifactImageRepository** | The ArtifactImageRepository entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/image_repositories` |
-| **ArtifactPackageMirror** | The ArtifactPackageMirror entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/package_mirrors` |
-| **ArtifactRetentionPolicy** | The ArtifactRetentionPolicy entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/retention_policies` |
+| **Artifact** | The Artifact entity (create, load, patch, remove, update). | `/api/v1/artifacts/artifacts/{id}` |
+| **ArtifactCacheNamespace** | The ArtifactCacheNamespace entity (create, load, patch, remove, update). | `/api/v1/artifacts/cache_namespaces/{id}` |
+| **ArtifactImageRepository** | The ArtifactImageRepository entity (create, load, patch, remove, update). | `/api/v1/artifacts/image_repositories/{id}` |
+| **ArtifactPackageMirror** | The ArtifactPackageMirror entity (create, load, patch, remove, update). | `/api/v1/artifacts/package_mirrors/{id}` |
+| **ArtifactRetentionPolicy** | The ArtifactRetentionPolicy entity (create, load, patch, remove, update). | `/api/v1/artifacts/retention_policies/{id}` |
 | **AttachmentPart** | The AttachmentPart entity (update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}` |
 | **AuditEvent** | The AuditEvent entity (list). | `/api/v1/organizations/{organization_id}/audit_events` |
 | **Auth** | The Auth entity (create, load, remove). | `/api/v1/auth/csrf` |
@@ -378,13 +378,13 @@ The API exposes 555 entities:
 | **AuthGoogle** | The AuthGoogle entity (load). | `/api/v1/auth/google/start` |
 | **AuthOpenai** | The AuthOpenai entity (load). | `/api/v1/auth/openai/callback` |
 | **AuthPasswordReset** | The AuthPasswordReset entity (create, update). | `/api/v1/auth/password_resets` |
-| **AuthRegistrationOption** | The AuthRegistrationOption entity (list). | `/api/v1/auth/registration_options` |
+| **AuthRegistrationOption** | The AuthRegistrationOption entity (load). | `/api/v1/auth/registration_options` |
 | **AutomationEvent** | The AutomationEvent entity (update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/events` |
 | **AutomationRun** | The AutomationRun entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs` |
-| **BackendRunnerPool** | The BackendRunnerPool entity (create, list, remove). | `/api/v1/bazel/backends/{backend_id}/runner_pools` |
+| **BackendRunnerPool** | The BackendRunnerPool entity (create, load, remove). | `/api/v1/bazel/backends/{backend_id}/runner_pools` |
 | **Bazel** | The Bazel entity (create). | `/api/v1/bazel/authorize` |
 | **BazelActionResult** | The BazelActionResult entity (load, update). | `/api/v1/bazel/action_results/{hash}/{size_bytes}` |
-| **BazelBackend** | The BazelBackend entity (create, list, load, patch, remove, update). | `/api/v1/bazel/backends` |
+| **BazelBackend** | The BazelBackend entity (create, load, patch, remove, update). | `/api/v1/bazel/backends/{id}` |
 | **BazelBlob** | The BazelBlob entity (load, update). | `/api/v1/bazel/blobs/{kind}/{hash}/{size_bytes}` |
 | **BazelExecution** | The BazelExecution entity (create, load). | `/api/v1/bazel/executions/{id}` |
 | **BazelFindMissingBlob** | The BazelFindMissingBlob entity (create). | `/api/v1/bazel/find_missing_blobs` |
@@ -414,13 +414,13 @@ The API exposes 555 entities:
 | **BrowserSessionRecording** | The BrowserSessionRecording entity (create). | `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings` |
 | **BrowserSessionScreenshot** | The BrowserSessionScreenshot entity (create). | `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/screenshots` |
 | **BrowserSessionTask** | The BrowserSessionTask entity (create, load). | `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}` |
-| **CacheNamespaceEntry** | The CacheNamespaceEntry entity (create, list, load, patch, remove, update). | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries` |
+| **CacheNamespaceEntry** | The CacheNamespaceEntry entity (create, load, patch, remove, update). | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` |
 | **CatalogSelector** | The CatalogSelector entity (list). | `/api/v1/hosting/apps/{app_id}/catalog/selectors` |
-| **CdnDeployment** | The CdnDeployment entity (create, list, load). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments` |
-| **CdnHostname** | The CdnHostname entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames` |
-| **CdnSpace** | A CDN storage space and its objects. | `/api/v1/organizations/{org_slug}/cdn_spaces` |
-| **CdnSpaceObject** | The CdnSpaceObject entity (list, load, remove, update). | `/api/v1/cdn_spaces/{cdn_space_id}/objects` |
-| **Change** | The Change entity (list). | `/api/v1/organizations/{org_slug}/changes` |
+| **CdnDeployment** | The CdnDeployment entity (create, load). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}` |
+| **CdnHostname** | The CdnHostname entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` |
+| **CdnSpace** | A CDN storage space and its objects. | `/api/v1/cdn_spaces/{id}` |
+| **CdnSpaceObject** | The CdnSpaceObject entity (load, remove, update). | `/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}` |
+| **Change** | The Change entity (load). | `/api/v1/organizations/{org_slug}/changes` |
 | **ChangeAsset** | The ChangeAsset entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets` |
 | **ChangeComment** | The ChangeComment entity (create, list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments` |
 | **ChangeFileReviewCheckpoint** | The ChangeFileReviewCheckpoint entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/file_review_checkpoints` |
@@ -438,11 +438,11 @@ The API exposes 555 entities:
 | **CheckpointPrepareChunk** | The CheckpointPrepareChunk entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks` |
 | **CiNode** | The CiNode entity (create, load). | `/api/v1/ci/nodes/{id}` |
 | **CiPipeline** | The CiPipeline entity (create, list, load). | `/api/v1/ci/pipelines` |
-| **CiPipelineRun** | The CiPipelineRun entity (create, list, load). | `/api/v1/ci/pipelines/{pipeline_id}/runs` |
+| **CiPipelineRun** | The CiPipelineRun entity (create, load). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}` |
 | **CiRunnerPool** | The CiRunnerPool entity (create, list, load, patch, update). | `/api/v1/ci/runner_pools` |
 | **CiStatus** | The CiStatus entity (load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref` |
 | **CliEvent** | The CliEvent entity (create). | `/api/v1/cli_events` |
-| **CliRelease** | The CliRelease entity (create, list, load). | `/api/v1/cli_releases` |
+| **CliRelease** | The CliRelease entity (create, load). | `/api/v1/cli_releases` |
 | **CloudWorkspaceBackupObject** | The CloudWorkspaceBackupObject entity (load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}` |
 | **CodeRuleEvaluation** | The CodeRuleEvaluation entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations` |
 | **ComSiteAccess** | The ComSiteAccess entity (create, load). | `/api/v1/com_site_access/start` |
@@ -457,16 +457,16 @@ The API exposes 555 entities:
 | **CoordinationWait** | The CoordinationWait entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/waits` |
 | **CredentialSignInCheck** | The CredentialSignInCheck entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{credential_id}/sign_in_checks` |
 | **DataResourceRotateCredential** | The DataResourceRotateCredential entity (create). | `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials` |
-| **DeepScan** | The DeepScan entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/deep_scans` |
+| **DeepScan** | The DeepScan entity (create, load). | `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}` |
 | **DeepScanFinding** | The DeepScanFinding entity (list). | `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings` |
 | **DeepScanFlow** | The DeepScanFlow entity (create). | `/api/v1/organizations/{organization_id}/verify/deep_scans/flows` |
-| **DeepScanMappedFlow** | The DeepScanMappedFlow entity (list). | `/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` |
+| **DeepScanMappedFlow** | The DeepScanMappedFlow entity (load). | `/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` |
 | **DeepScanOption** | The DeepScanOption entity (list). | `/api/v1/organizations/{organization_id}/verify/deep_scans/options` |
 | **DemoShare** | The DemoShare entity (load). | `/api/v1/verify/demo_shares/{token}` |
 | **DemoShareSegment** | The DemoShareSegment entity (load). | `/api/v1/verify/demo_shares/{token}/segments/{segment_id}` |
 | **Deployment** | The Deployment entity (load). | `/api/v1/organizations/{org_slug}/pages/deployments/{deployment_id}` |
 | **DeploymentDashboardNomad** | The DeploymentDashboardNomad entity (load). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation` |
-| **DeploymentDetail** | The DeploymentDetail entity (list). | `/api/v1/organizations/{org_slug}/pages/deployments/details` |
+| **DeploymentDetail** | The DeploymentDetail entity (load). | `/api/v1/organizations/{org_slug}/pages/deployments/details` |
 | **DeploymentFile** | The DeploymentFile entity (update). | `/api/v1/static_sites/{static_site_id}/deployments/{id}/files` |
 | **DeploymentLog** | The DeploymentLog entity (list). | `/api/v1/organizations/{org_slug}/pages/deployments/logs` |
 | **DeploymentMetric** | The DeploymentMetric entity (list). | `/api/v1/organizations/{org_slug}/pages/deployments/metrics` |
@@ -478,7 +478,7 @@ The API exposes 555 entities:
 | **DeviceBrowserOperation** | The DeviceBrowserOperation entity (create, list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/browser_operations` |
 | **DeviceControlMessage** | The DeviceControlMessage entity (list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_messages` |
 | **DeviceControlOperation** | The DeviceControlOperation entity (create, load). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` |
-| **DeviceEnterpriseRelay** | The DeviceEnterpriseRelay entity (list). | `/api/v1/spark/devices/enterprise_relays` |
+| **DeviceEnterpriseRelay** | The DeviceEnterpriseRelay entity (load). | `/api/v1/spark/devices/enterprise_relays` |
 | **DeviceFolderListing** | The DeviceFolderListing entity (create, load). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings/{id}` |
 | **DeviceGrant** | The DeviceGrant entity (create, list). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants` |
 | **DeviceInvocation** | The DeviceInvocation entity (create). | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/challenge` |
@@ -494,17 +494,17 @@ The API exposes 555 entities:
 | **Dream** | The Dream entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/dreams` |
 | **Edge** | The Edge entity (load). | `/api/v1/edge/tls-check` |
 | **EmailVerification** | The EmailVerification entity (create). | `/api/v1/email_verifications/resend` |
-| **Environment** | The Environment entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verify/environments` |
+| **Environment** | The Environment entity (create, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verify/environments/{id}` |
 | **EnvironmentDiscoveryRun** | The EnvironmentDiscoveryRun entity (create, load). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}` |
 | **EnvironmentExploration** | The EnvironmentExploration entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{environment_id}/explorations` |
 | **EnvironmentFirstRun** | The EnvironmentFirstRun entity (create). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run/start` |
 | **EnvironmentRevision** | The EnvironmentRevision entity (create, load, update). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}` |
-| **EnvironmentSecretBinding** | The EnvironmentSecretBinding entity (create, list, remove). | `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` |
+| **EnvironmentSecretBinding** | The EnvironmentSecretBinding entity (create, load, remove). | `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` |
 | **EnvironmentTestAccount** | The EnvironmentTestAccount entity (list, patch, update). | `/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts` |
 | **Evidence** | The Evidence entity (load). | `/api/v1/organizations/{organization_id}/verify/evidence/{id}` |
-| **ExecutionDesiredState** | The ExecutionDesiredState entity (create, list, load, patch, remove, update). | `/api/v1/execution/desired_states` |
-| **ExecutionReconcilerTick** | The ExecutionReconcilerTick entity (create, list, load). | `/api/v1/execution/reconciler_ticks` |
-| **ExecutionRelease** | The ExecutionRelease entity (create, list, load). | `/api/v1/execution/releases` |
+| **ExecutionDesiredState** | The ExecutionDesiredState entity (create, load, patch, remove, update). | `/api/v1/execution/desired_states/{id}` |
+| **ExecutionReconcilerTick** | The ExecutionReconcilerTick entity (create, load). | `/api/v1/execution/reconciler_ticks/{id}` |
+| **ExecutionRelease** | The ExecutionRelease entity (create, load). | `/api/v1/execution/releases/{id}` |
 | **ExecutionRuntimeInstance** | The ExecutionRuntimeInstance entity (create, list, load, patch, remove, update). | `/api/v1/execution/runtime_instances` |
 | **Exploration** | An exploration in which browser agents map an app before scenarios exist: start, follow, stop or read its report. | `/api/v1/organizations/{organization_id}/verify/explorations` |
 | **ExplorationMessage** | The ExplorationMessage entity (create). | `/api/v1/organizations/{organization_id}/verify/explorations/{id}/messages` |
@@ -521,7 +521,7 @@ The API exposes 555 entities:
 | **GithubAppUserAuthorization** | The GithubAppUserAuthorization entity (create). | `/api/v1/github_app/user_authorizations` |
 | **GithubCiRepository** | The GithubCiRepository entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/github_ci_repositories` |
 | **GithubCiRepositoryCompatibilityReport** | The GithubCiRepositoryCompatibilityReport entity (list, load). | `/api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports` |
-| **GithubConnection** | The GithubConnection entity (create, list). | `/api/v1/organizations/{organization_id}/verify/github_connections` |
+| **GithubConnection** | The GithubConnection entity (create, load). | `/api/v1/organizations/{organization_id}/verify/github_connections` |
 | **GithubIntegration** | The GithubIntegration entity (list, load). | `/api/v1/organizations/{org_slug}/pages/github_integrations` |
 | **GithubOnboarding** | The GithubOnboarding entity (load). | `/api/v1/organizations/{organization_id}/github_onboarding` |
 | **GithubOnboardingBranch** | The GithubOnboardingBranch entity (list). | `/api/v1/organizations/{organization_id}/github_onboarding/branches` |
@@ -541,18 +541,18 @@ The API exposes 555 entities:
 | **GitlabImport** | The GitlabImport entity (create). | `/api/v1/organizations/{org_slug}/gitlab/imports` |
 | **GitlabOauth** | The GitlabOauth entity (load). | `/api/v1/gitlab/oauth/callback` |
 | **GrantAllAgent** | The GrantAllAgent entity (create). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/all_agents` |
-| **HostingAppDomain** | The HostingAppDomain entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/domains` |
+| **HostingAppDomain** | The HostingAppDomain entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/domains/{id}` |
 | **IdentityOrganization** | The IdentityOrganization entity (load). | `/api/v1/identity/organizations/{organization_id}/catalog` |
 | **ImageRepository** | A container image repository in the organization's registry: list or create one. | `/api/v1/organizations/{org_slug}/image_repositories` |
 | **ImageRepositoryTag** | The ImageRepositoryTag entity (list). | `/api/v1/artifacts/image_repositories/{id}/tags` |
 | **ImportBranchPolicy** | The ImportBranchPolicy entity (load, patch, update). | `/api/v1/organizations/{organization_id}/import_branch_policy` |
-| **Integration** | The Integration entity (list). | `/api/v1/organizations/{organization_id}/verification/integrations` |
+| **Integration** | The Integration entity (load). | `/api/v1/organizations/{organization_id}/verification/integrations` |
 | **InteractionResponse** | The InteractionResponse entity (create). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/responses` |
 | **Invitation** | Invitations to join an organization: list, send or withdraw one. | `/api/v1/organizations/{organization_id}/invitations` |
 | **InvocationControl** | The InvocationControl entity (create). | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/invocations/control/challenge` |
 | **JobLogChunk** | The JobLogChunk entity (create, list). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks` |
-| **JobStep** | The JobStep entity (create, list, patch, update). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps` |
-| **JobWorkspace** | The JobWorkspace entity (create, list, patch, update). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces` |
+| **JobStep** | The JobStep entity (create, load, patch, update). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps` |
+| **JobWorkspace** | The JobWorkspace entity (create, load, patch, update). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces` |
 | **JourneyVariantReplay** | The JourneyVariantReplay entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays` |
 | **Knowledge** | The Knowledge entity (create, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verify/knowledge/{id}` |
 | **Known** | The Known entity (load). | `/.well-known/agent-card.json` |
@@ -570,9 +570,9 @@ The API exposes 555 entities:
 | **LocalThreadDelivery** | The LocalThreadDelivery entity (load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}` |
 | **LocalThreadOperation** | The LocalThreadOperation entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/operations/{operation_id}` |
 | **Location** | The Location entity (list). | `/api/v1/hosting/locations` |
-| **LogStreamChunk** | The LogStreamChunk entity (create, list, load). | `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks` |
+| **LogStreamChunk** | The LogStreamChunk entity (create, load). | `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}` |
 | **LogoImage** | The LogoImage entity (remove, update). | `/api/v1/organizations/{organization_id}/logo_image` |
-| **MarketingSetting** | The MarketingSetting entity (list). | `/api/v1/marketing_settings` |
+| **MarketingSetting** | The MarketingSetting entity (load). | `/api/v1/marketing_settings` |
 | **McpOauth** | The McpOauth entity (create, load). | `/api/v1/mcp/oauth/consent` |
 | **Me** | The calling user: read or change the profile, choose the active organization, or request account deletion (actions). | `/api/v1/me` |
 | **MeEmail** | The MeEmail entity (create, list, patch, remove, update). | `/api/v1/me/emails` |
@@ -585,46 +585,46 @@ The API exposes 555 entities:
 | **MergeResolution** | The MergeResolution entity (create). | `/api/v1/merge_resolutions` |
 | **MessagingConversationMessage** | The MessagingConversationMessage entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages` |
 | **MessagingConversationUpload** | The MessagingConversationUpload entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads` |
-| **MetricQuery** | The MetricQuery entity (list). | `/api/v1/hosting/metrics/queries` |
+| **MetricQuery** | The MetricQuery entity (load). | `/api/v1/hosting/metrics/queries` |
 | **MetronomeWebhook** | The MetronomeWebhook entity (create). | `/api/v1/metronome/webhooks` |
 | **ModelSubscriptionAccount** | The ModelSubscriptionAccount entity (create, list, patch, remove, update). | `/api/v1/model_subscription_accounts` |
 | **ModelSubscriptionAccountConnection** | The ModelSubscriptionAccountConnection entity (load, update). | `/api/v1/model_subscription_accounts/connection/{agent_id}` |
 | **NetworkConnection** | The NetworkConnection entity (create, patch, update). | `/api/v1/organizations/{organization_id}/verify/network_connections` |
-| **NetworkingSpace** | The NetworkingSpace entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces` |
+| **NetworkingSpace** | The NetworkingSpace entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{id}` |
 | **Node** | The Node entity (list). | `/api/v1/organizations/{organization_id}/pages/nodes` |
 | **NodeCertificate** | The NodeCertificate entity (create). | `/api/v1/ci/nodes/{id}/certificate/rotate` |
-| **NodeLease** | The NodeLease entity (create, list, load). | `/api/v1/ci/nodes/{id}/leases` |
+| **NodeLease** | The NodeLease entity (create, load). | `/api/v1/ci/nodes/{id}/leases` |
 | **NomadAllocation** | The NomadAllocation entity (load). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}` |
-| **NomadLog** | The NomadLog entity (list). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs` |
+| **NomadLog** | The NomadLog entity (load). | `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs` |
 | **Now** | The Now entity (load). | `/api/v1/organizations/{org_slug}/pages/now` |
-| **ObservabilityClickhouseCluster** | The ObservabilityClickhouseCluster entity (create, list, load, patch, remove, update). | `/api/v1/observability/clickhouse_clusters` |
-| **ObservabilityQuickwitCluster** | The ObservabilityQuickwitCluster entity (create, list, load, patch, remove, update). | `/api/v1/observability/quickwit_clusters` |
-| **ObservabilitySpace** | The ObservabilitySpace entity (create, list, load, patch, remove, update). | `/api/v1/observability/spaces` |
+| **ObservabilityClickhouseCluster** | The ObservabilityClickhouseCluster entity (create, load, patch, remove, update). | `/api/v1/observability/clickhouse_clusters/{id}` |
+| **ObservabilityQuickwitCluster** | The ObservabilityQuickwitCluster entity (create, load, patch, remove, update). | `/api/v1/observability/quickwit_clusters/{id}` |
+| **ObservabilitySpace** | The ObservabilitySpace entity (create, load, patch, remove, update). | `/api/v1/observability/spaces/{id}` |
 | **Openapi** | The Openapi entity (load). | `/api/v1/openapi` |
 | **OrgInvitation** | The OrgInvitation entity (create, load). | `/api/v1/org_invitations/{token}` |
 | **Organization** | An organization the user belongs to: list, create, read or change one. | `/api/v1/organizations` |
-| **OrganizationApp** | The OrganizationApp entity (list, remove, update). | `/api/v1/spark/organizations/{organization_id}/apps` |
+| **OrganizationApp** | The OrganizationApp entity (load, remove, update). | `/api/v1/spark/organizations/{organization_id}/apps` |
 | **OrganizationControl** | The OrganizationControl entity (create). | `/api/v1/spark/organizations/{organization_id}/control/admission` |
 | **OrganizationDevice** | The OrganizationDevice entity (create). | `/api/v1/device_runtime/organizations/{organization_id}/devices/{device_id}/control` |
-| **OrganizationIdentityCertificate** | The OrganizationIdentityCertificate entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/identity_certificates` |
+| **OrganizationIdentityCertificate** | The OrganizationIdentityCertificate entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}` |
 | **OrganizationInteraction** | The OrganizationInteraction entity (create). | `/api/v1/spark/organizations/{organization_id}/interactions` |
 | **OrganizationInvitation** | The OrganizationInvitation entity (create, remove). | `/api/v1/admin/organizations/{org_slug}/invitations` |
 | **OrganizationMessageFile** | The OrganizationMessageFile entity (create). | `/api/v1/spark/organizations/{organization_id}/message_files` |
-| **OrganizationOidcTrust** | The OrganizationOidcTrust entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/oidc_trusts` |
+| **OrganizationOidcTrust** | The OrganizationOidcTrust entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}` |
 | **OrganizationRunEvent** | The OrganizationRunEvent entity (create). | `/api/v1/spark/organizations/{organization_id}/run_events` |
 | **OrganizationRunOutcome** | The OrganizationRunOutcome entity (create). | `/api/v1/spark/organizations/{organization_id}/run_outcomes` |
 | **OrganizationRunUsage** | The OrganizationRunUsage entity (create). | `/api/v1/spark/organizations/{organization_id}/run_usages` |
 | **OrganizationSandbox** | The OrganizationSandbox entity (create). | `/api/v1/spark/organizations/{organization_id}/sandbox/automation-cleanup` |
 | **OrganizationSecret** | The OrganizationSecret entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/secrets` |
-| **OrganizationServiceAccount** | The OrganizationServiceAccount entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/service_accounts` |
+| **OrganizationServiceAccount** | The OrganizationServiceAccount entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}` |
 | **OrganizationSetting** | The OrganizationSetting entity (update). | `/api/v1/admin/organizations/{org_slug}/settings` |
-| **OrganizationSite** | The OrganizationSite entity (create, list, remove, update). | `/api/v1/spark/organizations/{organization_id}/sites` |
+| **OrganizationSite** | The OrganizationSite entity (create, load, remove, update). | `/api/v1/spark/organizations/{organization_id}/sites` |
 | **OrganizationSubscription** | The OrganizationSubscription entity (create). | `/api/v1/spark/organizations/{organization_id}/subscriptions/selection` |
 | **OrganizationTool** | The OrganizationTool entity (create). | `/api/v1/spark/organizations/{organization_id}/tools` |
-| **OrganizationWorkloadIdentity** | The OrganizationWorkloadIdentity entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/workload_identities` |
+| **OrganizationWorkloadIdentity** | The OrganizationWorkloadIdentity entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}` |
 | **OtelIngest** | The OtelIngest entity (create). | `/api/v1/otel_ingest/authorize` |
 | **Page** | The Page entity (load). | `/api/v1/organizations/{organization_id}/verify/page` |
-| **PageAgent** | The PageAgent entity (create, list, load). | `/api/v1/organizations/{organization_id}/agents/page` |
+| **PageAgent** | The PageAgent entity (create, load). | `/api/v1/organizations/{organization_id}/agents/page` |
 | **PageArtefact** | The PageArtefact entity (list, load). | `/api/v1/organizations/{organization_id}/artefacts/page` |
 | **PageCiPipelineRun** | The PageCiPipelineRun entity (load). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/page` |
 | **PageProjectRun** | The PageProjectRun entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page` |
@@ -638,15 +638,15 @@ The API exposes 555 entities:
 | **PagesProjectScenario** | The PagesProjectScenario entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios` |
 | **PagesRegistry** | The PagesRegistry entity (load). | `/api/v1/organizations/{org_slug}/pages/registry` |
 | **PagesSession** | The PagesSession entity (create, list, load). | `/api/v1/organizations/{org_slug}/pages/sessions` |
-| **Pairing** | The Pairing entity (create, list, load). | `/api/v1/relay/pairings` |
-| **PairingEvent** | The PairingEvent entity (list). | `/api/v1/relay/pairings/{id}/events` |
+| **Pairing** | The Pairing entity (create, load). | `/api/v1/relay/pairings/{id}` |
+| **PairingEvent** | The PairingEvent entity (load). | `/api/v1/relay/pairings/{id}/events` |
 | **ParallelV1** | The ParallelV1 entity (create). | `/api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract` |
 | **PatchsetDiff** | The PatchsetDiff entity (load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}` |
 | **PersonalAccessToken** | The calling user's personal access tokens: list, create or revoke one. | `/api/v1/personal_access_tokens` |
-| **PreviewOperation** | The PreviewOperation entity (list). | `/api/v1/hosting/apps/{app_id}/previews/{id}/operations` |
-| **PreviewProfileSecretBinding** | The PreviewProfileSecretBinding entity (create, list, remove). | `/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings` |
+| **PreviewOperation** | The PreviewOperation entity (load). | `/api/v1/hosting/apps/{app_id}/previews/{id}/operations` |
+| **PreviewProfileSecretBinding** | The PreviewProfileSecretBinding entity (create, load, remove). | `/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings` |
 | **PreviewSecret** | The PreviewSecret entity (create, remove). | `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets` |
-| **PreviewSharingApproval** | The PreviewSharingApproval entity (create, list). | `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals` |
+| **PreviewSharingApproval** | The PreviewSharingApproval entity (create, load). | `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals` |
 | **ProactiveAgentWaitlistEntry** | The ProactiveAgentWaitlistEntry entity (create, load). | `/api/v1/proactive_agent_waitlist_entries/{referral_code}` |
 | **Product** | The Product entity (create). | `/api/v1/organizations/{organization_id}/products` |
 | **ProductMapIdentityDecision** | The ProductMapIdentityDecision entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/identity_decisions` |
@@ -669,13 +669,13 @@ The API exposes 555 entities:
 | **ProjectRecording** | The ProjectRecording entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}` |
 | **ProjectRunPlan** | The ProjectRunPlan entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans` |
 | **ProjectRunSchedule** | The ProjectRunSchedule entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules` |
-| **ProjectScenarioOption** | The ProjectScenarioOption entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` |
+| **ProjectScenarioOption** | The ProjectScenarioOption entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` |
 | **ProjectScenarioRow** | The ProjectScenarioRow entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows` |
-| **ProjectSetting** | The ProjectSetting entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` |
+| **ProjectSetting** | The ProjectSetting entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` |
 | **PullRequest** | The PullRequest entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verify/pull_requests/{id}` |
 | **PullRequestAction** | The PullRequestAction entity (create). | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/actions` |
 | **PullRequestMagicMerge** | The PullRequestMagicMerge entity (create). | `/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/merge` |
-| **PullRequestSetting** | The PullRequestSetting entity (create, list). | `/api/v1/organizations/{organization_id}/verify/pull_request_settings` |
+| **PullRequestSetting** | The PullRequestSetting entity (create, load). | `/api/v1/organizations/{organization_id}/verify/pull_request_settings` |
 | **PullRequestSettingAddRepository** | The PullRequestSettingAddRepository entity (create). | `/api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories` |
 | **PullRequestSettingDetectComment** | The PullRequestSettingDetectComment entity (create). | `/api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments` |
 | **PullRequestTranscript** | The PullRequestTranscript entity (list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts` |
@@ -686,15 +686,15 @@ The API exposes 555 entities:
 | **RelayAgentConnection** | The RelayAgentConnection entity (create, list, load, remove, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/connections` |
 | **RelayAgentLocalThread** | The RelayAgentLocalThread entity (remove). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/relay` |
 | **RelaySignal** | The RelaySignal entity (create). | `/api/v1/relay/signals` |
-| **ReleaseRollout** | The ReleaseRollout entity (create, list, load). | `/api/v1/execution/releases/{release_id}/rollouts` |
+| **ReleaseRollout** | The ReleaseRollout entity (create, load). | `/api/v1/execution/releases/{release_id}/rollouts/{id}` |
 | **Repo** | The Repo entity (list, load, remove). | `/api/v1/organizations/{org_slug}/repos` |
 | **RepoAccessToken** | The RepoAccessToken entity (create, list, remove). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/access_tokens` |
 | **RepoAction** | The RepoAction entity (list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/actions` |
 | **RepoAgentCheckpoint** | The RepoAgentCheckpoint entity (load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}` |
-| **RepoAgentSession** | The RepoAgentSession entity (create, list, load, patch, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions` |
+| **RepoAgentSession** | The RepoAgentSession entity (create, load, patch, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}` |
 | **RepoBookmarkProtection** | The RepoBookmarkProtection entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections` |
 | **RepoBookmarkProtectionEvent** | The RepoBookmarkProtectionEvent entity (list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events` |
-| **RepoCloudWorkspaceBackup** | The RepoCloudWorkspaceBackup entity (create, list, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups` |
+| **RepoCloudWorkspaceBackup** | The RepoCloudWorkspaceBackup entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}` |
 | **RepoCodeRule** | The RepoCodeRule entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules` |
 | **RepoSetting** | The RepoSetting entity (list, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings` |
 | **RepoStat** | The RepoStat entity (create, list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats` |
@@ -710,67 +710,67 @@ The API exposes 555 entities:
 | **RepositoryImportSessionRepository** | The RepositoryImportSessionRepository entity (list). | `/api/v1/repository_import_sessions/{id}/repositories` |
 | **RepositoryImportSessionSelection** | The RepositoryImportSessionSelection entity (create). | `/api/v1/repository_import_sessions/{id}/selections` |
 | **RepositorySandboxEnvironment** | The RepositorySandboxEnvironment entity (create, load). | `/api/v1/repositories/{repository}/sandbox_environments/{profile}` |
-| **RoderCodeRepair** | The RoderCodeRepair entity (create, list, load). | `/api/v1/agent/roder/code_repairs` |
-| **RoderCodeRepairSetting** | The RoderCodeRepairSetting entity (create, list). | `/api/v1/agent/roder/code_repair_settings` |
+| **RoderCodeRepair** | The RoderCodeRepair entity (create, load). | `/api/v1/agent/roder/code_repairs/{id}` |
+| **RoderCodeRepairSetting** | The RoderCodeRepairSetting entity (create, load). | `/api/v1/agent/roder/code_repair_settings` |
 | **RoderMachine** | The RoderMachine entity (update). | `/api/v1/agent/roder/machines/{public_id}` |
 | **RoderRun** | The RoderRun entity (create). | `/api/v1/agent/roder/run/swarm_activity` |
 | **RoderWorkspaceCredential** | The RoderWorkspaceCredential entity (create). | `/api/v1/agent/roder/workspace_credentials` |
-| **RunArtifact** | The RunArtifact entity (create, list). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts` |
-| **RunJob** | The RunJob entity (create, list, load). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs` |
+| **RunArtifact** | The RunArtifact entity (create, load). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts` |
+| **RunJob** | The RunJob entity (create, load). | `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{id}` |
 | **RunScenarioRun** | The RunScenarioRun entity (load, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame` |
 | **RunScheduleOption** | The RunScheduleOption entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options` |
 | **RunSearch** | The RunSearch entity (load). | `/api/v1/organizations/{organization_id}/verify/run_search` |
 | **RunUpdate** | The RunUpdate entity (list). | `/api/v1/organizations/{organization_id}/verify/run_updates` |
 | **RunWorkspaceCredential** | The RunWorkspaceCredential entity (create). | `/api/v1/agent/roder/run/workspace_credentials` |
-| **RunnerLease** | The RunnerLease entity (create, list). | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` |
+| **RunnerLease** | The RunnerLease entity (create, load). | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` |
 | **RunnerPoolNodeEnrollmentToken** | The RunnerPoolNodeEnrollmentToken entity (create, list). | `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens` |
-| **RunnerPoolRunner** | The RunnerPoolRunner entity (create, list, load, patch, update). | `/api/v1/ci/runner_pools/{runner_pool_id}/runners` |
-| **RuntimeInstanceHealthSnapshot** | The RuntimeInstanceHealthSnapshot entity (create, list). | `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots` |
-| **SandboxIntegration** | The SandboxIntegration entity (create, list, patch, update). | `/api/v1/organizations/{organization_id}/sandbox_integrations` |
+| **RunnerPoolRunner** | The RunnerPoolRunner entity (create, load, patch, update). | `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}` |
+| **RuntimeInstanceHealthSnapshot** | The RuntimeInstanceHealthSnapshot entity (create, load). | `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots` |
+| **SandboxIntegration** | The SandboxIntegration entity (create, load, patch, update). | `/api/v1/organizations/{organization_id}/sandbox_integrations` |
 | **ScenarioRevision** | The ScenarioRevision entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions` |
 | **ScenarioRunLesson** | The ScenarioRunLesson entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/lessons` |
 | **ScenarioRunScenarioEdit** | The ScenarioRunScenarioEdit entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run` |
-| **SecretGrant** | The SecretGrant entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants` |
-| **SecretVersion** | The SecretVersion entity (create, list, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions` |
-| **ServiceEndpoint** | The ServiceEndpoint entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints` |
-| **Setting** | The Setting entity (list). | `/api/v1/organizations/{org_slug}/pages/settings` |
+| **SecretGrant** | The SecretGrant entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}` |
+| **SecretVersion** | The SecretVersion entity (create, load, patch, remove, update). | `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}` |
+| **ServiceEndpoint** | The ServiceEndpoint entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}` |
+| **Setting** | The Setting entity (load). | `/api/v1/organizations/{org_slug}/pages/settings` |
 | **SettingMutationLease** | The SettingMutationLease entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear` |
 | **Signal** | The Signal entity (create, list, load). | `/api/v1/organizations/{organization_id}/signals` |
 | **SignalInbound** | The SignalInbound entity (update). | `/api/v1/signals/inbound/{provider}/{inbound_token}` |
 | **SignalIntegration** | The SignalIntegration entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/signal_integrations` |
 | **SignalIntegrationDelivery** | The SignalIntegrationDelivery entity (list). | `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/deliveries` |
 | **SignalIntegrationTarget** | The SignalIntegrationTarget entity (list, update). | `/api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets` |
-| **SignalSubscription** | The SignalSubscription entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/signal_subscriptions` |
+| **SignalSubscription** | The SignalSubscription entity (create, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/signal_subscriptions/{id}` |
 | **Site** | The Site entity (list). | `/api/v1/organizations/{org_slug}/pages/sites` |
-| **SiteAccessKey** | The SiteAccessKey entity (create, list, remove). | `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys` |
+| **SiteAccessKey** | The SiteAccessKey entity (create, load, remove). | `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys` |
 | **SitePreview** | The SitePreview entity (load). | `/api/v1/organizations/{organization_id}/verify/site_preview` |
 | **SiteSecret** | The SiteSecret entity (remove, update). | `/api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}` |
 | **SlackChannel** | The SlackChannel entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/slack/channels` |
 | **SourceConnection** | The SourceConnection entity (create). | `/api/v1/source_connections/{id}/refresh` |
-| **SpaceAlertRule** | The SpaceAlertRule entity (create, list, load, patch, remove, update). | `/api/v1/observability/spaces/{space_id}/alert_rules` |
-| **SpaceAuditEvent** | The SpaceAuditEvent entity (create, list). | `/api/v1/observability/spaces/{space_id}/audit_events` |
-| **SpaceDnsRecord** | The SpaceDnsRecord entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/dns_records` |
-| **SpaceEnrollmentToken** | The SpaceEnrollmentToken entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/enrollment_tokens` |
-| **SpaceGateway** | The SpaceGateway entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/gateways` |
-| **SpaceGroup** | The SpaceGroup entity (create, list, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/groups` |
-| **SpaceGroupMembership** | The SpaceGroupMembership entity (create, list, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/group_memberships` |
-| **SpaceLogStream** | The SpaceLogStream entity (create, list). | `/api/v1/observability/spaces/{space_id}/log_streams` |
-| **SpaceMetricSery** | The SpaceMetricSery entity (create, list). | `/api/v1/observability/spaces/{space_id}/metric_series` |
-| **SpaceOtelCollector** | The SpaceOtelCollector entity (create, list, load, patch, remove, update). | `/api/v1/observability/spaces/{space_id}/otel_collectors` |
-| **SpacePeer** | The SpacePeer entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/peers` |
-| **SpacePeerAttachment** | The SpacePeerAttachment entity (create, list, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/peer_attachments` |
-| **SpacePolicy** | The SpacePolicy entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/policies` |
-| **SpaceSegment** | The SpaceSegment entity (create, list, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/segments` |
-| **SpaceTraceSpan** | The SpaceTraceSpan entity (create, list). | `/api/v1/observability/spaces/{space_id}/trace_spans` |
-| **Spark** | The Spark entity (create, list). | `/api/v1/organizations/{organization_id}/sparks` |
-| **SparkAgentIntegration** | The SparkAgentIntegration entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations` |
+| **SpaceAlertRule** | The SpaceAlertRule entity (create, load, patch, remove, update). | `/api/v1/observability/spaces/{space_id}/alert_rules/{id}` |
+| **SpaceAuditEvent** | The SpaceAuditEvent entity (create, load). | `/api/v1/observability/spaces/{space_id}/audit_events` |
+| **SpaceDnsRecord** | The SpaceDnsRecord entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/dns_records/{id}` |
+| **SpaceEnrollmentToken** | The SpaceEnrollmentToken entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}` |
+| **SpaceGateway** | The SpaceGateway entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/gateways/{id}` |
+| **SpaceGroup** | The SpaceGroup entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/groups` |
+| **SpaceGroupMembership** | The SpaceGroupMembership entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/group_memberships` |
+| **SpaceLogStream** | The SpaceLogStream entity (create, load). | `/api/v1/observability/spaces/{space_id}/log_streams` |
+| **SpaceMetricSery** | The SpaceMetricSery entity (create, load). | `/api/v1/observability/spaces/{space_id}/metric_series` |
+| **SpaceOtelCollector** | The SpaceOtelCollector entity (create, load, patch, remove, update). | `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}` |
+| **SpacePeer** | The SpacePeer entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/peers/{id}` |
+| **SpacePeerAttachment** | The SpacePeerAttachment entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/peer_attachments` |
+| **SpacePolicy** | The SpacePolicy entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/policies/{id}` |
+| **SpaceSegment** | The SpaceSegment entity (create, load, patch, remove, update). | `/api/v1/networking/spaces/{space_id}/segments/{id}` |
+| **SpaceTraceSpan** | The SpaceTraceSpan entity (create, load). | `/api/v1/observability/spaces/{space_id}/trace_spans` |
+| **Spark** | The Spark entity (create, load). | `/api/v1/organizations/{organization_id}/sparks` |
+| **SparkAgentIntegration** | The SparkAgentIntegration entity (create, load). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations` |
 | **SparkAgentLocalThread** | The SparkAgentLocalThread entity (create, load, update). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}` |
 | **SparkAgentSite** | The SparkAgentSite entity (list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/sites` |
 | **SparkAgentSkill** | The SparkAgentSkill entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills` |
 | **SparkAgentThread** | The SparkAgentThread entity (create, list). | `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads` |
-| **SparkCredit** | The SparkCredit entity (create, list, load, patch, update). | `/api/v1/organizations/{org_slug}/spark_credits` |
+| **SparkCredit** | The SparkCredit entity (create, load, patch, update). | `/api/v1/organizations/{org_slug}/spark_credits` |
 | **SparkCreditAgentUsage** | The SparkCreditAgentUsage entity (load). | `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}` |
-| **SparkCreditUsageTotal** | The SparkCreditUsageTotal entity (list). | `/api/v1/organizations/{org_slug}/spark_credits/usage_totals` |
+| **SparkCreditUsageTotal** | The SparkCreditUsageTotal entity (load). | `/api/v1/organizations/{org_slug}/spark_credits/usage_totals` |
 | **StaticSite** | A static site hosted by Composal: list, create, read, change or remove one. | `/api/v1/organizations/{organization_id}/static_sites` |
 | **StaticSiteDeployment** | The StaticSiteDeployment entity (create, list, load). | `/api/v1/static_sites/{static_site_id}/deployments` |
 | **StaticSiteDomain** | The StaticSiteDomain entity (create, list, load, patch, remove, update). | `/api/v1/static_sites/{static_site_id}/domains` |
@@ -798,14 +798,14 @@ The API exposes 555 entities:
 | **VcMergeQueue** | The VcMergeQueue entity (create, list, load, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/merge_queues` |
 | **VcStack** | The VcStack entity (list, load, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks` |
 | **VcsNode** | The VcsNode entity (list). | `/api/v1/organizations/{org_slug}/pages/vcs_nodes` |
-| **VcsSetting** | The VcsSetting entity (list). | `/api/v1/organizations/{org_slug}/pages/vcs_settings` |
+| **VcsSetting** | The VcsSetting entity (load). | `/api/v1/organizations/{org_slug}/pages/vcs_settings` |
 | **VerificationProjectCredential** | The VerificationProjectCredential entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials` |
 | **VerificationProjectPersona** | The VerificationProjectPersona entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas` |
 | **VerificationProjectRun** | A Verify run of a project: list or read runs, launch, cancel or rerun one (actions). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs` |
 | **VerificationProjectScenario** | A user journey Verify tests in a project: list, write, import or export them. | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios` |
 | **VerifyAppDomain** | The VerifyAppDomain entity (create). | `/api/v1/hosting/apps/{app_id}/domains/{id}/verify` |
 | **VerifyBrowserSession** | The VerifyBrowserSession entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` |
-| **VerifyEmailVerification** | The VerifyEmailVerification entity (list). | `/api/v1/email_verifications/verify` |
+| **VerifyEmailVerification** | The VerifyEmailVerification entity (load). | `/api/v1/email_verifications/verify` |
 | **VerifySignalIntegration** | The VerifySignalIntegration entity (create). | `/api/v1/organizations/{organization_id}/signal_integrations/{id}/verify` |
 | **VerifyStaticSiteDomain** | The VerifyStaticSiteDomain entity (create). | `/api/v1/static_sites/{static_site_id}/domains/{id}/verify` |
 | **VersionLog** | The VersionLog entity (list). | `/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs` |

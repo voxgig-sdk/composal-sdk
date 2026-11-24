@@ -39,7 +39,7 @@ func TestAppPreviewEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AppPreview(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.AppPreview(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestAppPreviewEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "app_preview." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,78 +65,11 @@ func TestAppPreviewEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"app_preview.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/archive\"}")
-			t.Log("LIVE STEP {\"id\":\"app_preview.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_preview.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_preview.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, app_previewEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_APP_PREVIEW_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["app_preview01"]
-			}
-			livePace()
-			liveExisting(t, app_previewEntityLiveStrict, setup.data, "app_preview", "id", _liveId,
-				func() (any, error) {
-					return client.AppPreview(nil).List(map[string]any{"app_id": setup.idmap["app01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		appPreviewRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.app_preview")))
-		var appPreviewRef01Data map[string]any
-		if len(appPreviewRef01DataRaw) > 0 {
-			appPreviewRef01Data = core.ToMapAny(appPreviewRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = appPreviewRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appPreviewRef01Ent := client.AppPreview(nil)
-		appPreviewRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appPreviewRef01ListResult, err := appPreviewRef01Ent.List(appPreviewRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, appPreviewRef01ListOk := appPreviewRef01ListResult.([]any)
-		if !appPreviewRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appPreviewRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		appPreviewRef01MatchDt0 := map[string]any{
-			"id": appPreviewRef01Data["id"],
-		}
-		appPreviewRef01DataDt0Loaded, err := appPreviewRef01Ent.Load(appPreviewRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		appPreviewRef01DataDt0LoadResult := core.ToMapAny(entityData(appPreviewRef01DataDt0Loaded))
-		if appPreviewRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(appPreviewRef01DataDt0LoadResult["id"], appPreviewRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"app_preview.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"app_preview.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_preview.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"app_preview.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id}\"}")
+			t.Skip("Live coverage incomplete: app_preview.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/archive); app_preview.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/previews/{id}); app_preview.load.2 excluded (GET-only live run: reads a record only app_preview.create.0 gives); app_preview.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/previews/{id})")
+			return
 		}
 
 		if setup.live {
@@ -168,28 +101,6 @@ func TestAppPreviewEntity(t *testing.T) {
 		}
 		if appPreviewRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appPreviewRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appPreviewRef01ListResult, err := appPreviewRef01Ent.List(appPreviewRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appPreviewRef01List, appPreviewRef01ListOk := appPreviewRef01ListResult.([]any)
-		if !appPreviewRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appPreviewRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(appPreviewRef01List), map[string]any{"id": appPreviewRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		if setup.live {
@@ -254,28 +165,6 @@ func TestAppPreviewEntity(t *testing.T) {
 		_, err = appPreviewRef01Ent.Remove(appPreviewRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appPreviewRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appPreviewRef01ListRt0Result, err := appPreviewRef01Ent.List(appPreviewRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appPreviewRef01ListRt0, appPreviewRef01ListRt0Ok := appPreviewRef01ListRt0Result.([]any)
-		if !appPreviewRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", appPreviewRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(appPreviewRef01ListRt0), map[string]any{"id": appPreviewRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

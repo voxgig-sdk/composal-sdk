@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{observability_space_id}}"
     description: The observability_space this request addresses.
-order: 2000
+order: 1000

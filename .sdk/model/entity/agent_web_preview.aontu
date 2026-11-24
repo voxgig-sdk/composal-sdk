@@ -59,8 +59,8 @@ main: kit: entity: agent_web_preview: {
 
   name: "agent_web_preview"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

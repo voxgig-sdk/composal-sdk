@@ -218,63 +218,6 @@ main: kit: entity: roder_code_repair: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/agent/roder/code_repairs"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            query: [
-              {
-                explode: true
-                k: "query"
-                n: "scenario_run_id"
-                or: "scenario_run_id"
-                r: true
-                style: "form"
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/agent/roder/code_repairs"
-          q: {
-            exist: [
-              "scenario_run_id"
-            ]
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "agent"
-            }
-            {
-              lit: "roder"
-            }
-            {
-              lit: "code_repairs"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -329,6 +272,58 @@ main: kit: entity: roder_code_repair: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/agent/roder/code_repairs"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "scenario_run_id"
+                or: "scenario_run_id"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/agent/roder/code_repairs"
+          q: {
+            exist: [
+              "scenario_run_id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "agent"
+            }
+            {
+              lit: "roder"
+            }
+            {
+              lit: "code_repairs"
             }
           ]
           t: {

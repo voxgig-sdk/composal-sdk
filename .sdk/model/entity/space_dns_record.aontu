@@ -148,69 +148,6 @@ main: kit: entity: space_dns_record: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/networking/spaces/{space_id}/dns_records"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "space_id"
-                or: "space_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/networking/spaces/{space_id}/dns_records"
-          q: {
-            exist: [
-              "space_id"
-            ]
-          }
-          r: {
-            param: {
-              space_id: "space_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "networking"
-            }
-            {
-              lit: "spaces"
-            }
-            {
-              var: "space_id"
-            }
-            {
-              lit: "dns_records"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -277,6 +214,64 @@ main: kit: entity: space_dns_record: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/networking/spaces/{space_id}/dns_records"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "space_id"
+                or: "space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/networking/spaces/{space_id}/dns_records"
+          q: {
+            exist: [
+              "space_id"
+            ]
+          }
+          r: {
+            param: {
+              space_id: "space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "networking"
+            }
+            {
+              lit: "spaces"
+            }
+            {
+              var: "space_id"
+            }
+            {
+              lit: "dns_records"
             }
           ]
           t: {

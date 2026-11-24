@@ -31,12 +31,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners": {
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}": {
+    "GET /api/v1/ci/runner_pools/{runner_pool_id}/runners": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

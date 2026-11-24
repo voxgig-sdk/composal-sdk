@@ -38,7 +38,7 @@ func TestVcsSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.VcsSetting(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.VcsSetting(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestVcsSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "vcs_setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestVcsSettingEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, vcs_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_VCS_SETTING_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		vcsSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.vcs_setting")))
@@ -81,24 +76,6 @@ func TestVcsSettingEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = vcsSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		vcsSettingRef01Ent := client.VcsSetting(nil)
-		vcsSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		vcsSettingRef01ListResult, err := vcsSettingRef01Ent.List(vcsSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, vcsSettingRef01ListOk := vcsSettingRef01ListResult.([]any)
-		if !vcsSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", vcsSettingRef01ListResult)
-		}
 
 	})
 }

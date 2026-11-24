@@ -325,36 +325,6 @@ class AppPreviewEntity
 
 
     
-    /**
-     * List AppPreview items matching the given filter.
-     *
-     * @param AppPreviewListMatch|array|null $reqmatch Match filter (any subset
-     *   of AppPreview fields) as an assoc-array; AppPreviewListMatch names the shape.
-     * @param mixed $ctrl Optional per-call control overrides.
-     * @return AppPreviewEntity[] The AppPreview entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
-     */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
-    {
-        $utility = $this->_utility;
-        $ctx = ($utility->make_context)([
-            "opname" => "list",
-            "ctrl" => $ctrl,
-            "match" => $this->_match,
-            "data" => $this->_data,
-            "reqmatch" => $reqmatch,
-        ], $this->_entctx);
-
-        return $this->_run_op($ctx, function () use ($ctx) {
-            if ($ctx->result) {
-                if ($ctx->result->resmatch) {
-                    $this->_match = $ctx->result->resmatch;
-                }
-            }
-        });
-    }
-
-
 
     
     /**

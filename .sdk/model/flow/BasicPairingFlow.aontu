@@ -15,26 +15,10 @@ main: kit: flow: BasicPairingFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "pairing_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "pairing_ref01",
         srcdatavar: "pairing_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "pairing01"
       }
 
       o: "load",

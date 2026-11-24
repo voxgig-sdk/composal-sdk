@@ -294,16 +294,11 @@ func (e *VcsSettingEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *VcsSettingEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *VcsSettingEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *VcsSettingEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *VcsSettingEntity) List(reqmatch map[string]any, ctrl map[string]any) (a
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// VcsSettingListMatch and returns []VcsSetting. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *VcsSettingEntity) ListTyped(reqmatch VcsSettingListMatch, ctrl map[string]any) ([]VcsSetting, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// VcsSettingLoadMatch and returns an VcsSetting. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *VcsSettingEntity) LoadTyped(reqmatch VcsSettingLoadMatch, ctrl map[string]any) (VcsSetting, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return VcsSetting{}, err
 	}
-	return typedSliceFrom[VcsSetting](res), nil
+	return typedFrom[VcsSetting](res), nil
 }
 
+
+
+func (e *VcsSettingEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 func (e *VcsSettingEntity) Create(_ map[string]any, _ map[string]any) (any, error) {

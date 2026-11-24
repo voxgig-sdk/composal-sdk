@@ -7,12 +7,18 @@ main: kit: flow: BasicMetricQueryFlow:
   name: "BasicMetricQueryFlow",
   step: [
     {
-      o: "list",
+      i: {
+        ref: "metric_query_ref01",
+        srcdatavar: "metric_query_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "metric_query_ref01"
+            mark: "Mark01-metric_query_ref01"
           }
         }
       ]

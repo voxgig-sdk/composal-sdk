@@ -1,0 +1,11 @@
+$kind: http-request
+id: "7cbc7bc3-ac6c-5fb7-b6a4-48ea3a05d1e5"
+description: |-
+  The `load` operation of **device_enterprise_relay**.
+
+  SDK: `client.DeviceEnterpriseRelay().load()`
+url: "{{base}}/api/v1/spark/devices/enterprise_relays"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

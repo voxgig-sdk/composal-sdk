@@ -1,0 +1,15 @@
+$kind: http-request
+id: "01d3959f-347f-5677-8f65-f4165985e3f3"
+description: |-
+  The `load` operation of **app_cdn**.
+
+  SDK: `client.AppCdn().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_cdn belongs to.
+order: 2000

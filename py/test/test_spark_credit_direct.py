@@ -24,49 +24,6 @@ def _live_ok(result):
 
 class TestSparkCreditDirect:
 
-    def test_should_direct_list_spark_credit(self):
-        setup = _spark_credit_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-spark_credit", "live" if setup["live"] else "unit")
-        if _skip:
-            pytest.skip(_reason or "skipped via sdk-test-control.json")
-            return
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_CREDIT_ENTID")
-
-        if setup["live"]:
-            runner.live_pace()
-        client = setup["client"]
-
-        params = {}
-        query = {}
-        if setup["live"]:
-            params["organization_id"] = setup["idmap"].get("organization01")
-        else:
-            params["organization_id"] = "direct01"
-
-        result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/spark_credits",
-            "method": "GET",
-            "params": params,
-            "query": query,
-        })
-        if setup["live"]:
-            if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
-        else:
-            assert result["ok"] is True
-            assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
-            assert len(setup["calls"]) == 1
-
     def test_should_direct_load_spark_credit(self):
         setup = _spark_credit_direct_setup({"id": "direct01"})
         _skip, _reason = runner.is_control_skipped("direct", "direct-load-spark_credit", "live" if setup["live"] else "unit")
@@ -92,7 +49,7 @@ class TestSparkCreditDirect:
             pass
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/spark_credits/daily_usage",
+            "path": "api/v1/organizations/{organization_id}/spark_credits",
             "method": "GET",
             "params": params,
             "query": query,

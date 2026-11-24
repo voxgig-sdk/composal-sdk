@@ -3,7 +3,7 @@ id: f50cea1a-e525-5794-acb1-e1e1b7daed98
 description: |-
   The `load` operation of **cdn_hostname**.
 
-  SDK: `client.CdnHostname().load({ app_id: "example", cdn_id: "example", id: "example_id" })`
+  SDK: `client.CdnHostname().load({ app_id: "example", cdn_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/hostnames/:id"
 method: GET
 headers:
@@ -18,4 +18,4 @@ pathVariables:
   - key: id
     value: "{{cdn_hostname_id}}"
     description: The cdn_hostname this request addresses.
-order: 2000
+order: 1000

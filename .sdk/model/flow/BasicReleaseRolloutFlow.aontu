@@ -19,22 +19,6 @@ main: kit: flow: BasicReleaseRolloutFlow:
     }
 
     {
-      m: {
-        release_id: "release01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "release_rollout_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "release_rollout_ref01",
         srcdatavar: "release_rollout_ref01_data",
@@ -42,8 +26,7 @@ main: kit: flow: BasicReleaseRolloutFlow:
       }
 
       m: {
-        id: "release_rollout01",
-        release_id: "release01"
+        id: "release_rollout01"
       }
 
       o: "load",

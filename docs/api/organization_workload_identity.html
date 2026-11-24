@@ -370,8 +370,8 @@
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idworkload_identitiesidsuspend">POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/suspend</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idworkload_identities">POST /api/v1/identity/organizations/{organization_id}/workload_identities</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idworkload_identitiestoken_exchange">POST /api/v1/identity/organizations/{organization_id}/workload_identities/token_exchange</a>
-<a class="nav-section" href="#get-apiv1identityorganizationsorganization_idworkload_identities">GET /api/v1/identity/organizations/{organization_id}/workload_identities</a>
 <a class="nav-section" href="#get-apiv1identityorganizationsorganization_idworkload_identitiesid">GET /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</a>
+<a class="nav-section" href="#get-apiv1identityorganizationsorganization_idworkload_identities">GET /api/v1/identity/organizations/{organization_id}/workload_identities</a>
 <a class="nav-section" href="#patch-apiv1identityorganizationsorganization_idworkload_identitiesid">PATCH /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</a>
 <a class="nav-section" href="#delete-apiv1identityorganizationsorganization_idworkload_identitiesid">DELETE /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</a>
 <a class="nav-section" href="#put-apiv1identityorganizationsorganization_idworkload_identitiesid">PUT /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</a></div>
@@ -650,13 +650,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_idworkload_identities"><code>/api/v1/identity/organizations/{organization_id}/workload_identities</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1identityorganizationsorganization_idworkload_identitiesid"><code>/api/v1/identity/organizations/{organization_id}/workload_identities/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_idworkload_identitiesid"><code>/api/v1/identity/organizations/{organization_id}/workload_identities/{id}</code></a></td>
+<td><a href="#get-apiv1identityorganizationsorganization_idworkload_identities"><code>/api/v1/identity/organizations/{organization_id}/workload_identities</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -684,12 +684,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">organization_workload_identitys, err := client.OrganizationWorkloadIdentity(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(organization_workload_identitys)
-organization_workload_identity, err := client.OrganizationWorkloadIdentity(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">organization_workload_identity, err := client.OrganizationWorkloadIdentity(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -717,8 +712,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local organization_workload_identitys, err = client:OrganizationWorkloadIdentity():list({ organization_id = &quot;example&quot; })
-local organization_workload_identity, err = client:OrganizationWorkloadIdentity():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local organization_workload_identity, err = client:OrganizationWorkloadIdentity():load({ organization_id = &quot;example&quot; })
 local created, err = client:OrganizationWorkloadIdentity():create({ organization_id = &quot;example&quot; })
 local updated, err = client:OrganizationWorkloadIdentity():update({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
 local patched, err = client:OrganizationWorkloadIdentity():patch({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
@@ -726,8 +720,7 @@ local removed, err = client:OrganizationWorkloadIdentity():remove({ id = &quot;e
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$organization_workload_identitys = $client-&gt;OrganizationWorkloadIdentity()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$organization_workload_identity = $client-&gt;OrganizationWorkloadIdentity()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$organization_workload_identity = $client-&gt;OrganizationWorkloadIdentity()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;OrganizationWorkloadIdentity()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;OrganizationWorkloadIdentity()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;OrganizationWorkloadIdentity()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
@@ -735,8 +728,7 @@ $client-&gt;OrganizationWorkloadIdentity()-&gt;remove([&quot;id&quot; =&gt; &quo
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">organization_workload_identitys = client.OrganizationWorkloadIdentity().list({&quot;organization_id&quot;: &quot;example&quot;})
-organization_workload_identity = client.OrganizationWorkloadIdentity().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">organization_workload_identity = client.OrganizationWorkloadIdentity().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.OrganizationWorkloadIdentity().create({ &quot;organization_id&quot;: &quot;example&quot; })
 updated = client.OrganizationWorkloadIdentity().update({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 patched = client.OrganizationWorkloadIdentity().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
@@ -744,8 +736,7 @@ client.OrganizationWorkloadIdentity().remove({&quot;id&quot;: &quot;example_id&q
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">organization_workload_identitys = client.OrganizationWorkloadIdentity.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-organization_workload_identity = client.OrganizationWorkloadIdentity.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">organization_workload_identity = client.OrganizationWorkloadIdentity.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.OrganizationWorkloadIdentity.create({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 updated = client.OrganizationWorkloadIdentity.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 patched = client.OrganizationWorkloadIdentity.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
@@ -753,8 +744,7 @@ client.OrganizationWorkloadIdentity.remove({ &quot;id&quot; =&gt; &quot;example_
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const organization_workload_identitys = await client.OrganizationWorkloadIdentity().list({ organization_id: &quot;example&quot; })
-const organization_workload_identity = await client.OrganizationWorkloadIdentity().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const organization_workload_identity = await client.OrganizationWorkloadIdentity().load({ organization_id: &quot;example&quot; })
 const created = await client.OrganizationWorkloadIdentity().create({ organization_id: &quot;example&quot; })
 const updated = await client.OrganizationWorkloadIdentity().update({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
 const patched = await client.OrganizationWorkloadIdentity().patch({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
@@ -1067,9 +1057,9 @@ await client.OrganizationWorkloadIdentity().remove({ id: &quot;example_id&quot;,
 <h5 id="404-not-found-6" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-6" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-6" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1identityorganizationsorganization_idworkload_identities" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/workload_identities</h3>
-<p>Operation ID: <code>api_v1_organization_workload_identities</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1identityorganizationsorganization_idworkload_identitiesid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</h3>
+<p>Operation ID: <code>api_v1_organization_workload_identity</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-7">Parameters</h4>
 <table>
@@ -1090,6 +1080,13 @@ await client.OrganizationWorkloadIdentity().remove({ id: &quot;example_id&quot;,
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-7">Responses</h4>
@@ -1101,9 +1098,8 @@ await client.OrganizationWorkloadIdentity().remove({ id: &quot;example_id&quot;,
 <h5 id="404-not-found-7" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-7" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-7" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1identityorganizationsorganization_idworkload_identitiesid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/workload_identities/{id}</h3>
-<p>Operation ID: <code>api_v1_organization_workload_identity</code>.</p>
+<h3 id="get-apiv1identityorganizationsorganization_idworkload_identities" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/workload_identities</h3>
+<p>Operation ID: <code>api_v1_organization_workload_identities</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-8">Parameters</h4>
 <table>
@@ -1119,13 +1115,6 @@ await client.OrganizationWorkloadIdentity().remove({ id: &quot;example_id&quot;,
 <tbody>
 <tr>
 <td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

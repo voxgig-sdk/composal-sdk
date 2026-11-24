@@ -7,17 +7,23 @@ main: kit: flow: BasicProjectSettingFlow:
   name: "BasicProjectSettingFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01",
-        project_id: "project01"
+      i: {
+        ref: "project_setting_ref01",
+        srcdatavar: "project_setting_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "project_setting01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "project_setting_ref01"
+            mark: "Mark01-project_setting_ref01"
           }
         }
       ]

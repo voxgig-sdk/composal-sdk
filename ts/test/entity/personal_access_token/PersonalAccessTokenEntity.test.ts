@@ -41,59 +41,13 @@ describe('PersonalAccessTokenEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('personal_access_token hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).PersonalAccessToken().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).PersonalAccessToken()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.PersonalAccessToken().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().PersonalAccessToken().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.PersonalAccessToken().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.PersonalAccessToken().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.PersonalAccessToken().list({"id":1} as any),
+    await assert.rejects(client.PersonalAccessToken().load({"id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('PersonalAccessTokenEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list', 'remove']) {
+    for (const op of ['create', 'load', 'remove']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'personal_access_token.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"personal_access_token","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/personal_access_tokens","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/personal_access_tokens","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/personal_access_tokens","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/personal_access_tokens","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v1/personal_access_tokens/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v1/personal_access_tokens/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"personal_access_token","name__orig":"personal_access_token","Name":"PersonalAccessToken","name_":"personal_access_token","name-":"personal-access-token","NAME":"PERSONAL_ACCESS_TOKEN","index$":378}, {"active":true,"entity":"personal_access_token","key$":"BasicPersonalAccessTokenFlow","kind":"basic","name":"BasicPersonalAccessTokenFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"personal_access_token_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"personal_access_token_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"personal_access_token_ref01","suffix":"_rm0"},"m":{"id":"personal_access_token01"},"o":"remove","s":[],"v":[],"index$":2},{"a":true,"d":{},"i":{"suffix":"_rt0"},"m":{},"o":"list","s":[],"v":[{"apply":"ItemNotExists","def":{"ref":"personal_access_token_ref01"}}],"index$":3}]}, 'PersonalAccessToken', {"POST /api/v1/personal_access_tokens":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/personal_access_tokens":{"protocol":"http","parameters":[]},"DELETE /api/v1/personal_access_tokens/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"personal_access_token.create.0":"GET-only live run: needs POST /api/v1/personal_access_tokens","personal_access_token.remove.2":"GET-only live run: needs DELETE /api/v1/personal_access_tokens/{id}","personal_access_token.list.3":"GET-only live run: checks a removal this run does not make"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"personal_access_token","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/personal_access_tokens","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/personal_access_tokens","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/personal_access_tokens","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/personal_access_tokens","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"},"remove":{"input":"data","name":"remove","points":[{"a":true,"co":{"id":"DELETE /api/v1/personal_access_tokens/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"DELETE","o":"/api/v1/personal_access_tokens/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"personal_access_tokens"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"remove"}},"relations":{"ancestors":[]},"key$":"personal_access_token","name__orig":"personal_access_token","Name":"PersonalAccessToken","name_":"personal_access_token","name-":"personal-access-token","NAME":"PERSONAL_ACCESS_TOKEN","index$":378}, {"active":true,"entity":"personal_access_token","key$":"BasicPersonalAccessTokenFlow","kind":"basic","name":"BasicPersonalAccessTokenFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"personal_access_token_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"personal_access_token_ref01","srcdatavar":"personal_access_token_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-personal_access_token_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"personal_access_token_ref01","suffix":"_rm0"},"m":{"id":"personal_access_token01"},"o":"remove","s":[],"v":[],"index$":2}]}, 'PersonalAccessToken', {"POST /api/v1/personal_access_tokens":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/personal_access_tokens":{"protocol":"http","parameters":[]},"DELETE /api/v1/personal_access_tokens/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"personal_access_token.create.0":"GET-only live run: needs POST /api/v1/personal_access_tokens","personal_access_token.load.1":"GET-only live run: reads a record only personal_access_token.create.0 gives","personal_access_token.remove.2":"GET-only live run: needs DELETE /api/v1/personal_access_tokens/{id}"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -126,26 +80,17 @@ describe('PersonalAccessTokenEntity', async () => {
     assert(null != personal_access_token_ref01_data.id)
 
 
-    // LIST
-    const personal_access_token_ref01_match: any = {}
-
-    const personal_access_token_ref01_list = (await personal_access_token_ref01_ent.list(personal_access_token_ref01_match)).map((e: any) => e.data())
-
-    assert(!isempty(select(personal_access_token_ref01_list, { id: personal_access_token_ref01_data.id })))
+    // LOAD
+    const personal_access_token_ref01_match_dt0: any = {}
+    personal_access_token_ref01_match_dt0.id = personal_access_token_ref01_data.id
+    const personal_access_token_ref01_data_dt0 = (await personal_access_token_ref01_ent.load(personal_access_token_ref01_match_dt0)).data()
+    assert(personal_access_token_ref01_data_dt0.id === personal_access_token_ref01_data.id)
 
 
     // REMOVE
     const personal_access_token_ref01_match_rm0: any = { id: personal_access_token_ref01_data.id }
     await personal_access_token_ref01_ent.remove(personal_access_token_ref01_match_rm0)
   
-
-    // LIST
-    const personal_access_token_ref01_match_rt0: any = {}
-
-    const personal_access_token_ref01_list_rt0 = (await personal_access_token_ref01_ent.list(personal_access_token_ref01_match_rt0)).map((e: any) => e.data())
-
-    assert(isempty(select(personal_access_token_ref01_list_rt0, { id: personal_access_token_ref01_data.id })))
-
 
   })
 })

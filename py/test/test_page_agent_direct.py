@@ -24,49 +24,6 @@ def _live_ok(result):
 
 class TestPageAgentDirect:
 
-    def test_should_direct_list_page_agent(self):
-        setup = _page_agent_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-page_agent", "live" if setup["live"] else "unit")
-        if _skip:
-            pytest.skip(_reason or "skipped via sdk-test-control.json")
-            return
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_PAGE_AGENT_ENTID")
-
-        if setup["live"]:
-            runner.live_pace()
-        client = setup["client"]
-
-        params = {}
-        query = {}
-        if setup["live"]:
-            params["organization_id"] = setup["idmap"].get("organization01")
-        else:
-            params["organization_id"] = "direct01"
-
-        result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/agents/page",
-            "method": "GET",
-            "params": params,
-            "query": query,
-        })
-        if setup["live"]:
-            if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
-        else:
-            assert result["ok"] is True
-            assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
-            assert len(setup["calls"]) == 1
-
     def test_should_direct_load_page_agent(self):
         setup = _page_agent_direct_setup({"id": "direct01"})
         _skip, _reason = runner.is_control_skipped("direct", "direct-load-page_agent", "live" if setup["live"] else "unit")
@@ -92,7 +49,7 @@ class TestPageAgentDirect:
             pass
 
         result = client.direct({
-            "path": "api/v1/organizations/{organization_id}/agents/page/roster",
+            "path": "api/v1/organizations/{organization_id}/agents/page",
             "method": "GET",
             "params": params,
             "query": query,

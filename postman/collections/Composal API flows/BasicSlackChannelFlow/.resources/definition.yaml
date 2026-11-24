@@ -1,4 +1,4 @@
 $kind: collection
 id: "3f0eff67-50c6-5db2-acab-193dc5ec62d7"
 description: "The `BasicSlackChannelFlow` flow of **slack_channel**."
-order: 390000
+order: 372000

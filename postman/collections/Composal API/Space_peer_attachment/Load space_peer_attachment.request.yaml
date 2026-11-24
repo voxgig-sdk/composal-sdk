@@ -1,0 +1,15 @@
+$kind: http-request
+id: "1fdeeaef-ae1a-5f14-bdde-7f3e662f813f"
+description: |-
+  The `load` operation of **space_peer_attachment**.
+
+  SDK: `client.SpacePeerAttachment().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peer_attachments"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

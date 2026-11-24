@@ -19,16 +19,22 @@ main: kit: flow: BasicGithubConnectionFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "github_connection_ref01",
+        srcdatavar: "github_connection_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "github_connection01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "github_connection_ref01"
+            mark: "Mark01-github_connection_ref01"
           }
         }
       ]

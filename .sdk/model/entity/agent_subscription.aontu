@@ -97,8 +97,8 @@ main: kit: entity: agent_subscription: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

@@ -363,8 +363,8 @@ main: kit: entity: spark: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

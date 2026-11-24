@@ -25,7 +25,7 @@ class SpaceMetricSeryEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SpaceMetricSery(nil).list({ "space_id" => 1 }, nil)
+      client.SpaceMetricSery(nil).load({ "space_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SpaceMetricSeryEntityTest < Minitest::Test
     setup = space_metric_sery_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "space_metric_sery." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class SpaceMetricSeryEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"space_metric_sery.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/metric_series\"}"
-    if setup[:live]
-      ["space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPACE_METRIC_SERY_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,14 +54,11 @@ class SpaceMetricSeryEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     space_metric_sery_ref01_ent = client.SpaceMetricSery(nil)
-    space_metric_sery_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_metric_sery_ref01_list_result = space_metric_sery_ref01_ent.list(space_metric_sery_ref01_match, nil)
-    assert space_metric_sery_ref01_list_result.is_a?(Array)
+    space_metric_sery_ref01_match_dt0 = {}
+    space_metric_sery_ref01_data_dt0_loaded = space_metric_sery_ref01_ent.load(space_metric_sery_ref01_match_dt0, nil)
+    assert !space_metric_sery_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -94,13 +84,10 @@ class SpaceMetricSeryEntityTest < Minitest::Test
     assert !space_metric_sery_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    space_metric_sery_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_metric_sery_ref01_list_result = space_metric_sery_ref01_ent.list(space_metric_sery_ref01_match, nil)
-    assert space_metric_sery_ref01_list_result.is_a?(Array)
+    # LOAD
+    space_metric_sery_ref01_match_dt0 = {}
+    space_metric_sery_ref01_data_dt0_loaded = space_metric_sery_ref01_ent.load(space_metric_sery_ref01_match_dt0, nil)
+    assert !space_metric_sery_ref01_data_dt0_loaded.nil?
 
   end
 end

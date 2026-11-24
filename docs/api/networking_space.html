@@ -337,9 +337,9 @@
 <a class="nav-section" href="#post-apiv1networkingspacesidpause">POST /api/v1/networking/spaces/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1networkingspacesidvalidate_route">POST /api/v1/networking/spaces/{id}/validate_route</a>
 <a class="nav-section" href="#post-apiv1networkingspaces">POST /api/v1/networking/spaces</a>
-<a class="nav-section" href="#get-apiv1networkingspaces">GET /api/v1/networking/spaces</a>
 <a class="nav-section" href="#get-apiv1networkingspacesid">GET /api/v1/networking/spaces/{id}</a>
 <a class="nav-section" href="#get-apiv1networkingspacesspace_idcatalog">GET /api/v1/networking/spaces/{space_id}/catalog</a>
+<a class="nav-section" href="#get-apiv1networkingspaces">GET /api/v1/networking/spaces</a>
 <a class="nav-section" href="#patch-apiv1networkingspacesid">PATCH /api/v1/networking/spaces/{id}</a>
 <a class="nav-section" href="#delete-apiv1networkingspacesid">DELETE /api/v1/networking/spaces/{id}</a>
 <a class="nav-section" href="#put-apiv1networkingspacesid">PUT /api/v1/networking/spaces/{id}</a></div>
@@ -637,12 +637,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspaces"><code>/api/v1/networking/spaces</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1networkingspacesid"><code>/api/v1/networking/spaces/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
@@ -650,6 +644,12 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1networkingspacesspace_idcatalog"><code>/api/v1/networking/spaces/{space_id}/catalog</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1networkingspaces"><code>/api/v1/networking/spaces</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -677,12 +677,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">networking_spaces, err := client.NetworkingSpace(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(networking_spaces)
-networking_space, err := client.NetworkingSpace(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">networking_space, err := client.NetworkingSpace(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -710,8 +705,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local networking_spaces, err = client:NetworkingSpace():list()
-local networking_space, err = client:NetworkingSpace():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local networking_space, err = client:NetworkingSpace():load({ id = &quot;example_id&quot; })
 local created, err = client:NetworkingSpace():create({  })
 local updated, err = client:NetworkingSpace():update({ id = &quot;example_id&quot; })
 local patched, err = client:NetworkingSpace():patch({ id = &quot;example_id&quot; })
@@ -719,8 +713,7 @@ local removed, err = client:NetworkingSpace():remove({ id = &quot;example_id&quo
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$networking_spaces = $client-&gt;NetworkingSpace()-&gt;list();
-$networking_space = $client-&gt;NetworkingSpace()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$networking_space = $client-&gt;NetworkingSpace()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;NetworkingSpace()-&gt;create([]);
 $updated = $client-&gt;NetworkingSpace()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;NetworkingSpace()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -728,8 +721,7 @@ $client-&gt;NetworkingSpace()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">networking_spaces = client.NetworkingSpace().list()
-networking_space = client.NetworkingSpace().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">networking_space = client.NetworkingSpace().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.NetworkingSpace().create({  })
 updated = client.NetworkingSpace().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.NetworkingSpace().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -737,8 +729,7 @@ client.NetworkingSpace().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">networking_spaces = client.NetworkingSpace.list()
-networking_space = client.NetworkingSpace.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">networking_space = client.NetworkingSpace.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.NetworkingSpace.create({  })
 updated = client.NetworkingSpace.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.NetworkingSpace.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -746,8 +737,7 @@ client.NetworkingSpace.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const networking_spaces = await client.NetworkingSpace().list()
-const networking_space = await client.NetworkingSpace().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const networking_space = await client.NetworkingSpace().load({ id: &quot;example_id&quot; })
 const created = await client.NetworkingSpace().create({  })
 const updated = await client.NetworkingSpace().update({ id: &quot;example_id&quot; })
 const patched = await client.NetworkingSpace().patch({ id: &quot;example_id&quot; })
@@ -932,19 +922,6 @@ await client.NetworkingSpace().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1networkingspaces" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces</h3>
-<p>Operation ID: <code>api_v1_spaces</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-5">Responses</h4>
-<h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-5" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1networkingspacesid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{id}</h3>
 <p>Operation ID: <code>api_v1_space</code>.</p>
@@ -970,15 +947,15 @@ await client.NetworkingSpace().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
-<h4 id="responses-6">Responses</h4>
-<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>
 <p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-6" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-6" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-6" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-6" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-6" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="401-unauthorized-5" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-5" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-5" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-5" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-5" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1networkingspacesspace_idcatalog" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/catalog</h3>
 <p>Operation ID: <code>api_v1_space_catalog</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
@@ -1003,6 +980,18 @@ await client.NetworkingSpace().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-6" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-6" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-6" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-6" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-6" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1networkingspaces" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces</h3>
+<p>Operation ID: <code>api_v1_spaces</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-7">Responses</h4>
 <h5 id="200-success-7" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

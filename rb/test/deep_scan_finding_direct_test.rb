@@ -27,6 +27,10 @@ class DeepScanFindingDirectTest < Minitest::Test
       skip(_reason || "skipped via sdk-test-control.json")
       return
     end
+    if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE" && setup[:idmap]["deep_scan01"].nil?
+      puts "LIVE STEP {\"id\":\"direct-list-deep_scan_finding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives\"}"
+      skip("Live coverage incomplete: direct-list-deep_scan_finding excluded (GET-only live run: needs deep_scan01, which only POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce gives)")
+    end
     if setup[:live]
       ["deep_scan01", "organization01"].each do |_live_key|
         if setup[:idmap][_live_key].nil?

@@ -3,7 +3,7 @@ id: "1ec1cc59-46a1-5c72-b78e-1859b0d413ea"
 description: |-
   The `remove` operation of **space_group_membership**.
 
-  SDK: `client.SpaceGroupMembership().remove({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpaceGroupMembership().remove({ id: "example", space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/group_memberships/:id"
 method: DELETE
 headers:

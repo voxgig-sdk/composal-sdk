@@ -38,7 +38,7 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpacePeerAttachment(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpacePeerAttachment(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_peer_attachment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,11 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peer_attachments\"}")
-			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_peer_attachment.create.0 gives\"}")
 			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_peer_attachment.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_peer_attachmentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_PEER_ATTACHMENT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spacePeerAttachmentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_peer_attachment")))
-		var spacePeerAttachmentRef01Data map[string]any
-		if len(spacePeerAttachmentRef01DataRaw) > 0 {
-			spacePeerAttachmentRef01Data = core.ToMapAny(spacePeerAttachmentRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spacePeerAttachmentRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePeerAttachmentRef01Ent := client.SpacePeerAttachment(nil)
-		spacePeerAttachmentRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerAttachmentRef01ListResult, err := spacePeerAttachmentRef01Ent.List(spacePeerAttachmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spacePeerAttachmentRef01ListOk := spacePeerAttachmentRef01ListResult.([]any)
-		if !spacePeerAttachmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerAttachmentRef01ListResult)
-		}
-
-		return
+			t.Skip("Live coverage incomplete: space_peer_attachment.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peer_attachments); space_peer_attachment.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}); space_peer_attachment.load.2 excluded (GET-only live run: reads a record only space_peer_attachment.create.0 gives); space_peer_attachment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id})")
+			return
 		}
 
 		if setup.live {
@@ -142,28 +105,6 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spacePeerAttachmentRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerAttachmentRef01ListResult, err := spacePeerAttachmentRef01Ent.List(spacePeerAttachmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePeerAttachmentRef01List, spacePeerAttachmentRef01ListOk := spacePeerAttachmentRef01ListResult.([]any)
-		if !spacePeerAttachmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerAttachmentRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spacePeerAttachmentRef01List), map[string]any{"id": spacePeerAttachmentRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spacePeerAttachmentRef01DataUp0Up := map[string]any{
 			"id": spacePeerAttachmentRef01Data["id"],
@@ -185,6 +126,25 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
+		// LOAD
+		spacePeerAttachmentRef01MatchDt0 := map[string]any{
+			"id": spacePeerAttachmentRef01Data["id"],
+		}
+		spacePeerAttachmentRef01DataDt0Loaded, err := spacePeerAttachmentRef01Ent.Load(spacePeerAttachmentRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		spacePeerAttachmentRef01DataDt0LoadResult := core.ToMapAny(entityData(spacePeerAttachmentRef01DataDt0Loaded))
+		if spacePeerAttachmentRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(spacePeerAttachmentRef01DataDt0LoadResult["id"], spacePeerAttachmentRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
+
+		if setup.live {
+			livePace()
+		}
 		// REMOVE
 		spacePeerAttachmentRef01MatchRm0 := map[string]any{
 			"id": spacePeerAttachmentRef01Data["id"],
@@ -197,28 +157,6 @@ func TestSpacePeerAttachmentEntity(t *testing.T) {
 		_, err = spacePeerAttachmentRef01Ent.Remove(spacePeerAttachmentRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spacePeerAttachmentRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spacePeerAttachmentRef01ListRt0Result, err := spacePeerAttachmentRef01Ent.List(spacePeerAttachmentRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spacePeerAttachmentRef01ListRt0, spacePeerAttachmentRef01ListRt0Ok := spacePeerAttachmentRef01ListRt0Result.([]any)
-		if !spacePeerAttachmentRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spacePeerAttachmentRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spacePeerAttachmentRef01ListRt0), map[string]any{"id": spacePeerAttachmentRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

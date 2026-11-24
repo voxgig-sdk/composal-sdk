@@ -24,12 +24,9 @@ def _live_ok(result):
 
 class TestSpaceLogStreamDirect:
 
-    def test_should_direct_list_space_log_stream(self):
-        setup = _space_log_stream_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-space_log_stream", "live" if setup["live"] else "unit")
+    def test_should_direct_load_space_log_stream(self):
+        setup = _space_log_stream_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-space_log_stream", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
@@ -46,8 +43,10 @@ class TestSpaceLogStreamDirect:
         query = {}
         if setup["live"]:
             params["space_id"] = setup["idmap"].get("space01")
+            pass
         else:
             params["space_id"] = "direct01"
+            pass
 
         result = client.direct({
             "path": "api/v1/observability/spaces/{space_id}/log_streams",
@@ -57,14 +56,15 @@ class TestSpaceLogStreamDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

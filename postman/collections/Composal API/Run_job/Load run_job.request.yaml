@@ -3,7 +3,7 @@ id: "05b107b5-3bb6-5dd6-bc11-819cb2bfbd6b"
 description: |-
   The `load` operation of **run_job**.
 
-  SDK: `client.RunJob().load({ id: "example_id", pipeline_id: "example", run_id: "example" })`
+  SDK: `client.RunJob().load({ pipeline_id: "example", run_id: "example" })`
 url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:run_id/jobs/:id"
 method: GET
 headers:
@@ -18,4 +18,4 @@ pathVariables:
   - key: id
     value: "{{run_job_id}}"
     description: The run_job this request addresses.
-order: 2000
+order: 1000

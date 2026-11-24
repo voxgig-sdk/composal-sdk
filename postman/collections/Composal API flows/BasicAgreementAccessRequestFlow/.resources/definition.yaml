@@ -1,4 +1,4 @@
 $kind: collection
 id: f9f7bb34-db27-5848-ad9d-c03ba7d07a5f
 description: "The `BasicAgreementAccessRequestFlow` flow of **agreement_access_request**."
-order: 59000
+order: 55000

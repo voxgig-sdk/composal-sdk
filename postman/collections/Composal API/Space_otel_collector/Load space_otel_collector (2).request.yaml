@@ -1,0 +1,15 @@
+$kind: http-request
+id: fa9f88fc-cbaa-504e-8260-6867c0bdfbd8
+description: |-
+  The `load` operation of **space_otel_collector**.
+
+  SDK: `client.SpaceOtelCollector().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/otel_collectors"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

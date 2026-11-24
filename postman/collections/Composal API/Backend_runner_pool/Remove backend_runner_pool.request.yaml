@@ -3,7 +3,7 @@ id: "3bc8c2c9-0350-5761-a1e6-d9f693a133a2"
 description: |-
   The `remove` operation of **backend_runner_pool**.
 
-  SDK: `client.BackendRunnerPool().remove({ backend_id: "example", id: "example_id" })`
+  SDK: `client.BackendRunnerPool().remove({ backend_id: "example", id: "example" })`
 url: "{{base}}/api/v1/bazel/backends/:backend_id/runner_pools/:id"
 method: DELETE
 headers:

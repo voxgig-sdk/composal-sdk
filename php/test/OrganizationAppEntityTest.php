@@ -33,7 +33,7 @@ class OrganizationAppEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->OrganizationApp(null)->list(["organization_id" => 1, "native_agent_id" => 'x'], null);
+            $client->OrganizationApp(null)->load(["organization_id" => 1, "native_agent_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class OrganizationAppEntityTest extends TestCase
         $setup = organization_app_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "organization_app." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,14 +53,14 @@ class OrganizationAppEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"organization_app.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ORGANIZATION_APP_ENTID");
-                }
-            }
+            fwrite(STDOUT, 'LIVE STEP {"id":"organization_app.update.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: organization_app.update.0 excluded (GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -70,50 +70,6 @@ class OrganizationAppEntityTest extends TestCase
         if (count($organization_app_ref01_data_raw) > 0) {
             $organization_app_ref01_data = Helpers::to_map($organization_app_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $organization_app_ref01_ent = $client->OrganizationApp(null);
-        $organization_app_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $organization_app_ref01_list_result = $organization_app_ref01_ent->list($organization_app_ref01_match, null);
-        $this->assertIsArray($organization_app_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ORGANIZATION_APP_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $organization_app_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.organization_app")));
-        $organization_app_ref01_data = null;
-        if (count($organization_app_ref01_data_raw) > 0) {
-            $organization_app_ref01_data = Helpers::to_map($organization_app_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $organization_app_ref01_ent = $client->OrganizationApp(null);
-        $organization_app_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $organization_app_ref01_list_result = $organization_app_ref01_ent->list($organization_app_ref01_match, null);
-        $this->assertIsArray($organization_app_ref01_list_result);
 
     }
 }

@@ -356,8 +356,8 @@
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idoidc_trustsidpause">POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idoidc_trustsidrevoke">POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/revoke</a>
 <a class="nav-section" href="#post-apiv1identityorganizationsorganization_idoidc_trusts">POST /api/v1/identity/organizations/{organization_id}/oidc_trusts</a>
-<a class="nav-section" href="#get-apiv1identityorganizationsorganization_idoidc_trusts">GET /api/v1/identity/organizations/{organization_id}/oidc_trusts</a>
 <a class="nav-section" href="#get-apiv1identityorganizationsorganization_idoidc_trustsid">GET /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</a>
+<a class="nav-section" href="#get-apiv1identityorganizationsorganization_idoidc_trusts">GET /api/v1/identity/organizations/{organization_id}/oidc_trusts</a>
 <a class="nav-section" href="#patch-apiv1identityorganizationsorganization_idoidc_trustsid">PATCH /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</a>
 <a class="nav-section" href="#delete-apiv1identityorganizationsorganization_idoidc_trustsid">DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</a>
 <a class="nav-section" href="#put-apiv1identityorganizationsorganization_idoidc_trustsid">PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_idoidc_trusts"><code>/api/v1/identity/organizations/{organization_id}/oidc_trusts</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1identityorganizationsorganization_idoidc_trustsid"><code>/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1identityorganizationsorganization_idoidc_trustsid"><code>/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</code></a></td>
+<td><a href="#get-apiv1identityorganizationsorganization_idoidc_trusts"><code>/api/v1/identity/organizations/{organization_id}/oidc_trusts</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">organization_oidc_trusts, err := client.OrganizationOidcTrust(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(organization_oidc_trusts)
-organization_oidc_trust, err := client.OrganizationOidcTrust(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">organization_oidc_trust, err := client.OrganizationOidcTrust(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local organization_oidc_trusts, err = client:OrganizationOidcTrust():list({ organization_id = &quot;example&quot; })
-local organization_oidc_trust, err = client:OrganizationOidcTrust():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local organization_oidc_trust, err = client:OrganizationOidcTrust():load({ organization_id = &quot;example&quot; })
 local created, err = client:OrganizationOidcTrust():create({ organization_id = &quot;example&quot; })
 local updated, err = client:OrganizationOidcTrust():update({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
 local patched, err = client:OrganizationOidcTrust():patch({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:OrganizationOidcTrust():remove({ id = &quot;example_
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$organization_oidc_trusts = $client-&gt;OrganizationOidcTrust()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$organization_oidc_trust = $client-&gt;OrganizationOidcTrust()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$organization_oidc_trust = $client-&gt;OrganizationOidcTrust()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;OrganizationOidcTrust()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;OrganizationOidcTrust()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;OrganizationOidcTrust()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;OrganizationOidcTrust()-&gt;remove([&quot;id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">organization_oidc_trusts = client.OrganizationOidcTrust().list({&quot;organization_id&quot;: &quot;example&quot;})
-organization_oidc_trust = client.OrganizationOidcTrust().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">organization_oidc_trust = client.OrganizationOidcTrust().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.OrganizationOidcTrust().create({ &quot;organization_id&quot;: &quot;example&quot; })
 updated = client.OrganizationOidcTrust().update({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 patched = client.OrganizationOidcTrust().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
@@ -723,8 +715,7 @@ client.OrganizationOidcTrust().remove({&quot;id&quot;: &quot;example_id&quot;, &
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">organization_oidc_trusts = client.OrganizationOidcTrust.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-organization_oidc_trust = client.OrganizationOidcTrust.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">organization_oidc_trust = client.OrganizationOidcTrust.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.OrganizationOidcTrust.create({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 updated = client.OrganizationOidcTrust.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 patched = client.OrganizationOidcTrust.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
@@ -732,8 +723,7 @@ client.OrganizationOidcTrust.remove({ &quot;id&quot; =&gt; &quot;example_id&quot
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const organization_oidc_trusts = await client.OrganizationOidcTrust().list({ organization_id: &quot;example&quot; })
-const organization_oidc_trust = await client.OrganizationOidcTrust().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const organization_oidc_trust = await client.OrganizationOidcTrust().load({ organization_id: &quot;example&quot; })
 const created = await client.OrganizationOidcTrust().create({ organization_id: &quot;example&quot; })
 const updated = await client.OrganizationOidcTrust().update({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
 const patched = await client.OrganizationOidcTrust().patch({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
@@ -924,9 +914,9 @@ await client.OrganizationOidcTrust().remove({ id: &quot;example_id&quot;, organi
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1identityorganizationsorganization_idoidc_trusts" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/oidc_trusts</h3>
-<p>Operation ID: <code>api_v1_organization_oidc_trusts</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1identityorganizationsorganization_idoidc_trustsid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</h3>
+<p>Operation ID: <code>api_v1_organization_oidc_trust</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -947,6 +937,13 @@ await client.OrganizationOidcTrust().remove({ id: &quot;example_id&quot;, organi
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-4">Responses</h4>
@@ -958,9 +955,8 @@ await client.OrganizationOidcTrust().remove({ id: &quot;example_id&quot;, organi
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1identityorganizationsorganization_idoidc_trustsid" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}</h3>
-<p>Operation ID: <code>api_v1_organization_oidc_trust</code>.</p>
+<h3 id="get-apiv1identityorganizationsorganization_idoidc_trusts" class="operation" data-method="get"><code>GET</code> /api/v1/identity/organizations/{organization_id}/oidc_trusts</h3>
+<p>Operation ID: <code>api_v1_organization_oidc_trusts</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -976,13 +972,6 @@ await client.OrganizationOidcTrust().remove({ id: &quot;example_id&quot;, organi
 <tbody>
 <tr>
 <td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

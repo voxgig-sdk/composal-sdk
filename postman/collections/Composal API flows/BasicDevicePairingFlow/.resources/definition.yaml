@@ -1,4 +1,4 @@
 $kind: collection
 id: "6f13c372-f8eb-596f-b1fe-ff7b808b1a26"
 description: "The `BasicDevicePairingFlow` flow of **device_pairing**."
-order: 183000
+order: 175000

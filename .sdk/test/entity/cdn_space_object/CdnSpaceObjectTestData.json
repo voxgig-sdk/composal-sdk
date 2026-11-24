@@ -21,12 +21,12 @@
     }
   },
   "requests": {
-    "GET /api/v1/cdn_spaces/{cdn_space_id}/objects": {
+    "GET /api/v1/cdn_spaces/{cdn_space_id}/objects/{path}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/cdn_spaces/{cdn_space_id}/objects/{path}": {
+    "GET /api/v1/cdn_spaces/{cdn_space_id}/objects": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

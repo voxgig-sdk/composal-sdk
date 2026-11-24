@@ -250,8 +250,8 @@
 <a class="nav-section" href="#post-apiv1executionreleasesidfail">POST /api/v1/execution/releases/{id}/fail</a>
 <a class="nav-section" href="#post-apiv1executionreleasesidmark_ready">POST /api/v1/execution/releases/{id}/mark_ready</a>
 <a class="nav-section" href="#post-apiv1executionreleases">POST /api/v1/execution/releases</a>
-<a class="nav-section" href="#get-apiv1executionreleases">GET /api/v1/execution/releases</a>
-<a class="nav-section" href="#get-apiv1executionreleasesid">GET /api/v1/execution/releases/{id}</a></div>
+<a class="nav-section" href="#get-apiv1executionreleasesid">GET /api/v1/execution/releases/{id}</a>
+<a class="nav-section" href="#get-apiv1executionreleases">GET /api/v1/execution/releases</a></div>
 <a href="../api/execution_runtime_instance.html">ExecutionRuntimeInstance</a>
 <a href="../api/exploration.html">Exploration</a>
 <a href="../api/exploration_message.html">ExplorationMessage</a>
@@ -626,13 +626,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1executionreleases"><code>/api/v1/execution/releases</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1executionreleasesid"><code>/api/v1/execution/releases/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1executionreleasesid"><code>/api/v1/execution/releases/{id}</code></a></td>
+<td><a href="#get-apiv1executionreleases"><code>/api/v1/execution/releases</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -642,12 +642,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">execution_releases, err := client.ExecutionRelease(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(execution_releases)
-execution_release, err := client.ExecutionRelease(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">execution_release, err := client.ExecutionRelease(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -660,32 +655,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local execution_releases, err = client:ExecutionRelease():list()
-local execution_release, err = client:ExecutionRelease():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local execution_release, err = client:ExecutionRelease():load({ id = &quot;example_id&quot; })
 local created, err = client:ExecutionRelease():create({  })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$execution_releases = $client-&gt;ExecutionRelease()-&gt;list();
-$execution_release = $client-&gt;ExecutionRelease()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$execution_release = $client-&gt;ExecutionRelease()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;ExecutionRelease()-&gt;create([]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">execution_releases = client.ExecutionRelease().list()
-execution_release = client.ExecutionRelease().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">execution_release = client.ExecutionRelease().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.ExecutionRelease().create({  })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">execution_releases = client.ExecutionRelease.list()
-execution_release = client.ExecutionRelease.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">execution_release = client.ExecutionRelease.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.ExecutionRelease.create({  })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const execution_releases = await client.ExecutionRelease().list()
-const execution_release = await client.ExecutionRelease().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const execution_release = await client.ExecutionRelease().load({ id: &quot;example_id&quot; })
 const created = await client.ExecutionRelease().create({  })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -831,19 +821,6 @@ const created = await client.ExecutionRelease().create({  })
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1executionreleases" class="operation" data-method="get"><code>GET</code> /api/v1/execution/releases</h3>
-<p>Operation ID: <code>api_v1_releases</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-4">Responses</h4>
-<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1executionreleasesid" class="operation" data-method="get"><code>GET</code> /api/v1/execution/releases/{id}</h3>
 <p>Operation ID: <code>api_v1_release</code>.</p>
@@ -869,6 +846,18 @@ const created = await client.ExecutionRelease().create({  })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1executionreleases" class="operation" data-method="get"><code>GET</code> /api/v1/execution/releases</h3>
+<p>Operation ID: <code>api_v1_releases</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-5">Responses</h4>
 <h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

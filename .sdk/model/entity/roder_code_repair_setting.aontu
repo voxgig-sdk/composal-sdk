@@ -121,8 +121,8 @@ main: kit: entity: roder_code_repair_setting: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

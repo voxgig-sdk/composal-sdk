@@ -1,0 +1,18 @@
+$kind: http-request
+id: "44c43f49-7086-5549-a9a5-6e295beda11f"
+description: |-
+  The `load` operation of **agent_setting**.
+
+  SDK: `client.AgentSetting().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/settings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_setting belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_setting belongs to.
+order: 1000

@@ -58,42 +58,6 @@ main: kit: entity: execution_reconciler_tick: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/execution/reconciler_ticks"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/execution/reconciler_ticks"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "execution"
-            }
-            {
-              lit: "reconciler_ticks"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -145,6 +109,37 @@ main: kit: entity: execution_reconciler_tick: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/execution/reconciler_ticks"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/execution/reconciler_ticks"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "execution"
+            }
+            {
+              lit: "reconciler_ticks"
             }
           ]
           t: {

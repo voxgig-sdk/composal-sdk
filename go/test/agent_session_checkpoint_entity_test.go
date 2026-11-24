@@ -38,7 +38,7 @@ func TestAgentSessionCheckpointEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentSessionCheckpoint(nil).List(map[string]any{"agent_session_id": 1, "organization_id": "x", "repo_id": "x"}, nil)
+		_, err := client.AgentSessionCheckpoint(nil).Load(map[string]any{"agent_session_id": 1, "organization_id": "x", "repo_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentSessionCheckpointEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_session_checkpoint." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,92 +64,9 @@ func TestAgentSessionCheckpointEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"agent_session_checkpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"agent_session01", "organization01", "repo01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_session_checkpointEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SESSION_CHECKPOINT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["agent_session_checkpoint01"]
-			}
-			livePace()
-			liveExisting(t, agent_session_checkpointEntityLiveStrict, setup.data, "agent_session_checkpoint", "id", _liveId,
-				func() (any, error) {
-					return client.AgentSessionCheckpoint(nil).List(map[string]any{"agent_session_id": setup.idmap["agent_session01"], "organization_id": setup.idmap["organization01"], "repo_id": setup.idmap["repo01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		agentSessionCheckpointRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_session_checkpoint")))
-		var agentSessionCheckpointRef01Data map[string]any
-		if len(agentSessionCheckpointRef01DataRaw) > 0 {
-			agentSessionCheckpointRef01Data = core.ToMapAny(agentSessionCheckpointRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = agentSessionCheckpointRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentSessionCheckpointRef01Ent := client.AgentSessionCheckpoint(nil)
-		agentSessionCheckpointRef01Match := map[string]any{
-			"agent_session_id": setup.idmap["agent_session01"],
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		agentSessionCheckpointRef01ListResult, err := agentSessionCheckpointRef01Ent.List(agentSessionCheckpointRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentSessionCheckpointRef01ListOk := agentSessionCheckpointRef01ListResult.([]any)
-		if !agentSessionCheckpointRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentSessionCheckpointRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		agentSessionCheckpointRef01MatchDt0 := map[string]any{
-			"id": agentSessionCheckpointRef01Data["id"],
-		}
-		if v := setup.idmap["agent_session_id"]; v != nil {
-			agentSessionCheckpointRef01MatchDt0["agent_session_id"] = v
-		} else {
-			agentSessionCheckpointRef01MatchDt0["agent_session_id"] = setup.idmap["agent_session01"]
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			agentSessionCheckpointRef01MatchDt0["organization_id"] = v
-		} else {
-			agentSessionCheckpointRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["repo_id"]; v != nil {
-			agentSessionCheckpointRef01MatchDt0["repo_id"] = v
-		} else {
-			agentSessionCheckpointRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
-		}
-		agentSessionCheckpointRef01DataDt0Loaded, err := agentSessionCheckpointRef01Ent.Load(agentSessionCheckpointRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		agentSessionCheckpointRef01DataDt0LoadResult := core.ToMapAny(entityData(agentSessionCheckpointRef01DataDt0Loaded))
-		if agentSessionCheckpointRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(agentSessionCheckpointRef01DataDt0LoadResult["id"], agentSessionCheckpointRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"agent_session_checkpoint.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only agent_session_checkpoint.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: agent_session_checkpoint.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize); agent_session_checkpoint.load.1 excluded (GET-only live run: reads a record only agent_session_checkpoint.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -188,38 +105,9 @@ func TestAgentSessionCheckpointEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		agentSessionCheckpointRef01Match := map[string]any{
-			"agent_session_id": setup.idmap["agent_session01"],
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		agentSessionCheckpointRef01ListResult, err := agentSessionCheckpointRef01Ent.List(agentSessionCheckpointRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		agentSessionCheckpointRef01List, agentSessionCheckpointRef01ListOk := agentSessionCheckpointRef01ListResult.([]any)
-		if !agentSessionCheckpointRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentSessionCheckpointRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(agentSessionCheckpointRef01List), map[string]any{"id": agentSessionCheckpointRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		agentSessionCheckpointRef01MatchDt0 := map[string]any{
 			"id": agentSessionCheckpointRef01Data["id"],
-		}
-		if v := setup.idmap["agent_session_id"]; v != nil {
-			agentSessionCheckpointRef01MatchDt0["agent_session_id"] = v
-		} else {
-			agentSessionCheckpointRef01MatchDt0["agent_session_id"] = setup.idmap["agent_session01"]
 		}
 		if v := setup.idmap["organization_id"]; v != nil {
 			agentSessionCheckpointRef01MatchDt0["organization_id"] = v

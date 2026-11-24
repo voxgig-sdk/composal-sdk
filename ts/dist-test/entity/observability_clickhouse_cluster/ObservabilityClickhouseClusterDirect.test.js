@@ -29,30 +29,18 @@ const utility_1 = require("../../utility");
         const setup = directSetup({ id: 'direct01' });
         if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-observability_clickhouse_cluster', setup.live))
             return;
+        if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["observability_clickhouse_cluster01"]) {
+            console.log("LIVE STEP {\"id\":\"direct-load-observability_clickhouse_cluster\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs observability_clickhouse_cluster01, which only POST /api/v1/observability/clickhouse_clusters/{id}/activate gives\"}");
+            t.skip("Live coverage incomplete: direct-load-observability_clickhouse_cluster excluded (GET-only live run: needs observability_clickhouse_cluster01, which only POST /api/v1/observability/clickhouse_clusters/{id}/activate gives)");
+            return;
+        }
+        if ((0, utility_1.skipIfMissingIds)(t, setup, ["observability_clickhouse_cluster01"], LIVE_STRICT))
+            return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            const listResult = await client.direct({
-                path: 'api/v1/observability/clickhouse_clusters',
-                method: 'GET',
-                params: {},
-            });
-            if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list discovery failed: ' + (0, utility_1.describeLive)(listResult));
-            }
-            const listArr = unwrapListData(listResult.data);
-            if (null == listArr) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list discovery returned no list: ' + (0, utility_1.describeLive)(listResult));
-            }
-            if (0 === listArr.length) {
-                return void (0, utility_1.liveEmpty)(t, 'The account has no observability_clickhouse_cluster record to load');
-            }
-            const candidateId = listArr[0]?.id;
-            if (null == candidateId) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity');
-            }
-            params.id = candidateId;
+            params.id = setup.idmap['observability_clickhouse_cluster01'];
         }
         else {
             params.id = 'direct01';
@@ -79,42 +67,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-        }
-    });
-    (0, node_test_1.test)('direct-list-observability_clickhouse_cluster', async (t) => {
-        if (liveScenariosActive()) {
-            t.skip('Covered by live operation scenarios');
-            return;
-        }
-        const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-observability_clickhouse_cluster', setup.live))
-            return;
-        const { client, calls } = setup;
-        const params = {};
-        const query = {};
-        const result = await client.direct({
-            path: 'api/v1/observability/clickhouse_clusters',
-            method: 'GET',
-            params,
-            query,
-        });
-        if (setup.live) {
-            if (!result.ok || result.status < 200 || result.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list failed: ' + (0, utility_1.describeLive)(result));
-            }
-            if (!(Array.isArray(unwrapListData(result.data)))) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list returned no list: ' + (0, utility_1.describeLive)(result));
-            }
-        }
-        else {
-            (0, node_assert_1.default)(result.ok === true);
-            (0, node_assert_1.default)(result.status === 200);
-            (0, node_assert_1.default)(null != result.data);
-            const listArr = unwrapListData(result.data);
-            (0, node_assert_1.default)(Array.isArray(listArr));
-            (0, node_assert_1.default)(listArr.length === 2);
-            (0, node_assert_1.default)(calls.length === 1);
-            (0, node_assert_1.default)(calls[0].init.method === 'GET');
         }
     });
 });

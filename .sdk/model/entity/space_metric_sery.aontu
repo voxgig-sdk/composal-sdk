@@ -70,8 +70,8 @@ main: kit: entity: space_metric_sery: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

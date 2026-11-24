@@ -37,7 +37,7 @@ class TestAlertRuleEventEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AlertRuleEvent(None).list({"alert_rule_id": 1, "space_id": "x"}, None)
+            client.AlertRuleEvent(None).load({"alert_rule_id": 1, "space_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,16 +46,16 @@ class TestAlertRuleEventEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "load", "remove"]:
+        for _op in ["create", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "alert_rule_event." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"alert_rule_event.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge\"}")
-            print("LIVE STEP {\"id\":\"alert_rule_event.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}\"}")
-            print("LIVE STEP {\"id\":\"alert_rule_event.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"alert_rule_event.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only alert_rule_event.create.0 gives\"}")
+            print("LIVE STEP {\"id\":\"alert_rule_event.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}\"}")
+            pytest.skip("Live coverage incomplete: alert_rule_event.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge); alert_rule_event.load.1 excluded (GET-only live run: reads a record only alert_rule_event.create.0 gives); alert_rule_event.remove.2 excluded (GET-only live run: needs DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id})")
 
         if setup["live"]:
             for _live_key in ["alert_rule01", "space01"]:
@@ -78,27 +78,10 @@ class TestAlertRuleEventEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        alert_rule_event_ref01_match = {
-            "alert_rule_id": setup["idmap"]["alert_rule01"],
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        alert_rule_event_ref01_list_result = alert_rule_event_ref01_ent.list(alert_rule_event_ref01_match, None)
-        assert isinstance(alert_rule_event_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(alert_rule_event_ref01_list_result),
-            {"id": alert_rule_event_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # LOAD
         alert_rule_event_ref01_match_dt0 = {
             "id": alert_rule_event_ref01_data["id"],
         }
-        alert_rule_event_ref01_match_dt0["alert_rule_id"] = setup["idmap"].get("alert_rule_id") or setup["idmap"].get("alert_rule01")
         alert_rule_event_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
         alert_rule_event_ref01_data_dt0_loaded = alert_rule_event_ref01_ent.load(alert_rule_event_ref01_match_dt0, None)
         alert_rule_event_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(alert_rule_event_ref01_data_dt0_loaded))
@@ -115,69 +98,6 @@ class TestAlertRuleEventEntity:
         alert_rule_event_ref01_match_rm0["alert_rule_id"] = setup["idmap"].get("alert_rule_id") or setup["idmap"].get("alert_rule01")
         alert_rule_event_ref01_match_rm0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
         alert_rule_event_ref01_ent.remove(alert_rule_event_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        alert_rule_event_ref01_match_rt0 = {
-            "alert_rule_id": setup["idmap"]["alert_rule01"],
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        alert_rule_event_ref01_list_rt0_result = alert_rule_event_ref01_ent.list(alert_rule_event_ref01_match_rt0, None)
-        assert isinstance(alert_rule_event_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(alert_rule_event_ref01_list_rt0_result),
-            {"id": alert_rule_event_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["alert_rule01", "space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_ALERT_RULE_EVENT_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("alert_rule_event01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "alert_rule_event",
-                                 lambda: client.AlertRuleEvent(None).list({"alert_rule_id": setup["idmap"].get("alert_rule01"), "space_id": setup["idmap"].get("space01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        alert_rule_event_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.alert_rule_event")))
-        alert_rule_event_ref01_data = None
-        if len(alert_rule_event_ref01_data_raw) > 0:
-            alert_rule_event_ref01_data = helpers.to_map(alert_rule_event_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        alert_rule_event_ref01_ent = client.AlertRuleEvent(None)
-        alert_rule_event_ref01_match = {
-            "alert_rule_id": setup["idmap"]["alert_rule01"],
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        alert_rule_event_ref01_list_result = alert_rule_event_ref01_ent.list(alert_rule_event_ref01_match, None)
-        assert isinstance(alert_rule_event_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        alert_rule_event_ref01_match_dt0 = {
-            "id": alert_rule_event_ref01_data["id"],
-        }
-        alert_rule_event_ref01_match_dt0["alert_rule_id"] = setup["idmap"].get("alert_rule_id") or setup["idmap"].get("alert_rule01")
-        alert_rule_event_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
-        alert_rule_event_ref01_data_dt0_loaded = alert_rule_event_ref01_ent.load(alert_rule_event_ref01_match_dt0, None)
-        alert_rule_event_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(alert_rule_event_ref01_data_dt0_loaded))
-        assert alert_rule_event_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(alert_rule_event_ref01_data_dt0_load_result.get("id"), alert_rule_event_ref01_data["id"])
 
 
 

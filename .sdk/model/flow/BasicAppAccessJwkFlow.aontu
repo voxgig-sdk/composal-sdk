@@ -7,12 +7,18 @@ main: kit: flow: BasicAppAccessJwkFlow:
   name: "BasicAppAccessJwkFlow",
   step: [
     {
-      o: "list",
+      i: {
+        ref: "app_access_jwk_ref01",
+        srcdatavar: "app_access_jwk_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "app_access_jwk_ref01"
+            mark: "Mark01-app_access_jwk_ref01"
           }
         }
       ]

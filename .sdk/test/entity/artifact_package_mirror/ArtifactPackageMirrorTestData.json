@@ -38,12 +38,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/package_mirrors": {
+    "GET /api/v1/artifacts/package_mirrors/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/package_mirrors/{id}": {
+    "GET /api/v1/artifacts/package_mirrors": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

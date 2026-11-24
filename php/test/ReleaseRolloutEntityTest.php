@@ -33,7 +33,7 @@ class ReleaseRolloutEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ReleaseRollout(null)->list(["release_id" => 1], null);
+            $client->ReleaseRollout(null)->load(["id" => 1, "release_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class ReleaseRolloutEntityTest extends TestCase
         $setup = release_rollout_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "release_rollout." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,57 +54,8 @@ class ReleaseRolloutEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"release_rollout.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["release01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RELEASE_ROLLOUT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["release_rollout01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "release_rollout",
-                fn() => $client->ReleaseRollout(null)->list(["release_id" => $setup["idmap"]["release01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $release_rollout_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.release_rollout")));
-        $release_rollout_ref01_data = null;
-        if (count($release_rollout_ref01_data_raw) > 0) {
-            $release_rollout_ref01_data = Helpers::to_map($release_rollout_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $release_rollout_ref01_ent = $client->ReleaseRollout(null);
-        $release_rollout_ref01_match = [
-            "release_id" => $setup["idmap"]["release01"],
-        ];
-
-        $release_rollout_ref01_list_result = $release_rollout_ref01_ent->list($release_rollout_ref01_match, null);
-        $this->assertIsArray($release_rollout_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $release_rollout_ref01_match_dt0 = [
-            "id" => $release_rollout_ref01_data["id"],
-        ];
-        $release_rollout_ref01_match_dt0["release_id"] = $setup["idmap"]["release_id"] ?? $setup["idmap"]["release01"] ?? null;
-        $release_rollout_ref01_data_dt0_loaded = $release_rollout_ref01_ent->load($release_rollout_ref01_match_dt0, null);
-        $release_rollout_ref01_data_dt0_load_result = Helpers::to_map(is_object($release_rollout_ref01_data_dt0_loaded) && method_exists($release_rollout_ref01_data_dt0_loaded, 'data_get') ? $release_rollout_ref01_data_dt0_loaded->data_get() : $release_rollout_ref01_data_dt0_loaded);
-        $this->assertNotNull($release_rollout_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($release_rollout_ref01_data_dt0_load_result["id"] ?? null, $release_rollout_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"release_rollout.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only release_rollout.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: release_rollout.create.0 excluded (GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete); release_rollout.load.1 excluded (GET-only live run: reads a record only release_rollout.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -133,27 +84,10 @@ class ReleaseRolloutEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $release_rollout_ref01_match = [
-            "release_id" => $setup["idmap"]["release01"],
-        ];
-
-        $release_rollout_ref01_list_result = $release_rollout_ref01_ent->list($release_rollout_ref01_match, null);
-        $this->assertIsArray($release_rollout_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($release_rollout_ref01_list_result),
-            ["id" => $release_rollout_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $release_rollout_ref01_match_dt0 = [
             "id" => $release_rollout_ref01_data["id"],
         ];
-        $release_rollout_ref01_match_dt0["release_id"] = $setup["idmap"]["release_id"] ?? $setup["idmap"]["release01"] ?? null;
         $release_rollout_ref01_data_dt0_loaded = $release_rollout_ref01_ent->load($release_rollout_ref01_match_dt0, null);
         $release_rollout_ref01_data_dt0_load_result = Helpers::to_map(is_object($release_rollout_ref01_data_dt0_loaded) && method_exists($release_rollout_ref01_data_dt0_loaded, 'data_get') ? $release_rollout_ref01_data_dt0_loaded->data_get() : $release_rollout_ref01_data_dt0_loaded);
         $this->assertNotNull($release_rollout_ref01_data_dt0_load_result);

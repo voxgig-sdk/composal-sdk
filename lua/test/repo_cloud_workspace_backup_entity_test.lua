@@ -29,7 +29,7 @@ describe("RepoCloudWorkspaceBackupEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RepoCloudWorkspaceBackup(nil):list({ ["organization_id"] = 1, ["repo_id"] = "x" }, nil)
+    local _, err = client:RepoCloudWorkspaceBackup(nil):load({ ["id"] = 1, ["organization_id"] = "x", ["repo_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RepoCloudWorkspaceBackupEntity", function()
     local setup = repo_cloud_workspace_backup_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "repo_cloud_workspace_backup." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,64 +46,8 @@ describe("RepoCloudWorkspaceBackupEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"repo_cloud_workspace_backup.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01", "repo01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_REPO_CLOUD_WORKSPACE_BACKUP_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["repo_cloud_workspace_backup01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "repo_cloud_workspace_backup", function()
-        return client:RepoCloudWorkspaceBackup(nil):list({["organization_id"] = setup.idmap["organization01"], ["repo_id"] = setup.idmap["repo01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local repo_cloud_workspace_backup_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.repo_cloud_workspace_backup")))
-    local repo_cloud_workspace_backup_ref01_data = nil
-    if #repo_cloud_workspace_backup_ref01_data_raw > 0 then
-      repo_cloud_workspace_backup_ref01_data = helpers.to_map(repo_cloud_workspace_backup_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local repo_cloud_workspace_backup_ref01_ent = client:RepoCloudWorkspaceBackup(nil)
-    local repo_cloud_workspace_backup_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local repo_cloud_workspace_backup_ref01_list_result, err = repo_cloud_workspace_backup_ref01_ent:list(repo_cloud_workspace_backup_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(repo_cloud_workspace_backup_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local repo_cloud_workspace_backup_ref01_match_dt0 = {
-      id = repo_cloud_workspace_backup_ref01_data["id"],
-    }
-    repo_cloud_workspace_backup_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-    repo_cloud_workspace_backup_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
-    local repo_cloud_workspace_backup_ref01_data_dt0_loaded, err = repo_cloud_workspace_backup_ref01_ent:load(repo_cloud_workspace_backup_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local repo_cloud_workspace_backup_ref01_data_dt0_load_result = helpers.to_map(type(repo_cloud_workspace_backup_ref01_data_dt0_loaded) == 'table' and repo_cloud_workspace_backup_ref01_data_dt0_loaded.data_get and repo_cloud_workspace_backup_ref01_data_dt0_loaded:data_get() or repo_cloud_workspace_backup_ref01_data_dt0_loaded)
-    assert.is_not_nil(repo_cloud_workspace_backup_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(repo_cloud_workspace_backup_ref01_data_dt0_load_result["id"], repo_cloud_workspace_backup_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"repo_cloud_workspace_backup.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repo_cloud_workspace_backup.create.0 gives\"}")
+      pending("Live coverage incomplete: repo_cloud_workspace_backup.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request); repo_cloud_workspace_backup.load.1 excluded (GET-only live run: reads a record only repo_cloud_workspace_backup.create.0 gives)")
       return
     end
 
@@ -135,30 +79,11 @@ describe("RepoCloudWorkspaceBackupEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local repo_cloud_workspace_backup_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-      ["repo_id"] = setup.idmap["repo01"],
-    }
-
-    local repo_cloud_workspace_backup_ref01_list_result, err = repo_cloud_workspace_backup_ref01_ent:list(repo_cloud_workspace_backup_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(repo_cloud_workspace_backup_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(repo_cloud_workspace_backup_ref01_list_result),
-      { id = repo_cloud_workspace_backup_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local repo_cloud_workspace_backup_ref01_match_dt0 = {
       id = repo_cloud_workspace_backup_ref01_data["id"],
     }
     repo_cloud_workspace_backup_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
-    repo_cloud_workspace_backup_ref01_match_dt0["repo_id"] = setup.idmap["repo_id"] or setup.idmap["repo01"]
     local repo_cloud_workspace_backup_ref01_data_dt0_loaded, err = repo_cloud_workspace_backup_ref01_ent:load(repo_cloud_workspace_backup_ref01_match_dt0, nil)
     assert.is_nil(err)
     local repo_cloud_workspace_backup_ref01_data_dt0_load_result = helpers.to_map(type(repo_cloud_workspace_backup_ref01_data_dt0_loaded) == 'table' and repo_cloud_workspace_backup_ref01_data_dt0_loaded.data_get and repo_cloud_workspace_backup_ref01_data_dt0_loaded:data_get() or repo_cloud_workspace_backup_ref01_data_dt0_loaded)

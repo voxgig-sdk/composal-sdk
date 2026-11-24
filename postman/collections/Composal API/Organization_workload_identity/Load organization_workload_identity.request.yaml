@@ -3,7 +3,7 @@ id: f3f58636-3ade-5a59-8d12-a8ca8d952572
 description: |-
   The `load` operation of **organization_workload_identity**.
 
-  SDK: `client.OrganizationWorkloadIdentity().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.OrganizationWorkloadIdentity().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/identity/organizations/:organization_id/workload_identities/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{organization_workload_identity_id}}"
     description: The organization_workload_identity this request addresses.
-order: 2000
+order: 1000

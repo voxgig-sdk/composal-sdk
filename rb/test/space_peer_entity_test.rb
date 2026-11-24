@@ -25,7 +25,7 @@ class SpacePeerEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SpacePeer(nil).list({ "space_id" => 1 }, nil)
+      client.SpacePeer(nil).load({ "id" => 1, "space_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SpacePeerEntityTest < Minitest::Test
     setup = space_peer_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "space_peer." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,10 @@ class SpacePeerEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"space_peer.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve\"}"
-      puts "LIVE STEP {\"id\":\"space_peer.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}"
-      puts "LIVE STEP {\"id\":\"space_peer.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}"
-      puts "LIVE STEP {\"id\":\"space_peer.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["space01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPACE_PEER_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["space_peer01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "space_peer", "id", _live_id) do
-        client.SpacePeer(nil).list({"space_id" => setup[:idmap]["space01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    space_peer_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.space_peer")))
-    space_peer_ref01_data = nil
-    if space_peer_ref01_data_raw.length > 0
-      space_peer_ref01_data = Helpers.to_map(space_peer_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    space_peer_ref01_ent = client.SpacePeer(nil)
-    space_peer_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_peer_ref01_list_result = space_peer_ref01_ent.list(space_peer_ref01_match, nil)
-    assert space_peer_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    space_peer_ref01_match_dt0 = {
-      "id" => space_peer_ref01_data["id"],
-    }
-    space_peer_ref01_match_dt0["space_id"] = setup[:idmap]["space_id"] || setup[:idmap]["space01"]
-    space_peer_ref01_data_dt0_loaded = space_peer_ref01_ent.load(space_peer_ref01_match_dt0, nil)
-    space_peer_ref01_data_dt0_load_result = Helpers.to_map(space_peer_ref01_data_dt0_loaded.respond_to?(:data_get) ? space_peer_ref01_data_dt0_loaded.data_get : space_peer_ref01_data_dt0_loaded)
-    assert !space_peer_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(space_peer_ref01_data_dt0_load_result["id"], space_peer_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"space_peer.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}"
+      puts "LIVE STEP {\"id\":\"space_peer.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_peer.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"space_peer.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}"
+      skip("Live coverage incomplete: space_peer.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve); space_peer.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}); space_peer.load.2 excluded (GET-only live run: reads a record only space_peer.create.0 gives); space_peer.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id})")
     end
 
     if setup[:live]
@@ -116,20 +71,6 @@ class SpacePeerEntityTest < Minitest::Test
     assert !space_peer_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    space_peer_ref01_match = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_peer_ref01_list_result = space_peer_ref01_ent.list(space_peer_ref01_match, nil)
-    assert space_peer_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(space_peer_ref01_list_result),
-      { "id" => space_peer_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     space_peer_ref01_data_up0_up = {
       "id" => space_peer_ref01_data["id"],
@@ -146,7 +87,6 @@ class SpacePeerEntityTest < Minitest::Test
     space_peer_ref01_match_dt0 = {
       "id" => space_peer_ref01_data["id"],
     }
-    space_peer_ref01_match_dt0["space_id"] = setup[:idmap]["space_id"] || setup[:idmap]["space01"]
     space_peer_ref01_data_dt0_loaded = space_peer_ref01_ent.load(space_peer_ref01_match_dt0, nil)
     space_peer_ref01_data_dt0_load_result = Helpers.to_map(space_peer_ref01_data_dt0_loaded.respond_to?(:data_get) ? space_peer_ref01_data_dt0_loaded.data_get : space_peer_ref01_data_dt0_loaded)
     assert !space_peer_ref01_data_dt0_load_result.nil?
@@ -159,20 +99,6 @@ class SpacePeerEntityTest < Minitest::Test
     }
     space_peer_ref01_match_rm0["space_id"] = setup[:idmap]["space_id"] || setup[:idmap]["space01"]
     space_peer_ref01_ent.remove(space_peer_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    space_peer_ref01_match_rt0 = {
-      "space_id" => setup[:idmap]["space01"],
-    }
-
-    space_peer_ref01_list_rt0_result = space_peer_ref01_ent.list(space_peer_ref01_match_rt0, nil)
-    assert space_peer_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(space_peer_ref01_list_rt0_result),
-      { "id" => space_peer_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

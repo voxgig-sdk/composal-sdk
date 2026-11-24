@@ -25,7 +25,7 @@ class JobStepEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.JobStep(nil).list({ "job_id" => 1, "pipeline_id" => "x", "run_id" => "x" }, nil)
+      client.JobStep(nil).load({ "job_id" => 1, "pipeline_id" => "x", "run_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class JobStepEntityTest < Minitest::Test
     setup = job_step_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update"].each do |_op|
+    ["create", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "job_step." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,37 +43,9 @@ class JobStepEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"job_step.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps\"}"
-      puts "LIVE STEP {\"id\":\"job_step.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}\"}"
-    if setup[:live]
-      ["job01", "pipeline01", "run01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_JOB_STEP_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    job_step_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.job_step")))
-    job_step_ref01_data = nil
-    if job_step_ref01_data_raw.length > 0
-      job_step_ref01_data = Helpers.to_map(job_step_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    job_step_ref01_ent = client.JobStep(nil)
-    job_step_ref01_match = {
-      "job_id" => setup[:idmap]["job01"],
-      "pipeline_id" => setup[:idmap]["pipeline01"],
-      "run_id" => setup[:idmap]["run01"],
-    }
-
-    job_step_ref01_list_result = job_step_ref01_ent.list(job_step_ref01_match, nil)
-    assert job_step_ref01_list_result.is_a?(Array)
-
-      return
+      puts "LIVE STEP {\"id\":\"job_step.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}\"}"
+      puts "LIVE STEP {\"id\":\"job_step.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only job_step.create.0 gives\"}"
+      skip("Live coverage incomplete: job_step.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps); job_step.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}); job_step.load.2 excluded (GET-only live run: reads a record only job_step.create.0 gives)")
     end
 
     if setup[:live]
@@ -100,22 +72,6 @@ class JobStepEntityTest < Minitest::Test
     assert !job_step_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    job_step_ref01_match = {
-      "job_id" => setup[:idmap]["job01"],
-      "pipeline_id" => setup[:idmap]["pipeline01"],
-      "run_id" => setup[:idmap]["run01"],
-    }
-
-    job_step_ref01_list_result = job_step_ref01_ent.list(job_step_ref01_match, nil)
-    assert job_step_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(job_step_ref01_list_result),
-      { "id" => job_step_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     job_step_ref01_data_up0_up = {
       "id" => job_step_ref01_data["id"],
@@ -128,6 +84,18 @@ class JobStepEntityTest < Minitest::Test
     job_step_ref01_resdata_up0 = Helpers.to_map(job_step_ref01_resdata_up0_result.respond_to?(:data_get) ? job_step_ref01_resdata_up0_result.data_get : job_step_ref01_resdata_up0_result)
     assert !job_step_ref01_resdata_up0.nil?
     assert Runner.live_same_id(job_step_ref01_resdata_up0["id"], job_step_ref01_data_up0_up["id"]) unless setup[:live]
+
+    Runner.live_pace if setup[:live]
+    # LOAD
+    job_step_ref01_match_dt0 = {
+      "id" => job_step_ref01_data["id"],
+    }
+    job_step_ref01_match_dt0["pipeline_id"] = setup[:idmap]["pipeline_id"] || setup[:idmap]["pipeline01"]
+    job_step_ref01_match_dt0["run_id"] = setup[:idmap]["run_id"] || setup[:idmap]["run01"]
+    job_step_ref01_data_dt0_loaded = job_step_ref01_ent.load(job_step_ref01_match_dt0, nil)
+    job_step_ref01_data_dt0_load_result = Helpers.to_map(job_step_ref01_data_dt0_loaded.respond_to?(:data_get) ? job_step_ref01_data_dt0_loaded.data_get : job_step_ref01_data_dt0_loaded)
+    assert !job_step_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(job_step_ref01_data_dt0_load_result["id"], job_step_ref01_data["id"]) unless setup[:live]
 
   end
 end

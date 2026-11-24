@@ -1,4 +1,4 @@
 $kind: collection
 id: "21e273a9-a2b7-5898-8e1e-0950589a3bd8"
 description: "The `BasicAuthRegistrationOptionFlow` flow of **auth_registration_option**."
-order: 93000
+order: 88000

@@ -37,7 +37,7 @@ class TestCacheNamespaceEntryEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.CacheNamespaceEntry(None).list({"cache_namespace_id": 1}, None)
+            client.CacheNamespaceEntry(None).load({"cache_namespace_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,17 @@ class TestCacheNamespaceEntryEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load", "remove"]:
+        for _op in ["create", "update", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "cache_namespace_entry." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"cache_namespace_entry.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict\"}")
-            print("LIVE STEP {\"id\":\"cache_namespace_entry.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
-            print("LIVE STEP {\"id\":\"cache_namespace_entry.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
-            print("LIVE STEP {\"id\":\"cache_namespace_entry.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"cache_namespace_entry.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
+            print("LIVE STEP {\"id\":\"cache_namespace_entry.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cache_namespace_entry.create.0 gives\"}")
+            print("LIVE STEP {\"id\":\"cache_namespace_entry.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}\"}")
+            pytest.skip("Live coverage incomplete: cache_namespace_entry.create.0 excluded (GET-only live run: needs POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict); cache_namespace_entry.update.1 excluded (GET-only live run: needs PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}); cache_namespace_entry.load.2 excluded (GET-only live run: reads a record only cache_namespace_entry.create.0 gives); cache_namespace_entry.remove.3 excluded (GET-only live run: needs DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id})")
 
         if setup["live"]:
             for _live_key in ["cache_namespace01"]:
@@ -78,21 +78,6 @@ class TestCacheNamespaceEntryEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        cache_namespace_entry_ref01_match = {
-            "cache_namespace_id": setup["idmap"]["cache_namespace01"],
-        }
-
-        cache_namespace_entry_ref01_list_result = cache_namespace_entry_ref01_ent.list(cache_namespace_entry_ref01_match, None)
-        assert isinstance(cache_namespace_entry_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(cache_namespace_entry_ref01_list_result),
-            {"id": cache_namespace_entry_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         cache_namespace_entry_ref01_data_up0_up = {
             "id": cache_namespace_entry_ref01_data["id"],
@@ -110,7 +95,6 @@ class TestCacheNamespaceEntryEntity:
         cache_namespace_entry_ref01_match_dt0 = {
             "id": cache_namespace_entry_ref01_data["id"],
         }
-        cache_namespace_entry_ref01_match_dt0["cache_namespace_id"] = setup["idmap"].get("cache_namespace_id") or setup["idmap"].get("cache_namespace01")
         cache_namespace_entry_ref01_data_dt0_loaded = cache_namespace_entry_ref01_ent.load(cache_namespace_entry_ref01_match_dt0, None)
         cache_namespace_entry_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(cache_namespace_entry_ref01_data_dt0_loaded))
         assert cache_namespace_entry_ref01_data_dt0_load_result is not None
@@ -125,66 +109,6 @@ class TestCacheNamespaceEntryEntity:
         }
         cache_namespace_entry_ref01_match_rm0["cache_namespace_id"] = setup["idmap"].get("cache_namespace_id") or setup["idmap"].get("cache_namespace01")
         cache_namespace_entry_ref01_ent.remove(cache_namespace_entry_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        cache_namespace_entry_ref01_match_rt0 = {
-            "cache_namespace_id": setup["idmap"]["cache_namespace01"],
-        }
-
-        cache_namespace_entry_ref01_list_rt0_result = cache_namespace_entry_ref01_ent.list(cache_namespace_entry_ref01_match_rt0, None)
-        assert isinstance(cache_namespace_entry_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(cache_namespace_entry_ref01_list_rt0_result),
-            {"id": cache_namespace_entry_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["cache_namespace01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_CACHE_NAMESPACE_ENTRY_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("cache_namespace_entry01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "cache_namespace_entry",
-                                 lambda: client.CacheNamespaceEntry(None).list({"cache_namespace_id": setup["idmap"].get("cache_namespace01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        cache_namespace_entry_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.cache_namespace_entry")))
-        cache_namespace_entry_ref01_data = None
-        if len(cache_namespace_entry_ref01_data_raw) > 0:
-            cache_namespace_entry_ref01_data = helpers.to_map(cache_namespace_entry_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        cache_namespace_entry_ref01_ent = client.CacheNamespaceEntry(None)
-        cache_namespace_entry_ref01_match = {
-            "cache_namespace_id": setup["idmap"]["cache_namespace01"],
-        }
-
-        cache_namespace_entry_ref01_list_result = cache_namespace_entry_ref01_ent.list(cache_namespace_entry_ref01_match, None)
-        assert isinstance(cache_namespace_entry_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        cache_namespace_entry_ref01_match_dt0 = {
-            "id": cache_namespace_entry_ref01_data["id"],
-        }
-        cache_namespace_entry_ref01_match_dt0["cache_namespace_id"] = setup["idmap"].get("cache_namespace_id") or setup["idmap"].get("cache_namespace01")
-        cache_namespace_entry_ref01_data_dt0_loaded = cache_namespace_entry_ref01_ent.load(cache_namespace_entry_ref01_match_dt0, None)
-        cache_namespace_entry_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(cache_namespace_entry_ref01_data_dt0_loaded))
-        assert cache_namespace_entry_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(cache_namespace_entry_ref01_data_dt0_load_result.get("id"), cache_namespace_entry_ref01_data["id"])
 
 
 

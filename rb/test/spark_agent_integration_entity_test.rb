@@ -25,7 +25,7 @@ class SparkAgentIntegrationEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SparkAgentIntegration(nil).list({ "agent_id" => 1, "organization_id" => "x" }, nil)
+      client.SparkAgentIntegration(nil).load({ "agent_id" => 1, "organization_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SparkAgentIntegrationEntityTest < Minitest::Test
     setup = spark_agent_integration_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "spark_agent_integration." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class SparkAgentIntegrationEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"spark_agent_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations\"}"
-    if setup[:live]
-      ["agent01", "organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPARK_AGENT_INTEGRATION_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,15 +54,12 @@ class SparkAgentIntegrationEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     spark_agent_integration_ref01_ent = client.SparkAgentIntegration(nil)
-    spark_agent_integration_ref01_match = {
-      "agent_id" => setup[:idmap]["agent01"],
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_agent_integration_ref01_list_result = spark_agent_integration_ref01_ent.list(spark_agent_integration_ref01_match, nil)
-    assert spark_agent_integration_ref01_list_result.is_a?(Array)
+    spark_agent_integration_ref01_match_dt0 = {}
+    spark_agent_integration_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    spark_agent_integration_ref01_data_dt0_loaded = spark_agent_integration_ref01_ent.load(spark_agent_integration_ref01_match_dt0, nil)
+    assert !spark_agent_integration_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -96,14 +86,11 @@ class SparkAgentIntegrationEntityTest < Minitest::Test
     assert !spark_agent_integration_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    spark_agent_integration_ref01_match = {
-      "agent_id" => setup[:idmap]["agent01"],
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_agent_integration_ref01_list_result = spark_agent_integration_ref01_ent.list(spark_agent_integration_ref01_match, nil)
-    assert spark_agent_integration_ref01_list_result.is_a?(Array)
+    # LOAD
+    spark_agent_integration_ref01_match_dt0 = {}
+    spark_agent_integration_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    spark_agent_integration_ref01_data_dt0_loaded = spark_agent_integration_ref01_ent.load(spark_agent_integration_ref01_match_dt0, nil)
+    assert !spark_agent_integration_ref01_data_dt0_loaded.nil?
 
   end
 end

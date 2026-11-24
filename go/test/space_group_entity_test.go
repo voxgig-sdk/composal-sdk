@@ -38,7 +38,7 @@ func TestSpaceGroupEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceGroup(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceGroup(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceGroupEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_group." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,11 @@ func TestSpaceGroupEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_group.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/groups\"}")
-			t.Log("LIVE STEP {\"id\":\"space_group.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/groups/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_group.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/groups/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_group.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_group.create.0 gives\"}")
 			t.Log("LIVE STEP {\"id\":\"space_group.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/groups/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_group.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_groupEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_GROUP_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spaceGroupRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_group")))
-		var spaceGroupRef01Data map[string]any
-		if len(spaceGroupRef01DataRaw) > 0 {
-			spaceGroupRef01Data = core.ToMapAny(spaceGroupRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spaceGroupRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceGroupRef01Ent := client.SpaceGroup(nil)
-		spaceGroupRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGroupRef01ListResult, err := spaceGroupRef01Ent.List(spaceGroupRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spaceGroupRef01ListOk := spaceGroupRef01ListResult.([]any)
-		if !spaceGroupRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceGroupRef01ListResult)
-		}
-
-		return
+			t.Skip("Live coverage incomplete: space_group.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/groups); space_group.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/groups/{id}); space_group.load.2 excluded (GET-only live run: reads a record only space_group.create.0 gives); space_group.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/groups/{id})")
+			return
 		}
 
 		if setup.live {
@@ -142,28 +105,6 @@ func TestSpaceGroupEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceGroupRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGroupRef01ListResult, err := spaceGroupRef01Ent.List(spaceGroupRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceGroupRef01List, spaceGroupRef01ListOk := spaceGroupRef01ListResult.([]any)
-		if !spaceGroupRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceGroupRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spaceGroupRef01List), map[string]any{"id": spaceGroupRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spaceGroupRef01DataUp0Up := map[string]any{
 			"id": spaceGroupRef01Data["id"],
@@ -185,6 +126,25 @@ func TestSpaceGroupEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
+		// LOAD
+		spaceGroupRef01MatchDt0 := map[string]any{
+			"id": spaceGroupRef01Data["id"],
+		}
+		spaceGroupRef01DataDt0Loaded, err := spaceGroupRef01Ent.Load(spaceGroupRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		spaceGroupRef01DataDt0LoadResult := core.ToMapAny(entityData(spaceGroupRef01DataDt0Loaded))
+		if spaceGroupRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(spaceGroupRef01DataDt0LoadResult["id"], spaceGroupRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
+		}
+
+		if setup.live {
+			livePace()
+		}
 		// REMOVE
 		spaceGroupRef01MatchRm0 := map[string]any{
 			"id": spaceGroupRef01Data["id"],
@@ -197,28 +157,6 @@ func TestSpaceGroupEntity(t *testing.T) {
 		_, err = spaceGroupRef01Ent.Remove(spaceGroupRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceGroupRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceGroupRef01ListRt0Result, err := spaceGroupRef01Ent.List(spaceGroupRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceGroupRef01ListRt0, spaceGroupRef01ListRt0Ok := spaceGroupRef01ListRt0Result.([]any)
-		if !spaceGroupRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spaceGroupRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spaceGroupRef01ListRt0), map[string]any{"id": spaceGroupRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

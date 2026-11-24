@@ -25,7 +25,7 @@ class RunnerLeaseEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RunnerLease(nil).list({ "runner_id" => 1, "runner_pool_id" => "x" }, nil)
+      client.RunnerLease(nil).load({ "runner_id" => 1, "runner_pool_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class RunnerLeaseEntityTest < Minitest::Test
     setup = runner_lease_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "runner_lease." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,35 +43,8 @@ class RunnerLeaseEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"runner_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim\"}"
-    if setup[:live]
-      ["runner01", "runner_pool01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_RUNNER_LEASE_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    runner_lease_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.runner_lease")))
-    runner_lease_ref01_data = nil
-    if runner_lease_ref01_data_raw.length > 0
-      runner_lease_ref01_data = Helpers.to_map(runner_lease_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    runner_lease_ref01_ent = client.RunnerLease(nil)
-    runner_lease_ref01_match = {
-      "runner_id" => setup[:idmap]["runner01"],
-      "runner_pool_id" => setup[:idmap]["runner_pool01"],
-    }
-
-    runner_lease_ref01_list_result = runner_lease_ref01_ent.list(runner_lease_ref01_match, nil)
-    assert runner_lease_ref01_list_result.is_a?(Array)
-
-      return
+      puts "LIVE STEP {\"id\":\"runner_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only runner_lease.create.0 gives\"}"
+      skip("Live coverage incomplete: runner_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim); runner_lease.load.1 excluded (GET-only live run: reads a record only runner_lease.create.0 gives)")
     end
 
     if setup[:live]
@@ -97,19 +70,15 @@ class RunnerLeaseEntityTest < Minitest::Test
     assert !runner_lease_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    runner_lease_ref01_match = {
-      "runner_id" => setup[:idmap]["runner01"],
-      "runner_pool_id" => setup[:idmap]["runner_pool01"],
+    # LOAD
+    runner_lease_ref01_match_dt0 = {
+      "id" => runner_lease_ref01_data["id"],
     }
-
-    runner_lease_ref01_list_result = runner_lease_ref01_ent.list(runner_lease_ref01_match, nil)
-    assert runner_lease_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(runner_lease_ref01_list_result),
-      { "id" => runner_lease_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    runner_lease_ref01_match_dt0["runner_pool_id"] = setup[:idmap]["runner_pool_id"] || setup[:idmap]["runner_pool01"]
+    runner_lease_ref01_data_dt0_loaded = runner_lease_ref01_ent.load(runner_lease_ref01_match_dt0, nil)
+    runner_lease_ref01_data_dt0_load_result = Helpers.to_map(runner_lease_ref01_data_dt0_loaded.respond_to?(:data_get) ? runner_lease_ref01_data_dt0_loaded.data_get : runner_lease_ref01_data_dt0_loaded)
+    assert !runner_lease_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(runner_lease_ref01_data_dt0_load_result["id"], runner_lease_ref01_data["id"]) unless setup[:live]
 
   end
 end

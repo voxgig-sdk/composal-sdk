@@ -111,8 +111,8 @@ main: kit: entity: github_connection: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

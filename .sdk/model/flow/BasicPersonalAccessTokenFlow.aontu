@@ -15,12 +15,18 @@ main: kit: flow: BasicPersonalAccessTokenFlow:
     }
 
     {
-      o: "list",
+      i: {
+        ref: "personal_access_token_ref01",
+        srcdatavar: "personal_access_token_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "personal_access_token_ref01"
+            mark: "Mark01-personal_access_token_ref01"
           }
         }
       ]
@@ -37,22 +43,6 @@ main: kit: flow: BasicPersonalAccessTokenFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "personal_access_token_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicPersonalAccessTokenFlow"

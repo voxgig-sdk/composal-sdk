@@ -21,60 +21,6 @@ local function live_ok(result, err)
 end
 
 describe("HostingAppDomainDirect", function()
-  it("should direct-list-hosting_app_domain", function()
-    local setup = hosting_app_domain_direct_setup({
-      { id = "direct01" },
-      { id = "direct02" },
-    })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-hosting_app_domain", setup.live and "live" or "unit")
-    if _should_skip then
-      pending(_reason or "skipped via sdk-test-control.json")
-      return
-    end
-    if setup.live then
-      for _, _live_key in ipairs({"app01"}) do
-        if setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_HOSTING_APP_DOMAIN_ENTID")
-        end
-      end
-    end
-    if setup.live then
-      runner.live_pace()
-    end
-    local client = setup.client
-
-    local params = {}
-    local query = {}
-    if setup.live then
-      params["app_id"] = setup.idmap["app01"]
-    else
-      params["app_id"] = "direct01"
-    end
-
-    local result, err = client:direct({
-      path = "api/v1/hosting/apps/{app_id}/domains",
-      method = "GET",
-      params = params,
-      query = query,
-    })
-    if setup.live then
-      if not live_ok(result, err) then
-        runner.live_miss(pending, LIVE_STRICT, "Live list failed: " .. runner.live_describe(result, err))
-      end
-      if runner.live_list(result["data"]) == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live list returned no list: " .. runner.live_describe(result, err))
-      end
-      assert.is_table(runner.live_list(result["data"]))
-    else
-      assert.is_nil(err)
-      assert.is_true(result["ok"])
-      assert.are.equal(200, helpers.to_int(result["status"]))
-      assert.is_table(result["data"])
-      assert.are.equal(2, #result["data"])
-      assert.are.equal(1, #setup.calls)
-    end
-  end)
-
   it("should direct-load-hosting_app_domain", function()
     local setup = hosting_app_domain_direct_setup({ id = "direct01" })
     local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-hosting_app_domain", setup.live and "live" or "unit")
@@ -82,8 +28,13 @@ describe("HostingAppDomainDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["hosting_app_domain01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-load-hosting_app_domain\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs hosting_app_domain01, which only POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable gives\"}")
+      pending("Live coverage incomplete: direct-load-hosting_app_domain excluded (GET-only live run: needs hosting_app_domain01, which only POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable gives)")
+      return
+    end
     if setup.live then
-      for _, _live_key in ipairs({"app01"}) do
+      for _, _live_key in ipairs({"app01", "hosting_app_domain01"}) do
         if setup.idmap[_live_key] == nil then
           runner.live_miss(pending, LIVE_STRICT, "Live test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_HOSTING_APP_DOMAIN_ENTID")
         end
@@ -97,28 +48,8 @@ describe("HostingAppDomainDirect", function()
     local params = {}
     local query = {}
     if setup.live then
-      local list_result, list_err = client:direct({
-        path = "api/v1/hosting/apps/{app_id}/domains",
-        method = "GET",
-        params = {["app_id"] = setup.idmap["app01"]},
-      })
-      if not live_ok(list_result, list_err) then
-        runner.live_miss(pending, LIVE_STRICT, "Live list discovery failed: " .. runner.live_describe(list_result, list_err))
-      end
-      local records = runner.live_list(list_result["data"])
-      if records == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live list discovery returned no list: " .. runner.live_describe(list_result, list_err))
-      end
-      if records[1] == nil then
-        runner.live_empty(pending, "The account has no hosting_app_domain record to load")
-      end
-      local first = type(records[1]) == "table" and records[1] or {}
-      local found = first["id"]
-      if found == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-      end
-      params["id"] = found
       params["app_id"] = setup.idmap["app01"]
+      params["id"] = setup.idmap["hosting_app_domain01"]
     else
       params["app_id"] = "direct01"
       params["id"] = "direct02"

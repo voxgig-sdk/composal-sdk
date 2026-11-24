@@ -1,0 +1,15 @@
+$kind: http-request
+id: "915c31b0-76e7-55e6-8da0-57eb3f1eda17"
+description: |-
+  The `load` operation of **space_group_membership**.
+
+  SDK: `client.SpaceGroupMembership().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/group_memberships"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

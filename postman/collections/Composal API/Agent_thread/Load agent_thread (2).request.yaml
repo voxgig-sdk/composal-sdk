@@ -1,0 +1,11 @@
+$kind: http-request
+id: e9956ae0-0422-5eaa-900e-ff4174ad98d4
+description: |-
+  The `load` operation of **agent_thread**.
+
+  SDK: `client.AgentThread().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent/threads"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

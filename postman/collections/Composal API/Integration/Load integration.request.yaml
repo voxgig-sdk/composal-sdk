@@ -1,0 +1,15 @@
+$kind: http-request
+id: "69ddbfaf-5783-5e42-9286-d9b4c87891c8"
+description: |-
+  The `load` operation of **integration**.
+
+  SDK: `client.Integration().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/integrations"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this integration belongs to.
+order: 1000

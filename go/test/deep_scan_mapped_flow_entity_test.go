@@ -38,7 +38,7 @@ func TestDeepScanMappedFlowEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.DeepScanMappedFlow(nil).List(map[string]any{"organization_id": 1, "environment_id": "x"}, nil)
+		_, err := client.DeepScanMappedFlow(nil).Load(map[string]any{"organization_id": 1, "environment_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestDeepScanMappedFlowEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "deep_scan_mapped_flow." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestDeepScanMappedFlowEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, deep_scan_mapped_flowEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DEEP_SCAN_MAPPED_FLOW_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		deepScanMappedFlowRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.deep_scan_mapped_flow")))
@@ -81,24 +76,6 @@ func TestDeepScanMappedFlowEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = deepScanMappedFlowRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		deepScanMappedFlowRef01Ent := client.DeepScanMappedFlow(nil)
-		deepScanMappedFlowRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		deepScanMappedFlowRef01ListResult, err := deepScanMappedFlowRef01Ent.List(deepScanMappedFlowRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, deepScanMappedFlowRef01ListOk := deepScanMappedFlowRef01ListResult.([]any)
-		if !deepScanMappedFlowRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", deepScanMappedFlowRef01ListResult)
-		}
 
 	})
 }

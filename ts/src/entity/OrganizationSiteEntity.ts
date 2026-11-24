@@ -16,7 +16,7 @@ import type {
 
 import type {
   OrganizationSite,
-  OrganizationSiteListMatch,
+  OrganizationSiteLoadMatch,
   OrganizationSiteCreateData,
   OrganizationSiteUpdateData,
   OrganizationSiteRemoveMatch,
@@ -38,8 +38,7 @@ class OrganizationSiteEntity extends ComposalEntityBase<OrganizationSite> {
 
 
 
-
-  async list(this: any, reqmatch?: OrganizationSiteListMatch, ctrl?: Control): Promise<OrganizationSiteEntity[]> {
+  async load(this: any, reqmatch?: OrganizationSiteLoadMatch, ctrl?: Control): Promise<OrganizationSiteEntity> {
 
     const utility = this._utility
 
@@ -59,7 +58,7 @@ class OrganizationSiteEntity extends ComposalEntityBase<OrganizationSite> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -125,9 +124,15 @@ class OrganizationSiteEntity extends ComposalEntityBase<OrganizationSite> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -150,11 +155,12 @@ class OrganizationSiteEntity extends ComposalEntityBase<OrganizationSite> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<OrganizationSiteEntity[]> return stays clean under strict null checks.
+        // Promise<OrganizationSiteEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

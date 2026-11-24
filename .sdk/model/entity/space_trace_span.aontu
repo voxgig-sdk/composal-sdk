@@ -70,8 +70,8 @@ main: kit: entity: space_trace_span: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

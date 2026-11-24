@@ -33,7 +33,7 @@ class PreviewSharingApprovalEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->PreviewSharingApproval(null)->list(["app_id" => 1, "preview_id" => 'x'], null);
+            $client->PreviewSharingApproval(null)->load(["app_id" => 1, "preview_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class PreviewSharingApprovalEntityTest extends TestCase
         $setup = preview_sharing_approval_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "preview_sharing_approval." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class PreviewSharingApprovalEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"preview_sharing_approval.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01", "preview01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PREVIEW_SHARING_APPROVAL_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,15 +67,12 @@ class PreviewSharingApprovalEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $preview_sharing_approval_ref01_ent = $client->PreviewSharingApproval(null);
-        $preview_sharing_approval_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_id" => $setup["idmap"]["preview01"],
-        ];
-
-        $preview_sharing_approval_ref01_list_result = $preview_sharing_approval_ref01_ent->list($preview_sharing_approval_ref01_match, null);
-        $this->assertIsArray($preview_sharing_approval_ref01_list_result);
+        $preview_sharing_approval_ref01_match_dt0 = [];
+        $preview_sharing_approval_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
+        $preview_sharing_approval_ref01_data_dt0_loaded = $preview_sharing_approval_ref01_ent->load($preview_sharing_approval_ref01_match_dt0, null);
+        $this->assertNotNull($preview_sharing_approval_ref01_data_dt0_loaded);
 
             return;
         }
@@ -113,14 +103,11 @@ class PreviewSharingApprovalEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $preview_sharing_approval_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_id" => $setup["idmap"]["preview01"],
-        ];
-
-        $preview_sharing_approval_ref01_list_result = $preview_sharing_approval_ref01_ent->list($preview_sharing_approval_ref01_match, null);
-        $this->assertIsArray($preview_sharing_approval_ref01_list_result);
+        // LOAD
+        $preview_sharing_approval_ref01_match_dt0 = [];
+        $preview_sharing_approval_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
+        $preview_sharing_approval_ref01_data_dt0_loaded = $preview_sharing_approval_ref01_ent->load($preview_sharing_approval_ref01_match_dt0, null);
+        $this->assertNotNull($preview_sharing_approval_ref01_data_dt0_loaded);
 
     }
 }

@@ -21,14 +21,16 @@ local function live_ok(result, err)
 end
 
 describe("PairingEventDirect", function()
-  it("should direct-list-pairing_event", function()
-    local setup = pairing_event_direct_setup({
-      { id = "direct01" },
-      { id = "direct02" },
-    })
-    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-list-pairing_event", setup.live and "live" or "unit")
+  it("should direct-load-pairing_event", function()
+    local setup = pairing_event_direct_setup({ id = "direct01" })
+    local _should_skip, _reason = runner.is_control_skipped("direct", "direct-load-pairing_event", setup.live and "live" or "unit")
     if _should_skip then
       pending(_reason or "skipped via sdk-test-control.json")
+      return
+    end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["pairing01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-load-pairing_event\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pairing01, which only POST /api/v1/relay/pairings gives\"}")
+      pending("Live coverage incomplete: direct-load-pairing_event excluded (GET-only live run: needs pairing01, which only POST /api/v1/relay/pairings gives)")
       return
     end
     if setup.live then
@@ -59,18 +61,20 @@ describe("PairingEventDirect", function()
     })
     if setup.live then
       if not live_ok(result, err) then
-        runner.live_miss(pending, LIVE_STRICT, "Live list failed: " .. runner.live_describe(result, err))
+        runner.live_miss(pending, LIVE_STRICT, "Live load failed: " .. runner.live_describe(result, err))
       end
-      if runner.live_list(result["data"]) == nil then
-        runner.live_miss(pending, LIVE_STRICT, "Live list returned no list: " .. runner.live_describe(result, err))
+      if result["data"] == nil then
+        runner.live_miss(pending, LIVE_STRICT, "Live load returned no data: " .. runner.live_describe(result, err))
       end
-      assert.is_table(runner.live_list(result["data"]))
+      assert.is_not_nil(result["data"])
     else
       assert.is_nil(err)
       assert.is_true(result["ok"])
       assert.are.equal(200, helpers.to_int(result["status"]))
-      assert.is_table(result["data"])
-      assert.are.equal(2, #result["data"])
+      assert.is_not_nil(result["data"])
+      if type(result["data"]) == "table" then
+        assert.are.equal("direct01", result["data"]["id"])
+      end
       assert.are.equal(1, #setup.calls)
     end
   end)

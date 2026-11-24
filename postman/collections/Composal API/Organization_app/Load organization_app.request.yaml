@@ -1,0 +1,24 @@
+$kind: http-request
+id: c54c3327-a6f3-5251-8ef9-0d8a7f326618
+description: |-
+  The `load` operation of **organization_app**.
+
+  SDK: `client.OrganizationApp().load({ organization_id: "example", native_agent_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/apps?native_agent_id={{organization_app_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: context
+    value: ""
+    disabled: true
+  - key: installed
+    value: ""
+    disabled: true
+  - key: native_agent_id
+    value: "{{organization_app_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_app belongs to.
+order: 1000

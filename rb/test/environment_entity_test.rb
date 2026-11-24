@@ -25,7 +25,7 @@ class EnvironmentEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.Environment(nil).list({ "organization_id" => 1 }, nil)
+      client.Environment(nil).load({ "id" => 1, "organization_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class EnvironmentEntityTest < Minitest::Test
     setup = environment_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "environment." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,10 @@ class EnvironmentEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"environment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments\"}"
-      puts "LIVE STEP {\"id\":\"environment.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}\"}"
-      puts "LIVE STEP {\"id\":\"environment.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}\"}"
-      puts "LIVE STEP {\"id\":\"environment.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_ENVIRONMENT_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["environment01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "environment", "id", _live_id) do
-        client.Environment(nil).list({"organization_id" => setup[:idmap]["organization01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    environment_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.environment")))
-    environment_ref01_data = nil
-    if environment_ref01_data_raw.length > 0
-      environment_ref01_data = Helpers.to_map(environment_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    environment_ref01_ent = client.Environment(nil)
-    environment_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    environment_ref01_list_result = environment_ref01_ent.list(environment_ref01_match, nil)
-    assert environment_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    environment_ref01_match_dt0 = {
-      "id" => environment_ref01_data["id"],
-    }
-    environment_ref01_match_dt0["organization_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| environment_ref01_data["organization_id"].is_a?(c) } ? environment_ref01_data["organization_id"] : (setup[:idmap]["organization_id"] || setup[:idmap]["organization01"])
-    environment_ref01_data_dt0_loaded = environment_ref01_ent.load(environment_ref01_match_dt0, nil)
-    environment_ref01_data_dt0_load_result = Helpers.to_map(environment_ref01_data_dt0_loaded.respond_to?(:data_get) ? environment_ref01_data_dt0_loaded.data_get : environment_ref01_data_dt0_loaded)
-    assert !environment_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(environment_ref01_data_dt0_load_result["id"], environment_ref01_data["id"])
-
-      return
+      puts "LIVE STEP {\"id\":\"environment.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}\"}"
+      puts "LIVE STEP {\"id\":\"environment.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only environment.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"environment.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}\"}"
+      skip("Live coverage incomplete: environment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments); environment.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}); environment.load.2 excluded (GET-only live run: reads a record only environment.create.0 gives); environment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id})")
     end
 
     if setup[:live]
@@ -116,20 +71,6 @@ class EnvironmentEntityTest < Minitest::Test
     assert !environment_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    environment_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    environment_ref01_list_result = environment_ref01_ent.list(environment_ref01_match, nil)
-    assert environment_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(environment_ref01_list_result),
-      { "id" => environment_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     environment_ref01_data_up0_up = {
       "id" => environment_ref01_data["id"],
@@ -151,7 +92,7 @@ class EnvironmentEntityTest < Minitest::Test
     environment_ref01_match_dt0 = {
       "id" => environment_ref01_data["id"],
     }
-    environment_ref01_match_dt0["organization_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| environment_ref01_data["organization_id"].is_a?(c) } ? environment_ref01_data["organization_id"] : (setup[:idmap]["organization_id"] || setup[:idmap]["organization01"])
+    environment_ref01_match_dt0["organization_id"] = [String, Numeric, TrueClass, FalseClass].any? { |c| environment_ref01_data["organization_id"].is_a?(c) } ? environment_ref01_data["organization_id"] : (setup[:idmap]["organization_id"])
     environment_ref01_data_dt0_loaded = environment_ref01_ent.load(environment_ref01_match_dt0, nil)
     environment_ref01_data_dt0_load_result = Helpers.to_map(environment_ref01_data_dt0_loaded.respond_to?(:data_get) ? environment_ref01_data_dt0_loaded.data_get : environment_ref01_data_dt0_loaded)
     assert !environment_ref01_data_dt0_load_result.nil?
@@ -164,20 +105,6 @@ class EnvironmentEntityTest < Minitest::Test
     }
     environment_ref01_match_rm0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     environment_ref01_ent.remove(environment_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    environment_ref01_match_rt0 = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    environment_ref01_list_rt0_result = environment_ref01_ent.list(environment_ref01_match_rt0, nil)
-    assert environment_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(environment_ref01_list_rt0_result),
-      { "id" => environment_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

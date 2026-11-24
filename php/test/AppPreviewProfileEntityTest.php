@@ -33,7 +33,7 @@ class AppPreviewProfileEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AppPreviewProfile(null)->list(["app_id" => 1], null);
+            $client->AppPreviewProfile(null)->load(["app_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AppPreviewProfileEntityTest extends TestCase
         $setup = app_preview_profile_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "app_preview_profile." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,58 +54,10 @@ class AppPreviewProfileEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_APP_PREVIEW_PROFILE_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["app_preview_profile01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "app_preview_profile",
-                fn() => $client->AppPreviewProfile(null)->list(["app_id" => $setup["idmap"]["app01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $app_preview_profile_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.app_preview_profile")));
-        $app_preview_profile_ref01_data = null;
-        if (count($app_preview_profile_ref01_data_raw) > 0) {
-            $app_preview_profile_ref01_data = Helpers::to_map($app_preview_profile_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $app_preview_profile_ref01_ent = $client->AppPreviewProfile(null);
-        $app_preview_profile_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_preview_profile_ref01_list_result = $app_preview_profile_ref01_ent->list($app_preview_profile_ref01_match, null);
-        $this->assertIsArray($app_preview_profile_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $app_preview_profile_ref01_match_dt0 = [
-            "id" => $app_preview_profile_ref01_data["id"],
-        ];
-        $app_preview_profile_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
-        $app_preview_profile_ref01_data_dt0_loaded = $app_preview_profile_ref01_ent->load($app_preview_profile_ref01_match_dt0, null);
-        $app_preview_profile_ref01_data_dt0_load_result = Helpers::to_map(is_object($app_preview_profile_ref01_data_dt0_loaded) && method_exists($app_preview_profile_ref01_data_dt0_loaded, 'data_get') ? $app_preview_profile_ref01_data_dt0_loaded->data_get() : $app_preview_profile_ref01_data_dt0_loaded);
-        $this->assertNotNull($app_preview_profile_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($app_preview_profile_ref01_data_dt0_load_result["id"] ?? null, $app_preview_profile_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only app_preview_profile.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"app_preview_profile.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: app_preview_profile.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles); app_preview_profile.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}); app_preview_profile.load.2 excluded (GET-only live run: reads a record only app_preview_profile.create.0 gives); app_preview_profile.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -134,22 +86,6 @@ class AppPreviewProfileEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $app_preview_profile_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_preview_profile_ref01_list_result = $app_preview_profile_ref01_ent->list($app_preview_profile_ref01_match, null);
-        $this->assertIsArray($app_preview_profile_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($app_preview_profile_ref01_list_result),
-            ["id" => $app_preview_profile_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $app_preview_profile_ref01_data_up0_up = [
             "id" => $app_preview_profile_ref01_data["id"],
@@ -173,7 +109,6 @@ class AppPreviewProfileEntityTest extends TestCase
         $app_preview_profile_ref01_match_dt0 = [
             "id" => $app_preview_profile_ref01_data["id"],
         ];
-        $app_preview_profile_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $app_preview_profile_ref01_data_dt0_loaded = $app_preview_profile_ref01_ent->load($app_preview_profile_ref01_match_dt0, null);
         $app_preview_profile_ref01_data_dt0_load_result = Helpers::to_map(is_object($app_preview_profile_ref01_data_dt0_loaded) && method_exists($app_preview_profile_ref01_data_dt0_loaded, 'data_get') ? $app_preview_profile_ref01_data_dt0_loaded->data_get() : $app_preview_profile_ref01_data_dt0_loaded);
         $this->assertNotNull($app_preview_profile_ref01_data_dt0_load_result);
@@ -188,22 +123,6 @@ class AppPreviewProfileEntityTest extends TestCase
         ];
         $app_preview_profile_ref01_match_rm0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $app_preview_profile_ref01_ent->remove($app_preview_profile_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $app_preview_profile_ref01_match_rt0 = [
-            "app_id" => $setup["idmap"]["app01"],
-        ];
-
-        $app_preview_profile_ref01_list_rt0_result = $app_preview_profile_ref01_ent->list($app_preview_profile_ref01_match_rt0, null);
-        $this->assertIsArray($app_preview_profile_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($app_preview_profile_ref01_list_rt0_result),
-            ["id" => $app_preview_profile_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

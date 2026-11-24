@@ -6,8 +6,8 @@ main: kit: entity: agent_event: {
 
   name: "agent_event"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

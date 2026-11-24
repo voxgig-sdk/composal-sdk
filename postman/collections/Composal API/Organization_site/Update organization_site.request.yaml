@@ -14,8 +14,8 @@ pathVariables:
     value: "{{organization_id}}"
     description: The organization this organization_site belongs to.
   - key: name
-    value: "{{organization_site_id}}"
-    description: The organization_site this request addresses.
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
 body:
   type: json
   content: "{}"

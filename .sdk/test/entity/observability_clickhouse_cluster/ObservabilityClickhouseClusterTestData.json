@@ -43,12 +43,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/observability/clickhouse_clusters": {
+    "GET /api/v1/observability/clickhouse_clusters/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/observability/clickhouse_clusters/{id}": {
+    "GET /api/v1/observability/clickhouse_clusters": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

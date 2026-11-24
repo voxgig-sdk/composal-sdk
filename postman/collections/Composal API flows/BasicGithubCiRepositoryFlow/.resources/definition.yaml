@@ -1,4 +1,4 @@
 $kind: collection
 id: "39b96d89-8466-56c0-a2db-1c806472fee5"
 description: "The `BasicGithubCiRepositoryFlow` flow of **github_ci_repository**."
-order: 211000
+order: 203000

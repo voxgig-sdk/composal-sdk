@@ -19,22 +19,6 @@ main: kit: flow: BasicSpaceSegmentFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "space_segment_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         space_id: "space01"
       }
@@ -64,8 +48,7 @@ main: kit: flow: BasicSpaceSegmentFlow:
       }
 
       m: {
-        id: "space_segment01",
-        space_id: "space01"
+        id: "space_segment01"
       }
 
       o: "load",
@@ -91,26 +74,6 @@ main: kit: flow: BasicSpaceSegmentFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "space_segment_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSpaceSegmentFlow"

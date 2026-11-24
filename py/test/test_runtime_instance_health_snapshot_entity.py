@@ -37,7 +37,7 @@ class TestRuntimeInstanceHealthSnapshotEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.RuntimeInstanceHealthSnapshot(None).list({"runtime_instance_id": 1}, None)
+            client.RuntimeInstanceHealthSnapshot(None).load({"runtime_instance_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestRuntimeInstanceHealthSnapshotEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "runtime_instance_health_snapshot." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -74,20 +74,13 @@ class TestRuntimeInstanceHealthSnapshotEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        runtime_instance_health_snapshot_ref01_match = {
-            "runtime_instance_id": setup["idmap"]["runtime_instance01"],
-        }
-
-        runtime_instance_health_snapshot_ref01_list_result = runtime_instance_health_snapshot_ref01_ent.list(runtime_instance_health_snapshot_ref01_match, None)
-        assert isinstance(runtime_instance_health_snapshot_ref01_list_result, list)
+        # LOAD
+        runtime_instance_health_snapshot_ref01_match_dt0 = {}
+        runtime_instance_health_snapshot_ref01_data_dt0_loaded = runtime_instance_health_snapshot_ref01_ent.load(runtime_instance_health_snapshot_ref01_match_dt0, None)
+        assert runtime_instance_health_snapshot_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["runtime_instance01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_RUNTIME_INSTANCE_HEALTH_SNAPSHOT_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -99,14 +92,11 @@ class TestRuntimeInstanceHealthSnapshotEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         runtime_instance_health_snapshot_ref01_ent = client.RuntimeInstanceHealthSnapshot(None)
-        runtime_instance_health_snapshot_ref01_match = {
-            "runtime_instance_id": setup["idmap"]["runtime_instance01"],
-        }
-
-        runtime_instance_health_snapshot_ref01_list_result = runtime_instance_health_snapshot_ref01_ent.list(runtime_instance_health_snapshot_ref01_match, None)
-        assert isinstance(runtime_instance_health_snapshot_ref01_list_result, list)
+        runtime_instance_health_snapshot_ref01_match_dt0 = {}
+        runtime_instance_health_snapshot_ref01_data_dt0_loaded = runtime_instance_health_snapshot_ref01_ent.load(runtime_instance_health_snapshot_ref01_match_dt0, None)
+        assert runtime_instance_health_snapshot_ref01_data_dt0_loaded is not None
 
 
 

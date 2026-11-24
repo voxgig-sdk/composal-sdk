@@ -3,7 +3,7 @@ id: f41657d7-49d1-5b4f-a608-161b8be1b43e
 description: |-
   The `load` operation of **app_service**.
 
-  SDK: `client.AppService().load({ app_id: "example", id: "example_id" })`
+  SDK: `client.AppService().load({ app_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/services/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{app_service_id}}"
     description: The app_service this request addresses.
-order: 2000
+order: 1000

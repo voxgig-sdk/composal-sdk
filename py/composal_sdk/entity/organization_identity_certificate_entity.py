@@ -7,7 +7,6 @@ from composal_sdk.core import helpers
 from composal_sdk.composal_types import (
     OrganizationIdentityCertificate,
     OrganizationIdentityCertificateLoadMatch,
-    OrganizationIdentityCertificateListMatch,
     OrganizationIdentityCertificateCreateData,
     OrganizationIdentityCertificateUpdateData,
     OrganizationIdentityCertificatePatchData,
@@ -232,28 +231,6 @@ class OrganizationIdentityCertificateEntity:
 
 
     
-    def list(self, reqmatch=None, ctrl=None) -> list[OrganizationIdentityCertificateEntity]:
-        utility = self._utility
-        # reqmatch is optional: an omitted match lists all records. Treat None
-        # as an empty match so client.OrganizationIdentityCertificate().list() works with no args.
-        if reqmatch is None:
-            reqmatch = {}
-        ctx = utility.make_context({
-            "opname": "list",
-            "ctrl": ctrl,
-            "match": self._match,
-            "data": self._data,
-            "reqmatch": reqmatch,
-        }, self._entctx)
-
-        def post_done():
-            if ctx.result is not None:
-                if ctx.result.resmatch is not None:
-                    self._match = ctx.result.resmatch
-
-        return self._run_op(ctx, post_done)
-
-
 
     
     def create(self, reqdata: OrganizationIdentityCertificateCreateData, ctrl=None) -> OrganizationIdentityCertificateEntity:

@@ -29,7 +29,7 @@ describe("NodeLeaseEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:NodeLease(nil):list({ ["node_id"] = 1 }, nil)
+    local _, err = client:NodeLease(nil):load({ ["node_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("NodeLeaseEntity", function()
     local setup = node_lease_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "node_lease." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,46 +46,16 @@ describe("NodeLeaseEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"node_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"node01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_NODE_LEASE_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local node_lease_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.node_lease")))
-    local node_lease_ref01_data = nil
-    if #node_lease_ref01_data_raw > 0 then
-      node_lease_ref01_data = helpers.to_map(node_lease_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local node_lease_ref01_ent = client:NodeLease(nil)
-    local node_lease_ref01_match = {
-      ["node_id"] = setup.idmap["node01"],
-    }
-
-    local node_lease_ref01_list_result, err = node_lease_ref01_ent:list(node_lease_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(node_lease_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"node_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only node_lease.create.0 gives\"}")
+      pending("Live coverage incomplete: node_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim); node_lease.load.1 excluded (GET-only live run: reads a record only node_lease.create.0 gives)")
       return
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"node01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_NODE_LEASE_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -95,19 +65,6 @@ describe("NodeLeaseEntity", function()
     if #node_lease_ref01_data_raw > 0 then
       node_lease_ref01_data = helpers.to_map(node_lease_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local node_lease_ref01_ent = client:NodeLease(nil)
-    local node_lease_ref01_match = {
-      ["node_id"] = setup.idmap["node01"],
-    }
-
-    local node_lease_ref01_list_result, err = node_lease_ref01_ent:list(node_lease_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(node_lease_ref01_list_result)
 
   end)
 end)

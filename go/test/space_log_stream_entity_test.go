@@ -38,7 +38,7 @@ func TestSpaceLogStreamEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceLogStream(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceLogStream(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceLogStreamEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_log_stream." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestSpaceLogStreamEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_log_stream.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_log_streamEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_LOG_STREAM_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestSpaceLogStreamEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		spaceLogStreamRef01Ent := client.SpaceLogStream(nil)
-		spaceLogStreamRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceLogStreamRef01ListResult, err := spaceLogStreamRef01Ent.List(spaceLogStreamRef01Match, nil)
+		spaceLogStreamRef01MatchDt0 := map[string]any{}
+		spaceLogStreamRef01DataDt0Loaded, err := spaceLogStreamRef01Ent.Load(spaceLogStreamRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceLogStreamRef01ListOk := spaceLogStreamRef01ListResult.([]any)
-		if !spaceLogStreamRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceLogStreamRef01ListResult)
+		if spaceLogStreamRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestSpaceLogStreamEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceLogStreamRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceLogStreamRef01ListResult, err := spaceLogStreamRef01Ent.List(spaceLogStreamRef01Match, nil)
+		// LOAD
+		spaceLogStreamRef01MatchDt0 := map[string]any{}
+		spaceLogStreamRef01DataDt0Loaded, err := spaceLogStreamRef01Ent.Load(spaceLogStreamRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceLogStreamRef01ListOk := spaceLogStreamRef01ListResult.([]any)
-		if !spaceLogStreamRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceLogStreamRef01ListResult)
+		if spaceLogStreamRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

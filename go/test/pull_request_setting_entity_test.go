@@ -38,7 +38,7 @@ func TestPullRequestSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.PullRequestSetting(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.PullRequestSetting(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestPullRequestSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "pull_request_setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,45 +64,9 @@ func TestPullRequestSettingEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"pull_request_setting.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, pull_request_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PULL_REQUEST_SETTING_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		pullRequestSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.pull_request_setting")))
-		var pullRequestSettingRef01Data map[string]any
-		if len(pullRequestSettingRef01DataRaw) > 0 {
-			pullRequestSettingRef01Data = core.ToMapAny(pullRequestSettingRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = pullRequestSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		pullRequestSettingRef01Ent := client.PullRequestSetting(nil)
-		pullRequestSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		pullRequestSettingRef01ListResult, err := pullRequestSettingRef01Ent.List(pullRequestSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, pullRequestSettingRef01ListOk := pullRequestSettingRef01ListResult.([]any)
-		if !pullRequestSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", pullRequestSettingRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"pull_request_setting.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only pull_request_setting.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: pull_request_setting.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings); pull_request_setting.load.1 excluded (GET-only live run: reads a record only pull_request_setting.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -139,23 +103,20 @@ func TestPullRequestSettingEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		pullRequestSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
+		// LOAD
+		pullRequestSettingRef01MatchDt0 := map[string]any{
+			"id": pullRequestSettingRef01Data["id"],
 		}
-
-		pullRequestSettingRef01ListResult, err := pullRequestSettingRef01Ent.List(pullRequestSettingRef01Match, nil)
+		pullRequestSettingRef01DataDt0Loaded, err := pullRequestSettingRef01Ent.Load(pullRequestSettingRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		pullRequestSettingRef01List, pullRequestSettingRef01ListOk := pullRequestSettingRef01ListResult.([]any)
-		if !pullRequestSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", pullRequestSettingRef01ListResult)
+		pullRequestSettingRef01DataDt0LoadResult := core.ToMapAny(entityData(pullRequestSettingRef01DataDt0Loaded))
+		if pullRequestSettingRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
 		}
-
-		foundItem := vs.Select(entityListToData(pullRequestSettingRef01List), map[string]any{"id": pullRequestSettingRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
+		if !liveSameId(pullRequestSettingRef01DataDt0LoadResult["id"], pullRequestSettingRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

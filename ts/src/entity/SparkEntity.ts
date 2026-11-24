@@ -16,7 +16,7 @@ import type {
 
 import type {
   Spark,
-  SparkListMatch,
+  SparkLoadMatch,
   SparkCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class SparkEntity extends ComposalEntityBase<Spark> {
 
 
 
-
-  async list(this: any, reqmatch?: SparkListMatch, ctrl?: Control): Promise<SparkEntity[]> {
+  async load(this: any, reqmatch?: SparkLoadMatch, ctrl?: Control): Promise<SparkEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class SparkEntity extends ComposalEntityBase<Spark> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class SparkEntity extends ComposalEntityBase<Spark> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class SparkEntity extends ComposalEntityBase<Spark> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<SparkEntity[]> return stays clean under strict null checks.
+        // Promise<SparkEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

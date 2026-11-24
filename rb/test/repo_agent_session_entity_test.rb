@@ -25,7 +25,7 @@ class RepoAgentSessionEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RepoAgentSession(nil).list({ "organization_id" => 1, "repo_id" => "x" }, nil)
+      client.RepoAgentSession(nil).load({ "id" => 1, "organization_id" => "x", "repo_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class RepoAgentSessionEntityTest < Minitest::Test
     setup = repo_agent_session_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load"].each do |_op|
+    ["create", "update", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "repo_agent_session." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,9 @@ class RepoAgentSessionEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"repo_agent_session.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete\"}"
-      puts "LIVE STEP {\"id\":\"repo_agent_session.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}"
-    if setup[:live]
-      ["organization01", "repo01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_REPO_AGENT_SESSION_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["repo_agent_session01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "repo_agent_session", "id", _live_id) do
-        client.RepoAgentSession(nil).list({"organization_id" => setup[:idmap]["organization01"], "repo_id" => setup[:idmap]["repo01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    repo_agent_session_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.repo_agent_session")))
-    repo_agent_session_ref01_data = nil
-    if repo_agent_session_ref01_data_raw.length > 0
-      repo_agent_session_ref01_data = Helpers.to_map(repo_agent_session_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    repo_agent_session_ref01_ent = client.RepoAgentSession(nil)
-    repo_agent_session_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "repo_id" => setup[:idmap]["repo01"],
-    }
-
-    repo_agent_session_ref01_list_result = repo_agent_session_ref01_ent.list(repo_agent_session_ref01_match, nil)
-    assert repo_agent_session_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    repo_agent_session_ref01_match_dt0 = {
-      "id" => repo_agent_session_ref01_data["id"],
-    }
-    repo_agent_session_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    repo_agent_session_ref01_match_dt0["repo_id"] = setup[:idmap]["repo_id"] || setup[:idmap]["repo01"]
-    repo_agent_session_ref01_data_dt0_loaded = repo_agent_session_ref01_ent.load(repo_agent_session_ref01_match_dt0, nil)
-    repo_agent_session_ref01_data_dt0_load_result = Helpers.to_map(repo_agent_session_ref01_data_dt0_loaded.respond_to?(:data_get) ? repo_agent_session_ref01_data_dt0_loaded.data_get : repo_agent_session_ref01_data_dt0_loaded)
-    assert !repo_agent_session_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(repo_agent_session_ref01_data_dt0_load_result["id"], repo_agent_session_ref01_data["id"])
-
-      return
+      puts "LIVE STEP {\"id\":\"repo_agent_session.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}\"}"
+      puts "LIVE STEP {\"id\":\"repo_agent_session.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repo_agent_session.create.0 gives\"}"
+      skip("Live coverage incomplete: repo_agent_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete); repo_agent_session.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}); repo_agent_session.load.2 excluded (GET-only live run: reads a record only repo_agent_session.create.0 gives)")
     end
 
     if setup[:live]
@@ -117,21 +71,6 @@ class RepoAgentSessionEntityTest < Minitest::Test
     assert !repo_agent_session_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    repo_agent_session_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "repo_id" => setup[:idmap]["repo01"],
-    }
-
-    repo_agent_session_ref01_list_result = repo_agent_session_ref01_ent.list(repo_agent_session_ref01_match, nil)
-    assert repo_agent_session_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(repo_agent_session_ref01_list_result),
-      { "id" => repo_agent_session_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     repo_agent_session_ref01_data_up0_up = {
       "id" => repo_agent_session_ref01_data["id"],
@@ -155,7 +94,6 @@ class RepoAgentSessionEntityTest < Minitest::Test
       "id" => repo_agent_session_ref01_data["id"],
     }
     repo_agent_session_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    repo_agent_session_ref01_match_dt0["repo_id"] = setup[:idmap]["repo_id"] || setup[:idmap]["repo01"]
     repo_agent_session_ref01_data_dt0_loaded = repo_agent_session_ref01_ent.load(repo_agent_session_ref01_match_dt0, nil)
     repo_agent_session_ref01_data_dt0_load_result = Helpers.to_map(repo_agent_session_ref01_data_dt0_loaded.respond_to?(:data_get) ? repo_agent_session_ref01_data_dt0_loaded.data_get : repo_agent_session_ref01_data_dt0_loaded)
     assert !repo_agent_session_ref01_data_dt0_load_result.nil?

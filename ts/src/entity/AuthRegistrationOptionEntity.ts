@@ -16,7 +16,7 @@ import type {
 
 import type {
   AuthRegistrationOption,
-  AuthRegistrationOptionListMatch,
+  AuthRegistrationOptionLoadMatch,
 } from '../ComposalTypes'
 
 class AuthRegistrationOptionEntity extends ComposalEntityBase<AuthRegistrationOption> {
@@ -35,8 +35,7 @@ class AuthRegistrationOptionEntity extends ComposalEntityBase<AuthRegistrationOp
 
 
 
-
-  async list(this: any, reqmatch?: AuthRegistrationOptionListMatch, ctrl?: Control): Promise<AuthRegistrationOptionEntity[]> {
+  async load(this: any, reqmatch?: AuthRegistrationOptionLoadMatch, ctrl?: Control): Promise<AuthRegistrationOptionEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class AuthRegistrationOptionEntity extends ComposalEntityBase<AuthRegistrationOp
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,15 @@ class AuthRegistrationOptionEntity extends ComposalEntityBase<AuthRegistrationOp
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -147,11 +152,12 @@ class AuthRegistrationOptionEntity extends ComposalEntityBase<AuthRegistrationOp
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<AuthRegistrationOptionEntity[]> return stays clean under strict null checks.
+        // Promise<AuthRegistrationOptionEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

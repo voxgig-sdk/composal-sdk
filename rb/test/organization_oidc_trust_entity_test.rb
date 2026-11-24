@@ -25,7 +25,7 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.OrganizationOidcTrust(nil).list({ "organization_id" => 1 }, nil)
+      client.OrganizationOidcTrust(nil).load({ "id" => 1, "organization_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     setup = organization_oidc_trust_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "organization_oidc_trust." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,10 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"organization_oidc_trust.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate\"}"
-      puts "LIVE STEP {\"id\":\"organization_oidc_trust.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}"
-      puts "LIVE STEP {\"id\":\"organization_oidc_trust.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}"
-      puts "LIVE STEP {\"id\":\"organization_oidc_trust.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_ORGANIZATION_OIDC_TRUST_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["organization_oidc_trust01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "organization_oidc_trust", "id", _live_id) do
-        client.OrganizationOidcTrust(nil).list({"organization_id" => setup[:idmap]["organization01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    organization_oidc_trust_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.organization_oidc_trust")))
-    organization_oidc_trust_ref01_data = nil
-    if organization_oidc_trust_ref01_data_raw.length > 0
-      organization_oidc_trust_ref01_data = Helpers.to_map(organization_oidc_trust_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    organization_oidc_trust_ref01_ent = client.OrganizationOidcTrust(nil)
-    organization_oidc_trust_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    organization_oidc_trust_ref01_list_result = organization_oidc_trust_ref01_ent.list(organization_oidc_trust_ref01_match, nil)
-    assert organization_oidc_trust_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    organization_oidc_trust_ref01_match_dt0 = {
-      "id" => organization_oidc_trust_ref01_data["id"],
-    }
-    organization_oidc_trust_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
-    organization_oidc_trust_ref01_data_dt0_loaded = organization_oidc_trust_ref01_ent.load(organization_oidc_trust_ref01_match_dt0, nil)
-    organization_oidc_trust_ref01_data_dt0_load_result = Helpers.to_map(organization_oidc_trust_ref01_data_dt0_loaded.respond_to?(:data_get) ? organization_oidc_trust_ref01_data_dt0_loaded.data_get : organization_oidc_trust_ref01_data_dt0_loaded)
-    assert !organization_oidc_trust_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(organization_oidc_trust_ref01_data_dt0_load_result["id"], organization_oidc_trust_ref01_data["id"]) unless setup[:live]
-
-      return
+      puts "LIVE STEP {\"id\":\"organization_oidc_trust.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}"
+      puts "LIVE STEP {\"id\":\"organization_oidc_trust.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_oidc_trust.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"organization_oidc_trust.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}"
+      skip("Live coverage incomplete: organization_oidc_trust.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate); organization_oidc_trust.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}); organization_oidc_trust.load.2 excluded (GET-only live run: reads a record only organization_oidc_trust.create.0 gives); organization_oidc_trust.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id})")
     end
 
     if setup[:live]
@@ -116,20 +71,6 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     assert !organization_oidc_trust_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    organization_oidc_trust_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    organization_oidc_trust_ref01_list_result = organization_oidc_trust_ref01_ent.list(organization_oidc_trust_ref01_match, nil)
-    assert organization_oidc_trust_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(organization_oidc_trust_ref01_list_result),
-      { "id" => organization_oidc_trust_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     organization_oidc_trust_ref01_data_up0_up = {
       "id" => organization_oidc_trust_ref01_data["id"],
@@ -146,7 +87,6 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     organization_oidc_trust_ref01_match_dt0 = {
       "id" => organization_oidc_trust_ref01_data["id"],
     }
-    organization_oidc_trust_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     organization_oidc_trust_ref01_data_dt0_loaded = organization_oidc_trust_ref01_ent.load(organization_oidc_trust_ref01_match_dt0, nil)
     organization_oidc_trust_ref01_data_dt0_load_result = Helpers.to_map(organization_oidc_trust_ref01_data_dt0_loaded.respond_to?(:data_get) ? organization_oidc_trust_ref01_data_dt0_loaded.data_get : organization_oidc_trust_ref01_data_dt0_loaded)
     assert !organization_oidc_trust_ref01_data_dt0_load_result.nil?
@@ -159,20 +99,6 @@ class OrganizationOidcTrustEntityTest < Minitest::Test
     }
     organization_oidc_trust_ref01_match_rm0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     organization_oidc_trust_ref01_ent.remove(organization_oidc_trust_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    organization_oidc_trust_ref01_match_rt0 = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    organization_oidc_trust_ref01_list_rt0_result = organization_oidc_trust_ref01_ent.list(organization_oidc_trust_ref01_match_rt0, nil)
-    assert organization_oidc_trust_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(organization_oidc_trust_ref01_list_rt0_result),
-      { "id" => organization_oidc_trust_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

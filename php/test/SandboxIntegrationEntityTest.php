@@ -33,7 +33,7 @@ class SandboxIntegrationEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SandboxIntegration(null)->list(["organization_id" => 1], null);
+            $client->SandboxIntegration(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SandboxIntegrationEntityTest extends TestCase
         $setup = sandbox_integration_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "sandbox_integration." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,37 +54,9 @@ class SandboxIntegrationEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"sandbox_integration.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"sandbox_integration.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SANDBOX_INTEGRATION_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $sandbox_integration_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.sandbox_integration")));
-        $sandbox_integration_ref01_data = null;
-        if (count($sandbox_integration_ref01_data_raw) > 0) {
-            $sandbox_integration_ref01_data = Helpers::to_map($sandbox_integration_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $sandbox_integration_ref01_ent = $client->SandboxIntegration(null);
-        $sandbox_integration_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $sandbox_integration_ref01_list_result = $sandbox_integration_ref01_ent->list($sandbox_integration_ref01_match, null);
-        $this->assertIsArray($sandbox_integration_ref01_list_result);
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"sandbox_integration.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"sandbox_integration.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only sandbox_integration.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: sandbox_integration.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations); sandbox_integration.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}); sandbox_integration.load.2 excluded (GET-only live run: reads a record only sandbox_integration.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -113,22 +85,6 @@ class SandboxIntegrationEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $sandbox_integration_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $sandbox_integration_ref01_list_result = $sandbox_integration_ref01_ent->list($sandbox_integration_ref01_match, null);
-        $this->assertIsArray($sandbox_integration_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($sandbox_integration_ref01_list_result),
-            ["id" => $sandbox_integration_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $sandbox_integration_ref01_data_up0_up = [
             "id" => $sandbox_integration_ref01_data["id"],
@@ -144,6 +100,18 @@ class SandboxIntegrationEntityTest extends TestCase
         $this->assertNotNull($sandbox_integration_ref01_resdata_up0);
         $this->assertTrue(Runner::live_same_id($sandbox_integration_ref01_resdata_up0["id"] ?? null, $sandbox_integration_ref01_data_up0_up["id"]));
         $this->assertEquals($sandbox_integration_ref01_resdata_up0[$sandbox_integration_ref01_markdef_up0_name], $sandbox_integration_ref01_markdef_up0_value);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $sandbox_integration_ref01_match_dt0 = [
+            "id" => $sandbox_integration_ref01_data["id"],
+        ];
+        $sandbox_integration_ref01_data_dt0_loaded = $sandbox_integration_ref01_ent->load($sandbox_integration_ref01_match_dt0, null);
+        $sandbox_integration_ref01_data_dt0_load_result = Helpers::to_map(is_object($sandbox_integration_ref01_data_dt0_loaded) && method_exists($sandbox_integration_ref01_data_dt0_loaded, 'data_get') ? $sandbox_integration_ref01_data_dt0_loaded->data_get() : $sandbox_integration_ref01_data_dt0_loaded);
+        $this->assertNotNull($sandbox_integration_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($sandbox_integration_ref01_data_dt0_load_result["id"] ?? null, $sandbox_integration_ref01_data["id"]));
 
     }
 }

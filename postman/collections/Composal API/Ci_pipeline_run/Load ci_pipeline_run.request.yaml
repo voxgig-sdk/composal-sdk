@@ -3,7 +3,7 @@ id: "2f7478b6-d5c2-53ac-95fc-6fa1725fd3a9"
 description: |-
   The `load` operation of **ci_pipeline_run**.
 
-  SDK: `client.CiPipelineRun().load({ id: "example_id", pipeline_id: "example" })`
+  SDK: `client.CiPipelineRun().load({ pipeline_id: "example" })`
 url: "{{base}}/api/v1/ci/pipelines/:pipeline_id/runs/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{ci_pipeline_run_id}}"
     description: The ci_pipeline_run this request addresses.
-order: 2000
+order: 1000

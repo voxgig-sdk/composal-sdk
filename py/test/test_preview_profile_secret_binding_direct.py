@@ -24,12 +24,9 @@ def _live_ok(result):
 
 class TestPreviewProfileSecretBindingDirect:
 
-    def test_should_direct_list_preview_profile_secret_binding(self):
-        setup = _preview_profile_secret_binding_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-preview_profile_secret_binding", "live" if setup["live"] else "unit")
+    def test_should_direct_load_preview_profile_secret_binding(self):
+        setup = _preview_profile_secret_binding_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-preview_profile_secret_binding", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
@@ -46,12 +43,12 @@ class TestPreviewProfileSecretBindingDirect:
         query = {}
         if setup["live"]:
             params["app_id"] = setup["idmap"].get("app01")
+            params["preview_profile_id"] = setup["idmap"].get("preview_profile01")
+            pass
         else:
             params["app_id"] = "direct01"
-        if setup["live"]:
-            params["preview_profile_id"] = setup["idmap"].get("preview_profile01")
-        else:
             params["preview_profile_id"] = "direct02"
+            pass
 
         result = client.direct({
             "path": "api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings",
@@ -61,14 +58,15 @@ class TestPreviewProfileSecretBindingDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

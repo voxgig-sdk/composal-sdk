@@ -19,22 +19,6 @@ main: kit: flow: BasicAppServiceBindingFlow:
     }
 
     {
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "app_service_binding_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01"
       }
@@ -64,7 +48,6 @@ main: kit: flow: BasicAppServiceBindingFlow:
       }
 
       m: {
-        app_id: "app01",
         id: "app_service_binding01"
       }
 
@@ -91,26 +74,6 @@ main: kit: flow: BasicAppServiceBindingFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "app_service_binding_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicAppServiceBindingFlow"

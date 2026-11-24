@@ -20,23 +20,6 @@ main: kit: flow: BasicCdnHostnameFlow:
     }
 
     {
-      m: {
-        app_id: "app01",
-        cdn_id: "cdn01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "cdn_hostname_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01",
         cdn_id: "cdn01"
@@ -69,7 +52,6 @@ main: kit: flow: BasicCdnHostnameFlow:
 
       m: {
         app_id: "app01",
-        cdn_id: "cdn01",
         id: "cdn_hostname01"
       }
 
@@ -97,27 +79,6 @@ main: kit: flow: BasicCdnHostnameFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01",
-        cdn_id: "cdn01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "cdn_hostname_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicCdnHostnameFlow"

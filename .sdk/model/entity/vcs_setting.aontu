@@ -46,8 +46,8 @@ main: kit: entity: vcs_setting: {
 
   name: "vcs_setting"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

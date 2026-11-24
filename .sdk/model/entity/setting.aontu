@@ -46,8 +46,8 @@ main: kit: entity: setting: {
 
   name: "setting"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

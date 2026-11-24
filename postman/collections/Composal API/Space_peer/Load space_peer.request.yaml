@@ -3,7 +3,7 @@ id: "28c75b91-ab96-5df9-b446-63075854ef74"
 description: |-
   The `load` operation of **space_peer**.
 
-  SDK: `client.SpacePeer().load({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpacePeer().load({ space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/peers/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{space_peer_id}}"
     description: The space_peer this request addresses.
-order: 2000
+order: 1000

@@ -605,7 +605,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idagentsidsparkintegrations"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Organization accounts available to this V2 agent</td>
 </tr>
 </tbody>
@@ -614,11 +614,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">spark_agent_integrations, err := client.SparkAgentIntegration(nil).List(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">spark_agent_integration, err := client.SparkAgentIntegration(nil).Load(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(spark_agent_integrations)
+fmt.Println(spark_agent_integration)
 created, err := client.SparkAgentIntegration(nil).Create(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;connection_id&quot;: &quot;example&quot;, &quot;enabled&quot;: true, &quot;generation&quot;: 1}, nil)
 if err != nil {
     panic(err)
@@ -627,27 +627,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local spark_agent_integrations, err = client:SparkAgentIntegration():list({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local spark_agent_integration, err = client:SparkAgentIntegration():load({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
 local created, err = client:SparkAgentIntegration():create({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot;, connection_id = &quot;example&quot;, enabled = true, generation = 1 })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$spark_agent_integrations = $client-&gt;SparkAgentIntegration()-&gt;list([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$spark_agent_integration = $client-&gt;SparkAgentIntegration()-&gt;load([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SparkAgentIntegration()-&gt;create([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;connection_id&quot; =&gt; &quot;example&quot;, &quot;enabled&quot; =&gt; true, &quot;generation&quot; =&gt; 1]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">spark_agent_integrations = client.SparkAgentIntegration().list({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">spark_agent_integration = client.SparkAgentIntegration().load({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 created = client.SparkAgentIntegration().create({ &quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;connection_id&quot;: &quot;example&quot;, &quot;enabled&quot;: True, &quot;generation&quot;: 1 })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">spark_agent_integrations = client.SparkAgentIntegration.list({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">spark_agent_integration = client.SparkAgentIntegration.load({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.SparkAgentIntegration.create({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;connection_id&quot; =&gt; &quot;example&quot;, &quot;enabled&quot; =&gt; true, &quot;generation&quot; =&gt; 1 })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const spark_agent_integrations = await client.SparkAgentIntegration().list({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const spark_agent_integration = await client.SparkAgentIntegration().load({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
 const created = await client.SparkAgentIntegration().create({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot;, connection_id: &quot;example&quot;, enabled: true, generation: 1 })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -1886,7 +1886,7 @@ const created = await client.SparkAgentIntegration().create({ agent_id: &quot;ex
 <h5 id="409-configuration-changed-reload-before-retrying" class="status" data-status="4xx">409: Configuration changed; reload before retrying</h5>
 <h5 id="422-invalid-connection-selection" class="status" data-status="4xx">422: Invalid connection selection</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idagentsidsparkintegrations" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations</h3>
 <p>Operation ID: <code>spark_integrations_api_v1_organization_persistent_agent</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

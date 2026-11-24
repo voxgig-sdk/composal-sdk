@@ -17,20 +17,22 @@ import (
 const environment_secret_bindingDirectLiveStrict = true
 
 func TestEnvironmentSecretBindingDirect(t *testing.T) {
-	t.Run("direct-list-environment_secret_binding", func(t *testing.T) {
-		setup := environment_secret_bindingDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
+	t.Run("direct-load-environment_secret_binding", func(t *testing.T) {
+		setup := environment_secret_bindingDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-environment_secret_binding", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-environment_secret_binding", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
 			t.Skip(_reason)
+			return
+		}
+		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["environment01"] == nil {
+			t.Log("LIVE STEP {\"id\":\"direct-load-environment_secret_binding\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-environment_secret_binding excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
 			return
 		}
 		if setup.live {
@@ -50,12 +52,9 @@ func TestEnvironmentSecretBindingDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["app_id"] = setup.idmap["app01"]
-		} else {
-			params["app_id"] = "direct01"
-		}
-		if setup.live {
 			params["environment_id"] = setup.idmap["environment01"]
 		} else {
+			params["app_id"] = "direct01"
 			params["environment_id"] = "direct02"
 		}
 
@@ -67,13 +66,13 @@ func TestEnvironmentSecretBindingDirect(t *testing.T) {
 		})
 		if setup.live {
 			if err != nil {
-				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live list failed: %v", err)
+				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live load failed: %v", err)
 			}
 			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
+				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
 			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
+			if result["data"] == nil {
+				liveMiss(t, environment_secret_bindingDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -85,15 +84,16 @@ func TestEnvironmentSecretBindingDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
 		}
 
 		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
 				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {

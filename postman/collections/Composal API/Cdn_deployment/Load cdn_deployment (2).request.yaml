@@ -1,0 +1,18 @@
+$kind: http-request
+id: c01b7af2-f51f-5acd-8930-565ca3eb8dc3
+description: |-
+  The `load` operation of **cdn_deployment**.
+
+  SDK: `client.CdnDeployment().load({ app_id: "example", cdn_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/deployments"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this cdn_deployment belongs to.
+  - key: cdn_id
+    value: "{{cdn_id}}"
+    description: "Input: cdn_id."
+order: 2000

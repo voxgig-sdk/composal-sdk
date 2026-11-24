@@ -20,23 +20,6 @@ main: kit: flow: BasicLogStreamChunkFlow:
     }
 
     {
-      m: {
-        log_stream_id: "log_stream01",
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "log_stream_chunk_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "log_stream_chunk_ref01",
         srcdatavar: "log_stream_chunk_ref01_data",
@@ -45,7 +28,6 @@ main: kit: flow: BasicLogStreamChunkFlow:
 
       m: {
         id: "log_stream_chunk01",
-        log_stream_id: "log_stream01",
         space_id: "space01"
       }
 

@@ -55,7 +55,7 @@ describe('SparkCreditDirect', async () => {
     }
 
     const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/spark_credits/daily_usage',
+      path: 'api/v1/organizations/{organization_id}/spark_credits',
       method: 'GET',
       params,
       query,
@@ -73,48 +73,6 @@ describe('SparkCreditDirect', async () => {
       assert(result.status === 200)
       assert(null != result.data)
       assert(result.data.id === 'direct01')
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
-    }
-  })
-
-  test('direct-list-spark_credit', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-spark_credit', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["organization01"], LIVE_STRICT)) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-    if (setup.live) {
-      params.organization_id = setup.idmap['organization01']
-    } else {
-      params.organization_id = 'direct01'
-    }
-
-    const result: any = await client.direct({
-      path: 'api/v1/organizations/{organization_id}/spark_credits',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
-      }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
-      }
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))

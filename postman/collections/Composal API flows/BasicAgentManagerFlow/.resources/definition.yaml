@@ -1,4 +1,4 @@
 $kind: collection
 id: "0a0ea411-1050-5bf5-8bc0-e2d10b2696ec"
 description: "The `BasicAgentManagerFlow` flow of **agent_manager**."
-order: 26000
+order: 24000

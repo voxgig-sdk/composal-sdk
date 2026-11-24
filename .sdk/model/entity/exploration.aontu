@@ -17,12 +17,6 @@ main: kit: entity: exploration: {
         ]
       ]
     }
-    active: {
-      h: "Active"
-      n: "active"
-      r: true
-      t: "`$ARRAY`"
-    }
     agent_filters: {
       h: "Agent Filters"
       n: "agent_filters"
@@ -54,6 +48,12 @@ main: kit: entity: exploration: {
       r: false
       t: "`$ARRAY`"
     }
+    check_count: {
+      h: "Check Count"
+      n: "check_count"
+      r: true
+      t: "`$INTEGER`"
+    }
     concurrency: {
       h: "Concurrency"
       n: "concurrency"
@@ -79,10 +79,31 @@ main: kit: entity: exploration: {
       r: true
       t: "`$STRING`"
     }
+    credential_name: {
+      h: "Credential Name"
+      n: "credential_name"
+      r: false
+      sh: "The credential the team signed in with, by its saved name if it was deleted; null for public access."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
     deadline_at: {
+      fo: "date-time"
       h: "Deadline At"
       n: "deadline_at"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
       r: true
+      sh: "When the team's time limit ends."
       t: "`$STRING`"
     }
     demo_project: {
@@ -94,6 +115,18 @@ main: kit: entity: exploration: {
         "`$ONE`"
         [
           "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    duration_ms: {
+      h: "Duration Ms"
+      n: "duration_ms"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
           "`$NULL`"
         ]
       ]
@@ -116,12 +149,6 @@ main: kit: entity: exploration: {
       n: "environment_name"
       r: true
       t: "`$STRING`"
-    }
-    explorations: {
-      h: "Explorations"
-      n: "explorations"
-      r: true
-      t: "`$ARRAY`"
     }
     explorer_activity: {
       h: "Explorer Activity"
@@ -158,8 +185,21 @@ main: kit: entity: exploration: {
       ]
     }
     finished_at: {
+      fo: "date-time"
       h: "Finished At"
       n: "finished_at"
+      op: {
+        list: {
+          req: true
+          type: [
+            "`$ONE`"
+            [
+              "`$STRING`"
+              "`$NULL`"
+            ]
+          ]
+        }
+      }
       r: false
       t: [
         "`$ONE`"
@@ -194,13 +234,6 @@ main: kit: entity: exploration: {
       n: "idempotency_key"
       r: false
       t: "`$STRING`"
-    }
-    launch_options: {
-      h: "Launch Options"
-      n: "launch_options"
-      r: true
-      sh: "Present only when launch was requested by an admin"
-      t: "`$OBJECT`"
     }
     max_seconds: {
       h: "Max Seconds"
@@ -252,17 +285,6 @@ main: kit: entity: exploration: {
       r: true
       sh: "Whether this is the workspace's free first discovery, started by setup."
       t: "`$BOOLEAN`"
-    }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
-      r: true
-      t: "`$OBJECT`"
-      union: {
-        branches: 2
-        count: 1
-        depth: 3
-      }
     }
     paywalled: {
       h: "Paywalled"
@@ -355,6 +377,13 @@ main: kit: entity: exploration: {
       sh: "Flows a finished exploration recorded that deep scans can start from."
       t: "`$ARRAY`"
     }
+    scenario_count: {
+      h: "Scenario Count"
+      n: "scenario_count"
+      r: false
+      sh: "Scenarios saved from this discovery."
+      t: "`$INTEGER`"
+    }
     scenario_generation: {
       h: "Scenario Generation"
       n: "scenario_generation"
@@ -365,6 +394,13 @@ main: kit: entity: exploration: {
         count: 2
         depth: 6
       }
+    }
+    scenarios_pending: {
+      h: "Scenarios Pending"
+      n: "scenarios_pending"
+      r: false
+      sh: "Scenarios are still being prepared, so scenario_count may still grow."
+      t: "`$BOOLEAN`"
     }
     sign_in_needs_answer: {
       h: "Sign In Needs Answer"
@@ -393,6 +429,13 @@ main: kit: entity: exploration: {
         ]
       ]
     }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: "`$STRING`"
+    }
     startup_retryable: {
       h: "Startup Retryable"
       n: "startup_retryable"
@@ -416,6 +459,12 @@ main: kit: entity: exploration: {
     title: {
       h: "Title"
       n: "title"
+      op: {
+        list: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
       r: false
       sh: "The page's title; the workspace's included Deep Scan is named for the app it tested, as in `Free scan of acme.example.com`."
       t: "`$STRING`"
@@ -975,7 +1024,7 @@ main: kit: entity: exploration: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.explorations`"
           }
         }
       ]

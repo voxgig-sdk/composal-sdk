@@ -37,7 +37,7 @@ class TestSpaceGatewayEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SpaceGateway(None).list({"space_id": 1}, None)
+            client.SpaceGateway(None).load({"id": 1, "space_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,17 +46,17 @@ class TestSpaceGatewayEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update", "load", "remove"]:
+        for _op in ["create", "update", "load", "remove"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "space_gateway." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"space_gateway.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat\"}")
-            print("LIVE STEP {\"id\":\"space_gateway.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
-            print("LIVE STEP {\"id\":\"space_gateway.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
-            print("LIVE STEP {\"id\":\"space_gateway.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"space_gateway.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
+            print("LIVE STEP {\"id\":\"space_gateway.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_gateway.create.0 gives\"}")
+            print("LIVE STEP {\"id\":\"space_gateway.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}\"}")
+            pytest.skip("Live coverage incomplete: space_gateway.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat); space_gateway.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/gateways/{id}); space_gateway.load.2 excluded (GET-only live run: reads a record only space_gateway.create.0 gives); space_gateway.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/gateways/{id})")
 
         if setup["live"]:
             for _live_key in ["space01"]:
@@ -78,21 +78,6 @@ class TestSpaceGatewayEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        space_gateway_ref01_match = {
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        space_gateway_ref01_list_result = space_gateway_ref01_ent.list(space_gateway_ref01_match, None)
-        assert isinstance(space_gateway_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(space_gateway_ref01_list_result),
-            {"id": space_gateway_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         space_gateway_ref01_data_up0_up = {
             "id": space_gateway_ref01_data["id"],
@@ -110,7 +95,6 @@ class TestSpaceGatewayEntity:
         space_gateway_ref01_match_dt0 = {
             "id": space_gateway_ref01_data["id"],
         }
-        space_gateway_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
         space_gateway_ref01_data_dt0_loaded = space_gateway_ref01_ent.load(space_gateway_ref01_match_dt0, None)
         space_gateway_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(space_gateway_ref01_data_dt0_loaded))
         assert space_gateway_ref01_data_dt0_load_result is not None
@@ -125,66 +109,6 @@ class TestSpaceGatewayEntity:
         }
         space_gateway_ref01_match_rm0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
         space_gateway_ref01_ent.remove(space_gateway_ref01_match_rm0, None)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        space_gateway_ref01_match_rt0 = {
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        space_gateway_ref01_list_rt0_result = space_gateway_ref01_ent.list(space_gateway_ref01_match_rt0, None)
-        assert isinstance(space_gateway_ref01_list_rt0_result, list)
-
-        not_found_item = vs.select(
-            runner.entity_list_to_data(space_gateway_ref01_list_rt0_result),
-            {"id": space_gateway_ref01_data["id"]})
-        assert vs.isempty(not_found_item)
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPACE_GATEWAY_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("space_gateway01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "space_gateway",
-                                 lambda: client.SpaceGateway(None).list({"space_id": setup["idmap"].get("space01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        space_gateway_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.space_gateway")))
-        space_gateway_ref01_data = None
-        if len(space_gateway_ref01_data_raw) > 0:
-            space_gateway_ref01_data = helpers.to_map(space_gateway_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        space_gateway_ref01_ent = client.SpaceGateway(None)
-        space_gateway_ref01_match = {
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        space_gateway_ref01_list_result = space_gateway_ref01_ent.list(space_gateway_ref01_match, None)
-        assert isinstance(space_gateway_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        space_gateway_ref01_match_dt0 = {
-            "id": space_gateway_ref01_data["id"],
-        }
-        space_gateway_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
-        space_gateway_ref01_data_dt0_loaded = space_gateway_ref01_ent.load(space_gateway_ref01_match_dt0, None)
-        space_gateway_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(space_gateway_ref01_data_dt0_loaded))
-        assert space_gateway_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(space_gateway_ref01_data_dt0_load_result.get("id"), space_gateway_ref01_data["id"])
 
 
 

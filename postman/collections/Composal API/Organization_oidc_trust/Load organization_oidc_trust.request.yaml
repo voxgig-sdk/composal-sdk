@@ -3,7 +3,7 @@ id: "16a6e38c-0a1a-5e98-935b-d59d12b93c1d"
 description: |-
   The `load` operation of **organization_oidc_trust**.
 
-  SDK: `client.OrganizationOidcTrust().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.OrganizationOidcTrust().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{organization_oidc_trust_id}}"
     description: The organization_oidc_trust this request addresses.
-order: 2000
+order: 1000

@@ -631,8 +631,8 @@ main: kit: entity: pull_request_setting: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

@@ -7,16 +7,22 @@ main: kit: flow: BasicChangeFlow:
   name: "BasicChangeFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "change_ref01",
+        srcdatavar: "change_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "change01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "change_ref01"
+            mark: "Mark01-change_ref01"
           }
         }
       ]

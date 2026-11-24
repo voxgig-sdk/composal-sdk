@@ -131,42 +131,6 @@ main: kit: entity: execution_desired_state: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/execution/desired_states"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/execution/desired_states"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "execution"
-            }
-            {
-              lit: "desired_states"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -218,6 +182,37 @@ main: kit: entity: execution_desired_state: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/execution/desired_states"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/execution/desired_states"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "execution"
+            }
+            {
+              lit: "desired_states"
             }
           ]
           t: {

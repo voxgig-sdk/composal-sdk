@@ -38,7 +38,7 @@ func TestReleaseRolloutEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.ReleaseRollout(nil).List(map[string]any{"release_id": 1}, nil)
+		_, err := client.ReleaseRollout(nil).Load(map[string]any{"id": 1, "release_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestReleaseRolloutEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "release_rollout." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,80 +64,9 @@ func TestReleaseRolloutEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"release_rollout.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"release01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, release_rolloutEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RELEASE_ROLLOUT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["release_rollout01"]
-			}
-			livePace()
-			liveExisting(t, release_rolloutEntityLiveStrict, setup.data, "release_rollout", "id", _liveId,
-				func() (any, error) {
-					return client.ReleaseRollout(nil).List(map[string]any{"release_id": setup.idmap["release01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		releaseRolloutRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.release_rollout")))
-		var releaseRolloutRef01Data map[string]any
-		if len(releaseRolloutRef01DataRaw) > 0 {
-			releaseRolloutRef01Data = core.ToMapAny(releaseRolloutRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = releaseRolloutRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		releaseRolloutRef01Ent := client.ReleaseRollout(nil)
-		releaseRolloutRef01Match := map[string]any{
-			"release_id": setup.idmap["release01"],
-		}
-
-		releaseRolloutRef01ListResult, err := releaseRolloutRef01Ent.List(releaseRolloutRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, releaseRolloutRef01ListOk := releaseRolloutRef01ListResult.([]any)
-		if !releaseRolloutRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", releaseRolloutRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		releaseRolloutRef01MatchDt0 := map[string]any{
-			"id": releaseRolloutRef01Data["id"],
-		}
-		if v := setup.idmap["release_id"]; v != nil {
-			releaseRolloutRef01MatchDt0["release_id"] = v
-		} else {
-			releaseRolloutRef01MatchDt0["release_id"] = setup.idmap["release01"]
-		}
-		releaseRolloutRef01DataDt0Loaded, err := releaseRolloutRef01Ent.Load(releaseRolloutRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		releaseRolloutRef01DataDt0LoadResult := core.ToMapAny(entityData(releaseRolloutRef01DataDt0Loaded))
-		if releaseRolloutRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(releaseRolloutRef01DataDt0LoadResult["id"], releaseRolloutRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"release_rollout.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only release_rollout.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: release_rollout.create.0 excluded (GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete); release_rollout.load.1 excluded (GET-only live run: reads a record only release_rollout.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -174,36 +103,9 @@ func TestReleaseRolloutEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		releaseRolloutRef01Match := map[string]any{
-			"release_id": setup.idmap["release01"],
-		}
-
-		releaseRolloutRef01ListResult, err := releaseRolloutRef01Ent.List(releaseRolloutRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		releaseRolloutRef01List, releaseRolloutRef01ListOk := releaseRolloutRef01ListResult.([]any)
-		if !releaseRolloutRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", releaseRolloutRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(releaseRolloutRef01List), map[string]any{"id": releaseRolloutRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		releaseRolloutRef01MatchDt0 := map[string]any{
 			"id": releaseRolloutRef01Data["id"],
-		}
-		if v := setup.idmap["release_id"]; v != nil {
-			releaseRolloutRef01MatchDt0["release_id"] = v
-		} else {
-			releaseRolloutRef01MatchDt0["release_id"] = setup.idmap["release01"]
 		}
 		releaseRolloutRef01DataDt0Loaded, err := releaseRolloutRef01Ent.Load(releaseRolloutRef01MatchDt0, nil)
 		if err != nil {

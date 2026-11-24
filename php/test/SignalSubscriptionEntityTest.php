@@ -33,7 +33,7 @@ class SignalSubscriptionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SignalSubscription(null)->list(["organization_id" => 1], null);
+            $client->SignalSubscription(null)->load(["id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SignalSubscriptionEntityTest extends TestCase
         $setup = signal_subscription_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "signal_subscription." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,60 +54,10 @@ class SignalSubscriptionEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/signal_subscriptions"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SIGNAL_SUBSCRIPTION_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["signal_subscription01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "signal_subscription",
-                fn() => $client->SignalSubscription(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $signal_subscription_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.signal_subscription")));
-        $signal_subscription_ref01_data = null;
-        if (count($signal_subscription_ref01_data_raw) > 0) {
-            $signal_subscription_ref01_data = Helpers::to_map($signal_subscription_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $signal_subscription_ref01_ent = $client->SignalSubscription(null);
-        $signal_subscription_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $signal_subscription_ref01_list_result = $signal_subscription_ref01_ent->list($signal_subscription_ref01_match, null);
-        $this->assertIsArray($signal_subscription_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $signal_subscription_ref01_match_dt0 = [
-            "id" => $signal_subscription_ref01_data["id"],
-        ];
-        $signal_subscription_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $signal_subscription_ref01_data_dt0_loaded = $signal_subscription_ref01_ent->load($signal_subscription_ref01_match_dt0, null);
-        $signal_subscription_ref01_data_dt0_load_result = Helpers::to_map(is_object($signal_subscription_ref01_data_dt0_loaded) && method_exists($signal_subscription_ref01_data_dt0_loaded, 'data_get') ? $signal_subscription_ref01_data_dt0_loaded->data_get() : $signal_subscription_ref01_data_dt0_loaded);
-        $this->assertNotNull($signal_subscription_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($signal_subscription_ref01_data_dt0_load_result["id"] ?? null, $signal_subscription_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only signal_subscription.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"signal_subscription.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: signal_subscription.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/signal_subscriptions); signal_subscription.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}); signal_subscription.load.2 excluded (GET-only live run: reads a record only signal_subscription.create.0 gives); signal_subscription.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -136,22 +86,6 @@ class SignalSubscriptionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $signal_subscription_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $signal_subscription_ref01_list_result = $signal_subscription_ref01_ent->list($signal_subscription_ref01_match, null);
-        $this->assertIsArray($signal_subscription_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($signal_subscription_ref01_list_result),
-            ["id" => $signal_subscription_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $signal_subscription_ref01_data_up0_up = [
             "id" => $signal_subscription_ref01_data["id"],
@@ -172,7 +106,6 @@ class SignalSubscriptionEntityTest extends TestCase
         $signal_subscription_ref01_match_dt0 = [
             "id" => $signal_subscription_ref01_data["id"],
         ];
-        $signal_subscription_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $signal_subscription_ref01_data_dt0_loaded = $signal_subscription_ref01_ent->load($signal_subscription_ref01_match_dt0, null);
         $signal_subscription_ref01_data_dt0_load_result = Helpers::to_map(is_object($signal_subscription_ref01_data_dt0_loaded) && method_exists($signal_subscription_ref01_data_dt0_loaded, 'data_get') ? $signal_subscription_ref01_data_dt0_loaded->data_get() : $signal_subscription_ref01_data_dt0_loaded);
         $this->assertNotNull($signal_subscription_ref01_data_dt0_load_result);
@@ -189,22 +122,6 @@ class SignalSubscriptionEntityTest extends TestCase
         ];
         $signal_subscription_ref01_match_rm0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $signal_subscription_ref01_ent->remove($signal_subscription_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $signal_subscription_ref01_match_rt0 = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $signal_subscription_ref01_list_rt0_result = $signal_subscription_ref01_ent->list($signal_subscription_ref01_match_rt0, null);
-        $this->assertIsArray($signal_subscription_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($signal_subscription_ref01_list_rt0_result),
-            ["id" => $signal_subscription_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

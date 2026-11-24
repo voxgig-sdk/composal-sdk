@@ -31,6 +31,11 @@ describe("EnvironmentTestAccountDirect", function()
       pending(_reason or "skipped via sdk-test-control.json")
       return
     end
+    if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" and setup.idmap["environment01"] == nil then
+      print("LIVE STEP {\"id\":\"direct-list-environment_test_account\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
+      pending("Live coverage incomplete: direct-list-environment_test_account excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
+      return
+    end
     if setup.live then
       for _, _live_key in ipairs({"environment01", "organization01"}) do
         if setup.idmap[_live_key] == nil then

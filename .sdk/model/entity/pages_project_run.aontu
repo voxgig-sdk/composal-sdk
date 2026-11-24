@@ -5,47 +5,212 @@ main: kit: entity: pages_project_run: {
   alias: field: {}
 
   fields: {
-    environment_query: {
-      h: "Environment Query"
-      n: "environment_query"
+    archived_at: {
+      fo: "date-time"
+      h: "Archived At"
+      n: "archived_at"
       r: true
-      t: "`$STRING`"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
-    environments: {
-      h: "Environments"
-      n: "environments"
+    browser_seconds: {
+      h: "Browser Seconds"
+      n: "browser_seconds"
       r: true
-      t: "`$ARRAY`"
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
     }
-    environments_has_more: {
-      h: "Environments Has More"
-      n: "environments_has_more"
+    can_archive: {
+      h: "Can Archive"
+      n: "can_archive"
       r: true
       t: "`$BOOLEAN`"
     }
-    pagination: {
-      h: "Pagination"
-      n: "pagination"
+    can_restore: {
+      h: "Can Restore"
+      n: "can_restore"
       r: true
-      t: "`$OBJECT`"
-      union: {
-        branches: 2
-        count: 1
-        depth: 3
-      }
+      t: "`$BOOLEAN`"
     }
-    runs: {
-      h: "Runs"
-      n: "runs"
+    cleanup_state: {
+      h: "Cleanup State"
+      n: "cleanup_state"
       r: true
-      t: "`$ARRAY`"
+      t: "`$STRING`"
     }
-    selected_environment: {
-      h: "Selected Environment"
-      n: "selected_environment"
+    commit_sha: {
+      h: "Commit Sha"
+      n: "commit_sha"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    duration_seconds: {
+      h: "Duration Seconds"
+      n: "duration_seconds"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$NUMBER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    environment_name: {
+      h: "Environment Name"
+      n: "environment_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    finished_at: {
+      fo: "date-time"
+      h: "Finished At"
+      n: "finished_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    outcome: {
+      h: "Outcome"
+      n: "outcome"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    pull_request: {
+      h: "Pull Request"
+      n: "pull_request"
       r: true
       t: "`$ANY`"
     }
+    pull_request_label: {
+      h: "Pull Request Label"
+      n: "pull_request_label"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    scenario_count: {
+      h: "Scenario Count"
+      n: "scenario_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    source_run: {
+      h: "Source Run"
+      n: "source_run"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    started_at: {
+      fo: "date-time"
+      h: "Started At"
+      n: "started_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: true
+      t: "`$STRING`"
+    }
+    trigger_kind: {
+      h: "Trigger Kind"
+      n: "trigger_kind"
+      r: true
+      t: "`$STRING`"
+    }
+    triggered_by: {
+      h: "Triggered By"
+      n: "triggered_by"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    web_path: {
+      h: "Web Path"
+      n: "web_path"
+      r: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "pages_project_run"
@@ -181,7 +346,7 @@ main: kit: entity: pages_project_run: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.runs`"
           }
         }
       ]

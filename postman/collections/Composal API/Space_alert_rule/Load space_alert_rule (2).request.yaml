@@ -1,0 +1,15 @@
+$kind: http-request
+id: a2b6e106-bf98-5935-8a59-55a976c5c637
+description: |-
+  The `load` operation of **space_alert_rule**.
+
+  SDK: `client.SpaceAlertRule().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

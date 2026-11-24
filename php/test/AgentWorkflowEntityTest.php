@@ -33,7 +33,7 @@ class AgentWorkflowEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentWorkflow(null)->list(["agent_id" => 1, "organization_id" => 'x'], null);
+            $client->AgentWorkflow(null)->load(["agent_id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AgentWorkflowEntityTest extends TestCase
         $setup = agent_workflow_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_workflow." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,14 +54,7 @@ class AgentWorkflowEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"agent_workflow.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"agent_workflow.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_WORKFLOW_ENTID");
-                }
-            }
-        }
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_workflow.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows"}' . "\n");
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -75,15 +68,12 @@ class AgentWorkflowEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $agent_workflow_ref01_ent = $client->AgentWorkflow(null);
-        $agent_workflow_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_workflow_ref01_list_result = $agent_workflow_ref01_ent->list($agent_workflow_ref01_match, null);
-        $this->assertIsArray($agent_workflow_ref01_list_result);
+        $agent_workflow_ref01_match_dt0 = [];
+        $agent_workflow_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_workflow_ref01_data_dt0_loaded = $agent_workflow_ref01_ent->load($agent_workflow_ref01_match_dt0, null);
+        $this->assertNotNull($agent_workflow_ref01_data_dt0_loaded);
 
             return;
         }
@@ -114,18 +104,6 @@ class AgentWorkflowEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $agent_workflow_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_workflow_ref01_list_result = $agent_workflow_ref01_ent->list($agent_workflow_ref01_match, null);
-        $this->assertIsArray($agent_workflow_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $agent_workflow_ref01_data_up0_up = [
             "organization_id" => $setup["idmap"]["organization_id"],
@@ -139,6 +117,15 @@ class AgentWorkflowEntityTest extends TestCase
         $agent_workflow_ref01_resdata_up0 = Helpers::to_map(is_object($agent_workflow_ref01_resdata_up0_result) && method_exists($agent_workflow_ref01_resdata_up0_result, 'data_get') ? $agent_workflow_ref01_resdata_up0_result->data_get() : $agent_workflow_ref01_resdata_up0_result);
         $this->assertNotNull($agent_workflow_ref01_resdata_up0);
         $this->assertEquals($agent_workflow_ref01_resdata_up0[$agent_workflow_ref01_markdef_up0_name], $agent_workflow_ref01_markdef_up0_value);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $agent_workflow_ref01_match_dt0 = [];
+        $agent_workflow_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
+        $agent_workflow_ref01_data_dt0_loaded = $agent_workflow_ref01_ent->load($agent_workflow_ref01_match_dt0, null);
+        $this->assertNotNull($agent_workflow_ref01_data_dt0_loaded);
 
     }
 }

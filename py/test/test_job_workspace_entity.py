@@ -37,7 +37,7 @@ class TestJobWorkspaceEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.JobWorkspace(None).list({"job_id": 1, "pipeline_id": "x", "run_id": "x"}, None)
+            client.JobWorkspace(None).load({"job_id": 1, "pipeline_id": "x", "run_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,16 @@ class TestJobWorkspaceEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "job_workspace." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"job_workspace.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces\"}")
-            print("LIVE STEP {\"id\":\"job_workspace.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"job_workspace.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
+            print("LIVE STEP {\"id\":\"job_workspace.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only job_workspace.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: job_workspace.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces); job_workspace.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}); job_workspace.load.2 excluded (GET-only live run: reads a record only job_workspace.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["job01", "pipeline01", "run01"]:
@@ -78,23 +79,6 @@ class TestJobWorkspaceEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        job_workspace_ref01_match = {
-            "job_id": setup["idmap"]["job01"],
-            "pipeline_id": setup["idmap"]["pipeline01"],
-            "run_id": setup["idmap"]["run01"],
-        }
-
-        job_workspace_ref01_list_result = job_workspace_ref01_ent.list(job_workspace_ref01_match, None)
-        assert isinstance(job_workspace_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(job_workspace_ref01_list_result),
-            {"id": job_workspace_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         job_workspace_ref01_data_up0_up = {
             "id": job_workspace_ref01_data["id"],
@@ -108,33 +92,19 @@ class TestJobWorkspaceEntity:
         if not setup["live"]:
             assert runner.live_same_id(job_workspace_ref01_resdata_up0.get("id"), job_workspace_ref01_data_up0_up["id"])
 
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["job01", "pipeline01", "run01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_JOB_WORKSPACE_ENTID")
-        client = setup["client"]
-
-        # Bootstrap entity data from existing test data.
-        job_workspace_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.job_workspace")))
-        job_workspace_ref01_data = None
-        if len(job_workspace_ref01_data_raw) > 0:
-            job_workspace_ref01_data = helpers.to_map(job_workspace_ref01_data_raw[0][1])
-
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        job_workspace_ref01_ent = client.JobWorkspace(None)
-        job_workspace_ref01_match = {
-            "job_id": setup["idmap"]["job01"],
-            "pipeline_id": setup["idmap"]["pipeline01"],
-            "run_id": setup["idmap"]["run01"],
+        # LOAD
+        job_workspace_ref01_match_dt0 = {
+            "id": job_workspace_ref01_data["id"],
         }
-
-        job_workspace_ref01_list_result = job_workspace_ref01_ent.list(job_workspace_ref01_match, None)
-        assert isinstance(job_workspace_ref01_list_result, list)
+        job_workspace_ref01_match_dt0["pipeline_id"] = setup["idmap"].get("pipeline_id") or setup["idmap"].get("pipeline01")
+        job_workspace_ref01_match_dt0["run_id"] = setup["idmap"].get("run_id") or setup["idmap"].get("run01")
+        job_workspace_ref01_data_dt0_loaded = job_workspace_ref01_ent.load(job_workspace_ref01_match_dt0, None)
+        job_workspace_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(job_workspace_ref01_data_dt0_loaded))
+        assert job_workspace_ref01_data_dt0_load_result is not None
+        if not setup["live"]:
+            assert runner.live_same_id(job_workspace_ref01_data_dt0_load_result.get("id"), job_workspace_ref01_data["id"])
 
 
 

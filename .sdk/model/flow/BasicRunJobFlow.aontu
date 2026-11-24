@@ -20,23 +20,6 @@ main: kit: flow: BasicRunJobFlow:
     }
 
     {
-      m: {
-        pipeline_id: "pipeline01",
-        run_id: "run01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "run_job_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "run_job_ref01",
         srcdatavar: "run_job_ref01_data",
@@ -45,8 +28,7 @@ main: kit: flow: BasicRunJobFlow:
 
       m: {
         id: "run_job01",
-        pipeline_id: "pipeline01",
-        run_id: "run01"
+        pipeline_id: "pipeline01"
       }
 
       o: "load",

@@ -1,0 +1,11 @@
+$kind: http-request
+id: "32e8f37f-0e31-53e3-a5b9-6493f7f90dc8"
+description: |-
+  The `load` operation of **pairing**.
+
+  SDK: `client.Pairing().load({ id: "example_id" })`
+url: "{{base}}/api/v1/relay/pairings"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

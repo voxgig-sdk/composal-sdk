@@ -17,97 +17,6 @@ import (
 const page_agentDirectLiveStrict = true
 
 func TestPageAgentDirect(t *testing.T) {
-	t.Run("direct-list-page_agent", func(t *testing.T) {
-		setup := page_agentDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
-		_mode := "unit"
-		if setup.live {
-			_mode = "live"
-		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-page_agent", _mode); _shouldSkip {
-			if _reason == "" {
-				_reason = "skipped via sdk-test-control.json"
-			}
-			t.Skip(_reason)
-			return
-		}
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if v := setup.idmap[_liveKey]; v == nil {
-					liveMiss(t, page_agentDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_PAGE_AGENT_ENTID", _liveKey)
-					return
-				}
-			}
-		}
-		if setup.live {
-			livePace()
-		}
-		client := setup.client
-
-		params := map[string]any{}
-		query := map[string]any{}
-		if setup.live {
-			params["organization_id"] = setup.idmap["organization01"]
-		} else {
-			params["organization_id"] = "direct01"
-		}
-
-		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/agents/page",
-			"method": "GET",
-			"params": params,
-			"query":  query,
-		})
-		if setup.live {
-			if err != nil {
-				liveMiss(t, page_agentDirectLiveStrict, "Live list failed: %v", err)
-			}
-			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, page_agentDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
-			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, page_agentDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
-			}
-		} else {
-			if err != nil {
-				t.Fatalf("direct failed: %v", err)
-			}
-			if result["ok"] != true {
-				t.Fatalf("expected ok to be true, got %v", result["ok"])
-			}
-			if core.ToInt(result["status"]) != 200 {
-				t.Fatalf("expected status 200, got %v", result["status"])
-			}
-		}
-
-		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
-				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
-			}
-
-			if len(*setup.calls) != 1 {
-				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
-			}
-			call := (*setup.calls)[0]
-			if initMap, ok := call["init"].(map[string]any); ok {
-				if initMap["method"] != "GET" {
-					t.Fatalf("expected method GET, got %v", initMap["method"])
-				}
-			}
-			if url, ok := call["url"].(string); ok {
-				if !strings.Contains(url, "direct01") {
-					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-			}
-		}
-	})
-
 	t.Run("direct-load-page_agent", func(t *testing.T) {
 		setup := page_agentDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
@@ -143,7 +52,7 @@ func TestPageAgentDirect(t *testing.T) {
 		}
 
 		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/organizations/{organization_id}/agents/page/roster",
+			"path":   "api/v1/organizations/{organization_id}/agents/page",
 			"method": "GET",
 			"params": params,
 			"query":  query,

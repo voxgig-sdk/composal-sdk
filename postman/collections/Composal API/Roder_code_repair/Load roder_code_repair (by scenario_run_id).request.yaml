@@ -1,0 +1,14 @@
+$kind: http-request
+id: "15dffdea-3340-547d-af7a-dbc11b767ab4"
+description: |-
+  The `load` operation of **roder_code_repair**.
+
+  SDK: `client.RoderCodeRepair().load({ id: "example_id" })`
+url: "{{base}}/api/v1/agent/roder/code_repairs?scenario_run_id={{scenario_run_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: scenario_run_id
+    value: "{{scenario_run_id}}"
+order: 2000

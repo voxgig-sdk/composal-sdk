@@ -19,16 +19,22 @@ main: kit: flow: BasicSpaceMetricSeryFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
+      i: {
+        ref: "space_metric_sery_ref01",
+        srcdatavar: "space_metric_sery_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "space_metric_sery01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "space_metric_sery_ref01"
+            mark: "Mark01-space_metric_sery_ref01"
           }
         }
       ]

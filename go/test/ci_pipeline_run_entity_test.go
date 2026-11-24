@@ -38,7 +38,7 @@ func TestCiPipelineRunEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.CiPipelineRun(nil).List(map[string]any{"pipeline_id": 1}, nil)
+		_, err := client.CiPipelineRun(nil).Load(map[string]any{"id": 1, "pipeline_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestCiPipelineRunEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "ci_pipeline_run." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,80 +64,9 @@ func TestCiPipelineRunEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"ci_pipeline_run.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"pipeline01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, ci_pipeline_runEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_CI_PIPELINE_RUN_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["ci_pipeline_run01"]
-			}
-			livePace()
-			liveExisting(t, ci_pipeline_runEntityLiveStrict, setup.data, "ci_pipeline_run", "id", _liveId,
-				func() (any, error) {
-					return client.CiPipelineRun(nil).List(map[string]any{"pipeline_id": setup.idmap["pipeline01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		ciPipelineRunRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.ci_pipeline_run")))
-		var ciPipelineRunRef01Data map[string]any
-		if len(ciPipelineRunRef01DataRaw) > 0 {
-			ciPipelineRunRef01Data = core.ToMapAny(ciPipelineRunRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = ciPipelineRunRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		ciPipelineRunRef01Ent := client.CiPipelineRun(nil)
-		ciPipelineRunRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-		}
-
-		ciPipelineRunRef01ListResult, err := ciPipelineRunRef01Ent.List(ciPipelineRunRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, ciPipelineRunRef01ListOk := ciPipelineRunRef01ListResult.([]any)
-		if !ciPipelineRunRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", ciPipelineRunRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		ciPipelineRunRef01MatchDt0 := map[string]any{
-			"id": ciPipelineRunRef01Data["id"],
-		}
-		if v := setup.idmap["pipeline_id"]; v != nil {
-			ciPipelineRunRef01MatchDt0["pipeline_id"] = v
-		} else {
-			ciPipelineRunRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
-		}
-		ciPipelineRunRef01DataDt0Loaded, err := ciPipelineRunRef01Ent.Load(ciPipelineRunRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		ciPipelineRunRef01DataDt0LoadResult := core.ToMapAny(entityData(ciPipelineRunRef01DataDt0Loaded))
-		if ciPipelineRunRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(ciPipelineRunRef01DataDt0LoadResult["id"], ciPipelineRunRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"ci_pipeline_run.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only ci_pipeline_run.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: ci_pipeline_run.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry); ci_pipeline_run.load.1 excluded (GET-only live run: reads a record only ci_pipeline_run.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -174,36 +103,9 @@ func TestCiPipelineRunEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		ciPipelineRunRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-		}
-
-		ciPipelineRunRef01ListResult, err := ciPipelineRunRef01Ent.List(ciPipelineRunRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		ciPipelineRunRef01List, ciPipelineRunRef01ListOk := ciPipelineRunRef01ListResult.([]any)
-		if !ciPipelineRunRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", ciPipelineRunRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(ciPipelineRunRef01List), map[string]any{"id": ciPipelineRunRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		ciPipelineRunRef01MatchDt0 := map[string]any{
 			"id": ciPipelineRunRef01Data["id"],
-		}
-		if v := setup.idmap["pipeline_id"]; v != nil {
-			ciPipelineRunRef01MatchDt0["pipeline_id"] = v
-		} else {
-			ciPipelineRunRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
 		}
 		ciPipelineRunRef01DataDt0Loaded, err := ciPipelineRunRef01Ent.Load(ciPipelineRunRef01MatchDt0, nil)
 		if err != nil {

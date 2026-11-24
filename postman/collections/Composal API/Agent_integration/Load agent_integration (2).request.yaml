@@ -1,0 +1,31 @@
+$kind: http-request
+id: e7c4608a-d6de-5b18-8c52-2706562ff7ea
+description: |-
+  The `load` operation of **agent_integration**.
+
+  SDK: `client.AgentIntegration().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_integrations"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: enableable
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: toolkit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_integration belongs to.
+order: 2000

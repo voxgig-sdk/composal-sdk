@@ -33,7 +33,7 @@ class PreviewOperationEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->PreviewOperation(null)->list(["app_id" => 1, "preview_id" => 'x'], null);
+            $client->PreviewOperation(null)->load(["app_id" => 1, "preview_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class PreviewOperationEntityTest extends TestCase
         $setup = preview_operation_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "preview_operation." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class PreviewOperationEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["app01", "preview01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PREVIEW_OPERATION_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,19 +65,6 @@ class PreviewOperationEntityTest extends TestCase
         if (count($preview_operation_ref01_data_raw) > 0) {
             $preview_operation_ref01_data = Helpers::to_map($preview_operation_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $preview_operation_ref01_ent = $client->PreviewOperation(null);
-        $preview_operation_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_id" => $setup["idmap"]["preview01"],
-        ];
-
-        $preview_operation_ref01_list_result = $preview_operation_ref01_ent->list($preview_operation_ref01_match, null);
-        $this->assertIsArray($preview_operation_ref01_list_result);
 
     }
 }
@@ -100,7 +84,7 @@ function preview_operation_basic_setup($extra)
 
     // Generate idmap.
     $idmap = [];
-    foreach (["preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03", "preview01"] as $k) {
+    foreach (["preview_operation01", "preview_operation02", "preview_operation03", "app01", "app02", "app03"] as $k) {
         $idmap[$k] = strtoupper($k);
     }
 

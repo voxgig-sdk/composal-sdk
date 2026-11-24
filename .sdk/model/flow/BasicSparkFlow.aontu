@@ -11,24 +11,26 @@ main: kit: flow: BasicSparkFlow:
         ref: "spark_ref01"
       }
 
-      m: {
-        organization_id: "organization01"
-      }
-
       o: "create"
     }
 
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "spark_ref01",
+        srcdatavar: "spark_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "spark01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "spark_ref01"
+            mark: "Mark01-spark_ref01"
           }
         }
       ]

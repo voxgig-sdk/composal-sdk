@@ -37,7 +37,7 @@ class TestLogStreamChunkEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.LogStreamChunk(None).list({"log_stream_id": 1, "space_id": "x"}, None)
+            client.LogStreamChunk(None).load({"id": 1, "log_stream_id": "x", "space_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,14 +46,15 @@ class TestLogStreamChunkEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "load"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "log_stream_chunk." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"log_stream_chunk.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"log_stream_chunk.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only log_stream_chunk.create.0 gives\"}")
+            pytest.skip("Live coverage incomplete: log_stream_chunk.create.0 excluded (GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks); log_stream_chunk.load.1 excluded (GET-only live run: reads a record only log_stream_chunk.create.0 gives)")
 
         if setup["live"]:
             for _live_key in ["log_stream01", "space01"]:
@@ -76,74 +77,10 @@ class TestLogStreamChunkEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        log_stream_chunk_ref01_match = {
-            "log_stream_id": setup["idmap"]["log_stream01"],
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        log_stream_chunk_ref01_list_result = log_stream_chunk_ref01_ent.list(log_stream_chunk_ref01_match, None)
-        assert isinstance(log_stream_chunk_ref01_list_result, list)
-
-        found_item = vs.select(
-            runner.entity_list_to_data(log_stream_chunk_ref01_list_result),
-            {"id": log_stream_chunk_ref01_data["id"]})
-        assert not vs.isempty(found_item)
-
-        if setup["live"]:
-            runner.live_pace()
         # LOAD
         log_stream_chunk_ref01_match_dt0 = {
             "id": log_stream_chunk_ref01_data["id"],
         }
-        log_stream_chunk_ref01_match_dt0["log_stream_id"] = setup["idmap"].get("log_stream_id") or setup["idmap"].get("log_stream01")
-        log_stream_chunk_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
-        log_stream_chunk_ref01_data_dt0_loaded = log_stream_chunk_ref01_ent.load(log_stream_chunk_ref01_match_dt0, None)
-        log_stream_chunk_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(log_stream_chunk_ref01_data_dt0_loaded))
-        assert log_stream_chunk_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(log_stream_chunk_ref01_data_dt0_load_result.get("id"), log_stream_chunk_ref01_data["id"])
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["log_stream01", "space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("log_stream_chunk01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "log_stream_chunk",
-                                 lambda: client.LogStreamChunk(None).list({"log_stream_id": setup["idmap"].get("log_stream01"), "space_id": setup["idmap"].get("space01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        log_stream_chunk_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.log_stream_chunk")))
-        log_stream_chunk_ref01_data = None
-        if len(log_stream_chunk_ref01_data_raw) > 0:
-            log_stream_chunk_ref01_data = helpers.to_map(log_stream_chunk_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        log_stream_chunk_ref01_ent = client.LogStreamChunk(None)
-        log_stream_chunk_ref01_match = {
-            "log_stream_id": setup["idmap"]["log_stream01"],
-            "space_id": setup["idmap"]["space01"],
-        }
-
-        log_stream_chunk_ref01_list_result = log_stream_chunk_ref01_ent.list(log_stream_chunk_ref01_match, None)
-        assert isinstance(log_stream_chunk_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        log_stream_chunk_ref01_match_dt0 = {
-            "id": log_stream_chunk_ref01_data["id"],
-        }
-        log_stream_chunk_ref01_match_dt0["log_stream_id"] = setup["idmap"].get("log_stream_id") or setup["idmap"].get("log_stream01")
         log_stream_chunk_ref01_match_dt0["space_id"] = setup["idmap"].get("space_id") or setup["idmap"].get("space01")
         log_stream_chunk_ref01_data_dt0_loaded = log_stream_chunk_ref01_ent.load(log_stream_chunk_ref01_match_dt0, None)
         log_stream_chunk_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(log_stream_chunk_ref01_data_dt0_loaded))

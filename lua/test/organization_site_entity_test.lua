@@ -29,7 +29,7 @@ describe("OrganizationSiteEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:OrganizationSite(nil):list({ ["organization_id"] = 1, ["native_agent_id"] = "x" }, nil)
+    local _, err = client:OrganizationSite(nil):load({ ["organization_id"] = 1, ["native_agent_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("OrganizationSiteEntity", function()
     local setup = organization_site_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "organization_site." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,39 +46,10 @@ describe("OrganizationSiteEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"organization_site.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token\"}")
-      print("LIVE STEP {\"id\":\"organization_site.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
+      print("LIVE STEP {\"id\":\"organization_site.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
+      print("LIVE STEP {\"id\":\"organization_site.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_site.create.0 gives\"}")
       print("LIVE STEP {\"id\":\"organization_site.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}\"}")
-      print("LIVE STEP {\"id\":\"organization_site.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_ORGANIZATION_SITE_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local organization_site_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.organization_site")))
-    local organization_site_ref01_data = nil
-    if #organization_site_ref01_data_raw > 0 then
-      organization_site_ref01_data = helpers.to_map(organization_site_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local organization_site_ref01_ent = client:OrganizationSite(nil)
-    local organization_site_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local organization_site_ref01_list_result, err = organization_site_ref01_ent:list(organization_site_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(organization_site_ref01_list_result)
-
+      pending("Live coverage incomplete: organization_site.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token); organization_site.update.1 excluded (GET-only live run: needs PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}); organization_site.load.2 excluded (GET-only live run: reads a record only organization_site.create.0 gives); organization_site.remove.3 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name})")
       return
     end
 
@@ -109,23 +80,6 @@ describe("OrganizationSiteEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local organization_site_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local organization_site_ref01_list_result, err = organization_site_ref01_ent:list(organization_site_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(organization_site_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(organization_site_ref01_list_result),
-      { id = organization_site_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local organization_site_ref01_data_up0_up = {
       id = organization_site_ref01_data["id"],
@@ -143,6 +97,21 @@ describe("OrganizationSiteEntity", function()
     if setup.live then
       runner.live_pace()
     end
+    -- LOAD
+    local organization_site_ref01_match_dt0 = {
+      id = organization_site_ref01_data["id"],
+    }
+    local organization_site_ref01_data_dt0_loaded, err = organization_site_ref01_ent:load(organization_site_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local organization_site_ref01_data_dt0_load_result = helpers.to_map(type(organization_site_ref01_data_dt0_loaded) == 'table' and organization_site_ref01_data_dt0_loaded.data_get and organization_site_ref01_data_dt0_loaded:data_get() or organization_site_ref01_data_dt0_loaded)
+    assert.is_not_nil(organization_site_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(organization_site_ref01_data_dt0_load_result["id"], organization_site_ref01_data["id"]))
+    end
+
+    if setup.live then
+      runner.live_pace()
+    end
     -- REMOVE
     local organization_site_ref01_match_rm0 = {
       id = organization_site_ref01_data["id"],
@@ -150,23 +119,6 @@ describe("OrganizationSiteEntity", function()
     organization_site_ref01_match_rm0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
     local _, err = organization_site_ref01_ent:remove(organization_site_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local organization_site_ref01_match_rt0 = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local organization_site_ref01_list_rt0_result, err = organization_site_ref01_ent:list(organization_site_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(organization_site_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(organization_site_ref01_list_rt0_result),
-      { id = organization_site_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

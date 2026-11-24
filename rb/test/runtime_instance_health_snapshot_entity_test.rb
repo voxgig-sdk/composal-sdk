@@ -25,7 +25,7 @@ class RuntimeInstanceHealthSnapshotEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RuntimeInstanceHealthSnapshot(nil).list({ "runtime_instance_id" => 1 }, nil)
+      client.RuntimeInstanceHealthSnapshot(nil).load({ "runtime_instance_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class RuntimeInstanceHealthSnapshotEntityTest < Minitest::Test
     setup = runtime_instance_health_snapshot_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "runtime_instance_health_snapshot." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class RuntimeInstanceHealthSnapshotEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"runtime_instance_health_snapshot.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots\"}"
-    if setup[:live]
-      ["runtime_instance01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_RUNTIME_INSTANCE_HEALTH_SNAPSHOT_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,14 +54,11 @@ class RuntimeInstanceHealthSnapshotEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     runtime_instance_health_snapshot_ref01_ent = client.RuntimeInstanceHealthSnapshot(nil)
-    runtime_instance_health_snapshot_ref01_match = {
-      "runtime_instance_id" => setup[:idmap]["runtime_instance01"],
-    }
-
-    runtime_instance_health_snapshot_ref01_list_result = runtime_instance_health_snapshot_ref01_ent.list(runtime_instance_health_snapshot_ref01_match, nil)
-    assert runtime_instance_health_snapshot_ref01_list_result.is_a?(Array)
+    runtime_instance_health_snapshot_ref01_match_dt0 = {}
+    runtime_instance_health_snapshot_ref01_data_dt0_loaded = runtime_instance_health_snapshot_ref01_ent.load(runtime_instance_health_snapshot_ref01_match_dt0, nil)
+    assert !runtime_instance_health_snapshot_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -94,13 +84,10 @@ class RuntimeInstanceHealthSnapshotEntityTest < Minitest::Test
     assert !runtime_instance_health_snapshot_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    runtime_instance_health_snapshot_ref01_match = {
-      "runtime_instance_id" => setup[:idmap]["runtime_instance01"],
-    }
-
-    runtime_instance_health_snapshot_ref01_list_result = runtime_instance_health_snapshot_ref01_ent.list(runtime_instance_health_snapshot_ref01_match, nil)
-    assert runtime_instance_health_snapshot_ref01_list_result.is_a?(Array)
+    # LOAD
+    runtime_instance_health_snapshot_ref01_match_dt0 = {}
+    runtime_instance_health_snapshot_ref01_data_dt0_loaded = runtime_instance_health_snapshot_ref01_ent.load(runtime_instance_health_snapshot_ref01_match_dt0, nil)
+    assert !runtime_instance_health_snapshot_ref01_data_dt0_loaded.nil?
 
   end
 end

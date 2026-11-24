@@ -246,8 +246,8 @@
 <a href="../api/evidence.html">Evidence</a>
 <a href="../api/execution_desired_state.html">ExecutionDesiredState</a>
 <a aria-current="page" href="../api/execution_reconciler_tick.html">ExecutionReconcilerTick</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1executionreconciler_ticks">POST /api/v1/execution/reconciler_ticks</a>
-<a class="nav-section" href="#get-apiv1executionreconciler_ticks">GET /api/v1/execution/reconciler_ticks</a>
-<a class="nav-section" href="#get-apiv1executionreconciler_ticksid">GET /api/v1/execution/reconciler_ticks/{id}</a></div>
+<a class="nav-section" href="#get-apiv1executionreconciler_ticksid">GET /api/v1/execution/reconciler_ticks/{id}</a>
+<a class="nav-section" href="#get-apiv1executionreconciler_ticks">GET /api/v1/execution/reconciler_ticks</a></div>
 <a href="../api/execution_release.html">ExecutionRelease</a>
 <a href="../api/execution_runtime_instance.html">ExecutionRuntimeInstance</a>
 <a href="../api/exploration.html">Exploration</a>
@@ -605,13 +605,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1executionreconciler_ticks"><code>/api/v1/execution/reconciler_ticks</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1executionreconciler_ticksid"><code>/api/v1/execution/reconciler_ticks/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1executionreconciler_ticksid"><code>/api/v1/execution/reconciler_ticks/{id}</code></a></td>
+<td><a href="#get-apiv1executionreconciler_ticks"><code>/api/v1/execution/reconciler_ticks</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -621,12 +621,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">execution_reconciler_ticks, err := client.ExecutionReconcilerTick(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(execution_reconciler_ticks)
-execution_reconciler_tick, err := client.ExecutionReconcilerTick(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">execution_reconciler_tick, err := client.ExecutionReconcilerTick(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -639,32 +634,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local execution_reconciler_ticks, err = client:ExecutionReconcilerTick():list()
-local execution_reconciler_tick, err = client:ExecutionReconcilerTick():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local execution_reconciler_tick, err = client:ExecutionReconcilerTick():load({ id = &quot;example_id&quot; })
 local created, err = client:ExecutionReconcilerTick():create({  })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$execution_reconciler_ticks = $client-&gt;ExecutionReconcilerTick()-&gt;list();
-$execution_reconciler_tick = $client-&gt;ExecutionReconcilerTick()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$execution_reconciler_tick = $client-&gt;ExecutionReconcilerTick()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;ExecutionReconcilerTick()-&gt;create([]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">execution_reconciler_ticks = client.ExecutionReconcilerTick().list()
-execution_reconciler_tick = client.ExecutionReconcilerTick().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">execution_reconciler_tick = client.ExecutionReconcilerTick().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.ExecutionReconcilerTick().create({  })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">execution_reconciler_ticks = client.ExecutionReconcilerTick.list()
-execution_reconciler_tick = client.ExecutionReconcilerTick.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">execution_reconciler_tick = client.ExecutionReconcilerTick.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.ExecutionReconcilerTick.create({  })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const execution_reconciler_ticks = await client.ExecutionReconcilerTick().list()
-const execution_reconciler_tick = await client.ExecutionReconcilerTick().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const execution_reconciler_tick = await client.ExecutionReconcilerTick().load({ id: &quot;example_id&quot; })
 const created = await client.ExecutionReconcilerTick().create({  })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -702,19 +692,6 @@ const created = await client.ExecutionReconcilerTick().create({  })
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1executionreconciler_ticks" class="operation" data-method="get"><code>GET</code> /api/v1/execution/reconciler_ticks</h3>
-<p>Operation ID: <code>api_v1_reconciler_ticks</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-1">Responses</h4>
-<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1executionreconciler_ticksid" class="operation" data-method="get"><code>GET</code> /api/v1/execution/reconciler_ticks/{id}</h3>
 <p>Operation ID: <code>api_v1_reconciler_tick</code>.</p>
@@ -740,6 +717,18 @@ const created = await client.ExecutionReconcilerTick().create({  })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-success-1" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1executionreconciler_ticks" class="operation" data-method="get"><code>GET</code> /api/v1/execution/reconciler_ticks</h3>
+<p>Operation ID: <code>api_v1_reconciler_ticks</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-2">Responses</h4>
 <h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

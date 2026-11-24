@@ -16,7 +16,7 @@ import type {
 
 import type {
   SpaceGroup,
-  SpaceGroupListMatch,
+  SpaceGroupLoadMatch,
   SpaceGroupCreateData,
   SpaceGroupUpdateData,
   SpaceGroupPatchData,
@@ -39,8 +39,7 @@ class SpaceGroupEntity extends ComposalEntityBase<SpaceGroup> {
 
 
 
-
-  async list(this: any, reqmatch?: SpaceGroupListMatch, ctrl?: Control): Promise<SpaceGroupEntity[]> {
+  async load(this: any, reqmatch?: SpaceGroupLoadMatch, ctrl?: Control): Promise<SpaceGroupEntity> {
 
     const utility = this._utility
 
@@ -60,7 +59,7 @@ class SpaceGroupEntity extends ComposalEntityBase<SpaceGroup> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -126,9 +125,15 @@ class SpaceGroupEntity extends ComposalEntityBase<SpaceGroup> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -151,11 +156,12 @@ class SpaceGroupEntity extends ComposalEntityBase<SpaceGroup> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<SpaceGroupEntity[]> return stays clean under strict null checks.
+        // Promise<SpaceGroupEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

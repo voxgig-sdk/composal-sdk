@@ -96,8 +96,8 @@
 <a class="nav-section" href="#post-apiv1hostingappsapp_idenvironmentsidpause">POST /api/v1/hosting/apps/{app_id}/environments/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idenvironmentsidresume">POST /api/v1/hosting/apps/{app_id}/environments/{id}/resume</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idenvironments">POST /api/v1/hosting/apps/{app_id}/environments</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idenvironments">GET /api/v1/hosting/apps/{app_id}/environments</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idenvironmentsid">GET /api/v1/hosting/apps/{app_id}/environments/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idenvironments">GET /api/v1/hosting/apps/{app_id}/environments</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idenvironmentsid">PATCH /api/v1/hosting/apps/{app_id}/environments/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idenvironmentsid">DELETE /api/v1/hosting/apps/{app_id}/environments/{id}</a>
 <a class="nav-section" href="#put-apiv1hostingappsapp_idenvironmentsid">PUT /api/v1/hosting/apps/{app_id}/environments/{id}</a></div>
@@ -630,13 +630,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idenvironments"><code>/api/v1/hosting/apps/{app_id}/environments</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingappsapp_idenvironmentsid"><code>/api/v1/hosting/apps/{app_id}/environments/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idenvironmentsid"><code>/api/v1/hosting/apps/{app_id}/environments/{id}</code></a></td>
+<td><a href="#get-apiv1hostingappsapp_idenvironments"><code>/api/v1/hosting/apps/{app_id}/environments</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -664,12 +664,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_environments, err := client.AppEnvironment(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_environments)
-app_environment, err := client.AppEnvironment(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_environment, err := client.AppEnvironment(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -697,8 +692,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_environments, err = client:AppEnvironment():list({ app_id = &quot;example&quot; })
-local app_environment, err = client:AppEnvironment():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_environment, err = client:AppEnvironment():load({ app_id = &quot;example&quot; })
 local created, err = client:AppEnvironment():create({ app_id = &quot;example&quot;, auto_deploy = true, kind = &quot;example&quot;, location_id = &quot;example&quot;, name = &quot;example&quot;, slug = &quot;example&quot;, status = &quot;example&quot; })
 local updated, err = client:AppEnvironment():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, auto_deploy = true })
 local patched, err = client:AppEnvironment():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, auto_deploy = true })
@@ -706,8 +700,7 @@ local removed, err = client:AppEnvironment():remove({ app_id = &quot;example&quo
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_environments = $client-&gt;AppEnvironment()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_environment = $client-&gt;AppEnvironment()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_environment = $client-&gt;AppEnvironment()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppEnvironment()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;location_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;status&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppEnvironment()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true]);
 $patched = $client-&gt;AppEnvironment()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true]);
@@ -715,8 +708,7 @@ $client-&gt;AppEnvironment()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example&
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_environments = client.AppEnvironment().list({&quot;app_id&quot;: &quot;example&quot;})
-app_environment = client.AppEnvironment().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_environment = client.AppEnvironment().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppEnvironment().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True, &quot;kind&quot;: &quot;example&quot;, &quot;location_id&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;slug&quot;: &quot;example&quot;, &quot;status&quot;: &quot;example&quot; })
 updated = client.AppEnvironment().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True})
 patched = client.AppEnvironment().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;auto_deploy&quot;: True})
@@ -724,8 +716,7 @@ client.AppEnvironment().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;i
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_environments = client.AppEnvironment.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_environment = client.AppEnvironment.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_environment = client.AppEnvironment.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppEnvironment.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true, &quot;kind&quot; =&gt; &quot;example&quot;, &quot;location_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;, &quot;status&quot; =&gt; &quot;example&quot; })
 updated = client.AppEnvironment.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true })
 patched = client.AppEnvironment.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;auto_deploy&quot; =&gt; true })
@@ -733,8 +724,7 @@ client.AppEnvironment.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &qu
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_environments = await client.AppEnvironment().list({ app_id: &quot;example&quot; })
-const app_environment = await client.AppEnvironment().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_environment = await client.AppEnvironment().load({ app_id: &quot;example&quot; })
 const created = await client.AppEnvironment().create({ app_id: &quot;example&quot;, auto_deploy: true, kind: &quot;example&quot;, location_id: &quot;example&quot;, name: &quot;example&quot;, slug: &quot;example&quot;, status: &quot;example&quot; })
 const updated = await client.AppEnvironment().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, auto_deploy: true })
 const patched = await client.AppEnvironment().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, auto_deploy: true })
@@ -1631,9 +1621,9 @@ await client.AppEnvironment().remove({ app_id: &quot;example&quot;, id: &quot;ex
 </tbody>
 </table>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idenvironments" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/environments</h3>
-<p>Operation ID: <code>api_v1_app_environments</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idenvironmentsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/environments/{id}</h3>
+<p>Operation ID: <code>api_v1_app_environment</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -1654,6 +1644,13 @@ await client.AppEnvironment().remove({ app_id: &quot;example&quot;, id: &quot;ex
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-4">Responses</h4>
@@ -1665,9 +1662,8 @@ await client.AppEnvironment().remove({ app_id: &quot;example&quot;, id: &quot;ex
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idenvironmentsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/environments/{id}</h3>
-<p>Operation ID: <code>api_v1_app_environment</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idenvironments" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/environments</h3>
+<p>Operation ID: <code>api_v1_app_environments</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -1683,13 +1679,6 @@ await client.AppEnvironment().remove({ app_id: &quot;example&quot;, id: &quot;ex
 <tbody>
 <tr>
 <td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

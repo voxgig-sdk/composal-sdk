@@ -70,8 +70,8 @@ main: kit: entity: space_audit_event: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

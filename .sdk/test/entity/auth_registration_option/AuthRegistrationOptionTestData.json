@@ -5,19 +5,22 @@
         "email_password_signup_enabled": true,
         "openai_sign_in_enabled": false,
         "turnstile_site_key": "s2a",
-        "waitlist_enabled": false
+        "waitlist_enabled": false,
+        "id": "AUTH_REGISTRATION_OPTION00"
       },
       "AUTH_REGISTRATION_OPTION01": {
         "email_password_signup_enabled": true,
         "openai_sign_in_enabled": false,
         "turnstile_site_key": "s52",
-        "waitlist_enabled": false
+        "waitlist_enabled": false,
+        "id": "AUTH_REGISTRATION_OPTION01"
       },
       "AUTH_REGISTRATION_OPTION02": {
         "email_password_signup_enabled": true,
         "openai_sign_in_enabled": false,
         "turnstile_site_key": "s7a",
-        "waitlist_enabled": false
+        "waitlist_enabled": false,
+        "id": "AUTH_REGISTRATION_OPTION02"
       }
     }
   },

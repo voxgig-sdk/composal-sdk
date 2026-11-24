@@ -1,0 +1,15 @@
+$kind: http-request
+id: b0f70600-ecf5-52cb-b997-46131d74fc2e
+description: |-
+  The `load` operation of **space_peer**.
+
+  SDK: `client.SpacePeer().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/peers"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

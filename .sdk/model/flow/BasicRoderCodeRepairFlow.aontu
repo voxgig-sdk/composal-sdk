@@ -15,26 +15,10 @@ main: kit: flow: BasicRoderCodeRepairFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "roder_code_repair_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "roder_code_repair_ref01",
         srcdatavar: "roder_code_repair_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "roder_code_repair01"
       }
 
       o: "load",

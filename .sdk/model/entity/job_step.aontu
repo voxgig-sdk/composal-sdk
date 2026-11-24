@@ -115,8 +115,8 @@ main: kit: entity: job_step: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

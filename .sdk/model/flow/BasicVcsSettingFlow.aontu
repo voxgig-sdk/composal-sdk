@@ -7,16 +7,22 @@ main: kit: flow: BasicVcsSettingFlow:
   name: "BasicVcsSettingFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "vcs_setting_ref01",
+        srcdatavar: "vcs_setting_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "vcs_setting01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "vcs_setting_ref01"
+            mark: "Mark01-vcs_setting_ref01"
           }
         }
       ]

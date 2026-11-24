@@ -25,7 +25,7 @@ class AllocationLogEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AllocationLog(nil).list({ "allocation_id" => 1, "app_id" => "x" }, nil)
+      client.AllocationLog(nil).load({ "allocation_id" => 1, "app_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class AllocationLogEntityTest < Minitest::Test
     setup = allocation_log_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "allocation_log." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,12 +42,9 @@ class AllocationLogEntityTest < Minitest::Test
       end
     end
     if setup[:live]
-      ["allocation01", "app01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_ALLOCATION_LOG_ENTID")
-        end
-      end
+      skip("Live coverage incomplete: the flow has no step to run")
     end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -57,17 +54,6 @@ class AllocationLogEntityTest < Minitest::Test
     if allocation_log_ref01_data_raw.length > 0
       allocation_log_ref01_data = Helpers.to_map(allocation_log_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    allocation_log_ref01_ent = client.AllocationLog(nil)
-    allocation_log_ref01_match = {
-      "allocation_id" => setup[:idmap]["allocation01"],
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    allocation_log_ref01_list_result = allocation_log_ref01_ent.list(allocation_log_ref01_match, nil)
-    assert allocation_log_ref01_list_result.is_a?(Array)
 
   end
 end
@@ -86,7 +72,7 @@ def allocation_log_basic_setup(extra)
 
   # Generate idmap via transform.
   idmap = Vs.transform(
-    ["allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03", "allocation01"],
+    ["allocation_log01", "allocation_log02", "allocation_log03", "app01", "app02", "app03"],
     {
       "`$PACK`" => ["", {
         "`$KEY`" => "`$COPY`",

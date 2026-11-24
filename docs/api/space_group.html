@@ -608,7 +608,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1networkingspacesspace_idgroups"><code>/api/v1/networking/spaces/{space_id}/groups</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
@@ -635,27 +635,27 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">space_groups, err := client.SpaceGroup(nil).List(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">space_group, err := client.SpaceGroup(nil).Load(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(space_groups)
+fmt.Println(space_group)
 created, err := client.SpaceGroup(nil).Create(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(created)
-updated, err := client.SpaceGroup(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+updated, err := client.SpaceGroup(nil).Update(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(updated)
-patched, err := client.SpaceGroup(nil).Patch(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+patched, err := client.SpaceGroup(nil).Patch(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
 fmt.Println(patched)
-removed, err := client.SpaceGroup(nil).Remove(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+removed, err := client.SpaceGroup(nil).Remove(map[string]any{&quot;id&quot;: &quot;example&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -663,43 +663,43 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local space_groups, err = client:SpaceGroup():list({ space_id = &quot;example&quot; })
+<pre><code class="language-lua">local space_group, err = client:SpaceGroup():load({ space_id = &quot;example&quot; })
 local created, err = client:SpaceGroup():create({ space_id = &quot;example&quot; })
-local updated, err = client:SpaceGroup():update({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
-local patched, err = client:SpaceGroup():patch({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
-local removed, err = client:SpaceGroup():remove({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
+local updated, err = client:SpaceGroup():update({ space_id = &quot;example&quot; })
+local patched, err = client:SpaceGroup():patch({ space_id = &quot;example&quot; })
+local removed, err = client:SpaceGroup():remove({ id = &quot;example&quot;, space_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$space_groups = $client-&gt;SpaceGroup()-&gt;list([&quot;space_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$space_group = $client-&gt;SpaceGroup()-&gt;load([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SpaceGroup()-&gt;create([&quot;space_id&quot; =&gt; &quot;example&quot;]);
-$updated = $client-&gt;SpaceGroup()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
-$patched = $client-&gt;SpaceGroup()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
-$client-&gt;SpaceGroup()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;SpaceGroup()-&gt;update([&quot;space_id&quot; =&gt; &quot;example&quot;]);
+$patched = $client-&gt;SpaceGroup()-&gt;patch([&quot;space_id&quot; =&gt; &quot;example&quot;]);
+$client-&gt;SpaceGroup()-&gt;remove([&quot;id&quot; =&gt; &quot;example&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">space_groups = client.SpaceGroup().list({&quot;space_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">space_group = client.SpaceGroup().load({&quot;space_id&quot;: &quot;example&quot;})
 created = client.SpaceGroup().create({ &quot;space_id&quot;: &quot;example&quot; })
-updated = client.SpaceGroup().update({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
-patched = client.SpaceGroup().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
-client.SpaceGroup().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
+updated = client.SpaceGroup().update({&quot;space_id&quot;: &quot;example&quot;})
+patched = client.SpaceGroup().patch({&quot;space_id&quot;: &quot;example&quot;})
+client.SpaceGroup().remove({&quot;id&quot;: &quot;example&quot;, &quot;space_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">space_groups = client.SpaceGroup.list({ &quot;space_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">space_group = client.SpaceGroup.load({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 created = client.SpaceGroup.create({ &quot;space_id&quot; =&gt; &quot;example&quot; })
-updated = client.SpaceGroup.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
-patched = client.SpaceGroup.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
-client.SpaceGroup.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
+updated = client.SpaceGroup.update({ &quot;space_id&quot; =&gt; &quot;example&quot; })
+patched = client.SpaceGroup.patch({ &quot;space_id&quot; =&gt; &quot;example&quot; })
+client.SpaceGroup.remove({ &quot;id&quot; =&gt; &quot;example&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const space_groups = await client.SpaceGroup().list({ space_id: &quot;example&quot; })
+<pre><code class="language-ts">const space_group = await client.SpaceGroup().load({ space_id: &quot;example&quot; })
 const created = await client.SpaceGroup().create({ space_id: &quot;example&quot; })
-const updated = await client.SpaceGroup().update({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
-const patched = await client.SpaceGroup().patch({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
-await client.SpaceGroup().remove({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
+const updated = await client.SpaceGroup().update({ space_id: &quot;example&quot; })
+const patched = await client.SpaceGroup().patch({ space_id: &quot;example&quot; })
+await client.SpaceGroup().remove({ id: &quot;example&quot;, space_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -757,7 +757,7 @@ await client.SpaceGroup().remove({ id: &quot;example_id&quot;, space_id: &quot;e
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1networkingspacesspace_idgroups" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/groups</h3>
 <p>Operation ID: <code>api_v1_space_groups</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

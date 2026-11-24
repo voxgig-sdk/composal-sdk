@@ -1,0 +1,25 @@
+$kind: http-request
+id: bf3d09d7-db45-5b61-8699-aef19117ae5a
+description: |-
+  The `load` operation of **pull_request_setting**.
+
+  SDK: `client.PullRequestSetting().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verify/pull_request_settings"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: project_id
+    value: ""
+    disabled: true
+  - key: provider
+    value: ""
+    disabled: true
+  - key: repository_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this pull_request_setting belongs to.
+order: 1000

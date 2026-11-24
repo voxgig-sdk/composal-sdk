@@ -1,0 +1,34 @@
+$kind: http-request
+id: c6b426bb-8b8e-5433-b01e-6fb255e05b39
+description: |-
+  The `load` operation of **page_agent**.
+
+  SDK: `client.PageAgent().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/page"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: agent
+    value: ""
+    disabled: true
+  - key: agent_search
+    value: ""
+    disabled: true
+  - key: agent_visibility
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: integration_search
+    value: ""
+    disabled: true
+  - key: limit
+    value: "30"
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this page_agent belongs to.
+order: 1000

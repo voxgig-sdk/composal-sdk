@@ -40,8 +40,8 @@ main: kit: entity: cli_release: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -71,11 +71,6 @@ main: kit: entity: cli_release: {
             res: "`body`"
           }
         }
-      ]
-    }
-    load: {
-      name: "load"
-      points: [
         {
           co: {
             id: "GET /api/v1/cli_releases/latest"

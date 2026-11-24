@@ -41,59 +41,13 @@ describe('ExecutionReconcilerTickEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('execution_reconciler_tick hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).ExecutionReconcilerTick().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).ExecutionReconcilerTick()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.ExecutionReconcilerTick().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().ExecutionReconcilerTick().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.ExecutionReconcilerTick().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.ExecutionReconcilerTick().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
   test('validate', async (t) => {
     if (null == (config as any).feature?.validate) {
       t.skip('feature not present in this SDK: validate')
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.ExecutionReconcilerTick().list({"id":1} as any),
+    await assert.rejects(client.ExecutionReconcilerTick().load({"id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -102,14 +56,14 @@ describe('ExecutionReconcilerTickEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list', 'load']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'execution_reconciler_tick.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"execution_reconciler_tick","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/execution/reconciler_ticks","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/execution/reconciler_ticks","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/execution/reconciler_ticks","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/execution/reconciler_ticks","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/execution/reconciler_ticks/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/execution/reconciler_ticks/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"execution_reconciler_tick","name__orig":"execution_reconciler_tick","Name":"ExecutionReconcilerTick","name_":"execution_reconciler_tick","name-":"execution-reconciler-tick","NAME":"EXECUTION_RECONCILER_TICK","index$":239}, {"active":true,"entity":"execution_reconciler_tick","key$":"BasicExecutionReconcilerTickFlow","kind":"basic","name":"BasicExecutionReconcilerTickFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"execution_reconciler_tick_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"execution_reconciler_tick_ref01"}}],"index$":1},{"a":true,"d":{},"i":{"ref":"execution_reconciler_tick_ref01","srcdatavar":"execution_reconciler_tick_ref01_data","suffix":"_dt0"},"m":{"id":"execution_reconciler_tick01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-execution_reconciler_tick_ref01"}}],"index$":2,"route":"GET /api/v1/execution/reconciler_ticks/{id}","record":{}}]}, 'ExecutionReconcilerTick', {"POST /api/v1/execution/reconciler_ticks":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/execution/reconciler_ticks":{"protocol":"http","parameters":[]},"GET /api/v1/execution/reconciler_ticks/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"execution_reconciler_tick.create.0":"GET-only live run: needs POST /api/v1/execution/reconciler_ticks"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"id":{"a":true,"h":"Id","n":"id","r":false,"syn":true,"t":"`$STRING`","key$":"id","index$":0}},"id":{"field":"id","name":"id"},"name":"execution_reconciler_tick","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/execution/reconciler_ticks","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/execution/reconciler_ticks","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/execution/reconciler_ticks/{id}","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"id","or":"id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/execution/reconciler_ticks/{id}","q":{"exist":["id"]},"r":{"param":{"id":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /api/v1/execution/reconciler_ticks","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/execution/reconciler_ticks","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"execution"},{"lit":"reconciler_ticks"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"execution_reconciler_tick","name__orig":"execution_reconciler_tick","Name":"ExecutionReconcilerTick","name_":"execution_reconciler_tick","name-":"execution-reconciler-tick","NAME":"EXECUTION_RECONCILER_TICK","index$":239}, {"active":true,"entity":"execution_reconciler_tick","key$":"BasicExecutionReconcilerTickFlow","kind":"basic","name":"BasicExecutionReconcilerTickFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"execution_reconciler_tick_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"execution_reconciler_tick_ref01","srcdatavar":"execution_reconciler_tick_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-execution_reconciler_tick_ref01"}}],"index$":1,"route":"GET /api/v1/execution/reconciler_ticks/{id}","record":{}}]}, 'ExecutionReconcilerTick', {"POST /api/v1/execution/reconciler_ticks":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/execution/reconciler_ticks/{id}":{"protocol":"http","parameters":[{"name":"id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/execution/reconciler_ticks":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"execution_reconciler_tick.create.0":"GET-only live run: needs POST /api/v1/execution/reconciler_ticks","execution_reconciler_tick.load.1":"GET-only live run: reads a record only execution_reconciler_tick.create.0 gives"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -124,14 +78,6 @@ describe('ExecutionReconcilerTickEntity', async () => {
 
     execution_reconciler_tick_ref01_data = (await execution_reconciler_tick_ref01_ent.create(execution_reconciler_tick_ref01_data)).data()
     assert(null != execution_reconciler_tick_ref01_data.id)
-
-
-    // LIST
-    const execution_reconciler_tick_ref01_match: any = {}
-
-    const execution_reconciler_tick_ref01_list = (await execution_reconciler_tick_ref01_ent.list(execution_reconciler_tick_ref01_match)).map((e: any) => e.data())
-
-    assert(!isempty(select(execution_reconciler_tick_ref01_list, { id: execution_reconciler_tick_ref01_data.id })))
 
 
     // LOAD

@@ -302,42 +302,6 @@ main: kit: entity: artifact_image_repository: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/artifacts/image_repositories"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/artifacts/image_repositories"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "artifacts"
-            }
-            {
-              lit: "image_repositories"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -389,6 +353,37 @@ main: kit: entity: artifact_image_repository: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/artifacts/image_repositories"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/image_repositories"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "image_repositories"
             }
           ]
           t: {

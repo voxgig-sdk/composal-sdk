@@ -16,7 +16,7 @@ import type {
 
 import type {
   AppAccessJwk,
-  AppAccessJwkListMatch,
+  AppAccessJwkLoadMatch,
 } from '../ComposalTypes'
 
 class AppAccessJwkEntity extends ComposalEntityBase<AppAccessJwk> {
@@ -35,8 +35,7 @@ class AppAccessJwkEntity extends ComposalEntityBase<AppAccessJwk> {
 
 
 
-
-  async list(this: any, reqmatch?: AppAccessJwkListMatch, ctrl?: Control): Promise<AppAccessJwkEntity[]> {
+  async load(this: any, reqmatch?: AppAccessJwkLoadMatch, ctrl?: Control): Promise<AppAccessJwkEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class AppAccessJwkEntity extends ComposalEntityBase<AppAccessJwk> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,15 @@ class AppAccessJwkEntity extends ComposalEntityBase<AppAccessJwk> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -147,11 +152,12 @@ class AppAccessJwkEntity extends ComposalEntityBase<AppAccessJwk> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<AppAccessJwkEntity[]> return stays clean under strict null checks.
+        // Promise<AppAccessJwkEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

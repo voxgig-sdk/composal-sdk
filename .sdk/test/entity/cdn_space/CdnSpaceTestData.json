@@ -36,12 +36,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{org_slug}/cdn_spaces": {
+    "GET /api/v1/cdn_spaces/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/cdn_spaces/{id}": {
+    "GET /api/v1/organizations/{org_slug}/cdn_spaces": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

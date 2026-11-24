@@ -5,60 +5,15 @@ main: kit: entity: device_grant: {
   alias: field: {}
 
   fields: {
-    active_grants: {
-      h: "Active Grants"
-      n: "active_grants"
-      r: true
-      t: "`$ARRAY`"
-    }
-    agent_choices: {
-      h: "Agent Choices"
-      n: "agent_choices"
-      r: true
-      sh: "Eligible picker choices, with current owner grant targets, on the first page only."
-      t: "`$ARRAY`"
-    }
     agent_id: {
       h: "Agent Id"
       n: "agent_id"
       r: true
       t: "`$STRING`"
     }
-    all_agents_access: {
-      h: "All Agents Access"
-      n: "all_agents_access"
-      r: true
-      sh: "Whether every agent the owner can use may use this computer for the owner's messages, including agents added later."
-      t: "`$BOOLEAN`"
-    }
-    capabilities: {
-      h: "Capabilities"
-      n: "capabilities"
-      r: true
-      t: "`$ARRAY`"
-    }
-    execution_available: {
-      h: "Execution Available"
-      n: "execution_available"
-      r: true
-      t: "`$BOOLEAN`"
-    }
-    grants: {
-      h: "Grants"
-      n: "grants"
-      r: true
-      t: "`$ARRAY`"
-    }
-    id: {
-      h: "Id"
-      n: "id"
-      r: false
-      syn: true
-      t: "`$STRING`"
-    }
-    next_cursor: {
-      h: "Next Cursor"
-      n: "next_cursor"
+    agent_name: {
+      h: "Agent Name"
+      n: "agent_name"
       r: true
       t: [
         "`$ONE`"
@@ -68,9 +23,78 @@ main: kit: entity: device_grant: {
         ]
       ]
     }
+    can_edit: {
+      h: "Can Edit"
+      n: "can_edit"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    can_revoke: {
+      h: "Can Revoke"
+      n: "can_revoke"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    capabilities: {
+      h: "Capabilities"
+      n: "capabilities"
+      r: true
+      t: "`$ARRAY`"
+    }
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: true
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
     principal_id: {
       h: "Principal Id"
       n: "principal_id"
+      r: true
+      t: "`$STRING`"
+    }
+    principal_name: {
+      h: "Principal Name"
+      n: "principal_name"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    revision: {
+      h: "Revision"
+      n: "revision"
+      r: true
+      t: "`$INTEGER`"
+    }
+    revoked_at: {
+      fo: "date-time"
+      h: "Revoked At"
+      n: "revoked_at"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    updated_at: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updated_at"
       r: true
       t: "`$STRING`"
     }
@@ -417,7 +441,7 @@ main: kit: entity: device_grant: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.grants`"
           }
         }
       ]

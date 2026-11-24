@@ -41,65 +41,19 @@ describe('CliReleaseEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('cli_release hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).CliRelease().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).CliRelease()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.CliRelease().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().CliRelease().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.CliRelease().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.CliRelease().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
 
 
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'cli_release.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"cli_release","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/cli_releases","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/cli_releases","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/cli_releases","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/cli_releases","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/cli_releases/latest","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/cli_releases/latest","q":{"$action":"latest"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"},{"lit":"latest"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"cli_release","name__orig":"cli_release","Name":"CliRelease","name_":"cli_release","name-":"cli-release","NAME":"CLI_RELEASE","index$":178}, {"active":true,"entity":"cli_release","key$":"BasicCliReleaseFlow","kind":"basic","name":"BasicCliReleaseFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"cli_release_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"cli_release_ref01"}}],"index$":1},{"a":false,"d":{},"i":{"ref":"cli_release_ref01","srcdatavar":"cli_release_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-cli_release_ref01"}}],"unreachable":true}]}, 'CliRelease', {"POST /api/v1/cli_releases":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/cli_releases":{"protocol":"http","parameters":[]},"GET /api/v1/cli_releases/latest":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"cli_release.create.0":"GET-only live run: needs POST /api/v1/cli_releases"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"cli_release","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/cli_releases","source":"openapi3","version":2},"g":{},"k":"http","m":"POST","o":"/api/v1/cli_releases","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/cli_releases","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/cli_releases","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0},{"a":true,"co":{"id":"GET /api/v1/cli_releases/latest","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/cli_releases/latest","q":{"$action":"latest"},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"cli_releases"},{"lit":"latest"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":1}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"cli_release","name__orig":"cli_release","Name":"CliRelease","name_":"cli_release","name-":"cli-release","NAME":"CLI_RELEASE","index$":178}, {"active":true,"entity":"cli_release","key$":"BasicCliReleaseFlow","kind":"basic","name":"BasicCliReleaseFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"cli_release_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"cli_release_ref01","srcdatavar":"cli_release_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-cli_release_ref01"}}],"index$":1}]}, 'CliRelease', {"POST /api/v1/cli_releases":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[]},"GET /api/v1/cli_releases":{"protocol":"http","parameters":[]},"GET /api/v1/cli_releases/latest":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"cli_release.create.0":"GET-only live run: needs POST /api/v1/cli_releases"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -116,10 +70,10 @@ describe('CliReleaseEntity', async () => {
     assert(null != cli_release_ref01_data)
 
 
-    // LIST
-    const cli_release_ref01_match: any = {}
-
-    const cli_release_ref01_list = (await cli_release_ref01_ent.list(cli_release_ref01_match)).map((e: any) => e.data())
+    // LOAD
+    const cli_release_ref01_match_dt0: any = {}
+    const cli_release_ref01_data_dt0 = (await cli_release_ref01_ent.load(cli_release_ref01_match_dt0)).data()
+    assert(null != cli_release_ref01_data_dt0)
 
 
   })

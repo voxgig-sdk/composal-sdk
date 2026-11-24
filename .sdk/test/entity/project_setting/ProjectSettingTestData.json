@@ -9,7 +9,8 @@
         "project": {},
         "tester_numbers": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SETTING00"
       },
       "PROJECT_SETTING01": {
         "available_messaging_environments": [],
@@ -19,7 +20,8 @@
         "project": {},
         "tester_numbers": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SETTING01"
       },
       "PROJECT_SETTING02": {
         "available_messaging_environments": [],
@@ -29,7 +31,8 @@
         "project": {},
         "tester_numbers": [],
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_SETTING02"
       }
     }
   },

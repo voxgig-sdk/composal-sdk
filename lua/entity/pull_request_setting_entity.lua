@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch PullRequestSettingListMatch
+---@param reqmatch PullRequestSettingLoadMatch
 ---@param ctrl? table
----@return PullRequestSettingEntity[]
+---@return PullRequestSettingEntity
 ---@return string? err
-function PullRequestSettingEntity:list(reqmatch, ctrl)
+function PullRequestSettingEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function PullRequestSettingEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

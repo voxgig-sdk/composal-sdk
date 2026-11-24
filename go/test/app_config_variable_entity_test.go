@@ -39,7 +39,7 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AppConfigVariable(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.AppConfigVariable(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "app_config_variable." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,83 +65,11 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"app_config_variable.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/disable\"}")
-			t.Log("LIVE STEP {\"id\":\"app_config_variable.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_config_variable.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_config_variable.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, app_config_variableEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_APP_CONFIG_VARIABLE_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["app_config_variable01"]
-			}
-			livePace()
-			liveExisting(t, app_config_variableEntityLiveStrict, setup.data, "app_config_variable", "id", _liveId,
-				func() (any, error) {
-					return client.AppConfigVariable(nil).List(map[string]any{"app_id": setup.idmap["app01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		appConfigVariableRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.app_config_variable")))
-		var appConfigVariableRef01Data map[string]any
-		if len(appConfigVariableRef01DataRaw) > 0 {
-			appConfigVariableRef01Data = core.ToMapAny(appConfigVariableRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = appConfigVariableRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appConfigVariableRef01Ent := client.AppConfigVariable(nil)
-		appConfigVariableRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appConfigVariableRef01ListResult, err := appConfigVariableRef01Ent.List(appConfigVariableRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, appConfigVariableRef01ListOk := appConfigVariableRef01ListResult.([]any)
-		if !appConfigVariableRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appConfigVariableRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		appConfigVariableRef01MatchDt0 := map[string]any{
-			"id": appConfigVariableRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appConfigVariableRef01MatchDt0["app_id"] = v
-		} else {
-			appConfigVariableRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		appConfigVariableRef01DataDt0Loaded, err := appConfigVariableRef01Ent.Load(appConfigVariableRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		appConfigVariableRef01DataDt0LoadResult := core.ToMapAny(entityData(appConfigVariableRef01DataDt0Loaded))
-		if appConfigVariableRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(appConfigVariableRef01DataDt0LoadResult["id"], appConfigVariableRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"app_config_variable.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"app_config_variable.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_config_variable.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"app_config_variable.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id}\"}")
+			t.Skip("Live coverage incomplete: app_config_variable.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/disable); app_config_variable.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}); app_config_variable.load.2 excluded (GET-only live run: reads a record only app_config_variable.create.0 gives); app_config_variable.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id})")
+			return
 		}
 
 		if setup.live {
@@ -173,28 +101,6 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		}
 		if appConfigVariableRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appConfigVariableRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appConfigVariableRef01ListResult, err := appConfigVariableRef01Ent.List(appConfigVariableRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appConfigVariableRef01List, appConfigVariableRef01ListOk := appConfigVariableRef01ListResult.([]any)
-		if !appConfigVariableRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appConfigVariableRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(appConfigVariableRef01List), map[string]any{"id": appConfigVariableRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		if setup.live {
@@ -232,11 +138,6 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		appConfigVariableRef01MatchDt0 := map[string]any{
 			"id": appConfigVariableRef01Data["id"],
 		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appConfigVariableRef01MatchDt0["app_id"] = v
-		} else {
-			appConfigVariableRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
 		appConfigVariableRef01DataDt0Loaded, err := appConfigVariableRef01Ent.Load(appConfigVariableRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -264,28 +165,6 @@ func TestAppConfigVariableEntity(t *testing.T) {
 		_, err = appConfigVariableRef01Ent.Remove(appConfigVariableRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appConfigVariableRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appConfigVariableRef01ListRt0Result, err := appConfigVariableRef01Ent.List(appConfigVariableRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appConfigVariableRef01ListRt0, appConfigVariableRef01ListRt0Ok := appConfigVariableRef01ListRt0Result.([]any)
-		if !appConfigVariableRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", appConfigVariableRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(appConfigVariableRef01ListRt0), map[string]any{"id": appConfigVariableRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

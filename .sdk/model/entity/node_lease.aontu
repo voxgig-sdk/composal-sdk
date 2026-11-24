@@ -251,69 +251,6 @@ main: kit: entity: node_lease: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/ci/nodes/{id}/leases"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "node_id"
-                or: "id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/ci/nodes/{id}/leases"
-          q: {
-            exist: [
-              "node_id"
-            ]
-          }
-          r: {
-            param: {
-              id: "node_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "ci"
-            }
-            {
-              lit: "nodes"
-            }
-            {
-              var: "node_id"
-            }
-            {
-              lit: "leases"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -458,6 +395,64 @@ main: kit: entity: node_lease: {
             }
             {
               lit: "workspace_archive"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/ci/nodes/{id}/leases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "node_id"
+                or: "id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/ci/nodes/{id}/leases"
+          q: {
+            exist: [
+              "node_id"
+            ]
+          }
+          r: {
+            param: {
+              id: "node_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "ci"
+            }
+            {
+              lit: "nodes"
+            }
+            {
+              var: "node_id"
+            }
+            {
+              lit: "leases"
             }
           ]
           t: {

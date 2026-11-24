@@ -40,24 +40,6 @@ export interface AdminOrgLoadMatch {
   id: string
 }
 
-export interface AdminOrgListMatch {
-  billing_email?: string | null
-  billing_reason?: string
-  customize_onboarding_packages?: boolean
-  deployment_usage_visibility?: string
-  deployment_usage_visible?: boolean
-  id?: string
-  monthly_price_dollars?: string | number
-  monthly_price_override_cents?: number | null
-  name?: string
-  onboarding_custom_pricing?: boolean
-  onboarding_package_keys?: any[] | null
-  owner_email?: string
-  package_id?: string | null
-  skip_payment?: boolean
-  slug?: string
-}
-
 export interface AdminOrgCreateData {
   billing_reason?: string
   customize_onboarding_packages?: boolean
@@ -216,12 +198,9 @@ export interface AgentApp {
   hidden_install_count: number
   id: string
   install_count: number
-  install_targets: any[]
   installed_by: any[]
   installed_target_ids: any[]
-  items: any[]
   mcp_url: string | null
-  next_cursor: string | null
   owner: Record<string, any>
   thread: any
   title: string
@@ -746,7 +725,7 @@ export interface AgentEmailLoadMatch {
 export interface AgentEvent {
 }
 
-export interface AgentEventListMatch {
+export interface AgentEventLoadMatch {
   agent_id: string
   organization_id: string
   conversation_id?: string
@@ -827,23 +806,19 @@ export interface AgentIntegration {
 }
 
 export interface AgentIntegrationLoadMatch {
-  id: string
-  organization_id: string
-
-  // Selects a custom action instead of the plain load:
-  //   'catalog' | 'github'
-  // The remaining keys are that action's own payload.
-  $action?: string
-  [action: string]: any
-}
-
-export interface AgentIntegrationListMatch {
+  id?: string
   organization_id: string
   cursor?: string
   enableable?: boolean
   limit?: number
   q?: string
   toolkit?: string
+
+  // Selects a custom action instead of the plain load:
+  //   'catalog' | 'github'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface AgentIntegrationCreateData {
@@ -1325,7 +1300,7 @@ export interface AgentRepository {
   work_repositories: any[]
 }
 
-export interface AgentRepositoryListMatch {
+export interface AgentRepositoryLoadMatch {
   agent_id: string
   organization_id: string
   q?: string
@@ -1484,7 +1459,7 @@ export interface AgentSessionCheckpoint {
 
 export interface AgentSessionCheckpointLoadMatch {
   agent_session_id: string
-  id: string
+  id?: string
   organization_id: string
   repo_id: string
 
@@ -1493,12 +1468,6 @@ export interface AgentSessionCheckpointLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface AgentSessionCheckpointListMatch {
-  agent_session_id: string
-  organization_id: string
-  repo_id: string
 }
 
 export interface AgentSessionCheckpointCreateData {
@@ -1533,7 +1502,7 @@ export interface AgentSetting {
   version: string
 }
 
-export interface AgentSettingListMatch {
+export interface AgentSettingLoadMatch {
   agent_id: string
   organization_id: string
 }
@@ -1620,7 +1589,7 @@ export interface AgentSkill {
 }
 
 export interface AgentSkillLoadMatch {
-  id: string
+  id?: string
   organization_id: string
 
   // Selects a custom action instead of the plain load:
@@ -1628,10 +1597,6 @@ export interface AgentSkillLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface AgentSkillListMatch {
-  organization_id: string
 }
 
 export interface AgentSkillCreateData {
@@ -1716,7 +1681,7 @@ export interface AgentSubagentListMatch {
 export interface AgentSubscription {
 }
 
-export interface AgentSubscriptionListMatch {
+export interface AgentSubscriptionLoadMatch {
   agent_id: string
   organization_id: string
   refresh_provider?: string
@@ -1879,10 +1844,6 @@ export interface AgentThreadLoadMatch {
   id: string
 }
 
-export interface AgentThreadListMatch {
-  id?: string
-}
-
 export interface AgentThreadCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -1923,8 +1884,11 @@ export interface AgentVerifyProject {
   available: boolean
   can_manage: boolean
   expected_version: number
+  id: string
+  name: string
   project_choices: any[]
   project_choices_truncated: boolean
+  slug: string
   verify_projects: any[]
   version: number
 }
@@ -1964,7 +1928,7 @@ export interface AgentWebPreview {
   title: string | null
 }
 
-export interface AgentWebPreviewListMatch {
+export interface AgentWebPreviewLoadMatch {
   asset?: string
   token: string
 }
@@ -2033,7 +1997,7 @@ export interface AgentWorkflow {
   workflows: any[]
 }
 
-export interface AgentWorkflowListMatch {
+export interface AgentWorkflowLoadMatch {
   agent_id: string
   organization_id: string
   view?: string
@@ -2316,12 +2280,7 @@ export interface AlertRuleEvent {
 
 export interface AlertRuleEventLoadMatch {
   alert_rule_id: string
-  id: string
-  space_id: string
-}
-
-export interface AlertRuleEventListMatch {
-  alert_rule_id: string
+  id?: string
   space_id: string
 }
 
@@ -2356,7 +2315,7 @@ export interface AllocationLog {
   type: string
 }
 
-export interface AllocationLogListMatch {
+export interface AllocationLogLoadMatch {
   allocation_id: string
   app_id: string
   offset?: number
@@ -2457,7 +2416,7 @@ export interface AppAccessLoadMatch {
 export interface AppAccessJwk {
 }
 
-export interface AppAccessJwkListMatch {
+export interface AppAccessJwkLoadMatch {
 }
 
 export interface AppCdn {
@@ -2492,11 +2451,7 @@ export interface AppCdn {
 
 export interface AppCdnLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppCdnListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppCdnCreateData {
@@ -2575,11 +2530,7 @@ export interface AppConfigVariable {
 
 export interface AppConfigVariableLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppConfigVariableListMatch {
-  app_id: string
+  id?: string
   app_environment_id?: string
 }
 
@@ -2639,11 +2590,7 @@ export interface AppDataResource {
 
 export interface AppDataResourceLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppDataResourceListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppDataResourceCreateData {
@@ -2751,17 +2698,13 @@ export interface AppDeployment {
 
 export interface AppDeploymentLoadMatch {
   app_id: string
-  id: string
+  id?: string
 
   // Selects a custom action instead of the plain load:
   //   'live'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface AppDeploymentListMatch {
-  app_id: string
 }
 
 export interface AppDeploymentCreateData {
@@ -2955,11 +2898,7 @@ export interface AppEnvironment {
 
 export interface AppEnvironmentLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppEnvironmentListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppEnvironmentCreateData {
@@ -3068,17 +3007,13 @@ export interface AppPreview {
 
 export interface AppPreviewLoadMatch {
   app_id: string
-  id: string
+  id?: string
 
   // Selects a custom action instead of the plain load:
   //   'administration' | 'administration_index' | 'secret_comparison'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface AppPreviewListMatch {
-  app_id: string
 }
 
 export interface AppPreviewCreateData {
@@ -3135,11 +3070,7 @@ export interface AppPreviewProfile {
 
 export interface AppPreviewProfileLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppPreviewProfileListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppPreviewProfileCreateData {
@@ -3180,11 +3111,6 @@ export interface AppRun {
 
 export interface AppRunLoadMatch {
   id: string
-}
-
-export interface AppRunListMatch {
-  id?: string
-  image?: string
 }
 
 export interface AppRunCreateData {
@@ -3323,11 +3249,7 @@ export interface AppService {
 
 export interface AppServiceLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppServiceListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppServiceCreateData {
@@ -3448,11 +3370,7 @@ export interface AppServiceBinding {
 
 export interface AppServiceBindingLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppServiceBindingListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppServiceBindingCreateData {
@@ -3552,11 +3470,7 @@ export interface AppStorageResource {
 
 export interface AppStorageResourceLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface AppStorageResourceListMatch {
-  app_id: string
+  id?: string
 }
 
 export interface AppStorageResourceCreateData {
@@ -3747,10 +3661,6 @@ export interface ArtifactLoadMatch {
   id: string
 }
 
-export interface ArtifactListMatch {
-  id?: string
-}
-
 export interface ArtifactCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -3778,10 +3688,6 @@ export interface ArtifactCacheNamespace {
 
 export interface ArtifactCacheNamespaceLoadMatch {
   id: string
-}
-
-export interface ArtifactCacheNamespaceListMatch {
-  id?: string
 }
 
 export interface ArtifactCacheNamespaceCreateData {
@@ -3813,10 +3719,6 @@ export interface ArtifactImageRepositoryLoadMatch {
   id: string
 }
 
-export interface ArtifactImageRepositoryListMatch {
-  id?: string
-}
-
 export interface ArtifactImageRepositoryCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -3846,10 +3748,6 @@ export interface ArtifactPackageMirrorLoadMatch {
   id: string
 }
 
-export interface ArtifactPackageMirrorListMatch {
-  id?: string
-}
-
 export interface ArtifactPackageMirrorCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -3877,10 +3775,6 @@ export interface ArtifactRetentionPolicy {
 
 export interface ArtifactRetentionPolicyLoadMatch {
   id: string
-}
-
-export interface ArtifactRetentionPolicyListMatch {
-  id?: string
 }
 
 export interface ArtifactRetentionPolicyCreateData {
@@ -4056,7 +3950,7 @@ export interface AuthRegistrationOption {
   waitlist_enabled: boolean
 }
 
-export interface AuthRegistrationOptionListMatch {
+export interface AuthRegistrationOptionLoadMatch {
   email_password_signup_enabled?: boolean
   openai_sign_in_enabled?: boolean
   turnstile_site_key?: string | null
@@ -4145,7 +4039,7 @@ export interface BackendRunnerPool {
   id?: string
 }
 
-export interface BackendRunnerPoolListMatch {
+export interface BackendRunnerPoolLoadMatch {
   backend_id: string
 }
 
@@ -4190,10 +4084,6 @@ export interface BazelBackend {
 
 export interface BazelBackendLoadMatch {
   id: string
-}
-
-export interface BazelBackendListMatch {
-  id?: string
 }
 
 export interface BazelBackendCreateData {
@@ -5023,11 +4913,7 @@ export interface CacheNamespaceEntry {
 
 export interface CacheNamespaceEntryLoadMatch {
   cache_namespace_id: string
-  id: string
-}
-
-export interface CacheNamespaceEntryListMatch {
-  cache_namespace_id: string
+  id?: string
 }
 
 export interface CacheNamespaceEntryCreateData {
@@ -5070,12 +4956,7 @@ export interface CdnDeployment {
 export interface CdnDeploymentLoadMatch {
   app_id: string
   cdn_id: string
-  id: string
-}
-
-export interface CdnDeploymentListMatch {
-  app_id: string
-  cdn_id: string
+  id?: string
 }
 
 export interface CdnDeploymentCreateData {
@@ -5098,12 +4979,7 @@ export interface CdnHostname {
 export interface CdnHostnameLoadMatch {
   app_id: string
   cdn_id: string
-  id: string
-}
-
-export interface CdnHostnameListMatch {
-  app_id: string
-  cdn_id: string
+  id?: string
 }
 
 export interface CdnHostnameCreateData {
@@ -5141,10 +5017,6 @@ export interface CdnSpaceLoadMatch {
   id: string
 }
 
-export interface CdnSpaceListMatch {
-  organization_id: string
-}
-
 export interface CdnSpaceCreateData {
   organization_id: string
 
@@ -5173,11 +5045,7 @@ export interface CdnSpaceObject {
 
 export interface CdnSpaceObjectLoadMatch {
   cdn_space_id: string
-  id: string
-}
-
-export interface CdnSpaceObjectListMatch {
-  cdn_space_id: string
+  id?: string
 }
 
 export interface CdnSpaceObjectUpdateData {
@@ -5196,7 +5064,7 @@ export interface Change {
   result: any
 }
 
-export interface ChangeListMatch {
+export interface ChangeLoadMatch {
   organization_id: string
   author?: string
   awaiting_review?: boolean
@@ -5734,11 +5602,7 @@ export interface CiPipelineRun {
 }
 
 export interface CiPipelineRunLoadMatch {
-  id: string
-  pipeline_id: string
-}
-
-export interface CiPipelineRunListMatch {
+  id?: string
   pipeline_id: string
 }
 
@@ -5846,9 +5710,6 @@ export interface CliReleaseLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface CliReleaseListMatch {
 }
 
 export interface CliReleaseCreateData {
@@ -6230,27 +6091,22 @@ export interface DeepScan {
 }
 
 export interface DeepScanLoadMatch {
-  id: string
+  id?: string
   organization_id: string
   agent_id?: string
   evidence?: string
   finding_id?: string
   project_id?: string
+  finding?: string
+  page?: number
+  query?: string
+  status?: string
 
   // Selects a custom action instead of the plain load:
   //   'agent' | 'context'
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface DeepScanListMatch {
-  organization_id: string
-  finding?: string
-  page?: number
-  project_id?: string
-  query?: string
-  status?: string
 }
 
 export interface DeepScanCreateData {
@@ -6272,24 +6128,25 @@ export interface DeepScanCreateData {
 }
 
 export interface DeepScanFinding {
-  finding_count: number
-  finding_ids: any[]
-  findings: any[]
-  findings_fix_prompt: string | null
-  free_findings_pending: boolean
+  actual: string
+  agent_id: string
+  agent_title: string
+  area?: string | null
+  checks: any[]
+  confidence: string
+  confirmed?: boolean
+  evidence_step_ids?: any[]
+  evidence_timestamp_ms: number | null
+  expected: string
+  fix_prompt: string
+  has_recording?: boolean
   id: string
-  mode: string
-  permissions: Record<string, any>
-  priority: string | null
-  priority_counts: Record<string, any>
-  project_id: string | null
-  reproduction_of: Record<string, any> | null
-  reproductions: any[]
-  reruns_available: boolean
-  status: string
+  locked: boolean
+  reproduction_steps: any[]
+  severity: string
   title: string
-  unlock: Record<string, any>
-  web_url: string
+  tracked: Record<string, any> | null
+  url: string
 }
 
 export interface DeepScanFindingListMatch {
@@ -6332,7 +6189,7 @@ export interface DeepScanMappedFlow {
   revision_id: string | null
 }
 
-export interface DeepScanMappedFlowListMatch {
+export interface DeepScanMappedFlowLoadMatch {
   organization_id: string
   account_id?: string
   environment_id: string
@@ -6472,7 +6329,7 @@ export interface DeploymentDetail {
   storage_resources: any[]
 }
 
-export interface DeploymentDetailListMatch {
+export interface DeploymentDetailLoadMatch {
   organization_id: string
   app?: string
   environment?: string
@@ -6764,7 +6621,7 @@ export interface DeviceControlOperationCreateData {
 export interface DeviceEnterpriseRelay {
 }
 
-export interface DeviceEnterpriseRelayListMatch {
+export interface DeviceEnterpriseRelayLoadMatch {
 }
 
 export interface DeviceFolderListing {
@@ -6793,16 +6650,18 @@ export interface DeviceFolderListingCreateData {
 }
 
 export interface DeviceGrant {
-  active_grants: any[]
-  agent_choices: any[]
   agent_id: string
-  all_agents_access: boolean
+  agent_name: string | null
+  can_edit: boolean
+  can_revoke: boolean
   capabilities: any[]
-  execution_available: boolean
-  grants: any[]
-  id?: string
-  next_cursor: string | null
+  created_at: string
+  id: string
   principal_id: string
+  principal_name: string | null
+  revision: number
+  revoked_at: string | null
+  updated_at: string
 }
 
 export interface DeviceGrantListMatch {
@@ -7221,12 +7080,7 @@ export interface Environment {
 }
 
 export interface EnvironmentLoadMatch {
-  id: string
-  organization_id: string
-  project_id?: string
-}
-
-export interface EnvironmentListMatch {
+  id?: string
   organization_id: string
   project_id?: string
 }
@@ -7452,7 +7306,7 @@ export interface EnvironmentSecretBinding {
   secret_version_id?: string
 }
 
-export interface EnvironmentSecretBindingListMatch {
+export interface EnvironmentSecretBindingLoadMatch {
   app_id: string
   environment_id: string
 }
@@ -7539,12 +7393,6 @@ export interface ExecutionDesiredStateLoadMatch {
   id: string
 }
 
-export interface ExecutionDesiredStateListMatch {
-  desired_state?: Record<string, any>
-  id?: string
-  stop_observed?: boolean
-}
-
 export interface ExecutionDesiredStateCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -7574,10 +7422,6 @@ export interface ExecutionReconcilerTickLoadMatch {
   id: string
 }
 
-export interface ExecutionReconcilerTickListMatch {
-  id?: string
-}
-
 export interface ExecutionReconcilerTickCreateData {
 }
 
@@ -7587,10 +7431,6 @@ export interface ExecutionRelease {
 
 export interface ExecutionReleaseLoadMatch {
   id: string
-}
-
-export interface ExecutionReleaseListMatch {
-  id?: string
 }
 
 export interface ExecutionReleaseCreateData {
@@ -7672,20 +7512,21 @@ export interface ExecutionRuntimeInstanceRemoveMatch {
 
 export interface Exploration {
   account_id?: string | null
-  active: any[]
   agent_filters: Record<string, any>
   agents: any[]
   can_continue?: boolean
   chat_messages?: any[]
+  check_count: number
   concurrency: number
   covered_areas: any[]
   created_at: string
+  credential_name?: string | null
   deadline_at: string
   demo_project: Record<string, any> | null
+  duration_ms: number | null
   ended_early: boolean
   environment_id: string
   environment_name: string
-  explorations: any[]
   explorer_activity: Record<string, any>
   finding_count: number
   findings: any[]
@@ -7695,14 +7536,12 @@ export interface Exploration {
   huntable_flows: any[]
   id: string
   idempotency_key?: string
-  launch_options: Record<string, any>
   max_seconds: number
   max_testers: number
   mode?: string
   next_scan_improvements: any[]
   observed_at?: string
   onboarding: boolean
-  pagination: Record<string, any>
   paywalled: boolean
   permissions: Record<string, any>
   persona_id?: string | null
@@ -7714,10 +7553,13 @@ export interface Exploration {
   reproductions: any[]
   saves_scenarios: boolean
   scannable_flows: any[]
+  scenario_count?: number
   scenario_generation: Record<string, any>
+  scenarios_pending?: boolean
   sign_in_needs_answer: boolean
   sign_in_outcome: string
   sign_in_question?: string | null
+  started_at: string
   startup_retryable?: boolean
   status: string
   time_limit_reached: boolean
@@ -8277,7 +8119,7 @@ export interface GithubConnection {
   repositories: any[]
 }
 
-export interface GithubConnectionListMatch {
+export interface GithubConnectionLoadMatch {
   organization_id: string
   github_app_installation_id?: string
   project_id?: string
@@ -8733,11 +8575,7 @@ export interface HostingAppDomain {
 
 export interface HostingAppDomainLoadMatch {
   app_id: string
-  id: string
-}
-
-export interface HostingAppDomainListMatch {
-  app_id: string
+  id?: string
   app_environment_id?: string
 }
 
@@ -8861,7 +8699,7 @@ export interface Integration {
   slack: Record<string, any>
 }
 
-export interface IntegrationListMatch {
+export interface IntegrationLoadMatch {
   organization_id: string
 }
 
@@ -8965,7 +8803,7 @@ export interface JobStep {
   id?: string
 }
 
-export interface JobStepListMatch {
+export interface JobStepLoadMatch {
   job_id: string
   pipeline_id: string
   run_id: string
@@ -8995,7 +8833,7 @@ export interface JobWorkspace {
   id?: string
 }
 
-export interface JobWorkspaceListMatch {
+export interface JobWorkspaceLoadMatch {
   job_id: string
   pipeline_id: string
   run_id: string
@@ -9340,12 +9178,7 @@ export interface LogStreamChunk {
 }
 
 export interface LogStreamChunkLoadMatch {
-  id: string
-  log_stream_id: string
-  space_id: string
-}
-
-export interface LogStreamChunkListMatch {
+  id?: string
   log_stream_id: string
   space_id: string
 }
@@ -9393,7 +9226,7 @@ export interface MarketingSetting {
   call_first: boolean
 }
 
-export interface MarketingSettingListMatch {
+export interface MarketingSettingLoadMatch {
   call_first?: boolean
 }
 
@@ -9887,7 +9720,7 @@ export interface MessagingConversationUploadCreateData {
 export interface MetricQuery {
 }
 
-export interface MetricQueryListMatch {
+export interface MetricQueryLoadMatch {
 }
 
 export interface MetronomeWebhook {
@@ -10017,10 +9850,6 @@ export interface NetworkingSpaceLoadMatch {
   [action: string]: any
 }
 
-export interface NetworkingSpaceListMatch {
-  id?: string
-}
-
 export interface NetworkingSpaceCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -10085,7 +9914,6 @@ export interface NodeLease {
 }
 
 export interface NodeLeaseLoadMatch {
-  id: string
   node_id: string
 
   // Selects a custom action instead of the plain load:
@@ -10093,10 +9921,6 @@ export interface NodeLeaseLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface NodeLeaseListMatch {
-  node_id: string
 }
 
 export interface NodeLeaseCreateData {
@@ -10150,7 +9974,7 @@ export interface NomadLog {
   type: string
 }
 
-export interface NomadLogListMatch {
+export interface NomadLogLoadMatch {
   app_id: string
   environment?: string
   location?: string
@@ -10182,10 +10006,6 @@ export interface ObservabilityClickhouseClusterLoadMatch {
   id: string
 }
 
-export interface ObservabilityClickhouseClusterListMatch {
-  id?: string
-}
-
 export interface ObservabilityClickhouseClusterCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -10215,10 +10035,6 @@ export interface ObservabilityQuickwitClusterLoadMatch {
   id: string
 }
 
-export interface ObservabilityQuickwitClusterListMatch {
-  id?: string
-}
-
 export interface ObservabilityQuickwitClusterCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -10246,10 +10062,6 @@ export interface ObservabilitySpace {
 
 export interface ObservabilitySpaceLoadMatch {
   id: string
-}
-
-export interface ObservabilitySpaceListMatch {
-  id?: string
 }
 
 export interface ObservabilitySpaceCreateData {
@@ -10393,7 +10205,7 @@ export interface OrganizationApp {
   id?: string
 }
 
-export interface OrganizationAppListMatch {
+export interface OrganizationAppLoadMatch {
   organization_id: string
   context?: boolean
   installed?: boolean
@@ -10460,11 +10272,7 @@ export interface OrganizationIdentityCertificate {
 }
 
 export interface OrganizationIdentityCertificateLoadMatch {
-  id: string
-  organization_id: string
-}
-
-export interface OrganizationIdentityCertificateListMatch {
+  id?: string
   organization_id: string
 }
 
@@ -10529,11 +10337,7 @@ export interface OrganizationOidcTrust {
 }
 
 export interface OrganizationOidcTrustLoadMatch {
-  id: string
-  organization_id: string
-}
-
-export interface OrganizationOidcTrustListMatch {
+  id?: string
   organization_id: string
 }
 
@@ -10669,11 +10473,7 @@ export interface OrganizationServiceAccount {
 }
 
 export interface OrganizationServiceAccountLoadMatch {
-  id: string
-  organization_id: string
-}
-
-export interface OrganizationServiceAccountListMatch {
+  id?: string
   organization_id: string
 }
 
@@ -10731,7 +10531,7 @@ export interface OrganizationSite {
   id?: string
 }
 
-export interface OrganizationSiteListMatch {
+export interface OrganizationSiteLoadMatch {
   organization_id: string
   native_agent_id: string
 }
@@ -10799,11 +10599,7 @@ export interface OrganizationWorkloadIdentity {
 }
 
 export interface OrganizationWorkloadIdentityLoadMatch {
-  id: string
-  organization_id: string
-}
-
-export interface OrganizationWorkloadIdentityListMatch {
+  id?: string
   organization_id: string
 }
 
@@ -10903,6 +10699,7 @@ export interface PageAgentLoadMatch {
   agent_search?: string
   agent_visibility?: string
   cursor?: string
+  integration_search?: string
   limit?: number
 
   // Selects a custom action instead of the plain load:
@@ -10910,16 +10707,6 @@ export interface PageAgentLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface PageAgentListMatch {
-  organization_id: string
-  agent?: string
-  agent_search?: string
-  agent_visibility?: string
-  cursor?: string
-  integration_search?: string
-  limit?: number
 }
 
 export interface PageAgentCreateData {
@@ -11143,13 +10930,23 @@ export interface PagesProjectCredentialListMatch {
 }
 
 export interface PagesProjectPersona {
-  active_count: number
-  credentials: any[]
-  needs_attention_count: number
-  permissions: Record<string, any>
-  persona_states: Record<string, any>
-  personas: any[]
-  project: Record<string, any>
+  access_mode: string
+  active_run_count: number
+  archived_at: string | null
+  attention: any[]
+  capabilities: string | null
+  created_at: string
+  credential: any
+  credential_id: string | null
+  goals: string | null
+  health: Record<string, any>
+  id: string
+  lock_version: number
+  name: string
+  project_id: string
+  role: string
+  scenario_count: number
+  updated_at: string
 }
 
 export interface PagesProjectPersonaListMatch {
@@ -11158,12 +10955,28 @@ export interface PagesProjectPersonaListMatch {
 }
 
 export interface PagesProjectRun {
-  environment_query: string
-  environments: any[]
-  environments_has_more: boolean
-  pagination: Record<string, any>
-  runs: any[]
-  selected_environment: any
+  archived_at: string | null
+  browser_seconds: number | null
+  can_archive: boolean
+  can_restore: boolean
+  cleanup_state: string
+  commit_sha: string | null
+  created_at: string
+  duration_seconds: number | null
+  environment_name: string | null
+  finished_at: string | null
+  id: string
+  outcome: string | null
+  pull_request: any
+  pull_request_label: string | null
+  scenario_count: number
+  source_run: Record<string, any> | null
+  started_at: string | null
+  state: string
+  title: string
+  trigger_kind: string
+  triggered_by: string | null
+  web_path: string
 }
 
 export interface PagesProjectRunListMatch {
@@ -11288,10 +11101,6 @@ export interface PairingLoadMatch {
   id: string
 }
 
-export interface PairingListMatch {
-  id?: string
-}
-
 export interface PairingCreateData {
 
   // Selects a custom action instead of the plain create:
@@ -11304,7 +11113,7 @@ export interface PairingCreateData {
 export interface PairingEvent {
 }
 
-export interface PairingEventListMatch {
+export interface PairingEventLoadMatch {
   pairing_id: string
 }
 
@@ -11339,8 +11148,8 @@ export interface PersonalAccessToken {
   id?: string
 }
 
-export interface PersonalAccessTokenListMatch {
-  id?: string
+export interface PersonalAccessTokenLoadMatch {
+  id: string
 }
 
 export interface PersonalAccessTokenCreateData {
@@ -11353,7 +11162,7 @@ export interface PersonalAccessTokenRemoveMatch {
 export interface PreviewOperation {
 }
 
-export interface PreviewOperationListMatch {
+export interface PreviewOperationLoadMatch {
   app_id: string
   preview_id: string
 }
@@ -11366,7 +11175,7 @@ export interface PreviewProfileSecretBinding {
   secret_version_id?: string
 }
 
-export interface PreviewProfileSecretBindingListMatch {
+export interface PreviewProfileSecretBindingLoadMatch {
   app_id: string
   preview_profile_id: string
 }
@@ -11422,15 +11231,15 @@ export interface PreviewSharingApproval {
   approved_default_secrets: any[]
   approved_source_keys: any[]
   build_keys?: any[]
-  build_secrets?: any[]
-  default_configuration?: any[]
-  default_secrets?: any[]
+  build_secrets: any[]
+  default_configuration: any[]
+  default_secrets: any[]
   services: any[]
   snapshot_version: number
-  source_keys?: any[]
+  source_keys: any[]
 }
 
-export interface PreviewSharingApprovalListMatch {
+export interface PreviewSharingApprovalLoadMatch {
   app_id: string
   preview_id: string
 }
@@ -12001,18 +11810,11 @@ export interface ProjectFixture {
   byte_size: number
   content_type: string
   credential_ids: any[]
-  credentials: any[]
   environment_ids: any[]
-  environments: any[]
-  fixtures: any[]
   id?: string
   lock_version: number
   name: string
-  pagination: Record<string, any>
-  permissions: Record<string, any>
   persona_ids: any[]
-  personas: any[]
-  project: Record<string, any>
   sha256: string
   url: string
   version: number
@@ -12435,7 +12237,7 @@ export interface ProjectScenarioOption {
   schedules?: any[]
 }
 
-export interface ProjectScenarioOptionListMatch {
+export interface ProjectScenarioOptionLoadMatch {
   organization_id: string
   project_id: string
 }
@@ -12469,7 +12271,7 @@ export interface ProjectSetting {
   tester_numbers: any[]
 }
 
-export interface ProjectSettingListMatch {
+export interface ProjectSettingLoadMatch {
   organization_id: string
   project_id: string
 }
@@ -12661,7 +12463,7 @@ export interface PullRequestSetting {
   write_scenarios: boolean
 }
 
-export interface PullRequestSettingListMatch {
+export interface PullRequestSettingLoadMatch {
   organization_id: string
   project_id?: string
   provider?: string
@@ -12922,11 +12724,7 @@ export interface ReleaseRollout {
 }
 
 export interface ReleaseRolloutLoadMatch {
-  id: string
-  release_id: string
-}
-
-export interface ReleaseRolloutListMatch {
+  id?: string
   release_id: string
 }
 
@@ -13063,7 +12861,7 @@ export interface RepoAgentSession {
 }
 
 export interface RepoAgentSessionLoadMatch {
-  id: string
+  id?: string
   organization_id: string
   repo_id: string
 
@@ -13072,11 +12870,6 @@ export interface RepoAgentSessionLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface RepoAgentSessionListMatch {
-  organization_id: string
-  repo_id: string
 }
 
 export interface RepoAgentSessionCreateData {
@@ -13220,12 +13013,7 @@ export interface RepoCloudWorkspaceBackup {
 }
 
 export interface RepoCloudWorkspaceBackupLoadMatch {
-  id: string
-  organization_id: string
-  repo_id: string
-}
-
-export interface RepoCloudWorkspaceBackupListMatch {
+  id?: string
   organization_id: string
   repo_id: string
 }
@@ -13654,10 +13442,6 @@ export interface RoderCodeRepairLoadMatch {
   id: string
 }
 
-export interface RoderCodeRepairListMatch {
-  scenario_run_id: string
-}
-
 export interface RoderCodeRepairCreateData {
   base_sha: string
   organization_id: string
@@ -13681,7 +13465,7 @@ export interface RoderCodeRepairSetting {
   repository_slug: string | null
 }
 
-export interface RoderCodeRepairSettingListMatch {
+export interface RoderCodeRepairSettingLoadMatch {
   organization_id: string
 }
 
@@ -13735,7 +13519,7 @@ export interface RoderWorkspaceCredentialCreateData {
 export interface RunArtifact {
 }
 
-export interface RunArtifactListMatch {
+export interface RunArtifactLoadMatch {
   pipeline_id: string
   run_id: string
 }
@@ -13783,12 +13567,7 @@ export interface RunJob {
 }
 
 export interface RunJobLoadMatch {
-  id: string
-  pipeline_id: string
-  run_id: string
-}
-
-export interface RunJobListMatch {
+  id?: string
   pipeline_id: string
   run_id: string
 }
@@ -13898,7 +13677,7 @@ export interface RunnerLease {
   id?: string
 }
 
-export interface RunnerLeaseListMatch {
+export interface RunnerLeaseLoadMatch {
   runner_id: string
   runner_pool_id: string
 }
@@ -13963,11 +13742,7 @@ export interface RunnerPoolRunner {
 }
 
 export interface RunnerPoolRunnerLoadMatch {
-  id: string
-  runner_pool_id: string
-}
-
-export interface RunnerPoolRunnerListMatch {
+  id?: string
   runner_pool_id: string
 }
 
@@ -13994,7 +13769,7 @@ export interface RunnerPoolRunnerPatchData {
 export interface RuntimeInstanceHealthSnapshot {
 }
 
-export interface RuntimeInstanceHealthSnapshotListMatch {
+export interface RuntimeInstanceHealthSnapshotLoadMatch {
   runtime_instance_id: string
 }
 
@@ -14016,7 +13791,7 @@ export interface SandboxIntegration {
   version: number
 }
 
-export interface SandboxIntegrationListMatch {
+export interface SandboxIntegrationLoadMatch {
   organization_id: string
   provider?: string
 }
@@ -14108,12 +13883,7 @@ export interface SecretGrant {
 }
 
 export interface SecretGrantLoadMatch {
-  id: string
-  organization_id: string
-  secret_id: string
-}
-
-export interface SecretGrantListMatch {
+  id?: string
   organization_id: string
   secret_id: string
 }
@@ -14152,12 +13922,7 @@ export interface SecretVersion {
 }
 
 export interface SecretVersionLoadMatch {
-  id: string
-  organization_id: string
-  secret_id: string
-}
-
-export interface SecretVersionListMatch {
+  id?: string
   organization_id: string
   secret_id: string
 }
@@ -14197,12 +13962,7 @@ export interface ServiceEndpoint {
 
 export interface ServiceEndpointLoadMatch {
   app_id: string
-  id: string
-  service_id: string
-}
-
-export interface ServiceEndpointListMatch {
-  app_id: string
+  id?: string
   service_id: string
 }
 
@@ -14238,7 +13998,7 @@ export interface Setting {
   sandbox_regions: any[]
 }
 
-export interface SettingListMatch {
+export interface SettingLoadMatch {
   organization_id: string
 }
 
@@ -14458,11 +14218,7 @@ export interface SignalSubscription {
 }
 
 export interface SignalSubscriptionLoadMatch {
-  id: string
-  organization_id: string
-}
-
-export interface SignalSubscriptionListMatch {
+  id?: string
   organization_id: string
 }
 
@@ -14523,7 +14279,7 @@ export interface SiteAccessKey {
   id?: string
 }
 
-export interface SiteAccessKeyListMatch {
+export interface SiteAccessKeyLoadMatch {
   organization_id: string
   site_id: string
 }
@@ -14607,11 +14363,7 @@ export interface SpaceAlertRule {
 }
 
 export interface SpaceAlertRuleLoadMatch {
-  id: string
-  space_id: string
-}
-
-export interface SpaceAlertRuleListMatch {
+  id?: string
   space_id: string
 }
 
@@ -14643,7 +14395,7 @@ export interface SpaceAlertRuleRemoveMatch {
 export interface SpaceAuditEvent {
 }
 
-export interface SpaceAuditEventListMatch {
+export interface SpaceAuditEventLoadMatch {
   space_id: string
 }
 
@@ -14656,7 +14408,7 @@ export interface SpaceDnsRecord {
 }
 
 export interface SpaceDnsRecordLoadMatch {
-  id: string
+  id?: string
   space_id: string
 
   // Selects a custom action instead of the plain load:
@@ -14664,10 +14416,6 @@ export interface SpaceDnsRecordLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface SpaceDnsRecordListMatch {
-  space_id: string
 }
 
 export interface SpaceDnsRecordCreateData {
@@ -14700,11 +14448,7 @@ export interface SpaceEnrollmentToken {
 }
 
 export interface SpaceEnrollmentTokenLoadMatch {
-  id: string
-  space_id: string
-}
-
-export interface SpaceEnrollmentTokenListMatch {
+  id?: string
   space_id: string
 }
 
@@ -14738,7 +14482,7 @@ export interface SpaceGateway {
 }
 
 export interface SpaceGatewayLoadMatch {
-  id: string
+  id?: string
   space_id: string
 
   // Selects a custom action instead of the plain load:
@@ -14746,10 +14490,6 @@ export interface SpaceGatewayLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface SpaceGatewayListMatch {
-  space_id: string
 }
 
 export interface SpaceGatewayCreateData {
@@ -14781,7 +14521,7 @@ export interface SpaceGroup {
   id?: string
 }
 
-export interface SpaceGroupListMatch {
+export interface SpaceGroupLoadMatch {
   space_id: string
 }
 
@@ -14808,7 +14548,7 @@ export interface SpaceGroupMembership {
   id?: string
 }
 
-export interface SpaceGroupMembershipListMatch {
+export interface SpaceGroupMembershipLoadMatch {
   space_id: string
 }
 
@@ -14834,7 +14574,7 @@ export interface SpaceGroupMembershipRemoveMatch {
 export interface SpaceLogStream {
 }
 
-export interface SpaceLogStreamListMatch {
+export interface SpaceLogStreamLoadMatch {
   space_id: string
 }
 
@@ -14845,7 +14585,7 @@ export interface SpaceLogStreamCreateData {
 export interface SpaceMetricSery {
 }
 
-export interface SpaceMetricSeryListMatch {
+export interface SpaceMetricSeryLoadMatch {
   space_id: string
 }
 
@@ -14858,7 +14598,7 @@ export interface SpaceOtelCollector {
 }
 
 export interface SpaceOtelCollectorLoadMatch {
-  id: string
+  id?: string
   space_id: string
 
   // Selects a custom action instead of the plain load:
@@ -14866,10 +14606,6 @@ export interface SpaceOtelCollectorLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface SpaceOtelCollectorListMatch {
-  space_id: string
 }
 
 export interface SpaceOtelCollectorCreateData {
@@ -14902,7 +14638,7 @@ export interface SpacePeer {
 }
 
 export interface SpacePeerLoadMatch {
-  id: string
+  id?: string
   space_id: string
 
   // Selects a custom action instead of the plain load:
@@ -14910,10 +14646,6 @@ export interface SpacePeerLoadMatch {
   // The remaining keys are that action's own payload.
   $action?: string
   [action: string]: any
-}
-
-export interface SpacePeerListMatch {
-  space_id: string
 }
 
 export interface SpacePeerCreateData {
@@ -14945,7 +14677,7 @@ export interface SpacePeerAttachment {
   id?: string
 }
 
-export interface SpacePeerAttachmentListMatch {
+export interface SpacePeerAttachmentLoadMatch {
   space_id: string
 }
 
@@ -14973,11 +14705,7 @@ export interface SpacePolicy {
 }
 
 export interface SpacePolicyLoadMatch {
-  id: string
-  space_id: string
-}
-
-export interface SpacePolicyListMatch {
+  id?: string
   space_id: string
 }
 
@@ -15011,11 +14739,7 @@ export interface SpaceSegment {
 }
 
 export interface SpaceSegmentLoadMatch {
-  id: string
-  space_id: string
-}
-
-export interface SpaceSegmentListMatch {
+  id?: string
   space_id: string
 }
 
@@ -15041,7 +14765,7 @@ export interface SpaceSegmentRemoveMatch {
 export interface SpaceTraceSpan {
 }
 
-export interface SpaceTraceSpanListMatch {
+export interface SpaceTraceSpanLoadMatch {
   space_id: string
 }
 
@@ -15084,7 +14808,7 @@ export interface Spark {
   verify_pr_scenario_writing_enabled: boolean
 }
 
-export interface SparkListMatch {
+export interface SparkLoadMatch {
   organization_id: string
 }
 
@@ -15121,7 +14845,7 @@ export interface SparkAgentIntegration {
   webhooks_available: boolean
 }
 
-export interface SparkAgentIntegrationListMatch {
+export interface SparkAgentIntegrationLoadMatch {
   agent_id: string
   organization_id: string
   catalog_q?: string
@@ -15262,30 +14986,32 @@ export interface SparkAgentSkillCreateData {
 }
 
 export interface SparkAgentThread {
-  archived_count?: number | null
-  can_create: boolean
+  archive_deletes_sandbox?: boolean
+  archived: boolean
+  attention: Record<string, any> | null
+  can_archive: boolean
+  can_compact: boolean
+  can_snooze: boolean
+  coordination_status?: string | null
   execution?: any
   first_input?: any
   first_input_key?: string
   first_input_requester_membership_id?: string
-  id?: string
+  group: string
+  has_active_run: boolean
+  id: string
   inherit_context?: boolean
-  local_activities: Record<string, any>
-  local_archived_count: number
-  local_next_cursor: string | null
-  local_scope_key: string | null
-  local_status_pending: boolean
-  local_threads: any[]
-  main_thread_id: string
+  is_main: boolean
+  kind: string
   message?: string
-  next_cursor: string | null
+  older: boolean
   parent_conversation_id?: string
+  parent_conversation_title?: string
   requester_membership_id?: string
-  selected_thread: any
+  snoozed_until: string | null
   thread: Record<string, any>
-  threads: any[]
   title?: string
-  total_archived_count: number | null
+  updated_at: string | null
 }
 
 export interface SparkAgentThreadListMatch {
@@ -15328,7 +15054,7 @@ export interface SparkCredit {
   kind: string
   payment_method: Record<string, any> | null
   payments_enabled: boolean
-  plan?: string
+  plan: string | null
   plans: any[]
   quoted_credits_cents?: number
   quoted_price_cents?: number
@@ -15344,6 +15070,7 @@ export interface SparkCredit {
 
 export interface SparkCreditLoadMatch {
   organization_id: string
+  view?: string
 
   // Selects a custom action instead of the plain load:
   //   'daily_usage'
@@ -15352,17 +15079,12 @@ export interface SparkCreditLoadMatch {
   [action: string]: any
 }
 
-export interface SparkCreditListMatch {
-  organization_id: string
-  view?: string
-}
-
 export interface SparkCreditCreateData {
   organization_id: string
   amount_cents?: number
   billing_unit?: string
   kind: string
-  plan?: string
+  plan?: string | null
   quoted_credits_cents?: number
   quoted_price_cents?: number
   request_key: string
@@ -15397,7 +15119,7 @@ export interface SparkCreditUsageTotal {
   inference_usd: string
 }
 
-export interface SparkCreditUsageTotalListMatch {
+export interface SparkCreditUsageTotalLoadMatch {
   organization_id: string
 }
 
@@ -16226,7 +15948,7 @@ export interface VcsSetting {
   sandbox_regions: any[]
 }
 
-export interface VcsSettingListMatch {
+export interface VcsSettingLoadMatch {
   organization_id: string
 }
 
@@ -16694,7 +16416,7 @@ export interface VerifyBrowserSessionRemoveMatch {
 export interface VerifyEmailVerification {
 }
 
-export interface VerifyEmailVerificationListMatch {
+export interface VerifyEmailVerificationLoadMatch {
 }
 
 export interface VerifySignalIntegration {

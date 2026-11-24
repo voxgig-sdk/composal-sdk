@@ -17,16 +17,13 @@ import (
 const deployment_detailDirectLiveStrict = true
 
 func TestDeploymentDetailDirect(t *testing.T) {
-	t.Run("direct-list-deployment_detail", func(t *testing.T) {
-		setup := deployment_detailDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
+	t.Run("direct-load-deployment_detail", func(t *testing.T) {
+		setup := deployment_detailDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-deployment_detail", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-deployment_detail", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -62,13 +59,13 @@ func TestDeploymentDetailDirect(t *testing.T) {
 		})
 		if setup.live {
 			if err != nil {
-				liveMiss(t, deployment_detailDirectLiveStrict, "Live list failed: %v", err)
+				liveMiss(t, deployment_detailDirectLiveStrict, "Live load failed: %v", err)
 			}
 			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, deployment_detailDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
+				liveMiss(t, deployment_detailDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
 			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, deployment_detailDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
+			if result["data"] == nil {
+				liveMiss(t, deployment_detailDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -80,15 +77,16 @@ func TestDeploymentDetailDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
 		}
 
 		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
 				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {

@@ -38,7 +38,7 @@ func TestRunnerLeaseEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RunnerLease(nil).List(map[string]any{"runner_id": 1, "runner_pool_id": "x"}, nil)
+		_, err := client.RunnerLease(nil).Load(map[string]any{"runner_id": 1, "runner_pool_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRunnerLeaseEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "runner_lease." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,46 +64,9 @@ func TestRunnerLeaseEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"runner_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"runner01", "runner_pool01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, runner_leaseEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RUNNER_LEASE_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		runnerLeaseRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.runner_lease")))
-		var runnerLeaseRef01Data map[string]any
-		if len(runnerLeaseRef01DataRaw) > 0 {
-			runnerLeaseRef01Data = core.ToMapAny(runnerLeaseRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = runnerLeaseRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		runnerLeaseRef01Ent := client.RunnerLease(nil)
-		runnerLeaseRef01Match := map[string]any{
-			"runner_id": setup.idmap["runner01"],
-			"runner_pool_id": setup.idmap["runner_pool01"],
-		}
-
-		runnerLeaseRef01ListResult, err := runnerLeaseRef01Ent.List(runnerLeaseRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, runnerLeaseRef01ListOk := runnerLeaseRef01ListResult.([]any)
-		if !runnerLeaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runnerLeaseRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"runner_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only runner_lease.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: runner_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim); runner_lease.load.1 excluded (GET-only live run: reads a record only runner_lease.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -141,24 +104,25 @@ func TestRunnerLeaseEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		runnerLeaseRef01Match := map[string]any{
-			"runner_id": setup.idmap["runner01"],
-			"runner_pool_id": setup.idmap["runner_pool01"],
+		// LOAD
+		runnerLeaseRef01MatchDt0 := map[string]any{
+			"id": runnerLeaseRef01Data["id"],
 		}
-
-		runnerLeaseRef01ListResult, err := runnerLeaseRef01Ent.List(runnerLeaseRef01Match, nil)
+		if v := setup.idmap["runner_pool_id"]; v != nil {
+			runnerLeaseRef01MatchDt0["runner_pool_id"] = v
+		} else {
+			runnerLeaseRef01MatchDt0["runner_pool_id"] = setup.idmap["runner_pool01"]
+		}
+		runnerLeaseRef01DataDt0Loaded, err := runnerLeaseRef01Ent.Load(runnerLeaseRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		runnerLeaseRef01List, runnerLeaseRef01ListOk := runnerLeaseRef01ListResult.([]any)
-		if !runnerLeaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runnerLeaseRef01ListResult)
+		runnerLeaseRef01DataDt0LoadResult := core.ToMapAny(entityData(runnerLeaseRef01DataDt0Loaded))
+		if runnerLeaseRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
 		}
-
-		foundItem := vs.Select(entityListToData(runnerLeaseRef01List), map[string]any{"id": runnerLeaseRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
+		if !setup.live && !liveSameId(runnerLeaseRef01DataDt0LoadResult["id"], runnerLeaseRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

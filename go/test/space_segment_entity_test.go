@@ -38,7 +38,7 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceSegment(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceSegment(nil).Load(map[string]any{"id": 1, "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_segment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_segment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/segments\"}")
-			t.Log("LIVE STEP {\"id\":\"space_segment.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/segments/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_segment.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/segments/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_segment.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_segmentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_SEGMENT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["space_segment01"]
-			}
-			livePace()
-			liveExisting(t, space_segmentEntityLiveStrict, setup.data, "space_segment", "id", _liveId,
-				func() (any, error) {
-					return client.SpaceSegment(nil).List(map[string]any{"space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spaceSegmentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_segment")))
-		var spaceSegmentRef01Data map[string]any
-		if len(spaceSegmentRef01DataRaw) > 0 {
-			spaceSegmentRef01Data = core.ToMapAny(spaceSegmentRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spaceSegmentRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceSegmentRef01Ent := client.SpaceSegment(nil)
-		spaceSegmentRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceSegmentRef01ListResult, err := spaceSegmentRef01Ent.List(spaceSegmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spaceSegmentRef01ListOk := spaceSegmentRef01ListResult.([]any)
-		if !spaceSegmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceSegmentRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		spaceSegmentRef01MatchDt0 := map[string]any{
-			"id": spaceSegmentRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceSegmentRef01MatchDt0["space_id"] = v
-		} else {
-			spaceSegmentRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		spaceSegmentRef01DataDt0Loaded, err := spaceSegmentRef01Ent.Load(spaceSegmentRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		spaceSegmentRef01DataDt0LoadResult := core.ToMapAny(entityData(spaceSegmentRef01DataDt0Loaded))
-		if spaceSegmentRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(spaceSegmentRef01DataDt0LoadResult["id"], spaceSegmentRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"space_segment.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/segments/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_segment.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_segment.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"space_segment.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/segments/{id}\"}")
+			t.Skip("Live coverage incomplete: space_segment.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/segments); space_segment.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/segments/{id}); space_segment.load.2 excluded (GET-only live run: reads a record only space_segment.create.0 gives); space_segment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/segments/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceSegmentRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceSegmentRef01ListResult, err := spaceSegmentRef01Ent.List(spaceSegmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceSegmentRef01List, spaceSegmentRef01ListOk := spaceSegmentRef01ListResult.([]any)
-		if !spaceSegmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceSegmentRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spaceSegmentRef01List), map[string]any{"id": spaceSegmentRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spaceSegmentRef01DataUp0Up := map[string]any{
 			"id": spaceSegmentRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		// LOAD
 		spaceSegmentRef01MatchDt0 := map[string]any{
 			"id": spaceSegmentRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceSegmentRef01MatchDt0["space_id"] = v
-		} else {
-			spaceSegmentRef01MatchDt0["space_id"] = setup.idmap["space01"]
 		}
 		spaceSegmentRef01DataDt0Loaded, err := spaceSegmentRef01Ent.Load(spaceSegmentRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSpaceSegmentEntity(t *testing.T) {
 		_, err = spaceSegmentRef01Ent.Remove(spaceSegmentRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceSegmentRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceSegmentRef01ListRt0Result, err := spaceSegmentRef01Ent.List(spaceSegmentRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceSegmentRef01ListRt0, spaceSegmentRef01ListRt0Ok := spaceSegmentRef01ListRt0Result.([]any)
-		if !spaceSegmentRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spaceSegmentRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spaceSegmentRef01ListRt0), map[string]any{"id": spaceSegmentRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

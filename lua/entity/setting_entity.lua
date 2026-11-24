@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch SettingListMatch
+---@param reqmatch SettingLoadMatch
 ---@param ctrl? table
----@return SettingEntity[]
+---@return SettingEntity
 ---@return string? err
-function SettingEntity:list(reqmatch, ctrl)
+function SettingEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function SettingEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

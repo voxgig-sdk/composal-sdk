@@ -1,0 +1,15 @@
+$kind: http-request
+id: "28760d0c-ebb8-5de7-b17e-e99247251b0e"
+description: |-
+  The `load` operation of **space_enrollment_token**.
+
+  SDK: `client.SpaceEnrollmentToken().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/enrollment_tokens"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

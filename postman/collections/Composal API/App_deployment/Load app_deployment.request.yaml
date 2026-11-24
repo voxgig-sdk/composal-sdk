@@ -3,7 +3,7 @@ id: e93ccfb2-07d3-5181-9a44-7424441e00b7
 description: |-
   The `load` operation of **app_deployment**.
 
-  SDK: `client.AppDeployment().load({ app_id: "example", id: "example_id" })`
+  SDK: `client.AppDeployment().load({ app_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/deployments/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{app_deployment_id}}"
     description: The app_deployment this request addresses.
-order: 2000
+order: 1000

@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{execution_reconciler_tick_id}}"
     description: The execution_reconciler_tick this request addresses.
-order: 2000
+order: 1000

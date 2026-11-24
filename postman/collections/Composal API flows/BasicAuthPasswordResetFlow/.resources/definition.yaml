@@ -1,4 +1,4 @@
 $kind: collection
 id: "07ef713b-a66b-5422-a1a7-27f33dd2b489"
 description: "The `BasicAuthPasswordResetFlow` flow of **auth_password_reset**."
-order: 92000
+order: 87000

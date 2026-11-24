@@ -29,7 +29,7 @@ describe("ReleaseRolloutEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:ReleaseRollout(nil):list({ ["release_id"] = 1 }, nil)
+    local _, err = client:ReleaseRollout(nil):load({ ["id"] = 1, ["release_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("ReleaseRolloutEntity", function()
     local setup = release_rollout_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "load"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "release_rollout." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,62 +46,8 @@ describe("ReleaseRolloutEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"release_rollout.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"release01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_RELEASE_ROLLOUT_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["release_rollout01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "release_rollout", function()
-        return client:ReleaseRollout(nil):list({["release_id"] = setup.idmap["release01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local release_rollout_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.release_rollout")))
-    local release_rollout_ref01_data = nil
-    if #release_rollout_ref01_data_raw > 0 then
-      release_rollout_ref01_data = helpers.to_map(release_rollout_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local release_rollout_ref01_ent = client:ReleaseRollout(nil)
-    local release_rollout_ref01_match = {
-      ["release_id"] = setup.idmap["release01"],
-    }
-
-    local release_rollout_ref01_list_result, err = release_rollout_ref01_ent:list(release_rollout_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(release_rollout_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local release_rollout_ref01_match_dt0 = {
-      id = release_rollout_ref01_data["id"],
-    }
-    release_rollout_ref01_match_dt0["release_id"] = setup.idmap["release_id"] or setup.idmap["release01"]
-    local release_rollout_ref01_data_dt0_loaded, err = release_rollout_ref01_ent:load(release_rollout_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local release_rollout_ref01_data_dt0_load_result = helpers.to_map(type(release_rollout_ref01_data_dt0_loaded) == 'table' and release_rollout_ref01_data_dt0_loaded.data_get and release_rollout_ref01_data_dt0_loaded:data_get() or release_rollout_ref01_data_dt0_loaded)
-    assert.is_not_nil(release_rollout_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(release_rollout_ref01_data_dt0_load_result["id"], release_rollout_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"release_rollout.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only release_rollout.create.0 gives\"}")
+      pending("Live coverage incomplete: release_rollout.create.0 excluded (GET-only live run: needs POST /api/v1/execution/releases/{release_id}/rollouts/{id}/complete); release_rollout.load.1 excluded (GET-only live run: reads a record only release_rollout.create.0 gives)")
       return
     end
 
@@ -132,28 +78,10 @@ describe("ReleaseRolloutEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local release_rollout_ref01_match = {
-      ["release_id"] = setup.idmap["release01"],
-    }
-
-    local release_rollout_ref01_list_result, err = release_rollout_ref01_ent:list(release_rollout_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(release_rollout_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(release_rollout_ref01_list_result),
-      { id = release_rollout_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- LOAD
     local release_rollout_ref01_match_dt0 = {
       id = release_rollout_ref01_data["id"],
     }
-    release_rollout_ref01_match_dt0["release_id"] = setup.idmap["release_id"] or setup.idmap["release01"]
     local release_rollout_ref01_data_dt0_loaded, err = release_rollout_ref01_ent:load(release_rollout_ref01_match_dt0, nil)
     assert.is_nil(err)
     local release_rollout_ref01_data_dt0_load_result = helpers.to_map(type(release_rollout_ref01_data_dt0_loaded) == 'table' and release_rollout_ref01_data_dt0_loaded.data_get and release_rollout_ref01_data_dt0_loaded:data_get() or release_rollout_ref01_data_dt0_loaded)

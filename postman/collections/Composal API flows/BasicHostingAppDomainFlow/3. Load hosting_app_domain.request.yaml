@@ -1,0 +1,56 @@
+$kind: http-request
+id: "0a637d33-cd53-5838-a844-abdd5762ff59"
+description: |-
+  The `load` operation of **hosting_app_domain**.
+
+  SDK: `client.HostingAppDomain().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/domains/:id"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this hosting_app_domain belongs to.
+  - key: id
+    value: "{{hosting_app_domain_ref01}}"
+    description: The hosting_app_domain this request addresses.
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base","app_id","hosting_app_domain_ref01"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("3. Load hosting_app_domain: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-hosting_app_domain_ref01" === pm.variables.get("hosting_app_domain_ref01_marked")) pm.test("3. Load hosting_app_domain: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-hosting_app_domain_ref01")
+      })
+      pm.test("3. Load hosting_app_domain: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("hosting_app_domain_ref01")))
+      })
+    language: text/javascript
+order: 3000

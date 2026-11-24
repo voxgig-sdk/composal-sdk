@@ -39,7 +39,7 @@ func TestSandboxIntegrationEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SandboxIntegration(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.SandboxIntegration(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestSandboxIntegrationEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "sandbox_integration." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,46 +65,10 @@ func TestSandboxIntegrationEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"sandbox_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations\"}")
-			t.Log("LIVE STEP {\"id\":\"sandbox_integration.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, sandbox_integrationEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SANDBOX_INTEGRATION_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		sandboxIntegrationRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.sandbox_integration")))
-		var sandboxIntegrationRef01Data map[string]any
-		if len(sandboxIntegrationRef01DataRaw) > 0 {
-			sandboxIntegrationRef01Data = core.ToMapAny(sandboxIntegrationRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = sandboxIntegrationRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		sandboxIntegrationRef01Ent := client.SandboxIntegration(nil)
-		sandboxIntegrationRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		sandboxIntegrationRef01ListResult, err := sandboxIntegrationRef01Ent.List(sandboxIntegrationRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, sandboxIntegrationRef01ListOk := sandboxIntegrationRef01ListResult.([]any)
-		if !sandboxIntegrationRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sandboxIntegrationRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"sandbox_integration.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"sandbox_integration.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only sandbox_integration.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: sandbox_integration.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations); sandbox_integration.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}); sandbox_integration.load.2 excluded (GET-only live run: reads a record only sandbox_integration.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -141,28 +105,6 @@ func TestSandboxIntegrationEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		sandboxIntegrationRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		sandboxIntegrationRef01ListResult, err := sandboxIntegrationRef01Ent.List(sandboxIntegrationRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		sandboxIntegrationRef01List, sandboxIntegrationRef01ListOk := sandboxIntegrationRef01ListResult.([]any)
-		if !sandboxIntegrationRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sandboxIntegrationRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(sandboxIntegrationRef01List), map[string]any{"id": sandboxIntegrationRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		sandboxIntegrationRef01DataUp0Up := map[string]any{
 			"id": sandboxIntegrationRef01Data["id"],
@@ -186,6 +128,25 @@ func TestSandboxIntegrationEntity(t *testing.T) {
 		}
 		if sandboxIntegrationRef01ResdataUp0[sandboxIntegrationRef01MarkdefUp0Name] != sandboxIntegrationRef01MarkdefUp0Value {
 			t.Fatalf("expected %s to be updated, got %v", sandboxIntegrationRef01MarkdefUp0Name, sandboxIntegrationRef01ResdataUp0[sandboxIntegrationRef01MarkdefUp0Name])
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		sandboxIntegrationRef01MatchDt0 := map[string]any{
+			"id": sandboxIntegrationRef01Data["id"],
+		}
+		sandboxIntegrationRef01DataDt0Loaded, err := sandboxIntegrationRef01Ent.Load(sandboxIntegrationRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		sandboxIntegrationRef01DataDt0LoadResult := core.ToMapAny(entityData(sandboxIntegrationRef01DataDt0Loaded))
+		if sandboxIntegrationRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !liveSameId(sandboxIntegrationRef01DataDt0LoadResult["id"], sandboxIntegrationRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

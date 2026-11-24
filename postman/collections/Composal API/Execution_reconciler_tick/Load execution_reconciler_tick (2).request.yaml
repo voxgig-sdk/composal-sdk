@@ -1,0 +1,11 @@
+$kind: http-request
+id: "9c5f96a1-3c1a-56ae-ae81-18a28989fcb3"
+description: |-
+  The `load` operation of **execution_reconciler_tick**.
+
+  SDK: `client.ExecutionReconcilerTick().load({ id: "example_id" })`
+url: "{{base}}/api/v1/execution/reconciler_ticks"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

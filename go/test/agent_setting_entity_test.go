@@ -38,7 +38,7 @@ func TestAgentSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AgentSetting(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.AgentSetting(nil).Load(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAgentSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "agent_setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,16 +63,15 @@ func TestAgentSettingEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"agent_setting.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SETTING_ENTID", _liveKey)
-				}
-			}
+			t.Log("LIVE STEP {\"id\":\"agent_setting.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings\"}")
+			t.Skip("Live coverage incomplete: agent_setting.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		agentSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_setting")))
@@ -83,67 +82,6 @@ func TestAgentSettingEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = agentSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentSettingRef01Ent := client.AgentSetting(nil)
-		agentSettingRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentSettingRef01ListResult, err := agentSettingRef01Ent.List(agentSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentSettingRef01ListOk := agentSettingRef01ListResult.([]any)
-		if !agentSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentSettingRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, agent_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_AGENT_SETTING_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		agentSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.agent_setting")))
-		var agentSettingRef01Data map[string]any
-		if len(agentSettingRef01DataRaw) > 0 {
-			agentSettingRef01Data = core.ToMapAny(agentSettingRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = agentSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		agentSettingRef01Ent := client.AgentSetting(nil)
-		agentSettingRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		agentSettingRef01ListResult, err := agentSettingRef01Ent.List(agentSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, agentSettingRef01ListOk := agentSettingRef01ListResult.([]any)
-		if !agentSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", agentSettingRef01ListResult)
-		}
 
 	})
 }

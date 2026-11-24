@@ -1,0 +1,49 @@
+$kind: http-request
+id: "49beadef-1471-5bc5-aea0-e228e7062155"
+description: |-
+  The `load` operation of **personal_access_token**.
+
+  SDK: `client.PersonalAccessToken().load({ id: "example_id" })`
+url: "{{base}}/api/v1/personal_access_tokens"
+method: GET
+headers:
+  Accept: application/json
+scripts:
+  - type: beforeRequest
+    code: |-
+      const given = (name) => { const v = pm.variables.get(name); return null != v && "" !== v }
+      const flag = (name, dflt) => given(name) ? "true" === String(pm.variables.get(name)).toLowerCase() : dflt
+      const getonly = flag("getonly", false)
+      const missing = ["base"].filter((name) => !given(name))
+      if (!given("apikey")) missing.unshift("apikey")
+      const empty = 0 < missing.length && missing.every((name) => given(name + "__empty"))
+      if (getonly && "GET" !== pm.request.method) {
+        console.log("excluded (getonly): " + pm.info.requestName)
+        pm.execution.skipRequest()
+      }
+      else if (empty) {
+        console.log("skipped: " + pm.info.requestName + " has no record to read: the list was empty")
+        pm.execution.skipRequest()
+      }
+      else if (0 < missing.length) {
+        const why = pm.info.requestName + " needs " + missing.join(", ") + ", which no earlier step or variable gave"
+        if (getonly || !flag("strict", true)) console.log((getonly ? "excluded (getonly): " : "blocked: ") + why)
+        else pm.test("blocked: " + why, () => { throw new Error("blocked") })
+        pm.execution.skipRequest()
+      }
+    language: text/javascript
+  - type: afterResponse
+    code: |-
+      pm.test("2. Load personal_access_token: succeeds", () => {
+        pm.expect(pm.response.code, "status").to.be.within(200, 299)
+      })
+      const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
+      const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
+      if ("Mark01-personal_access_token_ref01" === pm.variables.get("personal_access_token_ref01_marked")) pm.test("2. Load personal_access_token: the update reads back", () => {
+        pm.expect(JSON.stringify(body)).to.include("Mark01-personal_access_token_ref01")
+      })
+      pm.test("2. Load personal_access_token: the record is the one asked for", () => {
+        pm.expect(String(at(body, "id"))).to.eql(String(pm.variables.get("personal_access_token_ref01")))
+      })
+    language: text/javascript
+order: 2000

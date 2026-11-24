@@ -333,37 +333,9 @@ func (e *RunJobEntity) LoadTyped(reqmatch RunJobLoadMatch, ctrl map[string]any) 
 
 
 
-
-func (e *RunJobEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
-	utility := e.utility
-	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
-		"ctrl":     ctrl,
-		"match":    e.match,
-		"data":     e.data,
-		"reqmatch": reqmatch,
-	}, e.entctx)
-
-	return e.runOp(ctx, func() {
-		if ctx.Result != nil {
-			if ctx.Result.Resmatch != nil {
-				e.match = ctx.Result.Resmatch
-			}
-		}
-	})
+func (e *RunJobEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
 }
-
-// ListTyped is the statically-typed variant of List: it takes an
-// RunJobListMatch and returns []RunJob. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *RunJobEntity) ListTyped(reqmatch RunJobListMatch, ctrl map[string]any) ([]RunJob, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
-	if err != nil {
-		return nil, err
-	}
-	return typedSliceFrom[RunJob](res), nil
-}
-
 
 
 

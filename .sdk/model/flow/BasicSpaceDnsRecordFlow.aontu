@@ -19,22 +19,6 @@ main: kit: flow: BasicSpaceDnsRecordFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "space_dns_record_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         space_id: "space01"
       }
@@ -90,26 +74,6 @@ main: kit: flow: BasicSpaceDnsRecordFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "space_dns_record_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSpaceDnsRecordFlow"

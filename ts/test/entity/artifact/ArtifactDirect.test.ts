@@ -43,34 +43,18 @@ describe('ArtifactDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-artifact', setup.live)) return
+    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["artifact01"]) {
+      console.log("LIVE STEP {\"id\":\"direct-load-artifact\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs artifact01, which only POST /api/v1/artifacts/artifacts/{id}/expire gives\"}")
+      t.skip("Live coverage incomplete: direct-load-artifact excluded (GET-only live run: needs artifact01, which only POST /api/v1/artifacts/artifacts/{id}/expire gives)")
+      return
+    }
+    if (skipIfMissingIds(t, setup, ["artifact01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      const listResult: any = await client.direct({
-        path: 'api/v1/artifacts/artifacts',
-        method: 'GET',
-        params: {
-
-        },
-      })
-      if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery failed: ' + describeLive(listResult))
-      }
-      const listArr = unwrapListData(listResult.data)
-      if (null == listArr) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery returned no list: ' + describeLive(listResult))
-      }
-      if (0 === listArr.length) {
-        return void liveEmpty(t, 'The account has no artifact record to load')
-      }
-      const candidateId = listArr[0]?.id
-      if (null == candidateId) {
-        return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
-      }
-      params.id = candidateId
-
+      params.id = setup.idmap['artifact01']
     } else {
       params.id = 'direct01'
     }
@@ -97,41 +81,6 @@ describe('ArtifactDirect', async () => {
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
-    }
-  })
-
-  test('direct-list-artifact', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-artifact', setup.live)) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-
-    const result: any = await client.direct({
-      path: 'api/v1/artifacts/artifacts',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
-      }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
-      }
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
     }
   })
 

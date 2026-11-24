@@ -31,12 +31,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/enrollment_tokens": {
+    "GET /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}": {
+    "GET /api/v1/networking/spaces/{space_id}/enrollment_tokens": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

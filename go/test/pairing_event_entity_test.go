@@ -38,7 +38,7 @@ func TestPairingEventEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.PairingEvent(nil).List(map[string]any{"pairing_id": 1}, nil)
+		_, err := client.PairingEvent(nil).Load(map[string]any{"pairing_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestPairingEventEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "pairing_event." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestPairingEventEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"pairing01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, pairing_eventEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PAIRING_EVENT_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		pairingEventRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.pairing_event")))
@@ -81,24 +76,6 @@ func TestPairingEventEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = pairingEventRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		pairingEventRef01Ent := client.PairingEvent(nil)
-		pairingEventRef01Match := map[string]any{
-			"pairing_id": setup.idmap["pairing01"],
-		}
-
-		pairingEventRef01ListResult, err := pairingEventRef01Ent.List(pairingEventRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, pairingEventRef01ListOk := pairingEventRef01ListResult.([]any)
-		if !pairingEventRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", pairingEventRef01ListResult)
-		}
 
 	})
 }

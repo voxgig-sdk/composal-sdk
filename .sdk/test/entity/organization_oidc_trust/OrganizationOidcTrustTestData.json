@@ -41,12 +41,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts": {
+    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}": {
+    "GET /api/v1/identity/organizations/{organization_id}/oidc_trusts": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -41,12 +41,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/execution/releases/{release_id}/rollouts": {
+    "GET /api/v1/execution/releases/{release_id}/rollouts/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/execution/releases/{release_id}/rollouts/{id}": {
+    "GET /api/v1/execution/releases/{release_id}/rollouts": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

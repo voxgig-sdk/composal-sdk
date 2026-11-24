@@ -16,7 +16,7 @@ import type {
 
 import type {
   RunArtifact,
-  RunArtifactListMatch,
+  RunArtifactLoadMatch,
   RunArtifactCreateData,
 } from '../ComposalTypes'
 
@@ -36,8 +36,7 @@ class RunArtifactEntity extends ComposalEntityBase<RunArtifact> {
 
 
 
-
-  async list(this: any, reqmatch?: RunArtifactListMatch, ctrl?: Control): Promise<RunArtifactEntity[]> {
+  async load(this: any, reqmatch?: RunArtifactLoadMatch, ctrl?: Control): Promise<RunArtifactEntity> {
 
     const utility = this._utility
 
@@ -57,7 +56,7 @@ class RunArtifactEntity extends ComposalEntityBase<RunArtifact> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -123,9 +122,15 @@ class RunArtifactEntity extends ComposalEntityBase<RunArtifact> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -148,11 +153,12 @@ class RunArtifactEntity extends ComposalEntityBase<RunArtifact> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<RunArtifactEntity[]> return stays clean under strict null checks.
+        // Promise<RunArtifactEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

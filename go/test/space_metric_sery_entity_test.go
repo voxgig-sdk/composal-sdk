@@ -38,7 +38,7 @@ func TestSpaceMetricSeryEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceMetricSery(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceMetricSery(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceMetricSeryEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_metric_sery." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestSpaceMetricSeryEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_metric_sery.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/metric_series\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_metric_seryEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_METRIC_SERY_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestSpaceMetricSeryEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		spaceMetricSeryRef01Ent := client.SpaceMetricSery(nil)
-		spaceMetricSeryRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceMetricSeryRef01ListResult, err := spaceMetricSeryRef01Ent.List(spaceMetricSeryRef01Match, nil)
+		spaceMetricSeryRef01MatchDt0 := map[string]any{}
+		spaceMetricSeryRef01DataDt0Loaded, err := spaceMetricSeryRef01Ent.Load(spaceMetricSeryRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceMetricSeryRef01ListOk := spaceMetricSeryRef01ListResult.([]any)
-		if !spaceMetricSeryRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceMetricSeryRef01ListResult)
+		if spaceMetricSeryRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestSpaceMetricSeryEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceMetricSeryRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceMetricSeryRef01ListResult, err := spaceMetricSeryRef01Ent.List(spaceMetricSeryRef01Match, nil)
+		// LOAD
+		spaceMetricSeryRef01MatchDt0 := map[string]any{}
+		spaceMetricSeryRef01DataDt0Loaded, err := spaceMetricSeryRef01Ent.Load(spaceMetricSeryRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceMetricSeryRef01ListOk := spaceMetricSeryRef01ListResult.([]any)
-		if !spaceMetricSeryRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceMetricSeryRef01ListResult)
+		if spaceMetricSeryRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

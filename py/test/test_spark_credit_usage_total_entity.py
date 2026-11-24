@@ -37,7 +37,7 @@ class TestSparkCreditUsageTotalEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SparkCreditUsageTotal(None).list({"organization_id": 1}, None)
+            client.SparkCreditUsageTotal(None).load({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,14 @@ class TestSparkCreditUsageTotalEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "spark_credit_usage_total." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_CREDIT_USAGE_TOTAL_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -63,17 +62,6 @@ class TestSparkCreditUsageTotalEntity:
         spark_credit_usage_total_ref01_data = None
         if len(spark_credit_usage_total_ref01_data_raw) > 0:
             spark_credit_usage_total_ref01_data = helpers.to_map(spark_credit_usage_total_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        spark_credit_usage_total_ref01_ent = client.SparkCreditUsageTotal(None)
-        spark_credit_usage_total_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_credit_usage_total_ref01_list_result = spark_credit_usage_total_ref01_ent.list(spark_credit_usage_total_ref01_match, None)
-        assert isinstance(spark_credit_usage_total_ref01_list_result, list)
 
 
 

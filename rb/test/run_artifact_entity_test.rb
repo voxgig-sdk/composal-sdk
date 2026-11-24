@@ -25,7 +25,7 @@ class RunArtifactEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RunArtifact(nil).list({ "pipeline_id" => 1, "run_id" => "x" }, nil)
+      client.RunArtifact(nil).load({ "pipeline_id" => 1, "run_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class RunArtifactEntityTest < Minitest::Test
     setup = run_artifact_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "run_artifact." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class RunArtifactEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"run_artifact.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts\"}"
-    if setup[:live]
-      ["pipeline01", "run01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_RUN_ARTIFACT_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,15 +54,12 @@ class RunArtifactEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     run_artifact_ref01_ent = client.RunArtifact(nil)
-    run_artifact_ref01_match = {
-      "pipeline_id" => setup[:idmap]["pipeline01"],
-      "run_id" => setup[:idmap]["run01"],
-    }
-
-    run_artifact_ref01_list_result = run_artifact_ref01_ent.list(run_artifact_ref01_match, nil)
-    assert run_artifact_ref01_list_result.is_a?(Array)
+    run_artifact_ref01_match_dt0 = {}
+    run_artifact_ref01_match_dt0["pipeline_id"] = setup[:idmap]["pipeline_id"] || setup[:idmap]["pipeline01"]
+    run_artifact_ref01_data_dt0_loaded = run_artifact_ref01_ent.load(run_artifact_ref01_match_dt0, nil)
+    assert !run_artifact_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -96,14 +86,11 @@ class RunArtifactEntityTest < Minitest::Test
     assert !run_artifact_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    run_artifact_ref01_match = {
-      "pipeline_id" => setup[:idmap]["pipeline01"],
-      "run_id" => setup[:idmap]["run01"],
-    }
-
-    run_artifact_ref01_list_result = run_artifact_ref01_ent.list(run_artifact_ref01_match, nil)
-    assert run_artifact_ref01_list_result.is_a?(Array)
+    # LOAD
+    run_artifact_ref01_match_dt0 = {}
+    run_artifact_ref01_match_dt0["pipeline_id"] = setup[:idmap]["pipeline_id"] || setup[:idmap]["pipeline01"]
+    run_artifact_ref01_data_dt0_loaded = run_artifact_ref01_ent.load(run_artifact_ref01_match_dt0, nil)
+    assert !run_artifact_ref01_data_dt0_loaded.nil?
 
   end
 end

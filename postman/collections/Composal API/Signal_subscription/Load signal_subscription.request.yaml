@@ -3,7 +3,7 @@ id: bb39922d-47c8-5bb8-a401-5100b1778f2b
 description: |-
   The `load` operation of **signal_subscription**.
 
-  SDK: `client.SignalSubscription().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.SignalSubscription().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/signal_subscriptions/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{signal_subscription_id}}"
     description: The signal_subscription this request addresses.
-order: 2000
+order: 1000

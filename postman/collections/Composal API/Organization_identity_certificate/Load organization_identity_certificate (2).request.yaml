@@ -1,0 +1,15 @@
+$kind: http-request
+id: "57da7061-277d-5bad-bec1-6a7c582d2a84"
+description: |-
+  The `load` operation of **organization_identity_certificate**.
+
+  SDK: `client.OrganizationIdentityCertificate().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/identity_certificates"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_identity_certificate belongs to.
+order: 2000

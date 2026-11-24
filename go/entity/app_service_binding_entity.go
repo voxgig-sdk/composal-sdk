@@ -333,37 +333,9 @@ func (e *AppServiceBindingEntity) LoadTyped(reqmatch AppServiceBindingLoadMatch,
 
 
 
-
-func (e *AppServiceBindingEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
-	utility := e.utility
-	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
-		"ctrl":     ctrl,
-		"match":    e.match,
-		"data":     e.data,
-		"reqmatch": reqmatch,
-	}, e.entctx)
-
-	return e.runOp(ctx, func() {
-		if ctx.Result != nil {
-			if ctx.Result.Resmatch != nil {
-				e.match = ctx.Result.Resmatch
-			}
-		}
-	})
+func (e *AppServiceBindingEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
 }
-
-// ListTyped is the statically-typed variant of List: it takes an
-// AppServiceBindingListMatch and returns []AppServiceBinding. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *AppServiceBindingEntity) ListTyped(reqmatch AppServiceBindingListMatch, ctrl map[string]any) ([]AppServiceBinding, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
-	if err != nil {
-		return nil, err
-	}
-	return typedSliceFrom[AppServiceBinding](res), nil
-}
-
 
 
 

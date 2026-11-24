@@ -13,7 +13,7 @@ body:
   type: json
   content: |-
     {
-      "organization_id": "{{organization_id}}",
+      "organization_id": "roder_code_repair_setting-{{$timestamp}}",
       "enabled": true,
       "repository_slug": "example"
     }
@@ -24,7 +24,7 @@ scripts:
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
       const rec = body
       if (pm.response.code < 300 && null != rec) {
-        if (null != at(rec, "id")) pm.collectionVariables.set("roder_code_repair_setting_id", String(at(rec, "id")))
+        if (null != at(rec, "organization_id")) pm.collectionVariables.set("roder_code_repair_setting_id", String(at(rec, "organization_id")))
       }
     language: text/javascript
 order: 2000

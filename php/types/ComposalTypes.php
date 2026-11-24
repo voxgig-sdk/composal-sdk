@@ -49,26 +49,6 @@ class AdminOrgLoadMatch
     public string $id;
 }
 
-/** Request payload for AdminOrg#list. */
-class AdminOrgListMatch
-{
-    public mixed $billing_email = null;
-    public ?string $billing_reason = null;
-    public ?bool $customize_onboarding_packages = null;
-    public ?string $deployment_usage_visibility = null;
-    public ?bool $deployment_usage_visible = null;
-    public ?string $id = null;
-    public mixed $monthly_price_dollars = null;
-    public mixed $monthly_price_override_cents = null;
-    public ?string $name = null;
-    public ?bool $onboarding_custom_pricing = null;
-    public mixed $onboarding_package_keys = null;
-    public ?string $owner_email = null;
-    public mixed $package_id = null;
-    public ?bool $skip_payment = null;
-    public ?string $slug = null;
-}
-
 /** Request payload for AdminOrg#create. */
 class AdminOrgCreateData
 {
@@ -215,12 +195,9 @@ class AgentApp
     public int $hidden_install_count;
     public string $id;
     public int $install_count;
-    public array $install_targets;
     public array $installed_by;
     public array $installed_target_ids;
-    public array $items;
     public mixed $mcp_url;
-    public mixed $next_cursor;
     public array $owner;
     public mixed $thread;
     public string $title;
@@ -771,8 +748,8 @@ class AgentEvent
 {
 }
 
-/** Request payload for AgentEvent#list. */
-class AgentEventListMatch
+/** Request payload for AgentEvent#load. */
+class AgentEventLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -866,13 +843,7 @@ class AgentIntegration
 /** Request payload for AgentIntegration#load. */
 class AgentIntegrationLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for AgentIntegration#list. */
-class AgentIntegrationListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public ?string $cursor = null;
     public ?bool $enableable = null;
@@ -1396,8 +1367,8 @@ class AgentRepository
     public array $work_repositories;
 }
 
-/** Request payload for AgentRepository#list. */
-class AgentRepositoryListMatch
+/** Request payload for AgentRepository#load. */
+class AgentRepositoryLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -1561,15 +1532,7 @@ class AgentSessionCheckpoint
 class AgentSessionCheckpointLoadMatch
 {
     public string $agent_session_id;
-    public string $id;
-    public string $organization_id;
-    public string $repo_id;
-}
-
-/** Request payload for AgentSessionCheckpoint#list. */
-class AgentSessionCheckpointListMatch
-{
-    public string $agent_session_id;
+    public ?string $id = null;
     public string $organization_id;
     public string $repo_id;
 }
@@ -1608,8 +1571,8 @@ class AgentSetting
     public string $version;
 }
 
-/** Request payload for AgentSetting#list. */
-class AgentSettingListMatch
+/** Request payload for AgentSetting#load. */
+class AgentSettingLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -1697,13 +1660,7 @@ class AgentSkill
 /** Request payload for AgentSkill#load. */
 class AgentSkillLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for AgentSkill#list. */
-class AgentSkillListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -1787,8 +1744,8 @@ class AgentSubscription
 {
 }
 
-/** Request payload for AgentSubscription#list. */
-class AgentSubscriptionListMatch
+/** Request payload for AgentSubscription#load. */
+class AgentSubscriptionLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -1952,12 +1909,6 @@ class AgentThreadLoadMatch
     public string $id;
 }
 
-/** Request payload for AgentThread#list. */
-class AgentThreadListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for AgentThread#create. */
 class AgentThreadCreateData
 {
@@ -2004,8 +1955,11 @@ class AgentVerifyProject
     public bool $available;
     public bool $can_manage;
     public int $expected_version;
+    public string $id;
+    public string $name;
     public array $project_choices;
     public bool $project_choices_truncated;
+    public string $slug;
     public array $verify_projects;
     public int $version;
 }
@@ -2049,8 +2003,8 @@ class AgentWebPreview
     public mixed $title;
 }
 
-/** Request payload for AgentWebPreview#list. */
-class AgentWebPreviewListMatch
+/** Request payload for AgentWebPreview#load. */
+class AgentWebPreviewLoadMatch
 {
     public ?string $asset = null;
     public string $token;
@@ -2128,8 +2082,8 @@ class AgentWorkflow
     public array $workflows;
 }
 
-/** Request payload for AgentWorkflow#list. */
-class AgentWorkflowListMatch
+/** Request payload for AgentWorkflow#load. */
+class AgentWorkflowLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -2435,14 +2389,7 @@ class AlertRuleEvent
 class AlertRuleEventLoadMatch
 {
     public string $alert_rule_id;
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for AlertRuleEvent#list. */
-class AlertRuleEventListMatch
-{
-    public string $alert_rule_id;
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -2477,8 +2424,8 @@ class AllocationLog
     public string $type;
 }
 
-/** Request payload for AllocationLog#list. */
-class AllocationLogListMatch
+/** Request payload for AllocationLog#load. */
+class AllocationLogLoadMatch
 {
     public string $allocation_id;
     public string $app_id;
@@ -2582,8 +2529,8 @@ class AppAccessJwk
 {
 }
 
-/** Request payload for AppAccessJwk#list. */
-class AppAccessJwkListMatch
+/** Request payload for AppAccessJwk#load. */
+class AppAccessJwkLoadMatch
 {
 }
 
@@ -2623,13 +2570,7 @@ class AppCdn
 class AppCdnLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppCdn#list. */
-class AppCdnListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppCdn#create. */
@@ -2714,13 +2655,7 @@ class AppConfigVariable
 class AppConfigVariableLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppConfigVariable#list. */
-class AppConfigVariableListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
     public ?string $app_environment_id = null;
 }
 
@@ -2786,13 +2721,7 @@ class AppDataResource
 class AppDataResourceLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppDataResource#list. */
-class AppDataResourceListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppDataResource#create. */
@@ -2910,13 +2839,7 @@ class AppDeployment
 class AppDeploymentLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppDeployment#list. */
-class AppDeploymentListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppDeployment#create. */
@@ -3110,13 +3033,7 @@ class AppEnvironment
 class AppEnvironmentLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppEnvironment#list. */
-class AppEnvironmentListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppEnvironment#create. */
@@ -3237,13 +3154,7 @@ class AppPreview
 class AppPreviewLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppPreview#list. */
-class AppPreviewListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppPreview#create. */
@@ -3306,13 +3217,7 @@ class AppPreviewProfile
 class AppPreviewProfileLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppPreviewProfile#list. */
-class AppPreviewProfileListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppPreviewProfile#create. */
@@ -3365,13 +3270,6 @@ class AppRun
 class AppRunLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for AppRun#list. */
-class AppRunListMatch
-{
-    public ?string $id = null;
-    public ?string $image = null;
 }
 
 /** Request payload for AppRun#create. */
@@ -3512,13 +3410,7 @@ class AppService
 class AppServiceLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppService#list. */
-class AppServiceListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppService#create. */
@@ -3645,13 +3537,7 @@ class AppServiceBinding
 class AppServiceBindingLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppServiceBinding#list. */
-class AppServiceBindingListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppServiceBinding#create. */
@@ -3759,13 +3645,7 @@ class AppStorageResource
 class AppStorageResourceLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for AppStorageResource#list. */
-class AppStorageResourceListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
 }
 
 /** Request payload for AppStorageResource#create. */
@@ -3980,12 +3860,6 @@ class ArtifactLoadMatch
     public string $id;
 }
 
-/** Request payload for Artifact#list. */
-class ArtifactListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for Artifact#create. */
 class ArtifactCreateData
 {
@@ -4019,12 +3893,6 @@ class ArtifactCacheNamespace
 class ArtifactCacheNamespaceLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for ArtifactCacheNamespace#list. */
-class ArtifactCacheNamespaceListMatch
-{
-    public ?string $id = null;
 }
 
 /** Request payload for ArtifactCacheNamespace#create. */
@@ -4062,12 +3930,6 @@ class ArtifactImageRepositoryLoadMatch
     public string $id;
 }
 
-/** Request payload for ArtifactImageRepository#list. */
-class ArtifactImageRepositoryListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for ArtifactImageRepository#create. */
 class ArtifactImageRepositoryCreateData
 {
@@ -4103,12 +3965,6 @@ class ArtifactPackageMirrorLoadMatch
     public string $id;
 }
 
-/** Request payload for ArtifactPackageMirror#list. */
-class ArtifactPackageMirrorListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for ArtifactPackageMirror#create. */
 class ArtifactPackageMirrorCreateData
 {
@@ -4142,12 +3998,6 @@ class ArtifactRetentionPolicy
 class ArtifactRetentionPolicyLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for ArtifactRetentionPolicy#list. */
-class ArtifactRetentionPolicyListMatch
-{
-    public ?string $id = null;
 }
 
 /** Request payload for ArtifactRetentionPolicy#create. */
@@ -4329,8 +4179,8 @@ class AuthRegistrationOption
     public bool $waitlist_enabled;
 }
 
-/** Request payload for AuthRegistrationOption#list. */
-class AuthRegistrationOptionListMatch
+/** Request payload for AuthRegistrationOption#load. */
+class AuthRegistrationOptionLoadMatch
 {
     public ?bool $email_password_signup_enabled = null;
     public ?bool $openai_sign_in_enabled = null;
@@ -4430,8 +4280,8 @@ class BackendRunnerPool
     public ?string $id = null;
 }
 
-/** Request payload for BackendRunnerPool#list. */
-class BackendRunnerPoolListMatch
+/** Request payload for BackendRunnerPool#load. */
+class BackendRunnerPoolLoadMatch
 {
     public string $backend_id;
 }
@@ -4489,12 +4339,6 @@ class BazelBackend
 class BazelBackendLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for BazelBackend#list. */
-class BazelBackendListMatch
-{
-    public ?string $id = null;
 }
 
 /** Request payload for BazelBackend#create. */
@@ -5406,13 +5250,7 @@ class CacheNamespaceEntry
 class CacheNamespaceEntryLoadMatch
 {
     public string $cache_namespace_id;
-    public string $id;
-}
-
-/** Request payload for CacheNamespaceEntry#list. */
-class CacheNamespaceEntryListMatch
-{
-    public string $cache_namespace_id;
+    public ?string $id = null;
 }
 
 /** Request payload for CacheNamespaceEntry#create. */
@@ -5465,14 +5303,7 @@ class CdnDeploymentLoadMatch
 {
     public string $app_id;
     public string $cdn_id;
-    public string $id;
-}
-
-/** Request payload for CdnDeployment#list. */
-class CdnDeploymentListMatch
-{
-    public string $app_id;
-    public string $cdn_id;
+    public ?string $id = null;
 }
 
 /** Request payload for CdnDeployment#create. */
@@ -5501,14 +5332,7 @@ class CdnHostnameLoadMatch
 {
     public string $app_id;
     public string $cdn_id;
-    public string $id;
-}
-
-/** Request payload for CdnHostname#list. */
-class CdnHostnameListMatch
-{
-    public string $app_id;
-    public string $cdn_id;
+    public ?string $id = null;
 }
 
 /** Request payload for CdnHostname#create. */
@@ -5558,12 +5382,6 @@ class CdnSpaceLoadMatch
     public string $id;
 }
 
-/** Request payload for CdnSpace#list. */
-class CdnSpaceListMatch
-{
-    public string $organization_id;
-}
-
 /** Request payload for CdnSpace#create. */
 class CdnSpaceCreateData
 {
@@ -5598,13 +5416,7 @@ class CdnSpaceObject
 class CdnSpaceObjectLoadMatch
 {
     public string $cdn_space_id;
-    public string $id;
-}
-
-/** Request payload for CdnSpaceObject#list. */
-class CdnSpaceObjectListMatch
-{
-    public string $cdn_space_id;
+    public ?string $id = null;
 }
 
 /** Request payload for CdnSpaceObject#update. */
@@ -5629,8 +5441,8 @@ class Change
     public mixed $result;
 }
 
-/** Request payload for Change#list. */
-class ChangeListMatch
+/** Request payload for Change#load. */
+class ChangeLoadMatch
 {
     public string $organization_id;
     public ?string $author = null;
@@ -6235,13 +6047,7 @@ class CiPipelineRun
 /** Request payload for CiPipelineRun#load. */
 class CiPipelineRunLoadMatch
 {
-    public string $id;
-    public string $pipeline_id;
-}
-
-/** Request payload for CiPipelineRun#list. */
-class CiPipelineRunListMatch
-{
+    public ?string $id = null;
     public string $pipeline_id;
 }
 
@@ -6350,11 +6156,6 @@ class CliRelease
 
 /** Request payload for CliRelease#load. */
 class CliReleaseLoadMatch
-{
-}
-
-/** Request payload for CliRelease#list. */
-class CliReleaseListMatch
 {
 }
 
@@ -6775,21 +6576,14 @@ class DeepScan
 /** Request payload for DeepScan#load. */
 class DeepScanLoadMatch
 {
-    public string $id;
+    public ?string $id = null;
     public string $organization_id;
     public ?string $agent_id = null;
     public ?string $evidence = null;
     public ?string $finding_id = null;
     public ?string $project_id = null;
-}
-
-/** Request payload for DeepScan#list. */
-class DeepScanListMatch
-{
-    public string $organization_id;
     public ?string $finding = null;
     public ?int $page = null;
-    public ?string $project_id = null;
     public ?string $query = null;
     public ?string $status = null;
 }
@@ -6811,24 +6605,25 @@ class DeepScanCreateData
 /** DeepScanFinding entity data model. */
 class DeepScanFinding
 {
-    public int $finding_count;
-    public array $finding_ids;
-    public array $findings;
-    public mixed $findings_fix_prompt;
-    public bool $free_findings_pending;
+    public string $actual;
+    public string $agent_id;
+    public string $agent_title;
+    public mixed $area = null;
+    public array $checks;
+    public string $confidence;
+    public ?bool $confirmed = null;
+    public ?array $evidence_step_ids = null;
+    public mixed $evidence_timestamp_ms;
+    public string $expected;
+    public string $fix_prompt;
+    public ?bool $has_recording = null;
     public string $id;
-    public string $mode;
-    public array $permissions;
-    public mixed $priority;
-    public array $priority_counts;
-    public mixed $project_id;
-    public mixed $reproduction_of;
-    public array $reproductions;
-    public bool $reruns_available;
-    public string $status;
+    public bool $locked;
+    public array $reproduction_steps;
+    public string $severity;
     public string $title;
-    public array $unlock;
-    public string $web_url;
+    public mixed $tracked;
+    public string $url;
 }
 
 /** Request payload for DeepScanFinding#list. */
@@ -6879,8 +6674,8 @@ class DeepScanMappedFlow
     public mixed $revision_id;
 }
 
-/** Request payload for DeepScanMappedFlow#list. */
-class DeepScanMappedFlowListMatch
+/** Request payload for DeepScanMappedFlow#load. */
+class DeepScanMappedFlowLoadMatch
 {
     public string $organization_id;
     public ?string $account_id = null;
@@ -7025,8 +6820,8 @@ class DeploymentDetail
     public array $storage_resources;
 }
 
-/** Request payload for DeploymentDetail#list. */
-class DeploymentDetailListMatch
+/** Request payload for DeploymentDetail#load. */
+class DeploymentDetailLoadMatch
 {
     public string $organization_id;
     public ?string $app = null;
@@ -7349,8 +7144,8 @@ class DeviceEnterpriseRelay
 {
 }
 
-/** Request payload for DeviceEnterpriseRelay#list. */
-class DeviceEnterpriseRelayListMatch
+/** Request payload for DeviceEnterpriseRelay#load. */
+class DeviceEnterpriseRelayLoadMatch
 {
 }
 
@@ -7388,16 +7183,18 @@ class DeviceFolderListingCreateData
 /** DeviceGrant entity data model. */
 class DeviceGrant
 {
-    public array $active_grants;
-    public array $agent_choices;
     public string $agent_id;
-    public bool $all_agents_access;
+    public mixed $agent_name;
+    public bool $can_edit;
+    public bool $can_revoke;
     public array $capabilities;
-    public bool $execution_available;
-    public array $grants;
-    public ?string $id = null;
-    public mixed $next_cursor;
+    public string $created_at;
+    public string $id;
     public string $principal_id;
+    public mixed $principal_name;
+    public int $revision;
+    public mixed $revoked_at;
+    public string $updated_at;
 }
 
 /** Request payload for DeviceGrant#list. */
@@ -7860,14 +7657,7 @@ class Environment
 /** Request payload for Environment#load. */
 class EnvironmentLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-    public ?string $project_id = null;
-}
-
-/** Request payload for Environment#list. */
-class EnvironmentListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public ?string $project_id = null;
 }
@@ -8095,8 +7885,8 @@ class EnvironmentSecretBinding
     public ?string $secret_version_id = null;
 }
 
-/** Request payload for EnvironmentSecretBinding#list. */
-class EnvironmentSecretBindingListMatch
+/** Request payload for EnvironmentSecretBinding#load. */
+class EnvironmentSecretBindingLoadMatch
 {
     public string $app_id;
     public string $environment_id;
@@ -8192,14 +7982,6 @@ class ExecutionDesiredStateLoadMatch
     public string $id;
 }
 
-/** Request payload for ExecutionDesiredState#list. */
-class ExecutionDesiredStateListMatch
-{
-    public ?array $desired_state = null;
-    public ?string $id = null;
-    public ?bool $stop_observed = null;
-}
-
 /** Request payload for ExecutionDesiredState#create. */
 class ExecutionDesiredStateCreateData
 {
@@ -8235,12 +8017,6 @@ class ExecutionReconcilerTickLoadMatch
     public string $id;
 }
 
-/** Request payload for ExecutionReconcilerTick#list. */
-class ExecutionReconcilerTickListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for ExecutionReconcilerTick#create. */
 class ExecutionReconcilerTickCreateData
 {
@@ -8256,12 +8032,6 @@ class ExecutionRelease
 class ExecutionReleaseLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for ExecutionRelease#list. */
-class ExecutionReleaseListMatch
-{
-    public ?string $id = null;
 }
 
 /** Request payload for ExecutionRelease#create. */
@@ -8349,20 +8119,21 @@ class ExecutionRuntimeInstanceRemoveMatch
 class Exploration
 {
     public mixed $account_id = null;
-    public array $active;
     public array $agent_filters;
     public array $agents;
     public ?bool $can_continue = null;
     public ?array $chat_messages = null;
+    public int $check_count;
     public int $concurrency;
     public array $covered_areas;
     public string $created_at;
+    public mixed $credential_name = null;
     public string $deadline_at;
     public mixed $demo_project;
+    public mixed $duration_ms;
     public bool $ended_early;
     public string $environment_id;
     public string $environment_name;
-    public array $explorations;
     public array $explorer_activity;
     public int $finding_count;
     public array $findings;
@@ -8372,14 +8143,12 @@ class Exploration
     public array $huntable_flows;
     public string $id;
     public ?string $idempotency_key = null;
-    public array $launch_options;
     public int $max_seconds;
     public int $max_testers;
     public ?string $mode = null;
     public array $next_scan_improvements;
     public ?string $observed_at = null;
     public bool $onboarding;
-    public array $pagination;
     public bool $paywalled;
     public array $permissions;
     public mixed $persona_id = null;
@@ -8391,10 +8160,13 @@ class Exploration
     public array $reproductions;
     public bool $saves_scenarios;
     public array $scannable_flows;
+    public ?int $scenario_count = null;
     public array $scenario_generation;
+    public ?bool $scenarios_pending = null;
     public bool $sign_in_needs_answer;
     public string $sign_in_outcome;
     public mixed $sign_in_question = null;
+    public string $started_at;
     public ?bool $startup_retryable = null;
     public string $status;
     public bool $time_limit_reached;
@@ -8988,8 +8760,8 @@ class GithubConnection
     public array $repositories;
 }
 
-/** Request payload for GithubConnection#list. */
-class GithubConnectionListMatch
+/** Request payload for GithubConnection#load. */
+class GithubConnectionLoadMatch
 {
     public string $organization_id;
     public ?string $github_app_installation_id = null;
@@ -9498,13 +9270,7 @@ class HostingAppDomain
 class HostingAppDomainLoadMatch
 {
     public string $app_id;
-    public string $id;
-}
-
-/** Request payload for HostingAppDomain#list. */
-class HostingAppDomainListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
     public ?string $app_environment_id = null;
 }
 
@@ -9648,8 +9414,8 @@ class Integration
     public array $slack;
 }
 
-/** Request payload for Integration#list. */
-class IntegrationListMatch
+/** Request payload for Integration#load. */
+class IntegrationLoadMatch
 {
     public string $organization_id;
 }
@@ -9772,8 +9538,8 @@ class JobStep
     public ?string $id = null;
 }
 
-/** Request payload for JobStep#list. */
-class JobStepListMatch
+/** Request payload for JobStep#load. */
+class JobStepLoadMatch
 {
     public string $job_id;
     public string $pipeline_id;
@@ -9812,8 +9578,8 @@ class JobWorkspace
     public ?string $id = null;
 }
 
-/** Request payload for JobWorkspace#list. */
-class JobWorkspaceListMatch
+/** Request payload for JobWorkspace#load. */
+class JobWorkspaceLoadMatch
 {
     public string $job_id;
     public string $pipeline_id;
@@ -10231,14 +9997,7 @@ class LogStreamChunk
 /** Request payload for LogStreamChunk#load. */
 class LogStreamChunkLoadMatch
 {
-    public string $id;
-    public string $log_stream_id;
-    public string $space_id;
-}
-
-/** Request payload for LogStreamChunk#list. */
-class LogStreamChunkListMatch
-{
+    public ?string $id = null;
     public string $log_stream_id;
     public string $space_id;
 }
@@ -10296,8 +10055,8 @@ class MarketingSetting
     public bool $call_first;
 }
 
-/** Request payload for MarketingSetting#list. */
-class MarketingSettingListMatch
+/** Request payload for MarketingSetting#load. */
+class MarketingSettingLoadMatch
 {
     public ?bool $call_first = null;
 }
@@ -10808,8 +10567,8 @@ class MetricQuery
 {
 }
 
-/** Request payload for MetricQuery#list. */
-class MetricQueryListMatch
+/** Request payload for MetricQuery#load. */
+class MetricQueryLoadMatch
 {
 }
 
@@ -10968,12 +10727,6 @@ class NetworkingSpaceLoadMatch
     public string $id;
 }
 
-/** Request payload for NetworkingSpace#list. */
-class NetworkingSpaceListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for NetworkingSpace#create. */
 class NetworkingSpaceCreateData
 {
@@ -11046,13 +10799,6 @@ class NodeLease
 /** Request payload for NodeLease#load. */
 class NodeLeaseLoadMatch
 {
-    public string $id;
-    public string $node_id;
-}
-
-/** Request payload for NodeLease#list. */
-class NodeLeaseListMatch
-{
     public string $node_id;
 }
 
@@ -11109,8 +10855,8 @@ class NomadLog
     public string $type;
 }
 
-/** Request payload for NomadLog#list. */
-class NomadLogListMatch
+/** Request payload for NomadLog#load. */
+class NomadLogLoadMatch
 {
     public string $app_id;
     public ?string $environment = null;
@@ -11151,12 +10897,6 @@ class ObservabilityClickhouseClusterLoadMatch
     public string $id;
 }
 
-/** Request payload for ObservabilityClickhouseCluster#list. */
-class ObservabilityClickhouseClusterListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for ObservabilityClickhouseCluster#create. */
 class ObservabilityClickhouseClusterCreateData
 {
@@ -11192,12 +10932,6 @@ class ObservabilityQuickwitClusterLoadMatch
     public string $id;
 }
 
-/** Request payload for ObservabilityQuickwitCluster#list. */
-class ObservabilityQuickwitClusterListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for ObservabilityQuickwitCluster#create. */
 class ObservabilityQuickwitClusterCreateData
 {
@@ -11231,12 +10965,6 @@ class ObservabilitySpace
 class ObservabilitySpaceLoadMatch
 {
     public string $id;
-}
-
-/** Request payload for ObservabilitySpace#list. */
-class ObservabilitySpaceListMatch
-{
-    public ?string $id = null;
 }
 
 /** Request payload for ObservabilitySpace#create. */
@@ -11400,8 +11128,8 @@ class OrganizationApp
     public ?string $id = null;
 }
 
-/** Request payload for OrganizationApp#list. */
-class OrganizationAppListMatch
+/** Request payload for OrganizationApp#load. */
+class OrganizationAppLoadMatch
 {
     public string $organization_id;
     public ?bool $context = null;
@@ -11461,13 +11189,7 @@ class OrganizationIdentityCertificate
 /** Request payload for OrganizationIdentityCertificate#load. */
 class OrganizationIdentityCertificateLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for OrganizationIdentityCertificate#list. */
-class OrganizationIdentityCertificateListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -11552,13 +11274,7 @@ class OrganizationOidcTrust
 /** Request payload for OrganizationOidcTrust#load. */
 class OrganizationOidcTrustLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for OrganizationOidcTrust#list. */
-class OrganizationOidcTrustListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -11712,13 +11428,7 @@ class OrganizationServiceAccount
 /** Request payload for OrganizationServiceAccount#load. */
 class OrganizationServiceAccountLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for OrganizationServiceAccount#list. */
-class OrganizationServiceAccountListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -11784,8 +11494,8 @@ class OrganizationSite
     public ?string $id = null;
 }
 
-/** Request payload for OrganizationSite#list. */
-class OrganizationSiteListMatch
+/** Request payload for OrganizationSite#load. */
+class OrganizationSiteLoadMatch
 {
     public string $organization_id;
     public string $native_agent_id;
@@ -11848,13 +11558,7 @@ class OrganizationWorkloadIdentity
 /** Request payload for OrganizationWorkloadIdentity#load. */
 class OrganizationWorkloadIdentityLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for OrganizationWorkloadIdentity#list. */
-class OrganizationWorkloadIdentityListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -11956,17 +11660,6 @@ class PageAgent
 
 /** Request payload for PageAgent#load. */
 class PageAgentLoadMatch
-{
-    public string $organization_id;
-    public ?string $agent = null;
-    public ?string $agent_search = null;
-    public ?string $agent_visibility = null;
-    public ?string $cursor = null;
-    public ?int $limit = null;
-}
-
-/** Request payload for PageAgent#list. */
-class PageAgentListMatch
 {
     public string $organization_id;
     public ?string $agent = null;
@@ -12230,13 +11923,23 @@ class PagesProjectCredentialListMatch
 /** PagesProjectPersona entity data model. */
 class PagesProjectPersona
 {
-    public int $active_count;
-    public array $credentials;
-    public int $needs_attention_count;
-    public array $permissions;
-    public array $persona_states;
-    public array $personas;
-    public array $project;
+    public string $access_mode;
+    public int $active_run_count;
+    public mixed $archived_at;
+    public array $attention;
+    public mixed $capabilities;
+    public string $created_at;
+    public mixed $credential;
+    public mixed $credential_id;
+    public mixed $goals;
+    public array $health;
+    public string $id;
+    public int $lock_version;
+    public string $name;
+    public string $project_id;
+    public string $role;
+    public int $scenario_count;
+    public string $updated_at;
 }
 
 /** Request payload for PagesProjectPersona#list. */
@@ -12249,12 +11952,28 @@ class PagesProjectPersonaListMatch
 /** PagesProjectRun entity data model. */
 class PagesProjectRun
 {
-    public string $environment_query;
-    public array $environments;
-    public bool $environments_has_more;
-    public array $pagination;
-    public array $runs;
-    public mixed $selected_environment;
+    public mixed $archived_at;
+    public mixed $browser_seconds;
+    public bool $can_archive;
+    public bool $can_restore;
+    public string $cleanup_state;
+    public mixed $commit_sha;
+    public string $created_at;
+    public mixed $duration_seconds;
+    public mixed $environment_name;
+    public mixed $finished_at;
+    public string $id;
+    public mixed $outcome;
+    public mixed $pull_request;
+    public mixed $pull_request_label;
+    public int $scenario_count;
+    public mixed $source_run;
+    public mixed $started_at;
+    public string $state;
+    public string $title;
+    public string $trigger_kind;
+    public mixed $triggered_by;
+    public string $web_path;
 }
 
 /** Request payload for PagesProjectRun#list. */
@@ -12401,12 +12120,6 @@ class PairingLoadMatch
     public string $id;
 }
 
-/** Request payload for Pairing#list. */
-class PairingListMatch
-{
-    public ?string $id = null;
-}
-
 /** Request payload for Pairing#create. */
 class PairingCreateData
 {
@@ -12417,8 +12130,8 @@ class PairingEvent
 {
 }
 
-/** Request payload for PairingEvent#list. */
-class PairingEventListMatch
+/** Request payload for PairingEvent#load. */
+class PairingEventLoadMatch
 {
     public string $pairing_id;
 }
@@ -12458,10 +12171,10 @@ class PersonalAccessToken
     public ?string $id = null;
 }
 
-/** Request payload for PersonalAccessToken#list. */
-class PersonalAccessTokenListMatch
+/** Request payload for PersonalAccessToken#load. */
+class PersonalAccessTokenLoadMatch
 {
-    public ?string $id = null;
+    public string $id;
 }
 
 /** Request payload for PersonalAccessToken#create. */
@@ -12480,8 +12193,8 @@ class PreviewOperation
 {
 }
 
-/** Request payload for PreviewOperation#list. */
-class PreviewOperationListMatch
+/** Request payload for PreviewOperation#load. */
+class PreviewOperationLoadMatch
 {
     public string $app_id;
     public string $preview_id;
@@ -12497,8 +12210,8 @@ class PreviewProfileSecretBinding
     public ?string $secret_version_id = null;
 }
 
-/** Request payload for PreviewProfileSecretBinding#list. */
-class PreviewProfileSecretBindingListMatch
+/** Request payload for PreviewProfileSecretBinding#load. */
+class PreviewProfileSecretBindingLoadMatch
 {
     public string $app_id;
     public string $preview_profile_id;
@@ -12561,16 +12274,16 @@ class PreviewSharingApproval
     public array $approved_default_secrets;
     public array $approved_source_keys;
     public ?array $build_keys = null;
-    public ?array $build_secrets = null;
-    public ?array $default_configuration = null;
-    public ?array $default_secrets = null;
+    public array $build_secrets;
+    public array $default_configuration;
+    public array $default_secrets;
     public array $services;
     public int $snapshot_version;
-    public ?array $source_keys = null;
+    public array $source_keys;
 }
 
-/** Request payload for PreviewSharingApproval#list. */
-class PreviewSharingApprovalListMatch
+/** Request payload for PreviewSharingApproval#load. */
+class PreviewSharingApprovalLoadMatch
 {
     public string $app_id;
     public string $preview_id;
@@ -13176,18 +12889,11 @@ class ProjectFixture
     public int $byte_size;
     public string $content_type;
     public array $credential_ids;
-    public array $credentials;
     public array $environment_ids;
-    public array $environments;
-    public array $fixtures;
     public ?string $id = null;
     public int $lock_version;
     public string $name;
-    public array $pagination;
-    public array $permissions;
     public array $persona_ids;
-    public array $personas;
-    public array $project;
     public string $sha256;
     public string $url;
     public int $version;
@@ -13642,8 +13348,8 @@ class ProjectScenarioOption
     public ?array $schedules = null;
 }
 
-/** Request payload for ProjectScenarioOption#list. */
-class ProjectScenarioOptionListMatch
+/** Request payload for ProjectScenarioOption#load. */
+class ProjectScenarioOptionLoadMatch
 {
     public string $organization_id;
     public string $project_id;
@@ -13684,8 +13390,8 @@ class ProjectSetting
     public array $tester_numbers;
 }
 
-/** Request payload for ProjectSetting#list. */
-class ProjectSettingListMatch
+/** Request payload for ProjectSetting#load. */
+class ProjectSettingLoadMatch
 {
     public string $organization_id;
     public string $project_id;
@@ -13872,8 +13578,8 @@ class PullRequestSetting
     public bool $write_scenarios;
 }
 
-/** Request payload for PullRequestSetting#list. */
-class PullRequestSettingListMatch
+/** Request payload for PullRequestSetting#load. */
+class PullRequestSettingLoadMatch
 {
     public string $organization_id;
     public ?string $project_id = null;
@@ -14159,13 +13865,7 @@ class ReleaseRollout
 /** Request payload for ReleaseRollout#load. */
 class ReleaseRolloutLoadMatch
 {
-    public string $id;
-    public string $release_id;
-}
-
-/** Request payload for ReleaseRollout#list. */
-class ReleaseRolloutListMatch
-{
+    public ?string $id = null;
     public string $release_id;
 }
 
@@ -14314,14 +14014,7 @@ class RepoAgentSession
 /** Request payload for RepoAgentSession#load. */
 class RepoAgentSessionLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-    public string $repo_id;
-}
-
-/** Request payload for RepoAgentSession#list. */
-class RepoAgentSessionListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public string $repo_id;
 }
@@ -14483,14 +14176,7 @@ class RepoCloudWorkspaceBackup
 /** Request payload for RepoCloudWorkspaceBackup#load. */
 class RepoCloudWorkspaceBackupLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-    public string $repo_id;
-}
-
-/** Request payload for RepoCloudWorkspaceBackup#list. */
-class RepoCloudWorkspaceBackupListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public string $repo_id;
 }
@@ -14931,12 +14617,6 @@ class RoderCodeRepairLoadMatch
     public string $id;
 }
 
-/** Request payload for RoderCodeRepair#list. */
-class RoderCodeRepairListMatch
-{
-    public string $scenario_run_id;
-}
-
 /** Request payload for RoderCodeRepair#create. */
 class RoderCodeRepairCreateData
 {
@@ -14958,8 +14638,8 @@ class RoderCodeRepairSetting
     public mixed $repository_slug;
 }
 
-/** Request payload for RoderCodeRepairSetting#list. */
-class RoderCodeRepairSettingListMatch
+/** Request payload for RoderCodeRepairSetting#load. */
+class RoderCodeRepairSettingLoadMatch
 {
     public string $organization_id;
 }
@@ -15024,8 +14704,8 @@ class RunArtifact
 {
 }
 
-/** Request payload for RunArtifact#list. */
-class RunArtifactListMatch
+/** Request payload for RunArtifact#load. */
+class RunArtifactLoadMatch
 {
     public string $pipeline_id;
     public string $run_id;
@@ -15080,14 +14760,7 @@ class RunJob
 /** Request payload for RunJob#load. */
 class RunJobLoadMatch
 {
-    public string $id;
-    public string $pipeline_id;
-    public string $run_id;
-}
-
-/** Request payload for RunJob#list. */
-class RunJobListMatch
-{
+    public ?string $id = null;
     public string $pipeline_id;
     public string $run_id;
 }
@@ -15211,8 +14884,8 @@ class RunnerLease
     public ?string $id = null;
 }
 
-/** Request payload for RunnerLease#list. */
-class RunnerLeaseListMatch
+/** Request payload for RunnerLease#load. */
+class RunnerLeaseLoadMatch
 {
     public string $runner_id;
     public string $runner_pool_id;
@@ -15278,13 +14951,7 @@ class RunnerPoolRunner
 /** Request payload for RunnerPoolRunner#load. */
 class RunnerPoolRunnerLoadMatch
 {
-    public string $id;
-    public string $runner_pool_id;
-}
-
-/** Request payload for RunnerPoolRunner#list. */
-class RunnerPoolRunnerListMatch
-{
+    public ?string $id = null;
     public string $runner_pool_id;
 }
 
@@ -15313,8 +14980,8 @@ class RuntimeInstanceHealthSnapshot
 {
 }
 
-/** Request payload for RuntimeInstanceHealthSnapshot#list. */
-class RuntimeInstanceHealthSnapshotListMatch
+/** Request payload for RuntimeInstanceHealthSnapshot#load. */
+class RuntimeInstanceHealthSnapshotLoadMatch
 {
     public string $runtime_instance_id;
 }
@@ -15341,8 +15008,8 @@ class SandboxIntegration
     public int $version;
 }
 
-/** Request payload for SandboxIntegration#list. */
-class SandboxIntegrationListMatch
+/** Request payload for SandboxIntegration#load. */
+class SandboxIntegrationLoadMatch
 {
     public string $organization_id;
     public ?string $provider = null;
@@ -15451,14 +15118,7 @@ class SecretGrant
 /** Request payload for SecretGrant#load. */
 class SecretGrantLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-    public string $secret_id;
-}
-
-/** Request payload for SecretGrant#list. */
-class SecretGrantListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public string $secret_id;
 }
@@ -15503,14 +15163,7 @@ class SecretVersion
 /** Request payload for SecretVersion#load. */
 class SecretVersionLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-    public string $secret_id;
-}
-
-/** Request payload for SecretVersion#list. */
-class SecretVersionListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
     public string $secret_id;
 }
@@ -15556,14 +15209,7 @@ class ServiceEndpoint
 class ServiceEndpointLoadMatch
 {
     public string $app_id;
-    public string $id;
-    public string $service_id;
-}
-
-/** Request payload for ServiceEndpoint#list. */
-class ServiceEndpointListMatch
-{
-    public string $app_id;
+    public ?string $id = null;
     public string $service_id;
 }
 
@@ -15609,8 +15255,8 @@ class Setting
     public array $sandbox_regions;
 }
 
-/** Request payload for Setting#list. */
-class SettingListMatch
+/** Request payload for Setting#load. */
+class SettingLoadMatch
 {
     public string $organization_id;
 }
@@ -15851,13 +15497,7 @@ class SignalSubscription
 /** Request payload for SignalSubscription#load. */
 class SignalSubscriptionLoadMatch
 {
-    public string $id;
-    public string $organization_id;
-}
-
-/** Request payload for SignalSubscription#list. */
-class SignalSubscriptionListMatch
-{
+    public ?string $id = null;
     public string $organization_id;
 }
 
@@ -15932,8 +15572,8 @@ class SiteAccessKey
     public ?string $id = null;
 }
 
-/** Request payload for SiteAccessKey#list. */
-class SiteAccessKeyListMatch
+/** Request payload for SiteAccessKey#load. */
+class SiteAccessKeyLoadMatch
 {
     public string $organization_id;
     public string $site_id;
@@ -16038,13 +15678,7 @@ class SpaceAlertRule
 /** Request payload for SpaceAlertRule#load. */
 class SpaceAlertRuleLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceAlertRule#list. */
-class SpaceAlertRuleListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16080,8 +15714,8 @@ class SpaceAuditEvent
 {
 }
 
-/** Request payload for SpaceAuditEvent#list. */
-class SpaceAuditEventListMatch
+/** Request payload for SpaceAuditEvent#load. */
+class SpaceAuditEventLoadMatch
 {
     public string $space_id;
 }
@@ -16101,13 +15735,7 @@ class SpaceDnsRecord
 /** Request payload for SpaceDnsRecord#load. */
 class SpaceDnsRecordLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceDnsRecord#list. */
-class SpaceDnsRecordListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16147,13 +15775,7 @@ class SpaceEnrollmentToken
 /** Request payload for SpaceEnrollmentToken#load. */
 class SpaceEnrollmentTokenLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceEnrollmentToken#list. */
-class SpaceEnrollmentTokenListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16193,13 +15815,7 @@ class SpaceGateway
 /** Request payload for SpaceGateway#load. */
 class SpaceGatewayLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceGateway#list. */
-class SpaceGatewayListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16236,8 +15852,8 @@ class SpaceGroup
     public ?string $id = null;
 }
 
-/** Request payload for SpaceGroup#list. */
-class SpaceGroupListMatch
+/** Request payload for SpaceGroup#load. */
+class SpaceGroupLoadMatch
 {
     public string $space_id;
 }
@@ -16275,8 +15891,8 @@ class SpaceGroupMembership
     public ?string $id = null;
 }
 
-/** Request payload for SpaceGroupMembership#list. */
-class SpaceGroupMembershipListMatch
+/** Request payload for SpaceGroupMembership#load. */
+class SpaceGroupMembershipLoadMatch
 {
     public string $space_id;
 }
@@ -16313,8 +15929,8 @@ class SpaceLogStream
 {
 }
 
-/** Request payload for SpaceLogStream#list. */
-class SpaceLogStreamListMatch
+/** Request payload for SpaceLogStream#load. */
+class SpaceLogStreamLoadMatch
 {
     public string $space_id;
 }
@@ -16330,8 +15946,8 @@ class SpaceMetricSery
 {
 }
 
-/** Request payload for SpaceMetricSery#list. */
-class SpaceMetricSeryListMatch
+/** Request payload for SpaceMetricSery#load. */
+class SpaceMetricSeryLoadMatch
 {
     public string $space_id;
 }
@@ -16351,13 +15967,7 @@ class SpaceOtelCollector
 /** Request payload for SpaceOtelCollector#load. */
 class SpaceOtelCollectorLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceOtelCollector#list. */
-class SpaceOtelCollectorListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16397,13 +16007,7 @@ class SpacePeer
 /** Request payload for SpacePeer#load. */
 class SpacePeerLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpacePeer#list. */
-class SpacePeerListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16440,8 +16044,8 @@ class SpacePeerAttachment
     public ?string $id = null;
 }
 
-/** Request payload for SpacePeerAttachment#list. */
-class SpacePeerAttachmentListMatch
+/** Request payload for SpacePeerAttachment#load. */
+class SpacePeerAttachmentLoadMatch
 {
     public string $space_id;
 }
@@ -16482,13 +16086,7 @@ class SpacePolicy
 /** Request payload for SpacePolicy#load. */
 class SpacePolicyLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpacePolicy#list. */
-class SpacePolicyListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16528,13 +16126,7 @@ class SpaceSegment
 /** Request payload for SpaceSegment#load. */
 class SpaceSegmentLoadMatch
 {
-    public string $id;
-    public string $space_id;
-}
-
-/** Request payload for SpaceSegment#list. */
-class SpaceSegmentListMatch
-{
+    public ?string $id = null;
     public string $space_id;
 }
 
@@ -16570,8 +16162,8 @@ class SpaceTraceSpan
 {
 }
 
-/** Request payload for SpaceTraceSpan#list. */
-class SpaceTraceSpanListMatch
+/** Request payload for SpaceTraceSpan#load. */
+class SpaceTraceSpanLoadMatch
 {
     public string $space_id;
 }
@@ -16619,8 +16211,8 @@ class Spark
     public bool $verify_pr_scenario_writing_enabled;
 }
 
-/** Request payload for Spark#list. */
-class SparkListMatch
+/** Request payload for Spark#load. */
+class SparkLoadMatch
 {
     public string $organization_id;
 }
@@ -16662,8 +16254,8 @@ class SparkAgentIntegration
     public bool $webhooks_available;
 }
 
-/** Request payload for SparkAgentIntegration#list. */
-class SparkAgentIntegrationListMatch
+/** Request payload for SparkAgentIntegration#load. */
+class SparkAgentIntegrationLoadMatch
 {
     public string $agent_id;
     public string $organization_id;
@@ -16815,30 +16407,32 @@ class SparkAgentSkillCreateData
 /** SparkAgentThread entity data model. */
 class SparkAgentThread
 {
-    public mixed $archived_count = null;
-    public bool $can_create;
+    public ?bool $archive_deletes_sandbox = null;
+    public bool $archived;
+    public mixed $attention;
+    public bool $can_archive;
+    public bool $can_compact;
+    public bool $can_snooze;
+    public mixed $coordination_status = null;
     public mixed $execution = null;
     public mixed $first_input = null;
     public ?string $first_input_key = null;
     public ?string $first_input_requester_membership_id = null;
-    public ?string $id = null;
+    public string $group;
+    public bool $has_active_run;
+    public string $id;
     public ?bool $inherit_context = null;
-    public array $local_activities;
-    public int $local_archived_count;
-    public mixed $local_next_cursor;
-    public mixed $local_scope_key;
-    public bool $local_status_pending;
-    public array $local_threads;
-    public string $main_thread_id;
+    public bool $is_main;
+    public string $kind;
     public ?string $message = null;
-    public mixed $next_cursor;
+    public bool $older;
     public ?string $parent_conversation_id = null;
+    public ?string $parent_conversation_title = null;
     public ?string $requester_membership_id = null;
-    public mixed $selected_thread;
+    public mixed $snoozed_until;
     public array $thread;
-    public array $threads;
     public ?string $title = null;
-    public mixed $total_archived_count;
+    public mixed $updated_at;
 }
 
 /** Request payload for SparkAgentThread#list. */
@@ -16881,7 +16475,7 @@ class SparkCredit
     public string $kind;
     public mixed $payment_method;
     public bool $payments_enabled;
-    public ?string $plan = null;
+    public mixed $plan;
     public array $plans;
     public ?int $quoted_credits_cents = null;
     public ?int $quoted_price_cents = null;
@@ -16899,12 +16493,6 @@ class SparkCredit
 class SparkCreditLoadMatch
 {
     public string $organization_id;
-}
-
-/** Request payload for SparkCredit#list. */
-class SparkCreditListMatch
-{
-    public string $organization_id;
     public ?string $view = null;
 }
 
@@ -16915,7 +16503,7 @@ class SparkCreditCreateData
     public ?int $amount_cents = null;
     public ?string $billing_unit = null;
     public string $kind;
-    public ?string $plan = null;
+    public mixed $plan = null;
     public ?int $quoted_credits_cents = null;
     public ?int $quoted_price_cents = null;
     public string $request_key;
@@ -16960,8 +16548,8 @@ class SparkCreditUsageTotal
     public string $inference_usd;
 }
 
-/** Request payload for SparkCreditUsageTotal#list. */
-class SparkCreditUsageTotalListMatch
+/** Request payload for SparkCreditUsageTotal#load. */
+class SparkCreditUsageTotalLoadMatch
 {
     public string $organization_id;
 }
@@ -17857,8 +17445,8 @@ class VcsSetting
     public array $sandbox_regions;
 }
 
-/** Request payload for VcsSetting#list. */
-class VcsSettingListMatch
+/** Request payload for VcsSetting#load. */
+class VcsSettingLoadMatch
 {
     public string $organization_id;
 }
@@ -18341,8 +17929,8 @@ class VerifyEmailVerification
 {
 }
 
-/** Request payload for VerifyEmailVerification#list. */
-class VerifyEmailVerificationListMatch
+/** Request payload for VerifyEmailVerification#load. */
+class VerifyEmailVerificationLoadMatch
 {
 }
 

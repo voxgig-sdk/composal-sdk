@@ -298,42 +298,6 @@ main: kit: entity: observability_clickhouse_cluster: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/observability/clickhouse_clusters"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/observability/clickhouse_clusters"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "observability"
-            }
-            {
-              lit: "clickhouse_clusters"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -385,6 +349,37 @@ main: kit: entity: observability_clickhouse_cluster: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/observability/clickhouse_clusters"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/observability/clickhouse_clusters"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "observability"
+            }
+            {
+              lit: "clickhouse_clusters"
             }
           ]
           t: {

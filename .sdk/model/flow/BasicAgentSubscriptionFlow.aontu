@@ -20,17 +20,23 @@ main: kit: flow: BasicAgentSubscriptionFlow:
     }
 
     {
+      i: {
+        ref: "agent_subscription_ref01",
+        srcdatavar: "agent_subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
       m: {
-        agent_id: "agent01",
+        id: "agent_subscription01",
         organization_id: "organization01"
       }
 
-      o: "list",
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "agent_subscription_ref01"
+            mark: "Mark01-agent_subscription_ref01"
           }
         }
       ]

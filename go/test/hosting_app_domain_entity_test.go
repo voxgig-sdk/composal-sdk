@@ -39,7 +39,7 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.HostingAppDomain(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.HostingAppDomain(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "hosting_app_domain." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,83 +65,11 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable\"}")
-			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, hosting_app_domainEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_HOSTING_APP_DOMAIN_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["hosting_app_domain01"]
-			}
-			livePace()
-			liveExisting(t, hosting_app_domainEntityLiveStrict, setup.data, "hosting_app_domain", "id", _liveId,
-				func() (any, error) {
-					return client.HostingAppDomain(nil).List(map[string]any{"app_id": setup.idmap["app01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		hostingAppDomainRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.hosting_app_domain")))
-		var hostingAppDomainRef01Data map[string]any
-		if len(hostingAppDomainRef01DataRaw) > 0 {
-			hostingAppDomainRef01Data = core.ToMapAny(hostingAppDomainRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = hostingAppDomainRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		hostingAppDomainRef01Ent := client.HostingAppDomain(nil)
-		hostingAppDomainRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		hostingAppDomainRef01ListResult, err := hostingAppDomainRef01Ent.List(hostingAppDomainRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, hostingAppDomainRef01ListOk := hostingAppDomainRef01ListResult.([]any)
-		if !hostingAppDomainRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", hostingAppDomainRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		hostingAppDomainRef01MatchDt0 := map[string]any{
-			"id": hostingAppDomainRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			hostingAppDomainRef01MatchDt0["app_id"] = v
-		} else {
-			hostingAppDomainRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		hostingAppDomainRef01DataDt0Loaded, err := hostingAppDomainRef01Ent.Load(hostingAppDomainRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		hostingAppDomainRef01DataDt0LoadResult := core.ToMapAny(entityData(hostingAppDomainRef01DataDt0Loaded))
-		if hostingAppDomainRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(hostingAppDomainRef01DataDt0LoadResult["id"], hostingAppDomainRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only hosting_app_domain.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"hosting_app_domain.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id}\"}")
+			t.Skip("Live coverage incomplete: hosting_app_domain.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable); hosting_app_domain.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/domains/{id}); hosting_app_domain.load.2 excluded (GET-only live run: reads a record only hosting_app_domain.create.0 gives); hosting_app_domain.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/domains/{id})")
+			return
 		}
 
 		if setup.live {
@@ -173,28 +101,6 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		}
 		if hostingAppDomainRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		hostingAppDomainRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		hostingAppDomainRef01ListResult, err := hostingAppDomainRef01Ent.List(hostingAppDomainRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		hostingAppDomainRef01List, hostingAppDomainRef01ListOk := hostingAppDomainRef01ListResult.([]any)
-		if !hostingAppDomainRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", hostingAppDomainRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(hostingAppDomainRef01List), map[string]any{"id": hostingAppDomainRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		if setup.live {
@@ -232,11 +138,6 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		hostingAppDomainRef01MatchDt0 := map[string]any{
 			"id": hostingAppDomainRef01Data["id"],
 		}
-		if v := setup.idmap["app_id"]; v != nil {
-			hostingAppDomainRef01MatchDt0["app_id"] = v
-		} else {
-			hostingAppDomainRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
 		hostingAppDomainRef01DataDt0Loaded, err := hostingAppDomainRef01Ent.Load(hostingAppDomainRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -264,28 +165,6 @@ func TestHostingAppDomainEntity(t *testing.T) {
 		_, err = hostingAppDomainRef01Ent.Remove(hostingAppDomainRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		hostingAppDomainRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		hostingAppDomainRef01ListRt0Result, err := hostingAppDomainRef01Ent.List(hostingAppDomainRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		hostingAppDomainRef01ListRt0, hostingAppDomainRef01ListRt0Ok := hostingAppDomainRef01ListRt0Result.([]any)
-		if !hostingAppDomainRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", hostingAppDomainRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(hostingAppDomainRef01ListRt0), map[string]any{"id": hostingAppDomainRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

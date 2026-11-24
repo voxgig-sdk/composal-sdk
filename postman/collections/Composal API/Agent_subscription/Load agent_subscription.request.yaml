@@ -1,0 +1,22 @@
+$kind: http-request
+id: f77418d8-9927-55de-af48-1c9d0b5870d7
+description: |-
+  The `load` operation of **agent_subscription**.
+
+  SDK: `client.AgentSubscription().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/subscriptions"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: refresh_provider
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_subscription belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_subscription belongs to.
+order: 1000

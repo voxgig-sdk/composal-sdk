@@ -33,7 +33,7 @@ class SparkCreditEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SparkCredit(null)->list(["organization_id" => 1], null);
+            $client->SparkCredit(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SparkCreditEntityTest extends TestCase
         $setup = spark_credit_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "spark_credit." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,14 +54,7 @@ class SparkCreditEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"spark_credit.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{org_slug}/spark_credits"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"spark_credit.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPARK_CREDIT_ENTID");
-                }
-            }
-        }
+            fwrite(STDOUT, 'LIVE STEP {"id":"spark_credit.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits"}' . "\n");
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -75,14 +68,11 @@ class SparkCreditEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $spark_credit_ref01_ent = $client->SparkCredit(null);
-        $spark_credit_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $spark_credit_ref01_list_result = $spark_credit_ref01_ent->list($spark_credit_ref01_match, null);
-        $this->assertIsArray($spark_credit_ref01_list_result);
+        $spark_credit_ref01_match_dt0 = [];
+        $spark_credit_ref01_data_dt0_loaded = $spark_credit_ref01_ent->load($spark_credit_ref01_match_dt0, null);
+        $this->assertNotNull($spark_credit_ref01_data_dt0_loaded);
 
             return;
         }
@@ -112,17 +102,6 @@ class SparkCreditEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $spark_credit_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $spark_credit_ref01_list_result = $spark_credit_ref01_ent->list($spark_credit_ref01_match, null);
-        $this->assertIsArray($spark_credit_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $spark_credit_ref01_data_up0_up = [
         ];
@@ -135,6 +114,14 @@ class SparkCreditEntityTest extends TestCase
         $spark_credit_ref01_resdata_up0 = Helpers::to_map(is_object($spark_credit_ref01_resdata_up0_result) && method_exists($spark_credit_ref01_resdata_up0_result, 'data_get') ? $spark_credit_ref01_resdata_up0_result->data_get() : $spark_credit_ref01_resdata_up0_result);
         $this->assertNotNull($spark_credit_ref01_resdata_up0);
         $this->assertEquals($spark_credit_ref01_resdata_up0[$spark_credit_ref01_markdef_up0_name], $spark_credit_ref01_markdef_up0_value);
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
+        // LOAD
+        $spark_credit_ref01_match_dt0 = [];
+        $spark_credit_ref01_data_dt0_loaded = $spark_credit_ref01_ent->load($spark_credit_ref01_match_dt0, null);
+        $this->assertNotNull($spark_credit_ref01_data_dt0_loaded);
 
     }
 }

@@ -1,4 +1,4 @@
 $kind: collection
 id: "4f1924bf-74a2-546c-8338-6ee29663ec8a"
 description: "The `BasicLocalThreadDeliveryFlow` flow of **local_thread_delivery**."
-order: 249000
+order: 240000

@@ -33,7 +33,7 @@ class AgentSessionCheckpointEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentSessionCheckpoint(null)->list(["agent_session_id" => 1, "organization_id" => 'x', "repo_id" => 'x'], null);
+            $client->AgentSessionCheckpoint(null)->load(["agent_session_id" => 1, "organization_id" => 'x', "repo_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AgentSessionCheckpointEntityTest extends TestCase
         $setup = agent_session_checkpoint_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_session_checkpoint." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,61 +54,8 @@ class AgentSessionCheckpointEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"agent_session_checkpoint.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["agent_session01", "organization01", "repo01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SESSION_CHECKPOINT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["agent_session_checkpoint01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "agent_session_checkpoint",
-                fn() => $client->AgentSessionCheckpoint(null)->list(["agent_session_id" => $setup["idmap"]["agent_session01"] ?? null, "organization_id" => $setup["idmap"]["organization01"] ?? null, "repo_id" => $setup["idmap"]["repo01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $agent_session_checkpoint_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.agent_session_checkpoint")));
-        $agent_session_checkpoint_ref01_data = null;
-        if (count($agent_session_checkpoint_ref01_data_raw) > 0) {
-            $agent_session_checkpoint_ref01_data = Helpers::to_map($agent_session_checkpoint_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $agent_session_checkpoint_ref01_ent = $client->AgentSessionCheckpoint(null);
-        $agent_session_checkpoint_ref01_match = [
-            "agent_session_id" => $setup["idmap"]["agent_session01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $agent_session_checkpoint_ref01_list_result = $agent_session_checkpoint_ref01_ent->list($agent_session_checkpoint_ref01_match, null);
-        $this->assertIsArray($agent_session_checkpoint_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $agent_session_checkpoint_ref01_match_dt0 = [
-            "id" => $agent_session_checkpoint_ref01_data["id"],
-        ];
-        $agent_session_checkpoint_ref01_match_dt0["agent_session_id"] = $setup["idmap"]["agent_session_id"] ?? $setup["idmap"]["agent_session01"] ?? null;
-        $agent_session_checkpoint_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $agent_session_checkpoint_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
-        $agent_session_checkpoint_ref01_data_dt0_loaded = $agent_session_checkpoint_ref01_ent->load($agent_session_checkpoint_ref01_match_dt0, null);
-        $agent_session_checkpoint_ref01_data_dt0_load_result = Helpers::to_map(is_object($agent_session_checkpoint_ref01_data_dt0_loaded) && method_exists($agent_session_checkpoint_ref01_data_dt0_loaded, 'data_get') ? $agent_session_checkpoint_ref01_data_dt0_loaded->data_get() : $agent_session_checkpoint_ref01_data_dt0_loaded);
-        $this->assertNotNull($agent_session_checkpoint_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($agent_session_checkpoint_ref01_data_dt0_load_result["id"] ?? null, $agent_session_checkpoint_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_session_checkpoint.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only agent_session_checkpoint.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: agent_session_checkpoint.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize); agent_session_checkpoint.load.1 excluded (GET-only live run: reads a record only agent_session_checkpoint.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -139,29 +86,10 @@ class AgentSessionCheckpointEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $agent_session_checkpoint_ref01_match = [
-            "agent_session_id" => $setup["idmap"]["agent_session01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $agent_session_checkpoint_ref01_list_result = $agent_session_checkpoint_ref01_ent->list($agent_session_checkpoint_ref01_match, null);
-        $this->assertIsArray($agent_session_checkpoint_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($agent_session_checkpoint_ref01_list_result),
-            ["id" => $agent_session_checkpoint_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $agent_session_checkpoint_ref01_match_dt0 = [
             "id" => $agent_session_checkpoint_ref01_data["id"],
         ];
-        $agent_session_checkpoint_ref01_match_dt0["agent_session_id"] = $setup["idmap"]["agent_session_id"] ?? $setup["idmap"]["agent_session01"] ?? null;
         $agent_session_checkpoint_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $agent_session_checkpoint_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
         $agent_session_checkpoint_ref01_data_dt0_loaded = $agent_session_checkpoint_ref01_ent->load($agent_session_checkpoint_ref01_match_dt0, null);

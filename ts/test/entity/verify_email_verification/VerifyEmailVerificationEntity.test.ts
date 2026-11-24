@@ -41,65 +41,19 @@ describe('VerifyEmailVerificationEntity', async () => {
   })
 
 
-  class FailHook extends BaseFeature {
-    name = 'failhook'
-    version = '0.0.1'
-    active = true
-    unexpected = 0
-    init() { }
-    PreSpec() { throw new Error('verify_email_verification hook failed') }
-    PreUnexpected() { this.unexpected++ }
-  }
-
-  test('stream-error', async () => {
-    const offline = { net: { offline: true } }
-    await assert.rejects(async () => {
-      for await (const _item of ComposalSDK.test(offline).VerifyEmailVerification().stream('list')) { }
-    }, /offline/)
-
-    for await (const _item of ComposalSDK.test(offline).VerifyEmailVerification()
-      .stream('list', undefined, { ctrl: { throw: false } })) { }
-
-    if (null != (config as any).feature?.rbac) {
-      const denied = ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
-      await assert.rejects(async () => {
-        for await (const _item of denied.VerifyEmailVerification().stream('list')) { }
-      }, (err: any) => 'rbac_denied' === err.code)
-    }
-  })
-
-  test('stream-ctrl', async () => {
-    const explain: any = {}
-    const ctrl: any = { explain }
-    for await (const _item of ComposalSDK.test().VerifyEmailVerification().stream('list', undefined, { ctrl })) { }
-    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
-    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
-  })
-
-  test('unexpected', async () => {
-    const hook = new FailHook()
-    const client = new ComposalSDK({ feature: { test: { active: true } }, extend: [hook] })
-    await assert.rejects(client.VerifyEmailVerification().list(), /hook failed/)
-    assert(0 < hook.unexpected)
-
-    const fired = hook.unexpected
-    assert.strictEqual(await client.VerifyEmailVerification().list(undefined, { throw: false }), undefined)
-    assert(fired < hook.unexpected)
-  })
-
 
 
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of ['load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'verify_email_verification.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"verify_email_verification","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/email_verifications/verify","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/email_verifications/verify","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"email_verifications"},{"lit":"verify"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"verify_email_verification","name__orig":"verify_email_verification","Name":"VerifyEmailVerification","name_":"verify_email_verification","name-":"verify-email-verification","NAME":"VERIFY_EMAIL_VERIFICATION","index$":541}, {"active":true,"entity":"verify_email_verification","key$":"BasicVerifyEmailVerificationFlow","kind":"basic","name":"BasicVerifyEmailVerificationFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"verify_email_verification_ref01"}}],"index$":0}]}, 'VerifyEmailVerification', {"GET /api/v1/email_verifications/verify":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"verify_email_verification","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/email_verifications/verify","source":"openapi3","version":2},"g":{},"k":"http","m":"GET","o":"/api/v1/email_verifications/verify","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"email_verifications"},{"lit":"verify"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"verify_email_verification","name__orig":"verify_email_verification","Name":"VerifyEmailVerification","name_":"verify_email_verification","name-":"verify-email-verification","NAME":"VERIFY_EMAIL_VERIFICATION","index$":541}, {"active":true,"entity":"verify_email_verification","key$":"BasicVerifyEmailVerificationFlow","kind":"basic","name":"BasicVerifyEmailVerificationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"verify_email_verification_ref01","srcdatavar":"verify_email_verification_ref01_data","suffix":"_dt0"},"m":{},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-verify_email_verification_ref01"}}],"index$":0}]}, 'VerifyEmailVerification', {"GET /api/v1/email_verifications/verify":{"protocol":"http","parameters":[]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,11 +63,11 @@ describe('VerifyEmailVerificationEntity', async () => {
 
     let verify_email_verification_ref01_data = Object.values(setup.data.existing.verify_email_verification)[0] as any
 
-    // LIST
+    // LOAD
     const verify_email_verification_ref01_ent = client.VerifyEmailVerification()
-    const verify_email_verification_ref01_match: any = {}
-
-    const verify_email_verification_ref01_list = (await verify_email_verification_ref01_ent.list(verify_email_verification_ref01_match)).map((e: any) => e.data())
+    const verify_email_verification_ref01_match_dt0: any = {}
+    const verify_email_verification_ref01_data_dt0 = (await verify_email_verification_ref01_ent.load(verify_email_verification_ref01_match_dt0)).data()
+    assert(null != verify_email_verification_ref01_data_dt0)
 
 
   })

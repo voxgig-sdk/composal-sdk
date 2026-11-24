@@ -37,7 +37,7 @@ class TestPreviewSharingApprovalEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.PreviewSharingApproval(None).list({"app_id": 1, "preview_id": "x"}, None)
+            client.PreviewSharingApproval(None).load({"app_id": 1, "preview_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestPreviewSharingApprovalEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "preview_sharing_approval." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -75,21 +75,14 @@ class TestPreviewSharingApprovalEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        preview_sharing_approval_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_id": setup["idmap"]["preview01"],
-        }
-
-        preview_sharing_approval_ref01_list_result = preview_sharing_approval_ref01_ent.list(preview_sharing_approval_ref01_match, None)
-        assert isinstance(preview_sharing_approval_ref01_list_result, list)
+        # LOAD
+        preview_sharing_approval_ref01_match_dt0 = {}
+        preview_sharing_approval_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
+        preview_sharing_approval_ref01_data_dt0_loaded = preview_sharing_approval_ref01_ent.load(preview_sharing_approval_ref01_match_dt0, None)
+        assert preview_sharing_approval_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["app01", "preview01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_PREVIEW_SHARING_APPROVAL_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -101,15 +94,12 @@ class TestPreviewSharingApprovalEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         preview_sharing_approval_ref01_ent = client.PreviewSharingApproval(None)
-        preview_sharing_approval_ref01_match = {
-            "app_id": setup["idmap"]["app01"],
-            "preview_id": setup["idmap"]["preview01"],
-        }
-
-        preview_sharing_approval_ref01_list_result = preview_sharing_approval_ref01_ent.list(preview_sharing_approval_ref01_match, None)
-        assert isinstance(preview_sharing_approval_ref01_list_result, list)
+        preview_sharing_approval_ref01_match_dt0 = {}
+        preview_sharing_approval_ref01_match_dt0["app_id"] = setup["idmap"].get("app_id") or setup["idmap"].get("app01")
+        preview_sharing_approval_ref01_data_dt0_loaded = preview_sharing_approval_ref01_ent.load(preview_sharing_approval_ref01_match_dt0, None)
+        assert preview_sharing_approval_ref01_data_dt0_loaded is not None
 
 
 

@@ -494,8 +494,8 @@
 <a href="../api/space_dns_record.html">SpaceDnsRecord</a>
 <a aria-current="page" href="../api/space_enrollment_token.html">SpaceEnrollmentToken</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1networkingspacesspace_idenrollment_tokensidrevoke">POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke</a>
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idenrollment_tokens">POST /api/v1/networking/spaces/{space_id}/enrollment_tokens</a>
-<a class="nav-section" href="#get-apiv1networkingspacesspace_idenrollment_tokens">GET /api/v1/networking/spaces/{space_id}/enrollment_tokens</a>
 <a class="nav-section" href="#get-apiv1networkingspacesspace_idenrollment_tokensid">GET /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</a>
+<a class="nav-section" href="#get-apiv1networkingspacesspace_idenrollment_tokens">GET /api/v1/networking/spaces/{space_id}/enrollment_tokens</a>
 <a class="nav-section" href="#patch-apiv1networkingspacesspace_idenrollment_tokensid">PATCH /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</a>
 <a class="nav-section" href="#delete-apiv1networkingspacesspace_idenrollment_tokensid">DELETE /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</a>
 <a class="nav-section" href="#put-apiv1networkingspacesspace_idenrollment_tokensid">PUT /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</a></div>
@@ -615,13 +615,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspacesspace_idenrollment_tokens"><code>/api/v1/networking/spaces/{space_id}/enrollment_tokens</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1networkingspacesspace_idenrollment_tokensid"><code>/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspacesspace_idenrollment_tokensid"><code>/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</code></a></td>
+<td><a href="#get-apiv1networkingspacesspace_idenrollment_tokens"><code>/api/v1/networking/spaces/{space_id}/enrollment_tokens</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -649,12 +649,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">space_enrollment_tokens, err := client.SpaceEnrollmentToken(nil).List(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(space_enrollment_tokens)
-space_enrollment_token, err := client.SpaceEnrollmentToken(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">space_enrollment_token, err := client.SpaceEnrollmentToken(nil).Load(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -682,8 +677,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local space_enrollment_tokens, err = client:SpaceEnrollmentToken():list({ space_id = &quot;example&quot; })
-local space_enrollment_token, err = client:SpaceEnrollmentToken():load({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
+<pre><code class="language-lua">local space_enrollment_token, err = client:SpaceEnrollmentToken():load({ space_id = &quot;example&quot; })
 local created, err = client:SpaceEnrollmentToken():create({ space_id = &quot;example&quot; })
 local updated, err = client:SpaceEnrollmentToken():update({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
 local patched, err = client:SpaceEnrollmentToken():patch({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
@@ -691,8 +685,7 @@ local removed, err = client:SpaceEnrollmentToken():remove({ id = &quot;example_i
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$space_enrollment_tokens = $client-&gt;SpaceEnrollmentToken()-&gt;list([&quot;space_id&quot; =&gt; &quot;example&quot;]);
-$space_enrollment_token = $client-&gt;SpaceEnrollmentToken()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$space_enrollment_token = $client-&gt;SpaceEnrollmentToken()-&gt;load([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SpaceEnrollmentToken()-&gt;create([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;SpaceEnrollmentToken()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;SpaceEnrollmentToken()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
@@ -700,8 +693,7 @@ $client-&gt;SpaceEnrollmentToken()-&gt;remove([&quot;id&quot; =&gt; &quot;exampl
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">space_enrollment_tokens = client.SpaceEnrollmentToken().list({&quot;space_id&quot;: &quot;example&quot;})
-space_enrollment_token = client.SpaceEnrollmentToken().load({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">space_enrollment_token = client.SpaceEnrollmentToken().load({&quot;space_id&quot;: &quot;example&quot;})
 created = client.SpaceEnrollmentToken().create({ &quot;space_id&quot;: &quot;example&quot; })
 updated = client.SpaceEnrollmentToken().update({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
 patched = client.SpaceEnrollmentToken().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
@@ -709,8 +701,7 @@ client.SpaceEnrollmentToken().remove({&quot;id&quot;: &quot;example_id&quot;, &q
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">space_enrollment_tokens = client.SpaceEnrollmentToken.list({ &quot;space_id&quot; =&gt; &quot;example&quot; })
-space_enrollment_token = client.SpaceEnrollmentToken.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">space_enrollment_token = client.SpaceEnrollmentToken.load({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 created = client.SpaceEnrollmentToken.create({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 updated = client.SpaceEnrollmentToken.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
 patched = client.SpaceEnrollmentToken.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
@@ -718,8 +709,7 @@ client.SpaceEnrollmentToken.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const space_enrollment_tokens = await client.SpaceEnrollmentToken().list({ space_id: &quot;example&quot; })
-const space_enrollment_token = await client.SpaceEnrollmentToken().load({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
+<pre><code class="language-ts">const space_enrollment_token = await client.SpaceEnrollmentToken().load({ space_id: &quot;example&quot; })
 const created = await client.SpaceEnrollmentToken().create({ space_id: &quot;example&quot; })
 const updated = await client.SpaceEnrollmentToken().update({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
 const patched = await client.SpaceEnrollmentToken().patch({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
@@ -824,9 +814,9 @@ await client.SpaceEnrollmentToken().remove({ id: &quot;example_id&quot;, space_i
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1networkingspacesspace_idenrollment_tokens" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/enrollment_tokens</h3>
-<p>Operation ID: <code>api_v1_space_enrollment_tokens</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1networkingspacesspace_idenrollment_tokensid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</h3>
+<p>Operation ID: <code>api_v1_space_enrollment_token</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -847,6 +837,13 @@ await client.SpaceEnrollmentToken().remove({ id: &quot;example_id&quot;, space_i
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-2">Responses</h4>
@@ -858,9 +855,8 @@ await client.SpaceEnrollmentToken().remove({ id: &quot;example_id&quot;, space_i
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1networkingspacesspace_idenrollment_tokensid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}</h3>
-<p>Operation ID: <code>api_v1_space_enrollment_token</code>.</p>
+<h3 id="get-apiv1networkingspacesspace_idenrollment_tokens" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/enrollment_tokens</h3>
+<p>Operation ID: <code>api_v1_space_enrollment_tokens</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -876,13 +872,6 @@ await client.SpaceEnrollmentToken().remove({ id: &quot;example_id&quot;, space_i
 <tbody>
 <tr>
 <td><code>space_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

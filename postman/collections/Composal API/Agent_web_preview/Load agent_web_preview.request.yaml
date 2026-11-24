@@ -1,0 +1,17 @@
+$kind: http-request
+id: "6f9680c9-9994-5a28-bda3-a9f36764495b"
+description: |-
+  The `load` operation of **agent_web_preview**.
+
+  SDK: `client.AgentWebPreview().load({ token: "example" })`
+url: "{{base}}/api/v1/agent_web_previews?token={{agent_web_preview_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: asset
+    value: ""
+    disabled: true
+  - key: token
+    value: "{{agent_web_preview_id}}"
+order: 1000

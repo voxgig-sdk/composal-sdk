@@ -2370,23 +2370,23 @@ admin_org = client.AdminOrg
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update |
-| --- | --- | --- | --- | --- |
-| `billing_email` | - | - | - | - |
-| `billing_reason` | - | - | - | - |
-| `customize_onboarding_packages` | - | - | - | - |
-| `deployment_usage_visibility` | - | - | - | - |
-| `deployment_usage_visible` | - | - | - | - |
-| `id` | - | - | - | - |
-| `monthly_price_dollars` | - | - | - | - |
-| `monthly_price_override_cents` | - | - | - | - |
-| `name` | - | - | - | - |
-| `onboarding_custom_pricing` | - | - | - | - |
-| `onboarding_package_keys` | - | - | - | - |
-| `owner_email` | - | - | - | - |
-| `package_id` | - | - | Yes | - |
-| `skip_payment` | - | - | - | - |
-| `slug` | - | - | - | - |
+| Field | load | create | update |
+| --- | --- | --- | --- |
+| `billing_email` | - | - | - |
+| `billing_reason` | - | - | - |
+| `customize_onboarding_packages` | - | - | - |
+| `deployment_usage_visibility` | - | - | - |
+| `deployment_usage_visible` | - | - | - |
+| `id` | - | - | - |
+| `monthly_price_dollars` | - | - | - |
+| `monthly_price_override_cents` | - | - | - |
+| `name` | - | - | - |
+| `onboarding_custom_pricing` | - | - | - |
+| `onboarding_package_keys` | - | - | - |
+| `owner_email` | - | - | - |
+| `package_id` | - | Yes | - |
+| `skip_payment` | - | - | - |
+| `slug` | - | - | - |
 
 ### Operations
 
@@ -2400,15 +2400,6 @@ result = client.AdminOrg.create({
   "owner_email" => "example_owner_email", # String
   "slug" => "example_slug", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AdminOrg.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -2642,12 +2633,9 @@ agent_app = client.AgentApp
 | `hidden_install_count` | `Integer` | Yes | Installs by agents the viewer cannot open |
 | `id` | `String` | Yes |  |
 | `install_count` | `Integer` | Yes |  |
-| `install_targets` | `Array` | Yes | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `Array` | Yes |  |
 | `installed_target_ids` | `Array` | Yes | Install targets of the viewer that have this app installed |
-| `items` | `Array` | Yes |  |
 | `mcp_url` | `Object` | Yes |  |
-| `next_cursor` | `Object` | Yes | Pass as cursor to load older apps |
 | `owner` | `Hash` | Yes | The person who controls the author agent |
 | `thread` | `Object` | Yes | The thread that published the app, when the viewer can open the author agent |
 | `title` | `String` | Yes |  |
@@ -3836,13 +3824,12 @@ agent_event = client.AgentEvent
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentEvent.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentEvent.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -4051,15 +4038,6 @@ result = client.AgentIntegration.create({
   "name" => "example_name", # String
   "toolkit" => "example_toolkit", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AgentIntegration.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -5201,13 +5179,12 @@ agent_repository = client.AgentRepository
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentRepository.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentRepository.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -5621,15 +5598,6 @@ result = client.AgentSessionCheckpoint.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AgentSessionCheckpoint.list({ "agent_session_id" => "example", "organization_id" => "example", "repo_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -5742,13 +5710,12 @@ agent_setting = client.AgentSetting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentSetting.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentSetting.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -5950,15 +5917,6 @@ result = client.AgentSkill.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AgentSkill.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -6134,13 +6092,12 @@ result = client.AgentSubscription.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentSubscription.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentSubscription.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -6471,15 +6428,6 @@ result = client.AgentThread.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AgentThread.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -6645,8 +6593,11 @@ agent_verify_project = client.AgentVerifyProject
 | `available` | `Boolean` | Yes | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `Boolean` | Yes | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `Integer` | Yes |  |
+| `id` | `String` | Yes |  |
+| `name` | `String` | Yes |  |
 | `project_choices` | `Array` | Yes | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `Boolean` | Yes |  |
+| `slug` | `String` | Yes |  |
 | `verify_projects` | `Array` | Yes |  |
 | `version` | `Integer` | Yes |  |
 
@@ -6768,13 +6719,12 @@ agent_web_preview = client.AgentWebPreview
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentWebPreview.list({ "token" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentWebPreview.load({ "token" => "token" })
 ```
 
 ### Common Methods
@@ -6978,13 +6928,12 @@ result = client.AgentWorkflow.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AgentWorkflow.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AgentWorkflow.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -7582,15 +7531,6 @@ result = client.AlertRuleEvent.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AlertRuleEvent.list({ "alert_rule_id" => "example", "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -7661,13 +7601,12 @@ allocation_log = client.AllocationLog
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AllocationLog.list({ "allocation_id" => "example", "app_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.AllocationLog.load({ "allocation_id" => "allocation_id", "app_id" => "app_id" })
 ```
 
 ### Common Methods
@@ -7889,13 +7828,12 @@ app_access_jwk = client.AppAccessJwk
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AppAccessJwk.list
-results.each { |item| puts item.data_get }
+result = client.AppAccessJwk.load()
 ```
 
 ### Common Methods
@@ -7968,35 +7906,35 @@ app_cdn = client.AppCdn
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | Yes | Yes | - |
-| `app_service_id` | - | - | Yes | Yes | Yes | - |
-| `cache_path_prefix` | - | - | - | - | - | - |
-| `cache_settings_json` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `distribution_kind` | - | - | Yes | Yes | Yes | - |
-| `edge_hostname` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostnames` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `last_deployed_at` | - | - | - | - | - | - |
-| `last_deployed_at_label` | - | - | - | - | - | - |
-| `last_purged_at` | - | - | - | - | - | - |
-| `last_purged_at_label` | - | - | - | - | - | - |
-| `last_synced_at` | - | - | - | - | - | - |
-| `last_synced_at_label` | - | - | - | - | - | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `origin_url` | - | - | - | Yes | Yes | - |
-| `provisioned` | - | - | - | - | - | - |
-| `routing_settings_json` | - | - | Yes | Yes | Yes | - |
-| `security_settings_json` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | Yes | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | Yes | Yes | - |
+| `app_service_id` | - | Yes | Yes | Yes | - |
+| `cache_path_prefix` | - | - | - | - | - |
+| `cache_settings_json` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `distribution_kind` | - | Yes | Yes | Yes | - |
+| `edge_hostname` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostnames` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `last_deployed_at` | - | - | - | - | - |
+| `last_deployed_at_label` | - | - | - | - | - |
+| `last_purged_at` | - | - | - | - | - |
+| `last_purged_at_label` | - | - | - | - | - |
+| `last_synced_at` | - | - | - | - | - |
+| `last_synced_at_label` | - | - | - | - | - |
+| `name` | - | - | Yes | Yes | - |
+| `origin_url` | - | - | Yes | Yes | - |
+| `provisioned` | - | - | - | - | - |
+| `routing_settings_json` | - | Yes | Yes | Yes | - |
+| `security_settings_json` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | Yes | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8011,15 +7949,6 @@ result = client.AppCdn.create({
   "origin_url" => "example_origin_url", # String
   "slug" => "example_slug", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppCdn.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -8118,21 +8047,21 @@ app_config_variable = client.AppConfigVariable
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `description` | - | - | Yes | - | - | - |
-| `exposed_to_build` | - | - | - | - | - | - |
-| `has_value` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `key` | - | - | - | - | - | - |
-| `scope_kind` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `value` | - | - | Yes | - | - | - |
-| `value_kind` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `description` | - | Yes | - | - | - |
+| `exposed_to_build` | - | - | - | - | - |
+| `has_value` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `key` | - | - | - | - | - |
+| `scope_kind` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `value` | - | Yes | - | - | - |
+| `value_kind` | - | - | - | - | - |
 
 ### Operations
 
@@ -8148,15 +8077,6 @@ result = client.AppConfigVariable.create({
   "scope_kind" => "example_scope_kind", # String
   "value_kind" => "example_value_kind", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppConfigVariable.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -8260,26 +8180,26 @@ app_data_resource = client.AppDataResource
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `engine` | - | - | - | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `high_availability` | - | - | Yes | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `plan` | - | - | Yes | - | - | - |
-| `provider_metadata` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `storage_gb` | - | - | Yes | - | - | - |
-| `storage_label` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `version` | - | - | Yes | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `engine` | - | - | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `high_availability` | - | Yes | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `name` | - | - | - | - | - |
+| `plan` | - | Yes | - | - | - |
+| `provider_metadata` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `storage_gb` | - | Yes | - | - | - |
+| `storage_label` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `version` | - | Yes | - | - | - |
 
 ### Operations
 
@@ -8295,15 +8215,6 @@ result = client.AppDataResource.create({
   "name" => "example_name", # String
   "slug" => "example_slug", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppDataResource.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -8489,42 +8400,42 @@ app_deployment = client.AppDeployment
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | Yes | - | - | - |
-| `app_service_placement_id` | - | - | - | - | - | - |
-| `artifact_locator` | - | - | Yes | - | - | - |
-| `build_role` | - | - | - | - | - | - |
-| `commit_sha` | - | - | Yes | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `creator_user_id` | - | - | - | - | - | - |
-| `deployed_url` | - | - | Yes | - | - | - |
-| `display_id` | - | - | - | - | - | - |
-| `failure_message` | - | - | Yes | - | - | - |
-| `finished_at` | - | - | Yes | - | - | - |
-| `finished_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `idempotency_key` | - | - | - | - | - | - |
-| `is_rollback` | - | - | - | - | - | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `number` | - | - | - | - | - | - |
-| `operation_key` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `rollback_reason` | - | - | - | - | - | - |
-| `rollback_source_deployment_id` | - | - | - | - | - | - |
-| `rollback_source_release_id` | - | - | - | - | - | - |
-| `rollback_target_release_id` | - | - | - | - | - | - |
-| `source_ref` | - | - | Yes | - | - | - |
-| `started_at` | - | - | Yes | - | - | - |
-| `started_at_label` | - | - | - | - | - | - |
-| `status` | - | - | Yes | - | - | - |
-| `trigger_kind` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | Yes | - | - | - |
+| `app_service_placement_id` | - | - | - | - | - |
+| `artifact_locator` | - | Yes | - | - | - |
+| `build_role` | - | - | - | - | - |
+| `commit_sha` | - | Yes | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `creator_user_id` | - | - | - | - | - |
+| `deployed_url` | - | Yes | - | - | - |
+| `display_id` | - | - | - | - | - |
+| `failure_message` | - | Yes | - | - | - |
+| `finished_at` | - | Yes | - | - | - |
+| `finished_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `idempotency_key` | - | - | - | - | - |
+| `is_rollback` | - | - | - | - | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `number` | - | - | - | - | - |
+| `operation_key` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `rollback_reason` | - | - | - | - | - |
+| `rollback_source_deployment_id` | - | - | - | - | - |
+| `rollback_source_release_id` | - | - | - | - | - |
+| `rollback_target_release_id` | - | - | - | - | - |
+| `source_ref` | - | Yes | - | - | - |
+| `started_at` | - | Yes | - | - | - |
+| `started_at_label` | - | - | - | - | - |
+| `status` | - | Yes | - | - | - |
+| `trigger_kind` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8536,15 +8447,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.AppDeployment.create({
   "app_id" => "example_app_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppDeployment.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -8914,23 +8816,23 @@ app_environment = client.AppEnvironment
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `base_domain` | - | - | Yes | Yes | Yes | - |
-| `branch_pattern` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `location` | - | - | - | - | - | - |
-| `location_id` | - | - | - | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `status` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `base_domain` | - | Yes | Yes | Yes | - |
+| `branch_pattern` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | Yes | Yes | - |
+| `location` | - | - | - | - | - |
+| `location_id` | - | - | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `status` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -8948,15 +8850,6 @@ result = client.AppEnvironment.create({
   "slug" => "example_slug", # String
   "status" => "example_status", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppEnvironment.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -9190,15 +9083,6 @@ result = client.AppPreview.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppPreview.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -9292,18 +9176,18 @@ app_preview_profile = client.AppPreviewProfile
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `automatic` | - | - | - | - | - | - |
-| `configuration` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `name` | - | - | - | - | Yes | - |
-| `slug` | - | - | - | - | Yes | - |
-| `source_environment_id` | - | - | - | - | Yes | - |
-| `ttl_days` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `automatic` | - | - | - | - | - |
+| `configuration` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `name` | - | - | - | Yes | - |
+| `slug` | - | - | - | Yes | - |
+| `source_environment_id` | - | - | - | Yes | - |
+| `ttl_days` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -9318,15 +9202,6 @@ result = client.AppPreviewProfile.create({
   "slug" => "example_slug", # String
   "source_environment_id" => "example_source_environment_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppPreviewProfile.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -9421,15 +9296,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.AppRun.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppRun.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -9670,50 +9536,50 @@ app_service = client.AppService
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `auto_deploy` | - | - | - | Yes | Yes | - |
-| `bindings` | - | - | - | - | - | - |
-| `build_command` | - | - | Yes | Yes | Yes | - |
-| `cpu_label` | - | - | - | - | - | - |
-| `cpu_mhz` | - | - | Yes | Yes | Yes | - |
-| `created_at` | - | - | - | - | - | - |
-| `created_at_label` | - | - | - | - | - | - |
-| `deploy_paths` | - | - | Yes | Yes | Yes | - |
-| `desired_instances` | - | - | - | Yes | Yes | - |
-| `disk_label` | - | - | - | - | - | - |
-| `disk_mb` | - | - | Yes | Yes | Yes | - |
-| `effective_deploy_paths` | - | - | - | - | - | - |
-| `healthcheck_path` | - | - | Yes | Yes | Yes | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `internal_port` | - | - | Yes | Yes | Yes | - |
-| `kind` | - | - | - | Yes | Yes | - |
-| `memory_label` | - | - | - | - | - | - |
-| `memory_max_label` | - | - | - | - | - | - |
-| `memory_max_mb` | - | - | Yes | Yes | Yes | - |
-| `memory_mb` | - | - | Yes | Yes | Yes | - |
-| `name` | - | - | - | Yes | Yes | - |
-| `nomad_constraints_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_kill_timeout_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_namespace` | - | - | Yes | Yes | Yes | - |
-| `nomad_region` | - | - | Yes | Yes | Yes | - |
-| `nomad_shutdown_delay_seconds` | - | - | Yes | Yes | Yes | - |
-| `nomad_ulimits_json` | - | - | Yes | Yes | Yes | - |
-| `nomad_update_strategy_json` | - | - | Yes | Yes | Yes | - |
-| `prestart_command` | - | - | Yes | Yes | Yes | - |
-| `publicly_accessible` | - | - | - | Yes | Yes | - |
-| `release_command` | - | - | Yes | Yes | Yes | - |
-| `repo_source_path` | - | - | - | - | - | - |
-| `runtime` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_kind` | - | - | - | Yes | Yes | - |
-| `runtime_adapter_settings_json` | - | - | Yes | Yes | Yes | - |
-| `schedule` | - | - | Yes | Yes | Yes | - |
-| `slug` | - | - | - | Yes | Yes | - |
-| `source_path` | - | - | - | Yes | Yes | - |
-| `start_command` | - | - | - | Yes | Yes | - |
-| `updated_at` | - | - | - | - | - | - |
-| `updated_at_label` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `auto_deploy` | - | - | Yes | Yes | - |
+| `bindings` | - | - | - | - | - |
+| `build_command` | - | Yes | Yes | Yes | - |
+| `cpu_label` | - | - | - | - | - |
+| `cpu_mhz` | - | Yes | Yes | Yes | - |
+| `created_at` | - | - | - | - | - |
+| `created_at_label` | - | - | - | - | - |
+| `deploy_paths` | - | Yes | Yes | Yes | - |
+| `desired_instances` | - | - | Yes | Yes | - |
+| `disk_label` | - | - | - | - | - |
+| `disk_mb` | - | Yes | Yes | Yes | - |
+| `effective_deploy_paths` | - | - | - | - | - |
+| `healthcheck_path` | - | Yes | Yes | Yes | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `internal_port` | - | Yes | Yes | Yes | - |
+| `kind` | - | - | Yes | Yes | - |
+| `memory_label` | - | - | - | - | - |
+| `memory_max_label` | - | - | - | - | - |
+| `memory_max_mb` | - | Yes | Yes | Yes | - |
+| `memory_mb` | - | Yes | Yes | Yes | - |
+| `name` | - | - | Yes | Yes | - |
+| `nomad_constraints_json` | - | Yes | Yes | Yes | - |
+| `nomad_kill_timeout_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_namespace` | - | Yes | Yes | Yes | - |
+| `nomad_region` | - | Yes | Yes | Yes | - |
+| `nomad_shutdown_delay_seconds` | - | Yes | Yes | Yes | - |
+| `nomad_ulimits_json` | - | Yes | Yes | Yes | - |
+| `nomad_update_strategy_json` | - | Yes | Yes | Yes | - |
+| `prestart_command` | - | Yes | Yes | Yes | - |
+| `publicly_accessible` | - | - | Yes | Yes | - |
+| `release_command` | - | Yes | Yes | Yes | - |
+| `repo_source_path` | - | - | - | - | - |
+| `runtime` | - | - | Yes | Yes | - |
+| `runtime_adapter_kind` | - | - | Yes | Yes | - |
+| `runtime_adapter_settings_json` | - | Yes | Yes | Yes | - |
+| `schedule` | - | Yes | Yes | Yes | - |
+| `slug` | - | - | Yes | Yes | - |
+| `source_path` | - | - | Yes | Yes | - |
+| `start_command` | - | - | Yes | Yes | - |
+| `updated_at` | - | - | - | - | - |
+| `updated_at_label` | - | - | - | - | - |
 
 ### Operations
 
@@ -9735,15 +9601,6 @@ result = client.AppService.create({
   "source_path" => "example_source_path", # String
   "start_command" => "example_start_command", # Object
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppService.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -9838,15 +9695,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.AppServiceBinding.create({
   "app_id" => "example_app_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppServiceBinding.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -10031,29 +9879,29 @@ app_storage_resource = client.AppStorageResource
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `access_mode` | - | - | - | - | - | - |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `attachment` | - | - | - | - | - | - |
-| `capacity_gb` | - | - | Yes | - | - | - |
-| `capacity_label` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `ephemeral` | - | - | - | - | - | - |
-| `external_volume_id` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `location_code` | - | - | - | - | - | - |
-| `location_id` | - | - | Yes | - | - | - |
-| `mount_path` | - | - | Yes | - | - | - |
-| `name` | - | - | - | - | - | - |
-| `provider` | - | - | - | - | - | - |
-| `provider_error` | - | - | - | - | - | - |
-| `region` | - | - | Yes | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `access_mode` | - | - | - | - | - |
+| `app_environment_id` | - | Yes | - | - | - |
+| `attachment` | - | - | - | - | - |
+| `capacity_gb` | - | Yes | - | - | - |
+| `capacity_label` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `ephemeral` | - | - | - | - | - |
+| `external_volume_id` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `location_code` | - | - | - | - | - |
+| `location_id` | - | Yes | - | - | - |
+| `mount_path` | - | Yes | - | - | - |
+| `name` | - | - | - | - | - |
+| `provider` | - | - | - | - | - |
+| `provider_error` | - | - | - | - | - |
+| `region` | - | Yes | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -10071,15 +9919,6 @@ result = client.AppStorageResource.create({
   "slug" => "example_slug", # String
   "status" => "example_status", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.AppStorageResource.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -10552,15 +10391,6 @@ result = client.Artifact.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.Artifact.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -10650,15 +10480,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.ArtifactCacheNamespace.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ArtifactCacheNamespace.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -10752,15 +10573,6 @@ result = client.ArtifactImageRepository.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ArtifactImageRepository.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -10852,15 +10664,6 @@ result = client.ArtifactPackageMirror.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ArtifactPackageMirror.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -10950,15 +10753,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.ArtifactRetentionPolicy.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ArtifactRetentionPolicy.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -11457,13 +11251,12 @@ auth_registration_option = client.AuthRegistrationOption
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.AuthRegistrationOption.list
-results.each { |item| puts item.data_get }
+result = client.AuthRegistrationOption.load()
 ```
 
 ### Common Methods
@@ -11687,13 +11480,12 @@ result = client.BackendRunnerPool.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.BackendRunnerPool.list({ "backend_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.BackendRunnerPool.load({ "backend_id" => "backend_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -11701,7 +11493,7 @@ results.each { |item| puts item.data_get }
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.BackendRunnerPool.remove({ "id" => "backend_runner_pool_id", "backend_id" => "backend_id" })
+result = client.BackendRunnerPool.remove({ "backend_id" => "backend_id", "id" => "id" })
 ```
 
 ### Common Methods
@@ -11861,15 +11653,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.BazelBackend.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.BazelBackend.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -14057,15 +13840,6 @@ result = client.CacheNamespaceEntry.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CacheNamespaceEntry.list({ "cache_namespace_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -14214,15 +13988,6 @@ result = client.CdnDeployment.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CdnDeployment.list({ "app_id" => "example", "cdn_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -14283,17 +14048,17 @@ cdn_hostname = client.CdnHostname
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_cdn_distribution_id` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `force_ssl` | - | - | Yes | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `provider_hostname_id` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_cdn_distribution_id` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `force_ssl` | - | Yes | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `provider_hostname_id` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
 
 ### Operations
 
@@ -14307,15 +14072,6 @@ result = client.CdnHostname.create({
   "cdn_id" => "example_cdn_id", # String
   "hostname" => "example_hostname", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CdnHostname.list({ "app_id" => "example", "cdn_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -14414,15 +14170,6 @@ result = client.CdnSpace.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CdnSpace.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -14505,15 +14252,6 @@ cdn_space_object = client.CdnSpaceObject
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CdnSpaceObject.list({ "cdn_space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -14588,13 +14326,12 @@ change = client.Change
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.Change.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.Change.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -15899,15 +15636,6 @@ result = client.CiPipelineRun.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CiPipelineRun.list({ "pipeline_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -16201,18 +15929,13 @@ result = client.CliRelease.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.CliRelease.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.CliRelease.load()
+```
 
 ### Common Methods
 
@@ -17198,60 +16921,60 @@ deep_scan = client.DeepScan
 
 ### Field Usage by Operation
 
-| Field | load | list | create |
-| --- | --- | --- | --- |
-| `account_id` | - | - | - |
-| `active` | - | - | - |
-| `agent_filters` | - | - | - |
-| `agents` | - | - | - |
-| `can_continue` | - | - | - |
-| `chat_messages` | - | - | - |
-| `concurrency` | - | - | Yes |
-| `covered_areas` | - | - | - |
-| `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
-| `demo_project` | - | - | - |
-| `ended_early` | - | - | - |
-| `environment_id` | - | - | - |
-| `environment_name` | - | - | - |
-| `explorations` | - | - | - |
-| `explorer_activity` | - | - | - |
-| `finding_count` | - | - | - |
-| `findings` | - | - | - |
-| `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
-| `goal` | - | - | - |
-| `huntable_flows` | - | - | - |
-| `id` | - | - | - |
-| `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
-| `max_seconds` | - | - | Yes |
-| `max_testers` | - | - | Yes |
-| `mode` | - | - | - |
-| `next_scan_improvements` | - | - | - |
-| `observed_at` | - | - | - |
-| `onboarding` | - | - | - |
-| `pagination` | - | - | - |
-| `paywalled` | - | - | - |
-| `permissions` | - | - | - |
-| `priority_counts` | - | - | - |
-| `project_id` | - | - | - |
-| `related_explorations` | - | - | - |
-| `report` | - | - | - |
-| `reproduction_of` | - | - | - |
-| `reproductions` | - | - | - |
-| `saves_scenarios` | - | - | - |
-| `scannable_flows` | - | - | - |
-| `scenario_generation` | - | - | - |
-| `sign_in_needs_answer` | - | - | - |
-| `sign_in_outcome` | - | - | - |
-| `sign_in_question` | - | - | - |
-| `startup_retryable` | - | - | - |
-| `status` | - | - | - |
-| `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
-| `unlock` | - | - | - |
-| `web_url` | - | - | - |
+| Field | load | create |
+| --- | --- | --- |
+| `account_id` | - | - |
+| `active` | - | - |
+| `agent_filters` | - | - |
+| `agents` | - | - |
+| `can_continue` | - | - |
+| `chat_messages` | - | - |
+| `concurrency` | - | Yes |
+| `covered_areas` | - | - |
+| `created_at` | - | - |
+| `deadline_at` | - | - |
+| `demo_project` | - | - |
+| `ended_early` | - | - |
+| `environment_id` | - | - |
+| `environment_name` | - | - |
+| `explorations` | - | - |
+| `explorer_activity` | - | - |
+| `finding_count` | - | - |
+| `findings` | - | - |
+| `findings_fix_prompt` | - | - |
+| `finished_at` | - | - |
+| `goal` | - | - |
+| `huntable_flows` | - | - |
+| `id` | - | - |
+| `idempotency_key` | - | - |
+| `launch_options` | - | - |
+| `max_seconds` | - | Yes |
+| `max_testers` | - | Yes |
+| `mode` | - | - |
+| `next_scan_improvements` | - | - |
+| `observed_at` | - | - |
+| `onboarding` | - | - |
+| `pagination` | - | - |
+| `paywalled` | - | - |
+| `permissions` | - | - |
+| `priority_counts` | - | - |
+| `project_id` | - | - |
+| `related_explorations` | - | - |
+| `report` | - | - |
+| `reproduction_of` | - | - |
+| `reproductions` | - | - |
+| `saves_scenarios` | - | - |
+| `scannable_flows` | - | - |
+| `scenario_generation` | - | - |
+| `sign_in_needs_answer` | - | - |
+| `sign_in_outcome` | - | - |
+| `sign_in_question` | - | - |
+| `startup_retryable` | - | - |
+| `status` | - | - |
+| `time_limit_reached` | - | - |
+| `title` | - | - |
+| `unlock` | - | - |
+| `web_url` | - | - |
 
 ### Operations
 
@@ -17265,15 +16988,6 @@ result = client.DeepScan.create({
   "environment_id" => "example_environment_id", # String
   "goal" => "example_goal", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.DeepScan.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -17324,24 +17038,25 @@ deep_scan_finding = client.DeepScanFinding
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `finding_count` | `Integer` | Yes | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `Array` | Yes | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `Array` | Yes |  |
-| `findings_fix_prompt` | `Object` | Yes |  |
-| `free_findings_pending` | `Boolean` | Yes | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `String` | Yes |  |
+| `agent_id` | `String` | Yes |  |
+| `agent_title` | `String` | Yes |  |
+| `area` | `Object` | No | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `Array` | Yes | Checks in the same tester report that this finding cites. |
+| `confidence` | `String` | Yes |  |
+| `confirmed` | `Boolean` | No | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `Array` | No |  |
+| `evidence_timestamp_ms` | `Object` | Yes |  |
+| `expected` | `String` | Yes |  |
+| `fix_prompt` | `String` | Yes | A coding-agent prompt for this finding alone |
+| `has_recording` | `Boolean` | No | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `String` | Yes |  |
-| `mode` | `String` | Yes |  |
-| `permissions` | `Hash` | Yes |  |
-| `priority` | `Object` | Yes | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `Hash` | Yes |  |
-| `project_id` | `Object` | Yes |  |
-| `reproduction_of` | `Object` | Yes |  |
-| `reproductions` | `Array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `Boolean` | Yes | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `String` | Yes |  |
+| `locked` | `Boolean` | Yes | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `Array` | Yes |  |
+| `severity` | `String` | Yes |  |
 | `title` | `String` | Yes |  |
-| `unlock` | `Hash` | Yes | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `String` | Yes |  |
+| `tracked` | `Object` | Yes | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `String` | Yes |  |
 
 ### Operations
 
@@ -17464,13 +17179,12 @@ deep_scan_mapped_flow = client.DeepScanMappedFlow
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.DeepScanMappedFlow.list({ "organization_id" => "example", "environment_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.DeepScanMappedFlow.load({ "organization_id" => "organization_id", "environment_id" => "environment_id" })
 ```
 
 ### Common Methods
@@ -17833,13 +17547,12 @@ deployment_detail = client.DeploymentDetail
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.DeploymentDetail.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.DeploymentDetail.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -18593,13 +18306,12 @@ device_enterprise_relay = client.DeviceEnterpriseRelay
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.DeviceEnterpriseRelay.list
-results.each { |item| puts item.data_get }
+result = client.DeviceEnterpriseRelay.load()
 ```
 
 ### Common Methods
@@ -18729,16 +18441,18 @@ device_grant = client.DeviceGrant
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_grants` | `Array` | Yes |  |
-| `agent_choices` | `Array` | Yes | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `String` | Yes |  |
-| `all_agents_access` | `Boolean` | Yes | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `Object` | Yes |  |
+| `can_edit` | `Boolean` | Yes |  |
+| `can_revoke` | `Boolean` | Yes |  |
 | `capabilities` | `Array` | Yes |  |
-| `execution_available` | `Boolean` | Yes |  |
-| `grants` | `Array` | Yes |  |
-| `id` | `String` | No |  |
-| `next_cursor` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `id` | `String` | Yes |  |
 | `principal_id` | `String` | Yes |  |
+| `principal_name` | `Object` | Yes |  |
+| `revision` | `Integer` | Yes |  |
+| `revoked_at` | `Object` | Yes |  |
+| `updated_at` | `String` | Yes |  |
 
 ### Operations
 
@@ -19807,49 +19521,49 @@ environment = client.Environment
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `active_revision_id` | - | - | - | - | - | - |
-| `agent_sign_up_available` | - | - | - | - | - | - |
-| `allowed_actions` | - | - | Yes | - | Yes | - |
-| `billing` | - | - | - | - | - | - |
-| `cleanup` | - | - | - | - | - | - |
-| `connection` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `default_policy` | - | - | - | - | - | - |
-| `default_policy_json` | - | - | - | - | - | - |
-| `discovery_defaults` | - | - | - | - | - | - |
-| `environment` | - | - | - | - | - | - |
-| `exploration_accounts` | - | - | - | - | - | - |
-| `explorations` | - | - | - | - | - | - |
-| `first_run` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `imessage_number` | - | - | Yes | - | Yes | - |
-| `included_deep_scan` | - | - | - | - | - | - |
-| `lock_version` | - | - | - | - | - | - |
-| `managed_google_available` | - | - | - | - | - | - |
-| `managed_google_email` | - | - | - | - | - | - |
-| `messaging_tester_number` | - | - | - | - | - | - |
-| `name` | - | - | Yes | - | Yes | - |
-| `network_connections` | - | - | - | - | - | - |
-| `onboarding_discovery` | - | - | - | - | - | - |
-| `organization_id` | - | - | - | - | - | - |
-| `pending_accounts` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
-| `project_id` | - | - | Yes | - | - | - |
-| `repository_id` | - | - | Yes | - | - | - |
-| `revisions` | - | - | - | - | - | - |
-| `setup_discovery_id` | - | - | - | - | - | - |
-| `sign_in_check_available` | - | - | - | - | - | - |
-| `slug` | - | - | - | - | - | - |
-| `status` | - | - | - | - | - | - |
-| `target_kind` | - | - | Yes | - | - | - |
-| `target_url` | - | - | Yes | - | Yes | - |
-| `test_accounts` | - | - | - | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verify_network_connection_id` | - | - | - | - | Yes | - |
-| `version` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `active_revision_id` | - | - | - | - | - |
+| `agent_sign_up_available` | - | - | - | - | - |
+| `allowed_actions` | - | Yes | - | Yes | - |
+| `billing` | - | - | - | - | - |
+| `cleanup` | - | - | - | - | - |
+| `connection` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `default_policy` | - | - | - | - | - |
+| `default_policy_json` | - | - | - | - | - |
+| `discovery_defaults` | - | - | - | - | - |
+| `environment` | - | - | - | - | - |
+| `exploration_accounts` | - | - | - | - | - |
+| `explorations` | - | - | - | - | - |
+| `first_run` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `imessage_number` | - | Yes | - | Yes | - |
+| `included_deep_scan` | - | - | - | - | - |
+| `lock_version` | - | - | - | - | - |
+| `managed_google_available` | - | - | - | - | - |
+| `managed_google_email` | - | - | - | - | - |
+| `messaging_tester_number` | - | - | - | - | - |
+| `name` | - | Yes | - | Yes | - |
+| `network_connections` | - | - | - | - | - |
+| `onboarding_discovery` | - | - | - | - | - |
+| `organization_id` | - | - | - | - | - |
+| `pending_accounts` | - | - | - | - | - |
+| `permissions` | - | - | - | - | - |
+| `project_id` | - | Yes | - | - | - |
+| `repository_id` | - | Yes | - | - | - |
+| `revisions` | - | - | - | - | - |
+| `setup_discovery_id` | - | - | - | - | - |
+| `sign_in_check_available` | - | - | - | - | - |
+| `slug` | - | - | - | - | - |
+| `status` | - | - | - | - | - |
+| `target_kind` | - | Yes | - | - | - |
+| `target_url` | - | Yes | - | Yes | - |
+| `test_accounts` | - | - | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verify_network_connection_id` | - | - | - | Yes | - |
+| `version` | - | - | - | - | - |
 
 ### Operations
 
@@ -19862,15 +19576,6 @@ result = client.Environment.create({
   "organization_id" => "example_organization_id", # String
   "slug" => "example_slug", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.Environment.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -20363,13 +20068,12 @@ result = client.EnvironmentSecretBinding.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.EnvironmentSecretBinding.list({ "app_id" => "example", "environment_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.EnvironmentSecretBinding.load({ "app_id" => "app_id", "environment_id" => "environment_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -20377,7 +20081,7 @@ results.each { |item| puts item.data_get }
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.EnvironmentSecretBinding.remove({ "id" => "environment_secret_binding_id", "app_id" => "app_id", "environment_id" => "environment_id" })
+result = client.EnvironmentSecretBinding.remove({ "app_id" => "app_id", "environment_id" => "environment_id", "id" => "id" })
 ```
 
 ### Common Methods
@@ -20572,15 +20276,6 @@ result = client.ExecutionDesiredState.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ExecutionDesiredState.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -20672,15 +20367,6 @@ result = client.ExecutionReconcilerTick.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ExecutionReconcilerTick.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -20740,15 +20426,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.ExecutionRelease.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ExecutionRelease.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -20931,20 +20608,21 @@ exploration = client.Exploration
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `account_id` | `Object` | No |  |
-| `active` | `Array` | Yes |  |
 | `agent_filters` | `Hash` | Yes | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `Array` | Yes |  |
 | `can_continue` | `Boolean` | No | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `Array` | No |  |
+| `check_count` | `Integer` | Yes |  |
 | `concurrency` | `Integer` | Yes |  |
 | `covered_areas` | `Array` | Yes | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `String` | Yes |  |
-| `deadline_at` | `String` | Yes |  |
+| `credential_name` | `Object` | No | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `String` | Yes | When the team's time limit ends. |
 | `demo_project` | `Object` | Yes | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `Object` | Yes |  |
 | `ended_early` | `Boolean` | Yes | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `String` | Yes |  |
 | `environment_name` | `String` | Yes |  |
-| `explorations` | `Array` | Yes |  |
 | `explorer_activity` | `Hash` | Yes | What the team is doing now. |
 | `finding_count` | `Integer` | Yes | Findings at every priority, locked ones included. |
 | `findings` | `Array` | Yes | Every tester's findings, most severe first, with the checks each one cites. |
@@ -20954,14 +20632,12 @@ exploration = client.Exploration
 | `huntable_flows` | `Array` | Yes | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `String` | Yes |  |
 | `idempotency_key` | `String` | No |  |
-| `launch_options` | `Hash` | Yes | Present only when launch was requested by an admin |
 | `max_seconds` | `Integer` | Yes |  |
 | `max_testers` | `Integer` | Yes |  |
 | `mode` | `String` | No |  |
 | `next_scan_improvements` | `Array` | Yes | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `String` | No | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `Boolean` | Yes | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `Hash` | Yes |  |
 | `paywalled` | `Boolean` | Yes | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `Hash` | Yes |  |
 | `persona_id` | `Object` | No | Project persona whose role and observed access this discovery maps. |
@@ -20973,10 +20649,13 @@ exploration = client.Exploration
 | `reproductions` | `Array` | Yes | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `Boolean` | Yes | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `Array` | Yes | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `Integer` | No | Scenarios saved from this discovery. |
 | `scenario_generation` | `Hash` | Yes |  |
+| `scenarios_pending` | `Boolean` | No | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `Boolean` | Yes | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `String` | Yes | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `Object` | No | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `String` | Yes |  |
 | `startup_retryable` | `Boolean` | No | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `String` | Yes |  |
 | `time_limit_reached` | `Boolean` | Yes | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20989,37 +20668,36 @@ exploration = client.Exploration
 | Field | load | list | create |
 | --- | --- | --- | --- |
 | `account_id` | - | - | - |
-| `active` | - | - | - |
 | `agent_filters` | - | - | - |
 | `agents` | - | - | - |
 | `can_continue` | - | - | - |
 | `chat_messages` | - | - | - |
+| `check_count` | - | - | - |
 | `concurrency` | - | - | Yes |
 | `covered_areas` | - | - | - |
 | `created_at` | - | - | - |
-| `deadline_at` | - | - | - |
+| `credential_name` | - | - | - |
+| `deadline_at` | - | Yes | - |
 | `demo_project` | - | - | - |
+| `duration_ms` | - | - | - |
 | `ended_early` | - | - | - |
 | `environment_id` | - | - | - |
 | `environment_name` | - | - | - |
-| `explorations` | - | - | - |
 | `explorer_activity` | - | - | - |
 | `finding_count` | - | - | - |
 | `findings` | - | - | - |
 | `findings_fix_prompt` | - | - | - |
-| `finished_at` | - | - | - |
+| `finished_at` | - | Yes | - |
 | `goal` | - | - | - |
 | `huntable_flows` | - | - | - |
 | `id` | - | - | - |
 | `idempotency_key` | - | - | - |
-| `launch_options` | - | - | - |
 | `max_seconds` | - | - | Yes |
 | `max_testers` | - | - | Yes |
 | `mode` | - | - | - |
 | `next_scan_improvements` | - | - | - |
 | `observed_at` | - | - | - |
 | `onboarding` | - | - | - |
-| `pagination` | - | - | - |
 | `paywalled` | - | - | - |
 | `permissions` | - | - | - |
 | `persona_id` | - | - | - |
@@ -21031,14 +20709,17 @@ exploration = client.Exploration
 | `reproductions` | - | - | - |
 | `saves_scenarios` | - | - | - |
 | `scannable_flows` | - | - | - |
+| `scenario_count` | - | - | - |
 | `scenario_generation` | - | - | - |
+| `scenarios_pending` | - | - | - |
 | `sign_in_needs_answer` | - | - | - |
 | `sign_in_outcome` | - | - | - |
 | `sign_in_question` | - | - | - |
+| `started_at` | - | - | - |
 | `startup_retryable` | - | - | - |
 | `status` | - | - | - |
 | `time_limit_reached` | - | - | - |
-| `title` | - | - | - |
+| `title` | - | Yes | - |
 | `unlock` | - | - | - |
 | `web_url` | - | - | - |
 
@@ -22226,13 +21907,12 @@ result = client.GithubConnection.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.GithubConnection.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.GithubConnection.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -23515,31 +23195,31 @@ hosting_app_domain = client.HostingAppDomain
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch | remove |
-| --- | --- | --- | --- | --- | --- | --- |
-| `app_environment_id` | - | - | Yes | - | - | - |
-| `app_service_id` | - | - | - | - | - | - |
-| `certificate` | - | - | - | - | - | - |
-| `created_at` | - | - | - | - | - | - |
-| `dns_mode` | - | - | - | - | - | - |
-| `dns_status` | - | - | Yes | - | - | - |
-| `failure_message` | - | - | - | - | - | - |
-| `hosted_app_id` | - | - | - | - | - | - |
-| `hostname` | - | - | - | - | - | - |
-| `id` | - | - | - | - | - | - |
-| `kind` | - | - | - | - | - | - |
-| `last_checked_at` | - | - | - | - | - | - |
-| `path_rules` | - | - | - | - | - | - |
-| `record_name` | - | - | - | - | - | - |
-| `record_type` | - | - | - | - | - | - |
-| `record_value` | - | - | - | - | - | - |
-| `redirect_to` | - | - | Yes | - | - | - |
-| `static_site_id` | - | - | - | - | - | - |
-| `target_kind` | - | - | - | - | - | - |
-| `tls_status` | - | - | Yes | - | - | - |
-| `updated_at` | - | - | - | - | - | - |
-| `verification_record` | - | - | - | - | - | - |
-| `verification_status` | - | - | - | - | - | - |
+| Field | load | create | update | patch | remove |
+| --- | --- | --- | --- | --- | --- |
+| `app_environment_id` | - | Yes | - | - | - |
+| `app_service_id` | - | - | - | - | - |
+| `certificate` | - | - | - | - | - |
+| `created_at` | - | - | - | - | - |
+| `dns_mode` | - | - | - | - | - |
+| `dns_status` | - | Yes | - | - | - |
+| `failure_message` | - | - | - | - | - |
+| `hosted_app_id` | - | - | - | - | - |
+| `hostname` | - | - | - | - | - |
+| `id` | - | - | - | - | - |
+| `kind` | - | - | - | - | - |
+| `last_checked_at` | - | - | - | - | - |
+| `path_rules` | - | - | - | - | - |
+| `record_name` | - | - | - | - | - |
+| `record_type` | - | - | - | - | - |
+| `record_value` | - | - | - | - | - |
+| `redirect_to` | - | Yes | - | - | - |
+| `static_site_id` | - | - | - | - | - |
+| `target_kind` | - | - | - | - | - |
+| `tls_status` | - | Yes | - | - | - |
+| `updated_at` | - | - | - | - | - |
+| `verification_record` | - | - | - | - | - |
+| `verification_status` | - | - | - | - | - |
 
 ### Operations
 
@@ -23554,15 +23234,6 @@ result = client.HostingAppDomain.create({
   "hostname" => "example_hostname", # String
   "kind" => "example_kind", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.HostingAppDomain.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -23934,13 +23605,12 @@ integration = client.Integration
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.Integration.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.Integration.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -24267,13 +23937,12 @@ result = client.JobStep.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.JobStep.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.JobStep.load({ "job_id" => "job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -24360,13 +24029,12 @@ result = client.JobWorkspace.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.JobWorkspace.list({ "job_id" => "example", "pipeline_id" => "example", "run_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.JobWorkspace.load({ "job_id" => "job_id", "pipeline_id" => "pipeline_id", "run_id" => "run_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -25512,15 +25180,6 @@ result = client.LogStreamChunk.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.LogStreamChunk.list({ "log_stream_id" => "example", "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -25658,13 +25317,12 @@ marketing_setting = client.MarketingSetting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.MarketingSetting.list
-results.each { |item| puts item.data_get }
+result = client.MarketingSetting.load()
 ```
 
 ### Common Methods
@@ -26670,13 +26328,12 @@ metric_query = client.MetricQuery
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.MetricQuery.list
-results.each { |item| puts item.data_get }
+result = client.MetricQuery.load()
 ```
 
 ### Common Methods
@@ -27048,15 +26705,6 @@ result = client.NetworkingSpace.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.NetworkingSpace.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -27255,18 +26903,13 @@ node_lease = client.NodeLease
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.NodeLease.list({ "node_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.NodeLease.load({ "node_id" => "node_id" })
+```
 
 ### Common Methods
 
@@ -27391,13 +27034,12 @@ nomad_log = client.NomadLog
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.NomadLog.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.NomadLog.load({ "app_id" => "app_id" })
 ```
 
 ### Common Methods
@@ -27509,15 +27151,6 @@ result = client.ObservabilityClickhouseCluster.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ObservabilityClickhouseCluster.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -27609,15 +27242,6 @@ result = client.ObservabilityQuickwitCluster.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ObservabilityQuickwitCluster.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -27707,15 +27331,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 ```ruby
 result = client.ObservabilitySpace.create({
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ObservabilitySpace.list
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -28052,13 +27667,12 @@ organization_app = client.OrganizationApp
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.OrganizationApp.list({ "organization_id" => "example", "native_agent_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.OrganizationApp.load({ "organization_id" => "organization_id", "native_agent_id" => "native_agent_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -28211,15 +27825,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationIdentityCertificate.create({
   "organization_id" => "example_organization_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.OrganizationIdentityCertificate.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -28476,15 +28081,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationOidcTrust.create({
   "organization_id" => "example_organization_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.OrganizationOidcTrust.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -28894,15 +28490,6 @@ result = client.OrganizationServiceAccount.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.OrganizationServiceAccount.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -29060,13 +28647,12 @@ result = client.OrganizationSite.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.OrganizationSite.list({ "organization_id" => "example", "native_agent_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.OrganizationSite.load({ "organization_id" => "organization_id", "native_agent_id" => "native_agent_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -29074,7 +28660,7 @@ results.each { |item| puts item.data_get }
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.OrganizationSite.remove({ "id" => "organization_site_id", "organization_id" => "organization_id" })
+result = client.OrganizationSite.remove({ "id" => "id", "organization_id" => "organization_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -29083,7 +28669,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```ruby
 result = client.OrganizationSite.update({
-  "id" => "organization_site_id",
+  "id" => "id",
   "organization_id" => "organization_id",
   # Fields to update
 })
@@ -29242,15 +28828,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.OrganizationWorkloadIdentity.create({
   "organization_id" => "example_organization_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.OrganizationWorkloadIdentity.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -29470,18 +29047,13 @@ page_agent = client.PageAgent
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.PageAgent.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.PageAgent.load({ "organization_id" => "organization_id" })
+```
 
 ### Common Methods
 
@@ -30066,13 +29638,23 @@ pages_project_persona = client.PagesProjectPersona
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `active_count` | `Integer` | Yes |  |
-| `credentials` | `Array` | Yes |  |
-| `needs_attention_count` | `Integer` | Yes |  |
-| `permissions` | `Hash` | Yes |  |
-| `persona_states` | `Hash` | Yes | Scenarios by the state of their latest execution. |
-| `personas` | `Array` | Yes |  |
-| `project` | `Hash` | Yes |  |
+| `access_mode` | `String` | Yes |  |
+| `active_run_count` | `Integer` | Yes |  |
+| `archived_at` | `Object` | Yes |  |
+| `attention` | `Array` | Yes | What needs an operator's eye, problems before notices |
+| `capabilities` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `credential` | `Object` | Yes |  |
+| `credential_id` | `Object` | Yes | The credential this persona signs in with. |
+| `goals` | `Object` | Yes |  |
+| `health` | `Hash` | Yes |  |
+| `id` | `String` | Yes |  |
+| `lock_version` | `Integer` | Yes |  |
+| `name` | `String` | Yes |  |
+| `project_id` | `String` | Yes |  |
+| `role` | `String` | Yes |  |
+| `scenario_count` | `Integer` | Yes |  |
+| `updated_at` | `String` | Yes |  |
 
 ### Operations
 
@@ -30125,12 +29707,28 @@ pages_project_run = client.PagesProjectRun
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `environment_query` | `String` | Yes |  |
-| `environments` | `Array` | Yes |  |
-| `environments_has_more` | `Boolean` | Yes |  |
-| `pagination` | `Hash` | Yes |  |
-| `runs` | `Array` | Yes |  |
-| `selected_environment` | `Object` | Yes |  |
+| `archived_at` | `Object` | Yes |  |
+| `browser_seconds` | `Object` | Yes |  |
+| `can_archive` | `Boolean` | Yes |  |
+| `can_restore` | `Boolean` | Yes |  |
+| `cleanup_state` | `String` | Yes |  |
+| `commit_sha` | `Object` | Yes |  |
+| `created_at` | `String` | Yes |  |
+| `duration_seconds` | `Object` | Yes |  |
+| `environment_name` | `Object` | Yes |  |
+| `finished_at` | `Object` | Yes |  |
+| `id` | `String` | Yes |  |
+| `outcome` | `Object` | Yes |  |
+| `pull_request` | `Object` | Yes |  |
+| `pull_request_label` | `Object` | Yes |  |
+| `scenario_count` | `Integer` | Yes |  |
+| `source_run` | `Object` | Yes |  |
+| `started_at` | `Object` | Yes |  |
+| `state` | `String` | Yes |  |
+| `title` | `String` | Yes |  |
+| `trigger_kind` | `String` | Yes |  |
+| `triggered_by` | `Object` | Yes |  |
+| `web_path` | `String` | Yes |  |
 
 ### Operations
 
@@ -30455,15 +30053,6 @@ result = client.Pairing.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.Pairing.list
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -30510,13 +30099,12 @@ pairing_event = client.PairingEvent
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PairingEvent.list({ "pairing_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.PairingEvent.load({ "pairing_id" => "pairing_id" })
 ```
 
 ### Common Methods
@@ -30668,13 +30256,12 @@ result = client.PersonalAccessToken.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PersonalAccessToken.list
-results.each { |item| puts item.data_get }
+result = client.PersonalAccessToken.load({ "id" => "personal_access_token_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -30723,13 +30310,12 @@ preview_operation = client.PreviewOperation
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PreviewOperation.list({ "app_id" => "example", "preview_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.PreviewOperation.load({ "app_id" => "app_id", "preview_id" => "preview_id" })
 ```
 
 ### Common Methods
@@ -30792,13 +30378,12 @@ result = client.PreviewProfileSecretBinding.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PreviewProfileSecretBinding.list({ "app_id" => "example", "preview_profile_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.PreviewProfileSecretBinding.load({ "app_id" => "app_id", "preview_profile_id" => "preview_profile_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -30806,7 +30391,7 @@ results.each { |item| puts item.data_get }
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.PreviewProfileSecretBinding.remove({ "id" => "preview_profile_secret_binding_id", "app_id" => "app_id", "preview_profile_id" => "preview_profile_id" })
+result = client.PreviewProfileSecretBinding.remove({ "app_id" => "app_id", "id" => "id", "preview_profile_id" => "preview_profile_id" })
 ```
 
 ### Common Methods
@@ -30926,16 +30511,16 @@ preview_sharing_approval = client.PreviewSharingApproval
 | `approved_default_secrets` | `Array` | Yes |  |
 | `approved_source_keys` | `Array` | Yes |  |
 | `build_keys` | `Array` | No |  |
-| `build_secrets` | `Array` | No |  |
-| `default_configuration` | `Array` | No |  |
-| `default_secrets` | `Array` | No |  |
+| `build_secrets` | `Array` | Yes |  |
+| `default_configuration` | `Array` | Yes |  |
+| `default_secrets` | `Array` | Yes |  |
 | `services` | `Array` | Yes |  |
 | `snapshot_version` | `Integer` | Yes |  |
-| `source_keys` | `Array` | No |  |
+| `source_keys` | `Array` | Yes |  |
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `approved_build_keys` | - | - |
 | `approved_build_secrets` | - | - |
@@ -30943,12 +30528,12 @@ preview_sharing_approval = client.PreviewSharingApproval
 | `approved_default_secrets` | - | - |
 | `approved_source_keys` | - | - |
 | `build_keys` | - | - |
-| `build_secrets` | Yes | - |
-| `default_configuration` | Yes | - |
-| `default_secrets` | Yes | - |
+| `build_secrets` | - | Yes |
+| `default_configuration` | - | Yes |
+| `default_secrets` | - | Yes |
 | `services` | - | - |
 | `snapshot_version` | - | - |
-| `source_keys` | Yes | - |
+| `source_keys` | - | Yes |
 
 ### Operations
 
@@ -30964,13 +30549,12 @@ result = client.PreviewSharingApproval.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PreviewSharingApproval.list({ "app_id" => "example", "preview_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.PreviewSharingApproval.load({ "app_id" => "app_id", "preview_id" => "preview_id" })
 ```
 
 ### Common Methods
@@ -32098,18 +31682,11 @@ project_fixture = client.ProjectFixture
 | `byte_size` | `Integer` | Yes |  |
 | `content_type` | `String` | Yes |  |
 | `credential_ids` | `Array` | Yes |  |
-| `credentials` | `Array` | Yes |  |
 | `environment_ids` | `Array` | Yes |  |
-| `environments` | `Array` | Yes |  |
-| `fixtures` | `Array` | Yes |  |
 | `id` | `String` | No |  |
 | `lock_version` | `Integer` | Yes |  |
 | `name` | `String` | Yes |  |
-| `pagination` | `Hash` | Yes |  |
-| `permissions` | `Hash` | Yes |  |
 | `persona_ids` | `Array` | Yes |  |
-| `personas` | `Array` | Yes |  |
-| `project` | `Hash` | Yes |  |
 | `sha256` | `String` | Yes |  |
 | `url` | `String` | Yes |  |
 | `version` | `Integer` | Yes |  |
@@ -32122,18 +31699,11 @@ project_fixture = client.ProjectFixture
 | `byte_size` | - | - | - | - | - | - |
 | `content_type` | - | - | - | - | - | - |
 | `credential_ids` | - | - | - | Yes | Yes | - |
-| `credentials` | - | - | - | - | - | - |
 | `environment_ids` | - | - | - | Yes | Yes | - |
-| `environments` | - | - | - | - | - | - |
-| `fixtures` | - | - | - | - | - | - |
 | `id` | - | - | - | - | - | - |
 | `lock_version` | - | - | - | - | - | - |
 | `name` | - | - | - | Yes | Yes | - |
-| `pagination` | - | - | - | - | - | - |
-| `permissions` | - | - | - | - | - | - |
 | `persona_ids` | - | - | - | Yes | Yes | - |
-| `personas` | - | - | - | - | - | - |
-| `project` | - | - | - | - | - | - |
 | `sha256` | - | - | - | - | - | - |
 | `url` | - | - | - | - | - | - |
 | `version` | - | - | - | - | - | - |
@@ -32950,13 +32520,12 @@ project_scenario_option = client.ProjectScenarioOption
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.ProjectScenarioOption.list({ "organization_id" => "example", "project_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.ProjectScenarioOption.load({ "organization_id" => "organization_id", "project_id" => "project_id" })
 ```
 
 ### Common Methods
@@ -33069,13 +32638,12 @@ project_setting = client.ProjectSetting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.ProjectSetting.list({ "organization_id" => "example", "project_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.ProjectSetting.load({ "organization_id" => "organization_id", "project_id" => "project_id" })
 ```
 
 ### Common Methods
@@ -33418,13 +32986,12 @@ result = client.PullRequestSetting.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.PullRequestSetting.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.PullRequestSetting.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -34101,15 +33668,6 @@ result = client.ReleaseRollout.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ReleaseRollout.list({ "release_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -34479,15 +34037,6 @@ result = client.RepoAgentSession.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.RepoAgentSession.list({ "organization_id" => "example", "repo_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -34787,15 +34336,6 @@ result = client.RepoCloudWorkspaceBackup.create({
   "organization_id" => "example_organization_id", # String
   "repo_id" => "example_repo_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.RepoCloudWorkspaceBackup.list({ "organization_id" => "example", "repo_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -35877,15 +35417,6 @@ result = client.RoderCodeRepair.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.RoderCodeRepair.list({ "scenario_run_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -35944,7 +35475,7 @@ roder_code_repair_setting = client.RoderCodeRepairSetting
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `available` | - | - |
 | `daily_limit` | - | - |
@@ -35967,13 +35498,12 @@ result = client.RoderCodeRepairSetting.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.RoderCodeRepairSetting.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.RoderCodeRepairSetting.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -36188,13 +35718,12 @@ result = client.RunArtifact.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.RunArtifact.list({ "pipeline_id" => "example", "run_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.RunArtifact.load({ "pipeline_id" => "pipeline_id", "run_id" => "run_id" })
 ```
 
 ### Common Methods
@@ -36283,15 +35812,6 @@ result = client.RunJob.create({
   "pipeline_id" => "example_pipeline_id", # String
   "run_id" => "example_run_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.RunJob.list({ "pipeline_id" => "example", "run_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -36641,13 +36161,12 @@ result = client.RunnerLease.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.RunnerLease.list({ "runner_id" => "example", "runner_pool_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.RunnerLease.load({ "runner_id" => "runner_id", "runner_pool_id" => "runner_pool_id" })
 ```
 
 ### Common Methods
@@ -36816,15 +36335,6 @@ result = client.RunnerPoolRunner.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.RunnerPoolRunner.list({ "runner_pool_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -36905,13 +36415,12 @@ result = client.RuntimeInstanceHealthSnapshot.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.RuntimeInstanceHealthSnapshot.list({ "runtime_instance_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.RuntimeInstanceHealthSnapshot.load({ "runtime_instance_id" => "runtime_instance_id" })
 ```
 
 ### Common Methods
@@ -36968,7 +36477,7 @@ sandbox_integration = client.SandboxIntegration
 
 ### Field Usage by Operation
 
-| Field | list | create | update | patch |
+| Field | load | create | update | patch |
 | --- | --- | --- | --- | --- |
 | `can_manage` | - | - | - | - |
 | `catalog` | - | - | - | - |
@@ -36998,13 +36507,12 @@ result = client.SandboxIntegration.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SandboxIntegration.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SandboxIntegration.load({ "organization_id" => "organization_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -37249,15 +36757,6 @@ result = client.SecretGrant.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SecretGrant.list({ "organization_id" => "example", "secret_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -37353,15 +36852,6 @@ result = client.SecretVersion.create({
   "organization_id" => "example_organization_id", # String
   "secret_id" => "example_secret_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SecretVersion.list({ "organization_id" => "example", "secret_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -37461,15 +36951,6 @@ result = client.ServiceEndpoint.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.ServiceEndpoint.list({ "app_id" => "example", "service_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -37561,13 +37042,12 @@ setting = client.Setting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.Setting.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.Setting.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -38106,15 +37586,6 @@ result = client.SignalSubscription.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SignalSubscription.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -38288,13 +37759,12 @@ result = client.SiteAccessKey.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SiteAccessKey.list({ "organization_id" => "example", "site_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SiteAccessKey.load({ "organization_id" => "organization_id", "site_id" => "site_id" })
 ```
 
 #### `remove(reqmatch, ctrl = nil) -> result`
@@ -38302,7 +37772,7 @@ results.each { |item| puts item.data_get }
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.SiteAccessKey.remove({ "id" => "site_access_key_id", "organization_id" => "organization_id", "site_id" => "site_id" })
+result = client.SiteAccessKey.remove({ "id" => "id", "organization_id" => "organization_id", "site_id" => "site_id" })
 ```
 
 ### Common Methods
@@ -38586,15 +38056,6 @@ result = client.SpaceAlertRule.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceAlertRule.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -38683,13 +38144,12 @@ result = client.SpaceAuditEvent.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceAuditEvent.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceAuditEvent.load({ "space_id" => "space_id" })
 ```
 
 ### Common Methods
@@ -38744,15 +38204,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceDnsRecord.create({
   "space_id" => "example_space_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceDnsRecord.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -38849,15 +38300,6 @@ result = client.SpaceEnrollmentToken.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceEnrollmentToken.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -38950,15 +38392,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceGateway.create({
   "space_id" => "example_space_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceGateway.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -39055,13 +38488,12 @@ result = client.SpaceGroup.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceGroup.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceGroup.load({ "space_id" => "space_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -39070,7 +38502,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ruby
 result = client.SpaceGroup.patch({
-  "id" => "space_group_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Only the fields to change
 })
@@ -39081,7 +38513,7 @@ result = client.SpaceGroup.patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.SpaceGroup.remove({ "id" => "space_group_id", "space_id" => "space_id" })
+result = client.SpaceGroup.remove({ "id" => "id", "space_id" => "space_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -39090,7 +38522,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```ruby
 result = client.SpaceGroup.update({
-  "id" => "space_group_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Fields to update
 })
@@ -39150,13 +38582,12 @@ result = client.SpaceGroupMembership.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceGroupMembership.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceGroupMembership.load({ "space_id" => "space_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -39165,7 +38596,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ruby
 result = client.SpaceGroupMembership.patch({
-  "id" => "space_group_membership_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Only the fields to change
 })
@@ -39176,7 +38607,7 @@ result = client.SpaceGroupMembership.patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.SpaceGroupMembership.remove({ "id" => "space_group_membership_id", "space_id" => "space_id" })
+result = client.SpaceGroupMembership.remove({ "id" => "id", "space_id" => "space_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -39185,7 +38616,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```ruby
 result = client.SpaceGroupMembership.update({
-  "id" => "space_group_membership_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Fields to update
 })
@@ -39239,13 +38670,12 @@ result = client.SpaceLogStream.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceLogStream.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceLogStream.load({ "space_id" => "space_id" })
 ```
 
 ### Common Methods
@@ -39296,13 +38726,12 @@ result = client.SpaceMetricSery.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceMetricSery.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceMetricSery.load({ "space_id" => "space_id" })
 ```
 
 ### Common Methods
@@ -39357,15 +38786,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpaceOtelCollector.create({
   "space_id" => "example_space_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceOtelCollector.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -39462,15 +38882,6 @@ result = client.SpacePeer.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpacePeer.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -39565,13 +38976,12 @@ result = client.SpacePeerAttachment.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpacePeerAttachment.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpacePeerAttachment.load({ "space_id" => "space_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -39580,7 +38990,7 @@ Change part of an existing entity: only the fields given are sent. The data must
 
 ```ruby
 result = client.SpacePeerAttachment.patch({
-  "id" => "space_peer_attachment_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Only the fields to change
 })
@@ -39591,7 +39001,7 @@ result = client.SpacePeerAttachment.patch({
 Remove the entity matching the given criteria. Returns the entity, marked as deleted, and raises on error.
 
 ```ruby
-result = client.SpacePeerAttachment.remove({ "id" => "space_peer_attachment_id", "space_id" => "space_id" })
+result = client.SpacePeerAttachment.remove({ "id" => "id", "space_id" => "space_id" })
 ```
 
 #### `update(reqdata, ctrl = nil) -> result`
@@ -39600,7 +39010,7 @@ Update an existing entity. The data must include the entity `id`. Returns the up
 
 ```ruby
 result = client.SpacePeerAttachment.update({
-  "id" => "space_peer_attachment_id",
+  "id" => "id",
   "space_id" => "space_id",
   # Fields to update
 })
@@ -39658,15 +39068,6 @@ Create a new entity with the given data. Returns the created entity and raises o
 result = client.SpacePolicy.create({
   "space_id" => "example_space_id", # String
 })
-```
-
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpacePolicy.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`
@@ -39763,15 +39164,6 @@ result = client.SpaceSegment.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SpaceSegment.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
@@ -39860,13 +39252,12 @@ result = client.SpaceTraceSpan.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SpaceTraceSpan.list({ "space_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SpaceTraceSpan.load({ "space_id" => "space_id" })
 ```
 
 ### Common Methods
@@ -39944,7 +39335,7 @@ spark = client.Spark
 
 ### Field Usage by Operation
 
-| Field | list | create |
+| Field | load | create |
 | --- | --- | --- |
 | `activated_products` | - | - |
 | `agents_only` | - | - |
@@ -39992,13 +39383,12 @@ result = client.Spark.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.Spark.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.Spark.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -40081,13 +39471,12 @@ result = client.SparkAgentIntegration.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SparkAgentIntegration.list({ "agent_id" => "example", "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SparkAgentIntegration.load({ "agent_id" => "agent_id", "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -40368,30 +39757,63 @@ spark_agent_thread = client.SparkAgentThread
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `archived_count` | `Object` | No | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `Boolean` | Yes |  |
-| `execution` | `Object` | No |  |
+| `archive_deletes_sandbox` | `Boolean` | No |  |
+| `archived` | `Boolean` | Yes |  |
+| `attention` | `Object` | Yes | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `Boolean` | Yes |  |
+| `can_compact` | `Boolean` | Yes |  |
+| `can_snooze` | `Boolean` | Yes |  |
+| `coordination_status` | `Object` | No | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `Object` | No | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `Object` | No |  |
 | `first_input_key` | `String` | No | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `String` | No | Membership the first message was sent as, for input_delivery. |
-| `id` | `String` | No |  |
+| `group` | `String` | Yes | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `Boolean` | Yes |  |
+| `id` | `String` | Yes |  |
 | `inherit_context` | `Boolean` | No | Include the source conversation through its last completed reply. |
-| `local_activities` | `Hash` | Yes | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `Integer` | Yes | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `Object` | Yes |  |
-| `local_scope_key` | `Object` | Yes |  |
-| `local_status_pending` | `Boolean` | Yes | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `Array` | Yes |  |
-| `main_thread_id` | `String` | Yes |  |
+| `is_main` | `Boolean` | Yes |  |
+| `kind` | `String` | Yes |  |
 | `message` | `String` | No | The thread's first message. |
-| `next_cursor` | `Object` | Yes |  |
+| `older` | `Boolean` | Yes | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `String` | No | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `String` | No | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `String` | No |  |
-| `selected_thread` | `Object` | Yes |  |
+| `snoozed_until` | `Object` | Yes | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `Hash` | Yes |  |
-| `threads` | `Array` | Yes |  |
 | `title` | `String` | No |  |
-| `total_archived_count` | `Object` | Yes | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `Object` | Yes |  |
+
+### Field Usage by Operation
+
+| Field | list | create |
+| --- | --- | --- |
+| `archive_deletes_sandbox` | - | - |
+| `archived` | - | - |
+| `attention` | - | - |
+| `can_archive` | - | - |
+| `can_compact` | - | - |
+| `can_snooze` | - | - |
+| `coordination_status` | - | - |
+| `execution` | Yes | - |
+| `first_input` | - | - |
+| `first_input_key` | - | - |
+| `first_input_requester_membership_id` | - | - |
+| `group` | - | - |
+| `has_active_run` | - | - |
+| `id` | - | - |
+| `inherit_context` | - | - |
+| `is_main` | - | - |
+| `kind` | - | - |
+| `message` | - | - |
+| `older` | - | - |
+| `parent_conversation_id` | - | - |
+| `parent_conversation_title` | - | - |
+| `requester_membership_id` | - | - |
+| `snoozed_until` | - | - |
+| `thread` | - | - |
+| `title` | Yes | - |
+| `updated_at` | - | - |
 
 ### Operations
 
@@ -40468,7 +39890,7 @@ spark_credit = client.SparkCredit
 | `kind` | `String` | Yes |  |
 | `payment_method` | `Object` | Yes |  |
 | `payments_enabled` | `Boolean` | Yes |  |
-| `plan` | `String` | No |  |
+| `plan` | `Object` | Yes |  |
 | `plans` | `Array` | Yes |  |
 | `quoted_credits_cents` | `Integer` | No | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `Integer` | No | Monthly cash price shown for a subscription, in USD cents. |
@@ -40483,33 +39905,33 @@ spark_credit = client.SparkCredit
 
 ### Field Usage by Operation
 
-| Field | load | list | create | update | patch |
-| --- | --- | --- | --- | --- | --- |
-| `amount_cents` | - | - | - | - | - |
-| `autofill` | - | - | - | - | - |
-| `autofill_payment_unconfirmed` | - | - | - | - | - |
-| `available_usd` | - | - | - | - | - |
-| `billing_unit` | - | - | - | - | - |
-| `can_manage` | - | - | - | - | - |
-| `compute_minutes` | - | - | - | - | - |
-| `compute_usd` | - | - | - | - | - |
-| `credits_per_usd` | - | - | - | - | - |
-| `inference_usd` | - | - | - | - | - |
-| `kind` | - | - | - | - | - |
-| `payment_method` | - | - | - | - | - |
-| `payments_enabled` | - | - | - | - | - |
-| `plan` | - | Yes | - | - | Yes |
-| `plans` | - | - | - | - | - |
-| `quoted_credits_cents` | - | - | - | - | - |
-| `quoted_price_cents` | - | - | - | - | - |
-| `refill_limits_cents` | - | - | - | - | - |
-| `refill_options` | - | - | - | - | - |
-| `refill_thresholds_cents` | - | - | - | - | - |
-| `request_key` | - | - | - | - | - |
-| `settings` | - | - | - | - | - |
-| `starter_cents` | - | - | - | - | - |
-| `top_up_max_cents` | - | - | - | - | - |
-| `top_up_step_cents` | - | - | - | - | - |
+| Field | load | create | update | patch |
+| --- | --- | --- | --- | --- |
+| `amount_cents` | - | - | - | - |
+| `autofill` | - | - | - | - |
+| `autofill_payment_unconfirmed` | - | - | - | - |
+| `available_usd` | - | - | - | - |
+| `billing_unit` | - | - | - | - |
+| `can_manage` | - | - | - | - |
+| `compute_minutes` | - | - | - | - |
+| `compute_usd` | - | - | - | - |
+| `credits_per_usd` | - | - | - | - |
+| `inference_usd` | - | - | - | - |
+| `kind` | - | - | - | - |
+| `payment_method` | - | - | - | - |
+| `payments_enabled` | - | - | - | - |
+| `plan` | - | Yes | - | - |
+| `plans` | - | - | - | - |
+| `quoted_credits_cents` | - | - | - | - |
+| `quoted_price_cents` | - | - | - | - |
+| `refill_limits_cents` | - | - | - | - |
+| `refill_options` | - | - | - | - |
+| `refill_thresholds_cents` | - | - | - | - |
+| `request_key` | - | - | - | - |
+| `settings` | - | - | - | - |
+| `starter_cents` | - | - | - | - |
+| `top_up_max_cents` | - | - | - | - |
+| `top_up_step_cents` | - | - | - | - |
 
 ### Operations
 
@@ -40525,18 +39947,13 @@ result = client.SparkCredit.create({
 })
 ```
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
-
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
-
-```ruby
-results = client.SparkCredit.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
-```
-
 #### `load(reqmatch, ctrl = nil) -> result`
 
 Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
+
+```ruby
+result = client.SparkCredit.load({ "organization_id" => "organization_id" })
+```
 
 #### `patch(reqdata, ctrl = nil) -> result`
 
@@ -40662,13 +40079,12 @@ spark_credit_usage_total = client.SparkCreditUsageTotal
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.SparkCreditUsageTotal.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.SparkCreditUsageTotal.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -42637,13 +42053,12 @@ vcs_setting = client.VcsSetting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.VcsSetting.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.VcsSetting.load({ "organization_id" => "organization_id" })
 ```
 
 ### Common Methods
@@ -43405,13 +42820,12 @@ verify_email_verification = client.VerifyEmailVerification
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.VerifyEmailVerification.list
-results.each { |item| puts item.data_get }
+result = client.VerifyEmailVerification.load()
 ```
 
 ### Common Methods

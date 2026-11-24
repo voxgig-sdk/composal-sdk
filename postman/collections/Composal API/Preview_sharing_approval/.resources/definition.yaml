@@ -11,10 +11,10 @@ description: |-
   | `approved_default_secrets` | array | yes |  |
   | `approved_source_keys` | array | yes |  |
   | `build_keys` | array |  |  |
-  | `build_secrets` | array |  |  |
-  | `default_configuration` | array |  |  |
-  | `default_secrets` | array |  |  |
+  | `build_secrets` | array | yes |  |
+  | `default_configuration` | array | yes |  |
+  | `default_secrets` | array | yes |  |
   | `services` | array | yes |  |
   | `snapshot_version` | integer | yes |  |
-  | `source_keys` | array |  |  |
+  | `source_keys` | array | yes |  |
 order: 387000

@@ -25,7 +25,7 @@ class SparkEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.Spark(nil).list({ "organization_id" => 1 }, nil)
+      client.Spark(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SparkEntityTest < Minitest::Test
     setup = spark_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "spark." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,43 +43,10 @@ class SparkEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"spark.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPARK_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    spark_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.spark")))
-    spark_ref01_data = nil
-    if spark_ref01_data_raw.length > 0
-      spark_ref01_data = Helpers.to_map(spark_ref01_data_raw[0][1])
+      puts "LIVE STEP {\"id\":\"spark.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only spark.create.0 gives\"}"
+      skip("Live coverage incomplete: spark.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks); spark.load.1 excluded (GET-only live run: reads a record only spark.create.0 gives)")
     end
 
-    Runner.live_pace if setup[:live]
-    # LIST
-    spark_ref01_ent = client.Spark(nil)
-    spark_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_ref01_list_result = spark_ref01_ent.list(spark_ref01_match, nil)
-    assert spark_ref01_list_result.is_a?(Array)
-
-      return
-    end
-
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SPARK_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     Runner.live_pace if setup[:live]
@@ -87,26 +54,11 @@ class SparkEntityTest < Minitest::Test
     spark_ref01_ent = client.Spark(nil)
     spark_ref01_data = Helpers.to_map(Vs.getprop(
       Vs.getpath(setup[:data], "new.spark"), "spark_ref01"))
-    spark_ref01_data["organization_id"] = setup[:idmap]["organization01"]
 
     spark_ref01_data_result = spark_ref01_ent.create(spark_ref01_data, nil)
     spark_ref01_data = Helpers.to_map(spark_ref01_data_result.respond_to?(:data_get) ? spark_ref01_data_result.data_get : spark_ref01_data_result)
     assert !spark_ref01_data.nil?
     assert !spark_ref01_data["id"].nil?
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    spark_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    spark_ref01_list_result = spark_ref01_ent.list(spark_ref01_match, nil)
-    assert spark_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(spark_ref01_list_result),
-      { "id" => spark_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
 
   end
 end

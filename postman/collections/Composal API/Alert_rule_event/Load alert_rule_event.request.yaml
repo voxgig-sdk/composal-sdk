@@ -3,7 +3,7 @@ id: "969f0c12-1e28-5d03-80ef-e9edd5e6b18e"
 description: |-
   The `load` operation of **alert_rule_event**.
 
-  SDK: `client.AlertRuleEvent().load({ alert_rule_id: "example", id: "example_id", space_id: "example" })`
+  SDK: `client.AlertRuleEvent().load({ alert_rule_id: "example", space_id: "example" })`
 url: "{{base}}/api/v1/observability/spaces/:space_id/alert_rules/:alert_rule_id/events/:id"
 method: GET
 headers:
@@ -18,4 +18,4 @@ pathVariables:
   - key: id
     value: "{{alert_rule_event_id}}"
     description: The alert_rule_event this request addresses.
-order: 2000
+order: 1000

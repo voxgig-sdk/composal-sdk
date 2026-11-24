@@ -238,42 +238,6 @@ main: kit: entity: artifact_package_mirror: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/artifacts/package_mirrors"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/artifacts/package_mirrors"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "artifacts"
-            }
-            {
-              lit: "package_mirrors"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -325,6 +289,37 @@ main: kit: entity: artifact_package_mirror: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/artifacts/package_mirrors"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/artifacts/package_mirrors"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "artifacts"
+            }
+            {
+              lit: "package_mirrors"
             }
           ]
           t: {

@@ -25,7 +25,7 @@ class GithubConnectionEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.GithubConnection(nil).list({ "organization_id" => 1 }, nil)
+      client.GithubConnection(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class GithubConnectionEntityTest < Minitest::Test
     setup = github_connection_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "github_connection." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class GithubConnectionEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"github_connection.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/github_connections\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_GITHUB_CONNECTION_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,14 +54,11 @@ class GithubConnectionEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     github_connection_ref01_ent = client.GithubConnection(nil)
-    github_connection_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    github_connection_ref01_list_result = github_connection_ref01_ent.list(github_connection_ref01_match, nil)
-    assert github_connection_ref01_list_result.is_a?(Array)
+    github_connection_ref01_match_dt0 = {}
+    github_connection_ref01_data_dt0_loaded = github_connection_ref01_ent.load(github_connection_ref01_match_dt0, nil)
+    assert !github_connection_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -94,13 +84,10 @@ class GithubConnectionEntityTest < Minitest::Test
     assert !github_connection_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    github_connection_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    github_connection_ref01_list_result = github_connection_ref01_ent.list(github_connection_ref01_match, nil)
-    assert github_connection_ref01_list_result.is_a?(Array)
+    # LOAD
+    github_connection_ref01_match_dt0 = {}
+    github_connection_ref01_data_dt0_loaded = github_connection_ref01_ent.load(github_connection_ref01_match_dt0, nil)
+    assert !github_connection_ref01_data_dt0_loaded.nil?
 
   end
 end

@@ -15,18 +15,6 @@ main: kit: flow: BasicExecutionDesiredStateFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "execution_desired_state_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "execution_desired_state_ref01",
         srcdatavar: "execution_desired_state_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicExecutionDesiredStateFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "execution_desired_state01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicExecutionDesiredStateFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "execution_desired_state_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicExecutionDesiredStateFlow"

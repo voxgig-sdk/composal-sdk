@@ -104,10 +104,10 @@
 <a class="nav-section" href="#post-apiv1hostingappsapp_idpreviewsidreview_source">POST /api/v1/hosting/apps/{app_id}/previews/{id}/review_source</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idpreviewsidupdate_revision">POST /api/v1/hosting/apps/{app_id}/previews/{id}/update_revision</a>
 <a class="nav-section" href="#post-apiv1hostingappsapp_idpreviews">POST /api/v1/hosting/apps/{app_id}/previews</a>
-<a class="nav-section" href="#get-apiv1hostingappsapp_idpreviews">GET /api/v1/hosting/apps/{app_id}/previews</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idpreviewsid">GET /api/v1/hosting/apps/{app_id}/previews/{id}</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idpreviewsidadministration">GET /api/v1/hosting/apps/{app_id}/previews/{id}/administration</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idpreviewsidsecret_comparison">GET /api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison</a>
+<a class="nav-section" href="#get-apiv1hostingappsapp_idpreviews">GET /api/v1/hosting/apps/{app_id}/previews</a>
 <a class="nav-section" href="#get-apiv1hostingappsapp_idpreviewsadministration_index">GET /api/v1/hosting/apps/{app_id}/previews/administration_index</a>
 <a class="nav-section" href="#patch-apiv1hostingappsapp_idpreviewsid">PATCH /api/v1/hosting/apps/{app_id}/previews/{id}</a>
 <a class="nav-section" href="#delete-apiv1hostingappsapp_idpreviewsid">DELETE /api/v1/hosting/apps/{app_id}/previews/{id}</a>
@@ -667,12 +667,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingappsapp_idpreviews"><code>/api/v1/hosting/apps/{app_id}/previews</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_idpreviewsid"><code>/api/v1/hosting/apps/{app_id}/previews/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
@@ -686,6 +680,12 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_idpreviewsidsecret_comparison"><code>/api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1hostingappsapp_idpreviews"><code>/api/v1/hosting/apps/{app_id}/previews</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -719,12 +719,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_previews, err := client.AppPreview(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_previews)
-app_preview, err := client.AppPreview(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_preview, err := client.AppPreview(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -752,8 +747,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_previews, err = client:AppPreview():list({ app_id = &quot;example&quot; })
-local app_preview, err = client:AppPreview():load({ app_id = &quot;example&quot;, id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_preview, err = client:AppPreview():load({ app_id = &quot;example&quot; })
 local created, err = client:AppPreview():create({ app_id = &quot;example&quot;, app_preview_profile_id = &quot;example&quot;, name = &quot;example&quot;, slug = &quot;example&quot; })
 local updated, err = client:AppPreview():update({ id = &quot;example_id&quot;, app_id = &quot;example&quot; })
 local patched, err = client:AppPreview():patch({ id = &quot;example_id&quot;, app_id = &quot;example&quot;, access = &quot;example&quot; })
@@ -761,8 +755,7 @@ local removed, err = client:AppPreview():remove({ app_id = &quot;example&quot;, 
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_previews = $client-&gt;AppPreview()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
-$app_preview = $client-&gt;AppPreview()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_preview = $client-&gt;AppPreview()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AppPreview()-&gt;create([&quot;app_id&quot; =&gt; &quot;example&quot;, &quot;app_preview_profile_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AppPreview()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;AppPreview()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;access&quot; =&gt; &quot;example&quot;]);
@@ -770,8 +763,7 @@ $client-&gt;AppPreview()-&gt;remove([&quot;app_id&quot; =&gt; &quot;example&quot
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_previews = client.AppPreview().list({&quot;app_id&quot;: &quot;example&quot;})
-app_preview = client.AppPreview().load({&quot;app_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_preview = client.AppPreview().load({&quot;app_id&quot;: &quot;example&quot;})
 created = client.AppPreview().create({ &quot;app_id&quot;: &quot;example&quot;, &quot;app_preview_profile_id&quot;: &quot;example&quot;, &quot;name&quot;: &quot;example&quot;, &quot;slug&quot;: &quot;example&quot; })
 updated = client.AppPreview().update({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;})
 patched = client.AppPreview().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;app_id&quot;: &quot;example&quot;, &quot;access&quot;: &quot;example&quot;})
@@ -779,8 +771,7 @@ client.AppPreview().remove({&quot;app_id&quot;: &quot;example&quot;, &quot;id&qu
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_previews = client.AppPreview.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
-app_preview = client.AppPreview.load({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_preview = client.AppPreview.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 created = client.AppPreview.create({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;app_preview_profile_id&quot; =&gt; &quot;example&quot;, &quot;name&quot; =&gt; &quot;example&quot;, &quot;slug&quot; =&gt; &quot;example&quot; })
 updated = client.AppPreview.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 patched = client.AppPreview.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;access&quot; =&gt; &quot;example&quot; })
@@ -788,8 +779,7 @@ client.AppPreview.remove({ &quot;app_id&quot; =&gt; &quot;example&quot;, &quot;i
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_previews = await client.AppPreview().list({ app_id: &quot;example&quot; })
-const app_preview = await client.AppPreview().load({ app_id: &quot;example&quot;, id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_preview = await client.AppPreview().load({ app_id: &quot;example&quot; })
 const created = await client.AppPreview().create({ app_id: &quot;example&quot;, app_preview_profile_id: &quot;example&quot;, name: &quot;example&quot;, slug: &quot;example&quot; })
 const updated = await client.AppPreview().update({ id: &quot;example_id&quot;, app_id: &quot;example&quot; })
 const patched = await client.AppPreview().patch({ id: &quot;example_id&quot;, app_id: &quot;example&quot;, access: &quot;example&quot; })
@@ -1996,9 +1986,9 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <h5 id="409-source-cannot-be-captured" class="status" data-status="4xx">409: Source cannot be captured</h5>
 <h5 id="422-invalid-preview-configuration" class="status" data-status="4xx">422: Invalid preview configuration</h5>
 <h5 id="502-hosting-dependency-unavailable" class="status" data-status="5xx">502: Hosting dependency unavailable</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingappsapp_idpreviews" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews</h3>
-<p>Operation ID: <code>api_v1_app_previews</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1hostingappsapp_idpreviewsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews/{id}</h3>
+<p>Operation ID: <code>api_v1_app_preview</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-9">Parameters</h4>
 <table>
@@ -2019,6 +2009,13 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-9">Responses</h4>
@@ -2030,9 +2027,8 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 <h5 id="404-not-found-6" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-6" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-6" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1hostingappsapp_idpreviewsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews/{id}</h3>
-<p>Operation ID: <code>api_v1_app_preview</code>.</p>
+<h3 id="get-apiv1hostingappsapp_idpreviewsidadministration" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews/{id}/administration</h3>
+<p>Operation ID: <code>administration_api_v1_app_preview</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-10">Parameters</h4>
 <table>
@@ -2063,46 +2059,6 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 </tbody>
 </table>
 <h4 id="responses-10">Responses</h4>
-<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-7" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-6" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-7" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-7" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-7" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="get-apiv1hostingappsapp_idpreviewsidadministration" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews/{id}/administration</h3>
-<p>Operation ID: <code>administration_api_v1_app_preview</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-11">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>app_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-11">Responses</h4>
 <h5 id="200-preview-administration-page" class="status" data-status="2xx">200: Preview administration page</h5>
 <p><code>application/json</code></p>
 <table>
@@ -3767,15 +3723,15 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 </tr>
 </tbody>
 </table>
-<h5 id="401-unauthorized-8" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-7" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-8" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-8" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-8" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="401-unauthorized-7" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-6" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-7" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-7" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-7" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1hostingappsapp_idpreviewsidsecret_comparison" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison</h3>
 <p>Operation ID: <code>secret_comparison_api_v1_app_preview</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-12">Parameters</h4>
+<h4 id="parameters-11">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -3796,6 +3752,39 @@ await client.AppPreview().remove({ app_id: &quot;example&quot;, id: &quot;exampl
 </tr>
 <tr>
 <td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-success-6" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-8" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-7" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-8" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-8" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-8" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1hostingappsapp_idpreviews" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/previews</h3>
+<p>Operation ID: <code>api_v1_app_previews</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>app_id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

@@ -2,44 +2,50 @@
   "existing": {
     "device_grant": {
       "DEVICE_GRANT00": {
-        "active_grants": [],
-        "agent_choices": [],
         "agent_id": "AGENT01",
-        "all_agents_access": false,
+        "agent_name": "s79",
+        "can_edit": true,
+        "can_revoke": false,
         "capabilities": [],
-        "execution_available": false,
-        "grants": [],
+        "created_at": "s7d",
         "id": "DEVICE_GRANT00",
-        "next_cursor": "s6c",
         "principal_id": "PRINCIPAL01",
+        "principal_name": "s80",
+        "revision": 129,
+        "revoked_at": "s82",
+        "updated_at": "s83",
         "device_id": "DEVICE01",
         "organization_id": "ORGANIZATION01"
       },
       "DEVICE_GRANT01": {
-        "active_grants": [],
-        "agent_choices": [],
         "agent_id": "AGENT01",
-        "all_agents_access": false,
+        "agent_name": "sf1",
+        "can_edit": true,
+        "can_revoke": false,
         "capabilities": [],
-        "execution_available": false,
-        "grants": [],
+        "created_at": "sf5",
         "id": "DEVICE_GRANT01",
-        "next_cursor": "sd0",
         "principal_id": "PRINCIPAL01",
+        "principal_name": "sf8",
+        "revision": 249,
+        "revoked_at": "sfa",
+        "updated_at": "sfb",
         "device_id": "DEVICE01",
         "organization_id": "ORGANIZATION01"
       },
       "DEVICE_GRANT02": {
-        "active_grants": [],
-        "agent_choices": [],
         "agent_id": "AGENT01",
-        "all_agents_access": false,
+        "agent_name": "s169",
+        "can_edit": true,
+        "can_revoke": false,
         "capabilities": [],
-        "execution_available": false,
-        "grants": [],
+        "created_at": "s16d",
         "id": "DEVICE_GRANT02",
-        "next_cursor": "s134",
         "principal_id": "PRINCIPAL01",
+        "principal_name": "s170",
+        "revision": 369,
+        "revoked_at": "s172",
+        "updated_at": "s173",
         "device_id": "DEVICE01",
         "organization_id": "ORGANIZATION01"
       }
@@ -48,15 +54,17 @@
   "new": {
     "device_grant": {
       "device_grant_ref01": {
-        "active_grants": [],
-        "agent_choices": [],
         "agent_id": "AGENT01",
-        "all_agents_access": false,
+        "agent_name": "s1e1",
+        "can_edit": true,
+        "can_revoke": false,
         "capabilities": [],
-        "execution_available": false,
-        "grants": [],
-        "next_cursor": "s198",
-        "principal_id": "PRINCIPAL01"
+        "created_at": "s1e5",
+        "principal_id": "PRINCIPAL01",
+        "principal_name": "s1e8",
+        "revision": 489,
+        "revoked_at": "s1ea",
+        "updated_at": "s1eb"
       }
     }
   },

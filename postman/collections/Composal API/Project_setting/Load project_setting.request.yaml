@@ -1,0 +1,18 @@
+$kind: http-request
+id: "6f8afd82-df58-5676-a130-a63d44323f24"
+description: |-
+  The `load` operation of **project_setting**.
+
+  SDK: `client.ProjectSetting().load({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/settings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_setting belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_setting belongs to.
+order: 1000

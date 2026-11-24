@@ -29,7 +29,7 @@ describe("SandboxIntegrationEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SandboxIntegration(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:SandboxIntegration(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SandboxIntegrationEntity", function()
     local setup = sandbox_integration_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "sandbox_integration." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,37 +46,9 @@ describe("SandboxIntegrationEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"sandbox_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations\"}")
-      print("LIVE STEP {\"id\":\"sandbox_integration.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SANDBOX_INTEGRATION_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local sandbox_integration_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.sandbox_integration")))
-    local sandbox_integration_ref01_data = nil
-    if #sandbox_integration_ref01_data_raw > 0 then
-      sandbox_integration_ref01_data = helpers.to_map(sandbox_integration_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local sandbox_integration_ref01_ent = client:SandboxIntegration(nil)
-    local sandbox_integration_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local sandbox_integration_ref01_list_result, err = sandbox_integration_ref01_ent:list(sandbox_integration_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(sandbox_integration_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"sandbox_integration.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}\"}")
+      print("LIVE STEP {\"id\":\"sandbox_integration.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only sandbox_integration.create.0 gives\"}")
+      pending("Live coverage incomplete: sandbox_integration.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sandbox_integrations); sandbox_integration.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}); sandbox_integration.load.2 excluded (GET-only live run: reads a record only sandbox_integration.create.0 gives)")
       return
     end
 
@@ -107,23 +79,6 @@ describe("SandboxIntegrationEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local sandbox_integration_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local sandbox_integration_ref01_list_result, err = sandbox_integration_ref01_ent:list(sandbox_integration_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(sandbox_integration_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(sandbox_integration_ref01_list_result),
-      { id = sandbox_integration_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local sandbox_integration_ref01_data_up0_up = {
       id = sandbox_integration_ref01_data["id"],
@@ -140,6 +95,19 @@ describe("SandboxIntegrationEntity", function()
     assert.is_not_nil(sandbox_integration_ref01_resdata_up0)
     assert.is_true(runner.live_same_id(sandbox_integration_ref01_resdata_up0["id"], sandbox_integration_ref01_data_up0_up["id"]))
     assert.are.equal(sandbox_integration_ref01_resdata_up0[sandbox_integration_ref01_markdef_up0_name], sandbox_integration_ref01_markdef_up0_value)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local sandbox_integration_ref01_match_dt0 = {
+      id = sandbox_integration_ref01_data["id"],
+    }
+    local sandbox_integration_ref01_data_dt0_loaded, err = sandbox_integration_ref01_ent:load(sandbox_integration_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local sandbox_integration_ref01_data_dt0_load_result = helpers.to_map(type(sandbox_integration_ref01_data_dt0_loaded) == 'table' and sandbox_integration_ref01_data_dt0_loaded.data_get and sandbox_integration_ref01_data_dt0_loaded:data_get() or sandbox_integration_ref01_data_dt0_loaded)
+    assert.is_not_nil(sandbox_integration_ref01_data_dt0_load_result)
+    assert.is_true(runner.live_same_id(sandbox_integration_ref01_data_dt0_load_result["id"], sandbox_integration_ref01_data["id"]))
 
   end)
 end)

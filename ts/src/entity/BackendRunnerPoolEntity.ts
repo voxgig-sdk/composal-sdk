@@ -16,7 +16,7 @@ import type {
 
 import type {
   BackendRunnerPool,
-  BackendRunnerPoolListMatch,
+  BackendRunnerPoolLoadMatch,
   BackendRunnerPoolCreateData,
   BackendRunnerPoolRemoveMatch,
 } from '../ComposalTypes'
@@ -37,8 +37,7 @@ class BackendRunnerPoolEntity extends ComposalEntityBase<BackendRunnerPool> {
 
 
 
-
-  async list(this: any, reqmatch?: BackendRunnerPoolListMatch, ctrl?: Control): Promise<BackendRunnerPoolEntity[]> {
+  async load(this: any, reqmatch?: BackendRunnerPoolLoadMatch, ctrl?: Control): Promise<BackendRunnerPoolEntity> {
 
     const utility = this._utility
 
@@ -58,7 +57,7 @@ class BackendRunnerPoolEntity extends ComposalEntityBase<BackendRunnerPool> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -124,9 +123,15 @@ class BackendRunnerPoolEntity extends ComposalEntityBase<BackendRunnerPool> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -149,11 +154,12 @@ class BackendRunnerPoolEntity extends ComposalEntityBase<BackendRunnerPool> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<BackendRunnerPoolEntity[]> return stays clean under strict null checks.
+        // Promise<BackendRunnerPoolEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

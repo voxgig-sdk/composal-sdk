@@ -38,7 +38,7 @@ func TestRuntimeInstanceHealthSnapshotEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RuntimeInstanceHealthSnapshot(nil).List(map[string]any{"runtime_instance_id": 1}, nil)
+		_, err := client.RuntimeInstanceHealthSnapshot(nil).Load(map[string]any{"runtime_instance_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRuntimeInstanceHealthSnapshotEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "runtime_instance_health_snapshot." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestRuntimeInstanceHealthSnapshotEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"runtime_instance_health_snapshot.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"runtime_instance01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, runtime_instance_health_snapshotEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RUNTIME_INSTANCE_HEALTH_SNAPSHOT_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestRuntimeInstanceHealthSnapshotEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		runtimeInstanceHealthSnapshotRef01Ent := client.RuntimeInstanceHealthSnapshot(nil)
-		runtimeInstanceHealthSnapshotRef01Match := map[string]any{
-			"runtime_instance_id": setup.idmap["runtime_instance01"],
-		}
-
-		runtimeInstanceHealthSnapshotRef01ListResult, err := runtimeInstanceHealthSnapshotRef01Ent.List(runtimeInstanceHealthSnapshotRef01Match, nil)
+		runtimeInstanceHealthSnapshotRef01MatchDt0 := map[string]any{}
+		runtimeInstanceHealthSnapshotRef01DataDt0Loaded, err := runtimeInstanceHealthSnapshotRef01Ent.Load(runtimeInstanceHealthSnapshotRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, runtimeInstanceHealthSnapshotRef01ListOk := runtimeInstanceHealthSnapshotRef01ListResult.([]any)
-		if !runtimeInstanceHealthSnapshotRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runtimeInstanceHealthSnapshotRef01ListResult)
+		if runtimeInstanceHealthSnapshotRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestRuntimeInstanceHealthSnapshotEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		runtimeInstanceHealthSnapshotRef01Match := map[string]any{
-			"runtime_instance_id": setup.idmap["runtime_instance01"],
-		}
-
-		runtimeInstanceHealthSnapshotRef01ListResult, err := runtimeInstanceHealthSnapshotRef01Ent.List(runtimeInstanceHealthSnapshotRef01Match, nil)
+		// LOAD
+		runtimeInstanceHealthSnapshotRef01MatchDt0 := map[string]any{}
+		runtimeInstanceHealthSnapshotRef01DataDt0Loaded, err := runtimeInstanceHealthSnapshotRef01Ent.Load(runtimeInstanceHealthSnapshotRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, runtimeInstanceHealthSnapshotRef01ListOk := runtimeInstanceHealthSnapshotRef01ListResult.([]any)
-		if !runtimeInstanceHealthSnapshotRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runtimeInstanceHealthSnapshotRef01ListResult)
+		if runtimeInstanceHealthSnapshotRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

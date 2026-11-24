@@ -1,0 +1,22 @@
+$kind: http-request
+id: "9a1b321c-0533-56e4-81a9-357dc8988e0b"
+description: |-
+  The `load` operation of **agent_repository**.
+
+  SDK: `client.AgentRepository().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/repositories"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: q
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_repository belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this agent_repository belongs to.
+order: 1000

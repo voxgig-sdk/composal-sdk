@@ -29,12 +29,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks": {
+    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}": {
+    "GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

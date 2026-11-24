@@ -50,13 +50,6 @@ main: kit: entity: agent_app: {
       r: true
       t: "`$INTEGER`"
     }
-    install_targets: {
-      h: "Install Targets"
-      n: "install_targets"
-      r: true
-      sh: "Active agents the viewer owns or manages, which they can install apps on"
-      t: "`$ARRAY`"
-    }
     installed_by: {
       h: "Installed By"
       n: "installed_by"
@@ -70,29 +63,10 @@ main: kit: entity: agent_app: {
       sh: "Install targets of the viewer that have this app installed"
       t: "`$ARRAY`"
     }
-    items: {
-      h: "Items"
-      n: "items"
-      r: true
-      t: "`$ARRAY`"
-    }
     mcp_url: {
       h: "Mcp Url"
       n: "mcp_url"
       r: true
-      t: [
-        "`$ONE`"
-        [
-          "`$STRING`"
-          "`$NULL`"
-        ]
-      ]
-    }
-    next_cursor: {
-      h: "Next Cursor"
-      n: "next_cursor"
-      r: true
-      sh: "Pass as cursor to load older apps"
       t: [
         "`$ONE`"
         [
@@ -297,7 +271,7 @@ main: kit: entity: agent_app: {
           ]
           t: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.items`"
           }
         }
       ]

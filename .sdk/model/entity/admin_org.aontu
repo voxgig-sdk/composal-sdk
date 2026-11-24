@@ -254,42 +254,6 @@ main: kit: entity: admin_org: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/admin/organizations"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/admin/organizations"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "admin"
-            }
-            {
-              lit: "organizations"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -341,6 +305,37 @@ main: kit: entity: admin_org: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/admin/organizations"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/admin/organizations"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "admin"
+            }
+            {
+              lit: "organizations"
             }
           ]
           t: {

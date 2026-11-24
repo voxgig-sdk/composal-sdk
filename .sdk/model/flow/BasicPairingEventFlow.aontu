@@ -7,16 +7,22 @@ main: kit: flow: BasicPairingEventFlow:
   name: "BasicPairingEventFlow",
   step: [
     {
-      m: {
-        pairing_id: "pairing01"
+      i: {
+        ref: "pairing_event_ref01",
+        srcdatavar: "pairing_event_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "pairing_event01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "pairing_event_ref01"
+            mark: "Mark01-pairing_event_ref01"
           }
         }
       ]

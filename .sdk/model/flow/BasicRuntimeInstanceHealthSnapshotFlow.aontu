@@ -19,16 +19,22 @@ main: kit: flow: BasicRuntimeInstanceHealthSnapshotFlow:
     }
 
     {
-      m: {
-        runtime_instance_id: "runtime_instance01"
+      i: {
+        ref: "runtime_instance_health_snapshot_ref01",
+        srcdatavar: "runtime_instance_health_snapshot_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "runtime_instance_health_snapshot01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "runtime_instance_health_snapshot_ref01"
+            mark: "Mark01-runtime_instance_health_snapshot_ref01"
           }
         }
       ]

@@ -38,7 +38,7 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SignalSubscription(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.SignalSubscription(nil).Load(map[string]any{"id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "signal_subscription." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"signal_subscription.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/signal_subscriptions\"}")
-			t.Log("LIVE STEP {\"id\":\"signal_subscription.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"signal_subscription.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"signal_subscription.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, signal_subscriptionEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SIGNAL_SUBSCRIPTION_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["signal_subscription01"]
-			}
-			livePace()
-			liveExisting(t, signal_subscriptionEntityLiveStrict, setup.data, "signal_subscription", "id", _liveId,
-				func() (any, error) {
-					return client.SignalSubscription(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		signalSubscriptionRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.signal_subscription")))
-		var signalSubscriptionRef01Data map[string]any
-		if len(signalSubscriptionRef01DataRaw) > 0 {
-			signalSubscriptionRef01Data = core.ToMapAny(signalSubscriptionRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = signalSubscriptionRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		signalSubscriptionRef01Ent := client.SignalSubscription(nil)
-		signalSubscriptionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		signalSubscriptionRef01ListResult, err := signalSubscriptionRef01Ent.List(signalSubscriptionRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, signalSubscriptionRef01ListOk := signalSubscriptionRef01ListResult.([]any)
-		if !signalSubscriptionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", signalSubscriptionRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		signalSubscriptionRef01MatchDt0 := map[string]any{
-			"id": signalSubscriptionRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			signalSubscriptionRef01MatchDt0["organization_id"] = v
-		} else {
-			signalSubscriptionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		signalSubscriptionRef01DataDt0Loaded, err := signalSubscriptionRef01Ent.Load(signalSubscriptionRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		signalSubscriptionRef01DataDt0LoadResult := core.ToMapAny(entityData(signalSubscriptionRef01DataDt0Loaded))
-		if signalSubscriptionRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(signalSubscriptionRef01DataDt0LoadResult["id"], signalSubscriptionRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"signal_subscription.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"signal_subscription.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only signal_subscription.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"signal_subscription.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}\"}")
+			t.Skip("Live coverage incomplete: signal_subscription.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/signal_subscriptions); signal_subscription.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}); signal_subscription.load.2 excluded (GET-only live run: reads a record only signal_subscription.create.0 gives); signal_subscription.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		signalSubscriptionRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		signalSubscriptionRef01ListResult, err := signalSubscriptionRef01Ent.List(signalSubscriptionRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		signalSubscriptionRef01List, signalSubscriptionRef01ListOk := signalSubscriptionRef01ListResult.([]any)
-		if !signalSubscriptionRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", signalSubscriptionRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(signalSubscriptionRef01List), map[string]any{"id": signalSubscriptionRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		signalSubscriptionRef01DataUp0Up := map[string]any{
 			"id": signalSubscriptionRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		// LOAD
 		signalSubscriptionRef01MatchDt0 := map[string]any{
 			"id": signalSubscriptionRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			signalSubscriptionRef01MatchDt0["organization_id"] = v
-		} else {
-			signalSubscriptionRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		signalSubscriptionRef01DataDt0Loaded, err := signalSubscriptionRef01Ent.Load(signalSubscriptionRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSignalSubscriptionEntity(t *testing.T) {
 		_, err = signalSubscriptionRef01Ent.Remove(signalSubscriptionRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		signalSubscriptionRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		signalSubscriptionRef01ListRt0Result, err := signalSubscriptionRef01Ent.List(signalSubscriptionRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		signalSubscriptionRef01ListRt0, signalSubscriptionRef01ListRt0Ok := signalSubscriptionRef01ListRt0Result.([]any)
-		if !signalSubscriptionRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", signalSubscriptionRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(signalSubscriptionRef01ListRt0), map[string]any{"id": signalSubscriptionRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -38,7 +38,7 @@ func TestOrganizationAppEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.OrganizationApp(nil).List(map[string]any{"organization_id": 1, "native_agent_id": "x"}, nil)
+		_, err := client.OrganizationApp(nil).Load(map[string]any{"organization_id": 1, "native_agent_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestOrganizationAppEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "organization_app." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,16 +63,15 @@ func TestOrganizationAppEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"organization_app.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, organization_appEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ORGANIZATION_APP_ENTID", _liveKey)
-				}
-			}
+			t.Log("LIVE STEP {\"id\":\"organization_app.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install\"}")
+			t.Skip("Live coverage incomplete: organization_app.update.0 excluded (GET-only live run: needs PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		organizationAppRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.organization_app")))
@@ -83,65 +82,6 @@ func TestOrganizationAppEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = organizationAppRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationAppRef01Ent := client.OrganizationApp(nil)
-		organizationAppRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationAppRef01ListResult, err := organizationAppRef01Ent.List(organizationAppRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, organizationAppRef01ListOk := organizationAppRef01ListResult.([]any)
-		if !organizationAppRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationAppRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, organization_appEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ORGANIZATION_APP_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		organizationAppRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.organization_app")))
-		var organizationAppRef01Data map[string]any
-		if len(organizationAppRef01DataRaw) > 0 {
-			organizationAppRef01Data = core.ToMapAny(organizationAppRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = organizationAppRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationAppRef01Ent := client.OrganizationApp(nil)
-		organizationAppRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationAppRef01ListResult, err := organizationAppRef01Ent.List(organizationAppRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, organizationAppRef01ListOk := organizationAppRef01ListResult.([]any)
-		if !organizationAppRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationAppRef01ListResult)
-		}
 
 	})
 }

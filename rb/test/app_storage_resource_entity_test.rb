@@ -25,7 +25,7 @@ class AppStorageResourceEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AppStorageResource(nil).list({ "app_id" => 1 }, nil)
+      client.AppStorageResource(nil).load({ "app_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class AppStorageResourceEntityTest < Minitest::Test
     setup = app_storage_resource_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "app_storage_resource." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,10 @@ class AppStorageResourceEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"app_storage_resource.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive\"}"
-      puts "LIVE STEP {\"id\":\"app_storage_resource.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/storage_resources/{id}\"}"
-      puts "LIVE STEP {\"id\":\"app_storage_resource.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/storage_resources/{id}\"}"
-      puts "LIVE STEP {\"id\":\"app_storage_resource.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["app01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_APP_STORAGE_RESOURCE_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["app_storage_resource01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "app_storage_resource", "id", _live_id) do
-        client.AppStorageResource(nil).list({"app_id" => setup[:idmap]["app01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    app_storage_resource_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.app_storage_resource")))
-    app_storage_resource_ref01_data = nil
-    if app_storage_resource_ref01_data_raw.length > 0
-      app_storage_resource_ref01_data = Helpers.to_map(app_storage_resource_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    app_storage_resource_ref01_ent = client.AppStorageResource(nil)
-    app_storage_resource_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_storage_resource_ref01_list_result = app_storage_resource_ref01_ent.list(app_storage_resource_ref01_match, nil)
-    assert app_storage_resource_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    app_storage_resource_ref01_match_dt0 = {
-      "id" => app_storage_resource_ref01_data["id"],
-    }
-    app_storage_resource_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    app_storage_resource_ref01_data_dt0_loaded = app_storage_resource_ref01_ent.load(app_storage_resource_ref01_match_dt0, nil)
-    app_storage_resource_ref01_data_dt0_load_result = Helpers.to_map(app_storage_resource_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_storage_resource_ref01_data_dt0_loaded.data_get : app_storage_resource_ref01_data_dt0_loaded)
-    assert !app_storage_resource_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(app_storage_resource_ref01_data_dt0_load_result["id"], app_storage_resource_ref01_data["id"])
-
-      return
+      puts "LIVE STEP {\"id\":\"app_storage_resource.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/storage_resources/{id}\"}"
+      puts "LIVE STEP {\"id\":\"app_storage_resource.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_storage_resource.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"app_storage_resource.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/storage_resources/{id}\"}"
+      skip("Live coverage incomplete: app_storage_resource.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive); app_storage_resource.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/storage_resources/{id}); app_storage_resource.load.2 excluded (GET-only live run: reads a record only app_storage_resource.create.0 gives); app_storage_resource.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/storage_resources/{id})")
     end
 
     if setup[:live]
@@ -116,20 +71,6 @@ class AppStorageResourceEntityTest < Minitest::Test
     assert !app_storage_resource_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    app_storage_resource_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_storage_resource_ref01_list_result = app_storage_resource_ref01_ent.list(app_storage_resource_ref01_match, nil)
-    assert app_storage_resource_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(app_storage_resource_ref01_list_result),
-      { "id" => app_storage_resource_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     app_storage_resource_ref01_data_up0_up = {
       "id" => app_storage_resource_ref01_data["id"],
@@ -151,7 +92,6 @@ class AppStorageResourceEntityTest < Minitest::Test
     app_storage_resource_ref01_match_dt0 = {
       "id" => app_storage_resource_ref01_data["id"],
     }
-    app_storage_resource_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_storage_resource_ref01_data_dt0_loaded = app_storage_resource_ref01_ent.load(app_storage_resource_ref01_match_dt0, nil)
     app_storage_resource_ref01_data_dt0_load_result = Helpers.to_map(app_storage_resource_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_storage_resource_ref01_data_dt0_loaded.data_get : app_storage_resource_ref01_data_dt0_loaded)
     assert !app_storage_resource_ref01_data_dt0_load_result.nil?
@@ -164,20 +104,6 @@ class AppStorageResourceEntityTest < Minitest::Test
     }
     app_storage_resource_ref01_match_rm0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_storage_resource_ref01_ent.remove(app_storage_resource_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    app_storage_resource_ref01_match_rt0 = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_storage_resource_ref01_list_rt0_result = app_storage_resource_ref01_ent.list(app_storage_resource_ref01_match_rt0, nil)
-    assert app_storage_resource_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(app_storage_resource_ref01_list_rt0_result),
-      { "id" => app_storage_resource_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

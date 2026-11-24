@@ -438,8 +438,8 @@
 <a href="../api/repo_bookmark_protection_event.html">RepoBookmarkProtectionEvent</a>
 <a aria-current="page" href="../api/repo_cloud_workspace_backup.html">RepoCloudWorkspaceBackup</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_keyrestore_request">POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request</a>
 <a class="nav-section" href="#post-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups">POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</a>
-<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</a>
-<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</a></div>
+<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</a>
+<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</a></div>
 <a href="../api/repo_code_rule.html">RepoCodeRule</a>
 <a href="../api/repo_setting.html">RepoSetting</a>
 <a href="../api/repo_stat.html">RepoStat</a>
@@ -612,13 +612,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</code></a></td>
+<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -628,12 +628,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">repo_cloud_workspace_backups, err := client.RepoCloudWorkspaceBackup(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(repo_cloud_workspace_backups)
-repo_cloud_workspace_backup, err := client.RepoCloudWorkspaceBackup(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">repo_cloud_workspace_backup, err := client.RepoCloudWorkspaceBackup(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -646,32 +641,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local repo_cloud_workspace_backups, err = client:RepoCloudWorkspaceBackup():list({ organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
-local repo_cloud_workspace_backup, err = client:RepoCloudWorkspaceBackup():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
+<pre><code class="language-lua">local repo_cloud_workspace_backup, err = client:RepoCloudWorkspaceBackup():load({ organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
 local created, err = client:RepoCloudWorkspaceBackup():create({ organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$repo_cloud_workspace_backups = $client-&gt;RepoCloudWorkspaceBackup()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
-$repo_cloud_workspace_backup = $client-&gt;RepoCloudWorkspaceBackup()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$repo_cloud_workspace_backup = $client-&gt;RepoCloudWorkspaceBackup()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;RepoCloudWorkspaceBackup()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">repo_cloud_workspace_backups = client.RepoCloudWorkspaceBackup().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
-repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
 created = client.RepoCloudWorkspaceBackup().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">repo_cloud_workspace_backups = client.RepoCloudWorkspaceBackup.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
-repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">repo_cloud_workspace_backup = client.RepoCloudWorkspaceBackup.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
 created = client.RepoCloudWorkspaceBackup.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const repo_cloud_workspace_backups = await client.RepoCloudWorkspaceBackup().list({ organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
-const repo_cloud_workspace_backup = await client.RepoCloudWorkspaceBackup().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
+<pre><code class="language-ts">const repo_cloud_workspace_backup = await client.RepoCloudWorkspaceBackup().load({ organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
 const created = await client.RepoCloudWorkspaceBackup().create({ organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -787,9 +777,9 @@ const created = await client.RepoCloudWorkspaceBackup().create({ organization_id
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</h3>
-<p>Operation ID: <code>api_v1_cloud_workspace_backups</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</h3>
+<p>Operation ID: <code>get_api_v1_organizations_org_slug_repos_repo_slug_cloud_workspace_backups_backup_key_</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-2">Parameters</h4>
 <table>
@@ -817,6 +807,13 @@ const created = await client.RepoCloudWorkspaceBackup().create({ organization_id
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>backup_key</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-2">Responses</h4>
@@ -828,9 +825,8 @@ const created = await client.RepoCloudWorkspaceBackup().create({ organization_id
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backupsbackup_key" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}</h3>
-<p>Operation ID: <code>get_api_v1_organizations_org_slug_repos_repo_slug_cloud_workspace_backups_backup_key_</code>.</p>
+<h3 id="get-apiv1organizationsorg_slugreposrepo_slugcloud_workspace_backups" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups</h3>
+<p>Operation ID: <code>api_v1_cloud_workspace_backups</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -853,13 +849,6 @@ const created = await client.RepoCloudWorkspaceBackup().create({ organization_id
 </tr>
 <tr>
 <td><code>repo_slug</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>backup_key</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

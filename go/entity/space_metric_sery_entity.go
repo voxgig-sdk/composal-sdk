@@ -294,16 +294,11 @@ func (e *SpaceMetricSeryEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *SpaceMetricSeryEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *SpaceMetricSeryEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *SpaceMetricSeryEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *SpaceMetricSeryEntity) List(reqmatch map[string]any, ctrl map[string]an
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// SpaceMetricSeryListMatch and returns []SpaceMetricSery. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *SpaceMetricSeryEntity) ListTyped(reqmatch SpaceMetricSeryListMatch, ctrl map[string]any) ([]SpaceMetricSery, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// SpaceMetricSeryLoadMatch and returns an SpaceMetricSery. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *SpaceMetricSeryEntity) LoadTyped(reqmatch SpaceMetricSeryLoadMatch, ctrl map[string]any) (SpaceMetricSery, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return SpaceMetricSery{}, err
 	}
-	return typedSliceFrom[SpaceMetricSery](res), nil
+	return typedFrom[SpaceMetricSery](res), nil
 }
 
+
+
+func (e *SpaceMetricSeryEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 

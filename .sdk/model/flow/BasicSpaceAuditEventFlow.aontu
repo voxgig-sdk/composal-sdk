@@ -19,16 +19,22 @@ main: kit: flow: BasicSpaceAuditEventFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
+      i: {
+        ref: "space_audit_event_ref01",
+        srcdatavar: "space_audit_event_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "space_audit_event01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "space_audit_event_ref01"
+            mark: "Mark01-space_audit_event_ref01"
           }
         }
       ]

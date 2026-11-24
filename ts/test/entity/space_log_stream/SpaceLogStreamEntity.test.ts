@@ -47,7 +47,7 @@ describe('SpaceLogStreamEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.SpaceLogStream().list({"space_id":1} as any),
+    await assert.rejects(client.SpaceLogStream().load({"space_id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('SpaceLogStreamEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['create', 'list']) {
+    for (const op of ['create', 'load']) {
       if (!live && maybeSkipControl(t, 'entityOp', 'space_log_stream.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"space_log_stream","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/observability/spaces/{space_id}/log_streams","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/observability/spaces/{space_id}/log_streams","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"log_streams"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/observability/spaces/{space_id}/log_streams","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/observability/spaces/{space_id}/log_streams","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"log_streams"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"space_log_stream","name__orig":"space_log_stream","Name":"SpaceLogStream","name_":"space_log_stream","name-":"space-log-stream","NAME":"SPACE_LOG_STREAM","index$":490}, {"active":true,"entity":"space_log_stream","key$":"BasicSpaceLogStreamFlow","kind":"basic","name":"BasicSpaceLogStreamFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"space_log_stream_ref01"},"m":{"space_id":"space01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{},"m":{"space_id":"space01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"space_log_stream_ref01"}}],"index$":1}]}, 'SpaceLogStream', {"POST /api/v1/observability/spaces/{space_id}/log_streams":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/observability/spaces/{space_id}/log_streams":{"protocol":"http","parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"space_log_stream.create.0":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams"} : {})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{},"name":"space_log_stream","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":false,"co":{"id":"POST /api/v1/observability/spaces/{space_id}/log_streams","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"POST","o":"/api/v1/observability/spaces/{space_id}/log_streams","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"log_streams"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/observability/spaces/{space_id}/log_streams","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"space_id","or":"space_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/observability/spaces/{space_id}/log_streams","q":{"exist":["space_id"]},"r":{"param":{"space_id":"space_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"observability"},{"lit":"spaces"},{"var":"space_id"},{"lit":"log_streams"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"space_log_stream","name__orig":"space_log_stream","Name":"SpaceLogStream","name_":"space_log_stream","name-":"space-log-stream","NAME":"SPACE_LOG_STREAM","index$":490}, {"active":true,"entity":"space_log_stream","key$":"BasicSpaceLogStreamFlow","kind":"basic","name":"BasicSpaceLogStreamFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"space_log_stream_ref01"},"m":{"space_id":"space01"},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"space_log_stream_ref01","srcdatavar":"space_log_stream_ref01_data","suffix":"_dt0"},"m":{"id":"space_log_stream01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-space_log_stream_ref01"}}],"index$":1}]}, 'SpaceLogStream', {"POST /api/v1/observability/spaces/{space_id}/log_streams":{"protocol":"http","requestBody":{"required":false,"content":{"application/json":{"schema":{"type":"object","additionalProperties":true}}}},"parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]},"GET /api/v1/observability/spaces/{space_id}/log_streams":{"protocol":"http","parameters":[{"name":"space_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"space_log_stream.create.0":"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams"} : {})
     }
     const client = setup.client
     const struct = setup.struct
@@ -80,12 +80,6 @@ describe('SpaceLogStreamEntity', async () => {
     space_log_stream_ref01_data = (await space_log_stream_ref01_ent.create(space_log_stream_ref01_data)).data()
     assert(null != space_log_stream_ref01_data)
 
-
-    // LIST
-    const space_log_stream_ref01_match: any = {}
-    space_log_stream_ref01_match['space_id'] = setup.idmap['space01']
-
-    const space_log_stream_ref01_list = (await space_log_stream_ref01_ent.list(space_log_stream_ref01_match)).map((e: any) => e.data())
 
 
   })

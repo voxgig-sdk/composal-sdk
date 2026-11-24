@@ -1,0 +1,11 @@
+$kind: http-request
+id: "494ebfab-de35-5ec4-8f1a-10c0812fa8bd"
+description: |-
+  The `load` operation of **app_access_jwk**.
+
+  SDK: `client.AppAccessJwk().load()`
+url: "{{base}}/api/v1/app_access/jwks"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

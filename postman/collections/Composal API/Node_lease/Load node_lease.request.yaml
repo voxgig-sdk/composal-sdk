@@ -1,0 +1,15 @@
+$kind: http-request
+id: cb220d00-d56b-5540-aaf8-930672cf86b2
+description: |-
+  The `load` operation of **node_lease**.
+
+  SDK: `client.NodeLease().load({ node_id: "example" })`
+url: "{{base}}/api/v1/ci/nodes/:id/leases"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: id
+    value: "{{node_id}}"
+    description: The node this node_lease belongs to.
+order: 1000

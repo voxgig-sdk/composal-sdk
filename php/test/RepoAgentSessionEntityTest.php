@@ -33,7 +33,7 @@ class RepoAgentSessionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RepoAgentSession(null)->list(["organization_id" => 1, "repo_id" => 'x'], null);
+            $client->RepoAgentSession(null)->load(["id" => 1, "organization_id" => 'x', "repo_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RepoAgentSessionEntityTest extends TestCase
         $setup = repo_agent_session_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load"] as $_op) {
+        foreach (["create", "update", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "repo_agent_session." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,58 +54,9 @@ class RepoAgentSessionEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"repo_agent_session.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"repo_agent_session.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01", "repo01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_REPO_AGENT_SESSION_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["repo_agent_session01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "repo_agent_session",
-                fn() => $client->RepoAgentSession(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null, "repo_id" => $setup["idmap"]["repo01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $repo_agent_session_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.repo_agent_session")));
-        $repo_agent_session_ref01_data = null;
-        if (count($repo_agent_session_ref01_data_raw) > 0) {
-            $repo_agent_session_ref01_data = Helpers::to_map($repo_agent_session_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $repo_agent_session_ref01_ent = $client->RepoAgentSession(null);
-        $repo_agent_session_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $repo_agent_session_ref01_list_result = $repo_agent_session_ref01_ent->list($repo_agent_session_ref01_match, null);
-        $this->assertIsArray($repo_agent_session_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $repo_agent_session_ref01_match_dt0 = [
-            "id" => $repo_agent_session_ref01_data["id"],
-        ];
-        $repo_agent_session_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $repo_agent_session_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
-        $repo_agent_session_ref01_data_dt0_loaded = $repo_agent_session_ref01_ent->load($repo_agent_session_ref01_match_dt0, null);
-        $repo_agent_session_ref01_data_dt0_load_result = Helpers::to_map(is_object($repo_agent_session_ref01_data_dt0_loaded) && method_exists($repo_agent_session_ref01_data_dt0_loaded, 'data_get') ? $repo_agent_session_ref01_data_dt0_loaded->data_get() : $repo_agent_session_ref01_data_dt0_loaded);
-        $this->assertNotNull($repo_agent_session_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($repo_agent_session_ref01_data_dt0_load_result["id"] ?? null, $repo_agent_session_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"repo_agent_session.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"repo_agent_session.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only repo_agent_session.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: repo_agent_session.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete); repo_agent_session.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}); repo_agent_session.load.2 excluded (GET-only live run: reads a record only repo_agent_session.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -135,23 +86,6 @@ class RepoAgentSessionEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $repo_agent_session_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $repo_agent_session_ref01_list_result = $repo_agent_session_ref01_ent->list($repo_agent_session_ref01_match, null);
-        $this->assertIsArray($repo_agent_session_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($repo_agent_session_ref01_list_result),
-            ["id" => $repo_agent_session_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $repo_agent_session_ref01_data_up0_up = [
             "id" => $repo_agent_session_ref01_data["id"],
@@ -177,7 +111,6 @@ class RepoAgentSessionEntityTest extends TestCase
             "id" => $repo_agent_session_ref01_data["id"],
         ];
         $repo_agent_session_ref01_match_dt0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
-        $repo_agent_session_ref01_match_dt0["repo_id"] = $setup["idmap"]["repo_id"] ?? $setup["idmap"]["repo01"] ?? null;
         $repo_agent_session_ref01_data_dt0_loaded = $repo_agent_session_ref01_ent->load($repo_agent_session_ref01_match_dt0, null);
         $repo_agent_session_ref01_data_dt0_load_result = Helpers::to_map(is_object($repo_agent_session_ref01_data_dt0_loaded) && method_exists($repo_agent_session_ref01_data_dt0_loaded, 'data_get') ? $repo_agent_session_ref01_data_dt0_loaded->data_get() : $repo_agent_session_ref01_data_dt0_loaded);
         $this->assertNotNull($repo_agent_session_ref01_data_dt0_load_result);

@@ -17,105 +17,6 @@ import (
 const log_stream_chunkDirectLiveStrict = true
 
 func TestLogStreamChunkDirect(t *testing.T) {
-	t.Run("direct-list-log_stream_chunk", func(t *testing.T) {
-		setup := log_stream_chunkDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
-		_mode := "unit"
-		if setup.live {
-			_mode = "live"
-		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-log_stream_chunk", _mode); _shouldSkip {
-			if _reason == "" {
-				_reason = "skipped via sdk-test-control.json"
-			}
-			t.Skip(_reason)
-			return
-		}
-		if setup.live {
-			for _, _liveKey := range []string{"log_stream01", "space01"} {
-				if v := setup.idmap[_liveKey]; v == nil {
-					liveMiss(t, log_stream_chunkDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID", _liveKey)
-					return
-				}
-			}
-		}
-		if setup.live {
-			livePace()
-		}
-		client := setup.client
-
-		params := map[string]any{}
-		query := map[string]any{}
-		if setup.live {
-			params["log_stream_id"] = setup.idmap["log_stream01"]
-		} else {
-			params["log_stream_id"] = "direct01"
-		}
-		if setup.live {
-			params["space_id"] = setup.idmap["space01"]
-		} else {
-			params["space_id"] = "direct02"
-		}
-
-		result, err := client.Direct(map[string]any{
-			"path":   "api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks",
-			"method": "GET",
-			"params": params,
-			"query":  query,
-		})
-		if setup.live {
-			if err != nil {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list failed: %v", err)
-			}
-			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
-			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
-			}
-		} else {
-			if err != nil {
-				t.Fatalf("direct failed: %v", err)
-			}
-			if result["ok"] != true {
-				t.Fatalf("expected ok to be true, got %v", result["ok"])
-			}
-			if core.ToInt(result["status"]) != 200 {
-				t.Fatalf("expected status 200, got %v", result["status"])
-			}
-		}
-
-		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
-				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
-			}
-
-			if len(*setup.calls) != 1 {
-				t.Fatalf("expected 1 call, got %d", len(*setup.calls))
-			}
-			call := (*setup.calls)[0]
-			if initMap, ok := call["init"].(map[string]any); ok {
-				if initMap["method"] != "GET" {
-					t.Fatalf("expected method GET, got %v", initMap["method"])
-				}
-			}
-			if url, ok := call["url"].(string); ok {
-				if !strings.Contains(url, "direct01") {
-					t.Fatalf("expected url to contain direct01, got %v", url)
-				}
-				if !strings.Contains(url, "direct02") {
-					t.Fatalf("expected url to contain direct02, got %v", url)
-				}
-			}
-		}
-	})
-
 	t.Run("direct-load-log_stream_chunk", func(t *testing.T) {
 		setup := log_stream_chunkDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
@@ -129,8 +30,13 @@ func TestLogStreamChunkDirect(t *testing.T) {
 			t.Skip(_reason)
 			return
 		}
+		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" && setup.idmap["log_stream_chunk01"] == nil {
+			t.Log("LIVE STEP {\"id\":\"direct-load-log_stream_chunk\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs log_stream_chunk01, which only POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks gives\"}")
+			t.Skip("Live coverage incomplete: direct-load-log_stream_chunk excluded (GET-only live run: needs log_stream_chunk01, which only POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks gives)")
+			return
+		}
 		if setup.live {
-			for _, _liveKey := range []string{"log_stream01", "space01"} {
+			for _, _liveKey := range []string{"log_stream_chunk01", "log_stream01", "space01"} {
 				if v := setup.idmap[_liveKey]; v == nil {
 					liveMiss(t, log_stream_chunkDirectLiveStrict, "Live test blocked: needs %s via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID", _liveKey)
 					return
@@ -145,32 +51,7 @@ func TestLogStreamChunkDirect(t *testing.T) {
 		params := map[string]any{}
 		query := map[string]any{}
 		if setup.live {
-			listParams := map[string]any{}
-			listParams["log_stream_id"] = setup.idmap["log_stream01"]
-			listParams["space_id"] = setup.idmap["space01"]
-			listResult, listErr := client.Direct(map[string]any{
-				"path":   "api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks",
-				"method": "GET",
-				"params": listParams,
-			})
-			if listErr != nil {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list discovery failed: %v", listErr)
-			}
-			if listResult["ok"] != true {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list discovery failed: %s", liveDescribe(listResult))
-			}
-			listData, listOk := liveList(listResult["data"])
-			if !listOk {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live list discovery returned no list: %s", liveDescribe(listResult))
-			}
-			if len(listData) == 0 {
-				liveEmpty(t, "The account has no log_stream_chunk record to load")
-			}
-			firstEnt := core.ToMapAny(listData[0])
-			if firstEnt["id"] == nil {
-				liveMiss(t, log_stream_chunkDirectLiveStrict, "Live load blocked: discovery returned no usable identity")
-			}
-			params["id"] = firstEnt["id"]
+			params["id"] = setup.idmap["log_stream_chunk01"]
 			params["log_stream_id"] = setup.idmap["log_stream01"]
 			params["space_id"] = setup.idmap["space01"]
 		} else {

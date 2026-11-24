@@ -38,7 +38,7 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AppServiceBinding(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.AppServiceBinding(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "app_service_binding." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"app_service_binding.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable\"}")
-			t.Log("LIVE STEP {\"id\":\"app_service_binding.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/service_bindings/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_service_binding.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/service_bindings/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_service_binding.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, app_service_bindingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_APP_SERVICE_BINDING_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["app_service_binding01"]
-			}
-			livePace()
-			liveExisting(t, app_service_bindingEntityLiveStrict, setup.data, "app_service_binding", "id", _liveId,
-				func() (any, error) {
-					return client.AppServiceBinding(nil).List(map[string]any{"app_id": setup.idmap["app01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		appServiceBindingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.app_service_binding")))
-		var appServiceBindingRef01Data map[string]any
-		if len(appServiceBindingRef01DataRaw) > 0 {
-			appServiceBindingRef01Data = core.ToMapAny(appServiceBindingRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = appServiceBindingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appServiceBindingRef01Ent := client.AppServiceBinding(nil)
-		appServiceBindingRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appServiceBindingRef01ListResult, err := appServiceBindingRef01Ent.List(appServiceBindingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, appServiceBindingRef01ListOk := appServiceBindingRef01ListResult.([]any)
-		if !appServiceBindingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appServiceBindingRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		appServiceBindingRef01MatchDt0 := map[string]any{
-			"id": appServiceBindingRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appServiceBindingRef01MatchDt0["app_id"] = v
-		} else {
-			appServiceBindingRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		appServiceBindingRef01DataDt0Loaded, err := appServiceBindingRef01Ent.Load(appServiceBindingRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		appServiceBindingRef01DataDt0LoadResult := core.ToMapAny(entityData(appServiceBindingRef01DataDt0Loaded))
-		if appServiceBindingRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(appServiceBindingRef01DataDt0LoadResult["id"], appServiceBindingRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"app_service_binding.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/service_bindings/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"app_service_binding.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_service_binding.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"app_service_binding.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/service_bindings/{id}\"}")
+			t.Skip("Live coverage incomplete: app_service_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable); app_service_binding.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/service_bindings/{id}); app_service_binding.load.2 excluded (GET-only live run: reads a record only app_service_binding.create.0 gives); app_service_binding.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/service_bindings/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		appServiceBindingRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appServiceBindingRef01ListResult, err := appServiceBindingRef01Ent.List(appServiceBindingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appServiceBindingRef01List, appServiceBindingRef01ListOk := appServiceBindingRef01ListResult.([]any)
-		if !appServiceBindingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appServiceBindingRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(appServiceBindingRef01List), map[string]any{"id": appServiceBindingRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		appServiceBindingRef01DataUp0Up := map[string]any{
 			"id": appServiceBindingRef01Data["id"],
@@ -223,11 +129,6 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		// LOAD
 		appServiceBindingRef01MatchDt0 := map[string]any{
 			"id": appServiceBindingRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appServiceBindingRef01MatchDt0["app_id"] = v
-		} else {
-			appServiceBindingRef01MatchDt0["app_id"] = setup.idmap["app01"]
 		}
 		appServiceBindingRef01DataDt0Loaded, err := appServiceBindingRef01Ent.Load(appServiceBindingRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestAppServiceBindingEntity(t *testing.T) {
 		_, err = appServiceBindingRef01Ent.Remove(appServiceBindingRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appServiceBindingRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appServiceBindingRef01ListRt0Result, err := appServiceBindingRef01Ent.List(appServiceBindingRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appServiceBindingRef01ListRt0, appServiceBindingRef01ListRt0Ok := appServiceBindingRef01ListRt0Result.([]any)
-		if !appServiceBindingRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", appServiceBindingRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(appServiceBindingRef01ListRt0), map[string]any{"id": appServiceBindingRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -24,40 +24,6 @@ def _live_ok(result):
 
 class TestCliReleaseDirect:
 
-    def test_should_direct_list_cli_release(self):
-        setup = _cli_release_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-cli_release", "live" if setup["live"] else "unit")
-        if _skip:
-            pytest.skip(_reason or "skipped via sdk-test-control.json")
-            return
-        if setup["live"]:
-            runner.live_pace()
-        client = setup["client"]
-
-        params = {}
-        query = {}
-
-        result = client.direct({
-            "path": "api/v1/cli_releases",
-            "method": "GET",
-            "params": params,
-            "query": query,
-        })
-        if setup["live"]:
-            if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
-        else:
-            assert result["ok"] is True
-            assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
-            assert len(setup["calls"]) == 1
-
     def test_should_direct_load_cli_release(self):
         setup = _cli_release_direct_setup({"id": "direct01"})
         _skip, _reason = runner.is_control_skipped("direct", "direct-load-cli_release", "live" if setup["live"] else "unit")
@@ -76,7 +42,7 @@ class TestCliReleaseDirect:
             pass
 
         result = client.direct({
-            "path": "api/v1/cli_releases/latest",
+            "path": "api/v1/cli_releases",
             "method": "GET",
             "params": params,
             "query": query,

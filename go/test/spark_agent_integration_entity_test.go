@@ -38,7 +38,7 @@ func TestSparkAgentIntegrationEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SparkAgentIntegration(nil).List(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
+		_, err := client.SparkAgentIntegration(nil).Load(map[string]any{"agent_id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSparkAgentIntegrationEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "spark_agent_integration." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestSparkAgentIntegrationEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"spark_agent_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"agent01", "organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, spark_agent_integrationEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPARK_AGENT_INTEGRATION_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,20 +80,20 @@ func TestSparkAgentIntegrationEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		sparkAgentIntegrationRef01Ent := client.SparkAgentIntegration(nil)
-		sparkAgentIntegrationRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
+		sparkAgentIntegrationRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["organization_id"]; v != nil {
+			sparkAgentIntegrationRef01MatchDt0["organization_id"] = v
+		} else {
+			sparkAgentIntegrationRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
-
-		sparkAgentIntegrationRef01ListResult, err := sparkAgentIntegrationRef01Ent.List(sparkAgentIntegrationRef01Match, nil)
+		sparkAgentIntegrationRef01DataDt0Loaded, err := sparkAgentIntegrationRef01Ent.Load(sparkAgentIntegrationRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, sparkAgentIntegrationRef01ListOk := sparkAgentIntegrationRef01ListResult.([]any)
-		if !sparkAgentIntegrationRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkAgentIntegrationRef01ListResult)
+		if sparkAgentIntegrationRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -138,19 +131,19 @@ func TestSparkAgentIntegrationEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		sparkAgentIntegrationRef01Match := map[string]any{
-			"agent_id": setup.idmap["agent01"],
-			"organization_id": setup.idmap["organization01"],
+		// LOAD
+		sparkAgentIntegrationRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["organization_id"]; v != nil {
+			sparkAgentIntegrationRef01MatchDt0["organization_id"] = v
+		} else {
+			sparkAgentIntegrationRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
-
-		sparkAgentIntegrationRef01ListResult, err := sparkAgentIntegrationRef01Ent.List(sparkAgentIntegrationRef01Match, nil)
+		sparkAgentIntegrationRef01DataDt0Loaded, err := sparkAgentIntegrationRef01Ent.Load(sparkAgentIntegrationRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, sparkAgentIntegrationRef01ListOk := sparkAgentIntegrationRef01ListResult.([]any)
-		if !sparkAgentIntegrationRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkAgentIntegrationRef01ListResult)
+		if sparkAgentIntegrationRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

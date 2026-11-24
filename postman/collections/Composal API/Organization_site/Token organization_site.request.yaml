@@ -3,7 +3,7 @@ id: "825ef8e1-8dee-585b-af91-44cf7cd28b81"
 description: |-
   The `token` action of **organization_site**, a route of its `create` operation.
 
-  SDK: `client.OrganizationSite().create({ "organization_id": "organization_id", "id": "ID", $action: "token" })`
+  SDK: `client.OrganizationSite().create({ "organization_id": "organization_id", "id": "id", $action: "token" })`
 url: "{{base}}/api/v1/spark/organizations/:organization_id/sites/:name/token"
 method: POST
 headers:
@@ -14,8 +14,8 @@ pathVariables:
     value: "{{organization_id}}"
     description: The organization this organization_site belongs to.
   - key: name
-    value: "{{organization_site_id}}"
-    description: The organization_site this request addresses.
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
 body:
   type: json
   content: "{}"

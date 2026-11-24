@@ -20,17 +20,23 @@ main: kit: flow: BasicRunnerLeaseFlow:
     }
 
     {
+      i: {
+        ref: "runner_lease_ref01",
+        srcdatavar: "runner_lease_ref01_data",
+        suffix: "_dt0"
+      }
+
       m: {
-        runner_id: "runner01",
+        id: "runner_lease01",
         runner_pool_id: "runner_pool01"
       }
 
-      o: "list",
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "runner_lease_ref01"
+            mark: "Mark01-runner_lease_ref01"
           }
         }
       ]

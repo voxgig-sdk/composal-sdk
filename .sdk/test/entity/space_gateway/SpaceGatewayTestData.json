@@ -36,17 +36,17 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/gateways": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/networking/spaces/{space_id}/gateways/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/networking/spaces/{space_id}/gateways/{id}/config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/networking/spaces/{space_id}/gateways": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

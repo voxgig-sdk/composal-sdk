@@ -29,7 +29,7 @@ describe("SparkEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:Spark(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:Spark(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SparkEntity", function()
     local setup = spark_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "spark." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,46 +46,11 @@ describe("SparkEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"spark.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPARK_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local spark_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.spark")))
-    local spark_ref01_data = nil
-    if #spark_ref01_data_raw > 0 then
-      spark_ref01_data = helpers.to_map(spark_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local spark_ref01_ent = client:Spark(nil)
-    local spark_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_ref01_list_result, err = spark_ref01_ent:list(spark_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(spark_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"spark.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only spark.create.0 gives\"}")
+      pending("Live coverage incomplete: spark.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks); spark.load.1 excluded (GET-only live run: reads a record only spark.create.0 gives)")
       return
     end
 
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPARK_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     if setup.live then
@@ -95,30 +60,12 @@ describe("SparkEntity", function()
     local spark_ref01_ent = client:Spark(nil)
     local spark_ref01_data = helpers.to_map(vs.getprop(
       vs.getpath(setup.data, "new.spark"), "spark_ref01"))
-    spark_ref01_data["organization_id"] = setup.idmap["organization01"]
 
     local spark_ref01_data_result, err = spark_ref01_ent:create(spark_ref01_data, nil)
     assert.is_nil(err)
     spark_ref01_data = helpers.to_map(type(spark_ref01_data_result) == 'table' and spark_ref01_data_result.data_get and spark_ref01_data_result:data_get() or spark_ref01_data_result)
     assert.is_not_nil(spark_ref01_data)
     assert.is_not_nil(spark_ref01_data["id"])
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local spark_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_ref01_list_result, err = spark_ref01_ent:list(spark_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(spark_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(spark_ref01_list_result),
-      { id = spark_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
 
   end)
 end)

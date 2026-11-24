@@ -29,7 +29,7 @@ describe("PreviewSharingApprovalEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:PreviewSharingApproval(nil):list({ ["app_id"] = 1, ["preview_id"] = "x" }, nil)
+    local _, err = client:PreviewSharingApproval(nil):load({ ["app_id"] = 1, ["preview_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("PreviewSharingApprovalEntity", function()
     local setup = preview_sharing_approval_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "preview_sharing_approval." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("PreviewSharingApprovalEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"preview_sharing_approval.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"app01", "preview01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PREVIEW_SHARING_APPROVAL_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,16 +59,13 @@ describe("PreviewSharingApprovalEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local preview_sharing_approval_ref01_ent = client:PreviewSharingApproval(nil)
-    local preview_sharing_approval_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_id"] = setup.idmap["preview01"],
-    }
-
-    local preview_sharing_approval_ref01_list_result, err = preview_sharing_approval_ref01_ent:list(preview_sharing_approval_ref01_match, nil)
+    local preview_sharing_approval_ref01_match_dt0 = {}
+    preview_sharing_approval_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
+    local preview_sharing_approval_ref01_data_dt0_loaded, err = preview_sharing_approval_ref01_ent:load(preview_sharing_approval_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(preview_sharing_approval_ref01_list_result)
+    assert.is_not_nil(preview_sharing_approval_ref01_data_dt0_loaded)
 
       return
     end
@@ -107,15 +97,12 @@ describe("PreviewSharingApprovalEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local preview_sharing_approval_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_id"] = setup.idmap["preview01"],
-    }
-
-    local preview_sharing_approval_ref01_list_result, err = preview_sharing_approval_ref01_ent:list(preview_sharing_approval_ref01_match, nil)
+    -- LOAD
+    local preview_sharing_approval_ref01_match_dt0 = {}
+    preview_sharing_approval_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
+    local preview_sharing_approval_ref01_data_dt0_loaded, err = preview_sharing_approval_ref01_ent:load(preview_sharing_approval_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(preview_sharing_approval_ref01_list_result)
+    assert.is_not_nil(preview_sharing_approval_ref01_data_dt0_loaded)
 
   end)
 end)

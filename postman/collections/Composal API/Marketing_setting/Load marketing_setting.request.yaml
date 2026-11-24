@@ -1,0 +1,11 @@
+$kind: http-request
+id: beb87871-713f-5eef-bf8b-5c396c6e0798
+description: |-
+  The `load` operation of **marketing_setting**.
+
+  SDK: `client.MarketingSetting().load()`
+url: "{{base}}/api/v1/marketing_settings"
+method: GET
+headers:
+  Accept: application/json
+order: 1000

@@ -20,17 +20,23 @@ main: kit: flow: BasicSparkAgentIntegrationFlow:
     }
 
     {
+      i: {
+        ref: "spark_agent_integration_ref01",
+        srcdatavar: "spark_agent_integration_ref01_data",
+        suffix: "_dt0"
+      }
+
       m: {
-        agent_id: "agent01",
+        id: "spark_agent_integration01",
         organization_id: "organization01"
       }
 
-      o: "list",
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "spark_agent_integration_ref01"
+            mark: "Mark01-spark_agent_integration_ref01"
           }
         }
       ]

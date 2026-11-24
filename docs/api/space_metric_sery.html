@@ -605,7 +605,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1observabilityspacesspace_idmetric_series"><code>/api/v1/observability/spaces/{space_id}/metric_series</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 </tbody>
@@ -614,11 +614,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">space_metric_serys, err := client.SpaceMetricSery(nil).List(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">space_metric_sery, err := client.SpaceMetricSery(nil).Load(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(space_metric_serys)
+fmt.Println(space_metric_sery)
 created, err := client.SpaceMetricSery(nil).Create(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -627,27 +627,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local space_metric_serys, err = client:SpaceMetricSery():list({ space_id = &quot;example&quot; })
+<pre><code class="language-lua">local space_metric_sery, err = client:SpaceMetricSery():load({ space_id = &quot;example&quot; })
 local created, err = client:SpaceMetricSery():create({ space_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$space_metric_serys = $client-&gt;SpaceMetricSery()-&gt;list([&quot;space_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$space_metric_sery = $client-&gt;SpaceMetricSery()-&gt;load([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SpaceMetricSery()-&gt;create([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">space_metric_serys = client.SpaceMetricSery().list({&quot;space_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">space_metric_sery = client.SpaceMetricSery().load({&quot;space_id&quot;: &quot;example&quot;})
 created = client.SpaceMetricSery().create({ &quot;space_id&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">space_metric_serys = client.SpaceMetricSery.list({ &quot;space_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">space_metric_sery = client.SpaceMetricSery.load({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 created = client.SpaceMetricSery.create({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const space_metric_serys = await client.SpaceMetricSery().list({ space_id: &quot;example&quot; })
+<pre><code class="language-ts">const space_metric_sery = await client.SpaceMetricSery().load({ space_id: &quot;example&quot; })
 const created = await client.SpaceMetricSery().create({ space_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -698,7 +698,7 @@ const created = await client.SpaceMetricSery().create({ space_id: &quot;example&
 <h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1observabilityspacesspace_idmetric_series" class="operation" data-method="get"><code>GET</code> /api/v1/observability/spaces/{space_id}/metric_series</h3>
 <p>Operation ID: <code>api_v1_space_metric_series_index</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

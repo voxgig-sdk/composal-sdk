@@ -51,8 +51,8 @@ main: kit: entity: deep_scan_mapped_flow: {
 
   name: "deep_scan_mapped_flow"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

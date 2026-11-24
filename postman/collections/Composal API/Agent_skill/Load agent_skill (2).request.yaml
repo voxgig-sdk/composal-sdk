@@ -1,0 +1,15 @@
+$kind: http-request
+id: d78a8dce-bd62-5bd2-9501-f0c03505437d
+description: |-
+  The `load` operation of **agent_skill**.
+
+  SDK: `client.AgentSkill().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agent_skills"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this agent_skill belongs to.
+order: 2000

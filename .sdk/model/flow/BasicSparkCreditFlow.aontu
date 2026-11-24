@@ -19,22 +19,6 @@ main: kit: flow: BasicSparkCreditFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "spark_credit_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "spark_credit_ref01",
         srcdatavar: "spark_credit_ref01_data",

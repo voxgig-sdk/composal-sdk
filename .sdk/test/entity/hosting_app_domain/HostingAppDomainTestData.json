@@ -125,12 +125,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/domains": {
+    "GET /api/v1/hosting/apps/{app_id}/domains/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/domains/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/domains": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

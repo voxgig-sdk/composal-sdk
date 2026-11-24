@@ -1,4 +1,4 @@
 $kind: collection
 id: ae3cbc57-dc6e-56cb-b94d-6b76b5ff7431
 description: "The `BasicSecretGrantFlow` flow of **secret_grant**."
-order: 377000
+order: 360000

@@ -160,8 +160,8 @@ main: kit: entity: organization_site: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

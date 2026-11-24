@@ -37,7 +37,7 @@ class TestSparkAgentIntegrationEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SparkAgentIntegration(None).list({"agent_id": 1, "organization_id": "x"}, None)
+            client.SparkAgentIntegration(None).load({"agent_id": 1, "organization_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,7 +46,7 @@ class TestSparkAgentIntegrationEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list"]:
+        for _op in ["create", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "spark_agent_integration." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
@@ -75,21 +75,14 @@ class TestSparkAgentIntegrationEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        spark_agent_integration_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_agent_integration_ref01_list_result = spark_agent_integration_ref01_ent.list(spark_agent_integration_ref01_match, None)
-        assert isinstance(spark_agent_integration_ref01_list_result, list)
+        # LOAD
+        spark_agent_integration_ref01_match_dt0 = {}
+        spark_agent_integration_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        spark_agent_integration_ref01_data_dt0_loaded = spark_agent_integration_ref01_ent.load(spark_agent_integration_ref01_match_dt0, None)
+        assert spark_agent_integration_ref01_data_dt0_loaded is not None
 
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_AGENT_INTEGRATION_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -101,15 +94,12 @@ class TestSparkAgentIntegrationEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         spark_agent_integration_ref01_ent = client.SparkAgentIntegration(None)
-        spark_agent_integration_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_agent_integration_ref01_list_result = spark_agent_integration_ref01_ent.list(spark_agent_integration_ref01_match, None)
-        assert isinstance(spark_agent_integration_ref01_list_result, list)
+        spark_agent_integration_ref01_match_dt0 = {}
+        spark_agent_integration_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        spark_agent_integration_ref01_data_dt0_loaded = spark_agent_integration_ref01_ent.load(spark_agent_integration_ref01_match_dt0, None)
+        assert spark_agent_integration_ref01_data_dt0_loaded is not None
 
 
 

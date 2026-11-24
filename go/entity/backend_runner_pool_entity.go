@@ -294,16 +294,11 @@ func (e *BackendRunnerPoolEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *BackendRunnerPoolEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *BackendRunnerPoolEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *BackendRunnerPoolEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *BackendRunnerPoolEntity) List(reqmatch map[string]any, ctrl map[string]
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// BackendRunnerPoolListMatch and returns []BackendRunnerPool. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *BackendRunnerPoolEntity) ListTyped(reqmatch BackendRunnerPoolListMatch, ctrl map[string]any) ([]BackendRunnerPool, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// BackendRunnerPoolLoadMatch and returns an BackendRunnerPool. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *BackendRunnerPoolEntity) LoadTyped(reqmatch BackendRunnerPoolLoadMatch, ctrl map[string]any) (BackendRunnerPool, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return BackendRunnerPool{}, err
 	}
-	return typedSliceFrom[BackendRunnerPool](res), nil
+	return typedFrom[BackendRunnerPool](res), nil
 }
 
+
+
+func (e *BackendRunnerPoolEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 

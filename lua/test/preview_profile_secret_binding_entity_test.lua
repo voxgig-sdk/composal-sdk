@@ -29,7 +29,7 @@ describe("PreviewProfileSecretBindingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:PreviewProfileSecretBinding(nil):list({ ["app_id"] = 1, ["preview_profile_id"] = "x" }, nil)
+    local _, err = client:PreviewProfileSecretBinding(nil):load({ ["app_id"] = 1, ["preview_profile_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("PreviewProfileSecretBindingEntity", function()
     local setup = preview_profile_secret_binding_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "remove"}) do
+    for _, _op in ipairs({"create", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "preview_profile_secret_binding." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,39 +46,9 @@ describe("PreviewProfileSecretBindingEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"preview_profile_secret_binding.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings\"}")
+      print("LIVE STEP {\"id\":\"preview_profile_secret_binding.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives\"}")
       print("LIVE STEP {\"id\":\"preview_profile_secret_binding.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}\"}")
-      print("LIVE STEP {\"id\":\"preview_profile_secret_binding.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"app01", "preview_profile01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_PREVIEW_PROFILE_SECRET_BINDING_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local preview_profile_secret_binding_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.preview_profile_secret_binding")))
-    local preview_profile_secret_binding_ref01_data = nil
-    if #preview_profile_secret_binding_ref01_data_raw > 0 then
-      preview_profile_secret_binding_ref01_data = helpers.to_map(preview_profile_secret_binding_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local preview_profile_secret_binding_ref01_ent = client:PreviewProfileSecretBinding(nil)
-    local preview_profile_secret_binding_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_profile_id"] = setup.idmap["preview_profile01"],
-    }
-
-    local preview_profile_secret_binding_ref01_list_result, err = preview_profile_secret_binding_ref01_ent:list(preview_profile_secret_binding_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(preview_profile_secret_binding_ref01_list_result)
-
+      pending("Live coverage incomplete: preview_profile_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings); preview_profile_secret_binding.load.1 excluded (GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives); preview_profile_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id})")
       return
     end
 
@@ -110,20 +80,18 @@ describe("PreviewProfileSecretBindingEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local preview_profile_secret_binding_ref01_match = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_profile_id"] = setup.idmap["preview_profile01"],
+    -- LOAD
+    local preview_profile_secret_binding_ref01_match_dt0 = {
+      id = preview_profile_secret_binding_ref01_data["id"],
     }
-
-    local preview_profile_secret_binding_ref01_list_result, err = preview_profile_secret_binding_ref01_ent:list(preview_profile_secret_binding_ref01_match, nil)
+    preview_profile_secret_binding_ref01_match_dt0["app_id"] = setup.idmap["app_id"] or setup.idmap["app01"]
+    local preview_profile_secret_binding_ref01_data_dt0_loaded, err = preview_profile_secret_binding_ref01_ent:load(preview_profile_secret_binding_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(preview_profile_secret_binding_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(preview_profile_secret_binding_ref01_list_result),
-      { id = preview_profile_secret_binding_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
+    local preview_profile_secret_binding_ref01_data_dt0_load_result = helpers.to_map(type(preview_profile_secret_binding_ref01_data_dt0_loaded) == 'table' and preview_profile_secret_binding_ref01_data_dt0_loaded.data_get and preview_profile_secret_binding_ref01_data_dt0_loaded:data_get() or preview_profile_secret_binding_ref01_data_dt0_loaded)
+    assert.is_not_nil(preview_profile_secret_binding_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(preview_profile_secret_binding_ref01_data_dt0_load_result["id"], preview_profile_secret_binding_ref01_data["id"]))
+    end
 
     if setup.live then
       runner.live_pace()
@@ -136,24 +104,6 @@ describe("PreviewProfileSecretBindingEntity", function()
     preview_profile_secret_binding_ref01_match_rm0["preview_profile_id"] = setup.idmap["preview_profile_id"] or setup.idmap["preview_profile01"]
     local _, err = preview_profile_secret_binding_ref01_ent:remove(preview_profile_secret_binding_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local preview_profile_secret_binding_ref01_match_rt0 = {
-      ["app_id"] = setup.idmap["app01"],
-      ["preview_profile_id"] = setup.idmap["preview_profile01"],
-    }
-
-    local preview_profile_secret_binding_ref01_list_rt0_result, err = preview_profile_secret_binding_ref01_ent:list(preview_profile_secret_binding_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(preview_profile_secret_binding_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(preview_profile_secret_binding_ref01_list_rt0_result),
-      { id = preview_profile_secret_binding_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

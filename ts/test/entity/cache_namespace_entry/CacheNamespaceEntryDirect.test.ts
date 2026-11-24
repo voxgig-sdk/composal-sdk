@@ -43,35 +43,19 @@ describe('CacheNamespaceEntryDirect', async () => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
     const setup = directSetup({ id: 'direct01' })
     if (maybeSkipControl(t, 'direct', 'direct-load-cache_namespace_entry', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["cache_namespace01"], LIVE_STRICT)) return
+    if (setup.live && 'TRUE' === process.env.VOXGIG_GETONLY_GUARD && null == setup.idmap?.["cache_namespace_entry01"]) {
+      console.log("LIVE STEP {\"id\":\"direct-load-cache_namespace_entry\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs cache_namespace_entry01, which only POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict gives\"}")
+      t.skip("Live coverage incomplete: direct-load-cache_namespace_entry excluded (GET-only live run: needs cache_namespace_entry01, which only POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict gives)")
+      return
+    }
+    if (skipIfMissingIds(t, setup, ["cache_namespace01","cache_namespace_entry01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
     const params: any = {}
     const query: any = {}
     if (setup.live) {
-      const listResult: any = await client.direct({
-        path: 'api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries',
-        method: 'GET',
-        params: {
-        cache_namespace_id: setup.idmap['cache_namespace01'],
-        },
-      })
-      if (!listResult.ok || listResult.status < 200 || listResult.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery failed: ' + describeLive(listResult))
-      }
-      const listArr = unwrapListData(listResult.data)
-      if (null == listArr) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list discovery returned no list: ' + describeLive(listResult))
-      }
-      if (0 === listArr.length) {
-        return void liveEmpty(t, 'The account has no cache_namespace_entry record to load')
-      }
-      const candidateId = listArr[0]?.id
-      if (null == candidateId) {
-        return void liveMiss(t, LIVE_STRICT, 'Live load blocked: discovery returned no usable identity')
-      }
-      params.id = candidateId
       params.cache_namespace_id = setup.idmap['cache_namespace01']
+      params.id = setup.idmap['cache_namespace_entry01']
     } else {
       params.cache_namespace_id = 'direct01'
       params.id = 'direct02'
@@ -100,48 +84,6 @@ describe('CacheNamespaceEntryDirect', async () => {
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))
       assert(calls[0].url.includes('direct02'))
-    }
-  })
-
-  test('direct-list-cache_namespace_entry', async (t: any) => {
-    if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-cache_namespace_entry', setup.live)) return
-    if (skipIfMissingIds(t, setup, ["cache_namespace01"], LIVE_STRICT)) return
-    const { client, calls } = setup
-
-    const params: any = {}
-    const query: any = {}
-    if (setup.live) {
-      params.cache_namespace_id = setup.idmap['cache_namespace01']
-    } else {
-      params.cache_namespace_id = 'direct01'
-    }
-
-    const result: any = await client.direct({
-      path: 'api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries',
-      method: 'GET',
-      params,
-      query,
-    })
-
-    if (setup.live) {
-      if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
-      }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
-      }
-    } else {
-      assert(result.ok === true)
-      assert(result.status === 200)
-      assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
-      assert(calls.length === 1)
-      assert(calls[0].init.method === 'GET')
-      assert(calls[0].url.includes('direct01'))
     }
   })
 

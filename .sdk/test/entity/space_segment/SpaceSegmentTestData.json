@@ -26,12 +26,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/segments": {
+    "GET /api/v1/networking/spaces/{space_id}/segments/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/segments/{id}": {
+    "GET /api/v1/networking/spaces/{space_id}/segments": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

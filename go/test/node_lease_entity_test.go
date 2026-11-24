@@ -38,7 +38,7 @@ func TestNodeLeaseEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.NodeLease(nil).List(map[string]any{"node_id": 1}, nil)
+		_, err := client.NodeLease(nil).Load(map[string]any{"node_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestNodeLeaseEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "node_lease." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,15 +64,15 @@ func TestNodeLeaseEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"node_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"node01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, node_leaseEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_NODE_LEASE_ENTID", _liveKey)
-				}
-			}
+			t.Log("LIVE STEP {\"id\":\"node_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only node_lease.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: node_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim); node_lease.load.1 excluded (GET-only live run: reads a record only node_lease.create.0 gives)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		nodeLeaseRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.node_lease")))
@@ -83,65 +83,6 @@ func TestNodeLeaseEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = nodeLeaseRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		nodeLeaseRef01Ent := client.NodeLease(nil)
-		nodeLeaseRef01Match := map[string]any{
-			"node_id": setup.idmap["node01"],
-		}
-
-		nodeLeaseRef01ListResult, err := nodeLeaseRef01Ent.List(nodeLeaseRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, nodeLeaseRef01ListOk := nodeLeaseRef01ListResult.([]any)
-		if !nodeLeaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", nodeLeaseRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"node01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, node_leaseEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_NODE_LEASE_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		nodeLeaseRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.node_lease")))
-		var nodeLeaseRef01Data map[string]any
-		if len(nodeLeaseRef01DataRaw) > 0 {
-			nodeLeaseRef01Data = core.ToMapAny(nodeLeaseRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = nodeLeaseRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		nodeLeaseRef01Ent := client.NodeLease(nil)
-		nodeLeaseRef01Match := map[string]any{
-			"node_id": setup.idmap["node01"],
-		}
-
-		nodeLeaseRef01ListResult, err := nodeLeaseRef01Ent.List(nodeLeaseRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, nodeLeaseRef01ListOk := nodeLeaseRef01ListResult.([]any)
-		if !nodeLeaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", nodeLeaseRef01ListResult)
-		}
 
 	})
 }

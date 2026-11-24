@@ -16,7 +16,7 @@ import type {
 
 import type {
   SpacePeerAttachment,
-  SpacePeerAttachmentListMatch,
+  SpacePeerAttachmentLoadMatch,
   SpacePeerAttachmentCreateData,
   SpacePeerAttachmentUpdateData,
   SpacePeerAttachmentPatchData,
@@ -39,8 +39,7 @@ class SpacePeerAttachmentEntity extends ComposalEntityBase<SpacePeerAttachment> 
 
 
 
-
-  async list(this: any, reqmatch?: SpacePeerAttachmentListMatch, ctrl?: Control): Promise<SpacePeerAttachmentEntity[]> {
+  async load(this: any, reqmatch?: SpacePeerAttachmentLoadMatch, ctrl?: Control): Promise<SpacePeerAttachmentEntity> {
 
     const utility = this._utility
 
@@ -60,7 +59,7 @@ class SpacePeerAttachmentEntity extends ComposalEntityBase<SpacePeerAttachment> 
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -126,9 +125,15 @@ class SpacePeerAttachmentEntity extends ComposalEntityBase<SpacePeerAttachment> 
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -151,11 +156,12 @@ class SpacePeerAttachmentEntity extends ComposalEntityBase<SpacePeerAttachment> 
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<SpacePeerAttachmentEntity[]> return stays clean under strict null checks.
+        // Promise<SpacePeerAttachmentEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

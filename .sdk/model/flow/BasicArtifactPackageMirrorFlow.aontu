@@ -15,18 +15,6 @@ main: kit: flow: BasicArtifactPackageMirrorFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "artifact_package_mirror_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "artifact_package_mirror_ref01",
         srcdatavar: "artifact_package_mirror_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicArtifactPackageMirrorFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "artifact_package_mirror01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicArtifactPackageMirrorFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "artifact_package_mirror_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicArtifactPackageMirrorFlow"

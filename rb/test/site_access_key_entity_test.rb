@@ -25,7 +25,7 @@ class SiteAccessKeyEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.SiteAccessKey(nil).list({ "organization_id" => 1, "site_id" => "x" }, nil)
+      client.SiteAccessKey(nil).load({ "organization_id" => 1, "site_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class SiteAccessKeyEntityTest < Minitest::Test
     setup = site_access_key_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "remove"].each do |_op|
+    ["create", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "site_access_key." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,37 +43,9 @@ class SiteAccessKeyEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"site_access_key.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys\"}"
+      puts "LIVE STEP {\"id\":\"site_access_key.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only site_access_key.create.0 gives\"}"
       puts "LIVE STEP {\"id\":\"site_access_key.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}\"}"
-      puts "LIVE STEP {\"id\":\"site_access_key.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["organization01", "site01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_SITE_ACCESS_KEY_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    site_access_key_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.site_access_key")))
-    site_access_key_ref01_data = nil
-    if site_access_key_ref01_data_raw.length > 0
-      site_access_key_ref01_data = Helpers.to_map(site_access_key_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    site_access_key_ref01_ent = client.SiteAccessKey(nil)
-    site_access_key_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "site_id" => setup[:idmap]["site01"],
-    }
-
-    site_access_key_ref01_list_result = site_access_key_ref01_ent.list(site_access_key_ref01_match, nil)
-    assert site_access_key_ref01_list_result.is_a?(Array)
-
-      return
+      skip("Live coverage incomplete: site_access_key.create.0 excluded (GET-only live run: needs POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys); site_access_key.load.1 excluded (GET-only live run: reads a record only site_access_key.create.0 gives); site_access_key.remove.2 excluded (GET-only live run: needs DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id})")
     end
 
     if setup[:live]
@@ -99,19 +71,15 @@ class SiteAccessKeyEntityTest < Minitest::Test
     assert !site_access_key_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    site_access_key_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "site_id" => setup[:idmap]["site01"],
+    # LOAD
+    site_access_key_ref01_match_dt0 = {
+      "id" => site_access_key_ref01_data["id"],
     }
-
-    site_access_key_ref01_list_result = site_access_key_ref01_ent.list(site_access_key_ref01_match, nil)
-    assert site_access_key_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(site_access_key_ref01_list_result),
-      { "id" => site_access_key_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    site_access_key_ref01_match_dt0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
+    site_access_key_ref01_data_dt0_loaded = site_access_key_ref01_ent.load(site_access_key_ref01_match_dt0, nil)
+    site_access_key_ref01_data_dt0_load_result = Helpers.to_map(site_access_key_ref01_data_dt0_loaded.respond_to?(:data_get) ? site_access_key_ref01_data_dt0_loaded.data_get : site_access_key_ref01_data_dt0_loaded)
+    assert !site_access_key_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(site_access_key_ref01_data_dt0_load_result["id"], site_access_key_ref01_data["id"]) unless setup[:live]
 
     Runner.live_pace if setup[:live]
     # REMOVE
@@ -121,21 +89,6 @@ class SiteAccessKeyEntityTest < Minitest::Test
     site_access_key_ref01_match_rm0["organization_id"] = setup[:idmap]["organization_id"] || setup[:idmap]["organization01"]
     site_access_key_ref01_match_rm0["site_id"] = setup[:idmap]["site_id"] || setup[:idmap]["site01"]
     site_access_key_ref01_ent.remove(site_access_key_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    site_access_key_ref01_match_rt0 = {
-      "organization_id" => setup[:idmap]["organization01"],
-      "site_id" => setup[:idmap]["site01"],
-    }
-
-    site_access_key_ref01_list_rt0_result = site_access_key_ref01_ent.list(site_access_key_ref01_match_rt0, nil)
-    assert site_access_key_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(site_access_key_ref01_list_rt0_result),
-      { "id" => site_access_key_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

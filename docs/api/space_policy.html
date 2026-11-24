@@ -505,8 +505,8 @@
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idpoliciesidarchive">POST /api/v1/networking/spaces/{space_id}/policies/{id}/archive</a>
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idpoliciesidpause">POST /api/v1/networking/spaces/{space_id}/policies/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1networkingspacesspace_idpolicies">POST /api/v1/networking/spaces/{space_id}/policies</a>
-<a class="nav-section" href="#get-apiv1networkingspacesspace_idpolicies">GET /api/v1/networking/spaces/{space_id}/policies</a>
 <a class="nav-section" href="#get-apiv1networkingspacesspace_idpoliciesid">GET /api/v1/networking/spaces/{space_id}/policies/{id}</a>
+<a class="nav-section" href="#get-apiv1networkingspacesspace_idpolicies">GET /api/v1/networking/spaces/{space_id}/policies</a>
 <a class="nav-section" href="#patch-apiv1networkingspacesspace_idpoliciesid">PATCH /api/v1/networking/spaces/{space_id}/policies/{id}</a>
 <a class="nav-section" href="#delete-apiv1networkingspacesspace_idpoliciesid">DELETE /api/v1/networking/spaces/{space_id}/policies/{id}</a>
 <a class="nav-section" href="#put-apiv1networkingspacesspace_idpoliciesid">PUT /api/v1/networking/spaces/{space_id}/policies/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspacesspace_idpolicies"><code>/api/v1/networking/spaces/{space_id}/policies</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1networkingspacesspace_idpoliciesid"><code>/api/v1/networking/spaces/{space_id}/policies/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1networkingspacesspace_idpoliciesid"><code>/api/v1/networking/spaces/{space_id}/policies/{id}</code></a></td>
+<td><a href="#get-apiv1networkingspacesspace_idpolicies"><code>/api/v1/networking/spaces/{space_id}/policies</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">space_policys, err := client.SpacePolicy(nil).List(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(space_policys)
-space_policy, err := client.SpacePolicy(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">space_policy, err := client.SpacePolicy(nil).Load(map[string]any{&quot;space_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local space_policys, err = client:SpacePolicy():list({ space_id = &quot;example&quot; })
-local space_policy, err = client:SpacePolicy():load({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
+<pre><code class="language-lua">local space_policy, err = client:SpacePolicy():load({ space_id = &quot;example&quot; })
 local created, err = client:SpacePolicy():create({ space_id = &quot;example&quot; })
 local updated, err = client:SpacePolicy():update({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
 local patched, err = client:SpacePolicy():patch({ id = &quot;example_id&quot;, space_id = &quot;example&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:SpacePolicy():remove({ id = &quot;example_id&quot;, 
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$space_policys = $client-&gt;SpacePolicy()-&gt;list([&quot;space_id&quot; =&gt; &quot;example&quot;]);
-$space_policy = $client-&gt;SpacePolicy()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$space_policy = $client-&gt;SpacePolicy()-&gt;load([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;SpacePolicy()-&gt;create([&quot;space_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;SpacePolicy()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
 $patched = $client-&gt;SpacePolicy()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;SpacePolicy()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">space_policys = client.SpacePolicy().list({&quot;space_id&quot;: &quot;example&quot;})
-space_policy = client.SpacePolicy().load({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">space_policy = client.SpacePolicy().load({&quot;space_id&quot;: &quot;example&quot;})
 created = client.SpacePolicy().create({ &quot;space_id&quot;: &quot;example&quot; })
 updated = client.SpacePolicy().update({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
 patched = client.SpacePolicy().patch({&quot;id&quot;: &quot;example_id&quot;, &quot;space_id&quot;: &quot;example&quot;})
@@ -723,8 +715,7 @@ client.SpacePolicy().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;space
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">space_policys = client.SpacePolicy.list({ &quot;space_id&quot; =&gt; &quot;example&quot; })
-space_policy = client.SpacePolicy.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">space_policy = client.SpacePolicy.load({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 created = client.SpacePolicy.create({ &quot;space_id&quot; =&gt; &quot;example&quot; })
 updated = client.SpacePolicy.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
 patched = client.SpacePolicy.patch({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;space_id&quot; =&gt; &quot;example&quot; })
@@ -732,8 +723,7 @@ client.SpacePolicy.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;s
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const space_policys = await client.SpacePolicy().list({ space_id: &quot;example&quot; })
-const space_policy = await client.SpacePolicy().load({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
+<pre><code class="language-ts">const space_policy = await client.SpacePolicy().load({ space_id: &quot;example&quot; })
 const created = await client.SpacePolicy().create({ space_id: &quot;example&quot; })
 const updated = await client.SpacePolicy().update({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
 const patched = await client.SpacePolicy().patch({ id: &quot;example_id&quot;, space_id: &quot;example&quot; })
@@ -924,9 +914,9 @@ await client.SpacePolicy().remove({ id: &quot;example_id&quot;, space_id: &quot;
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1networkingspacesspace_idpolicies" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/policies</h3>
-<p>Operation ID: <code>api_v1_space_policies</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1networkingspacesspace_idpoliciesid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/policies/{id}</h3>
+<p>Operation ID: <code>api_v1_space_policy</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -947,6 +937,13 @@ await client.SpacePolicy().remove({ id: &quot;example_id&quot;, space_id: &quot;
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-4">Responses</h4>
@@ -958,9 +955,8 @@ await client.SpacePolicy().remove({ id: &quot;example_id&quot;, space_id: &quot;
 <h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1networkingspacesspace_idpoliciesid" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/policies/{id}</h3>
-<p>Operation ID: <code>api_v1_space_policy</code>.</p>
+<h3 id="get-apiv1networkingspacesspace_idpolicies" class="operation" data-method="get"><code>GET</code> /api/v1/networking/spaces/{space_id}/policies</h3>
+<p>Operation ID: <code>api_v1_space_policies</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -976,13 +972,6 @@ await client.SpacePolicy().remove({ id: &quot;example_id&quot;, space_id: &quot;
 <tbody>
 <tr>
 <td><code>space_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

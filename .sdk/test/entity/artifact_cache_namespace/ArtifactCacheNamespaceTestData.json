@@ -38,12 +38,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/cache_namespaces": {
+    "GET /api/v1/artifacts/cache_namespaces/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/artifacts/cache_namespaces/{id}": {
+    "GET /api/v1/artifacts/cache_namespaces": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -85,12 +85,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/config_variables": {
+    "GET /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/config_variables": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_iddeployment_dashboardnomadallocationsallocation_idlogs"><code>/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Live Nomad task logs</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">allocation_logs, err := client.AllocationLog(nil).List(map[string]any{&quot;allocation_id&quot;: &quot;example&quot;, &quot;app_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">allocation_log, err := client.AllocationLog(nil).Load(map[string]any{&quot;allocation_id&quot;: &quot;example&quot;, &quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(allocation_logs)
+fmt.Println(allocation_log)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local allocation_logs, err = client:AllocationLog():list({ allocation_id = &quot;example&quot;, app_id = &quot;example&quot; })
+<pre><code class="language-lua">local allocation_log, err = client:AllocationLog():load({ allocation_id = &quot;example&quot;, app_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$allocation_logs = $client-&gt;AllocationLog()-&gt;list([&quot;allocation_id&quot; =&gt; &quot;example&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$allocation_log = $client-&gt;AllocationLog()-&gt;load([&quot;allocation_id&quot; =&gt; &quot;example&quot;, &quot;app_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">allocation_logs = client.AllocationLog().list({&quot;allocation_id&quot;: &quot;example&quot;, &quot;app_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">allocation_log = client.AllocationLog().load({&quot;allocation_id&quot;: &quot;example&quot;, &quot;app_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">allocation_logs = client.AllocationLog.list({ &quot;allocation_id&quot; =&gt; &quot;example&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">allocation_log = client.AllocationLog.load({ &quot;allocation_id&quot; =&gt; &quot;example&quot;, &quot;app_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const allocation_logs = await client.AllocationLog().list({ allocation_id: &quot;example&quot;, app_id: &quot;example&quot; })
+<pre><code class="language-ts">const allocation_log = await client.AllocationLog().load({ allocation_id: &quot;example&quot;, app_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -712,7 +712,7 @@ fmt.Println(allocation_logs)
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1hostingappsapp_iddeployment_dashboardnomadallocationsallocation_idlogs" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs</h3>
 <p>Operation ID: <code>get_api_v1_hosting_apps_app_id_deployment_dashboard_nomad_allocations_allocation_id_logs</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

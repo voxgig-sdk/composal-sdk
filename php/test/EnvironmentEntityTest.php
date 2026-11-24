@@ -33,7 +33,7 @@ class EnvironmentEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->Environment(null)->list(["organization_id" => 1], null);
+            $client->Environment(null)->load(["id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class EnvironmentEntityTest extends TestCase
         $setup = environment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "environment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,58 +54,10 @@ class EnvironmentEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"environment.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"environment.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"environment.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"environment.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_ENVIRONMENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["environment01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "environment",
-                fn() => $client->Environment(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $environment_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.environment")));
-        $environment_ref01_data = null;
-        if (count($environment_ref01_data_raw) > 0) {
-            $environment_ref01_data = Helpers::to_map($environment_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $environment_ref01_ent = $client->Environment(null);
-        $environment_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $environment_ref01_list_result = $environment_ref01_ent->list($environment_ref01_match, null);
-        $this->assertIsArray($environment_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $environment_ref01_match_dt0 = [
-            "id" => $environment_ref01_data["id"],
-        ];
-        $environment_ref01_match_dt0["organization_id"] = is_scalar($environment_ref01_data["organization_id"] ?? null) ? $environment_ref01_data["organization_id"] : ($setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null);
-        $environment_ref01_data_dt0_loaded = $environment_ref01_ent->load($environment_ref01_match_dt0, null);
-        $environment_ref01_data_dt0_load_result = Helpers::to_map(is_object($environment_ref01_data_dt0_loaded) && method_exists($environment_ref01_data_dt0_loaded, 'data_get') ? $environment_ref01_data_dt0_loaded->data_get() : $environment_ref01_data_dt0_loaded);
-        $this->assertNotNull($environment_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($environment_ref01_data_dt0_load_result["id"] ?? null, $environment_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"environment.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"environment.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only environment.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"environment.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: environment.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/environments); environment.update.1 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/verify/environments/{id}); environment.load.2 excluded (GET-only live run: reads a record only environment.create.0 gives); environment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/organizations/{organization_id}/verify/environments/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -134,22 +86,6 @@ class EnvironmentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $environment_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $environment_ref01_list_result = $environment_ref01_ent->list($environment_ref01_match, null);
-        $this->assertIsArray($environment_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($environment_ref01_list_result),
-            ["id" => $environment_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $environment_ref01_data_up0_up = [
             "id" => $environment_ref01_data["id"],
@@ -173,7 +109,7 @@ class EnvironmentEntityTest extends TestCase
         $environment_ref01_match_dt0 = [
             "id" => $environment_ref01_data["id"],
         ];
-        $environment_ref01_match_dt0["organization_id"] = is_scalar($environment_ref01_data["organization_id"] ?? null) ? $environment_ref01_data["organization_id"] : ($setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null);
+        $environment_ref01_match_dt0["organization_id"] = is_scalar($environment_ref01_data["organization_id"] ?? null) ? $environment_ref01_data["organization_id"] : ($setup["idmap"]["organization_id"] ?? null);
         $environment_ref01_data_dt0_loaded = $environment_ref01_ent->load($environment_ref01_match_dt0, null);
         $environment_ref01_data_dt0_load_result = Helpers::to_map(is_object($environment_ref01_data_dt0_loaded) && method_exists($environment_ref01_data_dt0_loaded, 'data_get') ? $environment_ref01_data_dt0_loaded->data_get() : $environment_ref01_data_dt0_loaded);
         $this->assertNotNull($environment_ref01_data_dt0_load_result);
@@ -188,22 +124,6 @@ class EnvironmentEntityTest extends TestCase
         ];
         $environment_ref01_match_rm0["organization_id"] = $setup["idmap"]["organization_id"] ?? $setup["idmap"]["organization01"] ?? null;
         $environment_ref01_ent->remove($environment_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $environment_ref01_match_rt0 = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $environment_ref01_list_rt0_result = $environment_ref01_ent->list($environment_ref01_match_rt0, null);
-        $this->assertIsArray($environment_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($environment_ref01_list_rt0_result),
-            ["id" => $environment_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

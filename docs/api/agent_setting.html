@@ -599,7 +599,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idagentsidsparksettings"><code>/api/v1/organizations/{organization_id}/agents/{id}/spark/settings</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Agent configuration</td>
 </tr>
 <tr>
@@ -614,11 +614,11 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">agent_settings, err := client.AgentSetting(nil).List(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">agent_setting, err := client.AgentSetting(nil).Load(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(agent_settings)
+fmt.Println(agent_setting)
 updated, err := client.AgentSetting(nil).Update(map[string]any{&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
@@ -627,27 +627,27 @@ fmt.Println(updated)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local agent_settings, err = client:AgentSetting():list({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local agent_setting, err = client:AgentSetting():load({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
 local updated, err = client:AgentSetting():update({ agent_id = &quot;example&quot;, organization_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$agent_settings = $client-&gt;AgentSetting()-&gt;list([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$agent_setting = $client-&gt;AgentSetting()-&gt;load([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;AgentSetting()-&gt;update([&quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">agent_settings = client.AgentSetting().list({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">agent_setting = client.AgentSetting().load({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 updated = client.AgentSetting().update({&quot;agent_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">agent_settings = client.AgentSetting.list({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">agent_setting = client.AgentSetting.load({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 updated = client.AgentSetting.update({ &quot;agent_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const agent_settings = await client.AgentSetting().list({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const agent_setting = await client.AgentSetting().load({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
 const updated = await client.AgentSetting().update({ agent_id: &quot;example&quot;, organization_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -687,7 +687,7 @@ const updated = await client.AgentSetting().update({ agent_id: &quot;example&quo
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idagentsidsparksettings" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agents/{id}/spark/settings</h3>
 <p>Operation ID: <code>spark_settings_api_v1_organization_persistent_agent</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

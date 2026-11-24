@@ -39,10 +39,10 @@ describe('AgentWorkflowDirect', async () => {
   })
 
 
-  test('direct-list-agent_workflow', async (t: any) => {
+  test('direct-load-agent_workflow', async (t: any) => {
     if (liveScenariosActive()) { t.skip('Covered by live operation scenarios'); return }
-    const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }])
-    if (maybeSkipControl(t, 'direct', 'direct-list-agent_workflow', setup.live)) return
+    const setup = directSetup({ id: 'direct01' })
+    if (maybeSkipControl(t, 'direct', 'direct-load-agent_workflow', setup.live)) return
     if (skipIfMissingIds(t, setup, ["agent01","organization01"], LIVE_STRICT)) return
     const { client, calls } = setup
 
@@ -65,18 +65,16 @@ describe('AgentWorkflowDirect', async () => {
 
     if (setup.live) {
       if (!result.ok || result.status < 200 || result.status >= 300) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list failed: ' + describeLive(result))
+        return void liveMiss(t, LIVE_STRICT, 'Live load failed: ' + describeLive(result))
       }
-      if (!(Array.isArray(unwrapListData(result.data)))) {
-        return void liveMiss(t, LIVE_STRICT, 'Live list returned no list: ' + describeLive(result))
+      if (!(null != result.data)) {
+        return void liveMiss(t, LIVE_STRICT, 'Live load returned no data: ' + describeLive(result))
       }
     } else {
       assert(result.ok === true)
       assert(result.status === 200)
       assert(null != result.data)
-      const listArr = unwrapListData(result.data)
-      assert(Array.isArray(listArr))
-      assert(listArr!.length === 2)
+      assert(result.data.id === 'direct01')
       assert(calls.length === 1)
       assert(calls[0].init.method === 'GET')
       assert(calls[0].url.includes('direct01'))

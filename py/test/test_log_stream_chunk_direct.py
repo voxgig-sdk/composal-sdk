@@ -24,61 +24,18 @@ def _live_ok(result):
 
 class TestLogStreamChunkDirect:
 
-    def test_should_direct_list_log_stream_chunk(self):
-        setup = _log_stream_chunk_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-log_stream_chunk", "live" if setup["live"] else "unit")
-        if _skip:
-            pytest.skip(_reason or "skipped via sdk-test-control.json")
-            return
-        if setup["live"]:
-            for _live_key in ["log_stream01", "space01"]:
-                if setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID")
-
-        if setup["live"]:
-            runner.live_pace()
-        client = setup["client"]
-
-        params = {}
-        query = {}
-        if setup["live"]:
-            params["log_stream_id"] = setup["idmap"].get("log_stream01")
-        else:
-            params["log_stream_id"] = "direct01"
-        if setup["live"]:
-            params["space_id"] = setup["idmap"].get("space01")
-        else:
-            params["space_id"] = "direct02"
-
-        result = client.direct({
-            "path": "api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks",
-            "method": "GET",
-            "params": params,
-            "query": query,
-        })
-        if setup["live"]:
-            if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
-        else:
-            assert result["ok"] is True
-            assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
-            assert len(setup["calls"]) == 1
-
     def test_should_direct_load_log_stream_chunk(self):
         setup = _log_stream_chunk_direct_setup({"id": "direct01"})
         _skip, _reason = runner.is_control_skipped("direct", "direct-load-log_stream_chunk", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("log_stream_chunk01") is None:
+            print("LIVE STEP {\"id\":\"direct-load-log_stream_chunk\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs log_stream_chunk01, which only POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-log_stream_chunk excluded (GET-only live run: needs log_stream_chunk01, which only POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks gives)")
+
         if setup["live"]:
-            for _live_key in ["log_stream01", "space01"]:
+            for _live_key in ["log_stream_chunk01", "log_stream01", "space01"]:
                 if setup["idmap"].get(_live_key) is None:
                     runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_LOG_STREAM_CHUNK_ENTID")
 
@@ -89,22 +46,7 @@ class TestLogStreamChunkDirect:
         params = {}
         query = {}
         if setup["live"]:
-            list_result = client.direct({
-                "path": "api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks",
-                "method": "GET",
-                "params": {"log_stream_id": setup["idmap"].get("log_stream01"), "space_id": setup["idmap"].get("space01")},
-            })
-            if not _live_ok(list_result):
-                runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + runner.live_describe(list_result))
-            records = runner.live_list(list_result.get("data"))
-            if records is None:
-                runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + runner.live_describe(list_result))
-            if 0 == len(records):
-                runner.live_empty("The account has no log_stream_chunk record to load")
-            first = records[0] if isinstance(records[0], dict) else {}
-            if first.get("id") is None:
-                runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-            params["id"] = first.get("id")
+            params["id"] = setup["idmap"].get("log_stream_chunk01")
             params["log_stream_id"] = setup["idmap"].get("log_stream01")
             params["space_id"] = setup["idmap"].get("space01")
             pass

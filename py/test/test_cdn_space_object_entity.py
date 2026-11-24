@@ -37,7 +37,7 @@ class TestCdnSpaceObjectEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.CdnSpaceObject(None).list({"cdn_space_id": 1}, None)
+            client.CdnSpaceObject(None).load({"cdn_space_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,26 +46,19 @@ class TestCdnSpaceObjectEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list", "load"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "cdn_space_object." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
-            print("LIVE STEP {\"id\":\"cdn_space_object.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects\"}")
-            return self._run_get_only_flow(setup)
+            print("LIVE STEP {\"id\":\"cdn_space_object.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects\"}")
+            pytest.skip("Live coverage incomplete: cdn_space_object.update.0 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects)")
 
         if setup["live"]:
-            for _live_key in ["cdn_space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("cdn_space_object01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "cdn_space_object",
-                                 lambda: client.CdnSpaceObject(None).list({"cdn_space_id": setup["idmap"].get("cdn_space01")}, None),
-                                 "id", _live_id)
 
         # Bootstrap entity data from existing test data.
         cdn_space_object_ref01_data_raw = vs.items(helpers.to_map(
@@ -73,75 +66,6 @@ class TestCdnSpaceObjectEntity:
         cdn_space_object_ref01_data = None
         if len(cdn_space_object_ref01_data_raw) > 0:
             cdn_space_object_ref01_data = helpers.to_map(cdn_space_object_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        cdn_space_object_ref01_ent = client.CdnSpaceObject(None)
-        cdn_space_object_ref01_match = {
-            "cdn_space_id": setup["idmap"]["cdn_space01"],
-        }
-
-        cdn_space_object_ref01_list_result = cdn_space_object_ref01_ent.list(cdn_space_object_ref01_match, None)
-        assert isinstance(cdn_space_object_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        cdn_space_object_ref01_match_dt0 = {
-            "id": cdn_space_object_ref01_data["id"],
-        }
-        cdn_space_object_ref01_match_dt0["cdn_space_id"] = setup["idmap"].get("cdn_space_id") or setup["idmap"].get("cdn_space01")
-        cdn_space_object_ref01_data_dt0_loaded = cdn_space_object_ref01_ent.load(cdn_space_object_ref01_match_dt0, None)
-        cdn_space_object_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(cdn_space_object_ref01_data_dt0_loaded))
-        assert cdn_space_object_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(cdn_space_object_ref01_data_dt0_load_result.get("id"), cdn_space_object_ref01_data["id"])
-
-
-    def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["cdn_space01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID")
-        client = setup["client"]
-        if setup["live"]:
-            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("cdn_space_object01")
-            runner.live_pace()
-            runner.live_existing(setup, LIVE_STRICT, "cdn_space_object",
-                                 lambda: client.CdnSpaceObject(None).list({"cdn_space_id": setup["idmap"].get("cdn_space01")}, None),
-                                 "id", _live_id)
-
-        # Bootstrap entity data from existing test data.
-        cdn_space_object_ref01_data_raw = vs.items(helpers.to_map(
-            vs.getpath(setup["data"], "existing.cdn_space_object")))
-        cdn_space_object_ref01_data = None
-        if len(cdn_space_object_ref01_data_raw) > 0:
-            cdn_space_object_ref01_data = helpers.to_map(cdn_space_object_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        cdn_space_object_ref01_ent = client.CdnSpaceObject(None)
-        cdn_space_object_ref01_match = {
-            "cdn_space_id": setup["idmap"]["cdn_space01"],
-        }
-
-        cdn_space_object_ref01_list_result = cdn_space_object_ref01_ent.list(cdn_space_object_ref01_match, None)
-        assert isinstance(cdn_space_object_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
-        # LOAD
-        cdn_space_object_ref01_match_dt0 = {
-            "id": cdn_space_object_ref01_data["id"],
-        }
-        cdn_space_object_ref01_match_dt0["cdn_space_id"] = setup["idmap"].get("cdn_space_id") or setup["idmap"].get("cdn_space01")
-        cdn_space_object_ref01_data_dt0_loaded = cdn_space_object_ref01_ent.load(cdn_space_object_ref01_match_dt0, None)
-        cdn_space_object_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(cdn_space_object_ref01_data_dt0_loaded))
-        assert cdn_space_object_ref01_data_dt0_load_result is not None
-        if not setup["live"]:
-            assert runner.live_same_id(cdn_space_object_ref01_data_dt0_load_result.get("id"), cdn_space_object_ref01_data["id"])
 
 
 

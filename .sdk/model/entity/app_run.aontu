@@ -127,42 +127,6 @@ main: kit: entity: app_run: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/hosting/app_runs"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/hosting/app_runs"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "hosting"
-            }
-            {
-              lit: "app_runs"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -214,6 +178,37 @@ main: kit: entity: app_run: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/hosting/app_runs"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/hosting/app_runs"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "hosting"
+            }
+            {
+              lit: "app_runs"
             }
           ]
           t: {

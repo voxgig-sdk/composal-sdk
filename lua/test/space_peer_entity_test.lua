@@ -29,7 +29,7 @@ describe("SpacePeerEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SpacePeer(nil):list({ ["space_id"] = 1 }, nil)
+    local _, err = client:SpacePeer(nil):load({ ["id"] = 1, ["space_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SpacePeerEntity", function()
     local setup = space_peer_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "load", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "space_peer." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,65 +46,10 @@ describe("SpacePeerEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"space_peer.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve\"}")
-      print("LIVE STEP {\"id\":\"space_peer.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
-      print("LIVE STEP {\"id\":\"space_peer.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
-      print("LIVE STEP {\"id\":\"space_peer.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"space01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPACE_PEER_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-    if setup.live then
-      local _live_id = nil
-      if not setup.synthetic_only then
-        _live_id = setup.idmap["space_peer01"]
-      end
-      runner.live_pace()
-      runner.live_existing(pending, setup, LIVE_STRICT, "space_peer", function()
-        return client:SpacePeer(nil):list({["space_id"] = setup.idmap["space01"]}, nil)
-      end, "id", _live_id)
-    end
-
-    -- Bootstrap entity data from existing test data.
-    local space_peer_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.space_peer")))
-    local space_peer_ref01_data = nil
-    if #space_peer_ref01_data_raw > 0 then
-      space_peer_ref01_data = helpers.to_map(space_peer_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local space_peer_ref01_ent = client:SpacePeer(nil)
-    local space_peer_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_peer_ref01_list_result, err = space_peer_ref01_ent:list(space_peer_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(space_peer_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LOAD
-    local space_peer_ref01_match_dt0 = {
-      id = space_peer_ref01_data["id"],
-    }
-    space_peer_ref01_match_dt0["space_id"] = setup.idmap["space_id"] or setup.idmap["space01"]
-    local space_peer_ref01_data_dt0_loaded, err = space_peer_ref01_ent:load(space_peer_ref01_match_dt0, nil)
-    assert.is_nil(err)
-    local space_peer_ref01_data_dt0_load_result = helpers.to_map(type(space_peer_ref01_data_dt0_loaded) == 'table' and space_peer_ref01_data_dt0_loaded.data_get and space_peer_ref01_data_dt0_loaded:data_get() or space_peer_ref01_data_dt0_loaded)
-    assert.is_not_nil(space_peer_ref01_data_dt0_load_result)
-    if not setup.live then
-      assert.is_true(runner.live_same_id(space_peer_ref01_data_dt0_load_result["id"], space_peer_ref01_data["id"]))
-    end
-
+      print("LIVE STEP {\"id\":\"space_peer.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
+      print("LIVE STEP {\"id\":\"space_peer.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_peer.create.0 gives\"}")
+      print("LIVE STEP {\"id\":\"space_peer.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id}\"}")
+      pending("Live coverage incomplete: space_peer.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peers/{id}/approve); space_peer.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peers/{id}); space_peer.load.2 excluded (GET-only live run: reads a record only space_peer.create.0 gives); space_peer.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peers/{id})")
       return
     end
 
@@ -135,23 +80,6 @@ describe("SpacePeerEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local space_peer_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_peer_ref01_list_result, err = space_peer_ref01_ent:list(space_peer_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(space_peer_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(space_peer_ref01_list_result),
-      { id = space_peer_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local space_peer_ref01_data_up0_up = {
       id = space_peer_ref01_data["id"],
@@ -173,7 +101,6 @@ describe("SpacePeerEntity", function()
     local space_peer_ref01_match_dt0 = {
       id = space_peer_ref01_data["id"],
     }
-    space_peer_ref01_match_dt0["space_id"] = setup.idmap["space_id"] or setup.idmap["space01"]
     local space_peer_ref01_data_dt0_loaded, err = space_peer_ref01_ent:load(space_peer_ref01_match_dt0, nil)
     assert.is_nil(err)
     local space_peer_ref01_data_dt0_load_result = helpers.to_map(type(space_peer_ref01_data_dt0_loaded) == 'table' and space_peer_ref01_data_dt0_loaded.data_get and space_peer_ref01_data_dt0_loaded:data_get() or space_peer_ref01_data_dt0_loaded)
@@ -192,23 +119,6 @@ describe("SpacePeerEntity", function()
     space_peer_ref01_match_rm0["space_id"] = setup.idmap["space_id"] or setup.idmap["space01"]
     local _, err = space_peer_ref01_ent:remove(space_peer_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local space_peer_ref01_match_rt0 = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_peer_ref01_list_rt0_result, err = space_peer_ref01_ent:list(space_peer_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(space_peer_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(space_peer_ref01_list_rt0_result),
-      { id = space_peer_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

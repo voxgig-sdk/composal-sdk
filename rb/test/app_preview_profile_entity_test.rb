@@ -25,7 +25,7 @@ class AppPreviewProfileEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.AppPreviewProfile(nil).list({ "app_id" => 1 }, nil)
+      client.AppPreviewProfile(nil).load({ "app_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class AppPreviewProfileEntityTest < Minitest::Test
     setup = app_preview_profile_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "update", "load", "remove"].each do |_op|
+    ["create", "update", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "app_preview_profile." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,55 +43,10 @@ class AppPreviewProfileEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"app_preview_profile.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles\"}"
-      puts "LIVE STEP {\"id\":\"app_preview_profile.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}\"}"
-      puts "LIVE STEP {\"id\":\"app_preview_profile.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}\"}"
-      puts "LIVE STEP {\"id\":\"app_preview_profile.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["app01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_APP_PREVIEW_PROFILE_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-    if setup[:live]
-      _live_id = setup[:synthetic_only] ? nil : setup[:idmap]["app_preview_profile01"]
-      Runner.live_pace
-      Runner.live_existing(setup, LIVE_STRICT, "app_preview_profile", "id", _live_id) do
-        client.AppPreviewProfile(nil).list({"app_id" => setup[:idmap]["app01"]}, nil)
-      end
-    end
-
-    # Bootstrap entity data from existing test data.
-    app_preview_profile_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.app_preview_profile")))
-    app_preview_profile_ref01_data = nil
-    if app_preview_profile_ref01_data_raw.length > 0
-      app_preview_profile_ref01_data = Helpers.to_map(app_preview_profile_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    app_preview_profile_ref01_ent = client.AppPreviewProfile(nil)
-    app_preview_profile_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_preview_profile_ref01_list_result = app_preview_profile_ref01_ent.list(app_preview_profile_ref01_match, nil)
-    assert app_preview_profile_ref01_list_result.is_a?(Array)
-
-    Runner.live_pace if setup[:live]
-    # LOAD
-    app_preview_profile_ref01_match_dt0 = {
-      "id" => app_preview_profile_ref01_data["id"],
-    }
-    app_preview_profile_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
-    app_preview_profile_ref01_data_dt0_loaded = app_preview_profile_ref01_ent.load(app_preview_profile_ref01_match_dt0, nil)
-    app_preview_profile_ref01_data_dt0_load_result = Helpers.to_map(app_preview_profile_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_preview_profile_ref01_data_dt0_loaded.data_get : app_preview_profile_ref01_data_dt0_loaded)
-    assert !app_preview_profile_ref01_data_dt0_load_result.nil?
-    assert Runner.live_same_id(app_preview_profile_ref01_data_dt0_load_result["id"], app_preview_profile_ref01_data["id"])
-
-      return
+      puts "LIVE STEP {\"id\":\"app_preview_profile.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}\"}"
+      puts "LIVE STEP {\"id\":\"app_preview_profile.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_preview_profile.create.0 gives\"}"
+      puts "LIVE STEP {\"id\":\"app_preview_profile.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}\"}"
+      skip("Live coverage incomplete: app_preview_profile.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles); app_preview_profile.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}); app_preview_profile.load.2 excluded (GET-only live run: reads a record only app_preview_profile.create.0 gives); app_preview_profile.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id})")
     end
 
     if setup[:live]
@@ -116,20 +71,6 @@ class AppPreviewProfileEntityTest < Minitest::Test
     assert !app_preview_profile_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    app_preview_profile_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_preview_profile_ref01_list_result = app_preview_profile_ref01_ent.list(app_preview_profile_ref01_match, nil)
-    assert app_preview_profile_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(app_preview_profile_ref01_list_result),
-      { "id" => app_preview_profile_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
-
-    Runner.live_pace if setup[:live]
     # UPDATE
     app_preview_profile_ref01_data_up0_up = {
       "id" => app_preview_profile_ref01_data["id"],
@@ -151,7 +92,6 @@ class AppPreviewProfileEntityTest < Minitest::Test
     app_preview_profile_ref01_match_dt0 = {
       "id" => app_preview_profile_ref01_data["id"],
     }
-    app_preview_profile_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_preview_profile_ref01_data_dt0_loaded = app_preview_profile_ref01_ent.load(app_preview_profile_ref01_match_dt0, nil)
     app_preview_profile_ref01_data_dt0_load_result = Helpers.to_map(app_preview_profile_ref01_data_dt0_loaded.respond_to?(:data_get) ? app_preview_profile_ref01_data_dt0_loaded.data_get : app_preview_profile_ref01_data_dt0_loaded)
     assert !app_preview_profile_ref01_data_dt0_load_result.nil?
@@ -164,20 +104,6 @@ class AppPreviewProfileEntityTest < Minitest::Test
     }
     app_preview_profile_ref01_match_rm0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
     app_preview_profile_ref01_ent.remove(app_preview_profile_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    app_preview_profile_ref01_match_rt0 = {
-      "app_id" => setup[:idmap]["app01"],
-    }
-
-    app_preview_profile_ref01_list_rt0_result = app_preview_profile_ref01_ent.list(app_preview_profile_ref01_match_rt0, nil)
-    assert app_preview_profile_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(app_preview_profile_ref01_list_rt0_result),
-      { "id" => app_preview_profile_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

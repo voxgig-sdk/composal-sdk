@@ -38,7 +38,7 @@ func TestServiceEndpointEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.ServiceEndpoint(nil).List(map[string]any{"app_id": 1, "service_id": "x"}, nil)
+		_, err := client.ServiceEndpoint(nil).Load(map[string]any{"app_id": 1, "service_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestServiceEndpointEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "service_endpoint." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,89 +64,11 @@ func TestServiceEndpointEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"service_endpoint.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints\"}")
-			t.Log("LIVE STEP {\"id\":\"service_endpoint.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"service_endpoint.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"service_endpoint.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01", "service01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, service_endpointEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SERVICE_ENDPOINT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["service_endpoint01"]
-			}
-			livePace()
-			liveExisting(t, service_endpointEntityLiveStrict, setup.data, "service_endpoint", "id", _liveId,
-				func() (any, error) {
-					return client.ServiceEndpoint(nil).List(map[string]any{"app_id": setup.idmap["app01"], "service_id": setup.idmap["service01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		serviceEndpointRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.service_endpoint")))
-		var serviceEndpointRef01Data map[string]any
-		if len(serviceEndpointRef01DataRaw) > 0 {
-			serviceEndpointRef01Data = core.ToMapAny(serviceEndpointRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = serviceEndpointRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		serviceEndpointRef01Ent := client.ServiceEndpoint(nil)
-		serviceEndpointRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"service_id": setup.idmap["service01"],
-		}
-
-		serviceEndpointRef01ListResult, err := serviceEndpointRef01Ent.List(serviceEndpointRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, serviceEndpointRef01ListOk := serviceEndpointRef01ListResult.([]any)
-		if !serviceEndpointRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", serviceEndpointRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		serviceEndpointRef01MatchDt0 := map[string]any{
-			"id": serviceEndpointRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			serviceEndpointRef01MatchDt0["app_id"] = v
-		} else {
-			serviceEndpointRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		if v := setup.idmap["service_id"]; v != nil {
-			serviceEndpointRef01MatchDt0["service_id"] = v
-		} else {
-			serviceEndpointRef01MatchDt0["service_id"] = setup.idmap["service01"]
-		}
-		serviceEndpointRef01DataDt0Loaded, err := serviceEndpointRef01Ent.Load(serviceEndpointRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		serviceEndpointRef01DataDt0LoadResult := core.ToMapAny(entityData(serviceEndpointRef01DataDt0Loaded))
-		if serviceEndpointRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(serviceEndpointRef01DataDt0LoadResult["id"], serviceEndpointRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"service_endpoint.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"service_endpoint.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only service_endpoint.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"service_endpoint.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}\"}")
+			t.Skip("Live coverage incomplete: service_endpoint.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints); service_endpoint.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}); service_endpoint.load.2 excluded (GET-only live run: reads a record only service_endpoint.create.0 gives); service_endpoint.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id})")
+			return
 		}
 
 		if setup.live {
@@ -184,29 +106,6 @@ func TestServiceEndpointEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		serviceEndpointRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"service_id": setup.idmap["service01"],
-		}
-
-		serviceEndpointRef01ListResult, err := serviceEndpointRef01Ent.List(serviceEndpointRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		serviceEndpointRef01List, serviceEndpointRef01ListOk := serviceEndpointRef01ListResult.([]any)
-		if !serviceEndpointRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", serviceEndpointRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(serviceEndpointRef01List), map[string]any{"id": serviceEndpointRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		serviceEndpointRef01DataUp0Up := map[string]any{
 			"id": serviceEndpointRef01Data["id"],
@@ -237,11 +136,6 @@ func TestServiceEndpointEntity(t *testing.T) {
 			serviceEndpointRef01MatchDt0["app_id"] = v
 		} else {
 			serviceEndpointRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		if v := setup.idmap["service_id"]; v != nil {
-			serviceEndpointRef01MatchDt0["service_id"] = v
-		} else {
-			serviceEndpointRef01MatchDt0["service_id"] = setup.idmap["service01"]
 		}
 		serviceEndpointRef01DataDt0Loaded, err := serviceEndpointRef01Ent.Load(serviceEndpointRef01MatchDt0, nil)
 		if err != nil {
@@ -275,29 +169,6 @@ func TestServiceEndpointEntity(t *testing.T) {
 		_, err = serviceEndpointRef01Ent.Remove(serviceEndpointRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		serviceEndpointRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"service_id": setup.idmap["service01"],
-		}
-
-		serviceEndpointRef01ListRt0Result, err := serviceEndpointRef01Ent.List(serviceEndpointRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		serviceEndpointRef01ListRt0, serviceEndpointRef01ListRt0Ok := serviceEndpointRef01ListRt0Result.([]any)
-		if !serviceEndpointRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", serviceEndpointRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(serviceEndpointRef01ListRt0), map[string]any{"id": serviceEndpointRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

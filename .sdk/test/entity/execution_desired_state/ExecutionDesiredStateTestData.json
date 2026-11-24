@@ -37,12 +37,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/execution/desired_states": {
+    "GET /api/v1/execution/desired_states/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/execution/desired_states/{id}": {
+    "GET /api/v1/execution/desired_states": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

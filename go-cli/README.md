@@ -19,7 +19,7 @@ make build
 export COMPOSAL_APIKEY=apikey_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
-./composal-cli list admin_org
+./composal-cli list agent
 
 # 5. Override the API base URL for a single call
 COMPOSAL_BASE=https://api.example.com ./composal-cli --help

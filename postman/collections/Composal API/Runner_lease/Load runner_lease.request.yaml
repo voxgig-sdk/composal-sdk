@@ -1,0 +1,18 @@
+$kind: http-request
+id: b108d731-e0f3-5c8c-8123-daf8e198057f
+description: |-
+  The `load` operation of **runner_lease**.
+
+  SDK: `client.RunnerLease().load({ runner_id: "example", runner_pool_id: "example" })`
+url: "{{base}}/api/v1/ci/runner_pools/:runner_pool_id/runners/:runner_id/leases"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: runner_pool_id
+    value: "{{runner_pool_id}}"
+    description: "Input: runner_pool_id."
+  - key: runner_id
+    value: "{{runner_id}}"
+    description: "Input: runner_id."
+order: 1000

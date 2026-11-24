@@ -127,12 +127,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/storage_resources": {
+    "GET /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+    "GET /api/v1/hosting/apps/{app_id}/storage_resources": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

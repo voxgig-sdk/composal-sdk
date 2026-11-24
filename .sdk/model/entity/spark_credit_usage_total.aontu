@@ -27,8 +27,8 @@ main: kit: entity: spark_credit_usage_total: {
 
   name: "spark_credit_usage_total"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

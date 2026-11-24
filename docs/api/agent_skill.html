@@ -59,9 +59,9 @@
 <a href="../api/agent_site.html">AgentSite</a>
 <a aria-current="page" href="../api/agent_skill.html">AgentSkill</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorganization_idagent_skills">POST /api/v1/organizations/{organization_id}/agent_skills</a>
 <a class="nav-section" href="#post-apiv1organizationsorganization_idagent_skillspreview">POST /api/v1/organizations/{organization_id}/agent_skills/preview</a>
-<a class="nav-section" href="#get-apiv1organizationsorganization_idagent_skills">GET /api/v1/organizations/{organization_id}/agent_skills</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagent_skillsid">GET /api/v1/organizations/{organization_id}/agent_skills/{id}</a>
 <a class="nav-section" href="#get-apiv1organizationsorganization_idagent_skillsmarketplace">GET /api/v1/organizations/{organization_id}/agent_skills/marketplace</a>
+<a class="nav-section" href="#get-apiv1organizationsorganization_idagent_skills">GET /api/v1/organizations/{organization_id}/agent_skills</a>
 <a class="nav-section" href="#delete-apiv1organizationsorganization_idagent_skillsid">DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}</a>
 <a class="nav-section" href="#put-apiv1organizationsorganization_idagent_skillsidaudience">PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience</a></div>
 <a href="../api/agent_slack.html">AgentSlack</a>
@@ -615,12 +615,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorganization_idagent_skills"><code>/api/v1/organizations/{organization_id}/agent_skills</code></a></td>
-<td><code>list</code></td>
-<td>Skill library</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idagent_skillsid"><code>/api/v1/organizations/{organization_id}/agent_skills/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Skill</td>
@@ -630,6 +624,12 @@
 <td><a href="#get-apiv1organizationsorganization_idagent_skillsmarketplace"><code>/api/v1/organizations/{organization_id}/agent_skills/marketplace</code></a></td>
 <td><code>load</code></td>
 <td>Matching plugins or skills</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1organizationsorganization_idagent_skills"><code>/api/v1/organizations/{organization_id}/agent_skills</code></a></td>
+<td><code>load</code></td>
+<td>Skill library</td>
 </tr>
 <tr>
 <td><code>DELETE</code></td>
@@ -649,12 +649,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">agent_skills, err := client.AgentSkill(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(agent_skills)
-agent_skill, err := client.AgentSkill(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">agent_skill, err := client.AgentSkill(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -672,36 +667,31 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local agent_skills, err = client:AgentSkill():list({ organization_id = &quot;example&quot; })
-local agent_skill, err = client:AgentSkill():load({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
+<pre><code class="language-lua">local agent_skill, err = client:AgentSkill():load({ organization_id = &quot;example&quot; })
 local created, err = client:AgentSkill():create({ organization_id = &quot;example&quot;, audience = {}, revision = &quot;example&quot;, skills = {} })
 local removed, err = client:AgentSkill():remove({ id = &quot;example_id&quot;, organization_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$agent_skills = $client-&gt;AgentSkill()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$agent_skill = $client-&gt;AgentSkill()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$agent_skill = $client-&gt;AgentSkill()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AgentSkill()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;audience&quot; =&gt; [], &quot;revision&quot; =&gt; &quot;example&quot;, &quot;skills&quot; =&gt; []]);
 $client-&gt;AgentSkill()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">agent_skills = client.AgentSkill().list({&quot;organization_id&quot;: &quot;example&quot;})
-agent_skill = client.AgentSkill().load({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">agent_skill = client.AgentSkill().load({&quot;organization_id&quot;: &quot;example&quot;})
 created = client.AgentSkill().create({ &quot;organization_id&quot;: &quot;example&quot;, &quot;audience&quot;: {}, &quot;revision&quot;: &quot;example&quot;, &quot;skills&quot;: [] })
 client.AgentSkill().remove({&quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">agent_skills = client.AgentSkill.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-agent_skill = client.AgentSkill.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">agent_skill = client.AgentSkill.load({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 created = client.AgentSkill.create({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;audience&quot; =&gt; {}, &quot;revision&quot; =&gt; &quot;example&quot;, &quot;skills&quot; =&gt; [] })
 client.AgentSkill.remove({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const agent_skills = await client.AgentSkill().list({ organization_id: &quot;example&quot; })
-const agent_skill = await client.AgentSkill().load({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
+<pre><code class="language-ts">const agent_skill = await client.AgentSkill().load({ organization_id: &quot;example&quot; })
 const created = await client.AgentSkill().create({ organization_id: &quot;example&quot;, audience: {}, revision: &quot;example&quot;, skills: [] })
 await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: &quot;example&quot; })
 </code></pre>
@@ -1156,224 +1146,11 @@ await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: 
 <h5 id="422-unsupported-source-or-no-skills-found" class="status" data-status="4xx">422: Unsupported source or no skills found</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
 <h5 id="503-github-or-the-marketplace-is-unavailable-1" class="status" data-status="5xx">503: GitHub or the marketplace is unavailable</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1organizationsorganization_idagent_skills" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_skills</h3>
-<p>Operation ID: <code>api_v1_organization_agent_skills</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-2">Parameters</h4>
-<table>
-<thead>
-<tr>
-<th>Parameter</th>
-<th>In</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>organization_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-skill-library" class="status" data-status="2xx">200: Skill library</h5>
-<p><code>application/json</code></p>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Type</th>
-<th>Required</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>agents</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td>Active V2 agents the viewer can see whose owner is still a member</td>
-</tr>
-<tr>
-<td><code>agents[].avatar</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>agents[].can_manage</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>agents[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>agents[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>can_manage_library</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>pending</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td>Some agent is still applying a change; check again shortly</td>
-</tr>
-<tr>
-<td><code>skills</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].added_at</code></td>
-<td><code>string (date-time)</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].added_by</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents</code></td>
-<td><code>array of object</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents[].agent_id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents[].delivery_error</code></td>
-<td><code>string,null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents[].delivery_state</code></td>
-<td><code>enum: pending, installed, disabled, failed, null</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents[].effective</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].agents[].enabled</code></td>
-<td><code>boolean,null</code></td>
-<td>Yes</td>
-<td>The agent's own choice; null follows the default</td>
-</tr>
-<tr>
-<td><code>skills[].audience</code></td>
-<td><code>enum: all, selected</code></td>
-<td>Yes</td>
-<td>all while every listed agent has it and new agents get it</td>
-</tr>
-<tr>
-<td><code>skills[].description</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].enabled_agent_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td>Listed agents the skill is on for</td>
-</tr>
-<tr>
-<td><code>skills[].enabled_by_default</code></td>
-<td><code>boolean</code></td>
-<td>Yes</td>
-<td>New agents get the skill. With audience all, so does every agent that has not chosen otherwise</td>
-</tr>
-<tr>
-<td><code>skills[].failed_agent_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td>Listed agents where delivery failed</td>
-</tr>
-<tr>
-<td><code>skills[].files_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].id</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].name</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].revision</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].source_kind</code></td>
-<td><code>enum: github, skills_sh, claude, cursor, codex</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].source_label</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>skills[].source_url</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h5 id="401-authentication-required-2" class="status" data-status="4xx">401: Authentication required</h5>
-<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-organization-or-feature-not-found-2" class="status" data-status="4xx">404: Organization or feature not found</h5>
-<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idagent_skillsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_skills/{id}</h3>
 <p>Operation ID: <code>api_v1_organization_agent_skill</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-3">Parameters</h4>
+<h4 id="parameters-2">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1401,7 +1178,7 @@ await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: 
 </tr>
 </tbody>
 </table>
-<h4 id="responses-3">Responses</h4>
+<h4 id="responses-2">Responses</h4>
 <h5 id="200-skill" class="status" data-status="2xx">200: Skill</h5>
 <p><code>application/json</code></p>
 <table>
@@ -1608,15 +1385,15 @@ await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: 
 </tr>
 </tbody>
 </table>
-<h5 id="401-authentication-required-3" class="status" data-status="4xx">401: Authentication required</h5>
-<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="401-authentication-required-2" class="status" data-status="4xx">401: Authentication required</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
 <h5 id="404-skill-or-feature-not-found" class="status" data-status="4xx">404: Skill or feature not found</h5>
-<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h3 id="get-apiv1organizationsorganization_idagent_skillsmarketplace" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_skills/marketplace</h3>
 <p>Operation ID: <code>marketplace_api_v1_organization_agent_skills</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="parameters-4">Parameters</h4>
+<h4 id="parameters-3">Parameters</h4>
 <table>
 <thead>
 <tr>
@@ -1651,7 +1428,7 @@ await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: 
 </tr>
 </tbody>
 </table>
-<h4 id="responses-4">Responses</h4>
+<h4 id="responses-3">Responses</h4>
 <h5 id="200-matching-plugins-or-skills" class="status" data-status="2xx">200: Matching plugins or skills</h5>
 <p><code>application/json</code></p>
 <table>
@@ -1708,12 +1485,224 @@ await client.AgentSkill().remove({ id: &quot;example_id&quot;, organization_id: 
 </tr>
 </tbody>
 </table>
+<h5 id="401-authentication-required-3" class="status" data-status="4xx">401: Authentication required</h5>
+<h5 id="403-forbidden-1" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-organization-or-feature-not-found-2" class="status" data-status="4xx">404: Organization or feature not found</h5>
+<h5 id="422-unknown-marketplace" class="status" data-status="4xx">422: Unknown marketplace</h5>
+<h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
+<h5 id="503-the-marketplace-is-unavailable" class="status" data-status="5xx">503: The marketplace is unavailable</h5>
+<h3 id="get-apiv1organizationsorganization_idagent_skills" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/agent_skills</h3>
+<p>Operation ID: <code>api_v1_organization_agent_skills</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>organization_id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-skill-library" class="status" data-status="2xx">200: Skill library</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>agents</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Active V2 agents the viewer can see whose owner is still a member</td>
+</tr>
+<tr>
+<td><code>agents[].avatar</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>agents[].can_manage</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>agents[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>agents[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>can_manage_library</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pending</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Some agent is still applying a change; check again shortly</td>
+</tr>
+<tr>
+<td><code>skills</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].added_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].added_by</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents[].agent_id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents[].delivery_error</code></td>
+<td><code>string,null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents[].delivery_state</code></td>
+<td><code>enum: pending, installed, disabled, failed, null</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents[].effective</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].agents[].enabled</code></td>
+<td><code>boolean,null</code></td>
+<td>Yes</td>
+<td>The agent's own choice; null follows the default</td>
+</tr>
+<tr>
+<td><code>skills[].audience</code></td>
+<td><code>enum: all, selected</code></td>
+<td>Yes</td>
+<td>all while every listed agent has it and new agents get it</td>
+</tr>
+<tr>
+<td><code>skills[].description</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].enabled_agent_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Listed agents the skill is on for</td>
+</tr>
+<tr>
+<td><code>skills[].enabled_by_default</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>New agents get the skill. With audience all, so does every agent that has not chosen otherwise</td>
+</tr>
+<tr>
+<td><code>skills[].failed_agent_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Listed agents where delivery failed</td>
+</tr>
+<tr>
+<td><code>skills[].files_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].revision</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].source_kind</code></td>
+<td><code>enum: github, skills_sh, claude, cursor, codex</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].source_label</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>skills[].source_url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 <h5 id="401-authentication-required-4" class="status" data-status="4xx">401: Authentication required</h5>
 <h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
 <h5 id="404-organization-or-feature-not-found-3" class="status" data-status="4xx">404: Organization or feature not found</h5>
-<h5 id="422-unknown-marketplace" class="status" data-status="4xx">422: Unknown marketplace</h5>
+<h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h5 id="503-the-marketplace-is-unavailable" class="status" data-status="5xx">503: The marketplace is unavailable</h5>
 <h2 id="remove">remove</h2>
 <h3 id="delete-apiv1organizationsorganization_idagent_skillsid" class="operation" data-method="delete"><code>DELETE</code> /api/v1/organizations/{organization_id}/agent_skills/{id}</h3>
 <p>Operation ID: <code>delete_api_v1_organizations_organization_id_agent_skills_id_</code>.</p>

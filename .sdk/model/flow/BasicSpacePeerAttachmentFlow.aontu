@@ -19,22 +19,6 @@ main: kit: flow: BasicSpacePeerAttachmentFlow:
     }
 
     {
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "space_peer_attachment_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         space_id: "space01"
       }
@@ -59,6 +43,28 @@ main: kit: flow: BasicSpacePeerAttachmentFlow:
     {
       i: {
         ref: "space_peer_attachment_ref01",
+        srcdatavar: "space_peer_attachment_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "space_peer_attachment01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-space_peer_attachment_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "space_peer_attachment_ref01",
         suffix: "_rm0"
       }
 
@@ -68,26 +74,6 @@ main: kit: flow: BasicSpacePeerAttachmentFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        space_id: "space01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "space_peer_attachment_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicSpacePeerAttachmentFlow"

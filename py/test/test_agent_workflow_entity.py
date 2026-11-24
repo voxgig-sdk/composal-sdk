@@ -37,7 +37,7 @@ class TestAgentWorkflowEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.AgentWorkflow(None).list({"agent_id": 1, "organization_id": "x"}, None)
+            client.AgentWorkflow(None).load({"agent_id": 1, "organization_id": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,14 +46,14 @@ class TestAgentWorkflowEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "agent_workflow." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"agent_workflow.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
-            print("LIVE STEP {\"id\":\"agent_workflow.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
+            print("LIVE STEP {\"id\":\"agent_workflow.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows\"}")
             return self._run_get_only_flow(setup)
 
         if setup["live"]:
@@ -76,17 +76,6 @@ class TestAgentWorkflowEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        agent_workflow_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        agent_workflow_ref01_list_result = agent_workflow_ref01_ent.list(agent_workflow_ref01_match, None)
-        assert isinstance(agent_workflow_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         agent_workflow_ref01_data_up0_up = {
             "organization_id": setup["idmap"]["organization_id"],
@@ -100,12 +89,16 @@ class TestAgentWorkflowEntity:
         assert agent_workflow_ref01_resdata_up0 is not None
         assert agent_workflow_ref01_resdata_up0[agent_workflow_ref01_markdef_up0_name] == agent_workflow_ref01_markdef_up0_value
 
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        agent_workflow_ref01_match_dt0 = {}
+        agent_workflow_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        agent_workflow_ref01_data_dt0_loaded = agent_workflow_ref01_ent.load(agent_workflow_ref01_match_dt0, None)
+        assert agent_workflow_ref01_data_dt0_loaded is not None
+
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["agent01", "organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_AGENT_WORKFLOW_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -117,15 +110,12 @@ class TestAgentWorkflowEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         agent_workflow_ref01_ent = client.AgentWorkflow(None)
-        agent_workflow_ref01_match = {
-            "agent_id": setup["idmap"]["agent01"],
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        agent_workflow_ref01_list_result = agent_workflow_ref01_ent.list(agent_workflow_ref01_match, None)
-        assert isinstance(agent_workflow_ref01_list_result, list)
+        agent_workflow_ref01_match_dt0 = {}
+        agent_workflow_ref01_match_dt0["organization_id"] = setup["idmap"].get("organization_id") or setup["idmap"].get("organization01")
+        agent_workflow_ref01_data_dt0_loaded = agent_workflow_ref01_ent.load(agent_workflow_ref01_match_dt0, None)
+        assert agent_workflow_ref01_data_dt0_loaded is not None
 
 
 

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "3915908d-1751-598f-959c-e213e4b98e38"
+description: |-
+  The `load` operation of **repo_agent_session**.
+
+  SDK: `client.RepoAgentSession().load({ organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_agent_session belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_agent_session belongs to.
+order: 2000

@@ -7,16 +7,22 @@ main: kit: flow: BasicNomadLogFlow:
   name: "BasicNomadLogFlow",
   step: [
     {
-      m: {
-        app_id: "app01"
+      i: {
+        ref: "nomad_log_ref01",
+        srcdatavar: "nomad_log_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "nomad_log01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "nomad_log_ref01"
+            mark: "Mark01-nomad_log_ref01"
           }
         }
       ]

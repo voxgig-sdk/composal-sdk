@@ -1,0 +1,15 @@
+$kind: http-request
+id: f1ba26bb-45d8-52ba-8db5-18ee01b668ea
+description: |-
+  The `load` operation of **space_segment**.
+
+  SDK: `client.SpaceSegment().load({ space_id: "example" })`
+url: "{{base}}/api/v1/networking/spaces/:space_id/segments"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 2000

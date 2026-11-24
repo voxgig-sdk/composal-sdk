@@ -20,23 +20,6 @@ main: kit: flow: BasicServiceEndpointFlow:
     }
 
     {
-      m: {
-        app_id: "app01",
-        service_id: "service01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "service_endpoint_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         app_id: "app01",
         service_id: "service01"
@@ -68,8 +51,7 @@ main: kit: flow: BasicServiceEndpointFlow:
 
       m: {
         app_id: "app01",
-        id: "service_endpoint01",
-        service_id: "service01"
+        id: "service_endpoint01"
       }
 
       o: "load",
@@ -96,27 +78,6 @@ main: kit: flow: BasicServiceEndpointFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      m: {
-        app_id: "app01",
-        service_id: "service01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "service_endpoint_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicServiceEndpointFlow"

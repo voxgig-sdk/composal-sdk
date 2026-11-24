@@ -308,16 +308,14 @@ end
 
 
 
-
-
----@param reqmatch MetricQueryListMatch
+---@param reqmatch MetricQueryLoadMatch
 ---@param ctrl? table
----@return MetricQueryEntity[]
+---@return MetricQueryEntity
 ---@return string? err
-function MetricQueryEntity:list(reqmatch, ctrl)
+function MetricQueryEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({
-    opname = "list",
+    opname = "load",
     ctrl = ctrl,
     match = self._match,
     data = self._data,
@@ -329,9 +327,14 @@ function MetricQueryEntity:list(reqmatch, ctrl)
       if ctx.result.resmatch ~= nil then
         self._match = ctx.result.resmatch
       end
+      if ctx.result.resdata ~= nil then
+        self._data = helpers.to_map(vs.clone(ctx.result.resdata)) or {}
+      end
     end
   end)
 end
+
+
 
 
 

@@ -29,7 +29,7 @@ describe("JobWorkspaceEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:JobWorkspace(nil):list({ ["job_id"] = 1, ["pipeline_id"] = "x", ["run_id"] = "x" }, nil)
+    local _, err = client:JobWorkspace(nil):load({ ["job_id"] = 1, ["pipeline_id"] = "x", ["run_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("JobWorkspaceEntity", function()
     local setup = job_workspace_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "job_workspace." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,39 +46,9 @@ describe("JobWorkspaceEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"job_workspace.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces\"}")
-      print("LIVE STEP {\"id\":\"job_workspace.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"job01", "pipeline01", "run01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_JOB_WORKSPACE_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local job_workspace_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.job_workspace")))
-    local job_workspace_ref01_data = nil
-    if #job_workspace_ref01_data_raw > 0 then
-      job_workspace_ref01_data = helpers.to_map(job_workspace_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local job_workspace_ref01_ent = client:JobWorkspace(nil)
-    local job_workspace_ref01_match = {
-      ["job_id"] = setup.idmap["job01"],
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local job_workspace_ref01_list_result, err = job_workspace_ref01_ent:list(job_workspace_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(job_workspace_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"job_workspace.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
+      print("LIVE STEP {\"id\":\"job_workspace.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only job_workspace.create.0 gives\"}")
+      pending("Live coverage incomplete: job_workspace.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces); job_workspace.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}); job_workspace.load.2 excluded (GET-only live run: reads a record only job_workspace.create.0 gives)")
       return
     end
 
@@ -111,25 +81,6 @@ describe("JobWorkspaceEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local job_workspace_ref01_match = {
-      ["job_id"] = setup.idmap["job01"],
-      ["pipeline_id"] = setup.idmap["pipeline01"],
-      ["run_id"] = setup.idmap["run01"],
-    }
-
-    local job_workspace_ref01_list_result, err = job_workspace_ref01_ent:list(job_workspace_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(job_workspace_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(job_workspace_ref01_list_result),
-      { id = job_workspace_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local job_workspace_ref01_data_up0_up = {
       id = job_workspace_ref01_data["id"],
@@ -144,6 +95,23 @@ describe("JobWorkspaceEntity", function()
     assert.is_not_nil(job_workspace_ref01_resdata_up0)
     if not setup.live then
       assert.is_true(runner.live_same_id(job_workspace_ref01_resdata_up0["id"], job_workspace_ref01_data_up0_up["id"]))
+    end
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local job_workspace_ref01_match_dt0 = {
+      id = job_workspace_ref01_data["id"],
+    }
+    job_workspace_ref01_match_dt0["pipeline_id"] = setup.idmap["pipeline_id"] or setup.idmap["pipeline01"]
+    job_workspace_ref01_match_dt0["run_id"] = setup.idmap["run_id"] or setup.idmap["run01"]
+    local job_workspace_ref01_data_dt0_loaded, err = job_workspace_ref01_ent:load(job_workspace_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local job_workspace_ref01_data_dt0_load_result = helpers.to_map(type(job_workspace_ref01_data_dt0_loaded) == 'table' and job_workspace_ref01_data_dt0_loaded.data_get and job_workspace_ref01_data_dt0_loaded:data_get() or job_workspace_ref01_data_dt0_loaded)
+    assert.is_not_nil(job_workspace_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(job_workspace_ref01_data_dt0_load_result["id"], job_workspace_ref01_data["id"]))
     end
 
   end)

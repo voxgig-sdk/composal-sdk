@@ -25,7 +25,7 @@ class BackendRunnerPoolEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.BackendRunnerPool(nil).list({ "backend_id" => 1 }, nil)
+      client.BackendRunnerPool(nil).load({ "backend_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class BackendRunnerPoolEntityTest < Minitest::Test
     setup = backend_runner_pool_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list", "remove"].each do |_op|
+    ["create", "load", "remove"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "backend_runner_pool." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,36 +43,9 @@ class BackendRunnerPoolEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"backend_runner_pool.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools\"}"
+      puts "LIVE STEP {\"id\":\"backend_runner_pool.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only backend_runner_pool.create.0 gives\"}"
       puts "LIVE STEP {\"id\":\"backend_runner_pool.remove.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}\"}"
-      puts "LIVE STEP {\"id\":\"backend_runner_pool.list.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}"
-    if setup[:live]
-      ["backend01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_BACKEND_RUNNER_POOL_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    backend_runner_pool_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.backend_runner_pool")))
-    backend_runner_pool_ref01_data = nil
-    if backend_runner_pool_ref01_data_raw.length > 0
-      backend_runner_pool_ref01_data = Helpers.to_map(backend_runner_pool_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    backend_runner_pool_ref01_ent = client.BackendRunnerPool(nil)
-    backend_runner_pool_ref01_match = {
-      "backend_id" => setup[:idmap]["backend01"],
-    }
-
-    backend_runner_pool_ref01_list_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match, nil)
-    assert backend_runner_pool_ref01_list_result.is_a?(Array)
-
-      return
+      skip("Live coverage incomplete: backend_runner_pool.create.0 excluded (GET-only live run: needs POST /api/v1/bazel/backends/{backend_id}/runner_pools); backend_runner_pool.load.1 excluded (GET-only live run: reads a record only backend_runner_pool.create.0 gives); backend_runner_pool.remove.2 excluded (GET-only live run: needs DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id})")
     end
 
     if setup[:live]
@@ -97,18 +70,14 @@ class BackendRunnerPoolEntityTest < Minitest::Test
     assert !backend_runner_pool_ref01_data["id"].nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    backend_runner_pool_ref01_match = {
-      "backend_id" => setup[:idmap]["backend01"],
+    # LOAD
+    backend_runner_pool_ref01_match_dt0 = {
+      "id" => backend_runner_pool_ref01_data["id"],
     }
-
-    backend_runner_pool_ref01_list_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match, nil)
-    assert backend_runner_pool_ref01_list_result.is_a?(Array)
-
-    found_item = Vs.select(
-      Runner.entity_list_to_data(backend_runner_pool_ref01_list_result),
-      { "id" => backend_runner_pool_ref01_data["id"] })
-    assert !Vs.isempty(found_item)
+    backend_runner_pool_ref01_data_dt0_loaded = backend_runner_pool_ref01_ent.load(backend_runner_pool_ref01_match_dt0, nil)
+    backend_runner_pool_ref01_data_dt0_load_result = Helpers.to_map(backend_runner_pool_ref01_data_dt0_loaded.respond_to?(:data_get) ? backend_runner_pool_ref01_data_dt0_loaded.data_get : backend_runner_pool_ref01_data_dt0_loaded)
+    assert !backend_runner_pool_ref01_data_dt0_load_result.nil?
+    assert Runner.live_same_id(backend_runner_pool_ref01_data_dt0_load_result["id"], backend_runner_pool_ref01_data["id"]) unless setup[:live]
 
     Runner.live_pace if setup[:live]
     # REMOVE
@@ -117,20 +86,6 @@ class BackendRunnerPoolEntityTest < Minitest::Test
     }
     backend_runner_pool_ref01_match_rm0["backend_id"] = setup[:idmap]["backend_id"] || setup[:idmap]["backend01"]
     backend_runner_pool_ref01_ent.remove(backend_runner_pool_ref01_match_rm0, nil)
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    backend_runner_pool_ref01_match_rt0 = {
-      "backend_id" => setup[:idmap]["backend01"],
-    }
-
-    backend_runner_pool_ref01_list_rt0_result = backend_runner_pool_ref01_ent.list(backend_runner_pool_ref01_match_rt0, nil)
-    assert backend_runner_pool_ref01_list_rt0_result.is_a?(Array)
-
-    not_found_item = Vs.select(
-      Runner.entity_list_to_data(backend_runner_pool_ref01_list_rt0_result),
-      { "id" => backend_runner_pool_ref01_data["id"] })
-    assert Vs.isempty(not_found_item)
 
   end
 end

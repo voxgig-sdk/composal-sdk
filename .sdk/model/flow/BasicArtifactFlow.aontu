@@ -15,18 +15,6 @@ main: kit: flow: BasicArtifactFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "artifact_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "artifact_ref01",
         srcdatavar: "artifact_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicArtifactFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "artifact01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicArtifactFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "artifact_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicArtifactFlow"

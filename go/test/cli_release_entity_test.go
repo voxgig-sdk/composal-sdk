@@ -22,149 +22,12 @@ import (
 const cli_releaseEntityLiveStrict = true
 
 
-type cli_releaseFailHook struct {
-	sdk.BaseFeature
-	unexpected int
-}
-
-func (f *cli_releaseFailHook) PreSpec(ctx *sdk.Context) {
-	panic("cli_release hook failed")
-}
-
-func (f *cli_releaseFailHook) PreUnexpected(ctx *sdk.Context) {
-	f.unexpected++
-}
-
 func TestCliReleaseEntity(t *testing.T) {
 	t.Run("instance", func(t *testing.T) {
 		testsdk := sdk.TestSDK(nil, nil)
 		ent := testsdk.CliRelease(nil)
 		if ent == nil {
 			t.Fatal("expected non-nil CliReleaseEntity")
-		}
-	})
-
-	// Feature #4: the entity Stream(action, ...) method runs the op pipeline and
-	// returns a channel over result items. With the streaming feature active it
-	// yields the feature's incremental output; otherwise it falls back to the
-	// materialised list so Stream always yields.
-	t.Run("stream", func(t *testing.T) {
-		seed := map[string]any{
-			"entity": map[string]any{
-				"cli_release": map[string]any{
-					"s1": map[string]any{"id": "s1"},
-					"s2": map[string]any{"id": "s2"},
-					"s3": map[string]any{"id": "s3"},
-				},
-			},
-		}
-
-		// Fallback: streaming inactive -> yields the materialised list items.
-		base := sdk.TestSDK(seed, nil)
-		var seen []any
-		for si := range base.CliRelease(nil).Stream("list", nil, nil) {
-			if si.Err != nil {
-				t.Fatalf("stream failed: %v", si.Err)
-			}
-			seen = append(seen, si.Item)
-		}
-		if len(seen) != 3 {
-			t.Fatalf("expected 3 streamed items, got %d", len(seen))
-		}
-
-		// Inbound: streaming active -> yields each item from the feature iterator.
-		hasStreaming := false
-		if fm, ok := core.SharedConfig()["feature"].(map[string]any); ok {
-			_, hasStreaming = fm["streaming"]
-		}
-		if hasStreaming {
-			streamSdk := sdk.TestSDK(seed, map[string]any{
-				"feature": map[string]any{"streaming": map[string]any{"active": true}},
-			})
-			var got []any
-			for si := range streamSdk.CliRelease(nil).Stream("list", nil, nil) {
-				if si.Err != nil {
-					t.Fatalf("stream failed: %v", si.Err)
-				}
-				if sub, ok := si.Item.([]any); ok {
-					got = append(got, sub...)
-				} else {
-					got = append(got, si.Item)
-				}
-			}
-			if len(got) != 3 {
-				t.Fatalf("expected 3 items via streaming feature, got %d", len(got))
-			}
-		}
-	})
-
-	t.Run("stream-error", func(t *testing.T) {
-		offline := map[string]any{"net": map[string]any{"offline": true}}
-		var streamerr error
-		for si := range sdk.TestSDK(offline, nil).CliRelease(nil).Stream("list", nil, nil) {
-			if si.Err != nil {
-				streamerr = si.Err
-			}
-		}
-		if nil == streamerr || !strings.Contains(streamerr.Error(), "offline") {
-			t.Fatalf("expected the transport failure as a stream value, got %v", streamerr)
-		}
-
-		quiet := map[string]any{"ctrl": map[string]any{"throw": false}}
-		for si := range sdk.TestSDK(offline, nil).CliRelease(nil).Stream("list", nil, quiet) {
-			if si.Err != nil {
-				t.Fatalf("throw false: expected no error value, got %v", si.Err)
-			}
-		}
-
-		if fhHasFeature("rbac") {
-			denied := sdk.TestSDK(nil, map[string]any{
-				"feature": map[string]any{"rbac": map[string]any{"active": true, "deny": true}},
-			})
-			var denyerr error
-			for si := range denied.CliRelease(nil).Stream("list", nil, nil) {
-				if si.Err != nil {
-					denyerr = si.Err
-				}
-			}
-			if sdkerr, ok := denyerr.(*core.ComposalError); !ok || "rbac_denied" != sdkerr.Code {
-				t.Fatalf("expected the rbac denial as a stream value, got %v", denyerr)
-			}
-		}
-	})
-
-	t.Run("stream-ctrl", func(t *testing.T) {
-		explain := map[string]any{}
-		ctrl := map[string]any{"explain": explain}
-		for range sdk.TestSDK(nil, nil).CliRelease(nil).Stream("list", nil, map[string]any{"ctrl": ctrl}) {
-		}
-		if _, has := ctrl["stream"]; has || 1 != len(ctrl) {
-			t.Fatalf("the stream changed the caller's ctrl")
-		}
-		if 0 == len(explain) {
-			t.Fatalf("the caller's explain record was not filled")
-		}
-	})
-
-	t.Run("unexpected", func(t *testing.T) {
-		hook := &cli_releaseFailHook{
-			BaseFeature: sdk.BaseFeature{Version: "0.0.1", Name: "failhook", Active: true}}
-		client := sdk.TestSDK(nil, map[string]any{"extend": []any{hook}})
-
-		_, err := client.CliRelease(nil).List(nil, nil)
-		if nil == err || !strings.Contains(err.Error(), "hook failed") {
-			t.Fatalf("expected the hook's failure, got %v", err)
-		}
-		if 0 == hook.unexpected {
-			t.Fatalf("PreUnexpected did not fire")
-		}
-
-		fired := hook.unexpected
-		if _, err := client.CliRelease(nil).List(nil, map[string]any{"throw": false}); nil != err {
-			t.Fatalf("throw false: expected no error, got %v", err)
-		}
-		if fired == hook.unexpected {
-			t.Fatalf("throw false: PreUnexpected did not fire")
 		}
 	})
 
@@ -177,7 +40,7 @@ func TestCliReleaseEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "cli_release." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -204,17 +67,15 @@ func TestCliReleaseEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		cliReleaseRef01Ent := client.CliRelease(nil)
-		cliReleaseRef01Match := map[string]any{}
-
-		cliReleaseRef01ListResult, err := cliReleaseRef01Ent.List(cliReleaseRef01Match, nil)
+		cliReleaseRef01MatchDt0 := map[string]any{}
+		cliReleaseRef01DataDt0Loaded, err := cliReleaseRef01Ent.Load(cliReleaseRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, cliReleaseRef01ListOk := cliReleaseRef01ListResult.([]any)
-		if !cliReleaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", cliReleaseRef01ListResult)
+		if cliReleaseRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -243,16 +104,14 @@ func TestCliReleaseEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		cliReleaseRef01Match := map[string]any{}
-
-		cliReleaseRef01ListResult, err := cliReleaseRef01Ent.List(cliReleaseRef01Match, nil)
+		// LOAD
+		cliReleaseRef01MatchDt0 := map[string]any{}
+		cliReleaseRef01DataDt0Loaded, err := cliReleaseRef01Ent.Load(cliReleaseRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, cliReleaseRef01ListOk := cliReleaseRef01ListResult.([]any)
-		if !cliReleaseRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", cliReleaseRef01ListResult)
+		if cliReleaseRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

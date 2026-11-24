@@ -7,16 +7,22 @@ main: kit: flow: BasicDeploymentDetailFlow:
   name: "BasicDeploymentDetailFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "deployment_detail_ref01",
+        srcdatavar: "deployment_detail_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "deployment_detail01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "deployment_detail_ref01"
+            mark: "Mark01-deployment_detail_ref01"
           }
         }
       ]

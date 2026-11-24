@@ -29,7 +29,7 @@ describe("RunnerLeaseEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:RunnerLease(nil):list({ ["runner_id"] = 1, ["runner_pool_id"] = "x" }, nil)
+    local _, err = client:RunnerLease(nil):load({ ["runner_id"] = 1, ["runner_pool_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("RunnerLeaseEntity", function()
     local setup = runner_lease_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "runner_lease." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,37 +46,8 @@ describe("RunnerLeaseEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"runner_lease.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"runner01", "runner_pool01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_RUNNER_LEASE_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local runner_lease_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.runner_lease")))
-    local runner_lease_ref01_data = nil
-    if #runner_lease_ref01_data_raw > 0 then
-      runner_lease_ref01_data = helpers.to_map(runner_lease_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local runner_lease_ref01_ent = client:RunnerLease(nil)
-    local runner_lease_ref01_match = {
-      ["runner_id"] = setup.idmap["runner01"],
-      ["runner_pool_id"] = setup.idmap["runner_pool01"],
-    }
-
-    local runner_lease_ref01_list_result, err = runner_lease_ref01_ent:list(runner_lease_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(runner_lease_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"runner_lease.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only runner_lease.create.0 gives\"}")
+      pending("Live coverage incomplete: runner_lease.create.0 excluded (GET-only live run: needs POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim); runner_lease.load.1 excluded (GET-only live run: reads a record only runner_lease.create.0 gives)")
       return
     end
 
@@ -108,20 +79,18 @@ describe("RunnerLeaseEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local runner_lease_ref01_match = {
-      ["runner_id"] = setup.idmap["runner01"],
-      ["runner_pool_id"] = setup.idmap["runner_pool01"],
+    -- LOAD
+    local runner_lease_ref01_match_dt0 = {
+      id = runner_lease_ref01_data["id"],
     }
-
-    local runner_lease_ref01_list_result, err = runner_lease_ref01_ent:list(runner_lease_ref01_match, nil)
+    runner_lease_ref01_match_dt0["runner_pool_id"] = setup.idmap["runner_pool_id"] or setup.idmap["runner_pool01"]
+    local runner_lease_ref01_data_dt0_loaded, err = runner_lease_ref01_ent:load(runner_lease_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(runner_lease_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(runner_lease_ref01_list_result),
-      { id = runner_lease_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
+    local runner_lease_ref01_data_dt0_load_result = helpers.to_map(type(runner_lease_ref01_data_dt0_loaded) == 'table' and runner_lease_ref01_data_dt0_loaded.data_get and runner_lease_ref01_data_dt0_loaded:data_get() or runner_lease_ref01_data_dt0_loaded)
+    assert.is_not_nil(runner_lease_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(runner_lease_ref01_data_dt0_load_result["id"], runner_lease_ref01_data["id"]))
+    end
 
   end)
 end)

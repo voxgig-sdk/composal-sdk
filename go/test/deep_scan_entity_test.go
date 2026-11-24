@@ -38,7 +38,7 @@ func TestDeepScanEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.DeepScan(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.DeepScan(nil).Load(map[string]any{"id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestDeepScanEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "deep_scan." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,80 +64,9 @@ func TestDeepScanEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"deep_scan.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, deep_scanEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DEEP_SCAN_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["deep_scan01"]
-			}
-			livePace()
-			liveExisting(t, deep_scanEntityLiveStrict, setup.data, "deep_scan", "id", _liveId,
-				func() (any, error) {
-					return client.DeepScan(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		deepScanRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.deep_scan")))
-		var deepScanRef01Data map[string]any
-		if len(deepScanRef01DataRaw) > 0 {
-			deepScanRef01Data = core.ToMapAny(deepScanRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = deepScanRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		deepScanRef01Ent := client.DeepScan(nil)
-		deepScanRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		deepScanRef01ListResult, err := deepScanRef01Ent.List(deepScanRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, deepScanRef01ListOk := deepScanRef01ListResult.([]any)
-		if !deepScanRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", deepScanRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		deepScanRef01MatchDt0 := map[string]any{
-			"id": deepScanRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			deepScanRef01MatchDt0["organization_id"] = v
-		} else {
-			deepScanRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		deepScanRef01DataDt0Loaded, err := deepScanRef01Ent.Load(deepScanRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		deepScanRef01DataDt0LoadResult := core.ToMapAny(entityData(deepScanRef01DataDt0Loaded))
-		if deepScanRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(deepScanRef01DataDt0LoadResult["id"], deepScanRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"deep_scan.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only deep_scan.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: deep_scan.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce); deep_scan.load.1 excluded (GET-only live run: reads a record only deep_scan.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -174,36 +103,9 @@ func TestDeepScanEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		deepScanRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		deepScanRef01ListResult, err := deepScanRef01Ent.List(deepScanRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		deepScanRef01List, deepScanRef01ListOk := deepScanRef01ListResult.([]any)
-		if !deepScanRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", deepScanRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(deepScanRef01List), map[string]any{"id": deepScanRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		deepScanRef01MatchDt0 := map[string]any{
 			"id": deepScanRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			deepScanRef01MatchDt0["organization_id"] = v
-		} else {
-			deepScanRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		deepScanRef01DataDt0Loaded, err := deepScanRef01Ent.Load(deepScanRef01MatchDt0, nil)
 		if err != nil {

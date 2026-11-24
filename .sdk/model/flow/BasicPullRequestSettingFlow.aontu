@@ -19,16 +19,22 @@ main: kit: flow: BasicPullRequestSettingFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "pull_request_setting_ref01",
+        srcdatavar: "pull_request_setting_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "pull_request_setting01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "pull_request_setting_ref01"
+            mark: "Mark01-pull_request_setting_ref01"
           }
         }
       ]

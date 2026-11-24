@@ -1,0 +1,19 @@
+$kind: http-request
+id: "88d71440-39c6-57b1-90b6-3bab88d39ed3"
+description: |-
+  The `load` operation of **sandbox_integration**.
+
+  SDK: `client.SandboxIntegration().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/sandbox_integrations"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: provider
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this sandbox_integration belongs to.
+order: 1000

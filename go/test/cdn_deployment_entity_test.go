@@ -38,7 +38,7 @@ func TestCdnDeploymentEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.CdnDeployment(nil).List(map[string]any{"app_id": 1, "cdn_id": "x"}, nil)
+		_, err := client.CdnDeployment(nil).Load(map[string]any{"app_id": 1, "cdn_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestCdnDeploymentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "cdn_deployment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,86 +64,9 @@ func TestCdnDeploymentEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"cdn_deployment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01", "cdn01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, cdn_deploymentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_CDN_DEPLOYMENT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["cdn_deployment01"]
-			}
-			livePace()
-			liveExisting(t, cdn_deploymentEntityLiveStrict, setup.data, "cdn_deployment", "id", _liveId,
-				func() (any, error) {
-					return client.CdnDeployment(nil).List(map[string]any{"app_id": setup.idmap["app01"], "cdn_id": setup.idmap["cdn01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		cdnDeploymentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.cdn_deployment")))
-		var cdnDeploymentRef01Data map[string]any
-		if len(cdnDeploymentRef01DataRaw) > 0 {
-			cdnDeploymentRef01Data = core.ToMapAny(cdnDeploymentRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = cdnDeploymentRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		cdnDeploymentRef01Ent := client.CdnDeployment(nil)
-		cdnDeploymentRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"cdn_id": setup.idmap["cdn01"],
-		}
-
-		cdnDeploymentRef01ListResult, err := cdnDeploymentRef01Ent.List(cdnDeploymentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, cdnDeploymentRef01ListOk := cdnDeploymentRef01ListResult.([]any)
-		if !cdnDeploymentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", cdnDeploymentRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		cdnDeploymentRef01MatchDt0 := map[string]any{
-			"id": cdnDeploymentRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			cdnDeploymentRef01MatchDt0["app_id"] = v
-		} else {
-			cdnDeploymentRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		if v := setup.idmap["cdn_id"]; v != nil {
-			cdnDeploymentRef01MatchDt0["cdn_id"] = v
-		} else {
-			cdnDeploymentRef01MatchDt0["cdn_id"] = setup.idmap["cdn01"]
-		}
-		cdnDeploymentRef01DataDt0Loaded, err := cdnDeploymentRef01Ent.Load(cdnDeploymentRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		cdnDeploymentRef01DataDt0LoadResult := core.ToMapAny(entityData(cdnDeploymentRef01DataDt0Loaded))
-		if cdnDeploymentRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(cdnDeploymentRef01DataDt0LoadResult["id"], cdnDeploymentRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"cdn_deployment.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only cdn_deployment.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: cdn_deployment.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments); cdn_deployment.load.1 excluded (GET-only live run: reads a record only cdn_deployment.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -181,29 +104,6 @@ func TestCdnDeploymentEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		cdnDeploymentRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"cdn_id": setup.idmap["cdn01"],
-		}
-
-		cdnDeploymentRef01ListResult, err := cdnDeploymentRef01Ent.List(cdnDeploymentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		cdnDeploymentRef01List, cdnDeploymentRef01ListOk := cdnDeploymentRef01ListResult.([]any)
-		if !cdnDeploymentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", cdnDeploymentRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(cdnDeploymentRef01List), map[string]any{"id": cdnDeploymentRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		cdnDeploymentRef01MatchDt0 := map[string]any{
 			"id": cdnDeploymentRef01Data["id"],
@@ -212,11 +112,6 @@ func TestCdnDeploymentEntity(t *testing.T) {
 			cdnDeploymentRef01MatchDt0["app_id"] = v
 		} else {
 			cdnDeploymentRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		if v := setup.idmap["cdn_id"]; v != nil {
-			cdnDeploymentRef01MatchDt0["cdn_id"] = v
-		} else {
-			cdnDeploymentRef01MatchDt0["cdn_id"] = setup.idmap["cdn01"]
 		}
 		cdnDeploymentRef01DataDt0Loaded, err := cdnDeploymentRef01Ent.Load(cdnDeploymentRef01MatchDt0, nil)
 		if err != nil {

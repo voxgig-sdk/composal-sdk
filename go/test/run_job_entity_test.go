@@ -38,7 +38,7 @@ func TestRunJobEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RunJob(nil).List(map[string]any{"pipeline_id": 1, "run_id": "x"}, nil)
+		_, err := client.RunJob(nil).Load(map[string]any{"id": 1, "pipeline_id": "x", "run_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRunJobEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "run_job." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,86 +64,9 @@ func TestRunJobEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"run_job.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"pipeline01", "run01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, run_jobEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RUN_JOB_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["run_job01"]
-			}
-			livePace()
-			liveExisting(t, run_jobEntityLiveStrict, setup.data, "run_job", "id", _liveId,
-				func() (any, error) {
-					return client.RunJob(nil).List(map[string]any{"pipeline_id": setup.idmap["pipeline01"], "run_id": setup.idmap["run01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		runJobRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.run_job")))
-		var runJobRef01Data map[string]any
-		if len(runJobRef01DataRaw) > 0 {
-			runJobRef01Data = core.ToMapAny(runJobRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = runJobRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		runJobRef01Ent := client.RunJob(nil)
-		runJobRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		runJobRef01ListResult, err := runJobRef01Ent.List(runJobRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, runJobRef01ListOk := runJobRef01ListResult.([]any)
-		if !runJobRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runJobRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		runJobRef01MatchDt0 := map[string]any{
-			"id": runJobRef01Data["id"],
-		}
-		if v := setup.idmap["pipeline_id"]; v != nil {
-			runJobRef01MatchDt0["pipeline_id"] = v
-		} else {
-			runJobRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
-		}
-		if v := setup.idmap["run_id"]; v != nil {
-			runJobRef01MatchDt0["run_id"] = v
-		} else {
-			runJobRef01MatchDt0["run_id"] = setup.idmap["run01"]
-		}
-		runJobRef01DataDt0Loaded, err := runJobRef01Ent.Load(runJobRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		runJobRef01DataDt0LoadResult := core.ToMapAny(entityData(runJobRef01DataDt0Loaded))
-		if runJobRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(runJobRef01DataDt0LoadResult["id"], runJobRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"run_job.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only run_job.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: run_job.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs); run_job.load.1 excluded (GET-only live run: reads a record only run_job.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -181,29 +104,6 @@ func TestRunJobEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		runJobRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		runJobRef01ListResult, err := runJobRef01Ent.List(runJobRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		runJobRef01List, runJobRef01ListOk := runJobRef01ListResult.([]any)
-		if !runJobRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runJobRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(runJobRef01List), map[string]any{"id": runJobRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		runJobRef01MatchDt0 := map[string]any{
 			"id": runJobRef01Data["id"],
@@ -212,11 +112,6 @@ func TestRunJobEntity(t *testing.T) {
 			runJobRef01MatchDt0["pipeline_id"] = v
 		} else {
 			runJobRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
-		}
-		if v := setup.idmap["run_id"]; v != nil {
-			runJobRef01MatchDt0["run_id"] = v
-		} else {
-			runJobRef01MatchDt0["run_id"] = setup.idmap["run01"]
 		}
 		runJobRef01DataDt0Loaded, err := runJobRef01Ent.Load(runJobRef01MatchDt0, nil)
 		if err != nil {

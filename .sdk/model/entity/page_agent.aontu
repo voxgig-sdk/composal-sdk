@@ -215,8 +215,8 @@ main: kit: entity: page_agent: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -328,11 +328,6 @@ main: kit: entity: page_agent: {
             res: "`body`"
           }
         }
-      ]
-    }
-    load: {
-      name: "load"
-      points: [
         {
           co: {
             id: "GET /api/v1/organizations/{organization_id}/agents/page/roster"

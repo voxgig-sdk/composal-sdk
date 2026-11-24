@@ -38,7 +38,7 @@ func TestPreviewSharingApprovalEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.PreviewSharingApproval(nil).List(map[string]any{"app_id": 1, "preview_id": "x"}, nil)
+		_, err := client.PreviewSharingApproval(nil).Load(map[string]any{"app_id": 1, "preview_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestPreviewSharingApprovalEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "preview_sharing_approval." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestPreviewSharingApprovalEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"preview_sharing_approval.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01", "preview01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, preview_sharing_approvalEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PREVIEW_SHARING_APPROVAL_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,20 +80,20 @@ func TestPreviewSharingApprovalEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		previewSharingApprovalRef01Ent := client.PreviewSharingApproval(nil)
-		previewSharingApprovalRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_id": setup.idmap["preview01"],
+		previewSharingApprovalRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["app_id"]; v != nil {
+			previewSharingApprovalRef01MatchDt0["app_id"] = v
+		} else {
+			previewSharingApprovalRef01MatchDt0["app_id"] = setup.idmap["app01"]
 		}
-
-		previewSharingApprovalRef01ListResult, err := previewSharingApprovalRef01Ent.List(previewSharingApprovalRef01Match, nil)
+		previewSharingApprovalRef01DataDt0Loaded, err := previewSharingApprovalRef01Ent.Load(previewSharingApprovalRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, previewSharingApprovalRef01ListOk := previewSharingApprovalRef01ListResult.([]any)
-		if !previewSharingApprovalRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", previewSharingApprovalRef01ListResult)
+		if previewSharingApprovalRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -138,19 +131,19 @@ func TestPreviewSharingApprovalEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		previewSharingApprovalRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-			"preview_id": setup.idmap["preview01"],
+		// LOAD
+		previewSharingApprovalRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["app_id"]; v != nil {
+			previewSharingApprovalRef01MatchDt0["app_id"] = v
+		} else {
+			previewSharingApprovalRef01MatchDt0["app_id"] = setup.idmap["app01"]
 		}
-
-		previewSharingApprovalRef01ListResult, err := previewSharingApprovalRef01Ent.List(previewSharingApprovalRef01Match, nil)
+		previewSharingApprovalRef01DataDt0Loaded, err := previewSharingApprovalRef01Ent.Load(previewSharingApprovalRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, previewSharingApprovalRef01ListOk := previewSharingApprovalRef01ListResult.([]any)
-		if !previewSharingApprovalRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", previewSharingApprovalRef01ListResult)
+		if previewSharingApprovalRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

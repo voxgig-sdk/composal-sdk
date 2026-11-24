@@ -25,7 +25,7 @@ class PreviewSharingApprovalEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.PreviewSharingApproval(nil).list({ "app_id" => 1, "preview_id" => "x" }, nil)
+      client.PreviewSharingApproval(nil).load({ "app_id" => 1, "preview_id" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class PreviewSharingApprovalEntityTest < Minitest::Test
     setup = preview_sharing_approval_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "preview_sharing_approval." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -43,13 +43,6 @@ class PreviewSharingApprovalEntityTest < Minitest::Test
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
       puts "LIVE STEP {\"id\":\"preview_sharing_approval.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals\"}"
-    if setup[:live]
-      ["app01", "preview01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_PREVIEW_SHARING_APPROVAL_ENTID")
-        end
-      end
-    end
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -61,15 +54,12 @@ class PreviewSharingApprovalEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     preview_sharing_approval_ref01_ent = client.PreviewSharingApproval(nil)
-    preview_sharing_approval_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "preview_id" => setup[:idmap]["preview01"],
-    }
-
-    preview_sharing_approval_ref01_list_result = preview_sharing_approval_ref01_ent.list(preview_sharing_approval_ref01_match, nil)
-    assert preview_sharing_approval_ref01_list_result.is_a?(Array)
+    preview_sharing_approval_ref01_match_dt0 = {}
+    preview_sharing_approval_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
+    preview_sharing_approval_ref01_data_dt0_loaded = preview_sharing_approval_ref01_ent.load(preview_sharing_approval_ref01_match_dt0, nil)
+    assert !preview_sharing_approval_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -96,14 +86,11 @@ class PreviewSharingApprovalEntityTest < Minitest::Test
     assert !preview_sharing_approval_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    preview_sharing_approval_ref01_match = {
-      "app_id" => setup[:idmap]["app01"],
-      "preview_id" => setup[:idmap]["preview01"],
-    }
-
-    preview_sharing_approval_ref01_list_result = preview_sharing_approval_ref01_ent.list(preview_sharing_approval_ref01_match, nil)
-    assert preview_sharing_approval_ref01_list_result.is_a?(Array)
+    # LOAD
+    preview_sharing_approval_ref01_match_dt0 = {}
+    preview_sharing_approval_ref01_match_dt0["app_id"] = setup[:idmap]["app_id"] || setup[:idmap]["app01"]
+    preview_sharing_approval_ref01_data_dt0_loaded = preview_sharing_approval_ref01_ent.load(preview_sharing_approval_ref01_match_dt0, nil)
+    assert !preview_sharing_approval_ref01_data_dt0_loaded.nil?
 
   end
 end

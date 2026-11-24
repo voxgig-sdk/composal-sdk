@@ -17,16 +17,13 @@ import (
 const run_artifactDirectLiveStrict = true
 
 func TestRunArtifactDirect(t *testing.T) {
-	t.Run("direct-list-run_artifact", func(t *testing.T) {
-		setup := run_artifactDirectSetup([]any{
-			map[string]any{"id": "direct01"},
-			map[string]any{"id": "direct02"},
-		})
+	t.Run("direct-load-run_artifact", func(t *testing.T) {
+		setup := run_artifactDirectSetup(map[string]any{"id": "direct01"})
 		_mode := "unit"
 		if setup.live {
 			_mode = "live"
 		}
-		if _shouldSkip, _reason := isControlSkipped("direct", "direct-list-run_artifact", _mode); _shouldSkip {
+		if _shouldSkip, _reason := isControlSkipped("direct", "direct-load-run_artifact", _mode); _shouldSkip {
 			if _reason == "" {
 				_reason = "skipped via sdk-test-control.json"
 			}
@@ -50,12 +47,9 @@ func TestRunArtifactDirect(t *testing.T) {
 		query := map[string]any{}
 		if setup.live {
 			params["pipeline_id"] = setup.idmap["pipeline01"]
-		} else {
-			params["pipeline_id"] = "direct01"
-		}
-		if setup.live {
 			params["run_id"] = setup.idmap["run01"]
 		} else {
+			params["pipeline_id"] = "direct01"
 			params["run_id"] = "direct02"
 		}
 
@@ -67,13 +61,13 @@ func TestRunArtifactDirect(t *testing.T) {
 		})
 		if setup.live {
 			if err != nil {
-				liveMiss(t, run_artifactDirectLiveStrict, "Live list failed: %v", err)
+				liveMiss(t, run_artifactDirectLiveStrict, "Live load failed: %v", err)
 			}
 			if status := core.ToInt(result["status"]); result["ok"] != true || status < 200 || status >= 300 {
-				liveMiss(t, run_artifactDirectLiveStrict, "Live list failed: %s", liveDescribe(result))
+				liveMiss(t, run_artifactDirectLiveStrict, "Live load failed: %s", liveDescribe(result))
 			}
-			if _, ok := liveList(result["data"]); !ok {
-				liveMiss(t, run_artifactDirectLiveStrict, "Live list returned no list: %s", liveDescribe(result))
+			if result["data"] == nil {
+				liveMiss(t, run_artifactDirectLiveStrict, "Live load returned no data: %s", liveDescribe(result))
 			}
 		} else {
 			if err != nil {
@@ -85,15 +79,16 @@ func TestRunArtifactDirect(t *testing.T) {
 			if core.ToInt(result["status"]) != 200 {
 				t.Fatalf("expected status 200, got %v", result["status"])
 			}
+			if result["data"] == nil {
+				t.Fatal("expected data to be non-nil")
+			}
 		}
 
 		if !setup.live {
-			if dataList, ok := result["data"].([]any); ok {
-				if len(dataList) != 2 {
-					t.Fatalf("expected 2 items, got %d", len(dataList))
+			if dataMap, ok := result["data"].(map[string]any); ok {
+				if dataMap["id"] != "direct01" {
+					t.Fatalf("expected data.id to be direct01, got %v", dataMap["id"])
 				}
-			} else {
-				t.Fatalf("expected data to be an array, got %T", result["data"])
 			}
 
 			if len(*setup.calls) != 1 {

@@ -38,7 +38,7 @@ func TestSparkEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.Spark(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.Spark(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSparkEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "spark." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,54 +64,11 @@ func TestSparkEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"spark.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, sparkEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPARK_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		sparkRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.spark")))
-		var sparkRef01Data map[string]any
-		if len(sparkRef01DataRaw) > 0 {
-			sparkRef01Data = core.ToMapAny(sparkRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = sparkRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		sparkRef01Ent := client.Spark(nil)
-		sparkRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
+			t.Log("LIVE STEP {\"id\":\"spark.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only spark.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: spark.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/sparks); spark.load.1 excluded (GET-only live run: reads a record only spark.create.0 gives)")
+			return
 		}
 
-		sparkRef01ListResult, err := sparkRef01Ent.List(sparkRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, sparkRef01ListOk := sparkRef01ListResult.([]any)
-		if !sparkRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, sparkEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPARK_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -122,7 +79,6 @@ func TestSparkEntity(t *testing.T) {
 		sparkRef01Ent := client.Spark(nil)
 		sparkRef01Data := core.ToMapAny(vs.GetProp(
 			vs.GetPath(setup.data, []any{"new", "spark"}), "spark_ref01"))
-		sparkRef01Data["organization_id"] = setup.idmap["organization01"]
 
 		sparkRef01DataResult, err := sparkRef01Ent.Create(sparkRef01Data, nil)
 		if err != nil {
@@ -134,28 +90,6 @@ func TestSparkEntity(t *testing.T) {
 		}
 		if sparkRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		sparkRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		sparkRef01ListResult, err := sparkRef01Ent.List(sparkRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		sparkRef01List, sparkRef01ListOk := sparkRef01ListResult.([]any)
-		if !sparkRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", sparkRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(sparkRef01List), map[string]any{"id": sparkRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 	})

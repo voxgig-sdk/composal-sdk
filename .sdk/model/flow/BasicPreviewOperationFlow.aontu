@@ -7,17 +7,23 @@ main: kit: flow: BasicPreviewOperationFlow:
   name: "BasicPreviewOperationFlow",
   step: [
     {
-      m: {
-        app_id: "app01",
-        preview_id: "preview01"
+      i: {
+        ref: "preview_operation_ref01",
+        srcdatavar: "preview_operation_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        app_id: "app01",
+        id: "preview_operation01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "preview_operation_ref01"
+            mark: "Mark01-preview_operation_ref01"
           }
         }
       ]

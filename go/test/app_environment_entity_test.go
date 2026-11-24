@@ -39,7 +39,7 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.AppEnvironment(nil).List(map[string]any{"app_id": 1}, nil)
+		_, err := client.AppEnvironment(nil).Load(map[string]any{"app_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -54,7 +54,7 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "app_environment." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -65,83 +65,11 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"app_environment.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{id}/archive\"}")
-			t.Log("LIVE STEP {\"id\":\"app_environment.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/environments/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_environment.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"app_environment.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"app01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, app_environmentEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_APP_ENVIRONMENT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["app_environment01"]
-			}
-			livePace()
-			liveExisting(t, app_environmentEntityLiveStrict, setup.data, "app_environment", "id", _liveId,
-				func() (any, error) {
-					return client.AppEnvironment(nil).List(map[string]any{"app_id": setup.idmap["app01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		appEnvironmentRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.app_environment")))
-		var appEnvironmentRef01Data map[string]any
-		if len(appEnvironmentRef01DataRaw) > 0 {
-			appEnvironmentRef01Data = core.ToMapAny(appEnvironmentRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = appEnvironmentRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appEnvironmentRef01Ent := client.AppEnvironment(nil)
-		appEnvironmentRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appEnvironmentRef01ListResult, err := appEnvironmentRef01Ent.List(appEnvironmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, appEnvironmentRef01ListOk := appEnvironmentRef01ListResult.([]any)
-		if !appEnvironmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appEnvironmentRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		appEnvironmentRef01MatchDt0 := map[string]any{
-			"id": appEnvironmentRef01Data["id"],
-		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appEnvironmentRef01MatchDt0["app_id"] = v
-		} else {
-			appEnvironmentRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
-		appEnvironmentRef01DataDt0Loaded, err := appEnvironmentRef01Ent.Load(appEnvironmentRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		appEnvironmentRef01DataDt0LoadResult := core.ToMapAny(entityData(appEnvironmentRef01DataDt0Loaded))
-		if appEnvironmentRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !liveSameId(appEnvironmentRef01DataDt0LoadResult["id"], appEnvironmentRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"app_environment.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/environments/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"app_environment.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only app_environment.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"app_environment.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{id}\"}")
+			t.Skip("Live coverage incomplete: app_environment.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/environments/{id}/archive); app_environment.update.1 excluded (GET-only live run: needs PUT /api/v1/hosting/apps/{app_id}/environments/{id}); app_environment.load.2 excluded (GET-only live run: reads a record only app_environment.create.0 gives); app_environment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/environments/{id})")
+			return
 		}
 
 		if setup.live {
@@ -173,28 +101,6 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		}
 		if appEnvironmentRef01Data["id"] == nil {
 			t.Fatal("expected created entity to have an id")
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appEnvironmentRef01Match := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appEnvironmentRef01ListResult, err := appEnvironmentRef01Ent.List(appEnvironmentRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appEnvironmentRef01List, appEnvironmentRef01ListOk := appEnvironmentRef01ListResult.([]any)
-		if !appEnvironmentRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", appEnvironmentRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(appEnvironmentRef01List), map[string]any{"id": appEnvironmentRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
 		}
 
 		if setup.live {
@@ -232,11 +138,6 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		appEnvironmentRef01MatchDt0 := map[string]any{
 			"id": appEnvironmentRef01Data["id"],
 		}
-		if v := setup.idmap["app_id"]; v != nil {
-			appEnvironmentRef01MatchDt0["app_id"] = v
-		} else {
-			appEnvironmentRef01MatchDt0["app_id"] = setup.idmap["app01"]
-		}
 		appEnvironmentRef01DataDt0Loaded, err := appEnvironmentRef01Ent.Load(appEnvironmentRef01MatchDt0, nil)
 		if err != nil {
 			t.Fatalf("load failed: %v", err)
@@ -264,28 +165,6 @@ func TestAppEnvironmentEntity(t *testing.T) {
 		_, err = appEnvironmentRef01Ent.Remove(appEnvironmentRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		appEnvironmentRef01MatchRt0 := map[string]any{
-			"app_id": setup.idmap["app01"],
-		}
-
-		appEnvironmentRef01ListRt0Result, err := appEnvironmentRef01Ent.List(appEnvironmentRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		appEnvironmentRef01ListRt0, appEnvironmentRef01ListRt0Ok := appEnvironmentRef01ListRt0Result.([]any)
-		if !appEnvironmentRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", appEnvironmentRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(appEnvironmentRef01ListRt0), map[string]any{"id": appEnvironmentRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

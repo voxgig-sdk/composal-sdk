@@ -3,7 +3,7 @@ id: "54dc25f1-6c61-5cc4-9ee3-fbf6ac2956df"
 description: |-
   The `load` operation of **environment**.
 
-  SDK: `client.Environment().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.Environment().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/verify/environments/:id"
 method: GET
 headers:
@@ -19,4 +19,4 @@ pathVariables:
   - key: id
     value: "{{environment_id}}"
     description: The environment this request addresses.
-order: 2000
+order: 1000

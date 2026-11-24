@@ -33,7 +33,7 @@ class SparkCreditUsageTotalEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SparkCreditUsageTotal(null)->list(["organization_id" => 1], null);
+            $client->SparkCreditUsageTotal(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SparkCreditUsageTotalEntityTest extends TestCase
         $setup = spark_credit_usage_total_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "spark_credit_usage_total." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class SparkCreditUsageTotalEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPARK_CREDIT_USAGE_TOTAL_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,18 +65,6 @@ class SparkCreditUsageTotalEntityTest extends TestCase
         if (count($spark_credit_usage_total_ref01_data_raw) > 0) {
             $spark_credit_usage_total_ref01_data = Helpers::to_map($spark_credit_usage_total_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $spark_credit_usage_total_ref01_ent = $client->SparkCreditUsageTotal(null);
-        $spark_credit_usage_total_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $spark_credit_usage_total_ref01_list_result = $spark_credit_usage_total_ref01_ent->list($spark_credit_usage_total_ref01_match, null);
-        $this->assertIsArray($spark_credit_usage_total_ref01_list_result);
 
     }
 }

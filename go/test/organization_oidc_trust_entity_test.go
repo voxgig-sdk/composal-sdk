@@ -38,7 +38,7 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.OrganizationOidcTrust(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.OrganizationOidcTrust(nil).Load(map[string]any{"id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "organization_oidc_trust." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, organization_oidc_trustEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ORGANIZATION_OIDC_TRUST_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["organization_oidc_trust01"]
-			}
-			livePace()
-			liveExisting(t, organization_oidc_trustEntityLiveStrict, setup.data, "organization_oidc_trust", "id", _liveId,
-				func() (any, error) {
-					return client.OrganizationOidcTrust(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		organizationOidcTrustRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.organization_oidc_trust")))
-		var organizationOidcTrustRef01Data map[string]any
-		if len(organizationOidcTrustRef01DataRaw) > 0 {
-			organizationOidcTrustRef01Data = core.ToMapAny(organizationOidcTrustRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = organizationOidcTrustRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationOidcTrustRef01Ent := client.OrganizationOidcTrust(nil)
-		organizationOidcTrustRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationOidcTrustRef01ListResult, err := organizationOidcTrustRef01Ent.List(organizationOidcTrustRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, organizationOidcTrustRef01ListOk := organizationOidcTrustRef01ListResult.([]any)
-		if !organizationOidcTrustRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationOidcTrustRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		organizationOidcTrustRef01MatchDt0 := map[string]any{
-			"id": organizationOidcTrustRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationOidcTrustRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationOidcTrustRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		organizationOidcTrustRef01DataDt0Loaded, err := organizationOidcTrustRef01Ent.Load(organizationOidcTrustRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		organizationOidcTrustRef01DataDt0LoadResult := core.ToMapAny(entityData(organizationOidcTrustRef01DataDt0Loaded))
-		if organizationOidcTrustRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(organizationOidcTrustRef01DataDt0LoadResult["id"], organizationOidcTrustRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_oidc_trust.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_oidc_trust.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}\"}")
+			t.Skip("Live coverage incomplete: organization_oidc_trust.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate); organization_oidc_trust.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}); organization_oidc_trust.load.2 excluded (GET-only live run: reads a record only organization_oidc_trust.create.0 gives); organization_oidc_trust.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		organizationOidcTrustRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationOidcTrustRef01ListResult, err := organizationOidcTrustRef01Ent.List(organizationOidcTrustRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationOidcTrustRef01List, organizationOidcTrustRef01ListOk := organizationOidcTrustRef01ListResult.([]any)
-		if !organizationOidcTrustRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationOidcTrustRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(organizationOidcTrustRef01List), map[string]any{"id": organizationOidcTrustRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		organizationOidcTrustRef01DataUp0Up := map[string]any{
 			"id": organizationOidcTrustRef01Data["id"],
@@ -223,11 +129,6 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		// LOAD
 		organizationOidcTrustRef01MatchDt0 := map[string]any{
 			"id": organizationOidcTrustRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationOidcTrustRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationOidcTrustRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		organizationOidcTrustRef01DataDt0Loaded, err := organizationOidcTrustRef01Ent.Load(organizationOidcTrustRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestOrganizationOidcTrustEntity(t *testing.T) {
 		_, err = organizationOidcTrustRef01Ent.Remove(organizationOidcTrustRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationOidcTrustRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationOidcTrustRef01ListRt0Result, err := organizationOidcTrustRef01Ent.List(organizationOidcTrustRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationOidcTrustRef01ListRt0, organizationOidcTrustRef01ListRt0Ok := organizationOidcTrustRef01ListRt0Result.([]any)
-		if !organizationOidcTrustRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", organizationOidcTrustRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(organizationOidcTrustRef01ListRt0), map[string]any{"id": organizationOidcTrustRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

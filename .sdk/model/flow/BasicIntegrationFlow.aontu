@@ -7,16 +7,22 @@ main: kit: flow: BasicIntegrationFlow:
   name: "BasicIntegrationFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
+      i: {
+        ref: "integration_ref01",
+        srcdatavar: "integration_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "integration01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "integration_ref01"
+            mark: "Mark01-integration_ref01"
           }
         }
       ]

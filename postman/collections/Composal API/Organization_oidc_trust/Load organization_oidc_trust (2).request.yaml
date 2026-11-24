@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6ffb793c-64b6-5692-bbb7-4139ca2eb1cf"
+description: |-
+  The `load` operation of **organization_oidc_trust**.
+
+  SDK: `client.OrganizationOidcTrust().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/identity/organizations/:organization_id/oidc_trusts"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_oidc_trust belongs to.
+order: 2000

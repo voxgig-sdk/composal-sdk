@@ -29,7 +29,7 @@ describe("SpaceLogStreamEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SpaceLogStream(nil):list({ ["space_id"] = 1 }, nil)
+    local _, err = client:SpaceLogStream(nil):load({ ["space_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SpaceLogStreamEntity", function()
     local setup = space_log_stream_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "space_log_stream." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("SpaceLogStreamEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"space_log_stream.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/log_streams\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"space01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPACE_LOG_STREAM_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,15 +59,12 @@ describe("SpaceLogStreamEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local space_log_stream_ref01_ent = client:SpaceLogStream(nil)
-    local space_log_stream_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_log_stream_ref01_list_result, err = space_log_stream_ref01_ent:list(space_log_stream_ref01_match, nil)
+    local space_log_stream_ref01_match_dt0 = {}
+    local space_log_stream_ref01_data_dt0_loaded, err = space_log_stream_ref01_ent:load(space_log_stream_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(space_log_stream_ref01_list_result)
+    assert.is_not_nil(space_log_stream_ref01_data_dt0_loaded)
 
       return
     end
@@ -105,14 +95,11 @@ describe("SpaceLogStreamEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local space_log_stream_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_log_stream_ref01_list_result, err = space_log_stream_ref01_ent:list(space_log_stream_ref01_match, nil)
+    -- LOAD
+    local space_log_stream_ref01_match_dt0 = {}
+    local space_log_stream_ref01_data_dt0_loaded, err = space_log_stream_ref01_ent:load(space_log_stream_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(space_log_stream_ref01_list_result)
+    assert.is_not_nil(space_log_stream_ref01_data_dt0_loaded)
 
   end)
 end)

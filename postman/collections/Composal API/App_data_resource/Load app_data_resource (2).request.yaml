@@ -1,0 +1,15 @@
+$kind: http-request
+id: b41e989e-529c-5022-ad9d-586ef36a9906
+description: |-
+  The `load` operation of **app_data_resource**.
+
+  SDK: `client.AppDataResource().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_data_resource belongs to.
+order: 2000

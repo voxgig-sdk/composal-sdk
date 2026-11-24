@@ -21,24 +21,6 @@ main: kit: flow: BasicAgentSessionCheckpointFlow:
     }
 
     {
-      m: {
-        agent_session_id: "agent_session01",
-        organization_id: "organization01",
-        repo_id: "repo01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "agent_session_checkpoint_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "agent_session_checkpoint_ref01",
         srcdatavar: "agent_session_checkpoint_ref01_data",
@@ -46,7 +28,6 @@ main: kit: flow: BasicAgentSessionCheckpointFlow:
       }
 
       m: {
-        agent_session_id: "agent_session01",
         id: "agent_session_checkpoint01",
         organization_id: "organization01",
         repo_id: "repo01"

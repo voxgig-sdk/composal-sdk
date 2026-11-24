@@ -238,42 +238,6 @@ main: kit: entity: execution_release: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/execution/releases"
-            source: "openapi3"
-            version: 2
-          }
-          m: "GET"
-          o: "/api/v1/execution/releases"
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "execution"
-            }
-            {
-              lit: "releases"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -325,6 +289,37 @@ main: kit: entity: execution_release: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/execution/releases"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/api/v1/execution/releases"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "execution"
+            }
+            {
+              lit: "releases"
             }
           ]
           t: {

@@ -184,12 +184,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/verify/environments": {
+    "GET /api/v1/organizations/{organization_id}/verify/environments/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/organizations/{organization_id}/verify/environments/{id}": {
+    "GET /api/v1/organizations/{organization_id}/verify/environments": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

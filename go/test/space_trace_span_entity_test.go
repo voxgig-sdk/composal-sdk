@@ -38,7 +38,7 @@ func TestSpaceTraceSpanEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceTraceSpan(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceTraceSpan(nil).Load(map[string]any{"space_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceTraceSpanEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_trace_span." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestSpaceTraceSpanEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_trace_span.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/observability/spaces/{space_id}/trace_spans\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_trace_spanEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_TRACE_SPAN_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,19 +80,15 @@ func TestSpaceTraceSpanEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		spaceTraceSpanRef01Ent := client.SpaceTraceSpan(nil)
-		spaceTraceSpanRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceTraceSpanRef01ListResult, err := spaceTraceSpanRef01Ent.List(spaceTraceSpanRef01Match, nil)
+		spaceTraceSpanRef01MatchDt0 := map[string]any{}
+		spaceTraceSpanRef01DataDt0Loaded, err := spaceTraceSpanRef01Ent.Load(spaceTraceSpanRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceTraceSpanRef01ListOk := spaceTraceSpanRef01ListResult.([]any)
-		if !spaceTraceSpanRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceTraceSpanRef01ListResult)
+		if spaceTraceSpanRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -136,18 +125,14 @@ func TestSpaceTraceSpanEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceTraceSpanRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceTraceSpanRef01ListResult, err := spaceTraceSpanRef01Ent.List(spaceTraceSpanRef01Match, nil)
+		// LOAD
+		spaceTraceSpanRef01MatchDt0 := map[string]any{}
+		spaceTraceSpanRef01DataDt0Loaded, err := spaceTraceSpanRef01Ent.Load(spaceTraceSpanRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, spaceTraceSpanRef01ListOk := spaceTraceSpanRef01ListResult.([]any)
-		if !spaceTraceSpanRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceTraceSpanRef01ListResult)
+		if spaceTraceSpanRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

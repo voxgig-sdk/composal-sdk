@@ -29,7 +29,7 @@ describe("SparkCreditEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SparkCredit(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:SparkCredit(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SparkCreditEntity", function()
     local setup = spark_credit_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update"}) do
+    for _, _op in ipairs({"create", "update", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "spark_credit." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,14 +46,7 @@ describe("SparkCreditEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"spark_credit.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/spark_credits\"}")
-      print("LIVE STEP {\"id\":\"spark_credit.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPARK_CREDIT_ENTID")
-        end
-      end
-    end
+      print("LIVE STEP {\"id\":\"spark_credit.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -67,15 +60,12 @@ describe("SparkCreditEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local spark_credit_ref01_ent = client:SparkCredit(nil)
-    local spark_credit_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_credit_ref01_list_result, err = spark_credit_ref01_ent:list(spark_credit_ref01_match, nil)
+    local spark_credit_ref01_match_dt0 = {}
+    local spark_credit_ref01_data_dt0_loaded, err = spark_credit_ref01_ent:load(spark_credit_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(spark_credit_ref01_list_result)
+    assert.is_not_nil(spark_credit_ref01_data_dt0_loaded)
 
       return
     end
@@ -106,18 +96,6 @@ describe("SparkCreditEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local spark_credit_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_credit_ref01_list_result, err = spark_credit_ref01_ent:list(spark_credit_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(spark_credit_ref01_list_result)
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local spark_credit_ref01_data_up0_up = {
     }
@@ -131,6 +109,15 @@ describe("SparkCreditEntity", function()
     local spark_credit_ref01_resdata_up0 = helpers.to_map(type(spark_credit_ref01_resdata_up0_result) == 'table' and spark_credit_ref01_resdata_up0_result.data_get and spark_credit_ref01_resdata_up0_result:data_get() or spark_credit_ref01_resdata_up0_result)
     assert.is_not_nil(spark_credit_ref01_resdata_up0)
     assert.are.equal(spark_credit_ref01_resdata_up0[spark_credit_ref01_markdef_up0_name], spark_credit_ref01_markdef_up0_value)
+
+    if setup.live then
+      runner.live_pace()
+    end
+    -- LOAD
+    local spark_credit_ref01_match_dt0 = {}
+    local spark_credit_ref01_data_dt0_loaded, err = spark_credit_ref01_ent:load(spark_credit_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    assert.is_not_nil(spark_credit_ref01_data_dt0_loaded)
 
   end)
 end)

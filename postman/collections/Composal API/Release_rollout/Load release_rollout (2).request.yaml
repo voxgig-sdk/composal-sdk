@@ -1,0 +1,15 @@
+$kind: http-request
+id: "6da3e6fd-4ce6-53d8-be8c-e673033e0e43"
+description: |-
+  The `load` operation of **release_rollout**.
+
+  SDK: `client.ReleaseRollout().load({ release_id: "example" })`
+url: "{{base}}/api/v1/execution/releases/:release_id/rollouts"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: release_id
+    value: "{{release_id}}"
+    description: "Input: release_id."
+order: 2000

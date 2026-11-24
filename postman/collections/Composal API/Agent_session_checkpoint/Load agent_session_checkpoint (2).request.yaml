@@ -1,0 +1,21 @@
+$kind: http-request
+id: f7724854-b237-5d6f-b72f-2ceae50097fa
+description: |-
+  The `load` operation of **agent_session_checkpoint**.
+
+  SDK: `client.AgentSessionCheckpoint().load({ agent_session_id: "example", organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/agent_sessions/:agent_session_id/checkpoints"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this agent_session_checkpoint belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this agent_session_checkpoint belongs to.
+  - key: agent_session_id
+    value: "{{agent_session_id}}"
+    description: The agent_session this agent_session_checkpoint belongs to.
+order: 2000

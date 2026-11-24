@@ -38,7 +38,7 @@ func TestProjectSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.ProjectSetting(nil).List(map[string]any{"organization_id": 1, "project_id": "x"}, nil)
+		_, err := client.ProjectSetting(nil).Load(map[string]any{"organization_id": 1, "project_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestProjectSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "project_setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,14 +63,9 @@ func TestProjectSettingEntity(t *testing.T) {
 			}
 		}
 		if setup.live {
-			for _, _liveKey := range []string{"organization01", "project01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, project_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_PROJECT_SETTING_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
 		}
-		client := setup.client
-		_ = client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		projectSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.project_setting")))
@@ -81,25 +76,6 @@ func TestProjectSettingEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = projectSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		projectSettingRef01Ent := client.ProjectSetting(nil)
-		projectSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"project_id": setup.idmap["project01"],
-		}
-
-		projectSettingRef01ListResult, err := projectSettingRef01Ent.List(projectSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, projectSettingRef01ListOk := projectSettingRef01ListResult.([]any)
-		if !projectSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", projectSettingRef01ListResult)
-		}
 
 	})
 }

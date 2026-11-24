@@ -294,16 +294,11 @@ func (e *AllocationLogEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *AllocationLogEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *AllocationLogEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *AllocationLogEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *AllocationLogEntity) List(reqmatch map[string]any, ctrl map[string]any)
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// AllocationLogListMatch and returns []AllocationLog. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *AllocationLogEntity) ListTyped(reqmatch AllocationLogListMatch, ctrl map[string]any) ([]AllocationLog, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// AllocationLogLoadMatch and returns an AllocationLog. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *AllocationLogEntity) LoadTyped(reqmatch AllocationLogLoadMatch, ctrl map[string]any) (AllocationLog, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return AllocationLog{}, err
 	}
-	return typedSliceFrom[AllocationLog](res), nil
+	return typedFrom[AllocationLog](res), nil
 }
 
+
+
+func (e *AllocationLogEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 func (e *AllocationLogEntity) Create(_ map[string]any, _ map[string]any) (any, error) {

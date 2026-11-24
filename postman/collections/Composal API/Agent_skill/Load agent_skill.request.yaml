@@ -3,7 +3,7 @@ id: "6ca21dd2-1f71-5f7a-8add-3865bc41642a"
 description: |-
   The `load` operation of **agent_skill**.
 
-  SDK: `client.AgentSkill().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.AgentSkill().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/agent_skills/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{agent_skill_id}}"
     description: The agent_skill this request addresses.
-order: 2000
+order: 1000

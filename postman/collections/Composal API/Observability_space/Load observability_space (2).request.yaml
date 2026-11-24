@@ -1,0 +1,11 @@
+$kind: http-request
+id: "92877e36-5e0a-508a-9f55-b545e19d1b59"
+description: |-
+  The `load` operation of **observability_space**.
+
+  SDK: `client.ObservabilitySpace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/observability/spaces"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

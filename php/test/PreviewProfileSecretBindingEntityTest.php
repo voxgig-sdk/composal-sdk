@@ -33,7 +33,7 @@ class PreviewProfileSecretBindingEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->PreviewProfileSecretBinding(null)->list(["app_id" => 1, "preview_profile_id" => 'x'], null);
+            $client->PreviewProfileSecretBinding(null)->load(["app_id" => 1, "preview_profile_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class PreviewProfileSecretBindingEntityTest extends TestCase
         $setup = preview_profile_secret_binding_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "remove"] as $_op) {
+        foreach (["create", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "preview_profile_secret_binding." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,39 +54,9 @@ class PreviewProfileSecretBindingEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"preview_profile_secret_binding.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"preview_profile_secret_binding.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"preview_profile_secret_binding.remove.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"preview_profile_secret_binding.list.3","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["app01", "preview_profile01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PREVIEW_PROFILE_SECRET_BINDING_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $preview_profile_secret_binding_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.preview_profile_secret_binding")));
-        $preview_profile_secret_binding_ref01_data = null;
-        if (count($preview_profile_secret_binding_ref01_data_raw) > 0) {
-            $preview_profile_secret_binding_ref01_data = Helpers::to_map($preview_profile_secret_binding_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $preview_profile_secret_binding_ref01_ent = $client->PreviewProfileSecretBinding(null);
-        $preview_profile_secret_binding_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_profile_id" => $setup["idmap"]["preview_profile01"],
-        ];
-
-        $preview_profile_secret_binding_ref01_list_result = $preview_profile_secret_binding_ref01_ent->list($preview_profile_secret_binding_ref01_match, null);
-        $this->assertIsArray($preview_profile_secret_binding_ref01_list_result);
-
-            return;
+            $this->markTestSkipped('Live coverage incomplete: preview_profile_secret_binding.create.0 excluded (GET-only live run: needs POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings); preview_profile_secret_binding.load.1 excluded (GET-only live run: reads a record only preview_profile_secret_binding.create.0 gives); preview_profile_secret_binding.remove.2 excluded (GET-only live run: needs DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -116,19 +86,17 @@ class PreviewProfileSecretBindingEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $preview_profile_secret_binding_ref01_match = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_profile_id" => $setup["idmap"]["preview_profile01"],
+        // LOAD
+        $preview_profile_secret_binding_ref01_match_dt0 = [
+            "id" => $preview_profile_secret_binding_ref01_data["id"],
         ];
-
-        $preview_profile_secret_binding_ref01_list_result = $preview_profile_secret_binding_ref01_ent->list($preview_profile_secret_binding_ref01_match, null);
-        $this->assertIsArray($preview_profile_secret_binding_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($preview_profile_secret_binding_ref01_list_result),
-            ["id" => $preview_profile_secret_binding_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $preview_profile_secret_binding_ref01_match_dt0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
+        $preview_profile_secret_binding_ref01_data_dt0_loaded = $preview_profile_secret_binding_ref01_ent->load($preview_profile_secret_binding_ref01_match_dt0, null);
+        $preview_profile_secret_binding_ref01_data_dt0_load_result = Helpers::to_map(is_object($preview_profile_secret_binding_ref01_data_dt0_loaded) && method_exists($preview_profile_secret_binding_ref01_data_dt0_loaded, 'data_get') ? $preview_profile_secret_binding_ref01_data_dt0_loaded->data_get() : $preview_profile_secret_binding_ref01_data_dt0_loaded);
+        $this->assertNotNull($preview_profile_secret_binding_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($preview_profile_secret_binding_ref01_data_dt0_load_result["id"] ?? null, $preview_profile_secret_binding_ref01_data["id"]));
+        }
 
         if (!empty($setup["live"])) {
             Runner::live_pace();
@@ -140,23 +108,6 @@ class PreviewProfileSecretBindingEntityTest extends TestCase
         $preview_profile_secret_binding_ref01_match_rm0["app_id"] = $setup["idmap"]["app_id"] ?? $setup["idmap"]["app01"] ?? null;
         $preview_profile_secret_binding_ref01_match_rm0["preview_profile_id"] = $setup["idmap"]["preview_profile_id"] ?? $setup["idmap"]["preview_profile01"] ?? null;
         $preview_profile_secret_binding_ref01_ent->remove($preview_profile_secret_binding_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $preview_profile_secret_binding_ref01_match_rt0 = [
-            "app_id" => $setup["idmap"]["app01"],
-            "preview_profile_id" => $setup["idmap"]["preview_profile01"],
-        ];
-
-        $preview_profile_secret_binding_ref01_list_rt0_result = $preview_profile_secret_binding_ref01_ent->list($preview_profile_secret_binding_ref01_match_rt0, null);
-        $this->assertIsArray($preview_profile_secret_binding_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($preview_profile_secret_binding_ref01_list_rt0_result),
-            ["id" => $preview_profile_secret_binding_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

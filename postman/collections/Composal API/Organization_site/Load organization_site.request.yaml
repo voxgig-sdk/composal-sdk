@@ -1,0 +1,18 @@
+$kind: http-request
+id: "158ca5e2-6fa0-5585-9337-90a00248e94a"
+description: |-
+  The `load` operation of **organization_site**.
+
+  SDK: `client.OrganizationSite().load({ organization_id: "example", native_agent_id: "example" })`
+url: "{{base}}/api/v1/spark/organizations/:organization_id/sites?native_agent_id={{organization_site_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: native_agent_id
+    value: "{{organization_site_id}}"
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this organization_site belongs to.
+order: 1000

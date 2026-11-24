@@ -676,28 +676,28 @@ const created = await client.DeviceGrant().create({ device_id: &quot;example&quo
 </thead>
 <tbody>
 <tr>
-<td><code>active_grants</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Active Grants</td>
-</tr>
-<tr>
-<td><code>agent_choices</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Eligible picker choices, with current owner grant targets, on the first page only.</td>
-</tr>
-<tr>
 <td><code>agent_id</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
 <td>Agent Id</td>
 </tr>
 <tr>
-<td><code>all_agents_access</code></td>
+<td><code>agent_name</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Agent Name</td>
+</tr>
+<tr>
+<td><code>can_edit</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td>Whether every agent the owner can use may use this computer for the owner's messages, including agents added later.</td>
+<td>Can Edit</td>
+</tr>
+<tr>
+<td><code>can_revoke</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Can Revoke</td>
 </tr>
 <tr>
 <td><code>capabilities</code></td>
@@ -706,34 +706,46 @@ const created = await client.DeviceGrant().create({ device_id: &quot;example&quo
 <td>Capabilities</td>
 </tr>
 <tr>
-<td><code>execution_available</code></td>
-<td><code>boolean</code></td>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
 <td>Yes</td>
-<td>Execution Available</td>
-</tr>
-<tr>
-<td><code>grants</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Grants</td>
+<td>Created At</td>
 </tr>
 <tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
-<td>No</td>
-<td>Id</td>
-</tr>
-<tr>
-<td><code>next_cursor</code></td>
-<td><code>one,string,null</code></td>
 <td>Yes</td>
-<td>Next Cursor</td>
+<td>Id</td>
 </tr>
 <tr>
 <td><code>principal_id</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
 <td>Principal Id</td>
+</tr>
+<tr>
+<td><code>principal_name</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Principal Name</td>
+</tr>
+<tr>
+<td><code>revision</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Revision</td>
+</tr>
+<tr>
+<td><code>revoked_at</code></td>
+<td><code>one,string,null</code></td>
+<td>Yes</td>
+<td>Revoked At</td>
+</tr>
+<tr>
+<td><code>updated_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Updated At</td>
 </tr>
 </tbody>
 </table>

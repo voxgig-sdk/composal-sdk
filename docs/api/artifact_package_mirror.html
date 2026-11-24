@@ -114,8 +114,8 @@
 <a class="nav-section" href="#post-apiv1artifactspackage_mirrorsidresume">POST /api/v1/artifacts/package_mirrors/{id}/resume</a>
 <a class="nav-section" href="#post-apiv1artifactspackage_mirrorsidsync">POST /api/v1/artifacts/package_mirrors/{id}/sync</a>
 <a class="nav-section" href="#post-apiv1artifactspackage_mirrors">POST /api/v1/artifacts/package_mirrors</a>
-<a class="nav-section" href="#get-apiv1artifactspackage_mirrors">GET /api/v1/artifacts/package_mirrors</a>
 <a class="nav-section" href="#get-apiv1artifactspackage_mirrorsid">GET /api/v1/artifacts/package_mirrors/{id}</a>
+<a class="nav-section" href="#get-apiv1artifactspackage_mirrors">GET /api/v1/artifacts/package_mirrors</a>
 <a class="nav-section" href="#patch-apiv1artifactspackage_mirrorsid">PATCH /api/v1/artifacts/package_mirrors/{id}</a>
 <a class="nav-section" href="#delete-apiv1artifactspackage_mirrorsid">DELETE /api/v1/artifacts/package_mirrors/{id}</a>
 <a class="nav-section" href="#put-apiv1artifactspackage_mirrorsid">PUT /api/v1/artifacts/package_mirrors/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactspackage_mirrors"><code>/api/v1/artifacts/package_mirrors</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1artifactspackage_mirrorsid"><code>/api/v1/artifacts/package_mirrors/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1artifactspackage_mirrorsid"><code>/api/v1/artifacts/package_mirrors/{id}</code></a></td>
+<td><a href="#get-apiv1artifactspackage_mirrors"><code>/api/v1/artifacts/package_mirrors</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">artifact_package_mirrors, err := client.ArtifactPackageMirror(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(artifact_package_mirrors)
-artifact_package_mirror, err := client.ArtifactPackageMirror(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">artifact_package_mirror, err := client.ArtifactPackageMirror(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local artifact_package_mirrors, err = client:ArtifactPackageMirror():list()
-local artifact_package_mirror, err = client:ArtifactPackageMirror():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local artifact_package_mirror, err = client:ArtifactPackageMirror():load({ id = &quot;example_id&quot; })
 local created, err = client:ArtifactPackageMirror():create({  })
 local updated, err = client:ArtifactPackageMirror():update({ id = &quot;example_id&quot; })
 local patched, err = client:ArtifactPackageMirror():patch({ id = &quot;example_id&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:ArtifactPackageMirror():remove({ id = &quot;example_
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$artifact_package_mirrors = $client-&gt;ArtifactPackageMirror()-&gt;list();
-$artifact_package_mirror = $client-&gt;ArtifactPackageMirror()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$artifact_package_mirror = $client-&gt;ArtifactPackageMirror()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;ArtifactPackageMirror()-&gt;create([]);
 $updated = $client-&gt;ArtifactPackageMirror()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;ArtifactPackageMirror()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;ArtifactPackageMirror()-&gt;remove([&quot;id&quot; =&gt; &quot;examp
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">artifact_package_mirrors = client.ArtifactPackageMirror().list()
-artifact_package_mirror = client.ArtifactPackageMirror().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">artifact_package_mirror = client.ArtifactPackageMirror().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.ArtifactPackageMirror().create({  })
 updated = client.ArtifactPackageMirror().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.ArtifactPackageMirror().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -723,8 +715,7 @@ client.ArtifactPackageMirror().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">artifact_package_mirrors = client.ArtifactPackageMirror.list()
-artifact_package_mirror = client.ArtifactPackageMirror.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">artifact_package_mirror = client.ArtifactPackageMirror.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.ArtifactPackageMirror.create({  })
 updated = client.ArtifactPackageMirror.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.ArtifactPackageMirror.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -732,8 +723,7 @@ client.ArtifactPackageMirror.remove({ &quot;id&quot; =&gt; &quot;example_id&quot
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const artifact_package_mirrors = await client.ArtifactPackageMirror().list()
-const artifact_package_mirror = await client.ArtifactPackageMirror().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const artifact_package_mirror = await client.ArtifactPackageMirror().load({ id: &quot;example_id&quot; })
 const created = await client.ArtifactPackageMirror().create({  })
 const updated = await client.ArtifactPackageMirror().update({ id: &quot;example_id&quot; })
 const patched = await client.ArtifactPackageMirror().patch({ id: &quot;example_id&quot; })
@@ -882,19 +872,6 @@ await client.ArtifactPackageMirror().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1artifactspackage_mirrors" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/package_mirrors</h3>
-<p>Operation ID: <code>api_v1_package_mirrors</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-4">Responses</h4>
-<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1artifactspackage_mirrorsid" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/package_mirrors/{id}</h3>
 <p>Operation ID: <code>api_v1_package_mirror</code>.</p>
@@ -920,6 +897,18 @@ await client.ArtifactPackageMirror().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1artifactspackage_mirrors" class="operation" data-method="get"><code>GET</code> /api/v1/artifacts/package_mirrors</h3>
+<p>Operation ID: <code>api_v1_package_mirrors</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-5">Responses</h4>
 <h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

@@ -41,12 +41,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/policies": {
+    "GET /api/v1/networking/spaces/{space_id}/policies/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/networking/spaces/{space_id}/policies/{id}": {
+    "GET /api/v1/networking/spaces/{space_id}/policies": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

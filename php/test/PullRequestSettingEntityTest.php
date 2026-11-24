@@ -33,7 +33,7 @@ class PullRequestSettingEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->PullRequestSetting(null)->list(["organization_id" => 1], null);
+            $client->PullRequestSetting(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class PullRequestSettingEntityTest extends TestCase
         $setup = pull_request_setting_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "pull_request_setting." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,36 +54,8 @@ class PullRequestSettingEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"pull_request_setting.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PULL_REQUEST_SETTING_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $pull_request_setting_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.pull_request_setting")));
-        $pull_request_setting_ref01_data = null;
-        if (count($pull_request_setting_ref01_data_raw) > 0) {
-            $pull_request_setting_ref01_data = Helpers::to_map($pull_request_setting_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $pull_request_setting_ref01_ent = $client->PullRequestSetting(null);
-        $pull_request_setting_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $pull_request_setting_ref01_list_result = $pull_request_setting_ref01_ent->list($pull_request_setting_ref01_match, null);
-        $this->assertIsArray($pull_request_setting_ref01_list_result);
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"pull_request_setting.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only pull_request_setting.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: pull_request_setting.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{organization_id}/verify/pull_request_settings); pull_request_setting.load.1 excluded (GET-only live run: reads a record only pull_request_setting.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -112,18 +84,14 @@ class PullRequestSettingEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $pull_request_setting_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
+        // LOAD
+        $pull_request_setting_ref01_match_dt0 = [
+            "id" => $pull_request_setting_ref01_data["id"],
         ];
-
-        $pull_request_setting_ref01_list_result = $pull_request_setting_ref01_ent->list($pull_request_setting_ref01_match, null);
-        $this->assertIsArray($pull_request_setting_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($pull_request_setting_ref01_list_result),
-            ["id" => $pull_request_setting_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
+        $pull_request_setting_ref01_data_dt0_loaded = $pull_request_setting_ref01_ent->load($pull_request_setting_ref01_match_dt0, null);
+        $pull_request_setting_ref01_data_dt0_load_result = Helpers::to_map(is_object($pull_request_setting_ref01_data_dt0_loaded) && method_exists($pull_request_setting_ref01_data_dt0_loaded, 'data_get') ? $pull_request_setting_ref01_data_dt0_loaded->data_get() : $pull_request_setting_ref01_data_dt0_loaded);
+        $this->assertNotNull($pull_request_setting_ref01_data_dt0_load_result);
+        $this->assertTrue(Runner::live_same_id($pull_request_setting_ref01_data_dt0_load_result["id"] ?? null, $pull_request_setting_ref01_data["id"]));
 
     }
 }

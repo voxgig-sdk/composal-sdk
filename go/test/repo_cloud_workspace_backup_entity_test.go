@@ -38,7 +38,7 @@ func TestRepoCloudWorkspaceBackupEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RepoCloudWorkspaceBackup(nil).List(map[string]any{"organization_id": 1, "repo_id": "x"}, nil)
+		_, err := client.RepoCloudWorkspaceBackup(nil).Load(map[string]any{"id": 1, "organization_id": "x", "repo_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRepoCloudWorkspaceBackupEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "load"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "repo_cloud_workspace_backup." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,86 +64,9 @@ func TestRepoCloudWorkspaceBackupEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"repo_cloud_workspace_backup.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "repo01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, repo_cloud_workspace_backupEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_REPO_CLOUD_WORKSPACE_BACKUP_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["repo_cloud_workspace_backup01"]
-			}
-			livePace()
-			liveExisting(t, repo_cloud_workspace_backupEntityLiveStrict, setup.data, "repo_cloud_workspace_backup", "id", _liveId,
-				func() (any, error) {
-					return client.RepoCloudWorkspaceBackup(nil).List(map[string]any{"organization_id": setup.idmap["organization01"], "repo_id": setup.idmap["repo01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		repoCloudWorkspaceBackupRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.repo_cloud_workspace_backup")))
-		var repoCloudWorkspaceBackupRef01Data map[string]any
-		if len(repoCloudWorkspaceBackupRef01DataRaw) > 0 {
-			repoCloudWorkspaceBackupRef01Data = core.ToMapAny(repoCloudWorkspaceBackupRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = repoCloudWorkspaceBackupRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		repoCloudWorkspaceBackupRef01Ent := client.RepoCloudWorkspaceBackup(nil)
-		repoCloudWorkspaceBackupRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		repoCloudWorkspaceBackupRef01ListResult, err := repoCloudWorkspaceBackupRef01Ent.List(repoCloudWorkspaceBackupRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, repoCloudWorkspaceBackupRef01ListOk := repoCloudWorkspaceBackupRef01ListResult.([]any)
-		if !repoCloudWorkspaceBackupRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", repoCloudWorkspaceBackupRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		repoCloudWorkspaceBackupRef01MatchDt0 := map[string]any{
-			"id": repoCloudWorkspaceBackupRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			repoCloudWorkspaceBackupRef01MatchDt0["organization_id"] = v
-		} else {
-			repoCloudWorkspaceBackupRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["repo_id"]; v != nil {
-			repoCloudWorkspaceBackupRef01MatchDt0["repo_id"] = v
-		} else {
-			repoCloudWorkspaceBackupRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
-		}
-		repoCloudWorkspaceBackupRef01DataDt0Loaded, err := repoCloudWorkspaceBackupRef01Ent.Load(repoCloudWorkspaceBackupRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		repoCloudWorkspaceBackupRef01DataDt0LoadResult := core.ToMapAny(entityData(repoCloudWorkspaceBackupRef01DataDt0Loaded))
-		if repoCloudWorkspaceBackupRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(repoCloudWorkspaceBackupRef01DataDt0LoadResult["id"], repoCloudWorkspaceBackupRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"repo_cloud_workspace_backup.load.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only repo_cloud_workspace_backup.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: repo_cloud_workspace_backup.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request); repo_cloud_workspace_backup.load.1 excluded (GET-only live run: reads a record only repo_cloud_workspace_backup.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -181,29 +104,6 @@ func TestRepoCloudWorkspaceBackupEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		repoCloudWorkspaceBackupRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		repoCloudWorkspaceBackupRef01ListResult, err := repoCloudWorkspaceBackupRef01Ent.List(repoCloudWorkspaceBackupRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		repoCloudWorkspaceBackupRef01List, repoCloudWorkspaceBackupRef01ListOk := repoCloudWorkspaceBackupRef01ListResult.([]any)
-		if !repoCloudWorkspaceBackupRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", repoCloudWorkspaceBackupRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(repoCloudWorkspaceBackupRef01List), map[string]any{"id": repoCloudWorkspaceBackupRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// LOAD
 		repoCloudWorkspaceBackupRef01MatchDt0 := map[string]any{
 			"id": repoCloudWorkspaceBackupRef01Data["id"],
@@ -212,11 +112,6 @@ func TestRepoCloudWorkspaceBackupEntity(t *testing.T) {
 			repoCloudWorkspaceBackupRef01MatchDt0["organization_id"] = v
 		} else {
 			repoCloudWorkspaceBackupRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["repo_id"]; v != nil {
-			repoCloudWorkspaceBackupRef01MatchDt0["repo_id"] = v
-		} else {
-			repoCloudWorkspaceBackupRef01MatchDt0["repo_id"] = setup.idmap["repo01"]
 		}
 		repoCloudWorkspaceBackupRef01DataDt0Loaded, err := repoCloudWorkspaceBackupRef01Ent.Load(repoCloudWorkspaceBackupRef01MatchDt0, nil)
 		if err != nil {

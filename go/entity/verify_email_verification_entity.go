@@ -294,16 +294,11 @@ func (e *VerifyEmailVerificationEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *VerifyEmailVerificationEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *VerifyEmailVerificationEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *VerifyEmailVerificationEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *VerifyEmailVerificationEntity) List(reqmatch map[string]any, ctrl map[s
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// VerifyEmailVerificationListMatch and returns []VerifyEmailVerification. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *VerifyEmailVerificationEntity) ListTyped(reqmatch VerifyEmailVerificationListMatch, ctrl map[string]any) ([]VerifyEmailVerification, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// VerifyEmailVerificationLoadMatch and returns an VerifyEmailVerification. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *VerifyEmailVerificationEntity) LoadTyped(reqmatch VerifyEmailVerificationLoadMatch, ctrl map[string]any) (VerifyEmailVerification, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return VerifyEmailVerification{}, err
 	}
-	return typedSliceFrom[VerifyEmailVerification](res), nil
+	return typedFrom[VerifyEmailVerification](res), nil
 }
 
+
+
+func (e *VerifyEmailVerificationEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 func (e *VerifyEmailVerificationEntity) Create(_ map[string]any, _ map[string]any) (any, error) {

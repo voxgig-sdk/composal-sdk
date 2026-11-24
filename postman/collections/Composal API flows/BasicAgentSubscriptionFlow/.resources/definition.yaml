@@ -1,4 +1,4 @@
 $kind: collection
 id: "79c71ada-6fd1-511e-870c-8fdcf584813e"
 description: "The `BasicAgentSubscriptionFlow` flow of **agent_subscription**."
-order: 44000
+order: 40000

@@ -51,11 +51,6 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/observability/spaces/{space_id}/otel_collectors": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}": {
       "provenance": "operation-contract",
       "version": 2,
@@ -72,6 +67,11 @@
       "source": "openapi3"
     },
     "GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/rendered_config": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/observability/spaces/{space_id}/otel_collectors": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

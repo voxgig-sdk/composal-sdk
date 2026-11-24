@@ -33,7 +33,7 @@ class RuntimeInstanceHealthSnapshotEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RuntimeInstanceHealthSnapshot(null)->list(["runtime_instance_id" => 1], null);
+            $client->RuntimeInstanceHealthSnapshot(null)->load(["runtime_instance_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RuntimeInstanceHealthSnapshotEntityTest extends TestCase
         $setup = runtime_instance_health_snapshot_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "runtime_instance_health_snapshot." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class RuntimeInstanceHealthSnapshotEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"runtime_instance_health_snapshot.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["runtime_instance01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUNTIME_INSTANCE_HEALTH_SNAPSHOT_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,14 +67,11 @@ class RuntimeInstanceHealthSnapshotEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $runtime_instance_health_snapshot_ref01_ent = $client->RuntimeInstanceHealthSnapshot(null);
-        $runtime_instance_health_snapshot_ref01_match = [
-            "runtime_instance_id" => $setup["idmap"]["runtime_instance01"],
-        ];
-
-        $runtime_instance_health_snapshot_ref01_list_result = $runtime_instance_health_snapshot_ref01_ent->list($runtime_instance_health_snapshot_ref01_match, null);
-        $this->assertIsArray($runtime_instance_health_snapshot_ref01_list_result);
+        $runtime_instance_health_snapshot_ref01_match_dt0 = [];
+        $runtime_instance_health_snapshot_ref01_data_dt0_loaded = $runtime_instance_health_snapshot_ref01_ent->load($runtime_instance_health_snapshot_ref01_match_dt0, null);
+        $this->assertNotNull($runtime_instance_health_snapshot_ref01_data_dt0_loaded);
 
             return;
         }
@@ -111,13 +101,10 @@ class RuntimeInstanceHealthSnapshotEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $runtime_instance_health_snapshot_ref01_match = [
-            "runtime_instance_id" => $setup["idmap"]["runtime_instance01"],
-        ];
-
-        $runtime_instance_health_snapshot_ref01_list_result = $runtime_instance_health_snapshot_ref01_ent->list($runtime_instance_health_snapshot_ref01_match, null);
-        $this->assertIsArray($runtime_instance_health_snapshot_ref01_list_result);
+        // LOAD
+        $runtime_instance_health_snapshot_ref01_match_dt0 = [];
+        $runtime_instance_health_snapshot_ref01_data_dt0_loaded = $runtime_instance_health_snapshot_ref01_ent->load($runtime_instance_health_snapshot_ref01_match_dt0, null);
+        $this->assertNotNull($runtime_instance_health_snapshot_ref01_data_dt0_loaded);
 
     }
 }

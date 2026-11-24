@@ -99,8 +99,8 @@
 <a href="../api/app_preview_profile.html">AppPreviewProfile</a>
 <a aria-current="page" href="../api/app_run.html">AppRun</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1hostingapp_runsidcancel">POST /api/v1/hosting/app_runs/{id}/cancel</a>
 <a class="nav-section" href="#post-apiv1hostingapp_runs">POST /api/v1/hosting/app_runs</a>
-<a class="nav-section" href="#get-apiv1hostingapp_runs">GET /api/v1/hosting/app_runs</a>
-<a class="nav-section" href="#get-apiv1hostingapp_runsid">GET /api/v1/hosting/app_runs/{id}</a></div>
+<a class="nav-section" href="#get-apiv1hostingapp_runsid">GET /api/v1/hosting/app_runs/{id}</a>
+<a class="nav-section" href="#get-apiv1hostingapp_runs">GET /api/v1/hosting/app_runs</a></div>
 <a href="../api/app_secret.html">AppSecret</a>
 <a href="../api/app_service.html">AppService</a>
 <a href="../api/app_service_binding.html">AppServiceBinding</a>
@@ -612,13 +612,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingapp_runs"><code>/api/v1/hosting/app_runs</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1hostingapp_runsid"><code>/api/v1/hosting/app_runs/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1hostingapp_runsid"><code>/api/v1/hosting/app_runs/{id}</code></a></td>
+<td><a href="#get-apiv1hostingapp_runs"><code>/api/v1/hosting/app_runs</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -628,12 +628,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">app_runs, err := client.AppRun(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(app_runs)
-app_run, err := client.AppRun(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">app_run, err := client.AppRun(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -646,32 +641,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local app_runs, err = client:AppRun():list()
-local app_run, err = client:AppRun():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local app_run, err = client:AppRun():load({ id = &quot;example_id&quot; })
 local created, err = client:AppRun():create({ image = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$app_runs = $client-&gt;AppRun()-&gt;list();
-$app_run = $client-&gt;AppRun()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$app_run = $client-&gt;AppRun()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;AppRun()-&gt;create([&quot;image&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">app_runs = client.AppRun().list()
-app_run = client.AppRun().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">app_run = client.AppRun().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.AppRun().create({ &quot;image&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">app_runs = client.AppRun.list()
-app_run = client.AppRun.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">app_run = client.AppRun.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.AppRun.create({ &quot;image&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const app_runs = await client.AppRun().list()
-const app_run = await client.AppRun().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const app_run = await client.AppRun().load({ id: &quot;example_id&quot; })
 const created = await client.AppRun().create({ image: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -836,19 +826,6 @@ const created = await client.AppRun().create({ image: &quot;example&quot; })
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-1" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1hostingapp_runs" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/app_runs</h3>
-<p>Operation ID: <code>api_v1_app_runs</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-2">Responses</h4>
-<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1hostingapp_runsid" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/app_runs/{id}</h3>
 <p>Operation ID: <code>api_v1_app_run</code>.</p>
@@ -874,6 +851,18 @@ const created = await client.AppRun().create({ image: &quot;example&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-success-2" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-2" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-2" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1hostingapp_runs" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/app_runs</h3>
+<p>Operation ID: <code>api_v1_app_runs</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-3">Responses</h4>
 <h5 id="200-success-3" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

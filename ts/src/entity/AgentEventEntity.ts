@@ -16,7 +16,7 @@ import type {
 
 import type {
   AgentEvent,
-  AgentEventListMatch,
+  AgentEventLoadMatch,
 } from '../ComposalTypes'
 
 class AgentEventEntity extends ComposalEntityBase<AgentEvent> {
@@ -35,8 +35,7 @@ class AgentEventEntity extends ComposalEntityBase<AgentEvent> {
 
 
 
-
-  async list(this: any, reqmatch?: AgentEventListMatch, ctrl?: Control): Promise<AgentEventEntity[]> {
+  async load(this: any, reqmatch?: AgentEventLoadMatch, ctrl?: Control): Promise<AgentEventEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class AgentEventEntity extends ComposalEntityBase<AgentEvent> {
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,15 @@ class AgentEventEntity extends ComposalEntityBase<AgentEvent> {
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -147,11 +152,12 @@ class AgentEventEntity extends ComposalEntityBase<AgentEvent> {
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<AgentEventEntity[]> return stays clean under strict null checks.
+        // Promise<AgentEventEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

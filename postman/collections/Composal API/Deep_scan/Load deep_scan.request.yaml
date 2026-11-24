@@ -3,7 +3,7 @@ id: "37e45fe1-3220-572b-95b1-ecaef0e0223e"
 description: |-
   The `load` operation of **deep_scan**.
 
-  SDK: `client.DeepScan().load({ id: "example_id", organization_id: "example" })`
+  SDK: `client.DeepScan().load({ organization_id: "example" })`
 url: "{{base}}/api/v1/organizations/:organization_id/verify/deep_scans/:id"
 method: GET
 headers:
@@ -28,4 +28,4 @@ pathVariables:
   - key: id
     value: "{{deep_scan_id}}"
     description: The deep_scan this request addresses.
-order: 2000
+order: 1000

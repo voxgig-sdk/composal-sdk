@@ -20,17 +20,23 @@ main: kit: flow: BasicPreviewSharingApprovalFlow:
     }
 
     {
-      m: {
-        app_id: "app01",
-        preview_id: "preview01"
+      i: {
+        ref: "preview_sharing_approval_ref01",
+        srcdatavar: "preview_sharing_approval_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        app_id: "app01",
+        id: "preview_sharing_approval01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "preview_sharing_approval_ref01"
+            mark: "Mark01-preview_sharing_approval_ref01"
           }
         }
       ]

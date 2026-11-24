@@ -16,7 +16,7 @@ import type {
 
 import type {
   PreviewProfileSecretBinding,
-  PreviewProfileSecretBindingListMatch,
+  PreviewProfileSecretBindingLoadMatch,
   PreviewProfileSecretBindingCreateData,
   PreviewProfileSecretBindingRemoveMatch,
 } from '../ComposalTypes'
@@ -37,8 +37,7 @@ class PreviewProfileSecretBindingEntity extends ComposalEntityBase<PreviewProfil
 
 
 
-
-  async list(this: any, reqmatch?: PreviewProfileSecretBindingListMatch, ctrl?: Control): Promise<PreviewProfileSecretBindingEntity[]> {
+  async load(this: any, reqmatch?: PreviewProfileSecretBindingLoadMatch, ctrl?: Control): Promise<PreviewProfileSecretBindingEntity> {
 
     const utility = this._utility
 
@@ -58,7 +57,7 @@ class PreviewProfileSecretBindingEntity extends ComposalEntityBase<PreviewProfil
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -124,9 +123,15 @@ class PreviewProfileSecretBindingEntity extends ComposalEntityBase<PreviewProfil
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -149,11 +154,12 @@ class PreviewProfileSecretBindingEntity extends ComposalEntityBase<PreviewProfil
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<PreviewProfileSecretBindingEntity[]> return stays clean under strict null checks.
+        // Promise<PreviewProfileSecretBindingEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

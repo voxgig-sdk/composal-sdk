@@ -24,46 +24,21 @@ def _live_ok(result):
 
 class TestExecutionDesiredStateDirect:
 
-    def test_should_direct_list_execution_desired_state(self):
-        setup = _execution_desired_state_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-execution_desired_state", "live" if setup["live"] else "unit")
-        if _skip:
-            pytest.skip(_reason or "skipped via sdk-test-control.json")
-            return
-        if setup["live"]:
-            runner.live_pace()
-        client = setup["client"]
-
-        params = {}
-        query = {}
-
-        result = client.direct({
-            "path": "api/v1/execution/desired_states",
-            "method": "GET",
-            "params": params,
-            "query": query,
-        })
-        if setup["live"]:
-            if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
-        else:
-            assert result["ok"] is True
-            assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
-            assert len(setup["calls"]) == 1
-
     def test_should_direct_load_execution_desired_state(self):
         setup = _execution_desired_state_direct_setup({"id": "direct01"})
         _skip, _reason = runner.is_control_skipped("direct", "direct-load-execution_desired_state", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("execution_desired_state01") is None:
+            print("LIVE STEP {\"id\":\"direct-load-execution_desired_state\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs execution_desired_state01, which only POST /api/v1/execution/desired_states/{id}/reconcile gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-execution_desired_state excluded (GET-only live run: needs execution_desired_state01, which only POST /api/v1/execution/desired_states/{id}/reconcile gives)")
+
+        if setup["live"]:
+            for _live_key in ["execution_desired_state01"]:
+                if setup["idmap"].get(_live_key) is None:
+                    runner.live_miss(LIVE_STRICT, f"Live test blocked: needs {_live_key} via COMPOSAL_TEST_EXECUTION_DESIRED_STATE_ENTID")
+
         if setup["live"]:
             runner.live_pace()
         client = setup["client"]
@@ -71,22 +46,7 @@ class TestExecutionDesiredStateDirect:
         params = {}
         query = {}
         if setup["live"]:
-            list_result = client.direct({
-                "path": "api/v1/execution/desired_states",
-                "method": "GET",
-                "params": {},
-            })
-            if not _live_ok(list_result):
-                runner.live_miss(LIVE_STRICT, "Live list discovery failed: " + runner.live_describe(list_result))
-            records = runner.live_list(list_result.get("data"))
-            if records is None:
-                runner.live_miss(LIVE_STRICT, "Live list discovery returned no list: " + runner.live_describe(list_result))
-            if 0 == len(records):
-                runner.live_empty("The account has no execution_desired_state record to load")
-            first = records[0] if isinstance(records[0], dict) else {}
-            if first.get("id") is None:
-                runner.live_miss(LIVE_STRICT, "Live load blocked: discovery returned no usable identity")
-            params["id"] = first.get("id")
+            params["id"] = setup["idmap"].get("execution_desired_state01")
             pass
         else:
             params["id"] = "direct01"

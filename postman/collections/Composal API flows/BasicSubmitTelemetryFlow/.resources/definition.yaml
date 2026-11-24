@@ -1,4 +1,4 @@
 $kind: collection
 id: d57225d0-97d8-5b09-a6e1-a2647908d768
 description: "The `BasicSubmitTelemetryFlow` flow of **submit_telemetry**."
-order: 421000
+order: 402000

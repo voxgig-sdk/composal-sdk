@@ -1,0 +1,15 @@
+$kind: http-request
+id: a5c443a6-8ac1-5103-84ed-4e91511598b8
+description: |-
+  The `load` operation of **spark**.
+
+  SDK: `client.Spark().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/sparks"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark belongs to.
+order: 1000

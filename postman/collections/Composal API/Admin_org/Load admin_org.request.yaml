@@ -12,4 +12,4 @@ pathVariables:
   - key: org_slug
     value: "{{admin_org_id}}"
     description: The admin_org this request addresses.
-order: 2000
+order: 1000

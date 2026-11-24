@@ -15,18 +15,6 @@ main: kit: flow: BasicAdminOrgFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "admin_org_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "admin_org_ref01",
         srcdatavar: "admin_org_ref01_data",
@@ -50,10 +38,6 @@ main: kit: flow: BasicAdminOrgFlow:
         ref: "admin_org_ref01",
         srcdatavar: "admin_org_ref01_data",
         suffix: "_dt0"
-      }
-
-      m: {
-        id: "admin_org01"
       }
 
       o: "load",

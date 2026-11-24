@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{artifact_image_repository_id}}"
     description: The artifact_image_repository this request addresses.
-order: 2000
+order: 1000

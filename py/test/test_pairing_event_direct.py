@@ -24,15 +24,16 @@ def _live_ok(result):
 
 class TestPairingEventDirect:
 
-    def test_should_direct_list_pairing_event(self):
-        setup = _pairing_event_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-pairing_event", "live" if setup["live"] else "unit")
+    def test_should_direct_load_pairing_event(self):
+        setup = _pairing_event_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-pairing_event", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("pairing01") is None:
+            print("LIVE STEP {\"id\":\"direct-load-pairing_event\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs pairing01, which only POST /api/v1/relay/pairings gives\"}")
+            pytest.skip("Live coverage incomplete: direct-load-pairing_event excluded (GET-only live run: needs pairing01, which only POST /api/v1/relay/pairings gives)")
+
         if setup["live"]:
             for _live_key in ["pairing01"]:
                 if setup["idmap"].get(_live_key) is None:
@@ -46,8 +47,10 @@ class TestPairingEventDirect:
         query = {}
         if setup["live"]:
             params["pairing_id"] = setup["idmap"].get("pairing01")
+            pass
         else:
             params["pairing_id"] = "direct01"
+            pass
 
         result = client.direct({
             "path": "api/v1/relay/pairings/{pairing_id}/events",
@@ -57,14 +60,15 @@ class TestPairingEventDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

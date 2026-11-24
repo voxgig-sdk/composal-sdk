@@ -33,7 +33,7 @@ class RunArtifactEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RunArtifact(null)->list(["pipeline_id" => 1, "run_id" => 'x'], null);
+            $client->RunArtifact(null)->load(["pipeline_id" => 1, "run_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RunArtifactEntityTest extends TestCase
         $setup = run_artifact_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "run_artifact." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,6 @@ class RunArtifactEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"run_artifact.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["pipeline01", "run01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_RUN_ARTIFACT_ENTID");
-                }
-            }
-        }
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -74,15 +67,12 @@ class RunArtifactEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
+        // LOAD
         $run_artifact_ref01_ent = $client->RunArtifact(null);
-        $run_artifact_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $run_artifact_ref01_list_result = $run_artifact_ref01_ent->list($run_artifact_ref01_match, null);
-        $this->assertIsArray($run_artifact_ref01_list_result);
+        $run_artifact_ref01_match_dt0 = [];
+        $run_artifact_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
+        $run_artifact_ref01_data_dt0_loaded = $run_artifact_ref01_ent->load($run_artifact_ref01_match_dt0, null);
+        $this->assertNotNull($run_artifact_ref01_data_dt0_loaded);
 
             return;
         }
@@ -113,14 +103,11 @@ class RunArtifactEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $run_artifact_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-            "run_id" => $setup["idmap"]["run01"],
-        ];
-
-        $run_artifact_ref01_list_result = $run_artifact_ref01_ent->list($run_artifact_ref01_match, null);
-        $this->assertIsArray($run_artifact_ref01_list_result);
+        // LOAD
+        $run_artifact_ref01_match_dt0 = [];
+        $run_artifact_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
+        $run_artifact_ref01_data_dt0_loaded = $run_artifact_ref01_ent->load($run_artifact_ref01_match_dt0, null);
+        $this->assertNotNull($run_artifact_ref01_data_dt0_loaded);
 
     }
 }

@@ -174,17 +174,17 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/hosting/apps/{app_id}/deployments": {
-      "provenance": "operation-contract",
-      "version": 2,
-      "source": "openapi3"
-    },
     "GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
     "GET /api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /api/v1/hosting/apps/{app_id}/deployments": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

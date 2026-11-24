@@ -38,7 +38,7 @@ func TestSecretGrantEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SecretGrant(nil).List(map[string]any{"organization_id": 1, "secret_id": "x"}, nil)
+		_, err := client.SecretGrant(nil).Load(map[string]any{"id": 1, "organization_id": "x", "secret_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSecretGrantEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "secret_grant." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,89 +64,11 @@ func TestSecretGrantEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"secret_grant.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_grant.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_grant.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"secret_grant.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "secret01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, secret_grantEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SECRET_GRANT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["secret_grant01"]
-			}
-			livePace()
-			liveExisting(t, secret_grantEntityLiveStrict, setup.data, "secret_grant", "id", _liveId,
-				func() (any, error) {
-					return client.SecretGrant(nil).List(map[string]any{"organization_id": setup.idmap["organization01"], "secret_id": setup.idmap["secret01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		secretGrantRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.secret_grant")))
-		var secretGrantRef01Data map[string]any
-		if len(secretGrantRef01DataRaw) > 0 {
-			secretGrantRef01Data = core.ToMapAny(secretGrantRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = secretGrantRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		secretGrantRef01Ent := client.SecretGrant(nil)
-		secretGrantRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretGrantRef01ListResult, err := secretGrantRef01Ent.List(secretGrantRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, secretGrantRef01ListOk := secretGrantRef01ListResult.([]any)
-		if !secretGrantRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", secretGrantRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		secretGrantRef01MatchDt0 := map[string]any{
-			"id": secretGrantRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			secretGrantRef01MatchDt0["organization_id"] = v
-		} else {
-			secretGrantRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["secret_id"]; v != nil {
-			secretGrantRef01MatchDt0["secret_id"] = v
-		} else {
-			secretGrantRef01MatchDt0["secret_id"] = setup.idmap["secret01"]
-		}
-		secretGrantRef01DataDt0Loaded, err := secretGrantRef01Ent.Load(secretGrantRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		secretGrantRef01DataDt0LoadResult := core.ToMapAny(entityData(secretGrantRef01DataDt0Loaded))
-		if secretGrantRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(secretGrantRef01DataDt0LoadResult["id"], secretGrantRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"secret_grant.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"secret_grant.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only secret_grant.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"secret_grant.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}\"}")
+			t.Skip("Live coverage incomplete: secret_grant.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore); secret_grant.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}); secret_grant.load.2 excluded (GET-only live run: reads a record only secret_grant.create.0 gives); secret_grant.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id})")
+			return
 		}
 
 		if setup.live {
@@ -184,29 +106,6 @@ func TestSecretGrantEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		secretGrantRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretGrantRef01ListResult, err := secretGrantRef01Ent.List(secretGrantRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		secretGrantRef01List, secretGrantRef01ListOk := secretGrantRef01ListResult.([]any)
-		if !secretGrantRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", secretGrantRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(secretGrantRef01List), map[string]any{"id": secretGrantRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		secretGrantRef01DataUp0Up := map[string]any{
 			"id": secretGrantRef01Data["id"],
@@ -237,11 +136,6 @@ func TestSecretGrantEntity(t *testing.T) {
 			secretGrantRef01MatchDt0["organization_id"] = v
 		} else {
 			secretGrantRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		if v := setup.idmap["secret_id"]; v != nil {
-			secretGrantRef01MatchDt0["secret_id"] = v
-		} else {
-			secretGrantRef01MatchDt0["secret_id"] = setup.idmap["secret01"]
 		}
 		secretGrantRef01DataDt0Loaded, err := secretGrantRef01Ent.Load(secretGrantRef01MatchDt0, nil)
 		if err != nil {
@@ -275,29 +169,6 @@ func TestSecretGrantEntity(t *testing.T) {
 		_, err = secretGrantRef01Ent.Remove(secretGrantRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		secretGrantRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"secret_id": setup.idmap["secret01"],
-		}
-
-		secretGrantRef01ListRt0Result, err := secretGrantRef01Ent.List(secretGrantRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		secretGrantRef01ListRt0, secretGrantRef01ListRt0Ok := secretGrantRef01ListRt0Result.([]any)
-		if !secretGrantRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", secretGrantRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(secretGrantRef01ListRt0), map[string]any{"id": secretGrantRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

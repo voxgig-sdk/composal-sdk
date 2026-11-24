@@ -290,22 +290,20 @@ class PreviewProfileSecretBindingEntity
     }
 
     
-
-    
     /**
-     * List PreviewProfileSecretBinding items matching the given filter.
+     * Load a single PreviewProfileSecretBinding.
      *
-     * @param PreviewProfileSecretBindingListMatch|array|null $reqmatch Match filter (any subset
-     *   of PreviewProfileSecretBinding fields) as an assoc-array; PreviewProfileSecretBindingListMatch names the shape.
+     * @param PreviewProfileSecretBindingLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed PreviewProfileSecretBindingLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return PreviewProfileSecretBindingEntity[] The PreviewProfileSecretBinding entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return PreviewProfileSecretBindingEntity The loaded PreviewProfileSecretBinding entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class PreviewProfileSecretBindingEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
     /**

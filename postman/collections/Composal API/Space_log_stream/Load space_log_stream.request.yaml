@@ -1,0 +1,15 @@
+$kind: http-request
+id: f7d40753-d2b1-5155-b8f9-1ff2538d95cf
+description: |-
+  The `load` operation of **space_log_stream**.
+
+  SDK: `client.SpaceLogStream().load({ space_id: "example" })`
+url: "{{base}}/api/v1/observability/spaces/:space_id/log_streams"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: space_id
+    value: "{{space_id}}"
+    description: "Input: space_id."
+order: 1000

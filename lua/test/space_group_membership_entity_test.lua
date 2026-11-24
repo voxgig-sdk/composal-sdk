@@ -29,7 +29,7 @@ describe("SpaceGroupMembershipEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SpaceGroupMembership(nil):list({ ["space_id"] = 1 }, nil)
+    local _, err = client:SpaceGroupMembership(nil):load({ ["space_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SpaceGroupMembershipEntity", function()
     local setup = space_group_membership_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list", "update", "remove"}) do
+    for _, _op in ipairs({"create", "update", "load", "remove"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "space_group_membership." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,39 +46,10 @@ describe("SpaceGroupMembershipEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"space_group_membership.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/group_memberships\"}")
-      print("LIVE STEP {\"id\":\"space_group_membership.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/group_memberships/{id}\"}")
+      print("LIVE STEP {\"id\":\"space_group_membership.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/group_memberships/{id}\"}")
+      print("LIVE STEP {\"id\":\"space_group_membership.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_group_membership.create.0 gives\"}")
       print("LIVE STEP {\"id\":\"space_group_membership.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/group_memberships/{id}\"}")
-      print("LIVE STEP {\"id\":\"space_group_membership.list.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"space01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPACE_GROUP_MEMBERSHIP_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local space_group_membership_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.space_group_membership")))
-    local space_group_membership_ref01_data = nil
-    if #space_group_membership_ref01_data_raw > 0 then
-      space_group_membership_ref01_data = helpers.to_map(space_group_membership_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local space_group_membership_ref01_ent = client:SpaceGroupMembership(nil)
-    local space_group_membership_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_group_membership_ref01_list_result, err = space_group_membership_ref01_ent:list(space_group_membership_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(space_group_membership_ref01_list_result)
-
+      pending("Live coverage incomplete: space_group_membership.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/group_memberships); space_group_membership.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/group_memberships/{id}); space_group_membership.load.2 excluded (GET-only live run: reads a record only space_group_membership.create.0 gives); space_group_membership.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/group_memberships/{id})")
       return
     end
 
@@ -109,23 +80,6 @@ describe("SpaceGroupMembershipEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local space_group_membership_ref01_match = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_group_membership_ref01_list_result, err = space_group_membership_ref01_ent:list(space_group_membership_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(space_group_membership_ref01_list_result)
-
-    local found_item = vs.select(
-      runner.entity_list_to_data(space_group_membership_ref01_list_result),
-      { id = space_group_membership_ref01_data["id"] })
-    assert.is_false(vs.isempty(found_item))
-
-    if setup.live then
-      runner.live_pace()
-    end
     -- UPDATE
     local space_group_membership_ref01_data_up0_up = {
       id = space_group_membership_ref01_data["id"],
@@ -143,6 +97,21 @@ describe("SpaceGroupMembershipEntity", function()
     if setup.live then
       runner.live_pace()
     end
+    -- LOAD
+    local space_group_membership_ref01_match_dt0 = {
+      id = space_group_membership_ref01_data["id"],
+    }
+    local space_group_membership_ref01_data_dt0_loaded, err = space_group_membership_ref01_ent:load(space_group_membership_ref01_match_dt0, nil)
+    assert.is_nil(err)
+    local space_group_membership_ref01_data_dt0_load_result = helpers.to_map(type(space_group_membership_ref01_data_dt0_loaded) == 'table' and space_group_membership_ref01_data_dt0_loaded.data_get and space_group_membership_ref01_data_dt0_loaded:data_get() or space_group_membership_ref01_data_dt0_loaded)
+    assert.is_not_nil(space_group_membership_ref01_data_dt0_load_result)
+    if not setup.live then
+      assert.is_true(runner.live_same_id(space_group_membership_ref01_data_dt0_load_result["id"], space_group_membership_ref01_data["id"]))
+    end
+
+    if setup.live then
+      runner.live_pace()
+    end
     -- REMOVE
     local space_group_membership_ref01_match_rm0 = {
       id = space_group_membership_ref01_data["id"],
@@ -150,23 +119,6 @@ describe("SpaceGroupMembershipEntity", function()
     space_group_membership_ref01_match_rm0["space_id"] = setup.idmap["space_id"] or setup.idmap["space01"]
     local _, err = space_group_membership_ref01_ent:remove(space_group_membership_ref01_match_rm0, nil)
     assert.is_nil(err)
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local space_group_membership_ref01_match_rt0 = {
-      ["space_id"] = setup.idmap["space01"],
-    }
-
-    local space_group_membership_ref01_list_rt0_result, err = space_group_membership_ref01_ent:list(space_group_membership_ref01_match_rt0, nil)
-    assert.is_nil(err)
-    assert.is_table(space_group_membership_ref01_list_rt0_result)
-
-    local not_found_item = vs.select(
-      runner.entity_list_to_data(space_group_membership_ref01_list_rt0_result),
-      { id = space_group_membership_ref01_data["id"] })
-    assert.is_true(vs.isempty(not_found_item))
 
   end)
 end)

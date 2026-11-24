@@ -1,0 +1,11 @@
+$kind: http-request
+id: "4a3a9db9-40b4-510f-92a1-13f3ec16fb70"
+description: |-
+  The `load` operation of **artifact_cache_namespace**.
+
+  SDK: `client.ArtifactCacheNamespace().load({ id: "example_id" })`
+url: "{{base}}/api/v1/artifacts/cache_namespaces"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

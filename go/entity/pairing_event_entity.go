@@ -294,16 +294,11 @@ func (e *PairingEventEntity) streamSteps(ctx *core.Context) error {
 	return nil
 }
 
-func (e *PairingEventEntity) Load(_ map[string]any, _ map[string]any) (any, error) {
-	return core.UnsupportedOp("load", e.name)
-}
 
-
-
-func (e *PairingEventEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, error) {
+func (e *PairingEventEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
 	ctx := utility.MakeContext(map[string]any{
-		"opname":   "list",
+		"opname":   "load",
 		"ctrl":     ctrl,
 		"match":    e.match,
 		"data":     e.data,
@@ -315,21 +310,32 @@ func (e *PairingEventEntity) List(reqmatch map[string]any, ctrl map[string]any) 
 			if ctx.Result.Resmatch != nil {
 				e.match = ctx.Result.Resmatch
 			}
+			if ctx.Result.Resdata != nil {
+				e.data = map[string]any{}
+				if data := core.ToMapAny(vs.Clone(ctx.Result.Resdata)); data != nil {
+					e.data = data
+				}
+			}
 		}
 	})
 }
 
-// ListTyped is the statically-typed variant of List: it takes an
-// PairingEventListMatch and returns []PairingEvent. It delegates to the untyped
-// List (identical runtime) and converts at the typed boundary.
-func (e *PairingEventEntity) ListTyped(reqmatch PairingEventListMatch, ctrl map[string]any) ([]PairingEvent, error) {
-	res, err := e.List(asMap(reqmatch), ctrl)
+// LoadTyped is the statically-typed variant of Load: it takes an
+// PairingEventLoadMatch and returns an PairingEvent. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *PairingEventEntity) LoadTyped(reqmatch PairingEventLoadMatch, ctrl map[string]any) (PairingEvent, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
 	if err != nil {
-		return nil, err
+		return PairingEvent{}, err
 	}
-	return typedSliceFrom[PairingEvent](res), nil
+	return typedFrom[PairingEvent](res), nil
 }
 
+
+
+func (e *PairingEventEntity) List(_ map[string]any, _ map[string]any) (any, error) {
+	return core.UnsupportedOp("list", e.name)
+}
 
 
 func (e *PairingEventEntity) Create(_ map[string]any, _ map[string]any) (any, error) {

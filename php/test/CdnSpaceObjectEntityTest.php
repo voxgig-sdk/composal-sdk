@@ -33,7 +33,7 @@ class CdnSpaceObjectEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->CdnSpaceObject(null)->list(["cdn_space_id" => 1], null);
+            $client->CdnSpaceObject(null)->load(["cdn_space_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class CdnSpaceObjectEntityTest extends TestCase
         $setup = cdn_space_object_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list", "load"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "cdn_space_object." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,21 +53,15 @@ class CdnSpaceObjectEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space_object.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["cdn_space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID");
-                }
-            }
+            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space_object.update.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: cdn_space_object.update.0 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{cdn_space_id}/objects)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["cdn_space_object01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "cdn_space_object",
-                fn() => $client->CdnSpaceObject(null)->list(["cdn_space_id" => $setup["idmap"]["cdn_space01"] ?? null], null), "id", $_liveId);
-        }
 
         // Bootstrap entity data from existing test data.
         $cdn_space_object_ref01_data_raw = Vs::items(Helpers::to_map(
@@ -75,86 +69,6 @@ class CdnSpaceObjectEntityTest extends TestCase
         $cdn_space_object_ref01_data = null;
         if (count($cdn_space_object_ref01_data_raw) > 0) {
             $cdn_space_object_ref01_data = Helpers::to_map($cdn_space_object_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_space_object_ref01_ent = $client->CdnSpaceObject(null);
-        $cdn_space_object_ref01_match = [
-            "cdn_space_id" => $setup["idmap"]["cdn_space01"],
-        ];
-
-        $cdn_space_object_ref01_list_result = $cdn_space_object_ref01_ent->list($cdn_space_object_ref01_match, null);
-        $this->assertIsArray($cdn_space_object_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $cdn_space_object_ref01_match_dt0 = [
-            "id" => $cdn_space_object_ref01_data["id"],
-        ];
-        $cdn_space_object_ref01_match_dt0["cdn_space_id"] = $setup["idmap"]["cdn_space_id"] ?? $setup["idmap"]["cdn_space01"] ?? null;
-        $cdn_space_object_ref01_data_dt0_loaded = $cdn_space_object_ref01_ent->load($cdn_space_object_ref01_match_dt0, null);
-        $cdn_space_object_ref01_data_dt0_load_result = Helpers::to_map(is_object($cdn_space_object_ref01_data_dt0_loaded) && method_exists($cdn_space_object_ref01_data_dt0_loaded, 'data_get') ? $cdn_space_object_ref01_data_dt0_loaded->data_get() : $cdn_space_object_ref01_data_dt0_loaded);
-        $this->assertNotNull($cdn_space_object_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($cdn_space_object_ref01_data_dt0_load_result["id"] ?? null, $cdn_space_object_ref01_data["id"]));
-        }
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["cdn_space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CDN_SPACE_OBJECT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["cdn_space_object01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "cdn_space_object",
-                fn() => $client->CdnSpaceObject(null)->list(["cdn_space_id" => $setup["idmap"]["cdn_space01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $cdn_space_object_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.cdn_space_object")));
-        $cdn_space_object_ref01_data = null;
-        if (count($cdn_space_object_ref01_data_raw) > 0) {
-            $cdn_space_object_ref01_data = Helpers::to_map($cdn_space_object_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_space_object_ref01_ent = $client->CdnSpaceObject(null);
-        $cdn_space_object_ref01_match = [
-            "cdn_space_id" => $setup["idmap"]["cdn_space01"],
-        ];
-
-        $cdn_space_object_ref01_list_result = $cdn_space_object_ref01_ent->list($cdn_space_object_ref01_match, null);
-        $this->assertIsArray($cdn_space_object_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $cdn_space_object_ref01_match_dt0 = [
-            "id" => $cdn_space_object_ref01_data["id"],
-        ];
-        $cdn_space_object_ref01_match_dt0["cdn_space_id"] = $setup["idmap"]["cdn_space_id"] ?? $setup["idmap"]["cdn_space01"] ?? null;
-        $cdn_space_object_ref01_data_dt0_loaded = $cdn_space_object_ref01_ent->load($cdn_space_object_ref01_match_dt0, null);
-        $cdn_space_object_ref01_data_dt0_load_result = Helpers::to_map(is_object($cdn_space_object_ref01_data_dt0_loaded) && method_exists($cdn_space_object_ref01_data_dt0_loaded, 'data_get') ? $cdn_space_object_ref01_data_dt0_loaded->data_get() : $cdn_space_object_ref01_data_dt0_loaded);
-        $this->assertNotNull($cdn_space_object_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($cdn_space_object_ref01_data_dt0_load_result["id"] ?? null, $cdn_space_object_ref01_data["id"]));
         }
 
     }

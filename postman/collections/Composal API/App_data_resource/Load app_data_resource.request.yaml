@@ -3,7 +3,7 @@ id: "6dec6768-8067-51a7-93e9-80011e5742b1"
 description: |-
   The `load` operation of **app_data_resource**.
 
-  SDK: `client.AppDataResource().load({ app_id: "example", id: "example_id" })`
+  SDK: `client.AppDataResource().load({ app_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/data_resources/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{app_data_resource_id}}"
     description: The app_data_resource this request addresses.
-order: 2000
+order: 1000

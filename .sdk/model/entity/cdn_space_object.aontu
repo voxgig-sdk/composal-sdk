@@ -21,66 +21,6 @@ main: kit: entity: cdn_space_object: {
 
   name: "cdn_space_object"
   op: {
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/cdn_spaces/{cdn_space_id}/objects"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "cdn_space_id"
-                or: "cdn_space_id"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/cdn_spaces/{cdn_space_id}/objects"
-          q: {
-            exist: [
-              "cdn_space_id"
-            ]
-          }
-          r: {
-            param: {
-              cdn_space_id: "cdn_space_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "cdn_spaces"
-            }
-            {
-              var: "cdn_space_id"
-            }
-            {
-              lit: "objects"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -144,6 +84,61 @@ main: kit: entity: cdn_space_object: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/cdn_spaces/{cdn_space_id}/objects"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "cdn_space_id"
+                or: "cdn_space_id"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/cdn_spaces/{cdn_space_id}/objects"
+          q: {
+            exist: [
+              "cdn_space_id"
+            ]
+          }
+          r: {
+            param: {
+              cdn_space_id: "cdn_space_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "cdn_spaces"
+            }
+            {
+              var: "cdn_space_id"
+            }
+            {
+              lit: "objects"
             }
           ]
           t: {

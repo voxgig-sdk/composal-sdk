@@ -1,0 +1,34 @@
+$kind: http-request
+id: ed4c7732-8b4f-5299-ace0-6b4bf18d7f4d
+description: |-
+  The `load` operation of **spark_agent_integration**.
+
+  SDK: `client.SparkAgentIntegration().load({ agent_id: "example", organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/agents/:id/spark/integrations"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: catalog_q
+    value: ""
+    disabled: true
+  - key: cursor
+    value: ""
+    disabled: true
+  - key: limit
+    value: ""
+    disabled: true
+  - key: q
+    value: ""
+    disabled: true
+  - key: toolkit
+    value: ""
+    disabled: true
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this spark_agent_integration belongs to.
+  - key: id
+    value: "{{agent_id}}"
+    description: The agent this spark_agent_integration belongs to.
+order: 1000

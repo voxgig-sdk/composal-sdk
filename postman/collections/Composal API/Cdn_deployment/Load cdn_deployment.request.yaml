@@ -3,7 +3,7 @@ id: cc41aa94-3dd4-531c-a1a5-7ab3401ee564
 description: |-
   The `load` operation of **cdn_deployment**.
 
-  SDK: `client.CdnDeployment().load({ app_id: "example", cdn_id: "example", id: "example_id" })`
+  SDK: `client.CdnDeployment().load({ app_id: "example", cdn_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/cdns/:cdn_id/deployments/:id"
 method: GET
 headers:
@@ -18,4 +18,4 @@ pathVariables:
   - key: id
     value: "{{cdn_deployment_id}}"
     description: The cdn_deployment this request addresses.
-order: 2000
+order: 1000

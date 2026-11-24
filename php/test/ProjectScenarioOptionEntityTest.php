@@ -33,7 +33,7 @@ class ProjectScenarioOptionEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->ProjectScenarioOption(null)->list(["organization_id" => 1, "project_id" => 'x'], null);
+            $client->ProjectScenarioOption(null)->load(["organization_id" => 1, "project_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class ProjectScenarioOptionEntityTest extends TestCase
         $setup = project_scenario_option_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "project_scenario_option." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class ProjectScenarioOptionEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["organization01", "project01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PROJECT_SCENARIO_OPTION_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,19 +65,6 @@ class ProjectScenarioOptionEntityTest extends TestCase
         if (count($project_scenario_option_ref01_data_raw) > 0) {
             $project_scenario_option_ref01_data = Helpers::to_map($project_scenario_option_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $project_scenario_option_ref01_ent = $client->ProjectScenarioOption(null);
-        $project_scenario_option_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "project_id" => $setup["idmap"]["project01"],
-        ];
-
-        $project_scenario_option_ref01_list_result = $project_scenario_option_ref01_ent->list($project_scenario_option_ref01_match, null);
-        $this->assertIsArray($project_scenario_option_ref01_list_result);
 
     }
 }

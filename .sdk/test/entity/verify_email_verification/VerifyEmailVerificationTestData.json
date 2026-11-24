@@ -1,9 +1,15 @@
 {
   "existing": {
     "verify_email_verification": {
-      "VERIFY_EMAIL_VERIFICATION00": {},
-      "VERIFY_EMAIL_VERIFICATION01": {},
-      "VERIFY_EMAIL_VERIFICATION02": {}
+      "VERIFY_EMAIL_VERIFICATION00": {
+        "id": "VERIFY_EMAIL_VERIFICATION00"
+      },
+      "VERIFY_EMAIL_VERIFICATION01": {
+        "id": "VERIFY_EMAIL_VERIFICATION01"
+      },
+      "VERIFY_EMAIL_VERIFICATION02": {
+        "id": "VERIFY_EMAIL_VERIFICATION02"
+      }
     }
   },
   "new": {

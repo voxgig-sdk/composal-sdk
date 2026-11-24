@@ -38,7 +38,7 @@ func TestRunArtifactEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RunArtifact(nil).List(map[string]any{"pipeline_id": 1, "run_id": "x"}, nil)
+		_, err := client.RunArtifact(nil).Load(map[string]any{"pipeline_id": 1, "run_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRunArtifactEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list"} {
+		for _, _op := range []string{"create", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "run_artifact." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,13 +64,6 @@ func TestRunArtifactEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"run_artifact.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"pipeline01", "run01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, run_artifactEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_RUN_ARTIFACT_ENTID", _liveKey)
-				}
-			}
-		}
 		client := setup.client
 		_ = client
 
@@ -87,20 +80,20 @@ func TestRunArtifactEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
+		// LOAD
 		runArtifactRef01Ent := client.RunArtifact(nil)
-		runArtifactRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
+		runArtifactRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["pipeline_id"]; v != nil {
+			runArtifactRef01MatchDt0["pipeline_id"] = v
+		} else {
+			runArtifactRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
 		}
-
-		runArtifactRef01ListResult, err := runArtifactRef01Ent.List(runArtifactRef01Match, nil)
+		runArtifactRef01DataDt0Loaded, err := runArtifactRef01Ent.Load(runArtifactRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, runArtifactRef01ListOk := runArtifactRef01ListResult.([]any)
-		if !runArtifactRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runArtifactRef01ListResult)
+		if runArtifactRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 		return
@@ -138,19 +131,19 @@ func TestRunArtifactEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		runArtifactRef01Match := map[string]any{
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
+		// LOAD
+		runArtifactRef01MatchDt0 := map[string]any{}
+		if v := setup.idmap["pipeline_id"]; v != nil {
+			runArtifactRef01MatchDt0["pipeline_id"] = v
+		} else {
+			runArtifactRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
 		}
-
-		runArtifactRef01ListResult, err := runArtifactRef01Ent.List(runArtifactRef01Match, nil)
+		runArtifactRef01DataDt0Loaded, err := runArtifactRef01Ent.Load(runArtifactRef01MatchDt0, nil)
 		if err != nil {
-			t.Fatalf("list failed: %v", err)
+			t.Fatalf("load failed: %v", err)
 		}
-		_, runArtifactRef01ListOk := runArtifactRef01ListResult.([]any)
-		if !runArtifactRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", runArtifactRef01ListResult)
+		if runArtifactRef01DataDt0Loaded == nil {
+			t.Fatal("expected load result to be non-nil")
 		}
 
 	})

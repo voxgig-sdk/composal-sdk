@@ -55,9 +55,9 @@
 <a aria-current="page" href="../api/agent_session_checkpoint.html">AgentSessionCheckpoint</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsidfinalize">POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize</a>
 <a class="nav-section" href="#post-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsidseal">POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/seal</a>
 <a class="nav-section" href="#post-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints">POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</a>
-<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</a>
 <a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsid">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}</a>
-<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsiddownload">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download</a></div>
+<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsiddownload">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download</a>
+<a class="nav-section" href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints">GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</a></div>
 <a href="../api/agent_session_roder_handoff.html">AgentSessionRoderHandoff</a>
 <a href="../api/agent_setting.html">AgentSetting</a>
 <a href="../api/agent_sharing.html">AgentSharing</a>
@@ -620,12 +620,6 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</code></a></td>
-<td><code>list</code></td>
-<td>Success</td>
-</tr>
-<tr>
-<td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsid"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
@@ -636,18 +630,19 @@
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints"><code>/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</code></a></td>
+<td><code>load</code></td>
+<td>Success</td>
+</tr>
 </tbody>
 </table>
 <h2 id="examples">Examples</h2>
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">agent_session_checkpoints, err := client.AgentSessionCheckpoint(nil).List(map[string]any{&quot;agent_session_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(agent_session_checkpoints)
-agent_session_checkpoint, err := client.AgentSessionCheckpoint(nil).Load(map[string]any{&quot;agent_session_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">agent_session_checkpoint, err := client.AgentSessionCheckpoint(nil).Load(map[string]any{&quot;agent_session_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -660,32 +655,27 @@ fmt.Println(created)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local agent_session_checkpoints, err = client:AgentSessionCheckpoint():list({ agent_session_id = &quot;example&quot;, organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
-local agent_session_checkpoint, err = client:AgentSessionCheckpoint():load({ agent_session_id = &quot;example&quot;, id = &quot;example_id&quot;, organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
+<pre><code class="language-lua">local agent_session_checkpoint, err = client:AgentSessionCheckpoint():load({ agent_session_id = &quot;example&quot;, organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
 local created, err = client:AgentSessionCheckpoint():create({ agent_session_id = &quot;example&quot;, organization_id = &quot;example&quot;, repo_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$agent_session_checkpoints = $client-&gt;AgentSessionCheckpoint()-&gt;list([&quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
-$agent_session_checkpoint = $client-&gt;AgentSessionCheckpoint()-&gt;load([&quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$agent_session_checkpoint = $client-&gt;AgentSessionCheckpoint()-&gt;load([&quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
 $created = $client-&gt;AgentSessionCheckpoint()-&gt;create([&quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">agent_session_checkpoints = client.AgentSessionCheckpoint().list({&quot;agent_session_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
-agent_session_checkpoint = client.AgentSessionCheckpoint().load({&quot;agent_session_id&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">agent_session_checkpoint = client.AgentSessionCheckpoint().load({&quot;agent_session_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot;})
 created = client.AgentSessionCheckpoint().create({ &quot;agent_session_id&quot;: &quot;example&quot;, &quot;organization_id&quot;: &quot;example&quot;, &quot;repo_id&quot;: &quot;example&quot; })
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">agent_session_checkpoints = client.AgentSessionCheckpoint.list({ &quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
-agent_session_checkpoint = client.AgentSessionCheckpoint.load({ &quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">agent_session_checkpoint = client.AgentSessionCheckpoint.load({ &quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
 created = client.AgentSessionCheckpoint.create({ &quot;agent_session_id&quot; =&gt; &quot;example&quot;, &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;repo_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const agent_session_checkpoints = await client.AgentSessionCheckpoint().list({ agent_session_id: &quot;example&quot;, organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
-const agent_session_checkpoint = await client.AgentSessionCheckpoint().load({ agent_session_id: &quot;example&quot;, id: &quot;example_id&quot;, organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
+<pre><code class="language-ts">const agent_session_checkpoint = await client.AgentSessionCheckpoint().load({ agent_session_id: &quot;example&quot;, organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
 const created = await client.AgentSessionCheckpoint().create({ agent_session_id: &quot;example&quot;, organization_id: &quot;example&quot;, repo_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
@@ -1071,9 +1061,9 @@ const created = await client.AgentSessionCheckpoint().create({ agent_session_id:
 <h5 id="404-not-found-1" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-1" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</h3>
-<p>Operation ID: <code>api_v1_agent_session_checkpoints</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}</h3>
+<p>Operation ID: <code>api_v1_agent_session_checkpoint</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -1108,6 +1098,13 @@ const created = await client.AgentSessionCheckpoint().create({ agent_session_id:
 <td>Yes</td>
 <td></td>
 </tr>
+<tr>
+<td><code>id</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
 </tbody>
 </table>
 <h4 id="responses-3">Responses</h4>
@@ -1119,9 +1116,8 @@ const created = await client.AgentSessionCheckpoint().create({ agent_session_id:
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsid" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}</h3>
-<p>Operation ID: <code>api_v1_agent_session_checkpoint</code>.</p>
+<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsiddownload" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download</h3>
+<p>Operation ID: <code>download_api_v1_agent_session_checkpoint</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -1174,8 +1170,8 @@ const created = await client.AgentSessionCheckpoint().create({ agent_session_id:
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
-<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpointsiddownload" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download</h3>
-<p>Operation ID: <code>download_api_v1_agent_session_checkpoint</code>.</p>
+<h3 id="get-apiv1organizationsorg_slugreposrepo_slugagent_sessionsagent_session_idcheckpoints" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints</h3>
+<p>Operation ID: <code>api_v1_agent_session_checkpoints</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-5">Parameters</h4>
 <table>
@@ -1205,13 +1201,6 @@ const created = await client.AgentSessionCheckpoint().create({ agent_session_id:
 </tr>
 <tr>
 <td><code>agent_session_id</code></td>
-<td><code>path</code></td>
-<td><code>string</code></td>
-<td>Yes</td>
-<td></td>
-</tr>
-<tr>
-<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

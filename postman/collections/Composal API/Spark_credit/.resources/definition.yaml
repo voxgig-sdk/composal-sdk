@@ -18,7 +18,7 @@ description: |-
   | `kind` | string | yes |  |
   | `payment_method` | object | yes |  |
   | `payments_enabled` | boolean | yes |  |
-  | `plan` | string |  |  |
+  | `plan` | string | yes |  |
   | `plans` | array | yes |  |
   | `quoted_credits_cents` | integer |  |  |
   | `quoted_price_cents` | integer |  |  |

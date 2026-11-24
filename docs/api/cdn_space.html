@@ -163,8 +163,8 @@
 <a aria-current="page" href="../api/cdn_space.html">CdnSpace</a><div class="nav-sections"><a class="nav-section" href="#post-apiv1cdn_spacesidarchive">POST /api/v1/cdn_spaces/{id}/archive</a>
 <a class="nav-section" href="#post-apiv1cdn_spacesidprovision">POST /api/v1/cdn_spaces/{id}/provision</a>
 <a class="nav-section" href="#post-apiv1organizationsorg_slugcdn_spaces">POST /api/v1/organizations/{org_slug}/cdn_spaces</a>
-<a class="nav-section" href="#get-apiv1organizationsorg_slugcdn_spaces">GET /api/v1/organizations/{org_slug}/cdn_spaces</a>
 <a class="nav-section" href="#get-apiv1cdn_spacesid">GET /api/v1/cdn_spaces/{id}</a>
+<a class="nav-section" href="#get-apiv1organizationsorg_slugcdn_spaces">GET /api/v1/organizations/{org_slug}/cdn_spaces</a>
 <a class="nav-section" href="#patch-apiv1cdn_spacesid">PATCH /api/v1/cdn_spaces/{id}</a>
 <a class="nav-section" href="#delete-apiv1cdn_spacesid">DELETE /api/v1/cdn_spaces/{id}</a>
 <a class="nav-section" href="#put-apiv1cdn_spacesid">PUT /api/v1/cdn_spaces/{id}</a></div>
@@ -623,13 +623,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1organizationsorg_slugcdn_spaces"><code>/api/v1/organizations/{org_slug}/cdn_spaces</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1cdn_spacesid"><code>/api/v1/cdn_spaces/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1cdn_spacesid"><code>/api/v1/cdn_spaces/{id}</code></a></td>
+<td><a href="#get-apiv1organizationsorg_slugcdn_spaces"><code>/api/v1/organizations/{org_slug}/cdn_spaces</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -657,12 +657,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">cdn_spaces, err := client.CdnSpace(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;}, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(cdn_spaces)
-cdn_space, err := client.CdnSpace(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">cdn_space, err := client.CdnSpace(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -690,8 +685,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local cdn_spaces, err = client:CdnSpace():list({ organization_id = &quot;example&quot; })
-local cdn_space, err = client:CdnSpace():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local cdn_space, err = client:CdnSpace():load({ id = &quot;example_id&quot; })
 local created, err = client:CdnSpace():create({ organization_id = &quot;example&quot; })
 local updated, err = client:CdnSpace():update({ id = &quot;example_id&quot; })
 local patched, err = client:CdnSpace():patch({ id = &quot;example_id&quot; })
@@ -699,8 +693,7 @@ local removed, err = client:CdnSpace():remove({ id = &quot;example_id&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$cdn_spaces = $client-&gt;CdnSpace()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
-$cdn_space = $client-&gt;CdnSpace()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$cdn_space = $client-&gt;CdnSpace()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;CdnSpace()-&gt;create([&quot;organization_id&quot; =&gt; &quot;example&quot;]);
 $updated = $client-&gt;CdnSpace()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;CdnSpace()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -708,8 +701,7 @@ $client-&gt;CdnSpace()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quot;])
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">cdn_spaces = client.CdnSpace().list({&quot;organization_id&quot;: &quot;example&quot;})
-cdn_space = client.CdnSpace().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">cdn_space = client.CdnSpace().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.CdnSpace().create({ &quot;organization_id&quot;: &quot;example&quot; })
 updated = client.CdnSpace().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.CdnSpace().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -717,8 +709,7 @@ client.CdnSpace().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">cdn_spaces = client.CdnSpace.list({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
-cdn_space = client.CdnSpace.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">cdn_space = client.CdnSpace.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.CdnSpace.create({ &quot;organization_id&quot; =&gt; &quot;example&quot; })
 updated = client.CdnSpace.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.CdnSpace.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -726,8 +717,7 @@ client.CdnSpace.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const cdn_spaces = await client.CdnSpace().list({ organization_id: &quot;example&quot; })
-const cdn_space = await client.CdnSpace().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const cdn_space = await client.CdnSpace().load({ id: &quot;example_id&quot; })
 const created = await client.CdnSpace().create({ organization_id: &quot;example&quot; })
 const updated = await client.CdnSpace().update({ id: &quot;example_id&quot; })
 const patched = await client.CdnSpace().patch({ id: &quot;example_id&quot; })
@@ -861,9 +851,9 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-2" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-2" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-2" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1organizationsorg_slugcdn_spaces" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/cdn_spaces</h3>
-<p>Operation ID: <code>api_v1_cdn_spaces</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-apiv1cdn_spacesid" class="operation" data-method="get"><code>GET</code> /api/v1/cdn_spaces/{id}</h3>
+<p>Operation ID: <code>api_v1_cdn_space</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-3">Parameters</h4>
 <table>
@@ -878,7 +868,7 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 </thead>
 <tbody>
 <tr>
-<td><code>org_slug</code></td>
+<td><code>id</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
@@ -895,9 +885,8 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="load">load</h2>
-<h3 id="get-apiv1cdn_spacesid" class="operation" data-method="get"><code>GET</code> /api/v1/cdn_spaces/{id}</h3>
-<p>Operation ID: <code>api_v1_cdn_space</code>.</p>
+<h3 id="get-apiv1organizationsorg_slugcdn_spaces" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/cdn_spaces</h3>
+<p>Operation ID: <code>api_v1_cdn_spaces</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="parameters-4">Parameters</h4>
 <table>
@@ -912,7 +901,7 @@ await client.CdnSpace().remove({ id: &quot;example_id&quot; })
 </thead>
 <tbody>
 <tr>
-<td><code>id</code></td>
+<td><code>org_slug</code></td>
 <td><code>path</code></td>
 <td><code>string</code></td>
 <td>Yes</td>

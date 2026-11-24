@@ -41,7 +41,7 @@ const utility_1 = require("../../utility");
             params.organization_id = 'direct01';
         }
         const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/spark_credits/daily_usage',
+            path: 'api/v1/organizations/{organization_id}/spark_credits',
             method: 'GET',
             params,
             query,
@@ -59,51 +59,6 @@ const utility_1 = require("../../utility");
             (0, node_assert_1.default)(result.status === 200);
             (0, node_assert_1.default)(null != result.data);
             (0, node_assert_1.default)(result.data.id === 'direct01');
-            (0, node_assert_1.default)(calls.length === 1);
-            (0, node_assert_1.default)(calls[0].init.method === 'GET');
-            (0, node_assert_1.default)(calls[0].url.includes('direct01'));
-        }
-    });
-    (0, node_test_1.test)('direct-list-spark_credit', async (t) => {
-        if (liveScenariosActive()) {
-            t.skip('Covered by live operation scenarios');
-            return;
-        }
-        const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-spark_credit', setup.live))
-            return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["organization01"], LIVE_STRICT))
-            return;
-        const { client, calls } = setup;
-        const params = {};
-        const query = {};
-        if (setup.live) {
-            params.organization_id = setup.idmap['organization01'];
-        }
-        else {
-            params.organization_id = 'direct01';
-        }
-        const result = await client.direct({
-            path: 'api/v1/organizations/{organization_id}/spark_credits',
-            method: 'GET',
-            params,
-            query,
-        });
-        if (setup.live) {
-            if (!result.ok || result.status < 200 || result.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list failed: ' + (0, utility_1.describeLive)(result));
-            }
-            if (!(Array.isArray(unwrapListData(result.data)))) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list returned no list: ' + (0, utility_1.describeLive)(result));
-            }
-        }
-        else {
-            (0, node_assert_1.default)(result.ok === true);
-            (0, node_assert_1.default)(result.status === 200);
-            (0, node_assert_1.default)(null != result.data);
-            const listArr = unwrapListData(result.data);
-            (0, node_assert_1.default)(Array.isArray(listArr));
-            (0, node_assert_1.default)(listArr.length === 2);
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));

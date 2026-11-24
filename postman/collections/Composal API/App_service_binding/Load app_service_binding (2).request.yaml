@@ -1,0 +1,15 @@
+$kind: http-request
+id: "700a2bdf-09ca-5bc6-b33d-44562b6e6d56"
+description: |-
+  The `load` operation of **app_service_binding**.
+
+  SDK: `client.AppServiceBinding().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/service_bindings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_service_binding belongs to.
+order: 2000

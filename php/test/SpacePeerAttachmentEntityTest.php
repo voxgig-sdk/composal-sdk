@@ -33,7 +33,7 @@ class SpacePeerAttachmentEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->SpacePeerAttachment(null)->list(["space_id" => 1], null);
+            $client->SpacePeerAttachment(null)->load(["space_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class SpacePeerAttachmentEntityTest extends TestCase
         $setup = space_peer_attachment_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "space_peer_attachment." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,39 +54,10 @@ class SpacePeerAttachmentEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peer_attachments"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only space_peer_attachment.create.0 gives"}' . "\n");
             fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"space_peer_attachment.list.4","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["space01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_SPACE_PEER_ATTACHMENT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $space_peer_attachment_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.space_peer_attachment")));
-        $space_peer_attachment_ref01_data = null;
-        if (count($space_peer_attachment_ref01_data_raw) > 0) {
-            $space_peer_attachment_ref01_data = Helpers::to_map($space_peer_attachment_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $space_peer_attachment_ref01_ent = $client->SpacePeerAttachment(null);
-        $space_peer_attachment_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_peer_attachment_ref01_list_result = $space_peer_attachment_ref01_ent->list($space_peer_attachment_ref01_match, null);
-        $this->assertIsArray($space_peer_attachment_ref01_list_result);
-
-            return;
+            $this->markTestSkipped('Live coverage incomplete: space_peer_attachment.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/peer_attachments); space_peer_attachment.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}); space_peer_attachment.load.2 excluded (GET-only live run: reads a record only space_peer_attachment.create.0 gives); space_peer_attachment.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -115,22 +86,6 @@ class SpacePeerAttachmentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $space_peer_attachment_ref01_match = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_peer_attachment_ref01_list_result = $space_peer_attachment_ref01_ent->list($space_peer_attachment_ref01_match, null);
-        $this->assertIsArray($space_peer_attachment_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($space_peer_attachment_ref01_list_result),
-            ["id" => $space_peer_attachment_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // UPDATE
         $space_peer_attachment_ref01_data_up0_up = [
             "id" => $space_peer_attachment_ref01_data["id"],
@@ -147,28 +102,26 @@ class SpacePeerAttachmentEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
+        // LOAD
+        $space_peer_attachment_ref01_match_dt0 = [
+            "id" => $space_peer_attachment_ref01_data["id"],
+        ];
+        $space_peer_attachment_ref01_data_dt0_loaded = $space_peer_attachment_ref01_ent->load($space_peer_attachment_ref01_match_dt0, null);
+        $space_peer_attachment_ref01_data_dt0_load_result = Helpers::to_map(is_object($space_peer_attachment_ref01_data_dt0_loaded) && method_exists($space_peer_attachment_ref01_data_dt0_loaded, 'data_get') ? $space_peer_attachment_ref01_data_dt0_loaded->data_get() : $space_peer_attachment_ref01_data_dt0_loaded);
+        $this->assertNotNull($space_peer_attachment_ref01_data_dt0_load_result);
+        if (empty($setup["live"])) {
+            $this->assertTrue(Runner::live_same_id($space_peer_attachment_ref01_data_dt0_load_result["id"] ?? null, $space_peer_attachment_ref01_data["id"]));
+        }
+
+        if (!empty($setup["live"])) {
+            Runner::live_pace();
+        }
         // REMOVE
         $space_peer_attachment_ref01_match_rm0 = [
             "id" => $space_peer_attachment_ref01_data["id"],
         ];
         $space_peer_attachment_ref01_match_rm0["space_id"] = $setup["idmap"]["space_id"] ?? $setup["idmap"]["space01"] ?? null;
         $space_peer_attachment_ref01_ent->remove($space_peer_attachment_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $space_peer_attachment_ref01_match_rt0 = [
-            "space_id" => $setup["idmap"]["space01"],
-        ];
-
-        $space_peer_attachment_ref01_list_rt0_result = $space_peer_attachment_ref01_ent->list($space_peer_attachment_ref01_match_rt0, null);
-        $this->assertIsArray($space_peer_attachment_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($space_peer_attachment_ref01_list_rt0_result),
-            ["id" => $space_peer_attachment_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

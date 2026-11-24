@@ -29,7 +29,7 @@ describe("SparkAgentIntegrationEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:SparkAgentIntegration(nil):list({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
+    local _, err = client:SparkAgentIntegration(nil):load({ ["agent_id"] = 1, ["organization_id"] = "x" }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("SparkAgentIntegrationEntity", function()
     local setup = spark_agent_integration_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"create", "list"}) do
+    for _, _op in ipairs({"create", "load"}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "spark_agent_integration." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -46,13 +46,6 @@ describe("SparkAgentIntegrationEntity", function()
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
       print("LIVE STEP {\"id\":\"spark_agent_integration.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"agent01", "organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_SPARK_AGENT_INTEGRATION_ENTID")
-        end
-      end
-    end
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -66,16 +59,13 @@ describe("SparkAgentIntegrationEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
+    -- LOAD
     local spark_agent_integration_ref01_ent = client:SparkAgentIntegration(nil)
-    local spark_agent_integration_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_agent_integration_ref01_list_result, err = spark_agent_integration_ref01_ent:list(spark_agent_integration_ref01_match, nil)
+    local spark_agent_integration_ref01_match_dt0 = {}
+    spark_agent_integration_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local spark_agent_integration_ref01_data_dt0_loaded, err = spark_agent_integration_ref01_ent:load(spark_agent_integration_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(spark_agent_integration_ref01_list_result)
+    assert.is_not_nil(spark_agent_integration_ref01_data_dt0_loaded)
 
       return
     end
@@ -107,15 +97,12 @@ describe("SparkAgentIntegrationEntity", function()
     if setup.live then
       runner.live_pace()
     end
-    -- LIST
-    local spark_agent_integration_ref01_match = {
-      ["agent_id"] = setup.idmap["agent01"],
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local spark_agent_integration_ref01_list_result, err = spark_agent_integration_ref01_ent:list(spark_agent_integration_ref01_match, nil)
+    -- LOAD
+    local spark_agent_integration_ref01_match_dt0 = {}
+    spark_agent_integration_ref01_match_dt0["organization_id"] = setup.idmap["organization_id"] or setup.idmap["organization01"]
+    local spark_agent_integration_ref01_data_dt0_loaded, err = spark_agent_integration_ref01_ent:load(spark_agent_integration_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_table(spark_agent_integration_ref01_list_result)
+    assert.is_not_nil(spark_agent_integration_ref01_data_dt0_loaded)
 
   end)
 end)

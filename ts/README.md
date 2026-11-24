@@ -63,8 +63,8 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const agentoperation = await client.AgentOperation().load({ agent_id: "example", id: "example_id", organization_id: "example" })
-  console.log(agentoperation.data())
+  const githubonboarding = await client.GithubOnboarding().load({ organization_id: "example" })
+  console.log(githubonboarding.data())
 } catch (err) {
   console.error('load failed:', err)
 }
@@ -128,9 +128,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = ComposalSDK.test()
 
-const agentoperation = await client.AgentOperation().load({ id: 'test01', agent_id: 'example_agent_id', organization_id: 'example_organization_id' })
-// agentoperation is the AgentOperation entity; .data() reads its mock record
-console.log(agentoperation.data())
+const githubonboarding = await client.GithubOnboarding().load({ organization_id: 'example_organization_id' })
+// githubonboarding is the GithubOnboarding entity; .data() reads its mock record
+console.log(githubonboarding.data())
 ```
 
 You can also use the instance method:
@@ -145,14 +145,14 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.AgentOperation()
+const entity = client.GithubOnboarding()
 
 // First call runs the operation and stores its result
-await entity.load({ id: 'example', agent_id: 'example_agent_id', organization_id: 'example_organization_id' })
+await entity.load({ organization_id: 'example_organization_id' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
-console.log(data.id)
+console.log(data)
 ```
 
 ### Add custom middleware
@@ -888,7 +888,7 @@ API path: `/api/v1/control/a2a/{connection_id}/.well-known/agent-card.json`
 | `skip_payment` | Grant the selected package as an ongoing complimentary subscription with monthly included usage and package limits. |
 | `slug` |  |
 
-Operations: create, list, load, update.
+Operations: create, load, update.
 
 API path: `/api/v1/admin/organizations/{org_slug}/checkout_session`
 
@@ -954,12 +954,9 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_ope
 | `hidden_install_count` | Installs by agents the viewer cannot open |
 | `id` |  |
 | `install_count` |  |
-| `install_targets` | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` |  |
 | `installed_target_ids` | Install targets of the viewer that have this app installed |
-| `items` |  |
 | `mcp_url` |  |
-| `next_cursor` | Pass as cursor to load older apps |
 | `owner` | The person who controls the author agent |
 | `thread` | The thread that published the app, when the viewer can open the author agent |
 | `title` |  |
@@ -1280,7 +1277,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/email/{mess
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/events`
 
@@ -1351,7 +1348,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/inputs`
 | `team_sharing_version` |  |
 | `toolkit` |  |
 
-Operations: create, list, load, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize`
 
@@ -1673,7 +1670,7 @@ API path: `/api/v1/organizations/{organization_id}/agent_relay_file_grants/accou
 | `version` |  |
 | `work_repositories` |  |
 
-Operations: list, update.
+Operations: load, update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/repositories`
 
@@ -1772,7 +1769,7 @@ API path: `/api/v1/agent_sessions/{session_id}/transcript`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize`
 
@@ -1796,7 +1793,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id
 | `instructions` |  |
 | `version` |  |
 
-Operations: list, update.
+Operations: load, update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/settings`
 
@@ -1848,7 +1845,7 @@ API path: `/api/v1/organizations/{organization_id}/agent_sites/{id}/opened`
 | `skills` |  |
 | `source` | owner/repo, a GitHub or skills.sh link, or npx skills add owner/repo [--skill NAME ...] |
 
-Operations: create, list, load, remove, update.
+Operations: create, load, remove, update.
 
 API path: `/api/v1/organizations/{organization_id}/agent_skills`
 
@@ -1887,7 +1884,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subagents`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions`
 
@@ -1977,7 +1974,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/co
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/agent/threads/{id}/archive`
 
@@ -2017,8 +2014,11 @@ API path: `/api/v1/organizations/{org_slug}/pages/agent_usage`
 | `available` | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` |  |
+| `id` |  |
+| `name` |  |
 | `project_choices` | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` |  |
+| `slug` |  |
 | `verify_projects` |  |
 | `version` |  |
 
@@ -2045,7 +2045,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait
 | `image_url` |  |
 | `title` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/agent_web_previews`
 
@@ -2091,7 +2091,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/work/{work_
 | `truncated` |  |
 | `workflows` |  |
 
-Operations: create, list, update.
+Operations: create, load, update.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/workflows`
 
@@ -2267,7 +2267,7 @@ API path: `/api/v1/organizations/{organization_id}/agreement_access_request`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/acknowledge`
 
@@ -2287,7 +2287,7 @@ API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/e
 | `task` |  |
 | `type` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs`
 
@@ -2329,7 +2329,7 @@ API path: `/api/v1/app_access/callback`
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/app_access/jwks`
 
@@ -2365,7 +2365,7 @@ API path: `/api/v1/app_access/jwks`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{id}/archive`
 
@@ -2387,7 +2387,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{id}/archive`
 | `value` |  |
 | `value_kind` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/config_variables/{id}/disable`
 
@@ -2414,7 +2414,7 @@ API path: `/api/v1/hosting/apps/{app_id}/config_variables/{id}/disable`
 | `updated_at` |  |
 | `version` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/archive`
 
@@ -2478,7 +2478,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deploys`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel`
 
@@ -2588,7 +2588,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_rollbacks`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/environments/{id}/archive`
 
@@ -2637,7 +2637,7 @@ API path: `/api/v1/hosting/apps/{app_id}/metrics/query_range`
 | `source_ref` |  |
 | `storage_binding_resources` | Replace preview storage selections, mapping captured mount binding IDs to storage resource IDs. |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/archive`
 
@@ -2656,7 +2656,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/archive`
 | `ttl_days` |  |
 | `updated_at` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/preview_profiles`
 
@@ -2667,7 +2667,7 @@ API path: `/api/v1/hosting/apps/{app_id}/preview_profiles`
 | `id` |  |
 | `image` | Optional fully qualified digest-pinned image from the deployed service's registry and repository. |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/hosting/app_runs/{id}/cancel`
 
@@ -2745,7 +2745,7 @@ API path: `/api/v1/hosting/apps/{app_id}/secrets/{id}/set_value`
 | `updated_at` |  |
 | `updated_at_label` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{id}/archive`
 
@@ -2755,7 +2755,7 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable`
 
@@ -2808,7 +2808,7 @@ API path: `/api/v1/hosting/apps/{app_id}/service_placements`
 | `status` |  |
 | `updated_at` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive`
 
@@ -2896,7 +2896,7 @@ API path: `/api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/view
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/artifacts/{id}/expire`
 
@@ -2906,7 +2906,7 @@ API path: `/api/v1/artifacts/artifacts/{id}/expire`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
 
@@ -2916,7 +2916,7 @@ API path: `/api/v1/artifacts/cache_namespaces/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/image_repositories/{id}/archive`
 
@@ -2926,7 +2926,7 @@ API path: `/api/v1/artifacts/image_repositories/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
 
@@ -2936,7 +2936,7 @@ API path: `/api/v1/artifacts/package_mirrors/{id}/pause`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/retention_policies`
 
@@ -3042,7 +3042,7 @@ API path: `/api/v1/auth/password_resets`
 | `turnstile_site_key` |  |
 | `waitlist_enabled` | New public signups require waitlist approval when enabled. |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/auth/registration_options`
 
@@ -3123,7 +3123,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/automations
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/bazel/backends/{backend_id}/runner_pools`
 
@@ -3152,7 +3152,7 @@ API path: `/api/v1/bazel/action_results/{hash}/{size_bytes}`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/bazel/backends/{id}/issue_token`
 
@@ -3767,7 +3767,7 @@ API path: `/api/v1/organizations/{organization_id}/browser_sessions/{browser_ses
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/evict`
 
@@ -3787,7 +3787,7 @@ API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments`
 
@@ -3805,7 +3805,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments`
 | `tls_status` |  |
 | `updated_at` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 
@@ -3815,7 +3815,7 @@ API path: `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/cdn_spaces/{id}/archive`
 
@@ -3825,9 +3825,9 @@ API path: `/api/v1/cdn_spaces/{id}/archive`
 | --- | --- |
 | `id` |  |
 
-Operations: list, load, remove, update.
+Operations: load, remove, update.
 
-API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
+API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}`
 
 #### Change
 
@@ -3838,7 +3838,7 @@ API path: `/api/v1/cdn_spaces/{cdn_space_id}/objects`
 | `github_sync` |  |
 | `result` | What this page is a page of. |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/changes`
 
@@ -4239,7 +4239,7 @@ API path: `/api/v1/ci/pipelines`
 | `trigger_kind` |  |
 | `updated_at` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry`
 
@@ -4299,7 +4299,7 @@ API path: `/api/v1/cli_events`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/cli_releases`
 
@@ -4622,7 +4622,7 @@ API path: `/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials`
 | `unlock` | Once a paywalled scan ends, whether a paid plan would unlock its locked findings and whether this person may choose one, as on its findings page. |
 | `web_url` | The run's page in the Composal web app |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce`
 
@@ -4630,24 +4630,25 @@ API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reprod
 
 | Field | Description |
 | --- | --- |
-| `finding_count` | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | Original team order used by legacy hash links and rerun indices. |
-| `findings` |  |
-| `findings_fix_prompt` |  |
-| `free_findings_pending` | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` |  |
+| `agent_id` |  |
+| `agent_title` |  |
+| `area` | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | Checks in the same tester report that this finding cites. |
+| `confidence` |  |
+| `confirmed` | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` |  |
+| `evidence_timestamp_ms` |  |
+| `expected` |  |
+| `fix_prompt` | A coding-agent prompt for this finding alone |
+| `has_recording` | On a locked finding, whether the tester recorded evidence for it. |
 | `id` |  |
-| `mode` |  |
-| `permissions` |  |
-| `priority` | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` |  |
-| `project_id` |  |
-| `reproduction_of` |  |
-| `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` |  |
+| `locked` | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` |  |
+| `severity` |  |
 | `title` |  |
-| `unlock` | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` |  |
+| `tracked` | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` |  |
 
 Operations: list.
 
@@ -4680,7 +4681,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/flows`
 | `flow_map` |  |
 | `revision_id` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows`
 
@@ -4804,7 +4805,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation`
 | `service_views` |  |
 | `storage_resources` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/deployments/details`
 
@@ -5021,7 +5022,7 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/spark/devices/enterprise_relays`
 
@@ -5047,16 +5048,18 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 
 | Field | Description |
 | --- | --- |
-| `active_grants` |  |
-| `agent_choices` | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` |  |
-| `all_agents_access` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` |  |
+| `can_edit` |  |
+| `can_revoke` |  |
 | `capabilities` |  |
-| `execution_available` |  |
-| `grants` |  |
+| `created_at` |  |
 | `id` |  |
-| `next_cursor` |  |
 | `principal_id` |  |
+| `principal_name` |  |
+| `revision` |  |
+| `revoked_at` |  |
+| `updated_at` |  |
 
 Operations: create, list.
 
@@ -5304,7 +5307,7 @@ API path: `/api/v1/email_verifications/resend`
 | `verify_network_connection_id` |  |
 | `version` | Required for target or tester changes; use lock_version from the environment. |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/organizations/{organization_id}/verify/environments`
 
@@ -5439,7 +5442,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/environments/{verify_e
 | `secret_id` |  |
 | `secret_version_id` |  |
 
-Operations: create, list, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings`
 
@@ -5477,7 +5480,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/evidence/{id}`
 | `id` |  |
 | `stop_observed` | True only for archived zero-capacity states with all known jobs stopped and allocations terminated. |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/execution/desired_states/{id}/reconcile`
 
@@ -5487,7 +5490,7 @@ API path: `/api/v1/execution/desired_states/{id}/reconcile`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/execution/reconciler_ticks`
 
@@ -5497,7 +5500,7 @@ API path: `/api/v1/execution/reconciler_ticks`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/execution/releases/{id}/activate`
 
@@ -5547,20 +5550,21 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | Field | Description |
 | --- | --- |
 | `account_id` |  |
-| `active` |  |
 | `agent_filters` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` |  |
 | `can_continue` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` |  |
+| `check_count` |  |
 | `concurrency` |  |
 | `covered_areas` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` |  |
-| `deadline_at` |  |
+| `credential_name` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | When the team's time limit ends. |
 | `demo_project` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` |  |
 | `ended_early` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` |  |
 | `environment_name` |  |
-| `explorations` |  |
 | `explorer_activity` | What the team is doing now. |
 | `finding_count` | Findings at every priority, locked ones included. |
 | `findings` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -5570,14 +5574,12 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | `huntable_flows` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` |  |
 | `idempotency_key` |  |
-| `launch_options` | Present only when launch was requested by an admin |
 | `max_seconds` |  |
 | `max_testers` |  |
 | `mode` |  |
 | `next_scan_improvements` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` |  |
 | `paywalled` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` |  |
 | `persona_id` | Project persona whose role and observed access this discovery maps. |
@@ -5589,10 +5591,13 @@ API path: `/api/v1/execution/runtime_instances/{id}/refresh`
 | `reproductions` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | Scenarios saved from this discovery. |
 | `scenario_generation` |  |
+| `scenarios_pending` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` |  |
 | `startup_retryable` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` |  |
 | `time_limit_reached` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -5964,7 +5969,7 @@ API path: `/api/v1/organizations/{organization_id}/github_ci_repositories/{githu
 | `replace` | Make these the project's only repositories. |
 | `repositories` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/github_connections`
 
@@ -6297,7 +6302,7 @@ API path: `/api/v1/organizations/{organization_id}/devices/{device_registration_
 | `verification_record` |  |
 | `verification_status` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/domains/{id}/disable`
 
@@ -6372,7 +6377,7 @@ API path: `/api/v1/organizations/{organization_id}/import_branch_policy`
 | `permissions` |  |
 | `slack` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/integrations`
 
@@ -6450,7 +6455,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_ch
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
 
@@ -6460,7 +6465,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces`
 
@@ -6709,7 +6714,7 @@ API path: `/api/v1/hosting/locations`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks`
 
@@ -6751,7 +6756,7 @@ API path: `/api/v1/organizations/{organization_id}/logo_image`
 | --- | --- |
 | `call_first` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/marketing_settings`
 
@@ -7014,7 +7019,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/hosting/metrics/queries`
 
@@ -7082,7 +7087,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/network_connections`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{id}/activate`
 
@@ -7128,7 +7133,7 @@ API path: `/api/v1/ci/nodes/{id}/certificate/rotate`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/ci/nodes/{id}/leases/{lease_id}/claim`
 
@@ -7175,7 +7180,7 @@ API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/
 | `task` |  |
 | `type` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs`
 
@@ -7199,7 +7204,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/now`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
 
@@ -7209,7 +7214,7 @@ API path: `/api/v1/observability/clickhouse_clusters/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
 
@@ -7219,7 +7224,7 @@ API path: `/api/v1/observability/quickwit_clusters/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/observability/spaces/{id}/activate`
 
@@ -7285,7 +7290,7 @@ API path: `/api/v1/organizations`
 | --- | --- |
 | `id` |  |
 
-Operations: list, remove, update.
+Operations: load, remove, update.
 
 API path: `/api/v1/spark/organizations/{organization_id}/apps`
 
@@ -7314,7 +7319,7 @@ API path: `/api/v1/device_runtime/organizations/{organization_id}/devices/{devic
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire`
 
@@ -7354,7 +7359,7 @@ API path: `/api/v1/spark/organizations/{organization_id}/message_files`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/activate`
 
@@ -7434,7 +7439,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{id}/disable
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate`
 
@@ -7462,7 +7467,7 @@ API path: `/api/v1/admin/organizations/{org_slug}/settings`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, remove, update.
+Operations: create, load, remove, update.
 
 API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/token`
 
@@ -7493,7 +7498,7 @@ API path: `/api/v1/spark/organizations/{organization_id}/tools`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/workload_identities/{id}/activate`
 
@@ -7557,7 +7562,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/page`
 | `selected_reference` |  |
 | `viewer_id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/page/activity`
 
@@ -7761,13 +7766,23 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `active_count` |  |
-| `credentials` |  |
-| `needs_attention_count` |  |
-| `permissions` |  |
-| `persona_states` | Scenarios by the state of their latest execution. |
-| `personas` |  |
-| `project` |  |
+| `access_mode` |  |
+| `active_run_count` |  |
+| `archived_at` |  |
+| `attention` | What needs an operator's eye, problems before notices |
+| `capabilities` |  |
+| `created_at` |  |
+| `credential` |  |
+| `credential_id` | The credential this persona signs in with. |
+| `goals` |  |
+| `health` |  |
+| `id` |  |
+| `lock_version` |  |
+| `name` |  |
+| `project_id` |  |
+| `role` |  |
+| `scenario_count` |  |
+| `updated_at` |  |
 
 Operations: list.
 
@@ -7777,12 +7792,28 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `environment_query` |  |
-| `environments` |  |
-| `environments_has_more` |  |
-| `pagination` |  |
-| `runs` |  |
-| `selected_environment` |  |
+| `archived_at` |  |
+| `browser_seconds` |  |
+| `can_archive` |  |
+| `can_restore` |  |
+| `cleanup_state` |  |
+| `commit_sha` |  |
+| `created_at` |  |
+| `duration_seconds` |  |
+| `environment_name` |  |
+| `finished_at` |  |
+| `id` |  |
+| `outcome` |  |
+| `pull_request` |  |
+| `pull_request_label` |  |
+| `scenario_count` |  |
+| `source_run` |  |
+| `started_at` |  |
+| `state` |  |
+| `title` |  |
+| `trigger_kind` |  |
+| `triggered_by` |  |
+| `web_path` |  |
 
 Operations: list.
 
@@ -7866,7 +7897,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/sessions`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/relay/pairings`
 
@@ -7875,7 +7906,7 @@ API path: `/api/v1/relay/pairings`
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/relay/pairings/{id}/events`
 
@@ -7906,7 +7937,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/p
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/personal_access_tokens`
 
@@ -7915,7 +7946,7 @@ API path: `/api/v1/personal_access_tokens`
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/operations`
 
@@ -7929,7 +7960,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/operations`
 | `secret_id` |  |
 | `secret_version_id` |  |
 
-Operations: create, list, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings`
 
@@ -7964,7 +7995,7 @@ API path: `/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rota
 | `snapshot_version` |  |
 | `source_keys` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals`
 
@@ -8290,18 +8321,11 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `byte_size` |  |
 | `content_type` |  |
 | `credential_ids` |  |
-| `credentials` |  |
 | `environment_ids` |  |
-| `environments` |  |
-| `fixtures` |  |
 | `id` |  |
 | `lock_version` |  |
 | `name` |  |
-| `pagination` |  |
-| `permissions` |  |
 | `persona_ids` |  |
-| `personas` |  |
-| `project` |  |
 | `sha256` |  |
 | `url` |  |
 | `version` |  |
@@ -8495,7 +8519,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `schedule_options` |  |
 | `schedules` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options`
 
@@ -8528,7 +8552,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | `project` |  |
 | `tester_numbers` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings`
 
@@ -8659,7 +8683,7 @@ API path: `/api/v1/organizations/{org_slug}/github/pull_requests/{github_reposit
 | `verify_environment_id` |  |
 | `write_scenarios` | Draft and validate focused scenarios for each change on its preview. |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/verify/pull_request_settings`
 
@@ -8814,7 +8838,7 @@ API path: `/api/v1/relay/signals`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/execution/releases/{release_id}/rollouts/{id}/complete`
 
@@ -8903,7 +8927,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/
 | `status` |  |
 | `title` |  |
 
-Operations: create, list, load, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete`
 
@@ -8966,7 +8990,7 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protectio
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request`
 
@@ -9231,7 +9255,7 @@ API path: `/api/v1/repositories/{repository}/sandbox_environments/validate`
 | `task` |  |
 | `trigger_kind` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
 
@@ -9247,7 +9271,7 @@ API path: `/api/v1/agent/roder/code_repairs/{id}/cancel`
 | `organization_id` |  |
 | `repository_slug` | Connected Composal repository required when enabling |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/agent/roder/code_repair_settings`
 
@@ -9297,7 +9321,7 @@ API path: `/api/v1/agent/roder/workspace_credentials`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
 
@@ -9340,7 +9364,7 @@ API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts`
 | `timeout_seconds` |  |
 | `updated_at` |  |
 
-Operations: create, list, load.
+Operations: create, load.
 
 API path: `/api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs`
 
@@ -9426,7 +9450,7 @@ API path: `/api/v1/agent/roder/run/workspace_credentials`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/claim`
 
@@ -9467,7 +9491,7 @@ API path: `/api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
 
@@ -9476,7 +9500,7 @@ API path: `/api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots`
 
@@ -9496,7 +9520,7 @@ API path: `/api/v1/execution/runtime_instances/{runtime_instance_id}/health_snap
 | `provider` |  |
 | `version` |  |
 
-Operations: create, list, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/organizations/{organization_id}/sandbox_integrations`
 
@@ -9544,7 +9568,7 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/restore`
 
@@ -9554,7 +9578,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact`
 
@@ -9564,7 +9588,7 @@ API path: `/api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 
@@ -9579,7 +9603,7 @@ API path: `/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints`
 | `organization` |  |
 | `sandbox_regions` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/settings`
 
@@ -9713,7 +9737,7 @@ API path: `/api/v1/organizations/{organization_id}/signal_integrations/{signal_i
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/organizations/{organization_id}/signal_subscriptions`
 
@@ -9758,7 +9782,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/sites`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, remove.
+Operations: create, load, remove.
 
 API path: `/api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys`
 
@@ -9817,7 +9841,7 @@ API path: `/api/v1/source_connections/{id}/refresh`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
 
@@ -9826,7 +9850,7 @@ API path: `/api/v1/observability/spaces/{space_id}/alert_rules/{id}/activate`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/observability/spaces/{space_id}/audit_events`
 
@@ -9836,7 +9860,7 @@ API path: `/api/v1/observability/spaces/{space_id}/audit_events`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/dns_records`
 
@@ -9846,7 +9870,7 @@ API path: `/api/v1/networking/spaces/{space_id}/dns_records`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
 
@@ -9856,7 +9880,7 @@ API path: `/api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
 
@@ -9866,7 +9890,7 @@ API path: `/api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/groups`
 
@@ -9876,7 +9900,7 @@ API path: `/api/v1/networking/spaces/{space_id}/groups`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
 
@@ -9885,7 +9909,7 @@ API path: `/api/v1/networking/spaces/{space_id}/group_memberships`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/observability/spaces/{space_id}/log_streams`
 
@@ -9894,7 +9918,7 @@ API path: `/api/v1/observability/spaces/{space_id}/log_streams`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/observability/spaces/{space_id}/metric_series`
 
@@ -9904,7 +9928,7 @@ API path: `/api/v1/observability/spaces/{space_id}/metric_series`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate`
 
@@ -9914,7 +9938,7 @@ API path: `/api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
 
@@ -9924,7 +9948,7 @@ API path: `/api/v1/networking/spaces/{space_id}/peers/{id}/approve`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
 
@@ -9934,7 +9958,7 @@ API path: `/api/v1/networking/spaces/{space_id}/peer_attachments`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
 
@@ -9944,7 +9968,7 @@ API path: `/api/v1/networking/spaces/{space_id}/policies/{id}/activate`
 | --- | --- |
 | `id` |  |
 
-Operations: create, list, load, patch, remove, update.
+Operations: create, load, patch, remove, update.
 
 API path: `/api/v1/networking/spaces/{space_id}/segments`
 
@@ -9953,7 +9977,7 @@ API path: `/api/v1/networking/spaces/{space_id}/segments`
 | Field | Description |
 | --- | --- |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
 
@@ -9994,7 +10018,7 @@ API path: `/api/v1/observability/spaces/{space_id}/trace_spans`
 | `updated_at_label` |  |
 | `verify_pr_scenario_writing_enabled` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/sparks`
 
@@ -10026,7 +10050,7 @@ API path: `/api/v1/organizations/{organization_id}/sparks`
 | `webhook_connections` |  |
 | `webhooks_available` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/integrations`
 
@@ -10111,30 +10135,32 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/skills`
 
 | Field | Description |
 | --- | --- |
-| `archived_count` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` |  |
-| `execution` |  |
+| `archive_deletes_sandbox` |  |
+| `archived` |  |
+| `attention` | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` |  |
+| `can_compact` |  |
+| `can_snooze` |  |
+| `coordination_status` | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` |  |
 | `first_input_key` | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | Membership the first message was sent as, for input_delivery. |
+| `group` | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` |  |
 | `id` |  |
 | `inherit_context` | Include the source conversation through its last completed reply. |
-| `local_activities` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` |  |
-| `local_scope_key` |  |
-| `local_status_pending` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` |  |
-| `main_thread_id` |  |
+| `is_main` |  |
+| `kind` |  |
 | `message` | The thread's first message. |
-| `next_cursor` |  |
+| `older` | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` |  |
-| `selected_thread` |  |
+| `snoozed_until` | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` |  |
-| `threads` |  |
 | `title` |  |
-| `total_archived_count` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` |  |
 
 Operations: create, list.
 
@@ -10170,7 +10196,7 @@ API path: `/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{th
 | `top_up_max_cents` | Maximum manual top-up, in USD cents. |
 | `top_up_step_cents` | Minimum manual top-up and increment, in USD cents. |
 
-Operations: create, list, load, patch, update.
+Operations: create, load, patch, update.
 
 API path: `/api/v1/organizations/{org_slug}/spark_credits`
 
@@ -10196,7 +10222,7 @@ API path: `/api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}
 | `compute_usd` |  |
 | `inference_usd` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/spark_credits/usage_totals`
 
@@ -10715,7 +10741,7 @@ API path: `/api/v1/organizations/{org_slug}/pages/vcs_nodes`
 | `organization` |  |
 | `sandbox_regions` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/pages/vcs_settings`
 
@@ -10897,7 +10923,7 @@ API path: `/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/
 | Field | Description |
 | --- | --- |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/email_verifications/verify`
 
@@ -11120,7 +11146,6 @@ Create an instance: `const admin_org = client.AdminOrg()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
@@ -11148,12 +11173,6 @@ Create an instance: `const admin_org = client.AdminOrg()`
 
 ```ts
 const admin_org = await client.AdminOrg().load({ id: 'admin_org_id' })
-```
-
-#### Example: List
-
-```ts
-const admin_orgs = await client.AdminOrg().list()
 ```
 
 #### Example: Create
@@ -11273,12 +11292,9 @@ Create an instance: `const agent_app = client.AgentApp()`
 | `hidden_install_count` | `number` | Installs by agents the viewer cannot open |
 | `id` | `string` |  |
 | `install_count` | `number` |  |
-| `install_targets` | `any[]` | Active agents the viewer owns or manages, which they can install apps on |
 | `installed_by` | `any[]` |  |
 | `installed_target_ids` | `any[]` | Install targets of the viewer that have this app installed |
-| `items` | `any[]` |  |
 | `mcp_url` | `string | null` |  |
-| `next_cursor` | `string | null` | Pass as cursor to load older apps |
 | `owner` | `Record<string, any>` | The person who controls the author agent |
 | `thread` | `any` | The thread that published the app, when the viewer can open the author agent |
 | `title` | `string` |  |
@@ -11843,12 +11859,12 @@ Create an instance: `const agent_event = client.AgentEvent()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_events = await client.AgentEvent().list({ agent_id: "example", organization_id: "example" })
+const agent_event = await client.AgentEvent().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 
@@ -11926,7 +11942,6 @@ Create an instance: `const agent_integration = client.AgentIntegration()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -11969,12 +11984,6 @@ Create an instance: `const agent_integration = client.AgentIntegration()`
 
 ```ts
 const agent_integration = await client.AgentIntegration().load({ id: 'agent_integration_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const agent_integrations = await client.AgentIntegration().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -12524,7 +12533,7 @@ Create an instance: `const agent_repository = client.AgentRepository()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -12541,10 +12550,10 @@ Create an instance: `const agent_repository = client.AgentRepository()`
 | `version` | `number` |  |
 | `work_repositories` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_repositorys = await client.AgentRepository().list({ agent_id: "example", organization_id: "example" })
+const agent_repository = await client.AgentRepository().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 
@@ -12703,7 +12712,6 @@ Create an instance: `const agent_session_checkpoint = client.AgentSessionCheckpo
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -12716,12 +12724,6 @@ Create an instance: `const agent_session_checkpoint = client.AgentSessionCheckpo
 
 ```ts
 const agent_session_checkpoint = await client.AgentSessionCheckpoint().load({ id: 'agent_session_checkpoint_id', agent_session_id: 'agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
-```
-
-#### Example: List
-
-```ts
-const agent_session_checkpoints = await client.AgentSessionCheckpoint().list({ agent_session_id: "example", organization_id: "example", repo_id: "example" })
 ```
 
 #### Example: Create
@@ -12771,7 +12773,7 @@ Create an instance: `const agent_setting = client.AgentSetting()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -12783,10 +12785,10 @@ Create an instance: `const agent_setting = client.AgentSetting()`
 | `instructions` | `string` |  |
 | `version` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_settings = await client.AgentSetting().list({ agent_id: "example", organization_id: "example" })
+const agent_setting = await client.AgentSetting().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 
@@ -12852,7 +12854,6 @@ Create an instance: `const agent_skill = client.AgentSkill()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -12879,12 +12880,6 @@ Create an instance: `const agent_skill = client.AgentSkill()`
 
 ```ts
 const agent_skill = await client.AgentSkill().load({ id: 'agent_skill_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const agent_skills = await client.AgentSkill().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -12953,12 +12948,12 @@ Create an instance: `const agent_subscription = client.AgentSubscription()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_subscriptions = await client.AgentSubscription().list({ agent_id: "example", organization_id: "example" })
+const agent_subscription = await client.AgentSubscription().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -13106,7 +13101,6 @@ Create an instance: `const agent_thread = client.AgentThread()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -13119,12 +13113,6 @@ Create an instance: `const agent_thread = client.AgentThread()`
 
 ```ts
 const agent_thread = await client.AgentThread().load({ id: 'agent_thread_id' })
-```
-
-#### Example: List
-
-```ts
-const agent_threads = await client.AgentThread().list()
 ```
 
 #### Example: Create
@@ -13208,8 +13196,11 @@ Create an instance: `const agent_verify_project = client.AgentVerifyProject()`
 | `available` | `boolean` | Whether Verify is on for the organization; hide Verify access when false. |
 | `can_manage` | `boolean` | Whether the viewer can manage the agent and is a Verify admin. |
 | `expected_version` | `number` |  |
+| `id` | `string` |  |
+| `name` | `string` |  |
 | `project_choices` | `any[]` | Every granted project, then other Verify projects up to the choice limit. |
 | `project_choices_truncated` | `boolean` |  |
+| `slug` | `string` |  |
 | `verify_projects` | `any[]` |  |
 | `version` | `number` |  |
 
@@ -13245,7 +13236,7 @@ Create an instance: `const agent_web_preview = client.AgentWebPreview()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -13256,10 +13247,10 @@ Create an instance: `const agent_web_preview = client.AgentWebPreview()`
 | `image_url` | `string | null` |  |
 | `title` | `string | null` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_web_previews = await client.AgentWebPreview().list({ token: "example" })
+const agent_web_preview = await client.AgentWebPreview().load({ token: 'token' })
 ```
 
 
@@ -13336,7 +13327,7 @@ Create an instance: `const agent_workflow = client.AgentWorkflow()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `update(data)` | Update an existing entity. |
 
 #### Fields
@@ -13352,10 +13343,10 @@ Create an instance: `const agent_workflow = client.AgentWorkflow()`
 | `truncated` | `boolean` |  |
 | `workflows` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const agent_workflows = await client.AgentWorkflow().list({ agent_id: "example", organization_id: "example" })
+const agent_workflow = await client.AgentWorkflow().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -13653,7 +13644,6 @@ Create an instance: `const alert_rule_event = client.AlertRuleEvent()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
@@ -13667,12 +13657,6 @@ Create an instance: `const alert_rule_event = client.AlertRuleEvent()`
 
 ```ts
 const alert_rule_event = await client.AlertRuleEvent().load({ id: 'alert_rule_event_id', alert_rule_id: 'alert_rule_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const alert_rule_events = await client.AlertRuleEvent().list({ alert_rule_id: "example", space_id: "example" })
 ```
 
 #### Example: Create
@@ -13693,7 +13677,7 @@ Create an instance: `const allocation_log = client.AllocationLog()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -13711,10 +13695,10 @@ Create an instance: `const allocation_log = client.AllocationLog()`
 | `task` | `string` |  |
 | `type` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const allocation_logs = await client.AllocationLog().list({ allocation_id: "example", app_id: "example" })
+const allocation_log = await client.AllocationLog().load({ allocation_id: 'allocation_id', app_id: 'app_id' })
 ```
 
 
@@ -13797,12 +13781,12 @@ Create an instance: `const app_access_jwk = client.AppAccessJwk()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const app_access_jwks = await client.AppAccessJwk().list()
+const app_access_jwk = await client.AppAccessJwk().load()
 ```
 
 
@@ -13815,7 +13799,6 @@ Create an instance: `const app_cdn = client.AppCdn()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13859,12 +13842,6 @@ Create an instance: `const app_cdn = client.AppCdn()`
 const app_cdn = await client.AppCdn().load({ id: 'app_cdn_id', app_id: 'app_id' })
 ```
 
-#### Example: List
-
-```ts
-const app_cdns = await client.AppCdn().list({ app_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -13886,7 +13863,6 @@ Create an instance: `const app_config_variable = client.AppConfigVariable()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13916,12 +13892,6 @@ Create an instance: `const app_config_variable = client.AppConfigVariable()`
 const app_config_variable = await client.AppConfigVariable().load({ id: 'app_config_variable_id', app_id: 'app_id' })
 ```
 
-#### Example: List
-
-```ts
-const app_config_variables = await client.AppConfigVariable().list({ app_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -13944,7 +13914,6 @@ Create an instance: `const app_data_resource = client.AppDataResource()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -13977,12 +13946,6 @@ Create an instance: `const app_data_resource = client.AppDataResource()`
 
 ```ts
 const app_data_resource = await client.AppDataResource().load({ id: 'app_data_resource_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const app_data_resources = await client.AppDataResource().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -14044,7 +14007,6 @@ Create an instance: `const app_deployment = client.AppDeployment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14093,12 +14055,6 @@ Create an instance: `const app_deployment = client.AppDeployment()`
 
 ```ts
 const app_deployment = await client.AppDeployment().load({ id: 'app_deployment_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const app_deployments = await client.AppDeployment().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -14249,7 +14205,6 @@ Create an instance: `const app_environment = client.AppEnvironment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14279,12 +14234,6 @@ Create an instance: `const app_environment = client.AppEnvironment()`
 
 ```ts
 const app_environment = await client.AppEnvironment().load({ id: 'app_environment_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const app_environments = await client.AppEnvironment().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -14362,7 +14311,6 @@ Create an instance: `const app_preview = client.AppPreview()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14394,12 +14342,6 @@ Create an instance: `const app_preview = client.AppPreview()`
 const app_preview = await client.AppPreview().load({ id: 'app_preview_id', app_id: 'app_id' })
 ```
 
-#### Example: List
-
-```ts
-const app_previews = await client.AppPreview().list({ app_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -14421,7 +14363,6 @@ Create an instance: `const app_preview_profile = client.AppPreviewProfile()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14448,12 +14389,6 @@ Create an instance: `const app_preview_profile = client.AppPreviewProfile()`
 const app_preview_profile = await client.AppPreviewProfile().load({ id: 'app_preview_profile_id', app_id: 'app_id' })
 ```
 
-#### Example: List
-
-```ts
-const app_preview_profiles = await client.AppPreviewProfile().list({ app_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -14475,7 +14410,6 @@ Create an instance: `const app_run = client.AppRun()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -14489,12 +14423,6 @@ Create an instance: `const app_run = client.AppRun()`
 
 ```ts
 const app_run = await client.AppRun().load({ id: 'app_run_id' })
-```
-
-#### Example: List
-
-```ts
-const app_runs = await client.AppRun().list()
 ```
 
 #### Example: Create
@@ -14575,7 +14503,6 @@ Create an instance: `const app_service = client.AppService()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14634,12 +14561,6 @@ Create an instance: `const app_service = client.AppService()`
 const app_service = await client.AppService().load({ id: 'app_service_id', app_id: 'app_id' })
 ```
 
-#### Example: List
-
-```ts
-const app_services = await client.AppService().list({ app_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -14668,7 +14589,6 @@ Create an instance: `const app_service_binding = client.AppServiceBinding()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14684,12 +14604,6 @@ Create an instance: `const app_service_binding = client.AppServiceBinding()`
 
 ```ts
 const app_service_binding = await client.AppServiceBinding().load({ id: 'app_service_binding_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const app_service_bindings = await client.AppServiceBinding().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -14754,7 +14668,6 @@ Create an instance: `const app_storage_resource = client.AppStorageResource()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -14790,12 +14703,6 @@ Create an instance: `const app_storage_resource = client.AppStorageResource()`
 
 ```ts
 const app_storage_resource = await client.AppStorageResource().load({ id: 'app_storage_resource_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const app_storage_resources = await client.AppStorageResource().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -14992,7 +14899,6 @@ Create an instance: `const artifact = client.Artifact()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15008,12 +14914,6 @@ Create an instance: `const artifact = client.Artifact()`
 
 ```ts
 const artifact = await client.Artifact().load({ id: 'artifact_id' })
-```
-
-#### Example: List
-
-```ts
-const artifacts = await client.Artifact().list()
 ```
 
 #### Example: Create
@@ -15033,7 +14933,6 @@ Create an instance: `const artifact_cache_namespace = client.ArtifactCacheNamesp
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15049,12 +14948,6 @@ Create an instance: `const artifact_cache_namespace = client.ArtifactCacheNamesp
 
 ```ts
 const artifact_cache_namespace = await client.ArtifactCacheNamespace().load({ id: 'artifact_cache_namespace_id' })
-```
-
-#### Example: List
-
-```ts
-const artifact_cache_namespaces = await client.ArtifactCacheNamespace().list()
 ```
 
 #### Example: Create
@@ -15074,7 +14967,6 @@ Create an instance: `const artifact_image_repository = client.ArtifactImageRepos
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15090,12 +14982,6 @@ Create an instance: `const artifact_image_repository = client.ArtifactImageRepos
 
 ```ts
 const artifact_image_repository = await client.ArtifactImageRepository().load({ id: 'artifact_image_repository_id' })
-```
-
-#### Example: List
-
-```ts
-const artifact_image_repositorys = await client.ArtifactImageRepository().list()
 ```
 
 #### Example: Create
@@ -15115,7 +15001,6 @@ Create an instance: `const artifact_package_mirror = client.ArtifactPackageMirro
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15131,12 +15016,6 @@ Create an instance: `const artifact_package_mirror = client.ArtifactPackageMirro
 
 ```ts
 const artifact_package_mirror = await client.ArtifactPackageMirror().load({ id: 'artifact_package_mirror_id' })
-```
-
-#### Example: List
-
-```ts
-const artifact_package_mirrors = await client.ArtifactPackageMirror().list()
 ```
 
 #### Example: Create
@@ -15156,7 +15035,6 @@ Create an instance: `const artifact_retention_policy = client.ArtifactRetentionP
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15172,12 +15050,6 @@ Create an instance: `const artifact_retention_policy = client.ArtifactRetentionP
 
 ```ts
 const artifact_retention_policy = await client.ArtifactRetentionPolicy().load({ id: 'artifact_retention_policy_id' })
-```
-
-#### Example: List
-
-```ts
-const artifact_retention_policys = await client.ArtifactRetentionPolicy().list()
 ```
 
 #### Example: Create
@@ -15337,7 +15209,7 @@ Create an instance: `const auth_registration_option = client.AuthRegistrationOpt
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -15348,10 +15220,10 @@ Create an instance: `const auth_registration_option = client.AuthRegistrationOpt
 | `turnstile_site_key` | `string | null` |  |
 | `waitlist_enabled` | `boolean` | New public signups require waitlist approval when enabled. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const auth_registration_options = await client.AuthRegistrationOption().list()
+const auth_registration_option = await client.AuthRegistrationOption().load()
 ```
 
 
@@ -15462,7 +15334,7 @@ Create an instance: `const backend_runner_pool = client.BackendRunnerPool()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -15471,10 +15343,10 @@ Create an instance: `const backend_runner_pool = client.BackendRunnerPool()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const backend_runner_pools = await client.BackendRunnerPool().list({ backend_id: "example" })
+const backend_runner_pool = await client.BackendRunnerPool().load({ backend_id: 'backend_id' })
 ```
 
 #### Example: Create
@@ -15530,7 +15402,6 @@ Create an instance: `const bazel_backend = client.BazelBackend()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -15546,12 +15417,6 @@ Create an instance: `const bazel_backend = client.BazelBackend()`
 
 ```ts
 const bazel_backend = await client.BazelBackend().load({ id: 'bazel_backend_id' })
-```
-
-#### Example: List
-
-```ts
-const bazel_backends = await client.BazelBackend().list()
 ```
 
 #### Example: Create
@@ -16626,7 +16491,6 @@ Create an instance: `const cache_namespace_entry = client.CacheNamespaceEntry()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16642,12 +16506,6 @@ Create an instance: `const cache_namespace_entry = client.CacheNamespaceEntry()`
 
 ```ts
 const cache_namespace_entry = await client.CacheNamespaceEntry().load({ id: 'cache_namespace_entry_id', cache_namespace_id: 'cache_namespace_id' })
-```
-
-#### Example: List
-
-```ts
-const cache_namespace_entrys = await client.CacheNamespaceEntry().list({ cache_namespace_id: "example" })
 ```
 
 #### Example: Create
@@ -16691,7 +16549,6 @@ Create an instance: `const cdn_deployment = client.CdnDeployment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -16704,12 +16561,6 @@ Create an instance: `const cdn_deployment = client.CdnDeployment()`
 
 ```ts
 const cdn_deployment = await client.CdnDeployment().load({ id: 'cdn_deployment_id', app_id: 'app_id', cdn_id: 'cdn_id' })
-```
-
-#### Example: List
-
-```ts
-const cdn_deployments = await client.CdnDeployment().list({ app_id: "example", cdn_id: "example" })
 ```
 
 #### Example: Create
@@ -16731,7 +16582,6 @@ Create an instance: `const cdn_hostname = client.CdnHostname()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16757,12 +16607,6 @@ Create an instance: `const cdn_hostname = client.CdnHostname()`
 const cdn_hostname = await client.CdnHostname().load({ id: 'cdn_hostname_id', app_id: 'app_id', cdn_id: 'cdn_id' })
 ```
 
-#### Example: List
-
-```ts
-const cdn_hostnames = await client.CdnHostname().list({ app_id: "example", cdn_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -16783,7 +16627,6 @@ Create an instance: `const cdn_space = client.CdnSpace()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -16799,12 +16642,6 @@ Create an instance: `const cdn_space = client.CdnSpace()`
 
 ```ts
 const cdn_space = await client.CdnSpace().load({ id: 'cdn_space_id' })
-```
-
-#### Example: List
-
-```ts
-const cdn_spaces = await client.CdnSpace().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -16824,7 +16661,6 @@ Create an instance: `const cdn_space_object = client.CdnSpaceObject()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -16841,12 +16677,6 @@ Create an instance: `const cdn_space_object = client.CdnSpaceObject()`
 const cdn_space_object = await client.CdnSpaceObject().load({ id: 'cdn_space_object_id', cdn_space_id: 'cdn_space_id' })
 ```
 
-#### Example: List
-
-```ts
-const cdn_space_objects = await client.CdnSpaceObject().list({ cdn_space_id: "example" })
-```
-
 
 ### Change
 
@@ -16856,7 +16686,7 @@ Create an instance: `const change = client.Change()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -16867,10 +16697,10 @@ Create an instance: `const change = client.Change()`
 | `github_sync` | `Record<string, any>` |  |
 | `result` | `any` | What this page is a page of. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const changes = await client.Change().list({ organization_id: "example" })
+const change = await client.Change().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -17527,7 +17357,6 @@ Create an instance: `const ci_pipeline_run = client.CiPipelineRun()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -17572,12 +17401,6 @@ Create an instance: `const ci_pipeline_run = client.CiPipelineRun()`
 
 ```ts
 const ci_pipeline_run = await client.CiPipelineRun().load({ id: 'ci_pipeline_run_id', pipeline_id: 'pipeline_id' })
-```
-
-#### Example: List
-
-```ts
-const ci_pipeline_runs = await client.CiPipelineRun().list({ pipeline_id: "example" })
 ```
 
 #### Example: Create
@@ -17697,13 +17520,12 @@ Create an instance: `const cli_release = client.CliRelease()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const cli_releases = await client.CliRelease().list()
+const cli_release = await client.CliRelease().load()
 ```
 
 #### Example: Create
@@ -18194,7 +18016,6 @@ Create an instance: `const deep_scan = client.DeepScan()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -18260,12 +18081,6 @@ Create an instance: `const deep_scan = client.DeepScan()`
 const deep_scan = await client.DeepScan().load({ id: 'deep_scan_id', organization_id: 'organization_id' })
 ```
 
-#### Example: List
-
-```ts
-const deep_scans = await client.DeepScan().list({ organization_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -18291,24 +18106,25 @@ Create an instance: `const deep_scan_finding = client.DeepScanFinding()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `finding_count` | `number` | Findings at every priority; findings lists only the listed priority. |
-| `finding_ids` | `any[]` | Original team order used by legacy hash links and rerun indices. |
-| `findings` | `any[]` |  |
-| `findings_fix_prompt` | `string | null` |  |
-| `free_findings_pending` | `boolean` | Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. |
+| `actual` | `string` |  |
+| `agent_id` | `string` |  |
+| `agent_title` | `string` |  |
+| `area` | `string | null` | On a locked finding, the first segment of the page it was seen on, such as Billing. |
+| `checks` | `any[]` | Checks in the same tester report that this finding cites. |
+| `confidence` | `string` |  |
+| `confirmed` | `boolean` | On a locked finding, whether the automatic review confirmed it. |
+| `evidence_step_ids` | `any[]` |  |
+| `evidence_timestamp_ms` | `number | null` |  |
+| `expected` | `string` |  |
+| `fix_prompt` | `string` | A coding-agent prompt for this finding alone |
+| `has_recording` | `boolean` | On a locked finding, whether the tester recorded evidence for it. |
 | `id` | `string` |  |
-| `mode` | `string` |  |
-| `permissions` | `Record<string, any>` |  |
-| `priority` | `string | null` | The priority findings are narrowed to, or null when they are not narrowed. |
-| `priority_counts` | `Record<string, any>` |  |
-| `project_id` | `string | null` |  |
-| `reproduction_of` | `Record<string, any> | null` |  |
-| `reproductions` | `any[]` | Fresh-browser reruns of this scan's reported bugs. |
-| `reruns_available` | `boolean` | Whether findings can be rerun; a scan with locked findings waits for a paid plan. |
-| `status` | `string` |  |
+| `locked` | `boolean` | True for a locked finding of the workspace's included scan before it pays. |
+| `reproduction_steps` | `any[]` |  |
+| `severity` | `string` |  |
 | `title` | `string` |  |
-| `unlock` | `Record<string, any>` | Whether a paid plan would unlock some of this scan's findings, and whether this person may choose one. |
-| `web_url` | `string` |  |
+| `tracked` | `Record<string, any> | null` | The finding record to resolve or ignore; null until the tester finishes. |
+| `url` | `string` |  |
 
 #### Example: List
 
@@ -18359,7 +18175,7 @@ Create an instance: `const deep_scan_mapped_flow = client.DeepScanMappedFlow()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -18370,10 +18186,10 @@ Create an instance: `const deep_scan_mapped_flow = client.DeepScanMappedFlow()`
 | `flow_map` | `Record<string, any> | null` |  |
 | `revision_id` | `string | null` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const deep_scan_mapped_flows = await client.DeepScanMappedFlow().list({ organization_id: "example", environment_id: "example" })
+const deep_scan_mapped_flow = await client.DeepScanMappedFlow().load({ organization_id: 'organization_id', environment_id: 'environment_id' })
 ```
 
 
@@ -18533,7 +18349,7 @@ Create an instance: `const deployment_detail = client.DeploymentDetail()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -18561,10 +18377,10 @@ Create an instance: `const deployment_detail = client.DeploymentDetail()`
 | `service_views` | `any[]` |  |
 | `storage_resources` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const deployment_details = await client.DeploymentDetail().list({ organization_id: "example" })
+const deployment_detail = await client.DeploymentDetail().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -18944,12 +18760,12 @@ Create an instance: `const device_enterprise_relay = client.DeviceEnterpriseRela
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const device_enterprise_relays = await client.DeviceEnterpriseRelay().list()
+const device_enterprise_relay = await client.DeviceEnterpriseRelay().load()
 ```
 
 
@@ -19011,16 +18827,18 @@ Create an instance: `const device_grant = client.DeviceGrant()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_grants` | `any[]` |  |
-| `agent_choices` | `any[]` | Eligible picker choices, with current owner grant targets, on the first page only. |
 | `agent_id` | `string` |  |
-| `all_agents_access` | `boolean` | Whether every agent the owner can use may use this computer for the owner's messages, including agents added later. |
+| `agent_name` | `string | null` |  |
+| `can_edit` | `boolean` |  |
+| `can_revoke` | `boolean` |  |
 | `capabilities` | `any[]` |  |
-| `execution_available` | `boolean` |  |
-| `grants` | `any[]` |  |
+| `created_at` | `string` |  |
 | `id` | `string` |  |
-| `next_cursor` | `string | null` |  |
 | `principal_id` | `string` |  |
+| `principal_name` | `string | null` |  |
+| `revision` | `number` |  |
+| `revoked_at` | `string | null` |  |
+| `updated_at` | `string` |  |
 
 #### Example: List
 
@@ -19462,7 +19280,6 @@ Create an instance: `const environment = client.Environment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -19518,12 +19335,6 @@ Create an instance: `const environment = client.Environment()`
 
 ```ts
 const environment = await client.Environment().load({ id: 'environment_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const environments = await client.Environment().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -19734,7 +19545,7 @@ Create an instance: `const environment_secret_binding = client.EnvironmentSecret
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -19747,10 +19558,10 @@ Create an instance: `const environment_secret_binding = client.EnvironmentSecret
 | `secret_id` | `string` |  |
 | `secret_version_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const environment_secret_bindings = await client.EnvironmentSecretBinding().list({ app_id: "example", environment_id: "example" })
+const environment_secret_binding = await client.EnvironmentSecretBinding().load({ app_id: 'app_id', environment_id: 'environment_id' })
 ```
 
 #### Example: Create
@@ -19827,7 +19638,6 @@ Create an instance: `const execution_desired_state = client.ExecutionDesiredStat
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -19847,12 +19657,6 @@ Create an instance: `const execution_desired_state = client.ExecutionDesiredStat
 const execution_desired_state = await client.ExecutionDesiredState().load({ id: 'execution_desired_state_id' })
 ```
 
-#### Example: List
-
-```ts
-const execution_desired_states = await client.ExecutionDesiredState().list()
-```
-
 #### Example: Create
 
 ```ts
@@ -19870,7 +19674,6 @@ Create an instance: `const execution_reconciler_tick = client.ExecutionReconcile
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -19883,12 +19686,6 @@ Create an instance: `const execution_reconciler_tick = client.ExecutionReconcile
 
 ```ts
 const execution_reconciler_tick = await client.ExecutionReconcilerTick().load({ id: 'execution_reconciler_tick_id' })
-```
-
-#### Example: List
-
-```ts
-const execution_reconciler_ticks = await client.ExecutionReconcilerTick().list()
 ```
 
 #### Example: Create
@@ -19908,7 +19705,6 @@ Create an instance: `const execution_release = client.ExecutionRelease()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -19921,12 +19717,6 @@ Create an instance: `const execution_release = client.ExecutionRelease()`
 
 ```ts
 const execution_release = await client.ExecutionRelease().load({ id: 'execution_release_id' })
-```
-
-#### Example: List
-
-```ts
-const execution_releases = await client.ExecutionRelease().list()
 ```
 
 #### Example: Create
@@ -20026,20 +19816,21 @@ Create an instance: `const exploration = client.Exploration()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `account_id` | `string | null` |  |
-| `active` | `any[]` |  |
 | `agent_filters` | `Record<string, any>` | Status counts and matching agent IDs for every filter in this live snapshot. |
 | `agents` | `any[]` |  |
 | `can_continue` | `boolean` | Whether a finished run can be resumed through the orchestrator. |
 | `chat_messages` | `any[]` |  |
+| `check_count` | `number` |  |
 | `concurrency` | `number` |  |
 | `covered_areas` | `any[]` | Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out. |
 | `created_at` | `string` |  |
-| `deadline_at` | `string` |  |
+| `credential_name` | `string | null` | The credential the team signed in with, by its saved name if it was deleted; null for public access. |
+| `deadline_at` | `string` | When the team's time limit ends. |
 | `demo_project` | `Record<string, any> | null` | The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one. |
+| `duration_ms` | `number | null` |  |
 | `ended_early` | `boolean` | Whether a partial run stopped before its team did its work: no tester completed or reported a check and no agent reported a finding, as when the lead stopped at sign-in, or inference failed. |
 | `environment_id` | `string` |  |
 | `environment_name` | `string` |  |
-| `explorations` | `any[]` |  |
 | `explorer_activity` | `Record<string, any>` | What the team is doing now. |
 | `finding_count` | `number` | Findings at every priority, locked ones included. |
 | `findings` | `any[]` | Every tester's findings, most severe first, with the checks each one cites. |
@@ -20049,14 +19840,12 @@ Create an instance: `const exploration = client.Exploration()`
 | `huntable_flows` | `any[]` | Deprecated alias of scannable_flows, kept for released CLIs. |
 | `id` | `string` |  |
 | `idempotency_key` | `string` |  |
-| `launch_options` | `Record<string, any>` | Present only when launch was requested by an admin |
 | `max_seconds` | `number` |  |
 | `max_testers` | `number` |  |
 | `mode` | `string` |  |
 | `next_scan_improvements` | `any[]` | The optional setup the first scan's page offers for a better next scan, in order: a test account for a run without one, a repository except for a Deep Scan, and a plan. |
 | `observed_at` | `string` | Time this run snapshot was read; distinct from browser activity timestamps. |
 | `onboarding` | `boolean` | Whether this is the workspace's free first discovery, started by setup. |
-| `pagination` | `Record<string, any>` |  |
 | `paywalled` | `boolean` | Whether this is the workspace's included Deep Scan (verify_onboarding_deep_scan), or a rerun of it, while the workspace has not paid. |
 | `permissions` | `Record<string, any>` |  |
 | `persona_id` | `string | null` | Project persona whose role and observed access this discovery maps. |
@@ -20068,10 +19857,13 @@ Create an instance: `const exploration = client.Exploration()`
 | `reproductions` | `any[]` | Fresh-browser reruns of this scan's reported bugs. |
 | `saves_scenarios` | `boolean` | Whether this exploration has started saving scenarios. |
 | `scannable_flows` | `any[]` | Flows a finished exploration recorded that deep scans can start from. |
+| `scenario_count` | `number` | Scenarios saved from this discovery. |
 | `scenario_generation` | `Record<string, any>` |  |
+| `scenarios_pending` | `boolean` | Scenarios are still being prepared, so scenario_count may still grow. |
 | `sign_in_needs_answer` | `boolean` | Whether a sign-in check needs the person's answer next: its agent waits in its browser with no reply on the way, or the check ended on an unanswered question and an answer starts the agent again. |
 | `sign_in_outcome` | `string` | A sign-in check's outcome; null for other runs. |
 | `sign_in_question` | `string | null` | What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs. |
+| `started_at` | `string` |  |
 | `startup_retryable` | `boolean` | Failed browser startup can be retried without extending the original deadline or tester budget. |
 | `status` | `string` |  |
 | `time_limit_reached` | `boolean` | Whether a partial run ended because it used its whole time budget, rather than stopping early. |
@@ -20670,7 +20462,7 @@ Create an instance: `const github_connection = client.GithubConnection()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -20683,10 +20475,10 @@ Create an instance: `const github_connection = client.GithubConnection()`
 | `replace` | `boolean` | Make these the project's only repositories. |
 | `repositories` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const github_connections = await client.GithubConnection().list({ organization_id: "example" })
+const github_connection = await client.GithubConnection().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -21302,7 +21094,6 @@ Create an instance: `const hosting_app_domain = client.HostingAppDomain()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -21340,12 +21131,6 @@ Create an instance: `const hosting_app_domain = client.HostingAppDomain()`
 
 ```ts
 const hosting_app_domain = await client.HostingAppDomain().load({ id: 'hosting_app_domain_id', app_id: 'app_id' })
-```
-
-#### Example: List
-
-```ts
-const hosting_app_domains = await client.HostingAppDomain().list({ app_id: "example" })
 ```
 
 #### Example: Create
@@ -21489,7 +21274,7 @@ Create an instance: `const integration = client.Integration()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -21500,10 +21285,10 @@ Create an instance: `const integration = client.Integration()`
 | `permissions` | `Record<string, any>` |  |
 | `slack` | `Record<string, any>` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const integrations = await client.Integration().list({ organization_id: "example" })
+const integration = await client.Integration().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -21655,7 +21440,7 @@ Create an instance: `const job_step = client.JobStep()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -21665,10 +21450,10 @@ Create an instance: `const job_step = client.JobStep()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const job_steps = await client.JobStep().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+const job_step = await client.JobStep().load({ job_id: 'job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 #### Example: Create
@@ -21691,7 +21476,7 @@ Create an instance: `const job_workspace = client.JobWorkspace()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -21701,10 +21486,10 @@ Create an instance: `const job_workspace = client.JobWorkspace()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const job_workspaces = await client.JobWorkspace().list({ job_id: "example", pipeline_id: "example", run_id: "example" })
+const job_workspace = await client.JobWorkspace().load({ job_id: 'job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 #### Example: Create
@@ -22195,7 +21980,6 @@ Create an instance: `const log_stream_chunk = client.LogStreamChunk()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -22208,12 +21992,6 @@ Create an instance: `const log_stream_chunk = client.LogStreamChunk()`
 
 ```ts
 const log_stream_chunk = await client.LogStreamChunk().load({ id: 'log_stream_chunk_id', log_stream_id: 'log_stream_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const log_stream_chunks = await client.LogStreamChunk().list({ log_stream_id: "example", space_id: "example" })
 ```
 
 #### Example: Create
@@ -22274,7 +22052,7 @@ Create an instance: `const marketing_setting = client.MarketingSetting()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -22282,10 +22060,10 @@ Create an instance: `const marketing_setting = client.MarketingSetting()`
 | --- | --- | --- |
 | `call_first` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const marketing_settings = await client.MarketingSetting().list()
+const marketing_setting = await client.MarketingSetting().load()
 ```
 
 
@@ -22757,12 +22535,12 @@ Create an instance: `const metric_query = client.MetricQuery()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const metric_querys = await client.MetricQuery().list()
+const metric_query = await client.MetricQuery().load()
 ```
 
 
@@ -22899,7 +22677,6 @@ Create an instance: `const networking_space = client.NetworkingSpace()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -22915,12 +22692,6 @@ Create an instance: `const networking_space = client.NetworkingSpace()`
 
 ```ts
 const networking_space = await client.NetworkingSpace().load({ id: 'networking_space_id' })
-```
-
-#### Example: List
-
-```ts
-const networking_spaces = await client.NetworkingSpace().list()
 ```
 
 #### Example: Create
@@ -22991,7 +22762,6 @@ Create an instance: `const node_lease = client.NodeLease()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -23000,10 +22770,10 @@ Create an instance: `const node_lease = client.NodeLease()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const node_leases = await client.NodeLease().list({ node_id: "example" })
+const node_lease = await client.NodeLease().load({ node_id: 'node_id' })
 ```
 
 
@@ -23055,7 +22825,7 @@ Create an instance: `const nomad_log = client.NomadLog()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -23073,10 +22843,10 @@ Create an instance: `const nomad_log = client.NomadLog()`
 | `task` | `string` |  |
 | `type` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const nomad_logs = await client.NomadLog().list({ app_id: "example" })
+const nomad_log = await client.NomadLog().load({ app_id: 'app_id' })
 ```
 
 
@@ -23116,7 +22886,6 @@ Create an instance: `const observability_clickhouse_cluster = client.Observabili
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23132,12 +22901,6 @@ Create an instance: `const observability_clickhouse_cluster = client.Observabili
 
 ```ts
 const observability_clickhouse_cluster = await client.ObservabilityClickhouseCluster().load({ id: 'observability_clickhouse_cluster_id' })
-```
-
-#### Example: List
-
-```ts
-const observability_clickhouse_clusters = await client.ObservabilityClickhouseCluster().list()
 ```
 
 #### Example: Create
@@ -23157,7 +22920,6 @@ Create an instance: `const observability_quickwit_cluster = client.Observability
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23173,12 +22935,6 @@ Create an instance: `const observability_quickwit_cluster = client.Observability
 
 ```ts
 const observability_quickwit_cluster = await client.ObservabilityQuickwitCluster().load({ id: 'observability_quickwit_cluster_id' })
-```
-
-#### Example: List
-
-```ts
-const observability_quickwit_clusters = await client.ObservabilityQuickwitCluster().list()
 ```
 
 #### Example: Create
@@ -23198,7 +22954,6 @@ Create an instance: `const observability_space = client.ObservabilitySpace()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23214,12 +22969,6 @@ Create an instance: `const observability_space = client.ObservabilitySpace()`
 
 ```ts
 const observability_space = await client.ObservabilitySpace().load({ id: 'observability_space_id' })
-```
-
-#### Example: List
-
-```ts
-const observability_spaces = await client.ObservabilitySpace().list()
 ```
 
 #### Example: Create
@@ -23348,7 +23097,7 @@ Create an instance: `const organization_app = client.OrganizationApp()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -23358,10 +23107,10 @@ Create an instance: `const organization_app = client.OrganizationApp()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const organization_apps = await client.OrganizationApp().list({ organization_id: "example", native_agent_id: "example" })
+const organization_app = await client.OrganizationApp().load({ organization_id: 'organization_id', native_agent_id: 'native_agent_id' })
 ```
 
 
@@ -23402,7 +23151,6 @@ Create an instance: `const organization_identity_certificate = client.Organizati
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23418,12 +23166,6 @@ Create an instance: `const organization_identity_certificate = client.Organizati
 
 ```ts
 const organization_identity_certificate = await client.OrganizationIdentityCertificate().load({ id: 'organization_identity_certificate_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const organization_identity_certificates = await client.OrganizationIdentityCertificate().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -23512,7 +23254,6 @@ Create an instance: `const organization_oidc_trust = client.OrganizationOidcTrus
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23528,12 +23269,6 @@ Create an instance: `const organization_oidc_trust = client.OrganizationOidcTrus
 
 ```ts
 const organization_oidc_trust = await client.OrganizationOidcTrust().load({ id: 'organization_oidc_trust_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const organization_oidc_trusts = await client.OrganizationOidcTrust().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -23688,7 +23423,6 @@ Create an instance: `const organization_service_account = client.OrganizationSer
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23704,12 +23438,6 @@ Create an instance: `const organization_service_account = client.OrganizationSer
 
 ```ts
 const organization_service_account = await client.OrganizationServiceAccount().load({ id: 'organization_service_account_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const organization_service_accounts = await client.OrganizationServiceAccount().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -23755,7 +23483,7 @@ Create an instance: `const organization_site = client.OrganizationSite()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -23765,10 +23493,10 @@ Create an instance: `const organization_site = client.OrganizationSite()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const organization_sites = await client.OrganizationSite().list({ organization_id: "example", native_agent_id: "example" })
+const organization_site = await client.OrganizationSite().load({ organization_id: 'organization_id', native_agent_id: 'native_agent_id' })
 ```
 
 #### Example: Create
@@ -23830,7 +23558,6 @@ Create an instance: `const organization_workload_identity = client.OrganizationW
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -23846,12 +23573,6 @@ Create an instance: `const organization_workload_identity = client.OrganizationW
 
 ```ts
 const organization_workload_identity = await client.OrganizationWorkloadIdentity().load({ id: 'organization_workload_identity_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const organization_workload_identitys = await client.OrganizationWorkloadIdentity().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -23923,7 +23644,6 @@ Create an instance: `const page_agent = client.PageAgent()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -23950,10 +23670,10 @@ Create an instance: `const page_agent = client.PageAgent()`
 | `selected_reference` | `string | null` |  |
 | `viewer_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const page_agents = await client.PageAgent().list({ organization_id: "example" })
+const page_agent = await client.PageAgent().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -24278,13 +23998,23 @@ Create an instance: `const pages_project_persona = client.PagesProjectPersona()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `active_count` | `number` |  |
-| `credentials` | `any[]` |  |
-| `needs_attention_count` | `number` |  |
-| `permissions` | `Record<string, any>` |  |
-| `persona_states` | `Record<string, any>` | Scenarios by the state of their latest execution. |
-| `personas` | `any[]` |  |
-| `project` | `Record<string, any>` |  |
+| `access_mode` | `string` |  |
+| `active_run_count` | `number` |  |
+| `archived_at` | `string | null` |  |
+| `attention` | `any[]` | What needs an operator's eye, problems before notices |
+| `capabilities` | `string | null` |  |
+| `created_at` | `string` |  |
+| `credential` | `any` |  |
+| `credential_id` | `string | null` | The credential this persona signs in with. |
+| `goals` | `string | null` |  |
+| `health` | `Record<string, any>` |  |
+| `id` | `string` |  |
+| `lock_version` | `number` |  |
+| `name` | `string` |  |
+| `project_id` | `string` |  |
+| `role` | `string` |  |
+| `scenario_count` | `number` |  |
+| `updated_at` | `string` |  |
 
 #### Example: List
 
@@ -24307,12 +24037,28 @@ Create an instance: `const pages_project_run = client.PagesProjectRun()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `environment_query` | `string` |  |
-| `environments` | `any[]` |  |
-| `environments_has_more` | `boolean` |  |
-| `pagination` | `Record<string, any>` |  |
-| `runs` | `any[]` |  |
-| `selected_environment` | `any` |  |
+| `archived_at` | `string | null` |  |
+| `browser_seconds` | `number | null` |  |
+| `can_archive` | `boolean` |  |
+| `can_restore` | `boolean` |  |
+| `cleanup_state` | `string` |  |
+| `commit_sha` | `string | null` |  |
+| `created_at` | `string` |  |
+| `duration_seconds` | `number | null` |  |
+| `environment_name` | `string | null` |  |
+| `finished_at` | `string | null` |  |
+| `id` | `string` |  |
+| `outcome` | `string | null` |  |
+| `pull_request` | `any` |  |
+| `pull_request_label` | `string | null` |  |
+| `scenario_count` | `number` |  |
+| `source_run` | `Record<string, any> | null` |  |
+| `started_at` | `string | null` |  |
+| `state` | `string` |  |
+| `title` | `string` |  |
+| `trigger_kind` | `string` |  |
+| `triggered_by` | `string | null` |  |
+| `web_path` | `string` |  |
 
 #### Example: List
 
@@ -24457,7 +24203,6 @@ Create an instance: `const pairing = client.Pairing()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -24470,12 +24215,6 @@ Create an instance: `const pairing = client.Pairing()`
 
 ```ts
 const pairing = await client.Pairing().load({ id: 'pairing_id' })
-```
-
-#### Example: List
-
-```ts
-const pairings = await client.Pairing().list()
 ```
 
 #### Example: Create
@@ -24494,12 +24233,12 @@ Create an instance: `const pairing_event = client.PairingEvent()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const pairing_events = await client.PairingEvent().list({ pairing_id: "example" })
+const pairing_event = await client.PairingEvent().load({ pairing_id: 'pairing_id' })
 ```
 
 
@@ -24548,7 +24287,7 @@ Create an instance: `const personal_access_token = client.PersonalAccessToken()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -24557,10 +24296,10 @@ Create an instance: `const personal_access_token = client.PersonalAccessToken()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const personal_access_tokens = await client.PersonalAccessToken().list()
+const personal_access_token = await client.PersonalAccessToken().load({ id: 'personal_access_token_id' })
 ```
 
 #### Example: Create
@@ -24579,12 +24318,12 @@ Create an instance: `const preview_operation = client.PreviewOperation()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const preview_operations = await client.PreviewOperation().list({ app_id: "example", preview_id: "example" })
+const preview_operation = await client.PreviewOperation().load({ app_id: 'app_id', preview_id: 'preview_id' })
 ```
 
 
@@ -24597,7 +24336,7 @@ Create an instance: `const preview_profile_secret_binding = client.PreviewProfil
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -24610,10 +24349,10 @@ Create an instance: `const preview_profile_secret_binding = client.PreviewProfil
 | `secret_id` | `string` |  |
 | `secret_version_id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const preview_profile_secret_bindings = await client.PreviewProfileSecretBinding().list({ app_id: "example", preview_profile_id: "example" })
+const preview_profile_secret_binding = await client.PreviewProfileSecretBinding().load({ app_id: 'app_id', preview_profile_id: 'preview_profile_id' })
 ```
 
 #### Example: Create
@@ -24671,7 +24410,7 @@ Create an instance: `const preview_sharing_approval = client.PreviewSharingAppro
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -24690,10 +24429,10 @@ Create an instance: `const preview_sharing_approval = client.PreviewSharingAppro
 | `snapshot_version` | `number` |  |
 | `source_keys` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const preview_sharing_approvals = await client.PreviewSharingApproval().list({ app_id: "example", preview_id: "example" })
+const preview_sharing_approval = await client.PreviewSharingApproval().load({ app_id: 'app_id', preview_id: 'preview_id' })
 ```
 
 #### Example: Create
@@ -25304,18 +25043,11 @@ Create an instance: `const project_fixture = client.ProjectFixture()`
 | `byte_size` | `number` |  |
 | `content_type` | `string` |  |
 | `credential_ids` | `any[]` |  |
-| `credentials` | `any[]` |  |
 | `environment_ids` | `any[]` |  |
-| `environments` | `any[]` |  |
-| `fixtures` | `any[]` |  |
 | `id` | `string` |  |
 | `lock_version` | `number` |  |
 | `name` | `string` |  |
-| `pagination` | `Record<string, any>` |  |
-| `permissions` | `Record<string, any>` |  |
 | `persona_ids` | `any[]` |  |
-| `personas` | `any[]` |  |
-| `project` | `Record<string, any>` |  |
 | `sha256` | `string` |  |
 | `url` | `string` |  |
 | `version` | `number` |  |
@@ -25697,7 +25429,7 @@ Create an instance: `const project_scenario_option = client.ProjectScenarioOptio
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25712,10 +25444,10 @@ Create an instance: `const project_scenario_option = client.ProjectScenarioOptio
 | `schedule_options` | `any` |  |
 | `schedules` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const project_scenario_options = await client.ProjectScenarioOption().list({ organization_id: "example", project_id: "example" })
+const project_scenario_option = await client.ProjectScenarioOption().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 
@@ -25758,7 +25490,7 @@ Create an instance: `const project_setting = client.ProjectSetting()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25771,10 +25503,10 @@ Create an instance: `const project_setting = client.ProjectSetting()`
 | `project` | `Record<string, any>` |  |
 | `tester_numbers` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const project_settings = await client.ProjectSetting().list({ organization_id: "example", project_id: "example" })
+const project_setting = await client.ProjectSetting().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 
@@ -25895,7 +25627,7 @@ Create an instance: `const pull_request_setting = client.PullRequestSetting()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -25961,10 +25693,10 @@ Create an instance: `const pull_request_setting = client.PullRequestSetting()`
 | `verify_environment_id` | `string` |  |
 | `write_scenarios` | `boolean` | Draft and validate focused scenarios for each change on its preview. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const pull_request_settings = await client.PullRequestSetting().list({ organization_id: "example" })
+const pull_request_setting = await client.PullRequestSetting().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -26284,7 +26016,6 @@ Create an instance: `const release_rollout = client.ReleaseRollout()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -26297,12 +26028,6 @@ Create an instance: `const release_rollout = client.ReleaseRollout()`
 
 ```ts
 const release_rollout = await client.ReleaseRollout().load({ id: 'release_rollout_id', release_id: 'release_id' })
-```
-
-#### Example: List
-
-```ts
-const release_rollouts = await client.ReleaseRollout().list({ release_id: "example" })
 ```
 
 #### Example: Create
@@ -26463,7 +26188,6 @@ Create an instance: `const repo_agent_session = client.RepoAgentSession()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -26483,12 +26207,6 @@ Create an instance: `const repo_agent_session = client.RepoAgentSession()`
 
 ```ts
 const repo_agent_session = await client.RepoAgentSession().load({ id: 'repo_agent_session_id', organization_id: 'organization_id', repo_id: 'repo_id' })
-```
-
-#### Example: List
-
-```ts
-const repo_agent_sessions = await client.RepoAgentSession().list({ organization_id: "example", repo_id: "example" })
 ```
 
 #### Example: Create
@@ -26609,7 +26327,6 @@ Create an instance: `const repo_cloud_workspace_backup = client.RepoCloudWorkspa
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -26622,12 +26339,6 @@ Create an instance: `const repo_cloud_workspace_backup = client.RepoCloudWorkspa
 
 ```ts
 const repo_cloud_workspace_backup = await client.RepoCloudWorkspaceBackup().load({ id: 'repo_cloud_workspace_backup_id', organization_id: 'organization_id', repo_id: 'repo_id' })
-```
-
-#### Example: List
-
-```ts
-const repo_cloud_workspace_backups = await client.RepoCloudWorkspaceBackup().list({ organization_id: "example", repo_id: "example" })
 ```
 
 #### Example: Create
@@ -27098,7 +26809,6 @@ Create an instance: `const roder_code_repair = client.RoderCodeRepair()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -27124,12 +26834,6 @@ Create an instance: `const roder_code_repair = client.RoderCodeRepair()`
 const roder_code_repair = await client.RoderCodeRepair().load({ id: 'roder_code_repair_id' })
 ```
 
-#### Example: List
-
-```ts
-const roder_code_repairs = await client.RoderCodeRepair().list({ scenario_run_id: "example" })
-```
-
 #### Example: Create
 
 ```ts
@@ -27151,7 +26855,7 @@ Create an instance: `const roder_code_repair_setting = client.RoderCodeRepairSet
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27165,10 +26869,10 @@ Create an instance: `const roder_code_repair_setting = client.RoderCodeRepairSet
 | `organization_id` | `string` |  |
 | `repository_slug` | `string | null` | Connected Composal repository required when enabling |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const roder_code_repair_settings = await client.RoderCodeRepairSetting().list({ organization_id: "example" })
+const roder_code_repair_setting = await client.RoderCodeRepairSetting().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -27255,12 +26959,12 @@ Create an instance: `const run_artifact = client.RunArtifact()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const run_artifacts = await client.RunArtifact().list({ pipeline_id: "example", run_id: "example" })
+const run_artifact = await client.RunArtifact().load({ pipeline_id: 'pipeline_id', run_id: 'run_id' })
 ```
 
 #### Example: Create
@@ -27282,7 +26986,6 @@ Create an instance: `const run_job = client.RunJob()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
@@ -27328,12 +27031,6 @@ Create an instance: `const run_job = client.RunJob()`
 
 ```ts
 const run_job = await client.RunJob().load({ id: 'run_job_id', pipeline_id: 'pipeline_id', run_id: 'run_id' })
-```
-
-#### Example: List
-
-```ts
-const run_jobs = await client.RunJob().list({ pipeline_id: "example", run_id: "example" })
 ```
 
 #### Example: Create
@@ -27487,7 +27184,7 @@ Create an instance: `const runner_lease = client.RunnerLease()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27495,10 +27192,10 @@ Create an instance: `const runner_lease = client.RunnerLease()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const runner_leases = await client.RunnerLease().list({ runner_id: "example", runner_pool_id: "example" })
+const runner_lease = await client.RunnerLease().load({ runner_id: 'runner_id', runner_pool_id: 'runner_pool_id' })
 ```
 
 #### Example: Create
@@ -27574,7 +27271,6 @@ Create an instance: `const runner_pool_runner = client.RunnerPoolRunner()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -27589,12 +27285,6 @@ Create an instance: `const runner_pool_runner = client.RunnerPoolRunner()`
 
 ```ts
 const runner_pool_runner = await client.RunnerPoolRunner().load({ id: 'runner_pool_runner_id', runner_pool_id: 'runner_pool_id' })
-```
-
-#### Example: List
-
-```ts
-const runner_pool_runners = await client.RunnerPoolRunner().list({ runner_pool_id: "example" })
 ```
 
 #### Example: Create
@@ -27615,12 +27305,12 @@ Create an instance: `const runtime_instance_health_snapshot = client.RuntimeInst
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const runtime_instance_health_snapshots = await client.RuntimeInstanceHealthSnapshot().list({ runtime_instance_id: "example" })
+const runtime_instance_health_snapshot = await client.RuntimeInstanceHealthSnapshot().load({ runtime_instance_id: 'runtime_instance_id' })
 ```
 
 #### Example: Create
@@ -27641,7 +27331,7 @@ Create an instance: `const sandbox_integration = client.SandboxIntegration()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -27661,10 +27351,10 @@ Create an instance: `const sandbox_integration = client.SandboxIntegration()`
 | `provider` | `string` |  |
 | `version` | `number` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const sandbox_integrations = await client.SandboxIntegration().list({ organization_id: "example" })
+const sandbox_integration = await client.SandboxIntegration().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -27762,7 +27452,6 @@ Create an instance: `const secret_grant = client.SecretGrant()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27778,12 +27467,6 @@ Create an instance: `const secret_grant = client.SecretGrant()`
 
 ```ts
 const secret_grant = await client.SecretGrant().load({ id: 'secret_grant_id', organization_id: 'organization_id', secret_id: 'secret_id' })
-```
-
-#### Example: List
-
-```ts
-const secret_grants = await client.SecretGrant().list({ organization_id: "example", secret_id: "example" })
 ```
 
 #### Example: Create
@@ -27805,7 +27488,6 @@ Create an instance: `const secret_version = client.SecretVersion()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27821,12 +27503,6 @@ Create an instance: `const secret_version = client.SecretVersion()`
 
 ```ts
 const secret_version = await client.SecretVersion().load({ id: 'secret_version_id', organization_id: 'organization_id', secret_id: 'secret_id' })
-```
-
-#### Example: List
-
-```ts
-const secret_versions = await client.SecretVersion().list({ organization_id: "example", secret_id: "example" })
 ```
 
 #### Example: Create
@@ -27848,7 +27524,6 @@ Create an instance: `const service_endpoint = client.ServiceEndpoint()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -27864,12 +27539,6 @@ Create an instance: `const service_endpoint = client.ServiceEndpoint()`
 
 ```ts
 const service_endpoint = await client.ServiceEndpoint().load({ id: 'service_endpoint_id', app_id: 'app_id', service_id: 'service_id' })
-```
-
-#### Example: List
-
-```ts
-const service_endpoints = await client.ServiceEndpoint().list({ app_id: "example", service_id: "example" })
 ```
 
 #### Example: Create
@@ -27890,7 +27559,7 @@ Create an instance: `const setting = client.Setting()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -27903,10 +27572,10 @@ Create an instance: `const setting = client.Setting()`
 | `organization` | `Record<string, any>` |  |
 | `sandbox_regions` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const settings = await client.Setting().list({ organization_id: "example" })
+const setting = await client.Setting().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -28141,7 +27810,6 @@ Create an instance: `const signal_subscription = client.SignalSubscription()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28157,12 +27825,6 @@ Create an instance: `const signal_subscription = client.SignalSubscription()`
 
 ```ts
 const signal_subscription = await client.SignalSubscription().load({ id: 'signal_subscription_id', organization_id: 'organization_id' })
-```
-
-#### Example: List
-
-```ts
-const signal_subscriptions = await client.SignalSubscription().list({ organization_id: "example" })
 ```
 
 #### Example: Create
@@ -28231,7 +27893,7 @@ Create an instance: `const site_access_key = client.SiteAccessKey()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `remove(match)` | Remove the matching entity. |
 
 #### Fields
@@ -28240,10 +27902,10 @@ Create an instance: `const site_access_key = client.SiteAccessKey()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const site_access_keys = await client.SiteAccessKey().list({ organization_id: "example", site_id: "example" })
+const site_access_key = await client.SiteAccessKey().load({ organization_id: 'organization_id', site_id: 'site_id' })
 ```
 
 #### Example: Create
@@ -28355,7 +28017,6 @@ Create an instance: `const space_alert_rule = client.SpaceAlertRule()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28371,12 +28032,6 @@ Create an instance: `const space_alert_rule = client.SpaceAlertRule()`
 
 ```ts
 const space_alert_rule = await client.SpaceAlertRule().load({ id: 'space_alert_rule_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_alert_rules = await client.SpaceAlertRule().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28397,12 +28052,12 @@ Create an instance: `const space_audit_event = client.SpaceAuditEvent()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_audit_events = await client.SpaceAuditEvent().list({ space_id: "example" })
+const space_audit_event = await client.SpaceAuditEvent().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28423,7 +28078,6 @@ Create an instance: `const space_dns_record = client.SpaceDnsRecord()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28439,12 +28093,6 @@ Create an instance: `const space_dns_record = client.SpaceDnsRecord()`
 
 ```ts
 const space_dns_record = await client.SpaceDnsRecord().load({ id: 'space_dns_record_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_dns_records = await client.SpaceDnsRecord().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28465,7 +28113,6 @@ Create an instance: `const space_enrollment_token = client.SpaceEnrollmentToken(
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28481,12 +28128,6 @@ Create an instance: `const space_enrollment_token = client.SpaceEnrollmentToken(
 
 ```ts
 const space_enrollment_token = await client.SpaceEnrollmentToken().load({ id: 'space_enrollment_token_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_enrollment_tokens = await client.SpaceEnrollmentToken().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28507,7 +28148,6 @@ Create an instance: `const space_gateway = client.SpaceGateway()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28523,12 +28163,6 @@ Create an instance: `const space_gateway = client.SpaceGateway()`
 
 ```ts
 const space_gateway = await client.SpaceGateway().load({ id: 'space_gateway_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_gateways = await client.SpaceGateway().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28549,7 +28183,7 @@ Create an instance: `const space_group = client.SpaceGroup()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28560,10 +28194,10 @@ Create an instance: `const space_group = client.SpaceGroup()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_groups = await client.SpaceGroup().list({ space_id: "example" })
+const space_group = await client.SpaceGroup().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28584,7 +28218,7 @@ Create an instance: `const space_group_membership = client.SpaceGroupMembership(
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28595,10 +28229,10 @@ Create an instance: `const space_group_membership = client.SpaceGroupMembership(
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_group_memberships = await client.SpaceGroupMembership().list({ space_id: "example" })
+const space_group_membership = await client.SpaceGroupMembership().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28619,12 +28253,12 @@ Create an instance: `const space_log_stream = client.SpaceLogStream()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_log_streams = await client.SpaceLogStream().list({ space_id: "example" })
+const space_log_stream = await client.SpaceLogStream().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28645,12 +28279,12 @@ Create an instance: `const space_metric_sery = client.SpaceMetricSery()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_metric_serys = await client.SpaceMetricSery().list({ space_id: "example" })
+const space_metric_sery = await client.SpaceMetricSery().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28671,7 +28305,6 @@ Create an instance: `const space_otel_collector = client.SpaceOtelCollector()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28687,12 +28320,6 @@ Create an instance: `const space_otel_collector = client.SpaceOtelCollector()`
 
 ```ts
 const space_otel_collector = await client.SpaceOtelCollector().load({ id: 'space_otel_collector_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_otel_collectors = await client.SpaceOtelCollector().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28713,7 +28340,6 @@ Create an instance: `const space_peer = client.SpacePeer()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28729,12 +28355,6 @@ Create an instance: `const space_peer = client.SpacePeer()`
 
 ```ts
 const space_peer = await client.SpacePeer().load({ id: 'space_peer_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_peers = await client.SpacePeer().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28755,7 +28375,7 @@ Create an instance: `const space_peer_attachment = client.SpacePeerAttachment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
 | `update(data)` | Update an existing entity. |
@@ -28766,10 +28386,10 @@ Create an instance: `const space_peer_attachment = client.SpacePeerAttachment()`
 | --- | --- | --- |
 | `id` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_peer_attachments = await client.SpacePeerAttachment().list({ space_id: "example" })
+const space_peer_attachment = await client.SpacePeerAttachment().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28790,7 +28410,6 @@ Create an instance: `const space_policy = client.SpacePolicy()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28806,12 +28425,6 @@ Create an instance: `const space_policy = client.SpacePolicy()`
 
 ```ts
 const space_policy = await client.SpacePolicy().load({ id: 'space_policy_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_policys = await client.SpacePolicy().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28832,7 +28445,6 @@ Create an instance: `const space_segment = client.SpaceSegment()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `remove(match)` | Remove the matching entity. |
@@ -28848,12 +28460,6 @@ Create an instance: `const space_segment = client.SpaceSegment()`
 
 ```ts
 const space_segment = await client.SpaceSegment().load({ id: 'space_segment_id', space_id: 'space_id' })
-```
-
-#### Example: List
-
-```ts
-const space_segments = await client.SpaceSegment().list({ space_id: "example" })
 ```
 
 #### Example: Create
@@ -28874,12 +28480,12 @@ Create an instance: `const space_trace_span = client.SpaceTraceSpan()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const space_trace_spans = await client.SpaceTraceSpan().list({ space_id: "example" })
+const space_trace_span = await client.SpaceTraceSpan().load({ space_id: 'space_id' })
 ```
 
 #### Example: Create
@@ -28900,7 +28506,7 @@ Create an instance: `const spark = client.Spark()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -28939,10 +28545,10 @@ Create an instance: `const spark = client.Spark()`
 | `updated_at_label` | `string | null` |  |
 | `verify_pr_scenario_writing_enabled` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const sparks = await client.Spark().list({ organization_id: "example" })
+const spark = await client.Spark().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -28964,7 +28570,7 @@ Create an instance: `const spark_agent_integration = client.SparkAgentIntegratio
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -28994,10 +28600,10 @@ Create an instance: `const spark_agent_integration = client.SparkAgentIntegratio
 | `webhook_connections` | `any[]` |  |
 | `webhooks_available` | `boolean` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const spark_agent_integrations = await client.SparkAgentIntegration().list({ agent_id: "example", organization_id: "example" })
+const spark_agent_integration = await client.SparkAgentIntegration().load({ agent_id: 'agent_id', organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -29172,30 +28778,32 @@ Create an instance: `const spark_agent_thread = client.SparkAgentThread()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `archived_count` | `number | null` | Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. |
-| `can_create` | `boolean` |  |
-| `execution` | `any` |  |
+| `archive_deletes_sandbox` | `boolean` |  |
+| `archived` | `boolean` |  |
+| `attention` | `Record<string, any> | null` | Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish. |
+| `can_archive` | `boolean` |  |
+| `can_compact` | `boolean` |  |
+| `can_snooze` | `boolean` |  |
+| `coordination_status` | `string | null` | Durable work not represented by a native run: a queued input or an outstanding thread report. |
+| `execution` | `any` | device_folder threads also report state and path; sandbox threads run on their own machine with the coding agent in harness. |
 | `first_input` | `any` |  |
 | `first_input_key` | `string` | Idempotency-Key that finds the first message through input_delivery. |
 | `first_input_requester_membership_id` | `string` | Membership the first message was sent as, for input_delivery. |
+| `group` | `string` | Rails-owned list group, in precedence order: attention, active run, coordination custody, then done. |
+| `has_active_run` | `boolean` |  |
 | `id` | `string` |  |
 | `inherit_context` | `boolean` | Include the source conversation through its last completed reply. |
-| `local_activities` | `Record<string, any>` | First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current. |
-| `local_archived_count` | `number` | Local Claude Code and Codex threads archived on their computers. |
-| `local_next_cursor` | `string | null` |  |
-| `local_scope_key` | `string | null` |  |
-| `local_status_pending` | `boolean` | A computer is reporting newer local thread statuses; read the page again shortly. |
-| `local_threads` | `any[]` |  |
-| `main_thread_id` | `string` |  |
+| `is_main` | `boolean` |  |
+| `kind` | `string` |  |
 | `message` | `string` | The thread's first message. |
-| `next_cursor` | `string | null` |  |
+| `older` | `boolean` | Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older. |
 | `parent_conversation_id` | `string` | Optional source conversation belonging to this agent. |
+| `parent_conversation_title` | `string` | Source conversation title, resolved independently of this page. |
 | `requester_membership_id` | `string` |  |
-| `selected_thread` | `any` |  |
+| `snoozed_until` | `string | null` | When a snoozed thread returns to its usual group; null when it is not snoozed. |
 | `thread` | `Record<string, any>` |  |
-| `threads` | `any[]` |  |
 | `title` | `string` |  |
-| `total_archived_count` | `number | null` | archived_count plus local_archived_count, computed by Rails for the Archived heading. |
+| `updated_at` | `string | null` |  |
 
 #### Example: List
 
@@ -29222,7 +28830,6 @@ Create an instance: `const spark_credit = client.SparkCredit()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
 | `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
@@ -29244,7 +28851,7 @@ Create an instance: `const spark_credit = client.SparkCredit()`
 | `kind` | `string` |  |
 | `payment_method` | `Record<string, any> | null` |  |
 | `payments_enabled` | `boolean` |  |
-| `plan` | `string` |  |
+| `plan` | `string | null` |  |
 | `plans` | `any[]` |  |
 | `quoted_credits_cents` | `number` | Grant shown for a top-up or subscription, in usage cents. |
 | `quoted_price_cents` | `number` | Monthly cash price shown for a subscription, in USD cents. |
@@ -29257,10 +28864,10 @@ Create an instance: `const spark_credit = client.SparkCredit()`
 | `top_up_max_cents` | `number` | Maximum manual top-up, in USD cents. |
 | `top_up_step_cents` | `number` | Minimum manual top-up and increment, in USD cents. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const spark_credits = await client.SparkCredit().list({ organization_id: "example" })
+const spark_credit = await client.SparkCredit().load({ organization_id: 'organization_id' })
 ```
 
 #### Example: Create
@@ -29309,7 +28916,7 @@ Create an instance: `const spark_credit_usage_total = client.SparkCreditUsageTot
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -29319,10 +28926,10 @@ Create an instance: `const spark_credit_usage_total = client.SparkCreditUsageTot
 | `compute_usd` | `string` |  |
 | `inference_usd` | `string` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const spark_credit_usage_totals = await client.SparkCreditUsageTotal().list({ organization_id: "example" })
+const spark_credit_usage_total = await client.SparkCreditUsageTotal().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -30282,7 +29889,7 @@ Create an instance: `const vcs_setting = client.VcsSetting()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
@@ -30295,10 +29902,10 @@ Create an instance: `const vcs_setting = client.VcsSetting()`
 | `organization` | `Record<string, any>` |  |
 | `sandbox_regions` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const vcs_settings = await client.VcsSetting().list({ organization_id: "example" })
+const vcs_setting = await client.VcsSetting().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -30648,12 +30255,12 @@ Create an instance: `const verify_email_verification = client.VerifyEmailVerific
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const verify_email_verifications = await client.VerifyEmailVerification().list()
+const verify_email_verification = await client.VerifyEmailVerification().load()
 ```
 
 
@@ -31268,11 +30875,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const agentoperation = client.AgentOperation()
-await agentoperation.load({ agent_id: "example", id: "example_id", organization_id: "example" })
+const githubonboarding = client.GithubOnboarding()
+await githubonboarding.load({ organization_id: "example" })
 
-// agentoperation.data() now returns the agentoperation data from the last `load`
-// agentoperation.match() returns { id: "example_id" }
+// githubonboarding.data() now returns the githubonboarding data from the last `load`
+// githubonboarding.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

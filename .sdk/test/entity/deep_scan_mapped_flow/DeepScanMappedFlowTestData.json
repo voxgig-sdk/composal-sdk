@@ -6,21 +6,24 @@
         "environment_id": "ENVIRONMENT01",
         "flow_map": "s2a",
         "revision_id": "REVISION01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEEP_SCAN_MAPPED_FLOW00"
       },
       "DEEP_SCAN_MAPPED_FLOW01": {
         "account_id": "ACCOUNT01",
         "environment_id": "ENVIRONMENT01",
         "flow_map": "s52",
         "revision_id": "REVISION01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEEP_SCAN_MAPPED_FLOW01"
       },
       "DEEP_SCAN_MAPPED_FLOW02": {
         "account_id": "ACCOUNT01",
         "environment_id": "ENVIRONMENT01",
         "flow_map": "s7a",
         "revision_id": "REVISION01",
-        "organization_id": "ORGANIZATION01"
+        "organization_id": "ORGANIZATION01",
+        "id": "DEEP_SCAN_MAPPED_FLOW02"
       }
     }
   },

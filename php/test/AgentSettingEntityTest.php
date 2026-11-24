@@ -33,7 +33,7 @@ class AgentSettingEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->AgentSetting(null)->list(["agent_id" => 1, "organization_id" => 'x'], null);
+            $client->AgentSetting(null)->load(["agent_id" => 1, "organization_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class AgentSettingEntityTest extends TestCase
         $setup = agent_setting_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "agent_setting." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,14 +53,14 @@ class AgentSettingEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"agent_setting.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SETTING_ENTID");
-                }
-            }
+            fwrite(STDOUT, 'LIVE STEP {"id":"agent_setting.update.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: agent_setting.update.0 excluded (GET-only live run: needs PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -70,52 +70,6 @@ class AgentSettingEntityTest extends TestCase
         if (count($agent_setting_ref01_data_raw) > 0) {
             $agent_setting_ref01_data = Helpers::to_map($agent_setting_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $agent_setting_ref01_ent = $client->AgentSetting(null);
-        $agent_setting_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_setting_ref01_list_result = $agent_setting_ref01_ent->list($agent_setting_ref01_match, null);
-        $this->assertIsArray($agent_setting_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["agent01", "organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_AGENT_SETTING_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $agent_setting_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.agent_setting")));
-        $agent_setting_ref01_data = null;
-        if (count($agent_setting_ref01_data_raw) > 0) {
-            $agent_setting_ref01_data = Helpers::to_map($agent_setting_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $agent_setting_ref01_ent = $client->AgentSetting(null);
-        $agent_setting_ref01_match = [
-            "agent_id" => $setup["idmap"]["agent01"],
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $agent_setting_ref01_list_result = $agent_setting_ref01_ent->list($agent_setting_ref01_match, null);
-        $this->assertIsArray($agent_setting_ref01_list_result);
 
     }
 }

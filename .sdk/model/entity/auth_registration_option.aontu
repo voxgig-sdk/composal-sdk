@@ -41,8 +41,8 @@ main: kit: entity: auth_registration_option: {
 
   name: "auth_registration_option"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

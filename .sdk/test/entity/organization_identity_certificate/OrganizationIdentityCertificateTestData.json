@@ -36,12 +36,12 @@
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/identity_certificates": {
+    "GET /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"
     },
-    "GET /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}": {
+    "GET /api/v1/identity/organizations/{organization_id}/identity_certificates": {
       "provenance": "operation-contract",
       "version": 2,
       "source": "openapi3"

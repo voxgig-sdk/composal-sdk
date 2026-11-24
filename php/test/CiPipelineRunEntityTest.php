@@ -33,7 +33,7 @@ class CiPipelineRunEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->CiPipelineRun(null)->list(["pipeline_id" => 1], null);
+            $client->CiPipelineRun(null)->load(["id" => 1, "pipeline_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class CiPipelineRunEntityTest extends TestCase
         $setup = ci_pipeline_run_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "load"] as $_op) {
+        foreach (["create", "load"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "ci_pipeline_run." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,55 +54,8 @@ class CiPipelineRunEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"ci_pipeline_run.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["pipeline01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CI_PIPELINE_RUN_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["ci_pipeline_run01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "ci_pipeline_run",
-                fn() => $client->CiPipelineRun(null)->list(["pipeline_id" => $setup["idmap"]["pipeline01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $ci_pipeline_run_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.ci_pipeline_run")));
-        $ci_pipeline_run_ref01_data = null;
-        if (count($ci_pipeline_run_ref01_data_raw) > 0) {
-            $ci_pipeline_run_ref01_data = Helpers::to_map($ci_pipeline_run_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $ci_pipeline_run_ref01_ent = $client->CiPipelineRun(null);
-        $ci_pipeline_run_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-        ];
-
-        $ci_pipeline_run_ref01_list_result = $ci_pipeline_run_ref01_ent->list($ci_pipeline_run_ref01_match, null);
-        $this->assertIsArray($ci_pipeline_run_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $ci_pipeline_run_ref01_match_dt0 = [
-            "id" => $ci_pipeline_run_ref01_data["id"],
-        ];
-        $ci_pipeline_run_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
-        $ci_pipeline_run_ref01_data_dt0_loaded = $ci_pipeline_run_ref01_ent->load($ci_pipeline_run_ref01_match_dt0, null);
-        $ci_pipeline_run_ref01_data_dt0_load_result = Helpers::to_map(is_object($ci_pipeline_run_ref01_data_dt0_loaded) && method_exists($ci_pipeline_run_ref01_data_dt0_loaded, 'data_get') ? $ci_pipeline_run_ref01_data_dt0_loaded->data_get() : $ci_pipeline_run_ref01_data_dt0_loaded);
-        $this->assertNotNull($ci_pipeline_run_ref01_data_dt0_load_result);
-        $this->assertTrue(Runner::live_same_id($ci_pipeline_run_ref01_data_dt0_load_result["id"] ?? null, $ci_pipeline_run_ref01_data["id"]));
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"ci_pipeline_run.load.1","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only ci_pipeline_run.create.0 gives"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: ci_pipeline_run.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry); ci_pipeline_run.load.1 excluded (GET-only live run: reads a record only ci_pipeline_run.create.0 gives)');
         }
 
         if (!empty($setup["live"])) {
@@ -131,27 +84,10 @@ class CiPipelineRunEntityTest extends TestCase
         if (!empty($setup["live"])) {
             Runner::live_pace();
         }
-        // LIST
-        $ci_pipeline_run_ref01_match = [
-            "pipeline_id" => $setup["idmap"]["pipeline01"],
-        ];
-
-        $ci_pipeline_run_ref01_list_result = $ci_pipeline_run_ref01_ent->list($ci_pipeline_run_ref01_match, null);
-        $this->assertIsArray($ci_pipeline_run_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($ci_pipeline_run_ref01_list_result),
-            ["id" => $ci_pipeline_run_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
         // LOAD
         $ci_pipeline_run_ref01_match_dt0 = [
             "id" => $ci_pipeline_run_ref01_data["id"],
         ];
-        $ci_pipeline_run_ref01_match_dt0["pipeline_id"] = $setup["idmap"]["pipeline_id"] ?? $setup["idmap"]["pipeline01"] ?? null;
         $ci_pipeline_run_ref01_data_dt0_loaded = $ci_pipeline_run_ref01_ent->load($ci_pipeline_run_ref01_match_dt0, null);
         $ci_pipeline_run_ref01_data_dt0_load_result = Helpers::to_map(is_object($ci_pipeline_run_ref01_data_dt0_loaded) && method_exists($ci_pipeline_run_ref01_data_dt0_loaded, 'data_get') ? $ci_pipeline_run_ref01_data_dt0_loaded->data_get() : $ci_pipeline_run_ref01_data_dt0_loaded);
         $this->assertNotNull($ci_pipeline_run_ref01_data_dt0_load_result);

@@ -20,22 +20,6 @@ main: kit: flow: BasicNodeLeaseFlow:
     }
 
     {
-      m: {
-        node_id: "node01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "node_lease_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "node_lease_ref01",
         srcdatavar: "node_lease_ref01_data",
@@ -43,8 +27,7 @@ main: kit: flow: BasicNodeLeaseFlow:
       }
 
       m: {
-        id: "node_lease01",
-        node_id: "node01"
+        id: "node_lease01"
       }
 
       o: "load",

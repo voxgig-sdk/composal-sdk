@@ -24,12 +24,9 @@ def _live_ok(result):
 
 class TestDeviceEnterpriseRelayDirect:
 
-    def test_should_direct_list_device_enterprise_relay(self):
-        setup = _device_enterprise_relay_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-device_enterprise_relay", "live" if setup["live"] else "unit")
+    def test_should_direct_load_device_enterprise_relay(self):
+        setup = _device_enterprise_relay_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-device_enterprise_relay", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
@@ -39,6 +36,10 @@ class TestDeviceEnterpriseRelayDirect:
 
         params = {}
         query = {}
+        if setup["live"]:
+            pass
+        else:
+            pass
 
         result = client.direct({
             "path": "api/v1/spark/devices/enterprise_relays",
@@ -48,14 +49,15 @@ class TestDeviceEnterpriseRelayDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

@@ -290,22 +290,20 @@ class SiteAccessKeyEntity
     }
 
     
-
-    
     /**
-     * List SiteAccessKey items matching the given filter.
+     * Load a single SiteAccessKey.
      *
-     * @param SiteAccessKeyListMatch|array|null $reqmatch Match filter (any subset
-     *   of SiteAccessKey fields) as an assoc-array; SiteAccessKeyListMatch names the shape.
+     * @param SiteAccessKeyLoadMatch|array|null $reqmatch Match criteria (id/query
+     *   fields) as an assoc-array; a typed SiteAccessKeyLoadMatch names the shape.
      * @param mixed $ctrl Optional per-call control overrides.
-     * @return SiteAccessKeyEntity[] The SiteAccessKey entities, one per record, each read
-     *   with data_get(); throws ComposalError on failure (item-5 convention).
+     * @return SiteAccessKeyEntity The loaded SiteAccessKey entity, whose data_get() reads
+     *   its record; throws ComposalError on failure (item-5 convention).
      */
-    public function list(?array $reqmatch = null, $ctrl = null): mixed
+    public function load(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
-            "opname" => "list",
+            "opname" => "load",
             "ctrl" => $ctrl,
             "match" => $this->_match,
             "data" => $this->_data,
@@ -317,11 +315,16 @@ class SiteAccessKeyEntity
                 if ($ctx->result->resmatch) {
                     $this->_match = $ctx->result->resmatch;
                 }
+                if ($ctx->result->resdata) {
+                    $this->_data = ComposalHelpers::to_map(Struct::clone($ctx->result->resdata)) ?? [];
+                }
             }
         });
     }
 
 
+
+    
 
     
     /**

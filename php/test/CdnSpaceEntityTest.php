@@ -33,7 +33,7 @@ class CdnSpaceEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->CdnSpace(null)->list(["organization_id" => 1], null);
+            $client->CdnSpace(null)->load(["id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class CdnSpaceEntityTest extends TestCase
         $setup = cdn_space_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["create", "list", "update", "load", "remove"] as $_op) {
+        foreach (["create", "update", "load", "remove"] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "cdn_space." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,59 +54,10 @@ class CdnSpaceEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.update.2","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/cdn_spaces/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.remove.4","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/cdn_spaces/{id}"}' . "\n");
-            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.list.5","state":"excluded","attempted":false,"reason":"GET-only live run: checks a removal this run does not make"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_CDN_SPACE_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-        if (!empty($setup["live"])) {
-            $_liveId = empty($setup["synthetic_only"]) ? ($setup["idmap"]["cdn_space01"] ?? null) : null;
-            Runner::live_pace();
-            Runner::live_existing($setup, self::LIVE_STRICT, "cdn_space",
-                fn() => $client->CdnSpace(null)->list(["organization_id" => $setup["idmap"]["organization01"] ?? null], null), "id", $_liveId);
-        }
-
-        // Bootstrap entity data from existing test data.
-        $cdn_space_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.cdn_space")));
-        $cdn_space_ref01_data = null;
-        if (count($cdn_space_ref01_data_raw) > 0) {
-            $cdn_space_ref01_data = Helpers::to_map($cdn_space_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_space_ref01_ent = $client->CdnSpace(null);
-        $cdn_space_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $cdn_space_ref01_list_result = $cdn_space_ref01_ent->list($cdn_space_ref01_match, null);
-        $this->assertIsArray($cdn_space_ref01_list_result);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LOAD
-        $cdn_space_ref01_match_dt0 = [
-            "id" => $cdn_space_ref01_data["id"],
-        ];
-        $cdn_space_ref01_data_dt0_loaded = $cdn_space_ref01_ent->load($cdn_space_ref01_match_dt0, null);
-        $cdn_space_ref01_data_dt0_load_result = Helpers::to_map(is_object($cdn_space_ref01_data_dt0_loaded) && method_exists($cdn_space_ref01_data_dt0_loaded, 'data_get') ? $cdn_space_ref01_data_dt0_loaded->data_get() : $cdn_space_ref01_data_dt0_loaded);
-        $this->assertNotNull($cdn_space_ref01_data_dt0_load_result);
-        if (empty($setup["live"])) {
-            $this->assertTrue(Runner::live_same_id($cdn_space_ref01_data_dt0_load_result["id"] ?? null, $cdn_space_ref01_data["id"]));
-        }
-
-            return;
+            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/cdn_spaces/{id}"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.load.2","state":"excluded","attempted":false,"reason":"GET-only live run: reads a record only cdn_space.create.0 gives"}' . "\n");
+            fwrite(STDOUT, 'LIVE STEP {"id":"cdn_space.remove.3","state":"excluded","attempted":false,"reason":"GET-only live run: needs DELETE /api/v1/cdn_spaces/{id}"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: cdn_space.create.0 excluded (GET-only live run: needs POST /api/v1/cdn_spaces/{id}/archive); cdn_space.update.1 excluded (GET-only live run: needs PUT /api/v1/cdn_spaces/{id}); cdn_space.load.2 excluded (GET-only live run: reads a record only cdn_space.create.0 gives); cdn_space.remove.3 excluded (GET-only live run: needs DELETE /api/v1/cdn_spaces/{id})');
         }
 
         if (!empty($setup["live"])) {
@@ -131,22 +82,6 @@ class CdnSpaceEntityTest extends TestCase
         $cdn_space_ref01_data = Helpers::to_map(is_object($cdn_space_ref01_data_result) && method_exists($cdn_space_ref01_data_result, 'data_get') ? $cdn_space_ref01_data_result->data_get() : $cdn_space_ref01_data_result);
         $this->assertNotNull($cdn_space_ref01_data);
         $this->assertNotNull($cdn_space_ref01_data["id"]);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_space_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $cdn_space_ref01_list_result = $cdn_space_ref01_ent->list($cdn_space_ref01_match, null);
-        $this->assertIsArray($cdn_space_ref01_list_result);
-
-        $found_item = sdk_select(
-            Runner::entity_list_to_data($cdn_space_ref01_list_result),
-            ["id" => $cdn_space_ref01_data["id"]]);
-        $this->assertNotEmpty($found_item);
 
         if (!empty($setup["live"])) {
             Runner::live_pace();
@@ -185,22 +120,6 @@ class CdnSpaceEntityTest extends TestCase
             "id" => $cdn_space_ref01_data["id"],
         ];
         $cdn_space_ref01_ent->remove($cdn_space_ref01_match_rm0, null);
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $cdn_space_ref01_match_rt0 = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $cdn_space_ref01_list_rt0_result = $cdn_space_ref01_ent->list($cdn_space_ref01_match_rt0, null);
-        $this->assertIsArray($cdn_space_ref01_list_rt0_result);
-
-        $not_found_item = sdk_select(
-            Runner::entity_list_to_data($cdn_space_ref01_list_rt0_result),
-            ["id" => $cdn_space_ref01_data["id"]]);
-        $this->assertEmpty($not_found_item);
 
     }
 }

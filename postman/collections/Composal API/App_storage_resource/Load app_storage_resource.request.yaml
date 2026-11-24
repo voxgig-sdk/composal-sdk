@@ -3,7 +3,7 @@ id: a0e51de8-4b95-5144-a3d0-fa485cdcf800
 description: |-
   The `load` operation of **app_storage_resource**.
 
-  SDK: `client.AppStorageResource().load({ app_id: "example", id: "example_id" })`
+  SDK: `client.AppStorageResource().load({ app_id: "example" })`
 url: "{{base}}/api/v1/hosting/apps/:app_id/storage_resources/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{app_storage_resource_id}}"
     description: The app_storage_resource this request addresses.
-order: 2000
+order: 1000

@@ -95,29 +95,19 @@ main: kit: entity: spark_credit: {
       h: "Plan"
       n: "plan"
       op: {
-        list: {
-          req: true
-          type: [
-            "`$ONE`"
-            [
-              "`$STRING`"
-              "`$NULL`"
-            ]
-          ]
-        }
-        patch: {
-          req: true
-          type: [
-            "`$ONE`"
-            [
-              "`$STRING`"
-              "`$NULL`"
-            ]
-          ]
+        create: {
+          req: false
+          type: "`$STRING`"
         }
       }
-      r: false
-      t: "`$STRING`"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
     }
     plans: {
       h: "Plans"
@@ -263,8 +253,8 @@ main: kit: entity: spark_credit: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {
@@ -332,11 +322,6 @@ main: kit: entity: spark_credit: {
             res: "`body`"
           }
         }
-      ]
-    }
-    load: {
-      name: "load"
-      points: [
         {
           co: {
             id: "GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage"

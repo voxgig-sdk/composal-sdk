@@ -37,7 +37,7 @@ class TestSparkCreditEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.SparkCredit(None).list({"organization_id": 1}, None)
+            client.SparkCredit(None).load({"organization_id": 1}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,14 +46,14 @@ class TestSparkCreditEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["create", "list", "update"]:
+        for _op in ["create", "update", "load"]:
             _skip, _reason = runner.is_control_skipped("entityOp", "spark_credit." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
             print("LIVE STEP {\"id\":\"spark_credit.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/spark_credits\"}")
-            print("LIVE STEP {\"id\":\"spark_credit.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
+            print("LIVE STEP {\"id\":\"spark_credit.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{org_slug}/spark_credits\"}")
             return self._run_get_only_flow(setup)
 
         if setup["live"]:
@@ -75,16 +75,6 @@ class TestSparkCreditEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
-        spark_credit_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_credit_ref01_list_result = spark_credit_ref01_ent.list(spark_credit_ref01_match, None)
-        assert isinstance(spark_credit_ref01_list_result, list)
-
-        if setup["live"]:
-            runner.live_pace()
         # UPDATE
         spark_credit_ref01_data_up0_up = {
         }
@@ -97,12 +87,15 @@ class TestSparkCreditEntity:
         assert spark_credit_ref01_resdata_up0 is not None
         assert spark_credit_ref01_resdata_up0[spark_credit_ref01_markdef_up0_name] == spark_credit_ref01_markdef_up0_value
 
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        spark_credit_ref01_match_dt0 = {}
+        spark_credit_ref01_data_dt0_loaded = spark_credit_ref01_ent.load(spark_credit_ref01_match_dt0, None)
+        assert spark_credit_ref01_data_dt0_loaded is not None
+
 
     def _run_get_only_flow(self, setup):
-        if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_SPARK_CREDIT_ENTID")
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -114,14 +107,11 @@ class TestSparkCreditEntity:
 
         if setup["live"]:
             runner.live_pace()
-        # LIST
+        # LOAD
         spark_credit_ref01_ent = client.SparkCredit(None)
-        spark_credit_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        spark_credit_ref01_list_result = spark_credit_ref01_ent.list(spark_credit_ref01_match, None)
-        assert isinstance(spark_credit_ref01_list_result, list)
+        spark_credit_ref01_match_dt0 = {}
+        spark_credit_ref01_data_dt0_loaded = spark_credit_ref01_ent.load(spark_credit_ref01_match_dt0, None)
+        assert spark_credit_ref01_data_dt0_loaded is not None
 
 
 

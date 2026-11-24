@@ -82,8 +82,8 @@ main: kit: entity: nomad_log: {
 
   name: "nomad_log"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

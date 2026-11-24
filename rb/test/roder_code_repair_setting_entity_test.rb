@@ -18,122 +18,6 @@ class RoderCodeRepairSettingEntityTest < Minitest::Test
     assert !ent.nil?
   end
 
-  def test_list_entities
-    seed = {
-      "entity" => {
-        "roder_code_repair_setting" => {
-          "l1" => { "id" => "l1" },
-          "l2" => { "id" => "l2" },
-        },
-      },
-    }
-    items = ComposalSDK.test(seed, nil).RoderCodeRepairSetting(nil).list(nil, nil)
-    # list resolves to one entity per record; data_get reads the record.
-    assert_equal 2, items.length
-    items.each do |item|
-      assert item.respond_to?(:data_get)
-      assert item.data_get.is_a?(Hash)
-    end
-  end
-
-  # Feature #4: the entity stream(action, ...) method runs the op pipeline and
-  # returns an Enumerator over result items. With the streaming feature active
-  # it yields the feature's incremental output; otherwise it falls back to the
-  # materialised list so stream always yields.
-  def test_stream
-    seed = {
-      "entity" => {
-        "roder_code_repair_setting" => {
-          "s1" => { "id" => "s1" },
-          "s2" => { "id" => "s2" },
-          "s3" => { "id" => "s3" },
-        },
-      },
-    }
-
-    # Fallback: streaming inactive -> yields the materialised list items.
-    base = ComposalSDK.test(seed, nil)
-    seen = base.RoderCodeRepairSetting(nil).stream("list", nil, nil).to_a
-    assert_equal 3, seen.length
-
-    # Inbound: streaming active -> yields each item from the feature.
-    cfg = ComposalConfig.shared_config
-    if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("streaming")
-      sdk = ComposalSDK.test(seed, { "feature" => { "streaming" => { "active" => true } } })
-      got = []
-      sdk.RoderCodeRepairSetting(nil).stream("list", nil, nil).each do |item|
-        if item.is_a?(Array)
-          got.concat(item)
-        else
-          got << item
-        end
-      end
-      assert_equal 3, got.length
-    end
-  end
-
-  class FailHook < ComposalBaseFeature
-    attr_reader :unexpected
-
-    def initialize
-      super()
-      @name = "failhook"
-      @unexpected = 0
-    end
-
-    def PreSpec(ctx)
-      raise "roder_code_repair_setting hook failed"
-    end
-
-    def PreUnexpected(ctx)
-      @unexpected += 1
-    end
-  end
-
-  def test_stream_error
-    offline = { "net" => { "offline" => true } }
-    err = assert_raises(StandardError) do
-      ComposalSDK.test(offline, nil).RoderCodeRepairSetting(nil).stream("list", nil, nil).to_a
-    end
-    assert_match(/offline/, err.message)
-
-    ComposalSDK.test(offline, nil).RoderCodeRepairSetting(nil)
-      .stream("list", nil, { "ctrl" => { "throw" => false } }).to_a
-
-    cfg = ComposalConfig.shared_config
-    if cfg["feature"].is_a?(Hash) && cfg["feature"].key?("rbac")
-      denied = ComposalSDK.test(nil, { "feature" => { "rbac" => { "active" => true, "deny" => true } } })
-      err = assert_raises(StandardError) do
-        denied.RoderCodeRepairSetting(nil).stream("list", nil, nil).to_a
-      end
-      assert_equal "rbac_denied", err.code
-    end
-  end
-
-  def test_stream_ctrl
-    explain = {}
-    ctrl = { "explain" => explain }
-    ComposalSDK.test(nil, nil).RoderCodeRepairSetting(nil).stream("list", nil, { "ctrl" => ctrl }).to_a
-    assert_equal ["explain"], ctrl.keys
-    assert_same explain, ctrl["explain"]
-    refute_empty explain
-  end
-
-  def test_unexpected
-    hook = FailHook.new
-    client = ComposalSDK.new({ "feature" => { "test" => { "active" => true } }, "extend" => [hook] })
-
-    err = assert_raises(StandardError) do
-      client.RoderCodeRepairSetting(nil).list(nil, nil)
-    end
-    assert_match(/hook failed/, err.message)
-    assert_operator hook.unexpected, :>, 0
-
-    fired = hook.unexpected
-    assert_nil client.RoderCodeRepairSetting(nil).list(nil, { "throw" => false })
-    assert_operator hook.unexpected, :>, fired
-  end
-
   def test_validate
     cfg = ComposalConfig.shared_config
     unless cfg["feature"].is_a?(Hash) && cfg["feature"].key?("validate")
@@ -141,7 +25,7 @@ class RoderCodeRepairSettingEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.RoderCodeRepairSetting(nil).list({ "organization_id" => 1 }, nil)
+      client.RoderCodeRepairSetting(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -150,7 +34,7 @@ class RoderCodeRepairSettingEntityTest < Minitest::Test
     setup = roder_code_repair_setting_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["create", "list"].each do |_op|
+    ["create", "load"].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "roder_code_repair_setting." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -170,12 +54,11 @@ class RoderCodeRepairSettingEntityTest < Minitest::Test
     end
 
     Runner.live_pace if setup[:live]
-    # LIST
+    # LOAD
     roder_code_repair_setting_ref01_ent = client.RoderCodeRepairSetting(nil)
-    roder_code_repair_setting_ref01_match = {}
-
-    roder_code_repair_setting_ref01_list_result = roder_code_repair_setting_ref01_ent.list(roder_code_repair_setting_ref01_match, nil)
-    assert roder_code_repair_setting_ref01_list_result.is_a?(Array)
+    roder_code_repair_setting_ref01_match_dt0 = {}
+    roder_code_repair_setting_ref01_data_dt0_loaded = roder_code_repair_setting_ref01_ent.load(roder_code_repair_setting_ref01_match_dt0, nil)
+    assert !roder_code_repair_setting_ref01_data_dt0_loaded.nil?
 
       return
     end
@@ -193,11 +76,10 @@ class RoderCodeRepairSettingEntityTest < Minitest::Test
     assert !roder_code_repair_setting_ref01_data.nil?
 
     Runner.live_pace if setup[:live]
-    # LIST
-    roder_code_repair_setting_ref01_match = {}
-
-    roder_code_repair_setting_ref01_list_result = roder_code_repair_setting_ref01_ent.list(roder_code_repair_setting_ref01_match, nil)
-    assert roder_code_repair_setting_ref01_list_result.is_a?(Array)
+    # LOAD
+    roder_code_repair_setting_ref01_match_dt0 = {}
+    roder_code_repair_setting_ref01_data_dt0_loaded = roder_code_repair_setting_ref01_ent.load(roder_code_repair_setting_ref01_match_dt0, nil)
+    assert !roder_code_repair_setting_ref01_data_dt0_loaded.nil?
 
   end
 end

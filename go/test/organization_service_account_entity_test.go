@@ -38,7 +38,7 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.OrganizationServiceAccount(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.OrganizationServiceAccount(nil).Load(map[string]any{"id": 1, "organization_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "organization_service_account." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"organization_service_account.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_service_account.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_service_account.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"organization_service_account.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, organization_service_accountEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_ORGANIZATION_SERVICE_ACCOUNT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["organization_service_account01"]
-			}
-			livePace()
-			liveExisting(t, organization_service_accountEntityLiveStrict, setup.data, "organization_service_account", "id", _liveId,
-				func() (any, error) {
-					return client.OrganizationServiceAccount(nil).List(map[string]any{"organization_id": setup.idmap["organization01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		organizationServiceAccountRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.organization_service_account")))
-		var organizationServiceAccountRef01Data map[string]any
-		if len(organizationServiceAccountRef01DataRaw) > 0 {
-			organizationServiceAccountRef01Data = core.ToMapAny(organizationServiceAccountRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = organizationServiceAccountRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationServiceAccountRef01Ent := client.OrganizationServiceAccount(nil)
-		organizationServiceAccountRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationServiceAccountRef01ListResult, err := organizationServiceAccountRef01Ent.List(organizationServiceAccountRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, organizationServiceAccountRef01ListOk := organizationServiceAccountRef01ListResult.([]any)
-		if !organizationServiceAccountRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationServiceAccountRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		organizationServiceAccountRef01MatchDt0 := map[string]any{
-			"id": organizationServiceAccountRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationServiceAccountRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationServiceAccountRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
-		}
-		organizationServiceAccountRef01DataDt0Loaded, err := organizationServiceAccountRef01Ent.Load(organizationServiceAccountRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		organizationServiceAccountRef01DataDt0LoadResult := core.ToMapAny(entityData(organizationServiceAccountRef01DataDt0Loaded))
-		if organizationServiceAccountRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(organizationServiceAccountRef01DataDt0LoadResult["id"], organizationServiceAccountRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"organization_service_account.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_service_account.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only organization_service_account.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"organization_service_account.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id}\"}")
+			t.Skip("Live coverage incomplete: organization_service_account.create.0 excluded (GET-only live run: needs POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/activate); organization_service_account.update.1 excluded (GET-only live run: needs PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}); organization_service_account.load.2 excluded (GET-only live run: reads a record only organization_service_account.create.0 gives); organization_service_account.remove.3 excluded (GET-only live run: needs DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		organizationServiceAccountRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationServiceAccountRef01ListResult, err := organizationServiceAccountRef01Ent.List(organizationServiceAccountRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationServiceAccountRef01List, organizationServiceAccountRef01ListOk := organizationServiceAccountRef01ListResult.([]any)
-		if !organizationServiceAccountRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", organizationServiceAccountRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(organizationServiceAccountRef01List), map[string]any{"id": organizationServiceAccountRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		organizationServiceAccountRef01DataUp0Up := map[string]any{
 			"id": organizationServiceAccountRef01Data["id"],
@@ -223,11 +129,6 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		// LOAD
 		organizationServiceAccountRef01MatchDt0 := map[string]any{
 			"id": organizationServiceAccountRef01Data["id"],
-		}
-		if v := setup.idmap["organization_id"]; v != nil {
-			organizationServiceAccountRef01MatchDt0["organization_id"] = v
-		} else {
-			organizationServiceAccountRef01MatchDt0["organization_id"] = setup.idmap["organization01"]
 		}
 		organizationServiceAccountRef01DataDt0Loaded, err := organizationServiceAccountRef01Ent.Load(organizationServiceAccountRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestOrganizationServiceAccountEntity(t *testing.T) {
 		_, err = organizationServiceAccountRef01Ent.Remove(organizationServiceAccountRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		organizationServiceAccountRef01MatchRt0 := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		organizationServiceAccountRef01ListRt0Result, err := organizationServiceAccountRef01Ent.List(organizationServiceAccountRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		organizationServiceAccountRef01ListRt0, organizationServiceAccountRef01ListRt0Ok := organizationServiceAccountRef01ListRt0Result.([]any)
-		if !organizationServiceAccountRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", organizationServiceAccountRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(organizationServiceAccountRef01ListRt0), map[string]any{"id": organizationServiceAccountRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

@@ -1,9 +1,15 @@
 {
   "existing": {
     "device_enterprise_relay": {
-      "DEVICE_ENTERPRISE_RELAY00": {},
-      "DEVICE_ENTERPRISE_RELAY01": {},
-      "DEVICE_ENTERPRISE_RELAY02": {}
+      "DEVICE_ENTERPRISE_RELAY00": {
+        "id": "DEVICE_ENTERPRISE_RELAY00"
+      },
+      "DEVICE_ENTERPRISE_RELAY01": {
+        "id": "DEVICE_ENTERPRISE_RELAY01"
+      },
+      "DEVICE_ENTERPRISE_RELAY02": {
+        "id": "DEVICE_ENTERPRISE_RELAY02"
+      }
     }
   },
   "new": {

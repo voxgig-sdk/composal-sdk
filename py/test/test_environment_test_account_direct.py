@@ -33,6 +33,10 @@ class TestEnvironmentTestAccountDirect:
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE" and setup["idmap"].get("environment01") is None:
+            print("LIVE STEP {\"id\":\"direct-list-environment_test_account\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives\"}")
+            pytest.skip("Live coverage incomplete: direct-list-environment_test_account excluded (GET-only live run: needs environment01, which only POST /api/v1/organizations/{organization_id}/verify/environments gives)")
+
         if setup["live"]:
             for _live_key in ["environment01", "organization01"]:
                 if setup["idmap"].get(_live_key) is None:

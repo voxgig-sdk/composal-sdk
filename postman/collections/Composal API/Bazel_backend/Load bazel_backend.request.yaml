@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{bazel_backend_id}}"
     description: The bazel_backend this request addresses.
-order: 2000
+order: 1000

@@ -3,7 +3,7 @@ id: "801db889-e42f-5e23-98f9-03820220c6ec"
 description: |-
   The `load` operation of **space_enrollment_token**.
 
-  SDK: `client.SpaceEnrollmentToken().load({ id: "example_id", space_id: "example" })`
+  SDK: `client.SpaceEnrollmentToken().load({ space_id: "example" })`
 url: "{{base}}/api/v1/networking/spaces/:space_id/enrollment_tokens/:id"
 method: GET
 headers:
@@ -15,4 +15,4 @@ pathVariables:
   - key: id
     value: "{{space_enrollment_token_id}}"
     description: The space_enrollment_token this request addresses.
-order: 2000
+order: 1000

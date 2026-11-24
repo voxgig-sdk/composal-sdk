@@ -683,22 +683,52 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 </thead>
 <tbody>
 <tr>
-<td><code>archived_count</code></td>
-<td><code>one,integer,null</code></td>
+<td><code>archive_deletes_sandbox</code></td>
+<td><code>boolean</code></td>
 <td>No</td>
-<td>Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions.</td>
+<td>Archive Deletes Sandbox</td>
 </tr>
 <tr>
-<td><code>can_create</code></td>
+<td><code>archived</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td>Can Create</td>
+<td>Archived</td>
+</tr>
+<tr>
+<td><code>attention</code></td>
+<td><code>one,object,null</code></td>
+<td>Yes</td>
+<td>Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish.</td>
+</tr>
+<tr>
+<td><code>can_archive</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Can Archive</td>
+</tr>
+<tr>
+<td><code>can_compact</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Can Compact</td>
+</tr>
+<tr>
+<td><code>can_snooze</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Can Snooze</td>
+</tr>
+<tr>
+<td><code>coordination_status</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Durable work not represented by a native run: a queued input or an outstanding thread report.</td>
 </tr>
 <tr>
 <td><code>execution</code></td>
 <td><code>any</code></td>
 <td>No</td>
-<td>Execution</td>
+<td><code>device_folder</code> threads also report state and path; sandbox threads run on their own machine with the coding agent in harness.</td>
 </tr>
 <tr>
 <td><code>first_input</code></td>
@@ -719,9 +749,21 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <td>Membership the first message was sent as, for <code>input_delivery</code>.</td>
 </tr>
 <tr>
+<td><code>group</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Rails-owned list group, in precedence order: attention, active run, coordination custody, then done.</td>
+</tr>
+<tr>
+<td><code>has_active_run</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Has Active Run</td>
+</tr>
+<tr>
 <td><code>id</code></td>
 <td><code>string</code></td>
-<td>No</td>
+<td>Yes</td>
 <td>Id</td>
 </tr>
 <tr>
@@ -731,46 +773,16 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <td>Include the source conversation through its last completed reply.</td>
 </tr>
 <tr>
-<td><code>local_activities</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>First page only: states of local threads listed on later pages, by local thread id, so a refresh keeps paged rows current.</td>
-</tr>
-<tr>
-<td><code>local_archived_count</code></td>
-<td><code>integer</code></td>
-<td>Yes</td>
-<td>Local Claude Code and Codex threads archived on their computers.</td>
-</tr>
-<tr>
-<td><code>local_next_cursor</code></td>
-<td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>Local Next Cursor</td>
-</tr>
-<tr>
-<td><code>local_scope_key</code></td>
-<td><code>one,string,null</code></td>
-<td>Yes</td>
-<td>Local Scope Key</td>
-</tr>
-<tr>
-<td><code>local_status_pending</code></td>
+<td><code>is_main</code></td>
 <td><code>boolean</code></td>
 <td>Yes</td>
-<td>A computer is reporting newer local thread statuses; read the page again shortly.</td>
+<td>Is Main</td>
 </tr>
 <tr>
-<td><code>local_threads</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Local Threads</td>
-</tr>
-<tr>
-<td><code>main_thread_id</code></td>
+<td><code>kind</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Main Thread Id</td>
+<td>Kind</td>
 </tr>
 <tr>
 <td><code>message</code></td>
@@ -779,10 +791,10 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <td>The thread's first message.</td>
 </tr>
 <tr>
-<td><code>next_cursor</code></td>
-<td><code>one,string,null</code></td>
+<td><code>older</code></td>
+<td><code>boolean</code></td>
 <td>Yes</td>
-<td>Next Cursor</td>
+<td>Nothing needs the person here, it is not working, and it has not changed for a day; the list folds it under Older.</td>
 </tr>
 <tr>
 <td><code>parent_conversation_id</code></td>
@@ -791,16 +803,22 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <td>Optional source conversation belonging to this agent.</td>
 </tr>
 <tr>
+<td><code>parent_conversation_title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source conversation title, resolved independently of this page.</td>
+</tr>
+<tr>
 <td><code>requester_membership_id</code></td>
 <td><code>string</code></td>
 <td>No</td>
 <td>Requester Membership Id</td>
 </tr>
 <tr>
-<td><code>selected_thread</code></td>
-<td><code>any</code></td>
+<td><code>snoozed_until</code></td>
+<td><code>one,string,null</code></td>
 <td>Yes</td>
-<td>Selected Thread</td>
+<td>When a snoozed thread returns to its usual group; null when it is not snoozed.</td>
 </tr>
 <tr>
 <td><code>thread</code></td>
@@ -809,22 +827,16 @@ const created = await client.SparkAgentThread().create({ agent_id: &quot;example
 <td>Thread</td>
 </tr>
 <tr>
-<td><code>threads</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Threads</td>
-</tr>
-<tr>
 <td><code>title</code></td>
 <td><code>string</code></td>
 <td>No</td>
 <td>Title</td>
 </tr>
 <tr>
-<td><code>total_archived_count</code></td>
-<td><code>one,integer,null</code></td>
+<td><code>updated_at</code></td>
+<td><code>one,string,null</code></td>
 <td>Yes</td>
-<td><code>archived_count</code> plus <code>local_archived_count</code>, computed by Rails for the Archived heading.</td>
+<td>Updated At</td>
 </tr>
 </tbody>
 </table>

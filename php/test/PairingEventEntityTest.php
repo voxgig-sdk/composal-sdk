@@ -33,7 +33,7 @@ class PairingEventEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->PairingEvent(null)->list(["pairing_id" => 1], null);
+            $client->PairingEvent(null)->load(["pairing_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class PairingEventEntityTest extends TestCase
         $setup = pairing_event_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "pairing_event." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,12 +53,9 @@ class PairingEventEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"])) {
-            foreach (["pairing01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_PAIRING_EVENT_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
         }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -68,18 +65,6 @@ class PairingEventEntityTest extends TestCase
         if (count($pairing_event_ref01_data_raw) > 0) {
             $pairing_event_ref01_data = Helpers::to_map($pairing_event_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $pairing_event_ref01_ent = $client->PairingEvent(null);
-        $pairing_event_ref01_match = [
-            "pairing_id" => $setup["idmap"]["pairing01"],
-        ];
-
-        $pairing_event_ref01_list_result = $pairing_event_ref01_ent->list($pairing_event_ref01_match, null);
-        $this->assertIsArray($pairing_event_ref01_list_result);
 
     }
 }

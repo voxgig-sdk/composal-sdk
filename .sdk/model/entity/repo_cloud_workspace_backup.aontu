@@ -184,81 +184,6 @@ main: kit: entity: repo_cloud_workspace_backup: {
         }
       ]
     }
-    list: {
-      name: "list"
-      points: [
-        {
-          co: {
-            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups"
-            source: "openapi3"
-            version: 2
-          }
-          g: {
-            params: [
-              {
-                k: "param"
-                n: "organization_id"
-                or: "org_slug"
-                r: true
-                t: "`$STRING`"
-              }
-              {
-                k: "param"
-                n: "repo_id"
-                or: "repo_slug"
-                r: true
-                t: "`$STRING`"
-              }
-            ]
-          }
-          m: "GET"
-          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups"
-          q: {
-            exist: [
-              "organization_id"
-              "repo_id"
-            ]
-          }
-          r: {
-            param: {
-              org_slug: "organization_id"
-              repo_slug: "repo_id"
-            }
-          }
-          rs: {
-            kind: "json"
-            media: "application/json"
-          }
-          s: [
-            {
-              lit: "api"
-            }
-            {
-              lit: "v1"
-            }
-            {
-              lit: "organizations"
-            }
-            {
-              var: "organization_id"
-            }
-            {
-              lit: "repos"
-            }
-            {
-              var: "repo_id"
-            }
-            {
-              lit: "cloud_workspace_backups"
-            }
-          ]
-          t: {
-            req: "`reqdata`"
-            res: "`body`"
-          }
-        }
-      ]
-    }
     load: {
       name: "load"
       points: [
@@ -337,6 +262,76 @@ main: kit: entity: repo_cloud_workspace_backup: {
             }
             {
               var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            params: [
+              {
+                k: "param"
+                n: "organization_id"
+                or: "org_slug"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "repo_id"
+                or: "repo_slug"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups"
+          q: {
+            exist: [
+              "organization_id"
+              "repo_id"
+            ]
+          }
+          r: {
+            param: {
+              org_slug: "organization_id"
+              repo_slug: "repo_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "api"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "organizations"
+            }
+            {
+              var: "organization_id"
+            }
+            {
+              lit: "repos"
+            }
+            {
+              var: "repo_id"
+            }
+            {
+              lit: "cloud_workspace_backups"
             }
           ]
           t: {

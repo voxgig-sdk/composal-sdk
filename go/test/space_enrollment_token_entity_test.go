@@ -38,7 +38,7 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.SpaceEnrollmentToken(nil).List(map[string]any{"space_id": 1}, nil)
+		_, err := client.SpaceEnrollmentToken(nil).Load(map[string]any{"id": 1, "space_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update", "load", "remove"} {
+		for _, _op := range []string{"create", "update", "load", "remove"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "space_enrollment_token." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,83 +64,11 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke\"}")
-			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}\"}")
-			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"space01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, space_enrollment_tokenEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_SPACE_ENROLLMENT_TOKEN_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-		if setup.live {
-			var _liveId any
-			if !setup.syntheticOnly {
-				_liveId = setup.idmap["space_enrollment_token01"]
-			}
-			livePace()
-			liveExisting(t, space_enrollment_tokenEntityLiveStrict, setup.data, "space_enrollment_token", "id", _liveId,
-				func() (any, error) {
-					return client.SpaceEnrollmentToken(nil).List(map[string]any{"space_id": setup.idmap["space01"]}, nil)
-				})
-		}
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		spaceEnrollmentTokenRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.space_enrollment_token")))
-		var spaceEnrollmentTokenRef01Data map[string]any
-		if len(spaceEnrollmentTokenRef01DataRaw) > 0 {
-			spaceEnrollmentTokenRef01Data = core.ToMapAny(spaceEnrollmentTokenRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = spaceEnrollmentTokenRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceEnrollmentTokenRef01Ent := client.SpaceEnrollmentToken(nil)
-		spaceEnrollmentTokenRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceEnrollmentTokenRef01ListResult, err := spaceEnrollmentTokenRef01Ent.List(spaceEnrollmentTokenRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, spaceEnrollmentTokenRef01ListOk := spaceEnrollmentTokenRef01ListResult.([]any)
-		if !spaceEnrollmentTokenRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceEnrollmentTokenRef01ListResult)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LOAD
-		spaceEnrollmentTokenRef01MatchDt0 := map[string]any{
-			"id": spaceEnrollmentTokenRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceEnrollmentTokenRef01MatchDt0["space_id"] = v
-		} else {
-			spaceEnrollmentTokenRef01MatchDt0["space_id"] = setup.idmap["space01"]
-		}
-		spaceEnrollmentTokenRef01DataDt0Loaded, err := spaceEnrollmentTokenRef01Ent.Load(spaceEnrollmentTokenRef01MatchDt0, nil)
-		if err != nil {
-			t.Fatalf("load failed: %v", err)
-		}
-		spaceEnrollmentTokenRef01DataDt0LoadResult := core.ToMapAny(entityData(spaceEnrollmentTokenRef01DataDt0Loaded))
-		if spaceEnrollmentTokenRef01DataDt0LoadResult == nil {
-			t.Fatal("expected load result to be a map")
-		}
-		if !setup.live && !liveSameId(spaceEnrollmentTokenRef01DataDt0LoadResult["id"], spaceEnrollmentTokenRef01Data["id"]) {
-			t.Fatal("expected load result id to match")
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only space_enrollment_token.create.0 gives\"}")
+			t.Log("LIVE STEP {\"id\":\"space_enrollment_token.remove.3\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}\"}")
+			t.Skip("Live coverage incomplete: space_enrollment_token.create.0 excluded (GET-only live run: needs POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke); space_enrollment_token.update.1 excluded (GET-only live run: needs PUT /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}); space_enrollment_token.load.2 excluded (GET-only live run: reads a record only space_enrollment_token.create.0 gives); space_enrollment_token.remove.3 excluded (GET-only live run: needs DELETE /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id})")
+			return
 		}
 
 		if setup.live {
@@ -177,28 +105,6 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		spaceEnrollmentTokenRef01Match := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceEnrollmentTokenRef01ListResult, err := spaceEnrollmentTokenRef01Ent.List(spaceEnrollmentTokenRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceEnrollmentTokenRef01List, spaceEnrollmentTokenRef01ListOk := spaceEnrollmentTokenRef01ListResult.([]any)
-		if !spaceEnrollmentTokenRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", spaceEnrollmentTokenRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(spaceEnrollmentTokenRef01List), map[string]any{"id": spaceEnrollmentTokenRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		spaceEnrollmentTokenRef01DataUp0Up := map[string]any{
 			"id": spaceEnrollmentTokenRef01Data["id"],
@@ -223,11 +129,6 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		// LOAD
 		spaceEnrollmentTokenRef01MatchDt0 := map[string]any{
 			"id": spaceEnrollmentTokenRef01Data["id"],
-		}
-		if v := setup.idmap["space_id"]; v != nil {
-			spaceEnrollmentTokenRef01MatchDt0["space_id"] = v
-		} else {
-			spaceEnrollmentTokenRef01MatchDt0["space_id"] = setup.idmap["space01"]
 		}
 		spaceEnrollmentTokenRef01DataDt0Loaded, err := spaceEnrollmentTokenRef01Ent.Load(spaceEnrollmentTokenRef01MatchDt0, nil)
 		if err != nil {
@@ -256,28 +157,6 @@ func TestSpaceEnrollmentTokenEntity(t *testing.T) {
 		_, err = spaceEnrollmentTokenRef01Ent.Remove(spaceEnrollmentTokenRef01MatchRm0, nil)
 		if err != nil {
 			t.Fatalf("remove failed: %v", err)
-		}
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		spaceEnrollmentTokenRef01MatchRt0 := map[string]any{
-			"space_id": setup.idmap["space01"],
-		}
-
-		spaceEnrollmentTokenRef01ListRt0Result, err := spaceEnrollmentTokenRef01Ent.List(spaceEnrollmentTokenRef01MatchRt0, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		spaceEnrollmentTokenRef01ListRt0, spaceEnrollmentTokenRef01ListRt0Ok := spaceEnrollmentTokenRef01ListRt0Result.([]any)
-		if !spaceEnrollmentTokenRef01ListRt0Ok {
-			t.Fatalf("expected list result to be an array, got %T", spaceEnrollmentTokenRef01ListRt0Result)
-		}
-
-		notFoundItem := vs.Select(entityListToData(spaceEnrollmentTokenRef01ListRt0), map[string]any{"id": spaceEnrollmentTokenRef01Data["id"]})
-		if !vs.IsEmpty(notFoundItem) {
-			t.Fatal("expected removed entity to not be in list")
 		}
 
 	})

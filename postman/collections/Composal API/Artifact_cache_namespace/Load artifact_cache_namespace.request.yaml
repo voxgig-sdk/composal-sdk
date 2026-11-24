@@ -12,4 +12,4 @@ pathVariables:
   - key: id
     value: "{{artifact_cache_namespace_id}}"
     description: The artifact_cache_namespace this request addresses.
-order: 2000
+order: 1000

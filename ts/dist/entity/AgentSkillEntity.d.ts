@@ -1,12 +1,11 @@
 import { ComposalEntityBase } from '../ComposalEntityBase';
 import type { ComposalSDK } from '../ComposalSDK';
 import type { Control } from '../types';
-import type { AgentSkill, AgentSkillLoadMatch, AgentSkillListMatch, AgentSkillCreateData, AgentSkillUpdateData, AgentSkillRemoveMatch } from '../ComposalTypes';
+import type { AgentSkill, AgentSkillLoadMatch, AgentSkillCreateData, AgentSkillUpdateData, AgentSkillRemoveMatch } from '../ComposalTypes';
 declare class AgentSkillEntity extends ComposalEntityBase<AgentSkill> {
     constructor(client: ComposalSDK, entopts: any);
     make(this: AgentSkillEntity): AgentSkillEntity;
     load(this: any, reqmatch?: AgentSkillLoadMatch, ctrl?: Control): Promise<AgentSkillEntity>;
-    list(this: any, reqmatch?: AgentSkillListMatch, ctrl?: Control): Promise<AgentSkillEntity[]>;
     create(this: any, reqdata?: AgentSkillCreateData, ctrl?: Control): Promise<AgentSkillEntity>;
     update(this: any, reqdata?: AgentSkillUpdateData, ctrl?: Control): Promise<AgentSkillEntity>;
     remove(this: any, reqmatch?: AgentSkillRemoveMatch, ctrl?: Control): Promise<AgentSkillEntity>;

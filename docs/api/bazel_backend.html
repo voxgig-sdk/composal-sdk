@@ -130,8 +130,8 @@
 <a class="nav-section" href="#post-apiv1bazelbackendsidpause">POST /api/v1/bazel/backends/{id}/pause</a>
 <a class="nav-section" href="#post-apiv1bazelbackendsidresume">POST /api/v1/bazel/backends/{id}/resume</a>
 <a class="nav-section" href="#post-apiv1bazelbackends">POST /api/v1/bazel/backends</a>
-<a class="nav-section" href="#get-apiv1bazelbackends">GET /api/v1/bazel/backends</a>
 <a class="nav-section" href="#get-apiv1bazelbackendsid">GET /api/v1/bazel/backends/{id}</a>
+<a class="nav-section" href="#get-apiv1bazelbackends">GET /api/v1/bazel/backends</a>
 <a class="nav-section" href="#patch-apiv1bazelbackendsid">PATCH /api/v1/bazel/backends/{id}</a>
 <a class="nav-section" href="#delete-apiv1bazelbackendsid">DELETE /api/v1/bazel/backends/{id}</a>
 <a class="nav-section" href="#put-apiv1bazelbackendsid">PUT /api/v1/bazel/backends/{id}</a></div>
@@ -629,13 +629,13 @@
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1bazelbackends"><code>/api/v1/bazel/backends</code></a></td>
-<td><code>list</code></td>
+<td><a href="#get-apiv1bazelbackendsid"><code>/api/v1/bazel/backends/{id}</code></a></td>
+<td><code>load</code></td>
 <td>Success</td>
 </tr>
 <tr>
 <td><code>GET</code></td>
-<td><a href="#get-apiv1bazelbackendsid"><code>/api/v1/bazel/backends/{id}</code></a></td>
+<td><a href="#get-apiv1bazelbackends"><code>/api/v1/bazel/backends</code></a></td>
 <td><code>load</code></td>
 <td>Success</td>
 </tr>
@@ -663,12 +663,7 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">bazel_backends, err := client.BazelBackend(nil).List(nil, nil)
-if err != nil {
-    panic(err)
-}
-fmt.Println(bazel_backends)
-bazel_backend, err := client.BazelBackend(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+<pre><code class="language-go">bazel_backend, err := client.BazelBackend(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
 if err != nil {
     panic(err)
 }
@@ -696,8 +691,7 @@ fmt.Println(removed)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local bazel_backends, err = client:BazelBackend():list()
-local bazel_backend, err = client:BazelBackend():load({ id = &quot;example_id&quot; })
+<pre><code class="language-lua">local bazel_backend, err = client:BazelBackend():load({ id = &quot;example_id&quot; })
 local created, err = client:BazelBackend():create({  })
 local updated, err = client:BazelBackend():update({ id = &quot;example_id&quot; })
 local patched, err = client:BazelBackend():patch({ id = &quot;example_id&quot; })
@@ -705,8 +699,7 @@ local removed, err = client:BazelBackend():remove({ id = &quot;example_id&quot; 
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$bazel_backends = $client-&gt;BazelBackend()-&gt;list();
-$bazel_backend = $client-&gt;BazelBackend()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+<pre><code class="language-php">$bazel_backend = $client-&gt;BazelBackend()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $created = $client-&gt;BazelBackend()-&gt;create([]);
 $updated = $client-&gt;BazelBackend()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;]);
 $patched = $client-&gt;BazelBackend()-&gt;patch([&quot;id&quot; =&gt; &quot;example_id&quot;]);
@@ -714,8 +707,7 @@ $client-&gt;BazelBackend()-&gt;remove([&quot;id&quot; =&gt; &quot;example_id&quo
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">bazel_backends = client.BazelBackend().list()
-bazel_backend = client.BazelBackend().load({&quot;id&quot;: &quot;example_id&quot;})
+<pre><code class="language-py">bazel_backend = client.BazelBackend().load({&quot;id&quot;: &quot;example_id&quot;})
 created = client.BazelBackend().create({  })
 updated = client.BazelBackend().update({&quot;id&quot;: &quot;example_id&quot;})
 patched = client.BazelBackend().patch({&quot;id&quot;: &quot;example_id&quot;})
@@ -723,8 +715,7 @@ client.BazelBackend().remove({&quot;id&quot;: &quot;example_id&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">bazel_backends = client.BazelBackend.list()
-bazel_backend = client.BazelBackend.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+<pre><code class="language-rb">bazel_backend = client.BazelBackend.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 created = client.BazelBackend.create({  })
 updated = client.BazelBackend.update({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 patched = client.BazelBackend.patch({ &quot;id&quot; =&gt; &quot;example_id&quot; })
@@ -732,8 +723,7 @@ client.BazelBackend.remove({ &quot;id&quot; =&gt; &quot;example_id&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const bazel_backends = await client.BazelBackend().list()
-const bazel_backend = await client.BazelBackend().load({ id: &quot;example_id&quot; })
+<pre><code class="language-ts">const bazel_backend = await client.BazelBackend().load({ id: &quot;example_id&quot; })
 const created = await client.BazelBackend().create({  })
 const updated = await client.BazelBackend().update({ id: &quot;example_id&quot; })
 const patched = await client.BazelBackend().patch({ id: &quot;example_id&quot; })
@@ -882,19 +872,6 @@ await client.BazelBackend().remove({ id: &quot;example_id&quot; })
 <h5 id="404-not-found-3" class="status" data-status="4xx">404: Not found</h5>
 <h5 id="422-unprocessable-entity-3" class="status" data-status="4xx">422: Unprocessable entity</h5>
 <h5 id="502-bad-gateway-3" class="status" data-status="5xx">502: Bad gateway</h5>
-<h2 id="list">list</h2>
-<h3 id="get-apiv1bazelbackends" class="operation" data-method="get"><code>GET</code> /api/v1/bazel/backends</h3>
-<p>Operation ID: <code>api_v1_backends</code>.</p>
-<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
-<h4 id="responses-4">Responses</h4>
-<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
-<p><code>application/json</code></p>
-<p>The response is <code>object</code>.</p>
-<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
-<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
-<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
-<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
-<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
 <h2 id="load">load</h2>
 <h3 id="get-apiv1bazelbackendsid" class="operation" data-method="get"><code>GET</code> /api/v1/bazel/backends/{id}</h3>
 <p>Operation ID: <code>api_v1_backend</code>.</p>
@@ -920,6 +897,18 @@ await client.BazelBackend().remove({ id: &quot;example_id&quot; })
 </tr>
 </tbody>
 </table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-success-4" class="status" data-status="2xx">200: Success</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="401-unauthorized-4" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden-4" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found-4" class="status" data-status="4xx">404: Not found</h5>
+<h5 id="422-unprocessable-entity-4" class="status" data-status="4xx">422: Unprocessable entity</h5>
+<h5 id="502-bad-gateway-4" class="status" data-status="5xx">502: Bad gateway</h5>
+<h3 id="get-apiv1bazelbackends" class="operation" data-method="get"><code>GET</code> /api/v1/bazel/backends</h3>
+<p>Operation ID: <code>api_v1_backends</code>.</p>
+<p>Authentication: bearer token (<code>bearerAuth</code>).</p>
 <h4 id="responses-5">Responses</h4>
 <h5 id="200-success-5" class="status" data-status="2xx">200: Success</h5>
 <p><code>application/json</code></p>

@@ -735,12 +735,6 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td>Account Id</td>
 </tr>
 <tr>
-<td><code>active</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Active</td>
-</tr>
-<tr>
 <td><code>agent_filters</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
@@ -765,6 +759,12 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td>Chat Messages</td>
 </tr>
 <tr>
+<td><code>check_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Check Count</td>
+</tr>
+<tr>
 <td><code>concurrency</code></td>
 <td><code>integer</code></td>
 <td>Yes</td>
@@ -783,16 +783,28 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td>Created At</td>
 </tr>
 <tr>
+<td><code>credential_name</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>The credential the team signed in with, by its saved name if it was deleted; null for public access.</td>
+</tr>
+<tr>
 <td><code>deadline_at</code></td>
 <td><code>string</code></td>
 <td>Yes</td>
-<td>Deadline At</td>
+<td>When the team's time limit ends.</td>
 </tr>
 <tr>
 <td><code>demo_project</code></td>
 <td><code>one,object,null</code></td>
 <td>Yes</td>
 <td>The workspace's copy of the demo project, linked from the free first discovery as an example; null for other runs or without one.</td>
+</tr>
+<tr>
+<td><code>duration_ms</code></td>
+<td><code>one,integer,null</code></td>
+<td>Yes</td>
+<td>Duration Ms</td>
 </tr>
 <tr>
 <td><code>ended_early</code></td>
@@ -811,12 +823,6 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td><code>string</code></td>
 <td>Yes</td>
 <td>Environment Name</td>
-</tr>
-<tr>
-<td><code>explorations</code></td>
-<td><code>array</code></td>
-<td>Yes</td>
-<td>Explorations</td>
 </tr>
 <tr>
 <td><code>explorer_activity</code></td>
@@ -873,12 +879,6 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td>Idempotency Key</td>
 </tr>
 <tr>
-<td><code>launch_options</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>Present only when launch was requested by an admin</td>
-</tr>
-<tr>
 <td><code>max_seconds</code></td>
 <td><code>integer</code></td>
 <td>Yes</td>
@@ -913,12 +913,6 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td><code>boolean</code></td>
 <td>Yes</td>
 <td>Whether this is the workspace's free first discovery, started by setup.</td>
-</tr>
-<tr>
-<td><code>pagination</code></td>
-<td><code>object</code></td>
-<td>Yes</td>
-<td>Pagination</td>
 </tr>
 <tr>
 <td><code>paywalled</code></td>
@@ -987,10 +981,22 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td>Flows a finished exploration recorded that deep scans can start from.</td>
 </tr>
 <tr>
+<td><code>scenario_count</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Scenarios saved from this discovery.</td>
+</tr>
+<tr>
 <td><code>scenario_generation</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
 <td>Scenario Generation</td>
+</tr>
+<tr>
+<td><code>scenarios_pending</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Scenarios are still being prepared, so <code>scenario_count</code> may still grow.</td>
 </tr>
 <tr>
 <td><code>sign_in_needs_answer</code></td>
@@ -1009,6 +1015,12 @@ const created = await client.Exploration().create({ organization_id: &quot;examp
 <td><code>one,string,null</code></td>
 <td>No</td>
 <td>What a sign-in check's agent asked the person while it needs their answer; null otherwise and for other runs.</td>
+</tr>
+<tr>
+<td><code>started_at</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Started At</td>
 </tr>
 <tr>
 <td><code>startup_retryable</code></td>

@@ -22,7 +22,7 @@ SDK operations: `load`.
 
 Results: Success; Hosted Stripe Checkout URL; Organization, owner invitation URL, and queued email delivery status; Customer account settings.
 
-SDK operations: `create`, `list`, `load`, `update`.
+SDK operations: `create`, `load`, `update`.
 
 Key fields to recognise:
 
@@ -59,8 +59,8 @@ Key fields to recognise:
 - `can_message`: The viewer may send input to the author agent
 - `deployments_count`: Increases with every deploy of the site
 - `hidden_install_count`: Installs by agents the viewer cannot open
-- `install_targets`: Active agents the viewer owns or manages, which they can install apps on
 - `installed_target_ids`: Install targets of the viewer that have this app installed
+- `owner`: The person who controls the author agent
 
 ### [AgentAppInstall](docs/api/agent_app_install.html)
 
@@ -187,7 +187,7 @@ Key fields to recognise:
 
 Results: Native conversation event stream.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [AgentFile](docs/api/agent_file.html)
 
@@ -215,7 +215,7 @@ Key fields to recognise:
 
 Results: Connection response; Success; Sign-in cancelled; Organization MCP connection created; Integration catalog; Current GitHub App repository scope without Verify projects or source imports; Account deleted.
 
-SDK operations: `create`, `list`, `load`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 Key fields to recognise:
 
@@ -371,7 +371,7 @@ Key fields to recognise:
 
 Results: Repository grants, editor choices and optimistic version; What this call prepared. A build still running at the default branch head is building even while thread sandboxes start from an earlier ready revision, which the repositories read shows. Repeated calls reuse the same revision, running setup run or running branch check.
 
-SDK operations: `list`, `update`.
+SDK operations: `load`, `update`.
 
 Key fields to recognise:
 
@@ -426,7 +426,7 @@ SDK operations: `load`.
 
 Results: Success; The recorded checkpoint source, after required queue admission.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [AgentSessionRoderHandoff](docs/api/agent_session_roder_handoff.html)
 
@@ -443,7 +443,7 @@ Key fields to recognise:
 
 Results: Agent configuration.
 
-SDK operations: `list`, `update`.
+SDK operations: `load`, `update`.
 
 ### [AgentSharing](docs/api/agent_sharing.html)
 
@@ -467,9 +467,9 @@ Key fields to recognise:
 
 ### [AgentSkill](docs/api/agent_skill.html)
 
-Results: Skills added; Skills found; Skill library; Skill; Matching plugins or skills; Updated library; Updated skill.
+Results: Skills added; Skills found; Skill; Matching plugins or skills; Skill library; Updated library; Updated skill.
 
-SDK operations: `create`, `list`, `load`, `remove`, `update`.
+SDK operations: `create`, `load`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -500,7 +500,7 @@ Key fields to recognise:
 
 Results: Agent subscription settings; Enterprise subscription selection accepted; the new revision must qualify before use.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [AgentSwarm](docs/api/agent_swarm.html)
 
@@ -538,7 +538,7 @@ An agent&#39;s conversations: list or start one, or archive, compact or snooze i
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [AgentTool](docs/api/agent_tool.html)
 
@@ -582,7 +582,7 @@ SDK operations: `create`.
 
 Results: Optional public metadata, or image bytes when asset is supplied.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [AgentWebhook](docs/api/agent_webhook.html)
 
@@ -604,7 +604,7 @@ SDK operations: `create`.
 
 Results: Native workflow catalog including the new workflow; Native Lobster workflow files for the selected agent; Updated native workflow catalog.
 
-SDK operations: `create`, `list`, `update`.
+SDK operations: `create`, `load`, `update`.
 
 Key fields to recognise:
 
@@ -693,13 +693,13 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [AllocationLog](docs/api/allocation_log.html)
 
 Results: Live Nomad task logs.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [App](docs/api/app.html)
 
@@ -719,25 +719,25 @@ SDK operations: `load`.
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [AppCdn](docs/api/app_cdn.html)
 
 Results: Updated app CDN distribution; App CDN deployment action completed; App CDN distribution created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppConfigVariable](docs/api/app_config_variable.html)
 
 Results: Updated app configuration variable; App configuration variable created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppDataResource](docs/api/app_data_resource.html)
 
 Results: Success; Updated app data resource; Restored app data resource created; App data resource created.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppDeploy](docs/api/app_deploy.html)
 
@@ -757,7 +757,7 @@ A deployment of a hosted app: list, start, read or cancel one.
 
 Results: Updated app deployment; App deployment created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppDeploymentOperation](docs/api/app_deployment_operation.html)
 
@@ -777,7 +777,7 @@ A hosted app&#39;s environments: list, create, read, change, pause, resume, arch
 
 Results: Updated app environment; App environment created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppLocation](docs/api/app_location.html)
 
@@ -795,7 +795,7 @@ SDK operations: `load`.
 
 Results: Success; Selected deployment operations accepted; Refreshed preview; Expiring source refresh review; Preview with the selected resolved revision and current generation; Created preview; Preview administration page; Preview administration index.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -809,13 +809,13 @@ Key fields to recognise:
 
 Results: Created preview defaults; Success; Updated preview defaults.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppRun](docs/api/app_run.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -831,7 +831,7 @@ SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
 
 Results: Updated app service; App service created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -845,7 +845,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AppServicePlacement](docs/api/app_service_placement.html)
 
@@ -861,7 +861,7 @@ Key fields to recognise:
 
 Results: Storage resource archived; Success; App storage resource created.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -919,31 +919,31 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ArtifactImageRepository](docs/api/artifact_image_repository.html)
 
 Results: Success; Image repository push or pull contract.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ArtifactPackageMirror](docs/api/artifact_package_mirror.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [AttachmentPart](docs/api/attachment_part.html)
 
@@ -997,7 +997,7 @@ SDK operations: `create`, `update`.
 
 Results: Password signup availability and Turnstile configuration.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -1033,7 +1033,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [Bazel](docs/api/bazel.html)
 
@@ -1051,7 +1051,7 @@ SDK operations: `load`, `update`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [BazelBlob](docs/api/bazel_blob.html)
 
@@ -1311,7 +1311,7 @@ SDK operations: `create`, `load`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [CatalogSelector](docs/api/catalog_selector.html)
 
@@ -1323,13 +1323,13 @@ SDK operations: `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [CdnHostname](docs/api/cdn_hostname.html)
 
 Results: App CDN hostname created; Success; App CDN hostname deleted.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [CdnSpace](docs/api/cdn_space.html)
 
@@ -1337,19 +1337,19 @@ A CDN storage space and its objects.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [CdnSpaceObject](docs/api/cdn_space_object.html)
 
 Results: Success.
 
-SDK operations: `list`, `load`, `remove`, `update`.
+SDK operations: `load`, `remove`, `update`.
 
 ### [Change](docs/api/change.html)
 
 Results: One page of the organization change queue, flat or grouped.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -1482,7 +1482,7 @@ SDK operations: `create`, `list`, `load`.
 
 Results: Existing CI retry for this request; CI retry created; Success; CI pipeline run catalog.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [CiRunnerPool](docs/api/ci_runner_pool.html)
 
@@ -1506,7 +1506,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [CloudWorkspaceBackupObject](docs/api/cloud_workspace_backup_object.html)
 
@@ -1625,9 +1625,9 @@ SDK operations: `create`.
 
 ### [DeepScan](docs/api/deep_scan.html)
 
-Results: Success; The rerun scan; Stopped deep scan; Previously accepted scan; Accepted scan with its report URL; Deep scan history and active scans; Deep scan; The selected tester; Deep Scan navigation context.
+Results: Success; The rerun scan; Stopped deep scan; Previously accepted scan; Accepted scan with its report URL; Deep scan; The selected tester; Deep Scan navigation context; Deep scan history and active scans.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -1645,11 +1645,11 @@ SDK operations: `list`.
 
 Key fields to recognise:
 
-- `finding_count`: Findings at every priority; findings lists only the listed priority.
-- `finding_ids`: Original team order used by legacy hash links and rerun indices.
-- `free_findings_pending`: Whether a scan with locked findings has yet to choose which are free, so every row is locked for now. Keep checking while true; reviews don&#39;t affect it.
-- `priority`: The priority findings are narrowed to, or null when they are not narrowed.
-- `reproductions`: Fresh-browser reruns of this scan&#39;s reported bugs.
+- `area`: On a locked finding, the first segment of the page it was seen on, such as Billing.
+- `checks`: Checks in the same tester report that this finding cites.
+- `confirmed`: On a locked finding, whether the automatic review confirmed it.
+- `fix_prompt`: A coding-agent prompt for this finding alone
+- `has_recording`: On a locked finding, whether the tester recorded evidence for it.
 
 ### [DeepScanFlow](docs/api/deep_scan_flow.html)
 
@@ -1661,7 +1661,7 @@ SDK operations: `create`.
 
 Results: Selected-scope flow choices.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [DeepScanOption](docs/api/deep_scan_option.html)
 
@@ -1707,7 +1707,7 @@ SDK operations: `load`.
 
 Results: Deployments Details page contract: the live operational state of the app, service and stage the request names. Every collection is already narrowed to that scope, so nothing is filtered again after it arrives. A scope value that names nothing is ignored rather than rejected.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -1807,7 +1807,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [DeviceFolderListing](docs/api/device_folder_listing.html)
 
@@ -1825,11 +1825,6 @@ Key fields to recognise:
 Results: Owner-scoped product grant metadata; execution remains unavailable.
 
 SDK operations: `create`, `list`.
-
-Key fields to recognise:
-
-- `agent_choices`: Eligible picker choices, with current owner grant targets, on the first page only. Cursor pages return an empty array; retain first-page choices while combining grant pages.
-- `all_agents_access`: Whether every agent the owner can use may use this computer for the owner&#39;s messages, including agents added later.
 
 ### [DeviceInvocation](docs/api/device_invocation.html)
 
@@ -1928,9 +1923,9 @@ SDK operations: `create`.
 
 ### [Environment](docs/api/environment.html)
 
-Results: Existing environment returned for an idempotent replay; Verify environment created; Success; Combined Verify environment detail snapshot; Updated Verify environment; The choice is cleared, or was already settled; The saved choice and, once started, the discovery to open.
+Results: Existing environment returned for an idempotent replay; Verify environment created; Combined Verify environment detail snapshot; Success; Updated Verify environment; The choice is cleared, or was already settled; The saved choice and, once started, the discovery to open.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -1984,7 +1979,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [EnvironmentTestAccount](docs/api/environment_test_account.html)
 
@@ -2002,7 +1997,7 @@ SDK operations: `load`.
 
 Results: Success; Desired state and current scheduler termination proof.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 Key fields to recognise:
 
@@ -2012,13 +2007,13 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [ExecutionRelease](docs/api/execution_release.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [ExecutionRuntimeInstance](docs/api/execution_runtime_instance.html)
 
@@ -2043,8 +2038,8 @@ Key fields to recognise:
 - `agent_filters`: Status counts and matching agent IDs for every filter in this live snapshot.
 - `can_continue`: Whether a finished run can be resumed through the orchestrator.
 - `covered_areas`: Titles of the testers that reported checks, in team order; areas assigned to testers that never ran are left out.
+- `credential_name`: The credential the team signed in with, by its saved name if it was deleted; null for public access. Older API releases omit this additive field.
 - `deadline_at`: When the team&#39;s time limit ends. Older API releases omit this additive field during independent web and API rollouts.
-- `demo_project`: The workspace&#39;s copy of the demo project, linked from the free first discovery as an example; null for other runs or without one.
 
 ### [ExplorationMessage](docs/api/exploration_message.html)
 
@@ -2177,7 +2172,7 @@ SDK operations: `list`, `load`.
 
 Results: GitHub verification connection.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -2331,7 +2326,7 @@ SDK operations: `create`.
 
 Results: Updated app domain; App domain created; Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [IdentityOrganization](docs/api/identity_organization.html)
 
@@ -2367,7 +2362,7 @@ Key fields to recognise:
 
 Results: VerificationIntegrations.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [InteractionResponse](docs/api/interaction_response.html)
 
@@ -2403,13 +2398,13 @@ SDK operations: `create`, `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 ### [JobWorkspace](docs/api/job_workspace.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 ### [JourneyVariantReplay](docs/api/journey_variant_replay.html)
 
@@ -2540,7 +2535,7 @@ SDK operations: `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [LogoImage](docs/api/logo_image.html)
 
@@ -2560,7 +2555,7 @@ Key fields to recognise:
 
 Results: Current homepage call-to-action mode.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [McpOauth](docs/api/mcp_oauth.html)
 
@@ -2678,7 +2673,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [MetronomeWebhook](docs/api/metronome_webhook.html)
 
@@ -2708,7 +2703,7 @@ SDK operations: `create`, `patch`, `update`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [Node](docs/api/node.html)
 
@@ -2730,7 +2725,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [NomadAllocation](docs/api/nomad_allocation.html)
 
@@ -2746,7 +2741,7 @@ Key fields to recognise:
 
 Results: Live Nomad task logs.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [Now](docs/api/now.html)
 
@@ -2758,19 +2753,19 @@ SDK operations: `load`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ObservabilitySpace](docs/api/observability_space.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [Openapi](docs/api/openapi.html)
 
@@ -2804,7 +2799,7 @@ Key fields to recognise:
 
 Results: Team app catalog or agent context; Success.
 
-SDK operations: `list`, `remove`, `update`.
+SDK operations: `load`, `remove`, `update`.
 
 ### [OrganizationControl](docs/api/organization_control.html)
 
@@ -2822,7 +2817,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [OrganizationInteraction](docs/api/organization_interaction.html)
 
@@ -2846,7 +2841,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [OrganizationRunEvent](docs/api/organization_run_event.html)
 
@@ -2882,7 +2877,7 @@ SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [OrganizationSetting](docs/api/organization_setting.html)
 
@@ -2894,7 +2889,7 @@ SDK operations: `update`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`, `update`.
+SDK operations: `create`, `load`, `remove`, `update`.
 
 ### [OrganizationSubscription](docs/api/organization_subscription.html)
 
@@ -2912,7 +2907,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [OtelIngest](docs/api/otel_ingest.html)
 
@@ -2938,7 +2933,7 @@ Key fields to recognise:
 
 Results: Markers keyed by agent ID. A marker changes when the conversation does; null means it has no history yet.; V2 agent workspace page; Authorized agent rows and the selected agent when outside the current page.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -3030,7 +3025,8 @@ SDK operations: `list`.
 
 Key fields to recognise:
 
-- `persona_states`: Scenarios by the state of their latest execution. Timeouts count as failing.
+- `attention`: What needs an operator&#39;s eye, problems before notices
+- `credential_id`: The credential this persona signs in with. Without one, a run chooses from the project&#39;s credentials.
 
 ### [PagesProjectRun](docs/api/pages_project_run.html)
 
@@ -3066,13 +3062,13 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [PairingEvent](docs/api/pairing_event.html)
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [ParallelV1](docs/api/parallel_v1.html)
 
@@ -3092,19 +3088,19 @@ The calling user&#39;s personal access tokens: list, create or revoke one.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [PreviewOperation](docs/api/preview_operation.html)
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [PreviewProfileSecretBinding](docs/api/preview_profile_secret_binding.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [PreviewSecret](docs/api/preview_secret.html)
 
@@ -3116,7 +3112,7 @@ SDK operations: `create`, `remove`.
 
 Results: Success; Sharing selections and available metadata without values.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [ProactiveAgentWaitlistEntry](docs/api/proactive_agent_waitlist_entry.html)
 
@@ -3315,7 +3311,7 @@ Key fields to recognise:
 
 Results: ProjectScenarioOptions.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -3331,7 +3327,7 @@ SDK operations: `list`.
 
 Results: ProjectSettingsPage.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [PullRequest](docs/api/pull_request.html)
 
@@ -3363,7 +3359,7 @@ SDK operations: `create`.
 
 Results: PR verification response; What was found on recent requests.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -3458,7 +3454,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [Repo](docs/api/repo.html)
 
@@ -3500,7 +3496,7 @@ SDK operations: `load`.
 
 Results: Success; A page of transcript events, newest-last within the page.; Transcript file attachment.; Without `chunk`: the transcript index state, when `state` is `ready` the `manifest` and the per-chunk `chunks` URLs are included, otherwise only `state`, `session_id`, and `checkpoint_id`. With `chunk`: that chunk object&#39;s raw JSON, zstd-encoded when the client accepts it.; The updated agent session.
 
-SDK operations: `create`, `list`, `load`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 ### [RepoBookmarkProtection](docs/api/repo_bookmark_protection.html)
 
@@ -3518,7 +3514,7 @@ SDK operations: `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [RepoCodeRule](docs/api/repo_code_rule.html)
 
@@ -3621,13 +3617,13 @@ SDK operations: `create`, `load`.
 
 Results: Investigation launch record.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 ### [RoderCodeRepairSetting](docs/api/roder_code_repair_setting.html)
 
 Results: Internal automatic-intake settings.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -3662,13 +3658,13 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [RunJob](docs/api/run_job.html)
 
 Results: Success; CI job catalog.
 
-SDK operations: `create`, `list`, `load`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -3712,7 +3708,7 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [RunnerPoolNodeEnrollmentToken](docs/api/runner_pool_node_enrollment_token.html)
 
@@ -3724,19 +3720,19 @@ SDK operations: `create`, `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 ### [RuntimeInstanceHealthSnapshot](docs/api/runtime_instance_health_snapshot.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [SandboxIntegration](docs/api/sandbox_integration.html)
 
 Results: Sandbox configuration.
 
-SDK operations: `create`, `list`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 Key fields to recognise:
 
@@ -3776,25 +3772,25 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SecretVersion](docs/api/secret_version.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [ServiceEndpoint](docs/api/service_endpoint.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [Setting](docs/api/setting.html)
 
 Results: Organization settings page (organization summary plus import branch policy).
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -3866,7 +3862,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [Site](docs/api/site.html)
 
@@ -3878,7 +3874,7 @@ SDK operations: `list`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `remove`.
+SDK operations: `create`, `load`, `remove`.
 
 ### [SitePreview](docs/api/site_preview.html)
 
@@ -3913,97 +3909,97 @@ SDK operations: `create`.
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceAuditEvent](docs/api/space_audit_event.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [SpaceDnsRecord](docs/api/space_dns_record.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceEnrollmentToken](docs/api/space_enrollment_token.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceGateway](docs/api/space_gateway.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceGroup](docs/api/space_group.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceGroupMembership](docs/api/space_group_membership.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceLogStream](docs/api/space_log_stream.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [SpaceMetricSery](docs/api/space_metric_sery.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [SpaceOtelCollector](docs/api/space_otel_collector.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpacePeer](docs/api/space_peer.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpacePeerAttachment](docs/api/space_peer_attachment.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpacePolicy](docs/api/space_policy.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceSegment](docs/api/space_segment.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`, `load`, `patch`, `remove`, `update`.
+SDK operations: `create`, `load`, `patch`, `remove`, `update`.
 
 ### [SpaceTraceSpan](docs/api/space_trace_span.html)
 
 Results: Success.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 ### [Spark](docs/api/spark.html)
 
 Results: Organization; JSON-RPC result or error; tool failures have isError true in the result; Notification accepted; The first Spark, GitHub status and starting credit.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -4017,7 +4013,7 @@ Key fields to recognise:
 
 Results: Organization accounts available to this V2 agent.
 
-SDK operations: `create`, `list`.
+SDK operations: `create`, `load`.
 
 Key fields to recognise:
 
@@ -4069,17 +4065,17 @@ SDK operations: `create`, `list`.
 
 Key fields to recognise:
 
-- `archived_count`: Exact total of archived conversations for this agent, including subagents but excluding workflow task, cron and system sessions. Null or omitted when the runtime cannot establish the complete total without an unbounded archive read; never a loaded-page count.
+- `archived`: Archived on its computer: hidden from the active list and shown with the archived threads.
+- `attention`: Why the person should open this thread: a pending question, the agent asking for attention, or a run that did not finish.
+- `can_archive`: This requester can archive or restore it, and the computer&#39;s Desktop supports archiving.
+- `coordination_status`: Durable work not represented by a native run: a queued input or an outstanding thread report.
 - `execution`: `device_folder` threads also report state and path; sandbox threads run on their own machine with the coding agent in harness.
-- `first_input_key`: Idempotency-Key that finds the first message through `input_delivery`. Present with `first_input`.
-- `first_input_requester_membership_id`: Membership the first message was sent as, for `input_delivery`. Absent when it is bound to none.
-- `inherit_context`: Include the source conversation through its last completed reply.
 
 ### [SparkCredit](docs/api/spark_credit.html)
 
 Results: Success; Hosted Stripe session; SparkCredits billing summary; Current-month daily Spark usage in UTC; Updated SparkCredits billing summary.
 
-SDK operations: `create`, `list`, `load`, `patch`, `update`.
+SDK operations: `create`, `load`, `patch`, `update`.
 
 Key fields to recognise:
 
@@ -4099,7 +4095,7 @@ SDK operations: `load`.
 
 Results: Month-to-date totals.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [StaticSite](docs/api/static_site.html)
 
@@ -4305,7 +4301,7 @@ Key fields to recognise:
 
 Results: Organization settings page (organization summary plus import branch policy).
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 Key fields to recognise:
 
@@ -4389,7 +4385,7 @@ Key fields to recognise:
 
 Results: Success.
 
-SDK operations: `list`.
+SDK operations: `load`.
 
 ### [VerifySignalIntegration](docs/api/verify_signal_integration.html)
 
@@ -4486,8 +4482,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [A2aWellKnown](docs/api/a2a_well_known.html) | `load` | `GET /api/v1/control/a2a/{connection_id}/.well-known/agent-card.json` | Not required |
 | [AdminOrg](docs/api/admin_org.html) | `create` | `POST /api/v1/admin/organizations/{org_slug}/checkout_session` | Required |
 | [AdminOrg](docs/api/admin_org.html) | `create` | `POST /api/v1/admin/organizations` | Required |
-| [AdminOrg](docs/api/admin_org.html) | `list` | `GET /api/v1/admin/organizations` | Required |
 | [AdminOrg](docs/api/admin_org.html) | `load` | `GET /api/v1/admin/organizations/{org_slug}` | Required |
+| [AdminOrg](docs/api/admin_org.html) | `load` | `GET /api/v1/admin/organizations` | Required |
 | [AdminOrg](docs/api/admin_org.html) | `update` | `PUT /api/v1/admin/organizations/{org_slug}/billing_agreement` | Required |
 | [AdminOrg](docs/api/admin_org.html) | `update` | `PATCH /api/v1/admin/organizations/{org_slug}/billing_contact` | Required |
 | [AdminOrg](docs/api/admin_org.html) | `update` | `PUT /api/v1/admin/organizations/{org_slug}/package` | Required |
@@ -4590,7 +4586,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentControlFlow](docs/api/agent_control_flow.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/control_flows/{flow_id}` | Required |
 | [AgentCoordination](docs/api/agent_coordination.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/coordination/{task_id}/stop` | Required |
 | [AgentEmail](docs/api/agent_email.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/email/{message_id}` | Required |
-| [AgentEvent](docs/api/agent_event.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events` | Required |
+| [AgentEvent](docs/api/agent_event.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/events` | Required |
 | [AgentFile](docs/api/agent_file.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/files/{file_id}` | Required |
 | [AgentInput](docs/api/agent_input.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/inputs` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/authorize` | Required |
@@ -4601,8 +4597,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentIntegration](docs/api/agent_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sharing` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_integrations/{id}/sync` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_integrations` | Required |
-| [AgentIntegration](docs/api/agent_integration.html) | `list` | `GET /api/v1/organizations/{organization_id}/agent_integrations` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_integrations/{id}` | Required |
+| [AgentIntegration](docs/api/agent_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_integrations` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_integrations/catalog` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_integrations/github` | Required |
 | [AgentIntegration](docs/api/agent_integration.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/agent_integrations/{id}` | Required |
@@ -4641,7 +4637,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentRelayFileGrant](docs/api/agent_relay_file_grant.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_relay_file_grants/{id}` | Required |
 | [AgentRelayFileGrant](docs/api/agent_relay_file_grant.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/agent_relay_file_grants/{id}` | Required |
 | [AgentRelayFileGrantAccount](docs/api/agent_relay_file_grant_account.html) | `list` | `GET /api/v1/organizations/{organization_id}/agent_relay_file_grants/accounts` | Required |
-| [AgentRepository](docs/api/agent_repository.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories` | Required |
+| [AgentRepository](docs/api/agent_repository.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories` | Required |
 | [AgentRepository](docs/api/agent_repository.html) | `update` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories/{repository}/environment` | Required |
 | [AgentRepository](docs/api/agent_repository.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/repositories` | Required |
 | [AgentResource](docs/api/agent_resource.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resources` | Required |
@@ -4657,11 +4653,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/finalize` | Required |
 | [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/seal` | Required |
 | [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints` | Required |
-| [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints` | Required |
 | [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}` | Required |
 | [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/{id}/download` | Required |
+| [AgentSessionCheckpoint](docs/api/agent_session_checkpoint.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints` | Required |
 | [AgentSessionRoderHandoff](docs/api/agent_session_roder_handoff.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/roder_handoffs` | Required |
-| [AgentSetting](docs/api/agent_setting.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/settings` | Required |
+| [AgentSetting](docs/api/agent_setting.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/settings` | Required |
 | [AgentSetting](docs/api/agent_setting.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/settings` | Required |
 | [AgentSharing](docs/api/agent_sharing.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/sharing/review` | Required |
 | [AgentSite](docs/api/agent_site.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_sites/{id}/opened` | Required |
@@ -4670,16 +4666,16 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentSite](docs/api/agent_site.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_sites/{id}/icon` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_skills` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `create` | `POST /api/v1/organizations/{organization_id}/agent_skills/preview` | Required |
-| [AgentSkill](docs/api/agent_skill.html) | `list` | `GET /api/v1/organizations/{organization_id}/agent_skills` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_skills/{id}` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_skills/marketplace` | Required |
+| [AgentSkill](docs/api/agent_skill.html) | `load` | `GET /api/v1/organizations/{organization_id}/agent_skills` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/agent_skills/{id}` | Required |
 | [AgentSkill](docs/api/agent_skill.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agent_skills/{id}/audience` | Required |
 | [AgentSlack](docs/api/agent_slack.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack/app` | Required |
 | [AgentSlack](docs/api/agent_slack.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/slack/as_you` | Required |
 | [AgentSubagent](docs/api/agent_subagent.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subagents` | Required |
 | [AgentSubscription](docs/api/agent_subscription.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions` | Required |
-| [AgentSubscription](docs/api/agent_subscription.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions` | Required |
+| [AgentSubscription](docs/api/agent_subscription.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/subscriptions` | Required |
 | [AgentSwarm](docs/api/agent_swarm.html) | `create` | `POST /api/v1/agent/swarms/{id}/cancel` | Required |
 | [AgentSwarm](docs/api/agent_swarm.html) | `create` | `POST /api/v1/agent/swarms` | Required |
 | [AgentSwarm](docs/api/agent_swarm.html) | `list` | `GET /api/v1/agent/swarms` | Required |
@@ -4691,20 +4687,20 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AgentTerminal](docs/api/agent_terminal.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/terminal/connect` | Required |
 | [AgentThread](docs/api/agent_thread.html) | `create` | `POST /api/v1/agent/threads/{id}/archive` | Required |
 | [AgentThread](docs/api/agent_thread.html) | `create` | `POST /api/v1/agent/threads` | Required |
-| [AgentThread](docs/api/agent_thread.html) | `list` | `GET /api/v1/agent/threads` | Required |
 | [AgentThread](docs/api/agent_thread.html) | `load` | `GET /api/v1/agent/threads/{id}` | Required |
+| [AgentThread](docs/api/agent_thread.html) | `load` | `GET /api/v1/agent/threads` | Required |
 | [AgentTool](docs/api/agent_tool.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/relay/tools` | Required |
 | [AgentUsage](docs/api/agent_usage.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/agent_usage` | Required |
 | [AgentVerifyProject](docs/api/agent_verify_project.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects` | Required |
 | [AgentVerifyProject](docs/api/agent_verify_project.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/verify_projects` | Required |
 | [AgentWait](docs/api/agent_wait.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/waits/{wait_id}/stop` | Required |
-| [AgentWebPreview](docs/api/agent_web_preview.html) | `list` | `GET /api/v1/agent_web_previews` | Not required |
+| [AgentWebPreview](docs/api/agent_web_preview.html) | `load` | `GET /api/v1/agent_web_previews` | Not required |
 | [AgentWebhook](docs/api/agent_webhook.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks` | Required |
 | [AgentWebhook](docs/api/agent_webhook.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks/{endpoint_id}` | Required |
 | [AgentWebhook](docs/api/agent_webhook.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/webhooks/{endpoint_id}` | Required |
 | [AgentWork](docs/api/agent_work.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/work/{work_id}/handled` | Required |
 | [AgentWorkflow](docs/api/agent_workflow.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` | Required |
-| [AgentWorkflow](docs/api/agent_workflow.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` | Required |
+| [AgentWorkflow](docs/api/agent_workflow.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` | Required |
 | [AgentWorkflow](docs/api/agent_workflow.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/agents/{id}/spark/workflows` | Required |
 | [AgentWorkflowProposal](docs/api/agent_workflow_proposal.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/revise` | Required |
 | [AgentWorkflowProposal](docs/api/agent_workflow_proposal.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/workflow_proposals/{proposal}/save` | Required |
@@ -4735,10 +4731,10 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AlertRuleEvent](docs/api/alert_rule_event.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/resolve` | Required |
 | [AlertRuleEvent](docs/api/alert_rule_event.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}/silence` | Required |
 | [AlertRuleEvent](docs/api/alert_rule_event.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events` | Required |
-| [AlertRuleEvent](docs/api/alert_rule_event.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events` | Required |
 | [AlertRuleEvent](docs/api/alert_rule_event.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}` | Required |
+| [AlertRuleEvent](docs/api/alert_rule_event.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events` | Required |
 | [AlertRuleEvent](docs/api/alert_rule_event.html) | `remove` | `DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{alert_rule_id}/events/{id}` | Required |
-| [AllocationLog](docs/api/allocation_log.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs` | Required |
+| [AllocationLog](docs/api/allocation_log.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs` | Required |
 | [App](docs/api/app.html) | `create` | `POST /api/v1/hosting/apps/{id}/activate` | Required |
 | [App](docs/api/app.html) | `create` | `POST /api/v1/hosting/apps/{id}/archive` | Required |
 | [App](docs/api/app.html) | `create` | `POST /api/v1/hosting/apps` | Required |
@@ -4751,7 +4747,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [App](docs/api/app.html) | `update` | `PUT /api/v1/hosting/apps/{id}` | Required |
 | [AppAccess](docs/api/app_access.html) | `load` | `GET /api/v1/app_access/callback` | Required |
 | [AppAccess](docs/api/app_access.html) | `load` | `GET /api/v1/app_access/start` | Required |
-| [AppAccessJwk](docs/api/app_access_jwk.html) | `list` | `GET /api/v1/app_access/jwks` | Required |
+| [AppAccessJwk](docs/api/app_access_jwk.html) | `load` | `GET /api/v1/app_access/jwks` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{id}/archive` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{id}/pause` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{id}/provision` | Required |
@@ -4759,16 +4755,16 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{id}/resume` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{id}/sync` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns` | Required |
-| [AppCdn](docs/api/app_cdn.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/cdns` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns/{id}` | Required |
+| [AppCdn](docs/api/app_cdn.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/cdns/{id}` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/cdns/{id}` | Required |
 | [AppCdn](docs/api/app_cdn.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/cdns/{id}` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/disable` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/config_variables/{id}/rotate` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/config_variables` | Required |
-| [AppConfigVariable](docs/api/app_config_variable.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/config_variables` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/config_variables/{id}` | Required |
+| [AppConfigVariable](docs/api/app_config_variable.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/config_variables` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/config_variables/{id}` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/config_variables/{id}` | Required |
 | [AppConfigVariable](docs/api/app_config_variable.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/config_variables/{id}` | Required |
@@ -4778,8 +4774,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppDataResource](docs/api/app_data_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/resume` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/data_resources/{id}/suspend` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/data_resources` | Required |
-| [AppDataResource](docs/api/app_data_resource.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/data_resources` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/data_resources/{id}` | Required |
+| [AppDataResource](docs/api/app_data_resource.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/data_resources` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/data_resources/{id}` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/data_resources/{id}` | Required |
 | [AppDataResource](docs/api/app_data_resource.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/data_resources/{id}` | Required |
@@ -4788,9 +4784,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments/{id}/fail` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments/{id}/succeed` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/deployments` | Required |
-| [AppDeployment](docs/api/app_deployment.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/deployments` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
+| [AppDeployment](docs/api/app_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployments` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
 | [AppDeployment](docs/api/app_deployment.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/deployments/{id}` | Required |
@@ -4807,8 +4803,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppEnvironment](docs/api/app_environment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/environments/{id}/pause` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/environments/{id}/resume` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/environments` | Required |
-| [AppEnvironment](docs/api/app_environment.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/environments` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/environments/{id}` | Required |
+| [AppEnvironment](docs/api/app_environment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/environments` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/environments/{id}` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/environments/{id}` | Required |
 | [AppEnvironment](docs/api/app_environment.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/environments/{id}` | Required |
@@ -4825,24 +4821,24 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppPreview](docs/api/app_preview.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews/{id}/review_source` | Required |
 | [AppPreview](docs/api/app_preview.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews/{id}/update_revision` | Required |
 | [AppPreview](docs/api/app_preview.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews` | Required |
-| [AppPreview](docs/api/app_preview.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/previews` | Required |
 | [AppPreview](docs/api/app_preview.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}` | Required |
 | [AppPreview](docs/api/app_preview.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/administration` | Required |
 | [AppPreview](docs/api/app_preview.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison` | Required |
+| [AppPreview](docs/api/app_preview.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews` | Required |
 | [AppPreview](docs/api/app_preview.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/administration_index` | Required |
 | [AppPreview](docs/api/app_preview.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/previews/{id}` | Required |
 | [AppPreview](docs/api/app_preview.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/previews/{id}` | Required |
 | [AppPreview](docs/api/app_preview.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/previews/{id}` | Required |
 | [AppPreviewProfile](docs/api/app_preview_profile.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/preview_profiles` | Required |
-| [AppPreviewProfile](docs/api/app_preview_profile.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/preview_profiles` | Required |
 | [AppPreviewProfile](docs/api/app_preview_profile.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/preview_profiles/{id}` | Required |
+| [AppPreviewProfile](docs/api/app_preview_profile.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/preview_profiles` | Required |
 | [AppPreviewProfile](docs/api/app_preview_profile.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/preview_profiles/{id}` | Required |
 | [AppPreviewProfile](docs/api/app_preview_profile.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{id}` | Required |
 | [AppPreviewProfile](docs/api/app_preview_profile.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/preview_profiles/{id}` | Required |
 | [AppRun](docs/api/app_run.html) | `create` | `POST /api/v1/hosting/app_runs/{id}/cancel` | Required |
 | [AppRun](docs/api/app_run.html) | `create` | `POST /api/v1/hosting/app_runs` | Required |
-| [AppRun](docs/api/app_run.html) | `list` | `GET /api/v1/hosting/app_runs` | Required |
 | [AppRun](docs/api/app_run.html) | `load` | `GET /api/v1/hosting/app_runs/{id}` | Required |
+| [AppRun](docs/api/app_run.html) | `load` | `GET /api/v1/hosting/app_runs` | Required |
 | [AppSecret](docs/api/app_secret.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/secrets/{id}/set_value` | Required |
 | [AppSecret](docs/api/app_secret.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/secrets` | Required |
 | [AppSecret](docs/api/app_secret.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/secrets/bulk` | Required |
@@ -4857,16 +4853,16 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppService](docs/api/app_service.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/services/{id}/pause` | Required |
 | [AppService](docs/api/app_service.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/services/{id}/resume` | Required |
 | [AppService](docs/api/app_service.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/services` | Required |
-| [AppService](docs/api/app_service.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/services` | Required |
 | [AppService](docs/api/app_service.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/services/{id}` | Required |
+| [AppService](docs/api/app_service.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/services` | Required |
 | [AppService](docs/api/app_service.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/services/{id}` | Required |
 | [AppService](docs/api/app_service.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/services/{id}` | Required |
 | [AppService](docs/api/app_service.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/services/{id}` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/service_bindings/{id}/enable` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/service_bindings` | Required |
-| [AppServiceBinding](docs/api/app_service_binding.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/service_bindings` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/service_bindings/{id}` | Required |
+| [AppServiceBinding](docs/api/app_service_binding.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/service_bindings` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/service_bindings/{id}` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/service_bindings/{id}` | Required |
 | [AppServiceBinding](docs/api/app_service_binding.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/service_bindings/{id}` | Required |
@@ -4878,8 +4874,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AppStorageResource](docs/api/app_storage_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/resume` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/storage_resources/{id}/suspend` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/storage_resources` | Required |
-| [AppStorageResource](docs/api/app_storage_resource.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/storage_resources` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/storage_resources/{id}` | Required |
+| [AppStorageResource](docs/api/app_storage_resource.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/storage_resources` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/storage_resources/{id}` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/storage_resources/{id}` | Required |
 | [AppStorageResource](docs/api/app_storage_resource.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/storage_resources/{id}` | Required |
@@ -4900,8 +4896,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Artifact](docs/api/artifact.html) | `create` | `POST /api/v1/artifacts/artifacts/{id}/issue_contract` | Required |
 | [Artifact](docs/api/artifact.html) | `create` | `POST /api/v1/artifacts/artifacts/{id}/restore` | Required |
 | [Artifact](docs/api/artifact.html) | `create` | `POST /api/v1/artifacts/artifacts` | Required |
-| [Artifact](docs/api/artifact.html) | `list` | `GET /api/v1/artifacts/artifacts` | Required |
 | [Artifact](docs/api/artifact.html) | `load` | `GET /api/v1/artifacts/artifacts/{id}` | Required |
+| [Artifact](docs/api/artifact.html) | `load` | `GET /api/v1/artifacts/artifacts` | Required |
 | [Artifact](docs/api/artifact.html) | `patch` | `PATCH /api/v1/artifacts/artifacts/{id}` | Required |
 | [Artifact](docs/api/artifact.html) | `remove` | `DELETE /api/v1/artifacts/artifacts/{id}` | Required |
 | [Artifact](docs/api/artifact.html) | `update` | `PUT /api/v1/artifacts/artifacts/{id}` | Required |
@@ -4909,8 +4905,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `create` | `POST /api/v1/artifacts/cache_namespaces/{id}/pause` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `create` | `POST /api/v1/artifacts/cache_namespaces/{id}/resume` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `create` | `POST /api/v1/artifacts/cache_namespaces` | Required |
-| [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `list` | `GET /api/v1/artifacts/cache_namespaces` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `load` | `GET /api/v1/artifacts/cache_namespaces/{id}` | Required |
+| [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `load` | `GET /api/v1/artifacts/cache_namespaces` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `patch` | `PATCH /api/v1/artifacts/cache_namespaces/{id}` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `remove` | `DELETE /api/v1/artifacts/cache_namespaces/{id}` | Required |
 | [ArtifactCacheNamespace](docs/api/artifact_cache_namespace.html) | `update` | `PUT /api/v1/artifacts/cache_namespaces/{id}` | Required |
@@ -4919,8 +4915,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `create` | `POST /api/v1/artifacts/image_repositories/{id}/pause` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `create` | `POST /api/v1/artifacts/image_repositories/{id}/resume` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `create` | `POST /api/v1/artifacts/image_repositories` | Required |
-| [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `list` | `GET /api/v1/artifacts/image_repositories` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `load` | `GET /api/v1/artifacts/image_repositories/{id}` | Required |
+| [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `load` | `GET /api/v1/artifacts/image_repositories` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `patch` | `PATCH /api/v1/artifacts/image_repositories/{id}` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `remove` | `DELETE /api/v1/artifacts/image_repositories/{id}` | Required |
 | [ArtifactImageRepository](docs/api/artifact_image_repository.html) | `update` | `PUT /api/v1/artifacts/image_repositories/{id}` | Required |
@@ -4928,14 +4924,14 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `create` | `POST /api/v1/artifacts/package_mirrors/{id}/resume` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `create` | `POST /api/v1/artifacts/package_mirrors/{id}/sync` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `create` | `POST /api/v1/artifacts/package_mirrors` | Required |
-| [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `list` | `GET /api/v1/artifacts/package_mirrors` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `load` | `GET /api/v1/artifacts/package_mirrors/{id}` | Required |
+| [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `load` | `GET /api/v1/artifacts/package_mirrors` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `patch` | `PATCH /api/v1/artifacts/package_mirrors/{id}` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `remove` | `DELETE /api/v1/artifacts/package_mirrors/{id}` | Required |
 | [ArtifactPackageMirror](docs/api/artifact_package_mirror.html) | `update` | `PUT /api/v1/artifacts/package_mirrors/{id}` | Required |
 | [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `create` | `POST /api/v1/artifacts/retention_policies` | Required |
-| [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `list` | `GET /api/v1/artifacts/retention_policies` | Required |
 | [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `load` | `GET /api/v1/artifacts/retention_policies/{id}` | Required |
+| [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `load` | `GET /api/v1/artifacts/retention_policies` | Required |
 | [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `patch` | `PATCH /api/v1/artifacts/retention_policies/{id}` | Required |
 | [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `remove` | `DELETE /api/v1/artifacts/retention_policies/{id}` | Required |
 | [ArtifactRetentionPolicy](docs/api/artifact_retention_policy.html) | `update` | `PUT /api/v1/artifacts/retention_policies/{id}` | Required |
@@ -4960,11 +4956,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [AuthOpenai](docs/api/auth_openai.html) | `load` | `GET /api/v1/auth/openai/start` | Required |
 | [AuthPasswordReset](docs/api/auth_password_reset.html) | `create` | `POST /api/v1/auth/password_resets` | Required |
 | [AuthPasswordReset](docs/api/auth_password_reset.html) | `update` | `PATCH /api/v1/auth/password_resets` | Required |
-| [AuthRegistrationOption](docs/api/auth_registration_option.html) | `list` | `GET /api/v1/auth/registration_options` | Not required |
+| [AuthRegistrationOption](docs/api/auth_registration_option.html) | `load` | `GET /api/v1/auth/registration_options` | Not required |
 | [AutomationEvent](docs/api/automation_event.html) | `update` | `PUT /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/events` | Required |
 | [AutomationRun](docs/api/automation_run.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/automations/{automation_key}/runs` | Required |
 | [BackendRunnerPool](docs/api/backend_runner_pool.html) | `create` | `POST /api/v1/bazel/backends/{backend_id}/runner_pools` | Required |
-| [BackendRunnerPool](docs/api/backend_runner_pool.html) | `list` | `GET /api/v1/bazel/backends/{backend_id}/runner_pools` | Required |
+| [BackendRunnerPool](docs/api/backend_runner_pool.html) | `load` | `GET /api/v1/bazel/backends/{backend_id}/runner_pools` | Required |
 | [BackendRunnerPool](docs/api/backend_runner_pool.html) | `remove` | `DELETE /api/v1/bazel/backends/{backend_id}/runner_pools/{id}` | Required |
 | [Bazel](docs/api/bazel.html) | `create` | `POST /api/v1/bazel/authorize` | Required |
 | [BazelActionResult](docs/api/bazel_action_result.html) | `load` | `GET /api/v1/bazel/action_results/{hash}/{size_bytes}` | Required |
@@ -4973,8 +4969,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [BazelBackend](docs/api/bazel_backend.html) | `create` | `POST /api/v1/bazel/backends/{id}/pause` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `create` | `POST /api/v1/bazel/backends/{id}/resume` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `create` | `POST /api/v1/bazel/backends` | Required |
-| [BazelBackend](docs/api/bazel_backend.html) | `list` | `GET /api/v1/bazel/backends` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `load` | `GET /api/v1/bazel/backends/{id}` | Required |
+| [BazelBackend](docs/api/bazel_backend.html) | `load` | `GET /api/v1/bazel/backends` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `patch` | `PATCH /api/v1/bazel/backends/{id}` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `remove` | `DELETE /api/v1/bazel/backends/{id}` | Required |
 | [BazelBackend](docs/api/bazel_backend.html) | `update` | `PUT /api/v1/bazel/backends/{id}` | Required |
@@ -5043,34 +5039,34 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `create` | `POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_hit` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `create` | `POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/record_miss` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `create` | `POST /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries` | Required |
-| [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `list` | `GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `load` | `GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` | Required |
+| [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `load` | `GET /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `patch` | `PATCH /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `remove` | `DELETE /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` | Required |
 | [CacheNamespaceEntry](docs/api/cache_namespace_entry.html) | `update` | `PUT /api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` | Required |
 | [CatalogSelector](docs/api/catalog_selector.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/catalog/selectors` | Required |
 | [CdnDeployment](docs/api/cdn_deployment.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments` | Required |
-| [CdnDeployment](docs/api/cdn_deployment.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments` | Required |
 | [CdnDeployment](docs/api/cdn_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}` | Required |
+| [CdnDeployment](docs/api/cdn_deployment.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames` | Required |
-| [CdnHostname](docs/api/cdn_hostname.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
+| [CdnHostname](docs/api/cdn_hostname.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
 | [CdnHostname](docs/api/cdn_hostname.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/cdn_spaces/{id}/archive` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/cdn_spaces/{id}/provision` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `create` | `POST /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
-| [CdnSpace](docs/api/cdn_space.html) | `list` | `GET /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `load` | `GET /api/v1/cdn_spaces/{id}` | Required |
+| [CdnSpace](docs/api/cdn_space.html) | `load` | `GET /api/v1/organizations/{org_slug}/cdn_spaces` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `patch` | `PATCH /api/v1/cdn_spaces/{id}` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `remove` | `DELETE /api/v1/cdn_spaces/{id}` | Required |
 | [CdnSpace](docs/api/cdn_space.html) | `update` | `PUT /api/v1/cdn_spaces/{id}` | Required |
-| [CdnSpaceObject](docs/api/cdn_space_object.html) | `list` | `GET /api/v1/cdn_spaces/{cdn_space_id}/objects` | Required |
 | [CdnSpaceObject](docs/api/cdn_space_object.html) | `load` | `GET /api/v1/cdn_spaces/{cdn_space_id}/objects/{path}` | Required |
+| [CdnSpaceObject](docs/api/cdn_space_object.html) | `load` | `GET /api/v1/cdn_spaces/{cdn_space_id}/objects` | Required |
 | [CdnSpaceObject](docs/api/cdn_space_object.html) | `remove` | `DELETE /api/v1/cdn_spaces/{cdn_space_id}/objects/{path}` | Required |
 | [CdnSpaceObject](docs/api/cdn_space_object.html) | `update` | `PUT /api/v1/cdn_spaces/{cdn_space_id}/objects` | Required |
-| [Change](docs/api/change.html) | `list` | `GET /api/v1/organizations/{org_slug}/changes` | Required |
+| [Change](docs/api/change.html) | `load` | `GET /api/v1/organizations/{org_slug}/changes` | Required |
 | [ChangeAsset](docs/api/change_asset.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets/{id}/finalize` | Required |
 | [ChangeAsset](docs/api/change_asset.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/assets` | Required |
 | [ChangeComment](docs/api/change_comment.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/comments/{comment_id}/resolve` | Required |
@@ -5106,8 +5102,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [CiPipeline](docs/api/ci_pipeline.html) | `load` | `GET /api/v1/ci/pipelines/{id}` | Required |
 | [CiPipelineRun](docs/api/ci_pipeline_run.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{id}/retry` | Required |
 | [CiPipelineRun](docs/api/ci_pipeline_run.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs` | Required |
-| [CiPipelineRun](docs/api/ci_pipeline_run.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs` | Required |
 | [CiPipelineRun](docs/api/ci_pipeline_run.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{id}` | Required |
+| [CiPipelineRun](docs/api/ci_pipeline_run.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs` | Required |
 | [CiRunnerPool](docs/api/ci_runner_pool.html) | `create` | `POST /api/v1/ci/runner_pools/{id}/promote_reconciliation_runtime` | Required |
 | [CiRunnerPool](docs/api/ci_runner_pool.html) | `create` | `POST /api/v1/ci/runner_pools` | Required |
 | [CiRunnerPool](docs/api/ci_runner_pool.html) | `list` | `GET /api/v1/ci/runner_pools` | Required |
@@ -5117,7 +5113,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [CiStatus](docs/api/ci_status.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/ci/status/ref` | Required |
 | [CliEvent](docs/api/cli_event.html) | `create` | `POST /api/v1/cli_events` | Required |
 | [CliRelease](docs/api/cli_release.html) | `create` | `POST /api/v1/cli_releases` | Required |
-| [CliRelease](docs/api/cli_release.html) | `list` | `GET /api/v1/cli_releases` | Required |
+| [CliRelease](docs/api/cli_release.html) | `load` | `GET /api/v1/cli_releases` | Required |
 | [CliRelease](docs/api/cli_release.html) | `load` | `GET /api/v1/cli_releases/latest` | Required |
 | [CloudWorkspaceBackupObject](docs/api/cloud_workspace_backup_object.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/objects/{object_key}` | Required |
 | [CodeRuleEvaluation](docs/api/code_rule_evaluation.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/evaluations` | Required |
@@ -5141,13 +5137,13 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/stop` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
-| [DeepScan](docs/api/deep_scan.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent` | Required |
 | [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context` | Required |
+| [DeepScan](docs/api/deep_scan.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans` | Required |
 | [DeepScanFinding](docs/api/deep_scan_finding.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/{id}/findings` | Required |
 | [DeepScanFlow](docs/api/deep_scan_flow.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/deep_scans/flows` | Required |
-| [DeepScanMappedFlow](docs/api/deep_scan_mapped_flow.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` | Required |
+| [DeepScanMappedFlow](docs/api/deep_scan_mapped_flow.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/mapped_flows` | Required |
 | [DeepScanOption](docs/api/deep_scan_option.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/deep_scans/options` | Required |
 | [DemoShare](docs/api/demo_share.html) | `load` | `GET /api/v1/verify/demo_shares/{token}` | Not required |
 | [DemoShare](docs/api/demo_share.html) | `load` | `GET /api/v1/verify/demo_shares/{token}/thumbnail` | Not required |
@@ -5156,7 +5152,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Deployment](docs/api/deployment.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/deployments/architecture` | Required |
 | [Deployment](docs/api/deployment.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/deployments/feed` | Required |
 | [DeploymentDashboardNomad](docs/api/deployment_dashboard_nomad.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation` | Required |
-| [DeploymentDetail](docs/api/deployment_detail.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/deployments/details` | Required |
+| [DeploymentDetail](docs/api/deployment_detail.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/deployments/details` | Required |
 | [DeploymentFile](docs/api/deployment_file.html) | `update` | `PUT /api/v1/static_sites/{static_site_id}/deployments/{id}/files` | Required |
 | [DeploymentLog](docs/api/deployment_log.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/deployments/logs` | Required |
 | [DeploymentMetric](docs/api/deployment_metric.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/deployments/metrics` | Required |
@@ -5186,7 +5182,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [DeviceControlOperation](docs/api/device_control_operation.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations` | Required |
 | [DeviceControlOperation](docs/api/device_control_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/{id}` | Required |
 | [DeviceControlOperation](docs/api/device_control_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/control_operations/request` | Required |
-| [DeviceEnterpriseRelay](docs/api/device_enterprise_relay.html) | `list` | `GET /api/v1/spark/devices/enterprise_relays` | Required |
+| [DeviceEnterpriseRelay](docs/api/device_enterprise_relay.html) | `load` | `GET /api/v1/spark/devices/enterprise_relays` | Required |
 | [DeviceFolderListing](docs/api/device_folder_listing.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings` | Required |
 | [DeviceFolderListing](docs/api/device_folder_listing.html) | `load` | `GET /api/v1/organizations/{organization_id}/devices/{device_registration_id}/folder_listings/{id}` | Required |
 | [DeviceGrant](docs/api/device_grant.html) | `create` | `POST /api/v1/organizations/{organization_id}/devices/{device_registration_id}/grants/{device_grant_id}/revise` | Required |
@@ -5230,8 +5226,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Edge](docs/api/edge.html) | `load` | `GET /api/v1/edge/tls-check` | Required |
 | [EmailVerification](docs/api/email_verification.html) | `create` | `POST /api/v1/email_verifications/resend` | Not required |
 | [Environment](docs/api/environment.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/environments` | Required |
-| [Environment](docs/api/environment.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/environments` | Required |
 | [Environment](docs/api/environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
+| [Environment](docs/api/environment.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/environments` | Required |
 | [Environment](docs/api/environment.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
 | [Environment](docs/api/environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{id}` | Required |
 | [Environment](docs/api/environment.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/first_run` | Required |
@@ -5251,7 +5247,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [EnvironmentRevision](docs/api/environment_revision.html) | `update` | `POST /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}` | Required |
 | [EnvironmentSecretBinding](docs/api/environment_secret_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` | Required |
 | [EnvironmentSecretBinding](docs/api/environment_secret_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/copy` | Required |
-| [EnvironmentSecretBinding](docs/api/environment_secret_binding.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` | Required |
+| [EnvironmentSecretBinding](docs/api/environment_secret_binding.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings` | Required |
 | [EnvironmentSecretBinding](docs/api/environment_secret_binding.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id}` | Required |
 | [EnvironmentTestAccount](docs/api/environment_test_account.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts` | Required |
 | [EnvironmentTestAccount](docs/api/environment_test_account.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/test_accounts/{persona}` | Required |
@@ -5262,20 +5258,20 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Evidence](docs/api/evidence.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/evidence` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `create` | `POST /api/v1/execution/desired_states/{id}/reconcile` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `create` | `POST /api/v1/execution/desired_states` | Required |
-| [ExecutionDesiredState](docs/api/execution_desired_state.html) | `list` | `GET /api/v1/execution/desired_states` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `load` | `GET /api/v1/execution/desired_states/{id}` | Required |
+| [ExecutionDesiredState](docs/api/execution_desired_state.html) | `load` | `GET /api/v1/execution/desired_states` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `patch` | `PATCH /api/v1/execution/desired_states/{id}` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `remove` | `DELETE /api/v1/execution/desired_states/{id}` | Required |
 | [ExecutionDesiredState](docs/api/execution_desired_state.html) | `update` | `PUT /api/v1/execution/desired_states/{id}` | Required |
 | [ExecutionReconcilerTick](docs/api/execution_reconciler_tick.html) | `create` | `POST /api/v1/execution/reconciler_ticks` | Required |
-| [ExecutionReconcilerTick](docs/api/execution_reconciler_tick.html) | `list` | `GET /api/v1/execution/reconciler_ticks` | Required |
 | [ExecutionReconcilerTick](docs/api/execution_reconciler_tick.html) | `load` | `GET /api/v1/execution/reconciler_ticks/{id}` | Required |
+| [ExecutionReconcilerTick](docs/api/execution_reconciler_tick.html) | `load` | `GET /api/v1/execution/reconciler_ticks` | Required |
 | [ExecutionRelease](docs/api/execution_release.html) | `create` | `POST /api/v1/execution/releases/{id}/activate` | Required |
 | [ExecutionRelease](docs/api/execution_release.html) | `create` | `POST /api/v1/execution/releases/{id}/fail` | Required |
 | [ExecutionRelease](docs/api/execution_release.html) | `create` | `POST /api/v1/execution/releases/{id}/mark_ready` | Required |
 | [ExecutionRelease](docs/api/execution_release.html) | `create` | `POST /api/v1/execution/releases` | Required |
-| [ExecutionRelease](docs/api/execution_release.html) | `list` | `GET /api/v1/execution/releases` | Required |
 | [ExecutionRelease](docs/api/execution_release.html) | `load` | `GET /api/v1/execution/releases/{id}` | Required |
+| [ExecutionRelease](docs/api/execution_release.html) | `load` | `GET /api/v1/execution/releases` | Required |
 | [ExecutionRuntimeInstance](docs/api/execution_runtime_instance.html) | `create` | `POST /api/v1/execution/runtime_instances/{id}/refresh` | Required |
 | [ExecutionRuntimeInstance](docs/api/execution_runtime_instance.html) | `create` | `POST /api/v1/execution/runtime_instances/{id}/terminate` | Required |
 | [ExecutionRuntimeInstance](docs/api/execution_runtime_instance.html) | `create` | `POST /api/v1/execution/runtime_instances` | Required |
@@ -5325,7 +5321,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [GithubCiRepositoryCompatibilityReport](docs/api/github_ci_repository_compatibility_report.html) | `list` | `GET /api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports` | Required |
 | [GithubCiRepositoryCompatibilityReport](docs/api/github_ci_repository_compatibility_report.html) | `load` | `GET /api/v1/organizations/{organization_id}/github_ci_repositories/{github_ci_repository_id}/compatibility_reports/{id}` | Required |
 | [GithubConnection](docs/api/github_connection.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/github_connections` | Required |
-| [GithubConnection](docs/api/github_connection.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/github_connections` | Required |
+| [GithubConnection](docs/api/github_connection.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/github_connections` | Required |
 | [GithubIntegration](docs/api/github_integration.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations` | Required |
 | [GithubIntegration](docs/api/github_integration.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/github_integrations/{github_app_installation_id}` | Required |
 | [GithubOnboarding](docs/api/github_onboarding.html) | `load` | `GET /api/v1/organizations/{organization_id}/github_onboarding` | Required |
@@ -5361,8 +5357,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/domains/{id}/disable` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/domains/{id}/enable` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/domains` | Required |
-| [HostingAppDomain](docs/api/hosting_app_domain.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/domains` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/domains/{id}` | Required |
+| [HostingAppDomain](docs/api/hosting_app_domain.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/domains` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/domains/{id}` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/domains/{id}` | Required |
 | [HostingAppDomain](docs/api/hosting_app_domain.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/domains/{id}` | Required |
@@ -5373,7 +5369,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ImportBranchPolicy](docs/api/import_branch_policy.html) | `load` | `GET /api/v1/organizations/{organization_id}/import_branch_policy` | Required |
 | [ImportBranchPolicy](docs/api/import_branch_policy.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/import_branch_policy` | Required |
 | [ImportBranchPolicy](docs/api/import_branch_policy.html) | `update` | `PUT /api/v1/organizations/{organization_id}/import_branch_policy` | Required |
-| [Integration](docs/api/integration.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/integrations` | Required |
+| [Integration](docs/api/integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/integrations` | Required |
 | [InteractionResponse](docs/api/interaction_response.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/interactions/{request_id}/responses` | Required |
 | [Invitation](docs/api/invitation.html) | `create` | `POST /api/v1/organizations/{organization_id}/invitations` | Required |
 | [Invitation](docs/api/invitation.html) | `list` | `GET /api/v1/organizations/{organization_id}/invitations` | Required |
@@ -5383,11 +5379,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [JobLogChunk](docs/api/job_log_chunk.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks` | Required |
 | [JobLogChunk](docs/api/job_log_chunk.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/log_chunks` | Required |
 | [JobStep](docs/api/job_step.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps` | Required |
-| [JobStep](docs/api/job_step.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps` | Required |
+| [JobStep](docs/api/job_step.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps` | Required |
 | [JobStep](docs/api/job_step.html) | `patch` | `PATCH /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}` | Required |
 | [JobStep](docs/api/job_step.html) | `update` | `PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/steps/{id}` | Required |
 | [JobWorkspace](docs/api/job_workspace.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces` | Required |
-| [JobWorkspace](docs/api/job_workspace.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces` | Required |
+| [JobWorkspace](docs/api/job_workspace.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces` | Required |
 | [JobWorkspace](docs/api/job_workspace.html) | `patch` | `PATCH /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}` | Required |
 | [JobWorkspace](docs/api/job_workspace.html) | `update` | `PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}` | Required |
 | [JourneyVariantReplay](docs/api/journey_variant_replay.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays` | Required |
@@ -5417,11 +5413,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [LocalThreadOperation](docs/api/local_thread_operation.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/operations/{operation_id}` | Required |
 | [Location](docs/api/location.html) | `list` | `GET /api/v1/hosting/locations` | Required |
 | [LogStreamChunk](docs/api/log_stream_chunk.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks` | Required |
-| [LogStreamChunk](docs/api/log_stream_chunk.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks` | Required |
 | [LogStreamChunk](docs/api/log_stream_chunk.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks/{id}` | Required |
+| [LogStreamChunk](docs/api/log_stream_chunk.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/log_streams/{log_stream_id}/chunks` | Required |
 | [LogoImage](docs/api/logo_image.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/logo_image` | Required |
 | [LogoImage](docs/api/logo_image.html) | `update` | `PUT /api/v1/organizations/{organization_id}/logo_image` | Required |
-| [MarketingSetting](docs/api/marketing_setting.html) | `list` | `GET /api/v1/marketing_settings` | Not required |
+| [MarketingSetting](docs/api/marketing_setting.html) | `load` | `GET /api/v1/marketing_settings` | Not required |
 | [McpOauth](docs/api/mcp_oauth.html) | `create` | `POST /api/v1/mcp/oauth/consent` | Required |
 | [McpOauth](docs/api/mcp_oauth.html) | `create` | `POST /api/v1/mcp/oauth/register` | Required |
 | [McpOauth](docs/api/mcp_oauth.html) | `create` | `POST /api/v1/mcp/oauth/revoke` | Required |
@@ -5471,7 +5467,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [MessagingConversationMessage](docs/api/messaging_conversation_message.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction` | Required |
 | [MessagingConversationMessage](docs/api/messaging_conversation_message.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages` | Required |
 | [MessagingConversationUpload](docs/api/messaging_conversation_upload.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads` | Required |
-| [MetricQuery](docs/api/metric_query.html) | `list` | `GET /api/v1/hosting/metrics/queries` | Required |
+| [MetricQuery](docs/api/metric_query.html) | `load` | `GET /api/v1/hosting/metrics/queries` | Required |
 | [MetronomeWebhook](docs/api/metronome_webhook.html) | `create` | `POST /api/v1/metronome/webhooks` | Not required |
 | [ModelSubscriptionAccount](docs/api/model_subscription_account.html) | `create` | `POST /api/v1/model_subscription_accounts` | Required |
 | [ModelSubscriptionAccount](docs/api/model_subscription_account.html) | `list` | `GET /api/v1/model_subscription_accounts` | Required |
@@ -5488,9 +5484,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [NetworkingSpace](docs/api/networking_space.html) | `create` | `POST /api/v1/networking/spaces/{id}/pause` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `create` | `POST /api/v1/networking/spaces/{id}/validate_route` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `create` | `POST /api/v1/networking/spaces` | Required |
-| [NetworkingSpace](docs/api/networking_space.html) | `list` | `GET /api/v1/networking/spaces` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `load` | `GET /api/v1/networking/spaces/{id}` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/catalog` | Required |
+| [NetworkingSpace](docs/api/networking_space.html) | `load` | `GET /api/v1/networking/spaces` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `patch` | `PATCH /api/v1/networking/spaces/{id}` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `remove` | `DELETE /api/v1/networking/spaces/{id}` | Required |
 | [NetworkingSpace](docs/api/networking_space.html) | `update` | `PUT /api/v1/networking/spaces/{id}` | Required |
@@ -5499,19 +5495,19 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [NodeLease](docs/api/node_lease.html) | `create` | `POST /api/v1/ci/nodes/{id}/leases/{lease_id}/claim` | Required |
 | [NodeLease](docs/api/node_lease.html) | `create` | `POST /api/v1/ci/nodes/{id}/leases/{lease_id}/heartbeat` | Required |
 | [NodeLease](docs/api/node_lease.html) | `create` | `POST /api/v1/ci/nodes/{id}/leases/{lease_id}/release` | Required |
-| [NodeLease](docs/api/node_lease.html) | `list` | `GET /api/v1/ci/nodes/{id}/leases` | Required |
 | [NodeLease](docs/api/node_lease.html) | `load` | `GET /api/v1/ci/nodes/{id}/leases/{lease_id}/job` | Required |
 | [NodeLease](docs/api/node_lease.html) | `load` | `GET /api/v1/ci/nodes/{id}/leases/{lease_id}/workspace_archive` | Required |
+| [NodeLease](docs/api/node_lease.html) | `load` | `GET /api/v1/ci/nodes/{id}/leases` | Required |
 | [NomadAllocation](docs/api/nomad_allocation.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}` | Required |
-| [NomadLog](docs/api/nomad_log.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs` | Required |
+| [NomadLog](docs/api/nomad_log.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs` | Required |
 | [Now](docs/api/now.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/now` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `create` | `POST /api/v1/observability/clickhouse_clusters/{id}/activate` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `create` | `POST /api/v1/observability/clickhouse_clusters/{id}/archive` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `create` | `POST /api/v1/observability/clickhouse_clusters/{id}/deploy` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `create` | `POST /api/v1/observability/clickhouse_clusters/{id}/pause` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `create` | `POST /api/v1/observability/clickhouse_clusters` | Required |
-| [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `list` | `GET /api/v1/observability/clickhouse_clusters` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `load` | `GET /api/v1/observability/clickhouse_clusters/{id}` | Required |
+| [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `load` | `GET /api/v1/observability/clickhouse_clusters` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `patch` | `PATCH /api/v1/observability/clickhouse_clusters/{id}` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `remove` | `DELETE /api/v1/observability/clickhouse_clusters/{id}` | Required |
 | [ObservabilityClickhouseCluster](docs/api/observability_clickhouse_cluster.html) | `update` | `PUT /api/v1/observability/clickhouse_clusters/{id}` | Required |
@@ -5520,8 +5516,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `create` | `POST /api/v1/observability/quickwit_clusters/{id}/deploy` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `create` | `POST /api/v1/observability/quickwit_clusters/{id}/pause` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `create` | `POST /api/v1/observability/quickwit_clusters` | Required |
-| [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `list` | `GET /api/v1/observability/quickwit_clusters` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `load` | `GET /api/v1/observability/quickwit_clusters/{id}` | Required |
+| [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `load` | `GET /api/v1/observability/quickwit_clusters` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `patch` | `PATCH /api/v1/observability/quickwit_clusters/{id}` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `remove` | `DELETE /api/v1/observability/quickwit_clusters/{id}` | Required |
 | [ObservabilityQuickwitCluster](docs/api/observability_quickwit_cluster.html) | `update` | `PUT /api/v1/observability/quickwit_clusters/{id}` | Required |
@@ -5529,8 +5525,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ObservabilitySpace](docs/api/observability_space.html) | `create` | `POST /api/v1/observability/spaces/{id}/archive` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `create` | `POST /api/v1/observability/spaces/{id}/pause` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `create` | `POST /api/v1/observability/spaces` | Required |
-| [ObservabilitySpace](docs/api/observability_space.html) | `list` | `GET /api/v1/observability/spaces` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `load` | `GET /api/v1/observability/spaces/{id}` | Required |
+| [ObservabilitySpace](docs/api/observability_space.html) | `load` | `GET /api/v1/observability/spaces` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `patch` | `PATCH /api/v1/observability/spaces/{id}` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `remove` | `DELETE /api/v1/observability/spaces/{id}` | Required |
 | [ObservabilitySpace](docs/api/observability_space.html) | `update` | `PUT /api/v1/observability/spaces/{id}` | Required |
@@ -5542,7 +5538,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [Organization](docs/api/organization.html) | `load` | `GET /api/v1/organizations/{id}` | Required |
 | [Organization](docs/api/organization.html) | `patch` | `PATCH /api/v1/organizations/{id}` | Required |
 | [Organization](docs/api/organization.html) | `update` | `PUT /api/v1/organizations/{id}` | Required |
-| [OrganizationApp](docs/api/organization_app.html) | `list` | `GET /api/v1/spark/organizations/{organization_id}/apps` | Required |
+| [OrganizationApp](docs/api/organization_app.html) | `load` | `GET /api/v1/spark/organizations/{organization_id}/apps` | Required |
 | [OrganizationApp](docs/api/organization_app.html) | `remove` | `DELETE /api/v1/spark/organizations/{organization_id}/apps/{name}/install` | Required |
 | [OrganizationApp](docs/api/organization_app.html) | `update` | `PUT /api/v1/spark/organizations/{organization_id}/apps/{name}/install` | Required |
 | [OrganizationControl](docs/api/organization_control.html) | `create` | `POST /api/v1/spark/organizations/{organization_id}/control/admission` | Required |
@@ -5550,8 +5546,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/expire` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}/revoke` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/identity_certificates` | Required |
-| [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/identity_certificates` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}` | Required |
+| [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/identity_certificates` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}` | Required |
 | [OrganizationIdentityCertificate](docs/api/organization_identity_certificate.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/identity_certificates/{id}` | Required |
@@ -5563,8 +5559,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/pause` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}/revoke` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/oidc_trusts` | Required |
-| [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/oidc_trusts` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}` | Required |
+| [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/oidc_trusts` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}` | Required |
 | [OrganizationOidcTrust](docs/api/organization_oidc_trust.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/oidc_trusts/{id}` | Required |
@@ -5588,15 +5584,15 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/revoke` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/service_accounts/{id}/suspend` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/service_accounts` | Required |
-| [OrganizationServiceAccount](docs/api/organization_service_account.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/service_accounts` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/service_accounts/{id}` | Required |
+| [OrganizationServiceAccount](docs/api/organization_service_account.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/service_accounts` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/service_accounts/{id}` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/service_accounts/{id}` | Required |
 | [OrganizationServiceAccount](docs/api/organization_service_account.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/service_accounts/{id}` | Required |
 | [OrganizationSetting](docs/api/organization_setting.html) | `update` | `PATCH /api/v1/admin/organizations/{org_slug}/settings` | Required |
 | [OrganizationSite](docs/api/organization_site.html) | `create` | `POST /api/v1/spark/organizations/{organization_id}/sites/{name}/token` | Required |
 | [OrganizationSite](docs/api/organization_site.html) | `create` | `POST /api/v1/spark/organizations/{organization_id}/sites` | Required |
-| [OrganizationSite](docs/api/organization_site.html) | `list` | `GET /api/v1/spark/organizations/{organization_id}/sites` | Required |
+| [OrganizationSite](docs/api/organization_site.html) | `load` | `GET /api/v1/spark/organizations/{organization_id}/sites` | Required |
 | [OrganizationSite](docs/api/organization_site.html) | `remove` | `DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}` | Required |
 | [OrganizationSite](docs/api/organization_site.html) | `remove` | `DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/app` | Required |
 | [OrganizationSite](docs/api/organization_site.html) | `update` | `PATCH /api/v1/spark/organizations/{organization_id}/sites/{name}` | Required |
@@ -5611,15 +5607,15 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/workload_identities/{id}/suspend` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/workload_identities` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/workload_identities/token_exchange` | Required |
-| [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/workload_identities` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/workload_identities/{id}` | Required |
+| [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/workload_identities` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/workload_identities/{id}` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/workload_identities/{id}` | Required |
 | [OrganizationWorkloadIdentity](docs/api/organization_workload_identity.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/workload_identities/{id}` | Required |
 | [OtelIngest](docs/api/otel_ingest.html) | `create` | `POST /api/v1/otel_ingest/authorize` | Required |
 | [Page](docs/api/page.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/page` | Required |
 | [PageAgent](docs/api/page_agent.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/page/activity` | Required |
-| [PageAgent](docs/api/page_agent.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/page` | Required |
+| [PageAgent](docs/api/page_agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/page` | Required |
 | [PageAgent](docs/api/page_agent.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/page/roster` | Required |
 | [PageArtefact](docs/api/page_artefact.html) | `list` | `GET /api/v1/organizations/{organization_id}/artefacts/page` | Required |
 | [PageArtefact](docs/api/page_artefact.html) | `load` | `GET /api/v1/organizations/{organization_id}/artefacts/{artefact_ref}/page` | Required |
@@ -5639,24 +5635,24 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [PagesSession](docs/api/pages_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/session/{session_id}` | Required |
 | [Pairing](docs/api/pairing.html) | `create` | `POST /api/v1/relay/pairings` | Required |
 | [Pairing](docs/api/pairing.html) | `create` | `POST /api/v1/relay/pairings/claim` | Required |
-| [Pairing](docs/api/pairing.html) | `list` | `GET /api/v1/relay/pairings` | Required |
 | [Pairing](docs/api/pairing.html) | `load` | `GET /api/v1/relay/pairings/{id}` | Required |
-| [PairingEvent](docs/api/pairing_event.html) | `list` | `GET /api/v1/relay/pairings/{id}/events` | Required |
+| [Pairing](docs/api/pairing.html) | `load` | `GET /api/v1/relay/pairings` | Required |
+| [PairingEvent](docs/api/pairing_event.html) | `load` | `GET /api/v1/relay/pairings/{id}/events` | Required |
 | [ParallelV1](docs/api/parallel_v1.html) | `create` | `POST /api/v1/organizations/{organization_id}/local_agent/parallel/v1/extract` | Required |
 | [ParallelV1](docs/api/parallel_v1.html) | `create` | `POST /api/v1/organizations/{organization_id}/local_agent/parallel/v1/search` | Required |
 | [PatchsetDiff](docs/api/patchset_diff.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/patchsets/{patchset_number}/diff/{fingerprint}` | Required |
 | [PersonalAccessToken](docs/api/personal_access_token.html) | `create` | `POST /api/v1/personal_access_tokens` | Required |
-| [PersonalAccessToken](docs/api/personal_access_token.html) | `list` | `GET /api/v1/personal_access_tokens` | Required |
+| [PersonalAccessToken](docs/api/personal_access_token.html) | `load` | `GET /api/v1/personal_access_tokens` | Required |
 | [PersonalAccessToken](docs/api/personal_access_token.html) | `remove` | `DELETE /api/v1/personal_access_tokens/{id}` | Required |
-| [PreviewOperation](docs/api/preview_operation.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/operations` | Required |
+| [PreviewOperation](docs/api/preview_operation.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/operations` | Required |
 | [PreviewProfileSecretBinding](docs/api/preview_profile_secret_binding.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings` | Required |
-| [PreviewProfileSecretBinding](docs/api/preview_profile_secret_binding.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings` | Required |
+| [PreviewProfileSecretBinding](docs/api/preview_profile_secret_binding.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings` | Required |
 | [PreviewProfileSecretBinding](docs/api/preview_profile_secret_binding.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}` | Required |
 | [PreviewSecret](docs/api/preview_secret.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rotate` | Required |
 | [PreviewSecret](docs/api/preview_secret.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets` | Required |
 | [PreviewSecret](docs/api/preview_secret.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}` | Required |
 | [PreviewSharingApproval](docs/api/preview_sharing_approval.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals` | Required |
-| [PreviewSharingApproval](docs/api/preview_sharing_approval.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals` | Required |
+| [PreviewSharingApproval](docs/api/preview_sharing_approval.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals` | Required |
 | [ProactiveAgentWaitlistEntry](docs/api/proactive_agent_waitlist_entry.html) | `create` | `POST /api/v1/proactive_agent_waitlist_entries` | Not required |
 | [ProactiveAgentWaitlistEntry](docs/api/proactive_agent_waitlist_entry.html) | `load` | `GET /api/v1/proactive_agent_waitlist_entries/{referral_code}` | Not required |
 | [Product](docs/api/product.html) | `create` | `POST /api/v1/organizations/{organization_id}/products` | Required |
@@ -5744,9 +5740,9 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ProjectRunSchedule](docs/api/project_run_schedule.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/lookup` | Required |
 | [ProjectRunSchedule](docs/api/project_run_schedule.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}` | Required |
 | [ProjectRunSchedule](docs/api/project_run_schedule.html) | `update` | `PUT /api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}` | Required |
-| [ProjectScenarioOption](docs/api/project_scenario_option.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` | Required |
+| [ProjectScenarioOption](docs/api/project_scenario_option.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options` | Required |
 | [ProjectScenarioRow](docs/api/project_scenario_row.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows` | Required |
-| [ProjectSetting](docs/api/project_setting.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` | Required |
+| [ProjectSetting](docs/api/project_setting.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings` | Required |
 | [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share` | Required |
 | [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun` | Required |
 | [PullRequest](docs/api/pull_request.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_requests` | Required |
@@ -5760,7 +5756,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [PullRequestMagicMerge](docs/api/pull_request_magic_merge.html) | `create` | `POST /api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}/magic_merge/resolve` | Required |
 | [PullRequestSetting](docs/api/pull_request_setting.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_request_settings` | Required |
 | [PullRequestSetting](docs/api/pull_request_setting.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_preview` | Required |
-| [PullRequestSetting](docs/api/pull_request_setting.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/pull_request_settings` | Required |
+| [PullRequestSetting](docs/api/pull_request_setting.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/pull_request_settings` | Required |
 | [PullRequestSettingAddRepository](docs/api/pull_request_setting_add_repository.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/add_repositories` | Required |
 | [PullRequestSettingDetectComment](docs/api/pull_request_setting_detect_comment.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/pull_request_settings/detect_comments` | Required |
 | [PullRequestTranscript](docs/api/pull_request_transcript.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/pull_request/{number}/transcripts` | Required |
@@ -5781,8 +5777,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [ReleaseRollout](docs/api/release_rollout.html) | `create` | `POST /api/v1/execution/releases/{release_id}/rollouts/{id}/fail` | Required |
 | [ReleaseRollout](docs/api/release_rollout.html) | `create` | `POST /api/v1/execution/releases/{release_id}/rollouts/{id}/start` | Required |
 | [ReleaseRollout](docs/api/release_rollout.html) | `create` | `POST /api/v1/execution/releases/{release_id}/rollouts` | Required |
-| [ReleaseRollout](docs/api/release_rollout.html) | `list` | `GET /api/v1/execution/releases/{release_id}/rollouts` | Required |
 | [ReleaseRollout](docs/api/release_rollout.html) | `load` | `GET /api/v1/execution/releases/{release_id}/rollouts/{id}` | Required |
+| [ReleaseRollout](docs/api/release_rollout.html) | `load` | `GET /api/v1/execution/releases/{release_id}/rollouts` | Required |
 | [Repo](docs/api/repo.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos` | Required |
 | [Repo](docs/api/repo.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/access` | Required |
 | [Repo](docs/api/repo.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/pages/sync` | Required |
@@ -5795,11 +5791,11 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RepoAgentCheckpoint](docs/api/repo_agent_checkpoint.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_checkpoints/{id}/download` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/complete` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions` | Required |
-| [RepoAgentSession](docs/api/repo_agent_session.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_export` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}/transcript_index` | Required |
+| [RepoAgentSession](docs/api/repo_agent_session.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `patch` | `PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}` | Required |
 | [RepoAgentSession](docs/api/repo_agent_session.html) | `update` | `PUT /api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{id}` | Required |
 | [RepoBookmarkProtection](docs/api/repo_bookmark_protection.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protections` | Required |
@@ -5812,8 +5808,8 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RepoBookmarkProtectionEvent](docs/api/repo_bookmark_protection_event.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/bookmark_protection_events` | Required |
 | [RepoCloudWorkspaceBackup](docs/api/repo_cloud_workspace_backup.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}/restore_request` | Required |
 | [RepoCloudWorkspaceBackup](docs/api/repo_cloud_workspace_backup.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups` | Required |
-| [RepoCloudWorkspaceBackup](docs/api/repo_cloud_workspace_backup.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups` | Required |
 | [RepoCloudWorkspaceBackup](docs/api/repo_cloud_workspace_backup.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}` | Required |
+| [RepoCloudWorkspaceBackup](docs/api/repo_cloud_workspace_backup.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups` | Required |
 | [RepoCodeRule](docs/api/repo_code_rule.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules` | Required |
 | [RepoCodeRule](docs/api/repo_code_rule.html) | `list` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules` | Required |
 | [RepoCodeRule](docs/api/repo_code_rule.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules/{rule}` | Required |
@@ -5857,10 +5853,10 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RepositorySandboxEnvironment](docs/api/repository_sandbox_environment.html) | `load` | `GET /api/v1/repositories/{repository}/sandbox_environments/{profile}` | Required |
 | [RoderCodeRepair](docs/api/roder_code_repair.html) | `create` | `POST /api/v1/agent/roder/code_repairs/{id}/cancel` | Required |
 | [RoderCodeRepair](docs/api/roder_code_repair.html) | `create` | `POST /api/v1/agent/roder/code_repairs` | Required |
-| [RoderCodeRepair](docs/api/roder_code_repair.html) | `list` | `GET /api/v1/agent/roder/code_repairs` | Required |
 | [RoderCodeRepair](docs/api/roder_code_repair.html) | `load` | `GET /api/v1/agent/roder/code_repairs/{id}` | Required |
+| [RoderCodeRepair](docs/api/roder_code_repair.html) | `load` | `GET /api/v1/agent/roder/code_repairs` | Required |
 | [RoderCodeRepairSetting](docs/api/roder_code_repair_setting.html) | `create` | `POST /api/v1/agent/roder/code_repair_settings` | Required |
-| [RoderCodeRepairSetting](docs/api/roder_code_repair_setting.html) | `list` | `GET /api/v1/agent/roder/code_repair_settings` | Required |
+| [RoderCodeRepairSetting](docs/api/roder_code_repair_setting.html) | `load` | `GET /api/v1/agent/roder/code_repair_settings` | Required |
 | [RoderMachine](docs/api/roder_machine.html) | `update` | `POST /api/v1/agent/roder/machines/{public_id}` | Required |
 | [RoderRun](docs/api/roder_run.html) | `create` | `POST /api/v1/agent/roder/run/swarm_activity` | Required |
 | [RoderRun](docs/api/roder_run.html) | `create` | `POST /api/v1/agent/roder/run/swarm_stack` | Required |
@@ -5868,10 +5864,10 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RoderRun](docs/api/roder_run.html) | `create` | `POST /api/v1/agent/roder/run/workspace_authorization` | Required |
 | [RoderWorkspaceCredential](docs/api/roder_workspace_credential.html) | `create` | `POST /api/v1/agent/roder/workspace_credentials` | Required |
 | [RunArtifact](docs/api/run_artifact.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts` | Required |
-| [RunArtifact](docs/api/run_artifact.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts` | Required |
+| [RunArtifact](docs/api/run_artifact.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/artifacts` | Required |
 | [RunJob](docs/api/run_job.html) | `create` | `POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs` | Required |
-| [RunJob](docs/api/run_job.html) | `list` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs` | Required |
 | [RunJob](docs/api/run_job.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{id}` | Required |
+| [RunJob](docs/api/run_job.html) | `load` | `GET /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs` | Required |
 | [RunScenarioRun](docs/api/run_scenario_run.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame` | Required |
 | [RunScenarioRun](docs/api/run_scenario_run.html) | `load` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit` | Required |
 | [RunScenarioRun](docs/api/run_scenario_run.html) | `update` | `PATCH /api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit` | Required |
@@ -5883,20 +5879,20 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [RunnerLease](docs/api/runner_lease.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/heartbeat` | Required |
 | [RunnerLease](docs/api/runner_lease.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases/{id}/release` | Required |
 | [RunnerLease](docs/api/runner_lease.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` | Required |
-| [RunnerLease](docs/api/runner_lease.html) | `list` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` | Required |
+| [RunnerLease](docs/api/runner_lease.html) | `load` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{runner_id}/leases` | Required |
 | [RunnerPoolNodeEnrollmentToken](docs/api/runner_pool_node_enrollment_token.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens/{id}/revoke` | Required |
 | [RunnerPoolNodeEnrollmentToken](docs/api/runner_pool_node_enrollment_token.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens` | Required |
 | [RunnerPoolNodeEnrollmentToken](docs/api/runner_pool_node_enrollment_token.html) | `list` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/node_enrollment_tokens` | Required |
 | [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}/heartbeat` | Required |
 | [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `create` | `POST /api/v1/ci/runner_pools/{runner_pool_id}/runners` | Required |
-| [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `list` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/runners` | Required |
 | [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `load` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}` | Required |
+| [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `load` | `GET /api/v1/ci/runner_pools/{runner_pool_id}/runners` | Required |
 | [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `patch` | `PATCH /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}` | Required |
 | [RunnerPoolRunner](docs/api/runner_pool_runner.html) | `update` | `PUT /api/v1/ci/runner_pools/{runner_pool_id}/runners/{id}` | Required |
 | [RuntimeInstanceHealthSnapshot](docs/api/runtime_instance_health_snapshot.html) | `create` | `POST /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots` | Required |
-| [RuntimeInstanceHealthSnapshot](docs/api/runtime_instance_health_snapshot.html) | `list` | `GET /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots` | Required |
+| [RuntimeInstanceHealthSnapshot](docs/api/runtime_instance_health_snapshot.html) | `load` | `GET /api/v1/execution/runtime_instances/{runtime_instance_id}/health_snapshots` | Required |
 | [SandboxIntegration](docs/api/sandbox_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/sandbox_integrations` | Required |
-| [SandboxIntegration](docs/api/sandbox_integration.html) | `list` | `GET /api/v1/organizations/{organization_id}/sandbox_integrations` | Required |
+| [SandboxIntegration](docs/api/sandbox_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/sandbox_integrations` | Required |
 | [SandboxIntegration](docs/api/sandbox_integration.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/sandbox_integrations/{id}` | Required |
 | [SandboxIntegration](docs/api/sandbox_integration.html) | `update` | `PUT /api/v1/organizations/{organization_id}/sandbox_integrations/{id}` | Required |
 | [ScenarioRevision](docs/api/scenario_revision.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions` | Required |
@@ -5908,26 +5904,26 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SecretGrant](docs/api/secret_grant.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/revoke` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}/suspend` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants` | Required |
-| [SecretGrant](docs/api/secret_grant.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}` | Required |
+| [SecretGrant](docs/api/secret_grant.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}` | Required |
 | [SecretGrant](docs/api/secret_grant.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/grants/{id}` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/redact` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}/revoke` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `create` | `POST /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions` | Required |
-| [SecretVersion](docs/api/secret_version.html) | `list` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}` | Required |
+| [SecretVersion](docs/api/secret_version.html) | `load` | `GET /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `patch` | `PATCH /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `remove` | `DELETE /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}` | Required |
 | [SecretVersion](docs/api/secret_version.html) | `update` | `PUT /api/v1/identity/organizations/{organization_id}/secrets/{secret_id}/versions/{id}` | Required |
 | [ServiceEndpoint](docs/api/service_endpoint.html) | `create` | `POST /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints` | Required |
-| [ServiceEndpoint](docs/api/service_endpoint.html) | `list` | `GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints` | Required |
 | [ServiceEndpoint](docs/api/service_endpoint.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}` | Required |
+| [ServiceEndpoint](docs/api/service_endpoint.html) | `load` | `GET /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints` | Required |
 | [ServiceEndpoint](docs/api/service_endpoint.html) | `patch` | `PATCH /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}` | Required |
 | [ServiceEndpoint](docs/api/service_endpoint.html) | `remove` | `DELETE /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}` | Required |
 | [ServiceEndpoint](docs/api/service_endpoint.html) | `update` | `PUT /api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}` | Required |
-| [Setting](docs/api/setting.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/settings` | Required |
+| [Setting](docs/api/setting.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/settings` | Required |
 | [SettingMutationLease](docs/api/setting_mutation_lease.html) | `create` | `POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/settings/mutation_lease/clear` | Required |
 | [Signal](docs/api/signal.html) | `create` | `POST /api/v1/organizations/{organization_id}/signals/{id}/ack` | Required |
 | [Signal](docs/api/signal.html) | `create` | `POST /api/v1/organizations/{organization_id}/signals/ack` | Required |
@@ -5947,14 +5943,14 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SignalIntegrationTarget](docs/api/signal_integration_target.html) | `list` | `GET /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets` | Required |
 | [SignalIntegrationTarget](docs/api/signal_integration_target.html) | `update` | `PUT /api/v1/organizations/{organization_id}/signal_integrations/{signal_integration_id}/targets` | Required |
 | [SignalSubscription](docs/api/signal_subscription.html) | `create` | `POST /api/v1/organizations/{organization_id}/signal_subscriptions` | Required |
-| [SignalSubscription](docs/api/signal_subscription.html) | `list` | `GET /api/v1/organizations/{organization_id}/signal_subscriptions` | Required |
 | [SignalSubscription](docs/api/signal_subscription.html) | `load` | `GET /api/v1/organizations/{organization_id}/signal_subscriptions/{id}` | Required |
+| [SignalSubscription](docs/api/signal_subscription.html) | `load` | `GET /api/v1/organizations/{organization_id}/signal_subscriptions` | Required |
 | [SignalSubscription](docs/api/signal_subscription.html) | `patch` | `PATCH /api/v1/organizations/{organization_id}/signal_subscriptions/{id}` | Required |
 | [SignalSubscription](docs/api/signal_subscription.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/signal_subscriptions/{id}` | Required |
 | [SignalSubscription](docs/api/signal_subscription.html) | `update` | `PUT /api/v1/organizations/{organization_id}/signal_subscriptions/{id}` | Required |
 | [Site](docs/api/site.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/sites` | Required |
 | [SiteAccessKey](docs/api/site_access_key.html) | `create` | `POST /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys` | Required |
-| [SiteAccessKey](docs/api/site_access_key.html) | `list` | `GET /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys` | Required |
+| [SiteAccessKey](docs/api/site_access_key.html) | `load` | `GET /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys` | Required |
 | [SiteAccessKey](docs/api/site_access_key.html) | `remove` | `DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/access_keys/{key_id}` | Required |
 | [SitePreview](docs/api/site_preview.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/site_preview` | Required |
 | [SiteSecret](docs/api/site_secret.html) | `remove` | `DELETE /api/v1/spark/organizations/{organization_id}/sites/{name}/secrets/{secret_name}` | Required |
@@ -5965,62 +5961,62 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules/{id}/archive` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules/{id}/pause` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/alert_rules` | Required |
-| [SpaceAlertRule](docs/api/space_alert_rule.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/alert_rules` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/alert_rules/{id}` | Required |
+| [SpaceAlertRule](docs/api/space_alert_rule.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/alert_rules` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `patch` | `PATCH /api/v1/observability/spaces/{space_id}/alert_rules/{id}` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `remove` | `DELETE /api/v1/observability/spaces/{space_id}/alert_rules/{id}` | Required |
 | [SpaceAlertRule](docs/api/space_alert_rule.html) | `update` | `PUT /api/v1/observability/spaces/{space_id}/alert_rules/{id}` | Required |
 | [SpaceAuditEvent](docs/api/space_audit_event.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/audit_events` | Required |
-| [SpaceAuditEvent](docs/api/space_audit_event.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/audit_events` | Required |
+| [SpaceAuditEvent](docs/api/space_audit_event.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/audit_events` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/dns_records` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/dns_records/sync_report` | Required |
-| [SpaceDnsRecord](docs/api/space_dns_record.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/dns_records` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/dns_records/{id}` | Required |
+| [SpaceDnsRecord](docs/api/space_dns_record.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/dns_records` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/dns_records/config` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/dns_records/{id}` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/dns_records/{id}` | Required |
 | [SpaceDnsRecord](docs/api/space_dns_record.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/dns_records/{id}` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}/revoke` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/enrollment_tokens` | Required |
-| [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/enrollment_tokens` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}` | Required |
+| [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/enrollment_tokens` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}` | Required |
 | [SpaceEnrollmentToken](docs/api/space_enrollment_token.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/enrollment_tokens/{id}` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/gateways/{id}/heartbeat` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/gateways/{id}/sync` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/gateways` | Required |
-| [SpaceGateway](docs/api/space_gateway.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/gateways` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/gateways/{id}` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/gateways/{id}/config` | Required |
+| [SpaceGateway](docs/api/space_gateway.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/gateways` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/gateways/{id}` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/gateways/{id}` | Required |
 | [SpaceGateway](docs/api/space_gateway.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/gateways/{id}` | Required |
 | [SpaceGroup](docs/api/space_group.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/groups` | Required |
-| [SpaceGroup](docs/api/space_group.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/groups` | Required |
+| [SpaceGroup](docs/api/space_group.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/groups` | Required |
 | [SpaceGroup](docs/api/space_group.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/groups/{id}` | Required |
 | [SpaceGroup](docs/api/space_group.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/groups/{id}` | Required |
 | [SpaceGroup](docs/api/space_group.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/groups/{id}` | Required |
 | [SpaceGroupMembership](docs/api/space_group_membership.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/group_memberships` | Required |
-| [SpaceGroupMembership](docs/api/space_group_membership.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/group_memberships` | Required |
+| [SpaceGroupMembership](docs/api/space_group_membership.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/group_memberships` | Required |
 | [SpaceGroupMembership](docs/api/space_group_membership.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/group_memberships/{id}` | Required |
 | [SpaceGroupMembership](docs/api/space_group_membership.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/group_memberships/{id}` | Required |
 | [SpaceGroupMembership](docs/api/space_group_membership.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/group_memberships/{id}` | Required |
 | [SpaceLogStream](docs/api/space_log_stream.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/log_streams` | Required |
-| [SpaceLogStream](docs/api/space_log_stream.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/log_streams` | Required |
+| [SpaceLogStream](docs/api/space_log_stream.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/log_streams` | Required |
 | [SpaceMetricSery](docs/api/space_metric_sery.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/metric_series` | Required |
-| [SpaceMetricSery](docs/api/space_metric_sery.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/metric_series` | Required |
+| [SpaceMetricSery](docs/api/space_metric_sery.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/metric_series` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/activate` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/archive` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/deploy` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/heartbeat` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/pause` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/otel_collectors` | Required |
-| [SpaceOtelCollector](docs/api/space_otel_collector.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/bootstrap_config` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/nomad_spec` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors/{id}/rendered_config` | Required |
+| [SpaceOtelCollector](docs/api/space_otel_collector.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/otel_collectors` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `patch` | `PATCH /api/v1/observability/spaces/{space_id}/otel_collectors/{id}` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `remove` | `DELETE /api/v1/observability/spaces/{space_id}/otel_collectors/{id}` | Required |
 | [SpaceOtelCollector](docs/api/space_otel_collector.html) | `update` | `PUT /api/v1/observability/spaces/{space_id}/otel_collectors/{id}` | Required |
@@ -6029,14 +6025,14 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SpacePeer](docs/api/space_peer.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/peers/{id}/suspend` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/peers` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/peers/enroll` | Required |
-| [SpacePeer](docs/api/space_peer.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/peers` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/peers/{id}` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/peers/{id}/bootstrap` | Required |
+| [SpacePeer](docs/api/space_peer.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/peers` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/peers/{id}` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/peers/{id}` | Required |
 | [SpacePeer](docs/api/space_peer.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/peers/{id}` | Required |
 | [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/peer_attachments` | Required |
-| [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/peer_attachments` | Required |
+| [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/peer_attachments` | Required |
 | [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/peer_attachments/{id}` | Required |
 | [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/peer_attachments/{id}` | Required |
 | [SpacePeerAttachment](docs/api/space_peer_attachment.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/peer_attachments/{id}` | Required |
@@ -6044,24 +6040,24 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SpacePolicy](docs/api/space_policy.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/policies/{id}/archive` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/policies/{id}/pause` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/policies` | Required |
-| [SpacePolicy](docs/api/space_policy.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/policies` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/policies/{id}` | Required |
+| [SpacePolicy](docs/api/space_policy.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/policies` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/policies/{id}` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/policies/{id}` | Required |
 | [SpacePolicy](docs/api/space_policy.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/policies/{id}` | Required |
 | [SpaceSegment](docs/api/space_segment.html) | `create` | `POST /api/v1/networking/spaces/{space_id}/segments` | Required |
-| [SpaceSegment](docs/api/space_segment.html) | `list` | `GET /api/v1/networking/spaces/{space_id}/segments` | Required |
 | [SpaceSegment](docs/api/space_segment.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/segments/{id}` | Required |
+| [SpaceSegment](docs/api/space_segment.html) | `load` | `GET /api/v1/networking/spaces/{space_id}/segments` | Required |
 | [SpaceSegment](docs/api/space_segment.html) | `patch` | `PATCH /api/v1/networking/spaces/{space_id}/segments/{id}` | Required |
 | [SpaceSegment](docs/api/space_segment.html) | `remove` | `DELETE /api/v1/networking/spaces/{space_id}/segments/{id}` | Required |
 | [SpaceSegment](docs/api/space_segment.html) | `update` | `PUT /api/v1/networking/spaces/{space_id}/segments/{id}` | Required |
 | [SpaceTraceSpan](docs/api/space_trace_span.html) | `create` | `POST /api/v1/observability/spaces/{space_id}/trace_spans` | Required |
-| [SpaceTraceSpan](docs/api/space_trace_span.html) | `list` | `GET /api/v1/observability/spaces/{space_id}/trace_spans` | Required |
+| [SpaceTraceSpan](docs/api/space_trace_span.html) | `load` | `GET /api/v1/observability/spaces/{space_id}/trace_spans` | Required |
 | [Spark](docs/api/spark.html) | `create` | `POST /api/v1/organizations/{organization_id}/sparks` | Required |
 | [Spark](docs/api/spark.html) | `create` | `POST /v1/mcp/spark` | Required |
-| [Spark](docs/api/spark.html) | `list` | `GET /api/v1/organizations/{organization_id}/sparks` | Required |
+| [Spark](docs/api/spark.html) | `load` | `GET /api/v1/organizations/{organization_id}/sparks` | Required |
 | [SparkAgentIntegration](docs/api/spark_agent_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations` | Required |
-| [SparkAgentIntegration](docs/api/spark_agent_integration.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations` | Required |
+| [SparkAgentIntegration](docs/api/spark_agent_integration.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/integrations` | Required |
 | [SparkAgentLocalThread](docs/api/spark_agent_local_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads` | Required |
 | [SparkAgentLocalThread](docs/api/spark_agent_local_thread.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}` | Required |
 | [SparkAgentLocalThread](docs/api/spark_agent_local_thread.html) | `load` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/delivery_policy` | Required |
@@ -6076,12 +6072,12 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `create` | `POST /api/v1/organizations/{organization_id}/agents/{id}/spark/threads` | Required |
 | [SparkAgentThread](docs/api/spark_agent_thread.html) | `list` | `GET /api/v1/organizations/{organization_id}/agents/{id}/spark/threads` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `create` | `POST /api/v1/organizations/{org_slug}/spark_credits` | Required |
-| [SparkCredit](docs/api/spark_credit.html) | `list` | `GET /api/v1/organizations/{org_slug}/spark_credits` | Required |
+| [SparkCredit](docs/api/spark_credit.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/daily_usage` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `patch` | `PATCH /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCredit](docs/api/spark_credit.html) | `update` | `PUT /api/v1/organizations/{org_slug}/spark_credits` | Required |
 | [SparkCreditAgentUsage](docs/api/spark_credit_agent_usage.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/agent_usage/{agent_id}` | Required |
-| [SparkCreditUsageTotal](docs/api/spark_credit_usage_total.html) | `list` | `GET /api/v1/organizations/{org_slug}/spark_credits/usage_totals` | Required |
+| [SparkCreditUsageTotal](docs/api/spark_credit_usage_total.html) | `load` | `GET /api/v1/organizations/{org_slug}/spark_credits/usage_totals` | Required |
 | [StaticSite](docs/api/static_site.html) | `create` | `POST /api/v1/static_sites/{id}/provision` | Required |
 | [StaticSite](docs/api/static_site.html) | `create` | `POST /api/v1/organizations/{organization_id}/static_sites` | Required |
 | [StaticSite](docs/api/static_site.html) | `list` | `GET /api/v1/organizations/{organization_id}/static_sites` | Required |
@@ -6174,7 +6170,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [VcStack](docs/api/vc_stack.html) | `load` | `GET /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}` | Required |
 | [VcStack](docs/api/vc_stack.html) | `update` | `PATCH /api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/stacks/{code}/name` | Required |
 | [VcsNode](docs/api/vcs_node.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/vcs_nodes` | Required |
-| [VcsSetting](docs/api/vcs_setting.html) | `list` | `GET /api/v1/organizations/{org_slug}/pages/vcs_settings` | Required |
+| [VcsSetting](docs/api/vcs_setting.html) | `load` | `GET /api/v1/organizations/{org_slug}/pages/vcs_settings` | Required |
 | [VerificationProjectCredential](docs/api/verification_project_credential.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{id}/disable` | Required |
 | [VerificationProjectCredential](docs/api/verification_project_credential.html) | `create` | `POST /api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials` | Required |
 | [VerificationProjectCredential](docs/api/verification_project_credential.html) | `list` | `GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials` | Required |
@@ -6214,7 +6210,7 @@ Use this map to locate a capability. Consult the entity reference before supplyi
 | [VerifyBrowserSession](docs/api/verify_browser_session.html) | `create` | `POST /api/v1/organizations/{organization_id}/verify/browser_sessions` | Required |
 | [VerifyBrowserSession](docs/api/verify_browser_session.html) | `load` | `GET /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` | Required |
 | [VerifyBrowserSession](docs/api/verify_browser_session.html) | `remove` | `DELETE /api/v1/organizations/{organization_id}/verify/browser_sessions/{id}` | Required |
-| [VerifyEmailVerification](docs/api/verify_email_verification.html) | `list` | `GET /api/v1/email_verifications/verify` | Required |
+| [VerifyEmailVerification](docs/api/verify_email_verification.html) | `load` | `GET /api/v1/email_verifications/verify` | Required |
 | [VerifySignalIntegration](docs/api/verify_signal_integration.html) | `create` | `POST /api/v1/organizations/{organization_id}/signal_integrations/{id}/verify` | Required |
 | [VerifyStaticSiteDomain](docs/api/verify_static_site_domain.html) | `create` | `POST /api/v1/static_sites/{static_site_id}/domains/{id}/verify` | Required |
 | [VersionLog](docs/api/version_log.html) | `list` | `GET /api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs` | Required |
@@ -6310,8 +6306,8 @@ Use the MCP server to expose supported API operations to an MCP client.
 
 Repository directory: `go-mcp/`. Not published. Build from the go-mcp directory.
 
-- `composal_list`: List records for an entity. Supported entities: `admin_org`, `agent`, `agent_app`, `agent_automation`, `agent_command`, `agent_connection`, `agent_connection_delegation`, `agent_connection_grant`, `agent_connection_safety_control`, `agent_connection_trigger_subscription`, `agent_control_flow`, `agent_event`, `agent_integration`, `agent_integration_account`, `agent_interaction`, `agent_manager_choice`, `agent_pull_request`, `agent_relay_file_grant`, `agent_relay_file_grant_account`, `agent_repository`, `agent_resource`, `agent_routine`, `agent_session_checkpoint`, `agent_setting`, `agent_site`, `agent_skill`, `agent_subagent`, `agent_subscription`, `agent_swarm`, `agent_teammate`, `agent_thread`, `agent_tool`, `agent_verify_project`, `agent_web_preview`, `agent_workflow`, `agent_workflow_run`, `agent_workflow_trigger`, `agent_workspace`, `agent_write_permission`, `agreement`, `alert_rule_event`, `allocation_log`, `app`, `app_access_jwk`, `app_cdn`, `app_config_variable`, `app_data_resource`, `app_deployment`, `app_deployment_operation`, `app_environment`, `app_location`, `app_preview`, `app_preview_profile`, `app_run`, `app_secret`, `app_service`, `app_service_binding`, `app_service_placement`, `app_storage_resource`, `artefact`, `artefact_comment_thread`, `artifact`, `artifact_cache_namespace`, `artifact_image_repository`, `artifact_package_mirror`, `artifact_retention_policy`, `audit_event`, `auth_registration_option`, `backend_runner_pool`, `bazel_backend`, `billing_invoice`, `billing_package`, `billing_prepaid_purchase`, `binary`, `binary_version`, `browser_egress_candidate`, `browser_session_event`, `cache_namespace_entry`, `catalog_selector`, `cdn_deployment`, `cdn_hostname`, `cdn_space`, `cdn_space_object`, `change`, `change_comment`, `change_reviewer`, `change_transcript`, `change_transcript_summary`, `ci_pipeline`, `ci_pipeline_run`, `ci_runner_pool`, `cli_release`, `connection_source`, `control_computer`, `coordination_wait`, `deep_scan`, `deep_scan_finding`, `deep_scan_mapped_flow`, `deep_scan_option`, `deployment_detail`, `deployment_log`, `deployment_metric`, `deployment_preview`, `deployment_setting`, `desktop_local_agent_model`, `device`, `device_browser_operation`, `device_control_message`, `device_enterprise_relay`, `device_grant`, `docker_builder`, `docker_builder_setting`, `domain_dns_integration`, `domain_path_rule`, `dream`, `environment`, `environment_secret_binding`, `environment_test_account`, `execution_desired_state`, `execution_reconciler_tick`, `execution_release`, `execution_runtime_instance`, `exploration`, `finding`, `github_app_importable_repository`, `github_app_installation`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_connection`, `github_integration`, `github_onboarding_branch`, `github_runner_image`, `github_runner_pool`, `hosting_app_domain`, `image_repository`, `image_repository_tag`, `integration`, `invitation`, `job_log_chunk`, `job_step`, `job_workspace`, `label`, `location`, `log_stream_chunk`, `marketing_setting`, `me_email`, `member`, `memory`, `metric_query`, `model_subscription_account`, `networking_space`, `node`, `node_lease`, `nomad_log`, `observability_clickhouse_cluster`, `observability_quickwit_cluster`, `observability_space`, `organization`, `organization_app`, `organization_identity_certificate`, `organization_oidc_trust`, `organization_secret`, `organization_service_account`, `organization_site`, `organization_workload_identity`, `page_agent`, `page_artefact`, `pages_member`, `pages_project_credential`, `pages_project_persona`, `pages_project_run`, `pages_project_scenario`, `pages_session`, `pairing`, `pairing_event`, `personal_access_token`, `preview_operation`, `preview_profile_secret_binding`, `preview_sharing_approval`, `product_map_journey`, `product_map_state`, `project`, `project_code_map`, `project_environment`, `project_finding`, `project_fixture`, `project_overview_metric`, `project_overview_pull_request`, `project_run_plan`, `project_run_schedule`, `project_scenario_option`, `project_scenario_row`, `project_setting`, `pull_request_setting`, `pull_request_transcript`, `pull_zone`, `relay_agent_connection`, `release_rollout`, `repo`, `repo_access_token`, `repo_action`, `repo_agent_session`, `repo_bookmark_protection`, `repo_bookmark_protection_event`, `repo_cloud_workspace_backup`, `repo_code_rule`, `repo_setting`, `repo_stat`, `repo_vc_commit`, `repository_import_session_repository`, `roder_code_repair`, `roder_code_repair_setting`, `run_artifact`, `run_job`, `run_schedule_option`, `run_update`, `runner_lease`, `runner_pool_node_enrollment_token`, `runner_pool_runner`, `runtime_instance_health_snapshot`, `sandbox_integration`, `scenario_revision`, `secret_grant`, `secret_version`, `service_endpoint`, `setting`, `signal`, `signal_integration`, `signal_integration_delivery`, `signal_integration_target`, `signal_subscription`, `site`, `site_access_key`, `slack_channel`, `space_alert_rule`, `space_audit_event`, `space_dns_record`, `space_enrollment_token`, `space_gateway`, `space_group`, `space_group_membership`, `space_log_stream`, `space_metric_sery`, `space_otel_collector`, `space_peer`, `space_peer_attachment`, `space_policy`, `space_segment`, `space_trace_span`, `spark`, `spark_agent_integration`, `spark_agent_site`, `spark_agent_skill`, `spark_agent_thread`, `spark_credit`, `spark_credit_usage_total`, `static_site`, `static_site_deployment`, `static_site_domain`, `subscription_model`, `swarm_event`, `swarm_task`, `transcript`, `vc_branch`, `vc_change`, `vc_change_group`, `vc_file`, `vc_merge_queue`, `vc_stack`, `vcs_node`, `vcs_setting`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `verify_email_verification`, `version_log`, `workspace_space`.
-- `composal_load`: Load one record for an entity. Supported entities: `a2a_well_known`, `admin_org`, `agent`, `agent_app`, `agent_automation`, `agent_avatar`, `agent_computer`, `agent_connection`, `agent_context_checkpoint`, `agent_control_flow`, `agent_email`, `agent_file`, `agent_integration`, `agent_integration_callback`, `agent_interaction`, `agent_library`, `agent_marketplace`, `agent_marketplace_shared`, `agent_operation`, `agent_relay_file_grant`, `agent_roder`, `agent_run`, `agent_session`, `agent_session_checkpoint`, `agent_sharing`, `agent_site`, `agent_skill`, `agent_swarm`, `agent_thread`, `agent_usage`, `agent_webhook`, `agent_workflow_proposal`, `agent_workflow_run`, `agent_workflow_trigger`, `alert_rule_event`, `app`, `app_access`, `app_cdn`, `app_config_variable`, `app_data_resource`, `app_deployment`, `app_deployment_operation`, `app_environment`, `app_metric`, `app_preview`, `app_preview_profile`, `app_run`, `app_secret`, `app_service`, `app_service_binding`, `app_service_placement`, `app_storage_resource`, `artefact`, `artifact`, `artifact_cache_namespace`, `artifact_image_repository`, `artifact_package_mirror`, `artifact_retention_policy`, `auth`, `auth_github`, `auth_google`, `auth_openai`, `bazel_action_result`, `bazel_backend`, `bazel_blob`, `bazel_execution`, `billing`, `billing_prepaid_period`, `billing_prepaid_purchase`, `billing_usage`, `binary`, `binary_version`, `browser_session`, `browser_session_control`, `browser_session_media`, `browser_session_task`, `cache_namespace_entry`, `cdn_deployment`, `cdn_hostname`, `cdn_space`, `cdn_space_object`, `change_git_commit_identity`, `change_git_publication`, `ci_node`, `ci_pipeline`, `ci_pipeline_run`, `ci_runner_pool`, `ci_status`, `cli_release`, `cloud_workspace_backup_object`, `com_site_access`, `commit_diff`, `connection_request`, `control_computer_control_operation`, `deep_scan`, `demo_share`, `demo_share_segment`, `deployment`, `deployment_dashboard_nomad`, `device`, `device_control_operation`, `device_folder_listing`, `docker_builder`, `docker_builder_session`, `domain_path_rule`, `dream`, `edge`, `environment`, `environment_discovery_run`, `environment_revision`, `evidence`, `execution_desired_state`, `execution_reconciler_tick`, `execution_release`, `execution_runtime_instance`, `exploration`, `exploration_report`, `finding`, `gh`, `git_import`, `github`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_integration`, `github_onboarding`, `github_onboarding_import_batch`, `github_pull_request`, `github_runner_egress`, `github_runner_history`, `github_runner_image`, `github_runner_setup`, `gitlab`, `gitlab_oauth`, `hosting_app_domain`, `identity_organization`, `import_branch_policy`, `knowledge`, `known`, `local_thread_delivery`, `local_thread_operation`, `log_stream_chunk`, `mcp_oauth`, `me`, `media_file`, `memory`, `merge_request`, `model_subscription_account_connection`, `networking_space`, `node_lease`, `nomad_allocation`, `now`, `observability_clickhouse_cluster`, `observability_quickwit_cluster`, `observability_space`, `openapi`, `org_invitation`, `organization`, `organization_identity_certificate`, `organization_oidc_trust`, `organization_secret`, `organization_service_account`, `organization_workload_identity`, `page`, `page_agent`, `page_artefact`, `page_ci_pipeline_run`, `page_project_run`, `page_repo_vc_commit`, `pages_billing`, `pages_github_onboarding`, `pages_registry`, `pages_session`, `pairing`, `patchset_diff`, `proactive_agent_waitlist_entry`, `product_map_journey`, `product_map_journey_replay`, `product_map_observation`, `product_map_state`, `project`, `project_environment`, `project_fixture`, `project_messaging_conversation`, `project_product_map`, `project_recording`, `project_run_plan`, `project_run_schedule`, `pull_request`, `recorder`, `registry`, `relay_agent_connection`, `release_rollout`, `repo`, `repo_agent_checkpoint`, `repo_agent_session`, `repo_bookmark_protection`, `repo_cloud_workspace_backup`, `repo_code_rule`, `repo_vc`, `report_replay`, `repository_access`, `repository_access_resolve`, `repository_import`, `repository_import_session`, `repository_sandbox_environment`, `roder_code_repair`, `run_job`, `run_scenario_run`, `run_search`, `runner_pool_runner`, `secret_grant`, `secret_version`, `service_endpoint`, `signal`, `signal_integration`, `signal_subscription`, `site_preview`, `space_alert_rule`, `space_dns_record`, `space_enrollment_token`, `space_gateway`, `space_otel_collector`, `space_peer`, `space_policy`, `space_segment`, `spark_agent_local_thread`, `spark_credit`, `spark_credit_agent_usage`, `static_site`, `static_site_deployment`, `static_site_domain`, `status_change`, `status_commit`, `status_patchset`, `swarm_live`, `swarm_task`, `thread_preview_access`, `tool_feedback`, `transcript`, `vc_browser`, `vc_change`, `vc_change_group`, `vc_merge_queue`, `vc_stack`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `verify_browser_session`, `workflow_run_step`, `workspace_activity`, `workspace_space`.
+- `composal_list`: List records for an entity. Supported entities: `agent`, `agent_app`, `agent_automation`, `agent_command`, `agent_connection`, `agent_connection_delegation`, `agent_connection_grant`, `agent_connection_safety_control`, `agent_connection_trigger_subscription`, `agent_control_flow`, `agent_integration_account`, `agent_interaction`, `agent_manager_choice`, `agent_pull_request`, `agent_relay_file_grant`, `agent_relay_file_grant_account`, `agent_resource`, `agent_routine`, `agent_site`, `agent_subagent`, `agent_swarm`, `agent_teammate`, `agent_tool`, `agent_verify_project`, `agent_workflow_run`, `agent_workflow_trigger`, `agent_workspace`, `agent_write_permission`, `agreement`, `app`, `app_deployment_operation`, `app_location`, `app_secret`, `app_service_placement`, `artefact`, `artefact_comment_thread`, `audit_event`, `billing_invoice`, `billing_package`, `billing_prepaid_purchase`, `binary`, `binary_version`, `browser_egress_candidate`, `browser_session_event`, `catalog_selector`, `change_comment`, `change_reviewer`, `change_transcript`, `change_transcript_summary`, `ci_pipeline`, `ci_runner_pool`, `connection_source`, `control_computer`, `coordination_wait`, `deep_scan_finding`, `deep_scan_option`, `deployment_log`, `deployment_metric`, `deployment_preview`, `deployment_setting`, `desktop_local_agent_model`, `device`, `device_browser_operation`, `device_control_message`, `device_grant`, `docker_builder`, `docker_builder_setting`, `domain_dns_integration`, `domain_path_rule`, `dream`, `environment_test_account`, `execution_runtime_instance`, `exploration`, `finding`, `github_app_importable_repository`, `github_app_installation`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_integration`, `github_onboarding_branch`, `github_runner_image`, `github_runner_pool`, `image_repository`, `image_repository_tag`, `invitation`, `job_log_chunk`, `label`, `location`, `me_email`, `member`, `memory`, `model_subscription_account`, `node`, `organization`, `organization_secret`, `page_artefact`, `pages_member`, `pages_project_credential`, `pages_project_persona`, `pages_project_run`, `pages_project_scenario`, `pages_session`, `product_map_journey`, `product_map_state`, `project`, `project_code_map`, `project_environment`, `project_finding`, `project_fixture`, `project_overview_metric`, `project_overview_pull_request`, `project_run_plan`, `project_run_schedule`, `project_scenario_row`, `pull_request_transcript`, `pull_zone`, `relay_agent_connection`, `repo`, `repo_access_token`, `repo_action`, `repo_bookmark_protection`, `repo_bookmark_protection_event`, `repo_code_rule`, `repo_setting`, `repo_stat`, `repo_vc_commit`, `repository_import_session_repository`, `run_schedule_option`, `run_update`, `runner_pool_node_enrollment_token`, `scenario_revision`, `signal`, `signal_integration`, `signal_integration_delivery`, `signal_integration_target`, `site`, `slack_channel`, `spark_agent_site`, `spark_agent_skill`, `spark_agent_thread`, `static_site`, `static_site_deployment`, `static_site_domain`, `subscription_model`, `swarm_event`, `swarm_task`, `transcript`, `vc_branch`, `vc_change`, `vc_change_group`, `vc_file`, `vc_merge_queue`, `vc_stack`, `vcs_node`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `version_log`, `workspace_space`.
+- `composal_load`: Load one record for an entity. Supported entities: `a2a_well_known`, `admin_org`, `agent`, `agent_app`, `agent_automation`, `agent_avatar`, `agent_computer`, `agent_connection`, `agent_context_checkpoint`, `agent_control_flow`, `agent_email`, `agent_event`, `agent_file`, `agent_integration`, `agent_integration_callback`, `agent_interaction`, `agent_library`, `agent_marketplace`, `agent_marketplace_shared`, `agent_operation`, `agent_relay_file_grant`, `agent_repository`, `agent_roder`, `agent_run`, `agent_session`, `agent_session_checkpoint`, `agent_setting`, `agent_sharing`, `agent_site`, `agent_skill`, `agent_subscription`, `agent_swarm`, `agent_thread`, `agent_usage`, `agent_web_preview`, `agent_webhook`, `agent_workflow`, `agent_workflow_proposal`, `agent_workflow_run`, `agent_workflow_trigger`, `alert_rule_event`, `allocation_log`, `app`, `app_access`, `app_access_jwk`, `app_cdn`, `app_config_variable`, `app_data_resource`, `app_deployment`, `app_deployment_operation`, `app_environment`, `app_metric`, `app_preview`, `app_preview_profile`, `app_run`, `app_secret`, `app_service`, `app_service_binding`, `app_service_placement`, `app_storage_resource`, `artefact`, `artifact`, `artifact_cache_namespace`, `artifact_image_repository`, `artifact_package_mirror`, `artifact_retention_policy`, `auth`, `auth_github`, `auth_google`, `auth_openai`, `auth_registration_option`, `backend_runner_pool`, `bazel_action_result`, `bazel_backend`, `bazel_blob`, `bazel_execution`, `billing`, `billing_prepaid_period`, `billing_prepaid_purchase`, `billing_usage`, `binary`, `binary_version`, `browser_session`, `browser_session_control`, `browser_session_media`, `browser_session_task`, `cache_namespace_entry`, `cdn_deployment`, `cdn_hostname`, `cdn_space`, `cdn_space_object`, `change`, `change_git_commit_identity`, `change_git_publication`, `ci_node`, `ci_pipeline`, `ci_pipeline_run`, `ci_runner_pool`, `ci_status`, `cli_release`, `cloud_workspace_backup_object`, `com_site_access`, `commit_diff`, `connection_request`, `control_computer_control_operation`, `deep_scan`, `deep_scan_mapped_flow`, `demo_share`, `demo_share_segment`, `deployment`, `deployment_dashboard_nomad`, `deployment_detail`, `device`, `device_control_operation`, `device_enterprise_relay`, `device_folder_listing`, `docker_builder`, `docker_builder_session`, `domain_path_rule`, `dream`, `edge`, `environment`, `environment_discovery_run`, `environment_revision`, `environment_secret_binding`, `evidence`, `execution_desired_state`, `execution_reconciler_tick`, `execution_release`, `execution_runtime_instance`, `exploration`, `exploration_report`, `finding`, `gh`, `git_import`, `github`, `github_ci_repository`, `github_ci_repository_compatibility_report`, `github_connection`, `github_integration`, `github_onboarding`, `github_onboarding_import_batch`, `github_pull_request`, `github_runner_egress`, `github_runner_history`, `github_runner_image`, `github_runner_setup`, `gitlab`, `gitlab_oauth`, `hosting_app_domain`, `identity_organization`, `import_branch_policy`, `integration`, `job_step`, `job_workspace`, `knowledge`, `known`, `local_thread_delivery`, `local_thread_operation`, `log_stream_chunk`, `marketing_setting`, `mcp_oauth`, `me`, `media_file`, `memory`, `merge_request`, `metric_query`, `model_subscription_account_connection`, `networking_space`, `node_lease`, `nomad_allocation`, `nomad_log`, `now`, `observability_clickhouse_cluster`, `observability_quickwit_cluster`, `observability_space`, `openapi`, `org_invitation`, `organization`, `organization_app`, `organization_identity_certificate`, `organization_oidc_trust`, `organization_secret`, `organization_service_account`, `organization_site`, `organization_workload_identity`, `page`, `page_agent`, `page_artefact`, `page_ci_pipeline_run`, `page_project_run`, `page_repo_vc_commit`, `pages_billing`, `pages_github_onboarding`, `pages_registry`, `pages_session`, `pairing`, `pairing_event`, `patchset_diff`, `personal_access_token`, `preview_operation`, `preview_profile_secret_binding`, `preview_sharing_approval`, `proactive_agent_waitlist_entry`, `product_map_journey`, `product_map_journey_replay`, `product_map_observation`, `product_map_state`, `project`, `project_environment`, `project_fixture`, `project_messaging_conversation`, `project_product_map`, `project_recording`, `project_run_plan`, `project_run_schedule`, `project_scenario_option`, `project_setting`, `pull_request`, `pull_request_setting`, `recorder`, `registry`, `relay_agent_connection`, `release_rollout`, `repo`, `repo_agent_checkpoint`, `repo_agent_session`, `repo_bookmark_protection`, `repo_cloud_workspace_backup`, `repo_code_rule`, `repo_vc`, `report_replay`, `repository_access`, `repository_access_resolve`, `repository_import`, `repository_import_session`, `repository_sandbox_environment`, `roder_code_repair`, `roder_code_repair_setting`, `run_artifact`, `run_job`, `run_scenario_run`, `run_search`, `runner_lease`, `runner_pool_runner`, `runtime_instance_health_snapshot`, `sandbox_integration`, `secret_grant`, `secret_version`, `service_endpoint`, `setting`, `signal`, `signal_integration`, `signal_subscription`, `site_access_key`, `site_preview`, `space_alert_rule`, `space_audit_event`, `space_dns_record`, `space_enrollment_token`, `space_gateway`, `space_group`, `space_group_membership`, `space_log_stream`, `space_metric_sery`, `space_otel_collector`, `space_peer`, `space_peer_attachment`, `space_policy`, `space_segment`, `space_trace_span`, `spark`, `spark_agent_integration`, `spark_agent_local_thread`, `spark_credit`, `spark_credit_agent_usage`, `spark_credit_usage_total`, `static_site`, `static_site_deployment`, `static_site_domain`, `status_change`, `status_commit`, `status_patchset`, `swarm_live`, `swarm_task`, `thread_preview_access`, `tool_feedback`, `transcript`, `vc_browser`, `vc_change`, `vc_change_group`, `vc_merge_queue`, `vc_stack`, `vcs_setting`, `verification_project_credential`, `verification_project_persona`, `verification_project_run`, `verification_project_scenario`, `verify_browser_session`, `verify_email_verification`, `workflow_run_step`, `workspace_activity`, `workspace_space`.
 
 ## Operational features
 

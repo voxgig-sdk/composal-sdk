@@ -9,18 +9,11 @@ description: |-
   | `byte_size` | integer | yes |  |
   | `content_type` | string | yes |  |
   | `credential_ids` | array | yes |  |
-  | `credentials` | array | yes |  |
   | `environment_ids` | array | yes |  |
-  | `environments` | array | yes |  |
-  | `fixtures` | array | yes |  |
   | `id` | string |  |  |
   | `lock_version` | integer | yes |  |
   | `name` | string | yes |  |
-  | `pagination` | object | yes |  |
-  | `permissions` | object | yes |  |
   | `persona_ids` | array | yes |  |
-  | `personas` | array | yes |  |
-  | `project` | object | yes |  |
   | `sha256` | string | yes |  |
   | `url` | string | yes |  |
   | `version` | integer | yes |  |

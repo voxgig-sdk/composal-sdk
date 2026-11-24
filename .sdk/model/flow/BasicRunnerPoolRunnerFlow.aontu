@@ -19,22 +19,6 @@ main: kit: flow: BasicRunnerPoolRunnerFlow:
     }
 
     {
-      m: {
-        runner_pool_id: "runner_pool01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "runner_pool_runner_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       d: {
         runner_pool_id: "runner_pool01"
       }
@@ -64,8 +48,7 @@ main: kit: flow: BasicRunnerPoolRunnerFlow:
       }
 
       m: {
-        id: "runner_pool_runner01",
-        runner_pool_id: "runner_pool01"
+        id: "runner_pool_runner01"
       }
 
       o: "load",

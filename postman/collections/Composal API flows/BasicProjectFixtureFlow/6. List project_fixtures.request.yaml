@@ -62,7 +62,7 @@ scripts:
       })
       const body = (() => { try { return pm.response.json() } catch (e) { return null } })()
       const at = (rec, path) => path.split(".").reduce((n, k) => null == n ? n : n[k], rec)
-      const recs = body || []
+      const recs = body?.["fixtures"] || []
       const keys = Array.isArray(recs) ? recs.map((rec) => String(at(rec, "id"))) : []
       if (null != pm.variables.get("project_fixture_ref01_removed")) pm.test("6. List project_fixtures: the removed record is gone", () => {
         pm.expect(keys).to.not.include(pm.variables.get("project_fixture_ref01_removed"))

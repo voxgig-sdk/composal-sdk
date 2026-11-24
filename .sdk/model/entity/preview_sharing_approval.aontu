@@ -45,36 +45,36 @@ main: kit: entity: preview_sharing_approval: {
       h: "Build Secrets"
       n: "build_secrets"
       op: {
-        list: {
-          req: true
+        create: {
+          req: false
           type: "`$ARRAY`"
         }
       }
-      r: false
+      r: true
       t: "`$ARRAY`"
     }
     default_configuration: {
       h: "Default Configuration"
       n: "default_configuration"
       op: {
-        list: {
-          req: true
+        create: {
+          req: false
           type: "`$ARRAY`"
         }
       }
-      r: false
+      r: true
       t: "`$ARRAY`"
     }
     default_secrets: {
       h: "Default Secrets"
       n: "default_secrets"
       op: {
-        list: {
-          req: true
+        create: {
+          req: false
           type: "`$ARRAY`"
         }
       }
-      r: false
+      r: true
       t: "`$ARRAY`"
     }
     services: {
@@ -93,12 +93,12 @@ main: kit: entity: preview_sharing_approval: {
       h: "Source Keys"
       n: "source_keys"
       op: {
-        list: {
-          req: true
+        create: {
+          req: false
           type: "`$ARRAY`"
         }
       }
-      r: false
+      r: true
       t: "`$ARRAY`"
     }
   }
@@ -191,8 +191,8 @@ main: kit: entity: preview_sharing_approval: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

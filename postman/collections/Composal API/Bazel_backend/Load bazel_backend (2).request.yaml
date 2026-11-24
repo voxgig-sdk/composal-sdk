@@ -1,0 +1,11 @@
+$kind: http-request
+id: e216d487-5085-53f2-937d-5bbed405be86
+description: |-
+  The `load` operation of **bazel_backend**.
+
+  SDK: `client.BazelBackend().load({ id: "example_id" })`
+url: "{{base}}/api/v1/bazel/backends"
+method: GET
+headers:
+  Accept: application/json
+order: 2000

@@ -54,62 +54,23 @@ const utility_1 = require("../../utility");
         const ent = testsdk.ExecutionReconcilerTick();
         (0, node_assert_1.default)(null != ent);
     });
-    class FailHook extends __1.BaseFeature {
-        name = 'failhook';
-        version = '0.0.1';
-        active = true;
-        unexpected = 0;
-        init() { }
-        PreSpec() { throw new Error('execution_reconciler_tick hook failed'); }
-        PreUnexpected() { this.unexpected++; }
-    }
-    (0, node_test_1.test)('stream-error', async () => {
-        const offline = { net: { offline: true } };
-        await node_assert_1.default.rejects(async () => {
-            for await (const _item of __1.ComposalSDK.test(offline).ExecutionReconcilerTick().stream('list')) { }
-        }, /offline/);
-        for await (const _item of __1.ComposalSDK.test(offline).ExecutionReconcilerTick()
-            .stream('list', undefined, { ctrl: { throw: false } })) { }
-        if (null != __1.config.feature?.rbac) {
-            const denied = __1.ComposalSDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
-            await node_assert_1.default.rejects(async () => {
-                for await (const _item of denied.ExecutionReconcilerTick().stream('list')) { }
-            }, (err) => 'rbac_denied' === err.code);
-        }
-    });
-    (0, node_test_1.test)('stream-ctrl', async () => {
-        const explain = {};
-        const ctrl = { explain };
-        for await (const _item of __1.ComposalSDK.test().ExecutionReconcilerTick().stream('list', undefined, { ctrl })) { }
-        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
-        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
-    });
-    (0, node_test_1.test)('unexpected', async () => {
-        const hook = new FailHook();
-        const client = new __1.ComposalSDK({ feature: { test: { active: true } }, extend: [hook] });
-        await node_assert_1.default.rejects(client.ExecutionReconcilerTick().list(), /hook failed/);
-        (0, node_assert_1.default)(0 < hook.unexpected);
-        const fired = hook.unexpected;
-        node_assert_1.default.strictEqual(await client.ExecutionReconcilerTick().list(undefined, { throw: false }), undefined);
-        (0, node_assert_1.default)(fired < hook.unexpected);
-    });
     (0, node_test_1.test)('validate', async (t) => {
         if (null == __1.config.feature?.validate) {
             t.skip('feature not present in this SDK: validate');
             return;
         }
         const client = __1.ComposalSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.ExecutionReconcilerTick().list({ "id": 1 }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.ExecutionReconcilerTick().load({ "id": 1 }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE;
-        for (const op of ['create', 'list', 'load']) {
+        for (const op of ['create', 'load']) {
             if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'execution_reconciler_tick.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "execution_reconciler_tick", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/execution/reconciler_ticks", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/execution/reconciler_ticks", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" }, "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /api/v1/execution/reconciler_ticks", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/execution/reconciler_ticks", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/execution/reconciler_ticks/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/execution/reconciler_ticks/{id}", "q": { "exist": ["id"] }, "r": { "param": { "id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "execution_reconciler_tick", "name__orig": "execution_reconciler_tick", "Name": "ExecutionReconcilerTick", "name_": "execution_reconciler_tick", "name-": "execution-reconciler-tick", "NAME": "EXECUTION_RECONCILER_TICK", "index$": 239 }, { "active": true, "entity": "execution_reconciler_tick", "key$": "BasicExecutionReconcilerTickFlow", "kind": "basic", "name": "BasicExecutionReconcilerTickFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "execution_reconciler_tick_ref01" }, "m": {}, "o": "create", "s": [], "v": [], "index$": 0 }, { "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "execution_reconciler_tick_ref01" } }], "index$": 1 }, { "a": true, "d": {}, "i": { "ref": "execution_reconciler_tick_ref01", "srcdatavar": "execution_reconciler_tick_ref01_data", "suffix": "_dt0" }, "m": { "id": "execution_reconciler_tick01" }, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-execution_reconciler_tick_ref01" } }], "index$": 2, "route": "GET /api/v1/execution/reconciler_ticks/{id}", "record": {} }] }, 'ExecutionReconcilerTick', { "POST /api/v1/execution/reconciler_ticks": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "GET /api/v1/execution/reconciler_ticks": { "protocol": "http", "parameters": [] }, "GET /api/v1/execution/reconciler_ticks/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "execution_reconciler_tick.create.0": "GET-only live run: needs POST /api/v1/execution/reconciler_ticks" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "id": { "a": true, "h": "Id", "n": "id", "r": false, "syn": true, "t": "`$STRING`", "key$": "id", "index$": 0 } }, "id": { "field": "id", "name": "id" }, "name": "execution_reconciler_tick", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": false, "co": { "id": "POST /api/v1/execution/reconciler_ticks", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "POST", "o": "/api/v1/execution/reconciler_ticks", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" }, "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /api/v1/execution/reconciler_ticks/{id}", "source": "openapi3", "version": 2 }, "g": { "params": [{ "a": true, "k": "param", "n": "id", "or": "id", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/api/v1/execution/reconciler_ticks/{id}", "q": { "exist": ["id"] }, "r": { "param": { "id": "id" } }, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }, { "var": "id" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }, { "a": true, "co": { "id": "GET /api/v1/execution/reconciler_ticks", "source": "openapi3", "version": 2 }, "g": {}, "k": "http", "m": "GET", "o": "/api/v1/execution/reconciler_ticks", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "api" }, { "lit": "v1" }, { "lit": "execution" }, { "lit": "reconciler_ticks" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 1 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "execution_reconciler_tick", "name__orig": "execution_reconciler_tick", "Name": "ExecutionReconcilerTick", "name_": "execution_reconciler_tick", "name-": "execution-reconciler-tick", "NAME": "EXECUTION_RECONCILER_TICK", "index$": 239 }, { "active": true, "entity": "execution_reconciler_tick", "key$": "BasicExecutionReconcilerTickFlow", "kind": "basic", "name": "BasicExecutionReconcilerTickFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "execution_reconciler_tick_ref01" }, "m": {}, "o": "create", "s": [], "v": [], "index$": 0 }, { "a": true, "d": {}, "i": { "ref": "execution_reconciler_tick_ref01", "srcdatavar": "execution_reconciler_tick_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-execution_reconciler_tick_ref01" } }], "index$": 1, "route": "GET /api/v1/execution/reconciler_ticks/{id}", "record": {} }] }, 'ExecutionReconcilerTick', { "POST /api/v1/execution/reconciler_ticks": { "protocol": "http", "requestBody": { "required": false, "content": { "application/json": { "schema": { "type": "object", "additionalProperties": true } } } }, "parameters": [] }, "GET /api/v1/execution/reconciler_ticks/{id}": { "protocol": "http", "parameters": [{ "name": "id", "in": "path", "required": true, "schema": { "type": "string" }, "index$": 0 }] }, "GET /api/v1/execution/reconciler_ticks": { "protocol": "http", "parameters": [] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "execution_reconciler_tick.create.0": "GET-only live run: needs POST /api/v1/execution/reconciler_ticks", "execution_reconciler_tick.load.1": "GET-only live run: reads a record only execution_reconciler_tick.create.0 gives" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -120,10 +81,6 @@ const utility_1 = require("../../utility");
         let execution_reconciler_tick_ref01_data = setup.data.new.execution_reconciler_tick['execution_reconciler_tick_ref01'];
         execution_reconciler_tick_ref01_data = (await execution_reconciler_tick_ref01_ent.create(execution_reconciler_tick_ref01_data)).data();
         (0, node_assert_1.default)(null != execution_reconciler_tick_ref01_data.id);
-        // LIST
-        const execution_reconciler_tick_ref01_match = {};
-        const execution_reconciler_tick_ref01_list = (await execution_reconciler_tick_ref01_ent.list(execution_reconciler_tick_ref01_match)).map((e) => e.data());
-        (0, node_assert_1.default)(!isempty(select(execution_reconciler_tick_ref01_list, { id: execution_reconciler_tick_ref01_data.id })));
         // LOAD
         const execution_reconciler_tick_ref01_match_dt0 = {};
         execution_reconciler_tick_ref01_match_dt0.id = execution_reconciler_tick_ref01_data.id;

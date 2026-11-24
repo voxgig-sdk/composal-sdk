@@ -1,4 +1,4 @@
 $kind: collection
 id: "49b57be1-12f7-591f-9b77-995ca4ca88e9"
 description: "The `BasicBookmarkProtectionRefreshGithubRequiredCheckFlow` flow of **bookmark_protection_refresh_github_required_check**."
-order: 111000
+order: 106000

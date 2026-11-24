@@ -1,0 +1,19 @@
+$kind: http-request
+id: f0846c01-d59a-542a-a488-e4eab53945be
+description: |-
+  The `load` operation of **app_config_variable**.
+
+  SDK: `client.AppConfigVariable().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/config_variables"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: app_environment_id
+    value: ""
+    disabled: true
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this app_config_variable belongs to.
+order: 2000

@@ -38,7 +38,7 @@ func TestJobWorkspaceEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.JobWorkspace(nil).List(map[string]any{"job_id": 1, "pipeline_id": "x", "run_id": "x"}, nil)
+		_, err := client.JobWorkspace(nil).Load(map[string]any{"job_id": 1, "pipeline_id": "x", "run_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestJobWorkspaceEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"create", "list", "update"} {
+		for _, _op := range []string{"create", "update", "load"} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "job_workspace." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,48 +64,10 @@ func TestJobWorkspaceEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"job_workspace.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces\"}")
-			t.Log("LIVE STEP {\"id\":\"job_workspace.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"job01", "pipeline01", "run01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, job_workspaceEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_JOB_WORKSPACE_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		jobWorkspaceRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.job_workspace")))
-		var jobWorkspaceRef01Data map[string]any
-		if len(jobWorkspaceRef01DataRaw) > 0 {
-			jobWorkspaceRef01Data = core.ToMapAny(jobWorkspaceRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = jobWorkspaceRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		jobWorkspaceRef01Ent := client.JobWorkspace(nil)
-		jobWorkspaceRef01Match := map[string]any{
-			"job_id": setup.idmap["job01"],
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		jobWorkspaceRef01ListResult, err := jobWorkspaceRef01Ent.List(jobWorkspaceRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, jobWorkspaceRef01ListOk := jobWorkspaceRef01ListResult.([]any)
-		if !jobWorkspaceRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", jobWorkspaceRef01ListResult)
-		}
-
-		return
+			t.Log("LIVE STEP {\"id\":\"job_workspace.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}\"}")
+			t.Log("LIVE STEP {\"id\":\"job_workspace.load.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: reads a record only job_workspace.create.0 gives\"}")
+			t.Skip("Live coverage incomplete: job_workspace.create.0 excluded (GET-only live run: needs POST /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces); job_workspace.update.1 excluded (GET-only live run: needs PUT /api/v1/ci/pipelines/{pipeline_id}/runs/{run_id}/jobs/{job_id}/workspaces/{id}); job_workspace.load.2 excluded (GET-only live run: reads a record only job_workspace.create.0 gives)")
+			return
 		}
 
 		if setup.live {
@@ -144,30 +106,6 @@ func TestJobWorkspaceEntity(t *testing.T) {
 		if setup.live {
 			livePace()
 		}
-		// LIST
-		jobWorkspaceRef01Match := map[string]any{
-			"job_id": setup.idmap["job01"],
-			"pipeline_id": setup.idmap["pipeline01"],
-			"run_id": setup.idmap["run01"],
-		}
-
-		jobWorkspaceRef01ListResult, err := jobWorkspaceRef01Ent.List(jobWorkspaceRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		jobWorkspaceRef01List, jobWorkspaceRef01ListOk := jobWorkspaceRef01ListResult.([]any)
-		if !jobWorkspaceRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", jobWorkspaceRef01ListResult)
-		}
-
-		foundItem := vs.Select(entityListToData(jobWorkspaceRef01List), map[string]any{"id": jobWorkspaceRef01Data["id"]})
-		if vs.IsEmpty(foundItem) {
-			t.Fatal("expected to find created entity in list")
-		}
-
-		if setup.live {
-			livePace()
-		}
 		// UPDATE
 		jobWorkspaceRef01DataUp0Up := map[string]any{
 			"id": jobWorkspaceRef01Data["id"],
@@ -186,6 +124,35 @@ func TestJobWorkspaceEntity(t *testing.T) {
 		}
 		if !setup.live && !liveSameId(jobWorkspaceRef01ResdataUp0["id"], jobWorkspaceRef01DataUp0Up["id"]) {
 			t.Fatal("expected update result id to match")
+		}
+
+		if setup.live {
+			livePace()
+		}
+		// LOAD
+		jobWorkspaceRef01MatchDt0 := map[string]any{
+			"id": jobWorkspaceRef01Data["id"],
+		}
+		if v := setup.idmap["pipeline_id"]; v != nil {
+			jobWorkspaceRef01MatchDt0["pipeline_id"] = v
+		} else {
+			jobWorkspaceRef01MatchDt0["pipeline_id"] = setup.idmap["pipeline01"]
+		}
+		if v := setup.idmap["run_id"]; v != nil {
+			jobWorkspaceRef01MatchDt0["run_id"] = v
+		} else {
+			jobWorkspaceRef01MatchDt0["run_id"] = setup.idmap["run01"]
+		}
+		jobWorkspaceRef01DataDt0Loaded, err := jobWorkspaceRef01Ent.Load(jobWorkspaceRef01MatchDt0, nil)
+		if err != nil {
+			t.Fatalf("load failed: %v", err)
+		}
+		jobWorkspaceRef01DataDt0LoadResult := core.ToMapAny(entityData(jobWorkspaceRef01DataDt0Loaded))
+		if jobWorkspaceRef01DataDt0LoadResult == nil {
+			t.Fatal("expected load result to be a map")
+		}
+		if !setup.live && !liveSameId(jobWorkspaceRef01DataDt0LoadResult["id"], jobWorkspaceRef01Data["id"]) {
+			t.Fatal("expected load result id to match")
 		}
 
 	})

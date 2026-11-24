@@ -15,18 +15,6 @@ main: kit: flow: BasicObservabilityQuickwitClusterFlow:
     }
 
     {
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "observability_quickwit_cluster_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "observability_quickwit_cluster_ref01",
         srcdatavar: "observability_quickwit_cluster_ref01_data",
@@ -51,10 +39,6 @@ main: kit: flow: BasicObservabilityQuickwitClusterFlow:
         suffix: "_dt0"
       }
 
-      m: {
-        id: "observability_quickwit_cluster01"
-      }
-
       o: "load",
       v: [
         {
@@ -77,22 +61,6 @@ main: kit: flow: BasicObservabilityQuickwitClusterFlow:
       }
 
       o: "remove"
-    }
-
-    {
-      i: {
-        suffix: "_rt0"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemNotExists",
-          def: {
-            ref: "observability_quickwit_cluster_ref01"
-          }
-        }
-      ]
     }
   ],
   "key$": "BasicObservabilityQuickwitClusterFlow"

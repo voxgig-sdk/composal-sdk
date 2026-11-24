@@ -7,17 +7,23 @@ main: kit: flow: BasicAgentEventFlow:
   name: "BasicAgentEventFlow",
   step: [
     {
+      i: {
+        ref: "agent_event_ref01",
+        srcdatavar: "agent_event_ref01_data",
+        suffix: "_dt0"
+      }
+
       m: {
-        agent_id: "agent01",
+        id: "agent_event01",
         organization_id: "organization01"
       }
 
-      o: "list",
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "agent_event_ref01"
+            mark: "Mark01-agent_event_ref01"
           }
         }
       ]

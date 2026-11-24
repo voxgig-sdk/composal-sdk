@@ -600,7 +600,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1sparkorganizationsorganization_idapps"><code>/api/v1/spark/organizations/{organization_id}/apps</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Team app catalog or agent context</td>
 </tr>
 <tr>
@@ -621,31 +621,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">organization_apps, err := client.OrganizationApp(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">organization_app, err := client.OrganizationApp(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(organization_apps)
+fmt.Println(organization_app)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local organization_apps, err = client:OrganizationApp():list({ organization_id = &quot;example&quot;, native_agent_id = &quot;example&quot; })
+<pre><code class="language-lua">local organization_app, err = client:OrganizationApp():load({ organization_id = &quot;example&quot;, native_agent_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$organization_apps = $client-&gt;OrganizationApp()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$organization_app = $client-&gt;OrganizationApp()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">organization_apps = client.OrganizationApp().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">organization_app = client.OrganizationApp().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;native_agent_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">organization_apps = client.OrganizationApp.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">organization_app = client.OrganizationApp.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;native_agent_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const organization_apps = await client.OrganizationApp().list({ organization_id: &quot;example&quot;, native_agent_id: &quot;example&quot; })
+<pre><code class="language-ts">const organization_app = await client.OrganizationApp().load({ organization_id: &quot;example&quot;, native_agent_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -666,7 +666,7 @@ fmt.Println(organization_apps)
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1sparkorganizationsorganization_idapps" class="operation" data-method="get"><code>GET</code> /api/v1/spark/organizations/{organization_id}/apps</h3>
 <p>Operation ID: <code>get_api_v1_spark_organizations_organization_id_apps</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

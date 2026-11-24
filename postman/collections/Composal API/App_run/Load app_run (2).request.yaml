@@ -1,0 +1,11 @@
+$kind: http-request
+id: eee75ede-9399-5315-ad43-7a01a07b5645
+description: |-
+  The `load` operation of **app_run**.
+
+  SDK: `client.AppRun().load({ id: "example_id" })`
+url: "{{base}}/api/v1/hosting/app_runs"
+method: GET
+headers:
+  Accept: application/json
+order: 2000
