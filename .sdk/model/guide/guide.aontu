@@ -44,25 +44,30 @@ guide: entity: {
       op: create: transform: res: "`body.agent`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: load: transform: res: "`body.agent`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/avatar": {
       action: "avatar": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/rename": {
       action: "rename": {}
+      rename: param: "id": "id"
       op: patch: method: PATCH
       op: patch: transform: res: "`body.agent`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/roster_position": {
       action: "roster_position": {}
+      rename: param: "id": "id"
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/sharing": {
       action: "sharing": {}
+      rename: param: "id": "id"
       op: patch: method: PATCH
       op: patch: transform: res: "`body.agent`"
     }
@@ -72,128 +77,155 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/browser_opened": {
       action: "browser_opened": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/call_session": {
       action: "call_session": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/compute": {
       action: "compute": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/computer": {
       action: "computer": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/coordination": {
       action: "coordination": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.tasks`"
       op: load: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/debug": {
       action: "debug": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/email": {
       action: "email": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.messages`"
       op: load: transform: page: more: "`body.has_more`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/environment": {
       action: "environment": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.variables`"
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/github_access": {
       action: "github_access": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/input_delivery": {
       action: "input_delivery": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/library": {
       action: "library": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.items`"
       op: load: transform: page: next: "`body.pagination.next`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/lifecycle": {
       action: "lifecycle": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/marked_read": {
       action: "marked_read": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/message_image": {
       action: "message_image": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/mission_control_card": {
       action: "mission_control_card": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/model": {
       action: "model": {}
+      rename: param: "id": "id"
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/activity": {
       action: "activity": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.activity`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/inspection": {
       action: "inspection": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/relay/resource": {
       action: "resource": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.contents`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/run_usage": {
       action: "run_usage": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/runtime": {
       action: "runtime": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.available_profiles`"
       op: patch: method: PATCH
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/sandbox": {
       action: "sandbox": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/slack": {
       action: "slack": {}
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.slack`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/thread_model": {
       action: "thread_model": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.choices`"
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/transcription_session": {
       action: "transcription_session": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/usage": {
       action: "usage": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/warm": {
       action: "warm": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/agent/chat": active: false
@@ -497,6 +529,7 @@ guide: entity: {
       op: load: transform: res: "`body.featured`"
     }
     "/api/v1/agent_marketplace/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/agent_marketplace": {
@@ -511,6 +544,7 @@ guide: entity: {
       op: load: transform: res: "`body.page_app_choices`"
     }
     "/api/v1/organizations/{organization_id}/agent_marketplace/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: load: transform: res: "`body.listing`"
@@ -520,6 +554,7 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/agent_marketplace/{id}/install": {
       action: "install": {}
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.install`"
     }
@@ -984,6 +1019,8 @@ guide: entity: {
   # allocation_log
   allocation_log: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}/logs": {
+      rename: param: "allocation_id": "allocation_id"
+      rename: param: "app_id": "app_id"
       op: list: method: GET
     }
   }
@@ -1008,6 +1045,7 @@ guide: entity: {
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1017,10 +1055,12 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{id}/activate": {
       action: "activate": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1028,11 +1068,14 @@ guide: entity: {
   # app_cdn
   app_cdn: path: {
     "/api/v1/hosting/apps/{app_id}/cdns": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.cdn`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1042,31 +1085,43 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.cdn`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/pause": {
       action: "pause": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.cdn`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/provision": {
       action: "provision": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/purge": {
       action: "purge": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.cdn`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{id}/sync": {
       action: "sync": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
@@ -1075,11 +1130,14 @@ guide: entity: {
   # app_config_variable
   app_config_variable: path: {
     "/api/v1/hosting/apps/{app_id}/config_variables": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.config_variable`"
     }
     "/api/v1/hosting/apps/{app_id}/config_variables/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1087,11 +1145,15 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/config_variables/{id}/disable": {
       action: "disable": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.config_variable`"
     }
     "/api/v1/hosting/apps/{app_id}/config_variables/{id}/rotate": {
       action: "rotate": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.config_variable`"
     }
@@ -1100,11 +1162,14 @@ guide: entity: {
   # app_data_resource
   app_data_resource: path: {
     "/api/v1/hosting/apps/{app_id}/data_resources": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.data_resource`"
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1112,24 +1177,34 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/refresh": {
       action: "refresh": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.data_resource`"
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/restore": {
       action: "restore": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.data_resource`"
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/suspend": {
       action: "suspend": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1137,6 +1212,7 @@ guide: entity: {
   # app_deploy
   app_deploy: path: {
     "/api/v1/hosting/apps/{app_id}/deploys": {
+      rename: param: "app_id": "app_id"
       op: create: method: POST
     }
   }
@@ -1144,16 +1220,20 @@ guide: entity: {
   # app_deployment
   app_deployment: path: {
     "/api/v1/hosting/apps/{app_id}/deployments": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/hosting/apps/{app_id}/deployments/{deployment_id}/live": {
       action: "live": {}
+      rename: param: "app_id": "app_id"
       rename: param: "deployment_id": "id"
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{app_id}/deployments/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1161,16 +1241,22 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/deployments/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/hosting/apps/{app_id}/deployments/{id}/fail": {
       action: "fail": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/hosting/apps/{app_id}/deployments/{id}/succeed": {
       action: "succeed": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
@@ -1179,6 +1265,7 @@ guide: entity: {
   # app_deployment_operation
   app_deployment_operation: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_operations": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: list: transform: res: "`body.operations`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -1187,29 +1274,34 @@ guide: entity: {
       op: create: transform: res: "`body.operation`"
     }
     "/api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}": {
+      rename: param: "app_id": "app_id"
       rename: param: "operation_id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.operation`"
     }
     "/api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/cancel": {
       action: "cancel": {}
+      rename: param: "app_id": "app_id"
       rename: param: "operation_id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.operation`"
     }
     "/api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/live": {
       action: "live": {}
+      rename: param: "app_id": "app_id"
       rename: param: "operation_id": "id"
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/redeploy": {
       action: "redeploy": {}
+      rename: param: "app_id": "app_id"
       rename: param: "operation_id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.operation`"
     }
     "/api/v1/hosting/apps/{app_id}/deployment_operations/{operation_id}/rollback": {
       action: "rollback": {}
+      rename: param: "app_id": "app_id"
       rename: param: "operation_id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.operation`"
@@ -1219,10 +1311,12 @@ guide: entity: {
   # app_deployment_rollback
   app_deployment_rollback: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_rollbacks": {
+      rename: param: "app_id": "app_id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/deployment_rollbacks/plan": {
       action: "plan": {}
+      rename: param: "app_id": "app_id"
       op: create: method: POST
     }
   }
@@ -1230,11 +1324,14 @@ guide: entity: {
   # app_environment
   app_environment: path: {
     "/api/v1/hosting/apps/{app_id}/environments": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.environment`"
     }
     "/api/v1/hosting/apps/{app_id}/environments/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1244,16 +1341,22 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/environments/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.environment`"
     }
     "/api/v1/hosting/apps/{app_id}/environments/{id}/pause": {
       action: "pause": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.environment`"
     }
     "/api/v1/hosting/apps/{app_id}/environments/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.environment`"
     }
@@ -1262,12 +1365,15 @@ guide: entity: {
   # app_location
   app_location: path: {
     "/api/v1/hosting/apps/{app_id}/locations": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: list: transform: res: "`body.locations`"
       op: create: method: POST
       op: create: transform: res: "`body.location`"
     }
     "/api/v1/hosting/apps/{app_id}/locations/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
     }
   }
@@ -1276,6 +1382,7 @@ guide: entity: {
   app_metric: path: {
     "/api/v1/hosting/apps/{app_id}/metrics/query_range": {
       action: "query_range": {}
+      rename: param: "app_id": "app_id"
       op: load: method: GET
     }
   }
@@ -1283,16 +1390,20 @@ guide: entity: {
   # app_preview
   app_preview: path: {
     "/api/v1/hosting/apps/{app_id}/previews": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.preview`"
     }
     "/api/v1/hosting/apps/{app_id}/previews/administration_index": {
       action: "administration_index": {}
+      rename: param: "app_id": "app_id"
       op: load: method: GET
       op: load: transform: res: "`body.binding_sources`"
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1300,43 +1411,63 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/administration": {
       action: "administration": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/deploy": {
       action: "deploy": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/expire": {
       action: "expire": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/pause": {
       action: "pause": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/refresh_source": {
       action: "refresh_source": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.preview`"
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/review_source": {
       action: "review_source": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/secret_comparison": {
       action: "secret_comparison": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{app_id}/previews/{id}/update_revision": {
       action: "update_revision": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1344,11 +1475,14 @@ guide: entity: {
   # app_preview_profile
   app_preview_profile: path: {
     "/api/v1/hosting/apps/{app_id}/preview_profiles": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.profile`"
     }
     "/api/v1/hosting/apps/{app_id}/preview_profiles/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1364,10 +1498,12 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/hosting/app_runs/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/hosting/app_runs/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1375,19 +1511,24 @@ guide: entity: {
   # app_secret
   app_secret: path: {
     "/api/v1/hosting/apps/{app_id}/secrets": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: list: transform: res: "`body.secrets`"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/secrets/bulk": {
       action: "bulk": {}
+      rename: param: "app_id": "app_id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/secrets/dotenv": {
       action: "dotenv": {}
+      rename: param: "app_id": "app_id"
       op: load: method: GET
     }
     "/api/v1/hosting/apps/{app_id}/secrets/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1395,10 +1536,14 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/secrets/{id}/set_value": {
       action: "set_value": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/secrets/{id}/value": {
       action: "value": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
   }
@@ -1406,11 +1551,14 @@ guide: entity: {
   # app_service
   app_service: path: {
     "/api/v1/hosting/apps/{app_id}/services": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.service`"
     }
     "/api/v1/hosting/apps/{app_id}/services/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1420,16 +1568,22 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/services/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.service`"
     }
     "/api/v1/hosting/apps/{app_id}/services/{id}/pause": {
       action: "pause": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.service`"
     }
     "/api/v1/hosting/apps/{app_id}/services/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.service`"
     }
@@ -1438,10 +1592,13 @@ guide: entity: {
   # app_service_binding
   app_service_binding: path: {
     "/api/v1/hosting/apps/{app_id}/service_bindings": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/service_bindings/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1449,10 +1606,14 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/service_bindings/{id}/disable": {
       action: "disable": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/service_bindings/{id}/enable": {
       action: "enable": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1460,15 +1621,19 @@ guide: entity: {
   # app_service_placement
   app_service_placement: path: {
     "/api/v1/hosting/apps/{app_id}/service_placements": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: list: transform: res: "`body.placements`"
     }
     "/api/v1/hosting/apps/{app_id}/service_placements/configure": {
       action: "configure": {}
+      rename: param: "app_id": "app_id"
       op: update: method: PUT
       op: update: transform: res: "`body.placement`"
     }
     "/api/v1/hosting/apps/{app_id}/service_placements/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.placement`"
     }
@@ -1477,11 +1642,14 @@ guide: entity: {
   # app_storage_resource
   app_storage_resource: path: {
     "/api/v1/hosting/apps/{app_id}/storage_resources": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.storage_resource`"
     }
     "/api/v1/hosting/apps/{app_id}/storage_resources/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1489,19 +1657,27 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/storage_resources/{id}/archive": {
       action: "archive": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.storage_resource`"
     }
     "/api/v1/hosting/apps/{app_id}/storage_resources/{id}/issue_access_key": {
       action: "issue_access_key": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/storage_resources/{id}/resume": {
       action: "resume": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/storage_resources/{id}/suspend": {
       action: "suspend": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1509,6 +1685,7 @@ guide: entity: {
   # attachment_part
   attachment_part: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/attachments/{attachment_id}/parts/{index}": {
+      rename: param: "attachment_id": "attachment_id"
       rename: param: "id": "agent_id"
       rename: param: "index": "id"
       op: update: method: PUT
@@ -1540,10 +1717,12 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1551,6 +1730,7 @@ guide: entity: {
   # binary_version
   binary_version: path: {
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions": {
+      rename: param: "binary_id": "binary_id"
       op: list: method: GET
       op: list: transform: res: "`body.versions`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -1558,15 +1738,21 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}": {
+      rename: param: "binary_id": "binary_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "binary_id": "binary_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/retry": {
       action: "retry": {}
+      rename: param: "binary_id": "binary_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1596,6 +1782,7 @@ guide: entity: {
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/browser_sessions/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
     }
@@ -1604,6 +1791,7 @@ guide: entity: {
   # browser_session_connection
   browser_session_connection: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/connections": {
+      rename: param: "browser_session_id": "browser_session_id"
       op: create: method: POST
     }
   }
@@ -1611,6 +1799,8 @@ guide: entity: {
   # browser_session_control
   browser_session_control: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/controls/{id}": {
+      rename: param: "browser_session_id": "browser_session_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
   }
@@ -1618,6 +1808,7 @@ guide: entity: {
   # browser_session_event
   browser_session_event: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/events": {
+      rename: param: "browser_session_id": "browser_session_id"
       op: list: method: GET
       op: list: transform: res: "`body.items`"
       op: list: transform: page: cursor: "`body.next_cursor`"
@@ -1627,6 +1818,8 @@ guide: entity: {
   # browser_session_media
   browser_session_media: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}": {
+      rename: param: "browser_session_id": "browser_session_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
   }
@@ -1634,10 +1827,13 @@ guide: entity: {
   # browser_session_recording
   browser_session_recording: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings": {
+      rename: param: "browser_session_id": "browser_session_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/recordings/{id}/stop": {
       action: "stop": {}
+      rename: param: "browser_session_id": "browser_session_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1645,6 +1841,7 @@ guide: entity: {
   # browser_session_screenshot
   browser_session_screenshot: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/screenshots": {
+      rename: param: "browser_session_id": "browser_session_id"
       op: create: method: POST
     }
   }
@@ -1652,13 +1849,18 @@ guide: entity: {
   # browser_session_task
   browser_session_task: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks": {
+      rename: param: "browser_session_id": "browser_session_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}": {
+      rename: param: "browser_session_id": "browser_session_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "browser_session_id": "browser_session_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1666,6 +1868,7 @@ guide: entity: {
   # catalog_selector
   catalog_selector: path: {
     "/api/v1/hosting/apps/{app_id}/catalog/selectors": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: list: transform: res: "`body.app`"
     }
@@ -1674,10 +1877,15 @@ guide: entity: {
   # cdn_deployment
   cdn_deployment: path: {
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments": {
+      rename: param: "app_id": "app_id"
+      rename: param: "cdn_id": "cdn_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "cdn_id": "cdn_id"
+      rename: param: "id": "id"
       op: load: method: GET
     }
   }
@@ -1685,11 +1893,16 @@ guide: entity: {
   # cdn_hostname
   cdn_hostname: path: {
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames": {
+      rename: param: "app_id": "app_id"
+      rename: param: "cdn_id": "cdn_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.hostname`"
     }
     "/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "cdn_id": "cdn_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1700,6 +1913,7 @@ guide: entity: {
   # cdn_space
   cdn_space: path: {
     "/api/v1/cdn_spaces/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1707,10 +1921,12 @@ guide: entity: {
     }
     "/api/v1/cdn_spaces/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/cdn_spaces/{id}/provision": {
       action: "provision": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/cdn_spaces": {
@@ -1725,10 +1941,12 @@ guide: entity: {
   # cdn_space_object
   cdn_space_object: path: {
     "/api/v1/cdn_spaces/{cdn_space_id}/objects": {
+      rename: param: "cdn_space_id": "cdn_space_id"
       op: list: method: GET
       op: update: method: PUT
     }
     "/api/v1/cdn_spaces/{cdn_space_id}/objects/{path}": {
+      rename: param: "cdn_space_id": "cdn_space_id"
       rename: param: "path": "id"
       op: remove: method: DELETE
       op: load: method: GET
@@ -1769,10 +1987,14 @@ guide: entity: {
   # credential_sign_in_check
   credential_sign_in_check: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{credential_id}/sign_in_checks": {
+      rename: param: "credential_id": "credential_id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{credential_id}/sign_in_checks/try_again": {
       action: "try_again": {}
+      rename: param: "credential_id": "credential_id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -1780,6 +2002,7 @@ guide: entity: {
   # data_resource_rotate_credential
   data_resource_rotate_credential: path: {
     "/api/v1/hosting/apps/{app_id}/data_resources/{id}/rotate_credentials": {
+      rename: param: "app_id": "app_id"
       rename: param: "id": "data_resource_id"
       op: create: method: POST
       op: create: transform: res: "`body.data_resource`"
@@ -1793,22 +2016,27 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/agent": {
       action: "agent": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/context": {
       action: "context": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/reproduce": {
       action: "reproduce": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/deep_scans/{id}/stop": {
       action: "stop": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1868,6 +2096,7 @@ guide: entity: {
   deployment_dashboard_nomad: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocation": {
       action: "allocation": {}
+      rename: param: "app_id": "app_id"
       op: load: method: GET
     }
   }
@@ -1876,6 +2105,7 @@ guide: entity: {
   deployment_file: path: {
     "/api/v1/static_sites/{static_site_id}/deployments/{id}/files": {
       rename: param: "id": "deployment_id"
+      rename: param: "static_site_id": "static_site_id"
       op: update: method: PUT
     }
   }
@@ -1883,12 +2113,17 @@ guide: entity: {
   # domain_path_rule
   domain_path_rule: path: {
     "/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules": {
+      rename: param: "app_id": "app_id"
+      rename: param: "domain_id": "domain_id"
       op: list: method: GET
       op: list: transform: res: "`body.path_rules`"
       op: create: method: POST
       op: create: transform: res: "`body.path_rule`"
     }
     "/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "domain_id": "domain_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: load: transform: res: "`body.path_rule`"
@@ -1905,10 +2140,12 @@ guide: entity: {
       op: list: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/dreams/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/dreams/{id}/resume": {
       action: "resume": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -1920,6 +2157,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -1942,11 +2180,13 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}": {
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/discovery_runs/{id}/stop": {
       action: "stop": {}
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: create: method: POST
     }
@@ -1955,6 +2195,8 @@ guide: entity: {
   # environment_exploration
   environment_exploration: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{environment_id}/explorations": {
+      rename: param: "environment_id": "environment_id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -1980,22 +2222,26 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}": {
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: load: method: GET
       op: update: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/provision": {
       action: "provision": {}
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/revoke": {
       action: "revoke": {}
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/environments/{verify_environment_id}/revisions/{id}/validate": {
       action: "validate": {}
+      rename: param: "id": "id"
       rename: param: "verify_environment_id": "environment_id"
       op: create: method: POST
     }
@@ -2004,14 +2250,21 @@ guide: entity: {
   # environment_secret_binding
   environment_secret_binding: path: {
     "/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings": {
+      rename: param: "app_id": "app_id"
+      rename: param: "environment_id": "environment_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/copy": {
       action: "copy": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "environment_id": "environment_id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/environments/{environment_id}/secret_bindings/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "environment_id": "environment_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
     }
   }
@@ -2041,10 +2294,12 @@ guide: entity: {
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/evidence/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/evidence/{id}/download": {
       action: "download": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
   }
@@ -2056,33 +2311,40 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/create_project": {
       action: "create_project": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/progress": {
       action: "progress": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.agents`"
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/report": {
       action: "report": {}
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.related_explorations`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/retry_startup": {
       action: "retry_startup": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/sign_in_browser": {
       action: "sign_in_browser": {}
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/explorations/{id}/stop": {
       action: "stop": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -2123,6 +2385,7 @@ guide: entity: {
       op: list: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/findings/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
@@ -2140,11 +2403,14 @@ guide: entity: {
   # hosting_app_domain
   hosting_app_domain: path: {
     "/api/v1/hosting/apps/{app_id}/domains": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
     "/api/v1/hosting/apps/{app_id}/domains/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -2152,11 +2418,15 @@ guide: entity: {
     }
     "/api/v1/hosting/apps/{app_id}/domains/{id}/disable": {
       action: "disable": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
     "/api/v1/hosting/apps/{app_id}/domains/{id}/enable": {
       action: "enable": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
@@ -2198,6 +2468,7 @@ guide: entity: {
       op: create: transform: res: "`body.invitation`"
     }
     "/api/v1/organizations/{organization_id}/invitations/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
     }
   }
@@ -2205,6 +2476,7 @@ guide: entity: {
   # journey_variant_replay
   journey_variant_replay: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_variants/{variant_id}/replays": {
+      rename: param: "project_id": "project_id"
       rename: param: "variant_id": "journey_variant_id"
       op: create: method: POST
     }
@@ -2217,6 +2489,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/knowledge/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -2229,6 +2502,7 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/deliveries/{delivery_id}": {
       rename: param: "delivery_id": "id"
       rename: param: "id": "agent_id"
+      rename: param: "local_thread_id": "local_thread_id"
       op: load: method: GET
       op: update: method: PUT
     }
@@ -2244,11 +2518,13 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/operations": {
       rename: param: "id": "agent_id"
+      rename: param: "local_thread_id": "local_thread_id"
       op: create: method: POST
       op: create: transform: res: "`body.operation`"
     }
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/local_threads/{local_thread_id}/operations/{operation_id}": {
       rename: param: "id": "agent_id"
+      rename: param: "local_thread_id": "local_thread_id"
       rename: param: "operation_id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.operation`"
@@ -2307,12 +2583,14 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/me/emails/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: patch: method: PATCH
       op: update: method: PUT
     }
     "/api/v1/me/emails/{id}/resend_verification": {
       action: "resend_verification": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -2336,6 +2614,7 @@ guide: entity: {
   # media_file
   media_file: path: {
     "/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/media/{id}/files/{file_id}": {
+      rename: param: "browser_session_id": "browser_session_id"
       rename: param: "file_id": "id"
       rename: param: "id": "media_id"
       op: load: method: GET
@@ -2349,6 +2628,7 @@ guide: entity: {
       op: list: transform: res: "`body.invitations`"
     }
     "/api/v1/organizations/{organization_id}/members/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: patch: method: PATCH
       op: patch: transform: res: "`body.member`"
@@ -2365,6 +2645,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/memories/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
     }
@@ -2380,10 +2661,12 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/merge_requests/{id}/rerun": {
       action: "rerun": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -2392,12 +2675,14 @@ guide: entity: {
   messaging_conversation_message: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages": {
       rename: param: "id": "messaging_conversation_id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/messages/{message_id}/reaction": {
       action: "reaction": {}
       rename: param: "id": "messaging_conversation_id"
       rename: param: "message_id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -2406,6 +2691,7 @@ guide: entity: {
   messaging_conversation_upload: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/uploads": {
       rename: param: "id": "messaging_conversation_id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -2423,6 +2709,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/network_connections/{id}": {
+      rename: param: "id": "id"
       op: patch: method: PATCH
       op: update: method: PUT
     }
@@ -2432,6 +2719,7 @@ guide: entity: {
   nomad_allocation: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/allocations/{allocation_id}": {
       rename: param: "allocation_id": "id"
+      rename: param: "app_id": "app_id"
       op: load: method: GET
     }
   }
@@ -2439,6 +2727,7 @@ guide: entity: {
   # nomad_log
   nomad_log: path: {
     "/api/v1/hosting/apps/{app_id}/deployment_dashboard/nomad/logs": {
+      rename: param: "app_id": "app_id"
       op: list: method: GET
     }
   }
@@ -2452,6 +2741,7 @@ guide: entity: {
       op: create: transform: res: "`body.organization`"
     }
     "/api/v1/organizations/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.organization`"
       op: patch: method: PATCH
@@ -2833,6 +3123,8 @@ guide: entity: {
   # page_project_run
   page_project_run: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/page": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
   }
@@ -2840,6 +3132,7 @@ guide: entity: {
   # pages_project_credential
   pages_project_credential: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/credentials": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.credentials`"
     }
@@ -2848,6 +3141,7 @@ guide: entity: {
   # pages_project_persona
   pages_project_persona: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/personas": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
     }
   }
@@ -2855,6 +3149,7 @@ guide: entity: {
   # pages_project_run
   pages_project_run: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/runs": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
     }
   }
@@ -2862,6 +3157,7 @@ guide: entity: {
   # pages_project_scenario
   pages_project_scenario: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenarios": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.environments`"
     }
@@ -2875,6 +3171,7 @@ guide: entity: {
       op: load: active: false
     }
     "/api/v1/personal_access_tokens/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
     }
   }
@@ -2882,6 +3179,7 @@ guide: entity: {
   # preview_operation
   preview_operation: path: {
     "/api/v1/hosting/apps/{app_id}/previews/{id}/operations": {
+      rename: param: "app_id": "app_id"
       rename: param: "id": "preview_id"
       op: list: method: GET
     }
@@ -2890,10 +3188,15 @@ guide: entity: {
   # preview_profile_secret_binding
   preview_profile_secret_binding: path: {
     "/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings": {
+      rename: param: "app_id": "app_id"
+      rename: param: "preview_profile_id": "preview_profile_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/preview_profiles/{preview_profile_id}/secret_bindings/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
+      rename: param: "preview_profile_id": "preview_profile_id"
       op: remove: method: DELETE
     }
   }
@@ -2901,13 +3204,21 @@ guide: entity: {
   # preview_secret
   preview_secret: path: {
     "/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets": {
+      rename: param: "app_id": "app_id"
+      rename: param: "preview_id": "preview_id"
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
+      rename: param: "preview_id": "preview_id"
       op: remove: method: DELETE
     }
     "/api/v1/hosting/apps/{app_id}/previews/{preview_id}/secrets/{id}/rotate": {
       action: "rotate": {}
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
+      rename: param: "preview_id": "preview_id"
       op: create: method: POST
     }
   }
@@ -2915,6 +3226,7 @@ guide: entity: {
   # preview_sharing_approval
   preview_sharing_approval: path: {
     "/api/v1/hosting/apps/{app_id}/previews/{id}/sharing_approvals": {
+      rename: param: "app_id": "app_id"
       rename: param: "id": "preview_id"
       op: list: method: GET
       op: create: method: POST
@@ -2924,6 +3236,7 @@ guide: entity: {
   # product_map_identity_decision
   product_map_identity_decision: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/identity_decisions": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -2931,12 +3244,14 @@ guide: entity: {
   # product_map_journey
   product_map_journey: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.journeys`"
       op: list: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journeys/{journey_id}": {
       rename: param: "journey_id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
   }
@@ -2944,11 +3259,13 @@ guide: entity: {
   # product_map_journey_replay
   product_map_journey_replay: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_replays/{replay_id}": {
+      rename: param: "project_id": "project_id"
       rename: param: "replay_id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/journey_replays/{replay_id}/qualification": {
       action: "qualification": {}
+      rename: param: "project_id": "project_id"
       rename: param: "replay_id": "id"
       op: create: method: POST
     }
@@ -2958,11 +3275,13 @@ guide: entity: {
   product_map_observation: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}": {
       rename: param: "observation_id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/observations/{observation_id}/identity_history": {
       action: "identity_history": {}
       rename: param: "observation_id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
   }
@@ -2970,6 +3289,7 @@ guide: entity: {
   # product_map_question
   product_map_question: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/questions": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -2977,11 +3297,13 @@ guide: entity: {
   # product_map_state
   product_map_state: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/states": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.states`"
       op: list: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/states/{state_id}": {
+      rename: param: "project_id": "project_id"
       rename: param: "state_id": "id"
       op: load: method: GET
     }
@@ -2995,6 +3317,7 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
       op: load: transform: res: "`body.project`"
       op: patch: method: PATCH
@@ -3002,10 +3325,12 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{id}/icon_image": {
       action: "icon_image": {}
+      rename: param: "id": "id"
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/discovery": {
@@ -3087,6 +3412,7 @@ guide: entity: {
   # project_android_apk
   project_android_apk: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/android_apks": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3094,12 +3420,14 @@ guide: entity: {
   # project_code_map
   project_code_map: path: {
     "/api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.repositories`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/projects/{project_id}/code_maps/session": {
       action: "session": {}
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3107,21 +3435,27 @@ guide: entity: {
   # project_environment
   project_environment: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.environments`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/directory": {
       action: "directory": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/environments/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3129,6 +3463,7 @@ guide: entity: {
   # project_finding
   project_finding: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/findings": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.findings`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -3139,10 +3474,13 @@ guide: entity: {
   # project_fixture
   project_fixture: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3153,6 +3491,7 @@ guide: entity: {
   # project_ios_app
   project_ios_app: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/ios_apps": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3160,23 +3499,32 @@ guide: entity: {
   # project_messaging_conversation
   project_messaging_conversation: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/mark_read": {
       action: "mark_read": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/retire": {
       action: "retire": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}/typing": {
       action: "typing": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3184,6 +3532,7 @@ guide: entity: {
   # project_overview_metric
   project_overview_metric: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.counts`"
     }
@@ -3192,6 +3541,7 @@ guide: entity: {
   # project_overview_pull_request
   project_overview_pull_request: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.pull_requests`"
     }
@@ -3201,29 +3551,35 @@ guide: entity: {
   project_product_map: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/brief": {
       action: "brief": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/compare": {
       action: "compare": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/frontier": {
       action: "frontier": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: load: transform: res: "`body.items`"
       op: load: transform: page: cursor: "`body.next_cursor`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/overview": {
       action: "overview": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path": {
       action: "path": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/version": {
       action: "version": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
   }
@@ -3231,18 +3587,25 @@ guide: entity: {
   # project_recording
   project_recording: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings": {
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: remove: method: DELETE
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/finish": {
       action: "finish": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}/redraft": {
       action: "redraft": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3250,6 +3613,7 @@ guide: entity: {
   # project_run_plan
   project_run_plan: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.environments`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -3257,12 +3621,16 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_plans/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3270,18 +3638,23 @@ guide: entity: {
   # project_run_schedule
   project_run_schedule: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/lookup": {
       action: "lookup": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/preview": {
       action: "preview": {}
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
@@ -3291,6 +3664,7 @@ guide: entity: {
   # project_scenario_option
   project_scenario_option: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_options": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
     }
   }
@@ -3298,6 +3672,7 @@ guide: entity: {
   # project_scenario_row
   project_scenario_row: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/scenario_rows": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.scenarios`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -3308,6 +3683,7 @@ guide: entity: {
   # project_setting
   project_setting: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/settings": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
     }
   }
@@ -3329,15 +3705,18 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}": {
+      rename: param: "id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/demo_share": {
       action: "demo_share": {}
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/pull_requests/{id}/rerun": {
       action: "rerun": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
     "/api/v1/organizations/{org_slug}/github/pull_requests/{github_repository_id}/{number}": active: false
@@ -3427,12 +3806,14 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/live_frame": {
       action: "live_frame": {}
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
       rename: param: "scenario_run_id": "id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit": {
       action: "scenario_edit": {}
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
       rename: param: "scenario_run_id": "id"
       op: load: method: GET
       op: patch: method: PATCH
@@ -3442,6 +3823,7 @@ guide: entity: {
   # run_schedule_option
   run_schedule_option: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/run_schedules/options": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.credentials`"
     }
@@ -3467,6 +3849,7 @@ guide: entity: {
   scenario_revision: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/revisions": {
       rename: param: "id": "scenario_id"
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.revisions`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -3478,6 +3861,8 @@ guide: entity: {
   scenario_run_lesson: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/lessons": {
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
+      rename: param: "scenario_run_id": "scenario_run_id"
       op: create: method: POST
     }
   }
@@ -3487,16 +3872,22 @@ guide: entity: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/run": {
       action: "run": {}
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
+      rename: param: "scenario_run_id": "scenario_run_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/suggest": {
       action: "suggest": {}
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
+      rename: param: "scenario_run_id": "scenario_run_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/scenario_runs/{scenario_run_id}/scenario_edit/validate": {
       action: "validate": {}
       rename: param: "id": "run_id"
+      rename: param: "project_id": "project_id"
+      rename: param: "scenario_run_id": "scenario_run_id"
       op: create: method: POST
     }
   }
@@ -3504,10 +3895,15 @@ guide: entity: {
   # service_endpoint
   service_endpoint: path: {
     "/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints": {
+      rename: param: "app_id": "app_id"
+      rename: param: "service_id": "service_id"
       op: list: method: GET
       op: create: method: POST
     }
     "/api/v1/hosting/apps/{app_id}/services/{service_id}/endpoints/{id}": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
+      rename: param: "service_id": "service_id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3572,6 +3968,7 @@ guide: entity: {
       op: create: transform: res: "`body.static_site`"
     }
     "/api/v1/static_sites/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3579,6 +3976,7 @@ guide: entity: {
     }
     "/api/v1/static_sites/{id}/provision": {
       action: "provision": {}
+      rename: param: "id": "id"
       op: create: method: POST
       op: create: transform: res: "`body.static_site`"
     }
@@ -3597,24 +3995,33 @@ guide: entity: {
   # static_site_deployment
   static_site_deployment: path: {
     "/api/v1/static_sites/{static_site_id}/deployments": {
+      rename: param: "static_site_id": "static_site_id"
       op: list: method: GET
       op: list: transform: res: "`body.deployments`"
       op: create: method: POST
     }
     "/api/v1/static_sites/{static_site_id}/deployments/{id}": {
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: load: method: GET
     }
     "/api/v1/static_sites/{static_site_id}/deployments/{id}/activate": {
       action: "activate": {}
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: create: method: POST
       op: create: transform: res: "`body.deployment`"
     }
     "/api/v1/static_sites/{static_site_id}/deployments/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: create: method: POST
     }
     "/api/v1/static_sites/{static_site_id}/deployments/{id}/finalize": {
       action: "finalize": {}
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: create: method: POST
     }
   }
@@ -3622,12 +4029,15 @@ guide: entity: {
   # static_site_domain
   static_site_domain: path: {
     "/api/v1/static_sites/{static_site_id}/domains": {
+      rename: param: "static_site_id": "static_site_id"
       op: list: method: GET
       op: list: transform: res: "`body.domains`"
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
     "/api/v1/static_sites/{static_site_id}/domains/{id}": {
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3635,6 +4045,8 @@ guide: entity: {
     }
     "/api/v1/static_sites/{static_site_id}/domains/{id}/provision": {
       action: "provision": {}
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
@@ -3653,6 +4065,7 @@ guide: entity: {
   thread_preview: path: {
     "/api/v1/organizations/{organization_id}/agents/{id}/spark/threads/{thread_id}/previews": {
       rename: param: "id": "agent_id"
+      rename: param: "thread_id": "thread_id"
       op: create: method: POST
     }
   }
@@ -3660,11 +4073,14 @@ guide: entity: {
   # verification_project_credential
   verification_project_credential: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.credentials`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3672,10 +4088,14 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{id}/disable": {
       action: "disable": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/credentials/{id}/inbox": {
       action: "inbox": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: load: transform: res: "`body.messages`"
     }
@@ -3684,11 +4104,14 @@ guide: entity: {
   # verification_project_persona
   verification_project_persona: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.personas`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: remove: method: DELETE
       op: load: method: GET
       op: patch: method: PATCH
@@ -3696,6 +4119,8 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/personas/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3703,6 +4128,7 @@ guide: entity: {
   # verification_project_run
   verification_project_run: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.runs`"
       op: list: transform: page: total: "`body.pagination.count`"
@@ -3710,37 +4136,52 @@ guide: entity: {
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/prepare": {
       action: "prepare": {}
+      rename: param: "project_id": "project_id"
       op: create: method: POST
       op: create: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: load: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/cancel": {
       action: "cancel": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
       op: create: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/card": {
       action: "card": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/launch": {
       action: "launch": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
       op: create: transform: res: "`body.run`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/rerun": {
       action: "rerun": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/runs/{id}/restore": {
       action: "restore": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3748,34 +4189,44 @@ guide: entity: {
   # verification_project_scenario
   verification_project_scenario: path: {
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios": {
+      rename: param: "project_id": "project_id"
       op: list: method: GET
       op: list: transform: res: "`body.scenarios`"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/export": {
       action: "export": {}
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: load: transform: res: "`body.scenarios`"
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/from_exploration": {
       action: "from_exploration": {}
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/import": {
       action: "import": {}
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}": {
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: load: method: GET
       op: patch: method: PATCH
       op: update: method: PUT
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/archive": {
       action: "archive": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verification/projects/{project_id}/scenarios/{id}/duplicate": {
       action: "duplicate": {}
+      rename: param: "id": "id"
+      rename: param: "project_id": "project_id"
       op: create: method: POST
     }
   }
@@ -3783,6 +4234,8 @@ guide: entity: {
   # verify_app_domain
   verify_app_domain: path: {
     "/api/v1/hosting/apps/{app_id}/domains/{id}/verify": {
+      rename: param: "app_id": "app_id"
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -3793,11 +4246,13 @@ guide: entity: {
       op: create: method: POST
     }
     "/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}": {
+      rename: param: "id": "id"
       op: remove: method: DELETE
       op: load: method: GET
     }
     "/api/v1/organizations/{organization_id}/verify/browser_sessions/{id}/save": {
       action: "save": {}
+      rename: param: "id": "id"
       op: create: method: POST
     }
   }
@@ -3805,6 +4260,8 @@ guide: entity: {
   # verify_static_site_domain
   verify_static_site_domain: path: {
     "/api/v1/static_sites/{static_site_id}/domains/{id}/verify": {
+      rename: param: "id": "id"
+      rename: param: "static_site_id": "static_site_id"
       op: create: method: POST
       op: create: transform: res: "`body.domain`"
     }
@@ -3813,6 +4270,7 @@ guide: entity: {
   # version_log
   version_log: path: {
     "/api/v1/organizations/{organization_id}/verify/binaries/{binary_id}/versions/{id}/logs": {
+      rename: param: "binary_id": "binary_id"
       rename: param: "id": "version_id"
       op: list: method: GET
       op: list: transform: res: "`body.operations`"

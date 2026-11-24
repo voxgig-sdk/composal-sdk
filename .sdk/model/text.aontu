@@ -53,7 +53,11 @@ Sending work to an agent, in TypeScript:
 \`\`\`ts
 import { ComposalSDK } from '@voxgig-sdk/composal-sdk'
 
-const client = new ComposalSDK({ apikey: process.env.COMPOSAL_APIKEY ?? '' })
+// The idempotency feature adds the Idempotency-Key that Composal requires on writes.
+const client = new ComposalSDK({
+  apikey: process.env.COMPOSAL_APIKEY ?? '',
+  feature: { idempotency: { active: true } },
+})
 const organization_id = process.env.COMPOSAL_ORGANIZATION ?? 'your-organization'
 const agent_id = process.env.COMPOSAL_AGENT_ID ?? 'YOUR_AGENT_ID'
 
@@ -62,7 +66,6 @@ const input = await client.AgentInput().create({
   agent_id,
   conversation_id: 'main',
   text: 'Summarise the pull requests merged yesterday.',
-  idempotency_key: 'pr-summary-001',
 })
 console.log(input.data())
 \`\`\`
@@ -80,11 +83,12 @@ create with \`$action: 'cancel'\` cancels a run, \`App\` create with \`$action: 
 hosted app.
 
 **Retries.** Composal requires an \`Idempotency-Key\` header on 28 calls, among them \`Agent\`
-create and \`AgentInput\` create, so that a retried request is not applied twice. Those calls
-take it as \`idempotency_key\`: choose one per intended change, and reuse it, with the same
-body, to retry a request whose outcome was uncertain. For other writes, the SDK's idempotency
-feature, \`feature: { idempotency: { active: true } }\`, adds a key of its own, which its
-retries of that call reuse.
+create and \`AgentInput\` create, so that a retried request is not applied twice. Switch on the
+SDK's idempotency feature, \`feature: { idempotency: { active: true } }\`, as above: it adds a
+key to every write, which its own retries of that call reuse. To retry by hand a request whose
+outcome was uncertain, pass the original key as \`idempotency_key\` (the SDK sends it as the
+header and never replaces it). An action that requires the header, such as \`Agent\` create
+with \`$action: 'browser_opened'\`, needs \`idempotency_key\` in the call to be selected.
 
 **Files.** Twelve calls can answer with a file rather than JSON: images, recordings, archives,
 plain text and downloads, such as \`Evidence\` load with \`$action: 'download'\`. This generation
