@@ -75,9 +75,6 @@ values:
   - key: change_group_id
     value: ""
     enabled: true
-  - key: ids
-    value: ""
-    enabled: true
   - key: pipeline_id
     value: ""
     enabled: true

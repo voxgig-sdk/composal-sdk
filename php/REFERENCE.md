@@ -13875,16 +13875,19 @@ $catalog_selector = $client->CatalogSelector();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `array` | Yes |  |
+| `environments` | `array` | Yes |  |
+| `id` | `string` | Yes |  |
+| `locations` | `array` | Yes |  |
+| `services` | `array` | Yes |  |
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->CatalogSelector()->list(["app_id" => "example"]);
+$result = $client->CatalogSelector()->load(["app_id" => "app_id"]);
 ```
 
 ### Common Methods
@@ -15254,16 +15257,20 @@ $change_transcript_summary = $client->ChangeTranscriptSummary();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `array` | Yes |  |
+| `estimated_cost` | `mixed` | Yes |  |
+| `session_count` | `int` | Yes |  |
+| `sessions` | `array` | Yes |  |
+| `tokens_partial` | `bool` | Yes |  |
+| `total_tokens` | `mixed` | Yes |  |
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->ChangeTranscriptSummary()->list(["organization_id" => "example", "ids" => "example"]);
+$result = $client->ChangeTranscriptSummary()->load(["organization_id" => "organization_id", "ids" => "ids"]);
 ```
 
 ### Common Methods
@@ -18931,7 +18938,6 @@ $docker_builder_setting = $client->DockerBuilderSetting();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `array` | Yes |  |
 | `idle_timeout_seconds` | `int` | Yes |  |
 | `max_concurrency` | `int` | Yes |  |
 | `organization_id` | `string` | Yes |  |
@@ -18940,9 +18946,8 @@ $docker_builder_setting = $client->DockerBuilderSetting();
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -18951,12 +18956,12 @@ $docker_builder_setting = $client->DockerBuilderSetting();
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->DockerBuilderSetting()->list(["organization_id" => "example"]);
+$result = $client->DockerBuilderSetting()->load(["organization_id" => "organization_id"]);
 ```
 
 #### `patch(array $reqdata, ?array $ctrl = null): mixed`
@@ -31873,16 +31878,19 @@ $project_overview_metric = $client->ProjectOverviewMetric();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `array` | Yes |  |
+| `active_runs` | `int` | Yes |  |
+| `open_findings` | `int` | Yes |  |
+| `ready_environments` | `int` | Yes |  |
+| `scenarios` | `array` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->ProjectOverviewMetric()->list(["organization_id" => "example", "project_id" => "example"]);
+$result = $client->ProjectOverviewMetric()->load(["organization_id" => "organization_id", "project_id" => "project_id"]);
 ```
 
 ### Common Methods
@@ -34495,7 +34503,12 @@ $repo_stat = $client->RepoStat();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `array` | Yes |  |
+| `backend` | `string` | Yes |  |
+| `can_refresh` | `bool` | Yes |  |
+| `freshness` | `array` | Yes |  |
+| `note` | `string` | Yes |  |
+| `physical` | `array` | Yes |  |
+| `series` | `array` | Yes |  |
 
 ### Operations
 
@@ -34503,12 +34516,12 @@ $repo_stat = $client->RepoStat();
 
 Create a new entity with the given data. Returns the created entity and throws on error.
 
-#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
+#### `load(array $reqmatch, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record, and throws on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and throws on error.
 
 ```php
-$results = $client->RepoStat()->list(["organization_id" => "example", "repo_id" => "example"]);
+$result = $client->RepoStat()->load(["organization_id" => "organization_id", "repo_id" => "repo_id"]);
 ```
 
 ### Common Methods

@@ -2,26 +2,41 @@
   "existing": {
     "project_overview_metric": {
       "PROJECT_OVERVIEW_METRIC00": {
-        "counts": {},
+        "active_runs": 40,
+        "open_findings": 41,
+        "ready_environments": 42,
+        "scenarios": {},
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_OVERVIEW_METRIC00"
       },
       "PROJECT_OVERVIEW_METRIC01": {
-        "counts": {},
+        "active_runs": 80,
+        "open_findings": 81,
+        "ready_environments": 82,
+        "scenarios": {},
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_OVERVIEW_METRIC01"
       },
       "PROJECT_OVERVIEW_METRIC02": {
-        "counts": {},
+        "active_runs": 120,
+        "open_findings": 121,
+        "ready_environments": 122,
+        "scenarios": {},
         "organization_id": "ORGANIZATION01",
-        "project_id": "PROJECT01"
+        "project_id": "PROJECT01",
+        "id": "PROJECT_OVERVIEW_METRIC02"
       }
     }
   },
   "new": {
     "project_overview_metric": {
       "project_overview_metric_ref01": {
-        "counts": {}
+        "active_runs": 160,
+        "open_findings": 161,
+        "ready_environments": 162,
+        "scenarios": {}
       }
     }
   },

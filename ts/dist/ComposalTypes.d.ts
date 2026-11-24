@@ -4027,9 +4027,12 @@ export interface CacheNamespaceEntryRemoveMatch {
     id: string;
 }
 export interface CatalogSelector {
-    app: Record<string, any>;
+    environments: any[];
+    id: string;
+    locations: any[];
+    services: any[];
 }
-export interface CatalogSelectorListMatch {
+export interface CatalogSelectorLoadMatch {
     app_id: string;
 }
 export interface CdnDeployment {
@@ -4449,9 +4452,13 @@ export interface ChangeTranscriptListMatch {
     repo_id: string;
 }
 export interface ChangeTranscriptSummary {
-    summaries: Record<string, any>;
+    estimated_cost: any;
+    session_count: number;
+    sessions: any[];
+    tokens_partial: boolean;
+    total_tokens: number | null;
 }
-export interface ChangeTranscriptSummaryListMatch {
+export interface ChangeTranscriptSummaryLoadMatch {
     organization_id: string;
     ids: string;
 }
@@ -5627,14 +5634,13 @@ export interface DockerBuilderSessionRemoveMatch {
     organization_id: string;
 }
 export interface DockerBuilderSetting {
-    docker_builder_settings: Record<string, any>;
     idle_timeout_seconds: number;
     max_concurrency: number;
     organization_id: string;
     region: string;
     runtime_timeout_seconds: number;
 }
-export interface DockerBuilderSettingListMatch {
+export interface DockerBuilderSettingLoadMatch {
     organization_id: string;
 }
 export interface DockerBuilderSettingUpdateData {
@@ -9851,9 +9857,12 @@ export interface ProjectMessagingConversationPatchData {
     tester_number?: string;
 }
 export interface ProjectOverviewMetric {
-    counts: Record<string, any>;
+    active_runs: number;
+    open_findings: number;
+    ready_environments: number;
+    scenarios: Record<string, any>;
 }
-export interface ProjectOverviewMetricListMatch {
+export interface ProjectOverviewMetricLoadMatch {
     organization_id: string;
     project_id: string;
 }
@@ -10847,16 +10856,26 @@ export interface RepoSettingUpdateData {
     [action: string]: any;
 }
 export interface RepoStat {
-    repository_stats: Record<string, any>;
+    backend: string;
+    can_refresh: boolean;
+    freshness: Record<string, any>;
+    note: string;
+    physical: Record<string, any>;
+    series: any[];
 }
-export interface RepoStatListMatch {
+export interface RepoStatLoadMatch {
     organization_id: string;
     repo_id: string;
 }
 export interface RepoStatCreateData {
     organization_id: string;
     repo_id: string;
-    repository_stats: Record<string, any>;
+    backend: string;
+    can_refresh: boolean;
+    freshness: Record<string, any>;
+    note: string;
+    physical: Record<string, any>;
+    series: any[];
     $action?: string;
     [action: string]: any;
 }

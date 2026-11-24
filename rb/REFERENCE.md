@@ -13920,17 +13920,19 @@ catalog_selector = client.CatalogSelector
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `Hash` | Yes |  |
+| `environments` | `Array` | Yes |  |
+| `id` | `String` | Yes |  |
+| `locations` | `Array` | Yes |  |
+| `services` | `Array` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.CatalogSelector.list({ "app_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.CatalogSelector.load({ "app_id" => "app_id" })
 ```
 
 ### Common Methods
@@ -15303,17 +15305,20 @@ change_transcript_summary = client.ChangeTranscriptSummary
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `Hash` | Yes |  |
+| `estimated_cost` | `Object` | Yes |  |
+| `session_count` | `Integer` | Yes |  |
+| `sessions` | `Array` | Yes |  |
+| `tokens_partial` | `Boolean` | Yes |  |
+| `total_tokens` | `Object` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.ChangeTranscriptSummary.list({ "organization_id" => "example", "ids" => "example" })
-results.each { |item| puts item.data_get }
+result = client.ChangeTranscriptSummary.load({ "organization_id" => "organization_id", "ids" => "ids" })
 ```
 
 ### Common Methods
@@ -18998,7 +19003,6 @@ docker_builder_setting = client.DockerBuilderSetting
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `Hash` | Yes |  |
 | `idle_timeout_seconds` | `Integer` | Yes |  |
 | `max_concurrency` | `Integer` | Yes |  |
 | `organization_id` | `String` | Yes |  |
@@ -19007,9 +19011,8 @@ docker_builder_setting = client.DockerBuilderSetting
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -19018,13 +19021,12 @@ docker_builder_setting = client.DockerBuilderSetting
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.DockerBuilderSetting.list({ "organization_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.DockerBuilderSetting.load({ "organization_id" => "organization_id" })
 ```
 
 #### `patch(reqdata, ctrl = nil) -> result`
@@ -31983,17 +31985,19 @@ project_overview_metric = client.ProjectOverviewMetric
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `Hash` | Yes |  |
+| `active_runs` | `Integer` | Yes |  |
+| `open_findings` | `Integer` | Yes |  |
+| `ready_environments` | `Integer` | Yes |  |
+| `scenarios` | `Hash` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.ProjectOverviewMetric.list({ "organization_id" => "example", "project_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.ProjectOverviewMetric.load({ "organization_id" => "organization_id", "project_id" => "project_id" })
 ```
 
 ### Common Methods
@@ -34620,7 +34624,12 @@ repo_stat = client.RepoStat
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `Hash` | Yes |  |
+| `backend` | `String` | Yes |  |
+| `can_refresh` | `Boolean` | Yes |  |
+| `freshness` | `Hash` | Yes |  |
+| `note` | `String` | Yes |  |
+| `physical` | `Hash` | Yes |  |
+| `series` | `Array` | Yes |  |
 
 ### Operations
 
@@ -34628,13 +34637,12 @@ repo_stat = client.RepoStat
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch = nil, ctrl = nil) -> Array`
+#### `load(reqmatch, ctrl = nil) -> result`
 
-List entities matching the given criteria (call with no argument to list all). Returns an array of entities, one per record; `data_get` reads each record. Raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get` reads, and raises on error.
 
 ```ruby
-results = client.RepoStat.list({ "organization_id" => "example", "repo_id" => "example" })
-results.each { |item| puts item.data_get }
+result = client.RepoStat.load({ "organization_id" => "organization_id", "repo_id" => "repo_id" })
 ```
 
 ### Common Methods

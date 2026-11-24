@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1hostingappsapp_idcatalogselectors"><code>/api/v1/hosting/apps/{app_id}/catalog/selectors</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Target selectors without deployment history or configuration values</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">catalog_selectors, err := client.CatalogSelector(nil).List(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">catalog_selector, err := client.CatalogSelector(nil).Load(map[string]any{&quot;app_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(catalog_selectors)
+fmt.Println(catalog_selector)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local catalog_selectors, err = client:CatalogSelector():list({ app_id = &quot;example&quot; })
+<pre><code class="language-lua">local catalog_selector, err = client:CatalogSelector():load({ app_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$catalog_selectors = $client-&gt;CatalogSelector()-&gt;list([&quot;app_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$catalog_selector = $client-&gt;CatalogSelector()-&gt;load([&quot;app_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">catalog_selectors = client.CatalogSelector().list({&quot;app_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">catalog_selector = client.CatalogSelector().load({&quot;app_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">catalog_selectors = client.CatalogSelector.list({ &quot;app_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">catalog_selector = client.CatalogSelector.load({ &quot;app_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const catalog_selectors = await client.CatalogSelector().list({ app_id: &quot;example&quot; })
+<pre><code class="language-ts">const catalog_selector = await client.CatalogSelector().load({ app_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -645,14 +645,32 @@ fmt.Println(catalog_selectors)
 </thead>
 <tbody>
 <tr>
-<td><code>app</code></td>
-<td><code>object</code></td>
+<td><code>environments</code></td>
+<td><code>array</code></td>
 <td>Yes</td>
-<td>App</td>
+<td>Environments</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>locations</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Locations</td>
+</tr>
+<tr>
+<td><code>services</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Services</td>
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1hostingappsapp_idcatalogselectors" class="operation" data-method="get"><code>GET</code> /api/v1/hosting/apps/{app_id}/catalog/selectors</h3>
 <p>Operation ID: <code>selectors_api_v1_app_catalog</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

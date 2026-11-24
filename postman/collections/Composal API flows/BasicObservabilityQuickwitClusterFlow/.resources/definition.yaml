@@ -1,4 +1,4 @@
 $kind: collection
 id: a6d10931-11b3-5d0b-b033-bb29eb116784
 description: "The `BasicObservabilityQuickwitClusterFlow` flow of **observability_quickwit_cluster**."
-order: 263000
+order: 260000

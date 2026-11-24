@@ -1,4 +1,4 @@
 $kind: collection
 id: b240b312-17c2-52fe-83db-c90c4bd89515
 description: "The `BasicGithubOnboardingImportFlow` flow of **github_onboarding_import**."
-order: 208000
+order: 205000

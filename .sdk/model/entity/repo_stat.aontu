@@ -5,11 +5,41 @@ main: kit: entity: repo_stat: {
   alias: field: {}
 
   fields: {
-    repository_stats: {
-      h: "Repository Stats"
-      n: "repository_stats"
+    backend: {
+      h: "Backend"
+      n: "backend"
+      r: true
+      t: "`$STRING`"
+    }
+    can_refresh: {
+      h: "Can Refresh"
+      n: "can_refresh"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    freshness: {
+      h: "Freshness"
+      n: "freshness"
       r: true
       t: "`$OBJECT`"
+    }
+    note: {
+      h: "Note"
+      n: "note"
+      r: true
+      t: "`$STRING`"
+    }
+    physical: {
+      h: "Physical"
+      n: "physical"
+      r: true
+      t: "`$OBJECT`"
+    }
+    series: {
+      h: "Series"
+      n: "series"
+      r: true
+      t: "`$ARRAY`"
     }
   }
 
@@ -94,8 +124,8 @@ main: kit: entity: repo_stat: {
         }
       ]
     }
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

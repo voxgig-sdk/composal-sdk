@@ -38,7 +38,7 @@ func TestDockerBuilderSettingEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.DockerBuilderSetting(nil).List(map[string]any{"organization_id": 1}, nil)
+		_, err := client.DockerBuilderSetting(nil).Load(map[string]any{"organization_id": 1}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestDockerBuilderSettingEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "docker_builder_setting." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -63,16 +63,15 @@ func TestDockerBuilderSettingEntity(t *testing.T) {
 			}
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
-			t.Log("LIVE STEP {\"id\":\"docker_builder_setting.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, docker_builder_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID", _liveKey)
-				}
-			}
+			t.Log("LIVE STEP {\"id\":\"docker_builder_setting.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}")
+			t.Skip("Live coverage incomplete: docker_builder_setting.update.0 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		dockerBuilderSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.docker_builder_setting")))
@@ -83,65 +82,6 @@ func TestDockerBuilderSettingEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = dockerBuilderSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		dockerBuilderSettingRef01Ent := client.DockerBuilderSetting(nil)
-		dockerBuilderSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		dockerBuilderSettingRef01ListResult, err := dockerBuilderSettingRef01Ent.List(dockerBuilderSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, dockerBuilderSettingRef01ListOk := dockerBuilderSettingRef01ListResult.([]any)
-		if !dockerBuilderSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", dockerBuilderSettingRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"organization01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, docker_builder_settingEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		dockerBuilderSettingRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.docker_builder_setting")))
-		var dockerBuilderSettingRef01Data map[string]any
-		if len(dockerBuilderSettingRef01DataRaw) > 0 {
-			dockerBuilderSettingRef01Data = core.ToMapAny(dockerBuilderSettingRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = dockerBuilderSettingRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		dockerBuilderSettingRef01Ent := client.DockerBuilderSetting(nil)
-		dockerBuilderSettingRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-		}
-
-		dockerBuilderSettingRef01ListResult, err := dockerBuilderSettingRef01Ent.List(dockerBuilderSettingRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, dockerBuilderSettingRef01ListOk := dockerBuilderSettingRef01ListResult.([]any)
-		if !dockerBuilderSettingRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", dockerBuilderSettingRef01ListResult)
-		}
 
 	})
 }

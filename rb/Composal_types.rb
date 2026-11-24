@@ -13784,18 +13784,30 @@ CacheNamespaceEntryRemoveMatch = Struct.new(
 
 # CatalogSelector entity data model.
 #
-# @!attribute [rw] app
-#   @return [Hash]
+# @!attribute [rw] environments
+#   @return [Array]
+#
+# @!attribute [rw] id
+#   @return [String]
+#
+# @!attribute [rw] locations
+#   @return [Array]
+#
+# @!attribute [rw] services
+#   @return [Array]
 CatalogSelector = Struct.new(
-  :app,
+  :environments,
+  :id,
+  :locations,
+  :services,
   keyword_init: true
 )
 
-# Request payload for CatalogSelector#list.
+# Request payload for CatalogSelector#load.
 #
 # @!attribute [rw] app_id
 #   @return [String]
-CatalogSelectorListMatch = Struct.new(
+CatalogSelectorLoadMatch = Struct.new(
   :app_id,
   keyword_init: true
 )
@@ -15273,21 +15285,37 @@ ChangeTranscriptListMatch = Struct.new(
 
 # ChangeTranscriptSummary entity data model.
 #
-# @!attribute [rw] summaries
-#   @return [Hash]
+# @!attribute [rw] estimated_cost
+#   @return [Object]
+#
+# @!attribute [rw] session_count
+#   @return [Integer]
+#
+# @!attribute [rw] sessions
+#   @return [Array]
+#
+# @!attribute [rw] tokens_partial
+#   @return [Boolean]
+#
+# @!attribute [rw] total_tokens
+#   @return [Object]
 ChangeTranscriptSummary = Struct.new(
-  :summaries,
+  :estimated_cost,
+  :session_count,
+  :sessions,
+  :tokens_partial,
+  :total_tokens,
   keyword_init: true
 )
 
-# Request payload for ChangeTranscriptSummary#list.
+# Request payload for ChangeTranscriptSummary#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] ids
 #   @return [String]
-ChangeTranscriptSummaryListMatch = Struct.new(
+ChangeTranscriptSummaryLoadMatch = Struct.new(
   :organization_id,
   :ids,
   keyword_init: true
@@ -19380,9 +19408,6 @@ DockerBuilderSessionRemoveMatch = Struct.new(
 
 # DockerBuilderSetting entity data model.
 #
-# @!attribute [rw] docker_builder_settings
-#   @return [Hash]
-#
 # @!attribute [rw] idle_timeout_seconds
 #   @return [Integer]
 #
@@ -19398,7 +19423,6 @@ DockerBuilderSessionRemoveMatch = Struct.new(
 # @!attribute [rw] runtime_timeout_seconds
 #   @return [Integer]
 DockerBuilderSetting = Struct.new(
-  :docker_builder_settings,
   :idle_timeout_seconds,
   :max_concurrency,
   :organization_id,
@@ -19407,11 +19431,11 @@ DockerBuilderSetting = Struct.new(
   keyword_init: true
 )
 
-# Request payload for DockerBuilderSetting#list.
+# Request payload for DockerBuilderSetting#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
-DockerBuilderSettingListMatch = Struct.new(
+DockerBuilderSettingLoadMatch = Struct.new(
   :organization_id,
   keyword_init: true
 )
@@ -33932,21 +33956,33 @@ ProjectMessagingConversationPatchData = Struct.new(
 
 # ProjectOverviewMetric entity data model.
 #
-# @!attribute [rw] counts
+# @!attribute [rw] active_runs
+#   @return [Integer]
+#
+# @!attribute [rw] open_findings
+#   @return [Integer]
+#
+# @!attribute [rw] ready_environments
+#   @return [Integer]
+#
+# @!attribute [rw] scenarios
 #   @return [Hash]
 ProjectOverviewMetric = Struct.new(
-  :counts,
+  :active_runs,
+  :open_findings,
+  :ready_environments,
+  :scenarios,
   keyword_init: true
 )
 
-# Request payload for ProjectOverviewMetric#list.
+# Request payload for ProjectOverviewMetric#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] project_id
 #   @return [String]
-ProjectOverviewMetricListMatch = Struct.new(
+ProjectOverviewMetricLoadMatch = Struct.new(
   :organization_id,
   :project_id,
   keyword_init: true
@@ -37390,21 +37426,41 @@ RepoSettingUpdateData = Struct.new(
 
 # RepoStat entity data model.
 #
-# @!attribute [rw] repository_stats
+# @!attribute [rw] backend
+#   @return [String]
+#
+# @!attribute [rw] can_refresh
+#   @return [Boolean]
+#
+# @!attribute [rw] freshness
 #   @return [Hash]
+#
+# @!attribute [rw] note
+#   @return [String]
+#
+# @!attribute [rw] physical
+#   @return [Hash]
+#
+# @!attribute [rw] series
+#   @return [Array]
 RepoStat = Struct.new(
-  :repository_stats,
+  :backend,
+  :can_refresh,
+  :freshness,
+  :note,
+  :physical,
+  :series,
   keyword_init: true
 )
 
-# Request payload for RepoStat#list.
+# Request payload for RepoStat#load.
 #
 # @!attribute [rw] organization_id
 #   @return [String]
 #
 # @!attribute [rw] repo_id
 #   @return [String]
-RepoStatListMatch = Struct.new(
+RepoStatLoadMatch = Struct.new(
   :organization_id,
   :repo_id,
   keyword_init: true
@@ -37418,12 +37474,32 @@ RepoStatListMatch = Struct.new(
 # @!attribute [rw] repo_id
 #   @return [String]
 #
-# @!attribute [rw] repository_stats
+# @!attribute [rw] backend
+#   @return [String]
+#
+# @!attribute [rw] can_refresh
+#   @return [Boolean]
+#
+# @!attribute [rw] freshness
 #   @return [Hash]
+#
+# @!attribute [rw] note
+#   @return [String]
+#
+# @!attribute [rw] physical
+#   @return [Hash]
+#
+# @!attribute [rw] series
+#   @return [Array]
 RepoStatCreateData = Struct.new(
   :organization_id,
   :repo_id,
-  :repository_stats,
+  :backend,
+  :can_refresh,
+  :freshness,
+  :note,
+  :physical,
+  :series,
   keyword_init: true
 )
 

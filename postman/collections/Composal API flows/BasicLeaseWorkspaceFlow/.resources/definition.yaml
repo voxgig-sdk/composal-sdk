@@ -1,4 +1,4 @@
 $kind: collection
 id: "33be7dd9-0eea-5c2b-b0b8-b580652c32f0"
 description: "The `BasicLeaseWorkspaceFlow` flow of **lease_workspace**."
-order: 237000
+order: 234000

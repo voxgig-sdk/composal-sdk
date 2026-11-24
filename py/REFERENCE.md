@@ -13807,18 +13807,19 @@ catalog_selector = client.CatalogSelector()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `dict` | Yes |  |
+| `environments` | `list` | Yes |  |
+| `id` | `str` | Yes |  |
+| `locations` | `list` | Yes |  |
+| `services` | `list` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[CatalogSelectorEntity]`
+#### `load(reqmatch, ctrl=None) -> CatalogSelectorEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.CatalogSelector().list({"app_id": "example"})
-for catalog_selector in results:
-    print(catalog_selector.data_get())
+result = client.CatalogSelector().load({"app_id": "app_id"})
 ```
 
 ### Common Methods
@@ -15175,18 +15176,20 @@ change_transcript_summary = client.ChangeTranscriptSummary()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `dict` | Yes |  |
+| `estimated_cost` | `Any` | Yes |  |
+| `session_count` | `int` | Yes |  |
+| `sessions` | `list` | Yes |  |
+| `tokens_partial` | `bool` | Yes |  |
+| `total_tokens` | `int | None` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[ChangeTranscriptSummaryEntity]`
+#### `load(reqmatch, ctrl=None) -> ChangeTranscriptSummaryEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.ChangeTranscriptSummary().list({"organization_id": "example", "ids": "example"})
-for change_transcript_summary in results:
-    print(change_transcript_summary.data_get())
+result = client.ChangeTranscriptSummary().load({"organization_id": "organization_id", "ids": "ids"})
 ```
 
 ### Common Methods
@@ -18834,7 +18837,6 @@ docker_builder_setting = client.DockerBuilderSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `dict` | Yes |  |
 | `idle_timeout_seconds` | `int` | Yes |  |
 | `max_concurrency` | `int` | Yes |  |
 | `organization_id` | `str` | Yes |  |
@@ -18843,9 +18845,8 @@ docker_builder_setting = client.DockerBuilderSetting()
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -18854,14 +18855,12 @@ docker_builder_setting = client.DockerBuilderSetting()
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[DockerBuilderSettingEntity]`
+#### `load(reqmatch, ctrl=None) -> DockerBuilderSettingEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.DockerBuilderSetting().list({"organization_id": "example"})
-for docker_builder_setting in results:
-    print(docker_builder_setting.data_get())
+result = client.DockerBuilderSetting().load({"organization_id": "organization_id"})
 ```
 
 #### `patch(reqdata, ctrl=None) -> DockerBuilderSettingEntity`
@@ -31687,18 +31686,19 @@ project_overview_metric = client.ProjectOverviewMetric()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `dict` | Yes |  |
+| `active_runs` | `int` | Yes |  |
+| `open_findings` | `int` | Yes |  |
+| `ready_environments` | `int` | Yes |  |
+| `scenarios` | `dict` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `list(reqmatch=None, ctrl=None) -> list[ProjectOverviewMetricEntity]`
+#### `load(reqmatch, ctrl=None) -> ProjectOverviewMetricEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.ProjectOverviewMetric().list({"organization_id": "example", "project_id": "example"})
-for project_overview_metric in results:
-    print(project_overview_metric.data_get())
+result = client.ProjectOverviewMetric().load({"organization_id": "organization_id", "project_id": "project_id"})
 ```
 
 ### Common Methods
@@ -34305,7 +34305,12 @@ repo_stat = client.RepoStat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `dict` | Yes |  |
+| `backend` | `str` | Yes |  |
+| `can_refresh` | `bool` | Yes |  |
+| `freshness` | `dict` | Yes |  |
+| `note` | `str` | Yes |  |
+| `physical` | `dict` | Yes |  |
+| `series` | `list` | Yes |  |
 
 ### Operations
 
@@ -34313,14 +34318,12 @@ repo_stat = client.RepoStat()
 
 Create a new entity with the given data. Returns the created entity and raises on error.
 
-#### `list(reqmatch=None, ctrl=None) -> list[RepoStatEntity]`
+#### `load(reqmatch, ctrl=None) -> RepoStatEntity`
 
-List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list of entities, one per record, and raises on error.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, and raises on error.
 
 ```python
-results = client.RepoStat().list({"organization_id": "example", "repo_id": "example"})
-for repo_stat in results:
-    print(repo_stat.data_get())
+result = client.RepoStat().load({"organization_id": "organization_id", "repo_id": "repo_id"})
 ```
 
 ### Common Methods

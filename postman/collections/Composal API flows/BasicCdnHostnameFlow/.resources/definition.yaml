@@ -1,4 +1,4 @@
 $kind: collection
 id: "69740560-83c4-5c9a-bf52-3991c3aff00c"
 description: "The `BasicCdnHostnameFlow` flow of **cdn_hostname**."
-order: 119000
+order: 118000

@@ -1,0 +1,18 @@
+$kind: http-request
+id: "1407ff82-f6a5-586f-add4-f57fc488519b"
+description: |-
+  The `load` operation of **repo_stat**.
+
+  SDK: `client.RepoStat().load({ organization_id: "example", repo_id: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/repos/:repo_slug/stats"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this repo_stat belongs to.
+  - key: repo_slug
+    value: "{{repo_id}}"
+    description: The repo this repo_stat belongs to.
+order: 1000

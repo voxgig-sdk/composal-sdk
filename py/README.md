@@ -3717,9 +3717,12 @@ API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/
 
 | Field | Description |
 | --- | --- |
-| `app` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `services` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 
@@ -4050,9 +4053,13 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{chang
 
 | Field | Description |
 | --- | --- |
-| `summaries` |  |
+| `estimated_cost` |  |
+| `session_count` |  |
+| `sessions` |  |
+| `tokens_partial` |  |
+| `total_tokens` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
 
@@ -5108,14 +5115,13 @@ API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_build
 
 | Field | Description |
 | --- | --- |
-| `docker_builder_settings` |  |
 | `idle_timeout_seconds` |  |
 | `max_concurrency` |  |
 | `organization_id` |  |
 | `region` |  |
 | `runtime_timeout_seconds` |  |
 
-Operations: List, Patch, Update.
+Operations: Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
 
@@ -8324,9 +8330,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `counts` |  |
+| `active_runs` |  |
+| `open_findings` |  |
+| `ready_environments` |  |
+| `scenarios` | Scenarios by the state of their latest execution. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics`
 
@@ -8996,9 +9005,14 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
 
 | Field | Description |
 | --- | --- |
-| `repository_stats` |  |
+| `backend` |  |
+| `can_refresh` |  |
+| `freshness` |  |
+| `note` |  |
+| `physical` |  |
+| `series` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
 
@@ -16467,18 +16481,21 @@ Create an instance: `catalog_selector = client.CatalogSelector()`
 
 | Method | Description |
 | --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app` | `dict` |  |
+| `environments` | `list` |  |
+| `id` | `str` |  |
+| `locations` | `list` |  |
+| `services` | `list` |  |
 
-#### Example: List
+#### Example: Load
 
 ```python
-catalog_selectors = client.CatalogSelector().list({"app_id": "example"})
+catalog_selector = client.CatalogSelector().load({"app_id": "app_id"})
 ```
 
 
@@ -17134,18 +17151,22 @@ Create an instance: `change_transcript_summary = client.ChangeTranscriptSummary(
 
 | Method | Description |
 | --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `summaries` | `dict` |  |
+| `estimated_cost` | `Any` |  |
+| `session_count` | `int` |  |
+| `sessions` | `list` |  |
+| `tokens_partial` | `bool` |  |
+| `total_tokens` | `int | None` |  |
 
-#### Example: List
+#### Example: Load
 
 ```python
-change_transcript_summarys = client.ChangeTranscriptSummary().list({"organization_id": "example", "ids": "example"})
+change_transcript_summary = client.ChangeTranscriptSummary().load({"organization_id": "organization_id", "ids": "ids"})
 ```
 
 
@@ -19024,7 +19045,7 @@ Create an instance: `docker_builder_setting = client.DockerBuilderSetting()`
 
 | Method | Description |
 | --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -19032,17 +19053,16 @@ Create an instance: `docker_builder_setting = client.DockerBuilderSetting()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `docker_builder_settings` | `dict` |  |
 | `idle_timeout_seconds` | `int` |  |
 | `max_concurrency` | `int` |  |
 | `organization_id` | `str` |  |
 | `region` | `str` |  |
 | `runtime_timeout_seconds` | `int` |  |
 
-#### Example: List
+#### Example: Load
 
 ```python
-docker_builder_settings = client.DockerBuilderSetting().list({"organization_id": "example"})
+docker_builder_setting = client.DockerBuilderSetting().load({"organization_id": "organization_id"})
 ```
 
 
@@ -25112,18 +25132,21 @@ Create an instance: `project_overview_metric = client.ProjectOverviewMetric()`
 
 | Method | Description |
 | --- | --- |
-| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `counts` | `dict` |  |
+| `active_runs` | `int` |  |
+| `open_findings` | `int` |  |
+| `ready_environments` | `int` |  |
+| `scenarios` | `dict` | Scenarios by the state of their latest execution. |
 
-#### Example: List
+#### Example: Load
 
 ```python
-project_overview_metrics = client.ProjectOverviewMetric().list({"organization_id": "example", "project_id": "example"})
+project_overview_metric = client.ProjectOverviewMetric().load({"organization_id": "organization_id", "project_id": "project_id"})
 ```
 
 
@@ -26406,18 +26429,23 @@ Create an instance: `repo_stat = client.RepoStat()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list()` | List entities, optionally matching the given criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `repository_stats` | `dict` |  |
+| `backend` | `str` |  |
+| `can_refresh` | `bool` |  |
+| `freshness` | `dict` |  |
+| `note` | `str` |  |
+| `physical` | `dict` |  |
+| `series` | `list` |  |
 
-#### Example: List
+#### Example: Load
 
 ```python
-repo_stats = client.RepoStat().list({"organization_id": "example", "repo_id": "example"})
+repo_stat = client.RepoStat().load({"organization_id": "organization_id", "repo_id": "repo_id"})
 ```
 
 

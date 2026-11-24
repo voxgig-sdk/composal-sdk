@@ -2,23 +2,42 @@
   "existing": {
     "change_transcript_summary": {
       "CHANGE_TRANSCRIPT_SUMMARY00": {
-        "summaries": {},
-        "organization_id": "ORGANIZATION01"
+        "estimated_cost": "s32",
+        "session_count": 51,
+        "sessions": [],
+        "tokens_partial": false,
+        "total_tokens": "s36",
+        "organization_id": "ORGANIZATION01",
+        "id": "CHANGE_TRANSCRIPT_SUMMARY00"
       },
       "CHANGE_TRANSCRIPT_SUMMARY01": {
-        "summaries": {},
-        "organization_id": "ORGANIZATION01"
+        "estimated_cost": "s64",
+        "session_count": 101,
+        "sessions": [],
+        "tokens_partial": false,
+        "total_tokens": "s68",
+        "organization_id": "ORGANIZATION01",
+        "id": "CHANGE_TRANSCRIPT_SUMMARY01"
       },
       "CHANGE_TRANSCRIPT_SUMMARY02": {
-        "summaries": {},
-        "organization_id": "ORGANIZATION01"
+        "estimated_cost": "s96",
+        "session_count": 151,
+        "sessions": [],
+        "tokens_partial": false,
+        "total_tokens": "s9a",
+        "organization_id": "ORGANIZATION01",
+        "id": "CHANGE_TRANSCRIPT_SUMMARY02"
       }
     }
   },
   "new": {
     "change_transcript_summary": {
       "change_transcript_summary_ref01": {
-        "summaries": {}
+        "estimated_cost": "sc8",
+        "session_count": 201,
+        "sessions": [],
+        "tokens_partial": false,
+        "total_tokens": "scc"
       }
     }
   },

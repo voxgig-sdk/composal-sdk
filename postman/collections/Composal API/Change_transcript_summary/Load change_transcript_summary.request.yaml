@@ -1,0 +1,18 @@
+$kind: http-request
+id: "4ad67b50-8639-50a0-9f47-58cae6b9bd0e"
+description: |-
+  The `load` operation of **change_transcript_summary**.
+
+  SDK: `client.ChangeTranscriptSummary().load({ organization_id: "example", ids: "example" })`
+url: "{{base}}/api/v1/organizations/:org_slug/changes/transcript_summaries?ids={{change_transcript_summary_id}}"
+method: GET
+headers:
+  Accept: application/json
+queryParams:
+  - key: ids
+    value: "{{change_transcript_summary_id}}"
+pathVariables:
+  - key: org_slug
+    value: "{{organization_id}}"
+    description: The organization this change_transcript_summary belongs to.
+order: 1000

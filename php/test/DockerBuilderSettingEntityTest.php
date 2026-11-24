@@ -33,7 +33,7 @@ class DockerBuilderSettingEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->DockerBuilderSetting(null)->list(["organization_id" => 1], null);
+            $client->DockerBuilderSetting(null)->load(["organization_id" => 1], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class DockerBuilderSettingEntityTest extends TestCase
         $setup = docker_builder_setting_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "docker_builder_setting." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -53,14 +53,14 @@ class DockerBuilderSettingEntityTest extends TestCase
             }
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
-            fwrite(STDOUT, 'LIVE STEP {"id":"docker_builder_setting.update.1","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID");
-                }
-            }
+            fwrite(STDOUT, 'LIVE STEP {"id":"docker_builder_setting.update.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings"}' . "\n");
+            $this->markTestSkipped('Live coverage incomplete: docker_builder_setting.update.0 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -70,50 +70,6 @@ class DockerBuilderSettingEntityTest extends TestCase
         if (count($docker_builder_setting_ref01_data_raw) > 0) {
             $docker_builder_setting_ref01_data = Helpers::to_map($docker_builder_setting_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $docker_builder_setting_ref01_ent = $client->DockerBuilderSetting(null);
-        $docker_builder_setting_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $docker_builder_setting_ref01_list_result = $docker_builder_setting_ref01_ent->list($docker_builder_setting_ref01_match, null);
-        $this->assertIsArray($docker_builder_setting_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["organization01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $docker_builder_setting_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.docker_builder_setting")));
-        $docker_builder_setting_ref01_data = null;
-        if (count($docker_builder_setting_ref01_data_raw) > 0) {
-            $docker_builder_setting_ref01_data = Helpers::to_map($docker_builder_setting_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $docker_builder_setting_ref01_ent = $client->DockerBuilderSetting(null);
-        $docker_builder_setting_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-        ];
-
-        $docker_builder_setting_ref01_list_result = $docker_builder_setting_ref01_ent->list($docker_builder_setting_ref01_match, null);
-        $this->assertIsArray($docker_builder_setting_ref01_list_result);
 
     }
 }

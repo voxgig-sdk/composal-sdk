@@ -1,0 +1,15 @@
+$kind: http-request
+id: "77c2c531-1ac6-5ba1-b90a-59d3de33c3cb"
+description: |-
+  The `load` operation of **catalog_selector**.
+
+  SDK: `client.CatalogSelector().load({ app_id: "example" })`
+url: "{{base}}/api/v1/hosting/apps/:app_id/catalog/selectors"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: app_id
+    value: "{{app_id}}"
+    description: The app this catalog_selector belongs to.
+order: 1000

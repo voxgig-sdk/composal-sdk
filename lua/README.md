@@ -3718,9 +3718,12 @@ API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/
 
 | Field | Description |
 | --- | --- |
-| `app` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `services` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 
@@ -4051,9 +4054,13 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{chang
 
 | Field | Description |
 | --- | --- |
-| `summaries` |  |
+| `estimated_cost` |  |
+| `session_count` |  |
+| `sessions` |  |
+| `tokens_partial` |  |
+| `total_tokens` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
 
@@ -5109,14 +5116,13 @@ API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_build
 
 | Field | Description |
 | --- | --- |
-| `docker_builder_settings` |  |
 | `idle_timeout_seconds` |  |
 | `max_concurrency` |  |
 | `organization_id` |  |
 | `region` |  |
 | `runtime_timeout_seconds` |  |
 
-Operations: List, Patch, Update.
+Operations: Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
 
@@ -8325,9 +8331,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `counts` |  |
+| `active_runs` |  |
+| `open_findings` |  |
+| `ready_environments` |  |
+| `scenarios` | Scenarios by the state of their latest execution. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics`
 
@@ -8997,9 +9006,14 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
 
 | Field | Description |
 | --- | --- |
-| `repository_stats` |  |
+| `backend` |  |
+| `can_refresh` |  |
+| `freshness` |  |
+| `note` |  |
+| `physical` |  |
+| `series` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
 
@@ -16468,18 +16482,21 @@ Create an instance: `local catalog_selector = client:CatalogSelector(nil)`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app` | `table` |  |
+| `environments` | `table` |  |
+| `id` | `string` |  |
+| `locations` | `table` |  |
+| `services` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local catalog_selectors, err = client:CatalogSelector():list({ app_id = "example" })
+local catalog_selector, err = client:CatalogSelector():load({ app_id = "app_id" })
 ```
 
 
@@ -17135,18 +17152,22 @@ Create an instance: `local change_transcript_summary = client:ChangeTranscriptSu
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `summaries` | `table` |  |
+| `estimated_cost` | `any` |  |
+| `session_count` | `number` |  |
+| `sessions` | `table` |  |
+| `tokens_partial` | `boolean` |  |
+| `total_tokens` | `number|nil` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local change_transcript_summarys, err = client:ChangeTranscriptSummary():list({ organization_id = "example", ids = "example" })
+local change_transcript_summary, err = client:ChangeTranscriptSummary():load({ organization_id = "organization_id", ids = "ids" })
 ```
 
 
@@ -19025,7 +19046,7 @@ Create an instance: `local docker_builder_setting = client:DockerBuilderSetting(
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -19033,17 +19054,16 @@ Create an instance: `local docker_builder_setting = client:DockerBuilderSetting(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `docker_builder_settings` | `table` |  |
 | `idle_timeout_seconds` | `number` |  |
 | `max_concurrency` | `number` |  |
 | `organization_id` | `string` |  |
 | `region` | `string` |  |
 | `runtime_timeout_seconds` | `number` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local docker_builder_settings, err = client:DockerBuilderSetting():list({ organization_id = "example" })
+local docker_builder_setting, err = client:DockerBuilderSetting():load({ organization_id = "organization_id" })
 ```
 
 
@@ -25113,18 +25133,21 @@ Create an instance: `local project_overview_metric = client:ProjectOverviewMetri
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `counts` | `table` |  |
+| `active_runs` | `number` |  |
+| `open_findings` | `number` |  |
+| `ready_environments` | `number` |  |
+| `scenarios` | `table` | Scenarios by the state of their latest execution. |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local project_overview_metrics, err = client:ProjectOverviewMetric():list({ organization_id = "example", project_id = "example" })
+local project_overview_metric, err = client:ProjectOverviewMetric():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 
@@ -26407,18 +26430,23 @@ Create an instance: `local repo_stat = client:RepoStat(nil)`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `repository_stats` | `table` |  |
+| `backend` | `string` |  |
+| `can_refresh` | `boolean` |  |
+| `freshness` | `table` |  |
+| `note` | `string` |  |
+| `physical` | `table` |  |
+| `series` | `table` |  |
 
-#### Example: List
+#### Example: Load
 
 ```lua
-local repo_stats, err = client:RepoStat():list({ organization_id = "example", repo_id = "example" })
+local repo_stat, err = client:RepoStat():load({ organization_id = "organization_id", repo_id = "repo_id" })
 ```
 
 

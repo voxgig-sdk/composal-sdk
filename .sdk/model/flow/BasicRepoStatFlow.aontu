@@ -20,17 +20,23 @@ main: kit: flow: BasicRepoStatFlow:
     }
 
     {
-      m: {
-        organization_id: "organization01",
-        repo_id: "repo01"
+      i: {
+        ref: "repo_stat_ref01",
+        srcdatavar: "repo_stat_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "repo_stat01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "repo_stat_ref01"
+            mark: "Mark01-repo_stat_ref01"
           }
         }
       ]

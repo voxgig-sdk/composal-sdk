@@ -2,19 +2,34 @@
   "existing": {
     "repo_stat": {
       "REPO_STAT00": {
-        "repository_stats": {},
+        "backend": "s3c",
+        "can_refresh": false,
+        "freshness": {},
+        "note": "s3f",
+        "physical": {},
+        "series": [],
         "organization_id": "ORGANIZATION01",
         "repo_id": "REPO01",
         "id": "REPO_STAT00"
       },
       "REPO_STAT01": {
-        "repository_stats": {},
+        "backend": "s78",
+        "can_refresh": false,
+        "freshness": {},
+        "note": "s7b",
+        "physical": {},
+        "series": [],
         "organization_id": "ORGANIZATION01",
         "repo_id": "REPO01",
         "id": "REPO_STAT01"
       },
       "REPO_STAT02": {
-        "repository_stats": {},
+        "backend": "sb4",
+        "can_refresh": false,
+        "freshness": {},
+        "note": "sb7",
+        "physical": {},
+        "series": [],
         "organization_id": "ORGANIZATION01",
         "repo_id": "REPO01",
         "id": "REPO_STAT02"
@@ -24,7 +39,12 @@
   "new": {
     "repo_stat": {
       "repo_stat_ref01": {
-        "repository_stats": {}
+        "backend": "sf0",
+        "can_refresh": false,
+        "freshness": {},
+        "note": "sf3",
+        "physical": {},
+        "series": []
       }
     }
   },

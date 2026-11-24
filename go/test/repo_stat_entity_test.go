@@ -38,7 +38,7 @@ func TestRepoStatEntity(t *testing.T) {
 		client := sdk.TestSDK(nil, map[string]any{
 			"feature": map[string]any{"validate": map[string]any{"active": true}},
 		})
-		_, err := client.RepoStat(nil).List(map[string]any{"organization_id": 1, "repo_id": "x"}, nil)
+		_, err := client.RepoStat(nil).Load(map[string]any{"organization_id": 1, "repo_id": "x"}, nil)
 		if sdkerr, ok := err.(*core.ComposalError); !ok || "validate_failed" != sdkerr.Code {
 			t.Fatalf("expected validate_failed, got %v", err)
 		}
@@ -53,7 +53,7 @@ func TestRepoStatEntity(t *testing.T) {
 		if setup.live {
 			_mode = "live"
 		}
-		for _, _op := range []string{"list"} {
+		for _, _op := range []string{} {
 			if _shouldSkip, _reason := isControlSkipped("entityOp", "repo_stat." + _op, _mode); _shouldSkip {
 				if _reason == "" {
 					_reason = "skipped via sdk-test-control.json"
@@ -64,15 +64,14 @@ func TestRepoStatEntity(t *testing.T) {
 		}
 		if setup.live && os.Getenv("VOXGIG_GETONLY_GUARD") == "TRUE" {
 			t.Log("LIVE STEP {\"id\":\"repo_stat.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh\"}")
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "repo01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, repo_statEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_REPO_STAT_ENTID", _liveKey)
-				}
-			}
+			t.Skip("Live coverage incomplete: repo_stat.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh)")
+			return
 		}
-		client := setup.client
-		_ = client
+
+		if setup.live {
+			t.Skip("Live coverage incomplete: the flow has no step to run")
+			return
+		}
 
 		// Bootstrap entity data from existing test data (no create step in flow).
 		repoStatRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.repo_stat")))
@@ -83,67 +82,6 @@ func TestRepoStatEntity(t *testing.T) {
 		// Discard guards against Go's unused-var check when the flow's steps
 		// happen not to consume the bootstrap data (e.g. list-only flows).
 		_ = repoStatRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		repoStatRef01Ent := client.RepoStat(nil)
-		repoStatRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		repoStatRef01ListResult, err := repoStatRef01Ent.List(repoStatRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, repoStatRef01ListOk := repoStatRef01ListResult.([]any)
-		if !repoStatRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", repoStatRef01ListResult)
-		}
-
-		return
-		}
-
-		if setup.live {
-			for _, _liveKey := range []string{"organization01", "repo01"} {
-				if setup.syntheticOnly || setup.idmap[_liveKey] == nil {
-					liveMiss(t, repo_statEntityLiveStrict, "Live entity test blocked: needs %s via COMPOSAL_TEST_REPO_STAT_ENTID", _liveKey)
-				}
-			}
-		}
-		client := setup.client
-		_ = client
-
-		// Bootstrap entity data from existing test data (no create step in flow).
-		repoStatRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.repo_stat")))
-		var repoStatRef01Data map[string]any
-		if len(repoStatRef01DataRaw) > 0 {
-			repoStatRef01Data = core.ToMapAny(repoStatRef01DataRaw[0][1])
-		}
-		// Discard guards against Go's unused-var check when the flow's steps
-		// happen not to consume the bootstrap data (e.g. list-only flows).
-		_ = repoStatRef01Data
-
-		if setup.live {
-			livePace()
-		}
-		// LIST
-		repoStatRef01Ent := client.RepoStat(nil)
-		repoStatRef01Match := map[string]any{
-			"organization_id": setup.idmap["organization01"],
-			"repo_id": setup.idmap["repo01"],
-		}
-
-		repoStatRef01ListResult, err := repoStatRef01Ent.List(repoStatRef01Match, nil)
-		if err != nil {
-			t.Fatalf("list failed: %v", err)
-		}
-		_, repoStatRef01ListOk := repoStatRef01ListResult.([]any)
-		if !repoStatRef01ListOk {
-			t.Fatalf("expected list result to be an array, got %T", repoStatRef01ListResult)
-		}
 
 	})
 }

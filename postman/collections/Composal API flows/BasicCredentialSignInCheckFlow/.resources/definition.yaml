@@ -1,4 +1,4 @@
 $kind: collection
 id: "7c3dbd84-c030-5706-8207-aeeee7ce6f4c"
 description: "The `BasicCredentialSignInCheckFlow` flow of **credential_sign_in_check**."
-order: 152000
+order: 150000

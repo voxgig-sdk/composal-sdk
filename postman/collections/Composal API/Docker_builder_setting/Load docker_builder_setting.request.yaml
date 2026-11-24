@@ -1,0 +1,15 @@
+$kind: http-request
+id: dd241b3e-7a61-5558-82d8-5d80f56094ae
+description: |-
+  The `load` operation of **docker_builder_setting**.
+
+  SDK: `client.DockerBuilderSetting().load({ organization_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/docker_builder_settings"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this docker_builder_setting belongs to.
+order: 1000

@@ -3730,9 +3730,12 @@ API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/
 
 | Field | Description |
 | --- | --- |
-| `app` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `services` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 
@@ -4063,9 +4066,13 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{chang
 
 | Field | Description |
 | --- | --- |
-| `summaries` |  |
+| `estimated_cost` |  |
+| `session_count` |  |
+| `sessions` |  |
+| `tokens_partial` |  |
+| `total_tokens` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
 
@@ -5121,14 +5128,13 @@ API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_build
 
 | Field | Description |
 | --- | --- |
-| `docker_builder_settings` |  |
 | `idle_timeout_seconds` |  |
 | `max_concurrency` |  |
 | `organization_id` |  |
 | `region` |  |
 | `runtime_timeout_seconds` |  |
 
-Operations: List, Patch, Update.
+Operations: Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
 
@@ -8337,9 +8343,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `counts` |  |
+| `active_runs` |  |
+| `open_findings` |  |
+| `ready_environments` |  |
+| `scenarios` | Scenarios by the state of their latest execution. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics`
 
@@ -9009,9 +9018,14 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
 
 | Field | Description |
 | --- | --- |
-| `repository_stats` |  |
+| `backend` |  |
+| `can_refresh` |  |
+| `freshness` |  |
+| `note` |  |
+| `physical` |  |
+| `series` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
 
@@ -16596,19 +16610,22 @@ Create an instance: `$catalog_selector = $client->CatalogSelector();`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app` | `array` |  |
+| `environments` | `array` |  |
+| `id` | `string` |  |
+| `locations` | `array` |  |
+| `services` | `array` |  |
 
-#### Example: List
+#### Example: Load
 
 ```php
-// list() returns an array of CatalogSelector entities, one per record (throws on error).
-$catalog_selectors = $client->CatalogSelector()->list(["app_id" => "example"]);
+// load() returns the ENTITY — call data_get() for the CatalogSelector record (throws on error).
+$catalog_selector = $client->CatalogSelector()->load(["app_id" => "app_id"]);
 ```
 
 
@@ -17274,19 +17291,23 @@ Create an instance: `$change_transcript_summary = $client->ChangeTranscriptSumma
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `summaries` | `array` |  |
+| `estimated_cost` | `mixed` |  |
+| `session_count` | `int` |  |
+| `sessions` | `array` |  |
+| `tokens_partial` | `bool` |  |
+| `total_tokens` | `mixed` |  |
 
-#### Example: List
+#### Example: Load
 
 ```php
-// list() returns an array of ChangeTranscriptSummary entities, one per record (throws on error).
-$change_transcript_summarys = $client->ChangeTranscriptSummary()->list(["organization_id" => "example", "ids" => "example"]);
+// load() returns the ENTITY — call data_get() for the ChangeTranscriptSummary record (throws on error).
+$change_transcript_summary = $client->ChangeTranscriptSummary()->load(["organization_id" => "organization_id", "ids" => "ids"]);
 ```
 
 
@@ -19203,7 +19224,7 @@ Create an instance: `$docker_builder_setting = $client->DockerBuilderSetting();`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -19211,18 +19232,17 @@ Create an instance: `$docker_builder_setting = $client->DockerBuilderSetting();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `docker_builder_settings` | `array` |  |
 | `idle_timeout_seconds` | `int` |  |
 | `max_concurrency` | `int` |  |
 | `organization_id` | `string` |  |
 | `region` | `string` |  |
 | `runtime_timeout_seconds` | `int` |  |
 
-#### Example: List
+#### Example: Load
 
 ```php
-// list() returns an array of DockerBuilderSetting entities, one per record (throws on error).
-$docker_builder_settings = $client->DockerBuilderSetting()->list(["organization_id" => "example"]);
+// load() returns the ENTITY — call data_get() for the DockerBuilderSetting record (throws on error).
+$docker_builder_setting = $client->DockerBuilderSetting()->load(["organization_id" => "organization_id"]);
 ```
 
 
@@ -25421,19 +25441,22 @@ Create an instance: `$project_overview_metric = $client->ProjectOverviewMetric()
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `counts` | `array` |  |
+| `active_runs` | `int` |  |
+| `open_findings` | `int` |  |
+| `ready_environments` | `int` |  |
+| `scenarios` | `array` | Scenarios by the state of their latest execution. |
 
-#### Example: List
+#### Example: Load
 
 ```php
-// list() returns an array of ProjectOverviewMetric entities, one per record (throws on error).
-$project_overview_metrics = $client->ProjectOverviewMetric()->list(["organization_id" => "example", "project_id" => "example"]);
+// load() returns the ENTITY — call data_get() for the ProjectOverviewMetric record (throws on error).
+$project_overview_metric = $client->ProjectOverviewMetric()->load(["organization_id" => "organization_id", "project_id" => "project_id"]);
 ```
 
 
@@ -26745,19 +26768,24 @@ Create an instance: `$repo_stat = $client->RepoStat();`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `repository_stats` | `array` |  |
+| `backend` | `string` |  |
+| `can_refresh` | `bool` |  |
+| `freshness` | `array` |  |
+| `note` | `string` |  |
+| `physical` | `array` |  |
+| `series` | `array` |  |
 
-#### Example: List
+#### Example: Load
 
 ```php
-// list() returns an array of RepoStat entities, one per record (throws on error).
-$repo_stats = $client->RepoStat()->list(["organization_id" => "example", "repo_id" => "example"]);
+// load() returns the ENTITY — call data_get() for the RepoStat record (throws on error).
+$repo_stat = $client->RepoStat()->load(["organization_id" => "organization_id", "repo_id" => "repo_id"]);
 ```
 
 

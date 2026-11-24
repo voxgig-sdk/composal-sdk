@@ -5,18 +5,41 @@ main: kit: entity: catalog_selector: {
   alias: field: {}
 
   fields: {
-    app: {
-      h: "App"
-      n: "app"
+    environments: {
+      h: "Environments"
+      n: "environments"
       r: true
-      t: "`$OBJECT`"
+      t: "`$ARRAY`"
     }
+    id: {
+      h: "Id"
+      n: "id"
+      r: true
+      t: "`$STRING`"
+    }
+    locations: {
+      h: "Locations"
+      n: "locations"
+      r: true
+      t: "`$ARRAY`"
+    }
+    services: {
+      h: "Services"
+      n: "services"
+      r: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
   }
 
   name: "catalog_selector"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

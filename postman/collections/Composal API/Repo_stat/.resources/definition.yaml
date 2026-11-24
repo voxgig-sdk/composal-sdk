@@ -5,5 +5,10 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `repository_stats` | object | yes |  |
+  | `backend` | string | yes |  |
+  | `can_refresh` | boolean | yes |  |
+  | `freshness` | object | yes |  |
+  | `note` | string | yes |  |
+  | `physical` | object | yes |  |
+  | `series` | array | yes |  |
 order: 435000

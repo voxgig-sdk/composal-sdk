@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorg_slugchangestranscript_summaries"><code>/api/v1/organizations/{org_slug}/changes/transcript_summaries</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>Transcript summaries keyed by public Change ID</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">change_transcript_summarys, err := client.ChangeTranscriptSummary(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;ids&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">change_transcript_summary, err := client.ChangeTranscriptSummary(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;ids&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(change_transcript_summarys)
+fmt.Println(change_transcript_summary)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local change_transcript_summarys, err = client:ChangeTranscriptSummary():list({ organization_id = &quot;example&quot;, ids = &quot;example&quot; })
+<pre><code class="language-lua">local change_transcript_summary, err = client:ChangeTranscriptSummary():load({ organization_id = &quot;example&quot;, ids = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$change_transcript_summarys = $client-&gt;ChangeTranscriptSummary()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;ids&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$change_transcript_summary = $client-&gt;ChangeTranscriptSummary()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;ids&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">change_transcript_summarys = client.ChangeTranscriptSummary().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;ids&quot;: &quot;example&quot;})
+<pre><code class="language-py">change_transcript_summary = client.ChangeTranscriptSummary().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;ids&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">change_transcript_summarys = client.ChangeTranscriptSummary.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;ids&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">change_transcript_summary = client.ChangeTranscriptSummary.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;ids&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const change_transcript_summarys = await client.ChangeTranscriptSummary().list({ organization_id: &quot;example&quot;, ids: &quot;example&quot; })
+<pre><code class="language-ts">const change_transcript_summary = await client.ChangeTranscriptSummary().load({ organization_id: &quot;example&quot;, ids: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -645,14 +645,38 @@ fmt.Println(change_transcript_summarys)
 </thead>
 <tbody>
 <tr>
-<td><code>summaries</code></td>
-<td><code>object</code></td>
+<td><code>estimated_cost</code></td>
+<td><code>any</code></td>
 <td>Yes</td>
-<td>Summaries</td>
+<td>Estimated Cost</td>
+</tr>
+<tr>
+<td><code>session_count</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Session Count</td>
+</tr>
+<tr>
+<td><code>sessions</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Sessions</td>
+</tr>
+<tr>
+<td><code>tokens_partial</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Tokens Partial</td>
+</tr>
+<tr>
+<td><code>total_tokens</code></td>
+<td><code>one,integer,null</code></td>
+<td>Yes</td>
+<td>Total Tokens</td>
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorg_slugchangestranscript_summaries" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{org_slug}/changes/transcript_summaries</h3>
 <p>Operation ID: <code>api_v1_changes_transcript_summaries</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

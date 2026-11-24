@@ -1,4 +1,4 @@
 $kind: collection
 id: "6c37cf11-78d1-58da-812e-eb8fa1206fd2"
 description: "The `BasicVerifyAppDomainFlow` flow of **verify_app_domain**."
-order: 423000
+order: 418000

@@ -1,4 +1,4 @@
 $kind: collection
 id: "4e456e15-37a1-5619-bd9b-f7a318357611"
 description: "The `BasicCoordinationWaitFlow` flow of **coordination_wait**."
-order: 150000
+order: 148000

@@ -33,7 +33,7 @@ class RepoStatEntityTest extends TestCase
         $client = ComposalSDK::test(null, ["feature" => ["validate" => ["active" => true]]]);
         $err = null;
         try {
-            $client->RepoStat(null)->list(["organization_id" => 1, "repo_id" => 'x'], null);
+            $client->RepoStat(null)->load(["organization_id" => 1, "repo_id" => 'x'], null);
         } catch (\Throwable $e) {
             $err = $e;
         }
@@ -45,7 +45,7 @@ class RepoStatEntityTest extends TestCase
         $setup = repo_stat_basic_setup(null);
         // Per-op sdk-test-control.json skip.
         $_live = !empty($setup["live"]);
-        foreach (["list"] as $_op) {
+        foreach ([] as $_op) {
             [$_shouldSkip, $_reason] = Runner::is_control_skipped("entityOp", "repo_stat." . $_op, $_live ? "live" : "unit");
             if ($_shouldSkip) {
                 $this->markTestSkipped($_reason ?? "skipped via sdk-test-control.json");
@@ -54,13 +54,13 @@ class RepoStatEntityTest extends TestCase
         }
         if (!empty($setup["live"]) && getenv('VOXGIG_GETONLY_GUARD') === "TRUE") {
             fwrite(STDOUT, 'LIVE STEP {"id":"repo_stat.create.0","state":"excluded","attempted":false,"reason":"GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh"}' . "\n");
-        if (!empty($setup["live"])) {
-            foreach (["organization01", "repo01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_REPO_STAT_ENTID");
-                }
-            }
+            $this->markTestSkipped('Live coverage incomplete: repo_stat.create.0 excluded (GET-only live run: needs POST /api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh)');
         }
+
+        if (!empty($setup["live"])) {
+            $this->markTestSkipped('Live coverage incomplete: the flow has no step to run');
+        }
+
         $client = $setup["client"];
 
         // Bootstrap entity data from existing test data.
@@ -70,52 +70,6 @@ class RepoStatEntityTest extends TestCase
         if (count($repo_stat_ref01_data_raw) > 0) {
             $repo_stat_ref01_data = Helpers::to_map($repo_stat_ref01_data_raw[0][1]);
         }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $repo_stat_ref01_ent = $client->RepoStat(null);
-        $repo_stat_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $repo_stat_ref01_list_result = $repo_stat_ref01_ent->list($repo_stat_ref01_match, null);
-        $this->assertIsArray($repo_stat_ref01_list_result);
-
-            return;
-        }
-
-        if (!empty($setup["live"])) {
-            foreach (["organization01", "repo01"] as $_liveKey) {
-                if (!empty($setup["synthetic_only"]) || null === ($setup["idmap"][$_liveKey] ?? null)) {
-                    Runner::live_miss(self::LIVE_STRICT, "Live entity test blocked: needs " . $_liveKey . " via COMPOSAL_TEST_REPO_STAT_ENTID");
-                }
-            }
-        }
-        $client = $setup["client"];
-
-        // Bootstrap entity data from existing test data.
-        $repo_stat_ref01_data_raw = Vs::items(Helpers::to_map(
-            Vs::getpath($setup["data"], "existing.repo_stat")));
-        $repo_stat_ref01_data = null;
-        if (count($repo_stat_ref01_data_raw) > 0) {
-            $repo_stat_ref01_data = Helpers::to_map($repo_stat_ref01_data_raw[0][1]);
-        }
-
-        if (!empty($setup["live"])) {
-            Runner::live_pace();
-        }
-        // LIST
-        $repo_stat_ref01_ent = $client->RepoStat(null);
-        $repo_stat_ref01_match = [
-            "organization_id" => $setup["idmap"]["organization01"],
-            "repo_id" => $setup["idmap"]["repo01"],
-        ];
-
-        $repo_stat_ref01_list_result = $repo_stat_ref01_ent->list($repo_stat_ref01_match, null);
-        $this->assertIsArray($repo_stat_ref01_list_result);
 
     }
 }

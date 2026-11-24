@@ -63295,19 +63295,44 @@
             "field": {}
           },
           "fields": {
-            "app": {
+            "environments": {
               "a": true,
-              "h": "App",
-              "n": "app",
+              "h": "Environments",
+              "n": "environments",
               "r": true,
-              "t": "`$OBJECT`"
+              "t": "`$ARRAY`"
+            },
+            "id": {
+              "a": true,
+              "h": "Id",
+              "n": "id",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "locations": {
+              "a": true,
+              "h": "Locations",
+              "n": "locations",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "services": {
+              "a": true,
+              "h": "Services",
+              "n": "services",
+              "r": true,
+              "t": "`$ARRAY`"
             }
+          },
+          "id": {
+            "field": "id",
+            "name": "id"
           },
           "name": "catalog_selector",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -69233,19 +69258,53 @@
             "field": {}
           },
           "fields": {
-            "summaries": {
+            "estimated_cost": {
               "a": true,
-              "h": "Summaries",
-              "n": "summaries",
+              "h": "Estimated Cost",
+              "n": "estimated_cost",
               "r": true,
-              "t": "`$OBJECT`"
+              "t": "`$ANY`"
+            },
+            "session_count": {
+              "a": true,
+              "h": "Session Count",
+              "n": "session_count",
+              "r": true,
+              "t": "`$INTEGER`"
+            },
+            "sessions": {
+              "a": true,
+              "h": "Sessions",
+              "n": "sessions",
+              "r": true,
+              "t": "`$ARRAY`"
+            },
+            "tokens_partial": {
+              "a": true,
+              "h": "Tokens Partial",
+              "n": "tokens_partial",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "total_tokens": {
+              "a": true,
+              "h": "Total Tokens",
+              "n": "total_tokens",
+              "r": true,
+              "t": [
+                "`$ONE`",
+                [
+                  "`$INTEGER`",
+                  "`$NULL`"
+                ]
+              ]
             }
           },
           "name": "change_transcript_summary",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -85361,13 +85420,6 @@
             "field": {}
           },
           "fields": {
-            "docker_builder_settings": {
-              "a": true,
-              "h": "Docker Builder Settings",
-              "n": "docker_builder_settings",
-              "r": true,
-              "t": "`$OBJECT`"
-            },
             "idle_timeout_seconds": {
               "a": true,
               "h": "Idle Timeout Seconds",
@@ -85430,9 +85482,9 @@
           },
           "name": "docker_builder_setting",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -144685,19 +144737,41 @@
             "field": {}
           },
           "fields": {
-            "counts": {
+            "active_runs": {
               "a": true,
-              "h": "Counts",
-              "n": "counts",
+              "h": "Active Runs",
+              "n": "active_runs",
               "r": true,
+              "t": "`$INTEGER`"
+            },
+            "open_findings": {
+              "a": true,
+              "h": "Open Findings",
+              "n": "open_findings",
+              "r": true,
+              "t": "`$INTEGER`"
+            },
+            "ready_environments": {
+              "a": true,
+              "h": "Ready Environments",
+              "n": "ready_environments",
+              "r": true,
+              "t": "`$INTEGER`"
+            },
+            "scenarios": {
+              "a": true,
+              "h": "Scenarios",
+              "n": "scenarios",
+              "r": true,
+              "sh": "Scenarios by the state of their latest execution.",
               "t": "`$OBJECT`"
             }
           },
           "name": "project_overview_metric",
           "op": {
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -159447,12 +159521,47 @@
             "field": {}
           },
           "fields": {
-            "repository_stats": {
+            "backend": {
               "a": true,
-              "h": "Repository Stats",
-              "n": "repository_stats",
+              "h": "Backend",
+              "n": "backend",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "can_refresh": {
+              "a": true,
+              "h": "Can Refresh",
+              "n": "can_refresh",
+              "r": true,
+              "t": "`$BOOLEAN`"
+            },
+            "freshness": {
+              "a": true,
+              "h": "Freshness",
+              "n": "freshness",
               "r": true,
               "t": "`$OBJECT`"
+            },
+            "note": {
+              "a": true,
+              "h": "Note",
+              "n": "note",
+              "r": true,
+              "t": "`$STRING`"
+            },
+            "physical": {
+              "a": true,
+              "h": "Physical",
+              "n": "physical",
+              "r": true,
+              "t": "`$OBJECT`"
+            },
+            "series": {
+              "a": true,
+              "h": "Series",
+              "n": "series",
+              "r": true,
+              "t": "`$ARRAY`"
             }
           },
           "name": "repo_stat",
@@ -159541,9 +159650,9 @@
                 }
               ]
             },
-            "list": {
+            "load": {
               "input": "data",
-              "name": "list",
+              "name": "load",
               "points": [
                 {
                   "a": true,
@@ -214002,17 +214111,21 @@
             {
               "a": true,
               "d": {},
-              "i": {},
-              "m": {
-                "app_id": "app01"
+              "i": {
+                "ref": "catalog_selector_ref01",
+                "srcdatavar": "catalog_selector_ref01_data",
+                "suffix": "_dt0"
               },
-              "o": "list",
+              "m": {
+                "id": "catalog_selector01"
+              },
+              "o": "load",
               "s": [],
               "v": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "catalog_selector_ref01"
+                    "mark": "Mark01-catalog_selector_ref01"
                   }
                 }
               ]
@@ -214793,17 +214906,21 @@
             {
               "a": true,
               "d": {},
-              "i": {},
-              "m": {
-                "organization_id": "organization01"
+              "i": {
+                "ref": "change_transcript_summary_ref01",
+                "srcdatavar": "change_transcript_summary_ref01_data",
+                "suffix": "_dt0"
               },
-              "o": "list",
+              "m": {
+                "id": "change_transcript_summary01"
+              },
+              "o": "load",
               "s": [],
               "v": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "change_transcript_summary_ref01"
+                    "mark": "Mark01-change_transcript_summary_ref01"
                   }
                 }
               ]
@@ -216680,24 +216797,6 @@
             {
               "a": true,
               "d": {},
-              "i": {},
-              "m": {
-                "organization_id": "organization01"
-              },
-              "o": "list",
-              "s": [],
-              "v": [
-                {
-                  "apply": "ItemExists",
-                  "def": {
-                    "ref": "docker_builder_setting_ref01"
-                  }
-                }
-              ]
-            },
-            {
-              "a": true,
-              "d": {},
               "i": {
                 "ref": "docker_builder_setting_ref01",
                 "srcdatavar": "docker_builder_setting_ref01_data",
@@ -216715,6 +216814,28 @@
                 }
               ],
               "v": []
+            },
+            {
+              "a": true,
+              "d": {},
+              "i": {
+                "ref": "docker_builder_setting_ref01",
+                "srcdatavar": "docker_builder_setting_ref01_data",
+                "suffix": "_dt0"
+              },
+              "m": {
+                "id": "docker_builder_setting01"
+              },
+              "o": "load",
+              "s": [],
+              "v": [
+                {
+                  "apply": "TextFieldMark",
+                  "def": {
+                    "mark": "Mark01-docker_builder_setting_ref01"
+                  }
+                }
+              ]
             }
           ]
         },
@@ -224372,18 +224493,22 @@
             {
               "a": true,
               "d": {},
-              "i": {},
-              "m": {
-                "organization_id": "organization01",
-                "project_id": "project01"
+              "i": {
+                "ref": "project_overview_metric_ref01",
+                "srcdatavar": "project_overview_metric_ref01_data",
+                "suffix": "_dt0"
               },
-              "o": "list",
+              "m": {
+                "id": "project_overview_metric01",
+                "organization_id": "organization01"
+              },
+              "o": "load",
               "s": [],
               "v": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "project_overview_metric_ref01"
+                    "mark": "Mark01-project_overview_metric_ref01"
                   }
                 }
               ]
@@ -226026,18 +226151,22 @@
             {
               "a": true,
               "d": {},
-              "i": {},
-              "m": {
-                "organization_id": "organization01",
-                "repo_id": "repo01"
+              "i": {
+                "ref": "repo_stat_ref01",
+                "srcdatavar": "repo_stat_ref01_data",
+                "suffix": "_dt0"
               },
-              "o": "list",
+              "m": {
+                "id": "repo_stat01",
+                "organization_id": "organization01"
+              },
+              "o": "load",
               "s": [],
               "v": [
                 {
-                  "apply": "ItemExists",
+                  "apply": "TextFieldMark",
                   "def": {
-                    "ref": "repo_stat_ref01"
+                    "mark": "Mark01-repo_stat_ref01"
                   }
                 }
               ]

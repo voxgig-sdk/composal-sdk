@@ -15358,22 +15358,23 @@ fmt.Println(catalogSelector.GetName()) // "catalog_selector"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `map[string]any` | Yes |  |
+| `environments` | `[]any` | Yes |  |
+| `id` | `string` | Yes |  |
+| `locations` | `[]any` | Yes |  |
+| `services` | `[]any` | Yes |  |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.CatalogSelector(nil).List(map[string]any{"app_id": "example"}, nil)
+result, err := client.CatalogSelector(nil).Load(map[string]any{"app_id": "app_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -16936,22 +16937,24 @@ fmt.Println(changeTranscriptSummary.GetName()) // "change_transcript_summary"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `map[string]any` | Yes |  |
+| `estimated_cost` | `any` | Yes |  |
+| `session_count` | `int` | Yes |  |
+| `sessions` | `[]any` | Yes |  |
+| `tokens_partial` | `bool` | Yes |  |
+| `total_tokens` | `any` | Yes |  |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.ChangeTranscriptSummary(nil).List(map[string]any{"organization_id": "example", "ids": "example"}, nil)
+result, err := client.ChangeTranscriptSummary(nil).Load(map[string]any{"organization_id": "organization_id", "ids": "ids"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -21047,7 +21050,6 @@ fmt.Println(dockerBuilderSetting.GetName()) // "docker_builder_setting"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `map[string]any` | Yes |  |
 | `idle_timeout_seconds` | `int` | Yes |  |
 | `max_concurrency` | `int` | Yes |  |
 | `organization_id` | `string` | Yes |  |
@@ -21056,9 +21058,8 @@ fmt.Println(dockerBuilderSetting.GetName()) // "docker_builder_setting"
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -21067,18 +21068,16 @@ fmt.Println(dockerBuilderSetting.GetName()) // "docker_builder_setting"
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.DockerBuilderSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+result, err := client.DockerBuilderSetting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 #### `Update(reqdata, ctrl map[string]any) (any, error)`
@@ -35694,22 +35693,23 @@ fmt.Println(projectOverviewMetric.GetName()) // "project_overview_metric"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `map[string]any` | Yes |  |
+| `active_runs` | `int` | Yes |  |
+| `open_findings` | `int` | Yes |  |
+| `ready_environments` | `int` | Yes |  |
+| `scenarios` | `map[string]any` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.ProjectOverviewMetric(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
+result, err := client.ProjectOverviewMetric(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods
@@ -38672,22 +38672,25 @@ fmt.Println(repoStat.GetName()) // "repo_stat"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `map[string]any` | Yes |  |
+| `backend` | `string` | Yes |  |
+| `can_refresh` | `bool` | Yes |  |
+| `freshness` | `map[string]any` | Yes |  |
+| `note` | `string` | Yes |  |
+| `physical` | `map[string]any` | Yes |  |
+| `series` | `[]any` | Yes |  |
 
 ### Operations
 
-#### `List(reqmatch, ctrl map[string]any) (any, error)`
+#### `Load(reqmatch, ctrl map[string]any) (any, error)`
 
-List entities matching the given criteria. Returns a `[]any` of entities, one per record; `err` is non-nil on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `Data()` reads; `err` is non-nil on failure.
 
 ```go
-results, err := client.RepoStat(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+result, err := client.RepoStat(nil).Load(map[string]any{"organization_id": "organization_id", "repo_id": "repo_id"}, nil)
 if err != nil {
     panic(err)
 }
-for _, item := range results.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(result.(sdk.Entity).Data())
 ```
 
 ### Common Methods

@@ -1,4 +1,4 @@
 $kind: collection
 id: "2ab6e04a-02da-5b39-bbf6-12ac57e7e322"
 description: "The `BasicMergeRequestFlow` flow of **merge_request**."
-order: 251000
+order: 248000

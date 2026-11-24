@@ -5,18 +5,37 @@ main: kit: entity: project_overview_metric: {
   alias: field: {}
 
   fields: {
-    counts: {
-      h: "Counts"
-      n: "counts"
+    active_runs: {
+      h: "Active Runs"
+      n: "active_runs"
       r: true
+      t: "`$INTEGER`"
+    }
+    open_findings: {
+      h: "Open Findings"
+      n: "open_findings"
+      r: true
+      t: "`$INTEGER`"
+    }
+    ready_environments: {
+      h: "Ready Environments"
+      n: "ready_environments"
+      r: true
+      t: "`$INTEGER`"
+    }
+    scenarios: {
+      h: "Scenarios"
+      n: "scenarios"
+      r: true
+      sh: "Scenarios by the state of their latest execution."
       t: "`$OBJECT`"
     }
   }
 
   name: "project_overview_metric"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

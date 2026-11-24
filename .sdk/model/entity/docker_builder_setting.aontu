@@ -5,12 +5,6 @@ main: kit: entity: docker_builder_setting: {
   alias: field: {}
 
   fields: {
-    docker_builder_settings: {
-      h: "Docker Builder Settings"
-      n: "docker_builder_settings"
-      r: true
-      t: "`$OBJECT`"
-    }
     idle_timeout_seconds: {
       h: "Idle Timeout Seconds"
       n: "idle_timeout_seconds"
@@ -69,8 +63,8 @@ main: kit: entity: docker_builder_setting: {
 
   name: "docker_builder_setting"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

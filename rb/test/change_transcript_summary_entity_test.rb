@@ -25,7 +25,7 @@ class ChangeTranscriptSummaryEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.ChangeTranscriptSummary(nil).list({ "organization_id" => 1, "ids" => "x" }, nil)
+      client.ChangeTranscriptSummary(nil).load({ "organization_id" => 1, "ids" => "x" }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class ChangeTranscriptSummaryEntityTest < Minitest::Test
     setup = change_transcript_summary_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "change_transcript_summary." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,12 +42,9 @@ class ChangeTranscriptSummaryEntityTest < Minitest::Test
       end
     end
     if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_CHANGE_TRANSCRIPT_SUMMARY_ENTID")
-        end
-      end
+      skip("Live coverage incomplete: the flow has no step to run")
     end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -57,16 +54,6 @@ class ChangeTranscriptSummaryEntityTest < Minitest::Test
     if change_transcript_summary_ref01_data_raw.length > 0
       change_transcript_summary_ref01_data = Helpers.to_map(change_transcript_summary_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    change_transcript_summary_ref01_ent = client.ChangeTranscriptSummary(nil)
-    change_transcript_summary_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    change_transcript_summary_ref01_list_result = change_transcript_summary_ref01_ent.list(change_transcript_summary_ref01_match, nil)
-    assert change_transcript_summary_ref01_list_result.is_a?(Array)
 
   end
 end

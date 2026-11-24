@@ -5,18 +5,48 @@ main: kit: entity: change_transcript_summary: {
   alias: field: {}
 
   fields: {
-    summaries: {
-      h: "Summaries"
-      n: "summaries"
+    estimated_cost: {
+      h: "Estimated Cost"
+      n: "estimated_cost"
       r: true
-      t: "`$OBJECT`"
+      t: "`$ANY`"
+    }
+    session_count: {
+      h: "Session Count"
+      n: "session_count"
+      r: true
+      t: "`$INTEGER`"
+    }
+    sessions: {
+      h: "Sessions"
+      n: "sessions"
+      r: true
+      t: "`$ARRAY`"
+    }
+    tokens_partial: {
+      h: "Tokens Partial"
+      n: "tokens_partial"
+      r: true
+      t: "`$BOOLEAN`"
+    }
+    total_tokens: {
+      h: "Total Tokens"
+      n: "total_tokens"
+      r: true
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
     }
   }
 
   name: "change_transcript_summary"
   op: {
-    list: {
-      name: "list"
+    load: {
+      name: "load"
       points: [
         {
           co: {

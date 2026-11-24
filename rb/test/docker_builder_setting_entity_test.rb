@@ -25,7 +25,7 @@ class DockerBuilderSettingEntityTest < Minitest::Test
     end
     client = ComposalSDK.test(nil, { "feature" => { "validate" => { "active" => true } } })
     err = assert_raises(StandardError) do
-      client.DockerBuilderSetting(nil).list({ "organization_id" => 1 }, nil)
+      client.DockerBuilderSetting(nil).load({ "organization_id" => 1 }, nil)
     end
     assert_equal "validate_failed", err.code
   end
@@ -34,7 +34,7 @@ class DockerBuilderSettingEntityTest < Minitest::Test
     setup = docker_builder_setting_basic_setup(nil)
     # Per-op sdk-test-control.json skip.
     _live = setup[:live] || false
-    ["list"].each do |_op|
+    [].each do |_op|
       _should_skip, _reason = Runner.is_control_skipped("entityOp", "docker_builder_setting." + _op, _live ? "live" : "unit")
       if _should_skip
         skip(_reason || "skipped via sdk-test-control.json")
@@ -42,14 +42,14 @@ class DockerBuilderSettingEntityTest < Minitest::Test
       end
     end
     if setup[:live] && ENV["VOXGIG_GETONLY_GUARD"] == "TRUE"
-      puts "LIVE STEP {\"id\":\"docker_builder_setting.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}"
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID")
-        end
-      end
+      puts "LIVE STEP {\"id\":\"docker_builder_setting.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}"
+      skip("Live coverage incomplete: docker_builder_setting.update.0 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings)")
     end
+
+    if setup[:live]
+      skip("Live coverage incomplete: the flow has no step to run")
+    end
+
     client = setup[:client]
 
     # Bootstrap entity data from existing test data.
@@ -59,46 +59,6 @@ class DockerBuilderSettingEntityTest < Minitest::Test
     if docker_builder_setting_ref01_data_raw.length > 0
       docker_builder_setting_ref01_data = Helpers.to_map(docker_builder_setting_ref01_data_raw[0][1])
     end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    docker_builder_setting_ref01_ent = client.DockerBuilderSetting(nil)
-    docker_builder_setting_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    docker_builder_setting_ref01_list_result = docker_builder_setting_ref01_ent.list(docker_builder_setting_ref01_match, nil)
-    assert docker_builder_setting_ref01_list_result.is_a?(Array)
-
-      return
-    end
-
-    if setup[:live]
-      ["organization01"].each do |_live_key|
-        if setup[:synthetic_only] || setup[:idmap][_live_key].nil?
-          Runner.live_miss(LIVE_STRICT, "Live entity test blocked: needs #{_live_key} via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID")
-        end
-      end
-    end
-    client = setup[:client]
-
-    # Bootstrap entity data from existing test data.
-    docker_builder_setting_ref01_data_raw = Vs.items(Helpers.to_map(
-      Vs.getpath(setup[:data], "existing.docker_builder_setting")))
-    docker_builder_setting_ref01_data = nil
-    if docker_builder_setting_ref01_data_raw.length > 0
-      docker_builder_setting_ref01_data = Helpers.to_map(docker_builder_setting_ref01_data_raw[0][1])
-    end
-
-    Runner.live_pace if setup[:live]
-    # LIST
-    docker_builder_setting_ref01_ent = client.DockerBuilderSetting(nil)
-    docker_builder_setting_ref01_match = {
-      "organization_id" => setup[:idmap]["organization01"],
-    }
-
-    docker_builder_setting_ref01_list_result = docker_builder_setting_ref01_ent.list(docker_builder_setting_ref01_match, nil)
-    assert docker_builder_setting_ref01_list_result.is_a?(Array)
 
   end
 end

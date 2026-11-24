@@ -7,17 +7,23 @@ main: kit: flow: BasicProjectOverviewMetricFlow:
   name: "BasicProjectOverviewMetricFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01",
-        project_id: "project01"
+      i: {
+        ref: "project_overview_metric_ref01",
+        srcdatavar: "project_overview_metric_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "project_overview_metric01",
+        organization_id: "organization01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "project_overview_metric_ref01"
+            mark: "Mark01-project_overview_metric_ref01"
           }
         }
       ]

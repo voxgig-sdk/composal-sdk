@@ -7,16 +7,22 @@ main: kit: flow: BasicCatalogSelectorFlow:
   name: "BasicCatalogSelectorFlow",
   step: [
     {
-      m: {
-        app_id: "app01"
+      i: {
+        ref: "catalog_selector_ref01",
+        srcdatavar: "catalog_selector_ref01_data",
+        suffix: "_dt0"
       }
 
-      o: "list",
+      m: {
+        id: "catalog_selector01"
+      }
+
+      o: "load",
       v: [
         {
-          apply: "ItemExists",
+          apply: "TextFieldMark",
           def: {
-            ref: "catalog_selector_ref01"
+            mark: "Mark01-catalog_selector_ref01"
           }
         }
       ]

@@ -40,7 +40,6 @@ postman collection run "postman/collections/Composal API flows" \
   --env-var cache_namespace_id=... \
   --env-var cdn_id=... \
   --env-var change_group_id=... \
-  --env-var ids=... \
   --env-var pipeline_id=... \
   --env-var cloud_workspace_backup_id=... \
   --env-var comment_thread_id=... \

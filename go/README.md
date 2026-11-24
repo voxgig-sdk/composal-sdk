@@ -3730,9 +3730,12 @@ API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/
 
 | Field | Description |
 | --- | --- |
-| `"app"` |  |
+| `"environments"` |  |
+| `"id"` |  |
+| `"locations"` |  |
+| `"services"` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 
@@ -4063,9 +4066,13 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{chang
 
 | Field | Description |
 | --- | --- |
-| `"summaries"` |  |
+| `"estimated_cost"` |  |
+| `"session_count"` |  |
+| `"sessions"` |  |
+| `"tokens_partial"` |  |
+| `"total_tokens"` |  |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
 
@@ -5121,14 +5128,13 @@ API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_build
 
 | Field | Description |
 | --- | --- |
-| `"docker_builder_settings"` |  |
 | `"idle_timeout_seconds"` |  |
 | `"max_concurrency"` |  |
 | `"organization_id"` |  |
 | `"region"` |  |
 | `"runtime_timeout_seconds"` |  |
 
-Operations: List, Patch, Update.
+Operations: Load, Patch, Update.
 
 API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
 
@@ -8337,9 +8343,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `"counts"` |  |
+| `"active_runs"` |  |
+| `"open_findings"` |  |
+| `"ready_environments"` |  |
+| `"scenarios"` | Scenarios by the state of their latest execution. |
 
-Operations: List.
+Operations: Load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics`
 
@@ -9009,9 +9018,14 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
 
 | Field | Description |
 | --- | --- |
-| `"repository_stats"` |  |
+| `"backend"` |  |
+| `"can_refresh"` |  |
+| `"freshness"` |  |
+| `"note"` |  |
+| `"physical"` |  |
+| `"series"` |  |
 
-Operations: Create, List.
+Operations: Create, Load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
 
@@ -17171,25 +17185,25 @@ Create an instance: `catalogSelector := client.CatalogSelector(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app` | `map[string]any` |  |
+| `environments` | `[]any` |  |
+| `id` | `string` |  |
+| `locations` | `[]any` |  |
+| `services` | `[]any` |  |
 
-#### Example: List
+#### Example: Load
 
 ```go
-catalogSelectors, err := client.CatalogSelector(nil).List(map[string]any{"app_id": "example"}, nil)
+catalogSelector, err := client.CatalogSelector(nil).Load(map[string]any{"app_id": "app_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range catalogSelectors.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(catalogSelector.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -17936,25 +17950,26 @@ Create an instance: `changeTranscriptSummary := client.ChangeTranscriptSummary(n
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `summaries` | `map[string]any` |  |
+| `estimated_cost` | `any` |  |
+| `session_count` | `int` |  |
+| `sessions` | `[]any` |  |
+| `tokens_partial` | `bool` |  |
+| `total_tokens` | `any` |  |
 
-#### Example: List
+#### Example: Load
 
 ```go
-changeTranscriptSummarys, err := client.ChangeTranscriptSummary(nil).List(map[string]any{"organization_id": "example", "ids": "example"}, nil)
+changeTranscriptSummary, err := client.ChangeTranscriptSummary(nil).Load(map[string]any{"organization_id": "organization_id", "ids": "ids"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range changeTranscriptSummarys.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(changeTranscriptSummary.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -20103,7 +20118,7 @@ Create an instance: `dockerBuilderSetting := client.DockerBuilderSetting(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 | `Update(data, ctrl)` | Update an existing entity. |
 | `Patch(data, ctrl)` | Change part of an existing entity. |
 
@@ -20111,24 +20126,20 @@ Create an instance: `dockerBuilderSetting := client.DockerBuilderSetting(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `docker_builder_settings` | `map[string]any` |  |
 | `idle_timeout_seconds` | `int` |  |
 | `max_concurrency` | `int` |  |
 | `organization_id` | `string` |  |
 | `region` | `string` |  |
 | `runtime_timeout_seconds` | `int` |  |
 
-#### Example: List
+#### Example: Load
 
 ```go
-dockerBuilderSettings, err := client.DockerBuilderSetting(nil).List(map[string]any{"organization_id": "example"}, nil)
+dockerBuilderSetting, err := client.DockerBuilderSetting(nil).Load(map[string]any{"organization_id": "organization_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range dockerBuilderSettings.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(dockerBuilderSetting.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -27048,25 +27059,25 @@ Create an instance: `projectOverviewMetric := client.ProjectOverviewMetric(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `counts` | `map[string]any` |  |
+| `active_runs` | `int` |  |
+| `open_findings` | `int` |  |
+| `ready_environments` | `int` |  |
+| `scenarios` | `map[string]any` | Scenarios by the state of their latest execution. |
 
-#### Example: List
+#### Example: Load
 
 ```go
-projectOverviewMetrics, err := client.ProjectOverviewMetric(nil).List(map[string]any{"organization_id": "example", "project_id": "example"}, nil)
+projectOverviewMetric, err := client.ProjectOverviewMetric(nil).Load(map[string]any{"organization_id": "organization_id", "project_id": "project_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range projectOverviewMetrics.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(projectOverviewMetric.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 
@@ -28543,25 +28554,27 @@ Create an instance: `repoStat := client.RepoStat(nil)`
 
 | Method | Description |
 | --- | --- |
-| `List(match, ctrl)` | List entities matching the criteria. |
+| `Load(match, ctrl)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `repository_stats` | `map[string]any` |  |
+| `backend` | `string` |  |
+| `can_refresh` | `bool` |  |
+| `freshness` | `map[string]any` |  |
+| `note` | `string` |  |
+| `physical` | `map[string]any` |  |
+| `series` | `[]any` |  |
 
-#### Example: List
+#### Example: Load
 
 ```go
-repoStats, err := client.RepoStat(nil).List(map[string]any{"organization_id": "example", "repo_id": "example"}, nil)
+repoStat, err := client.RepoStat(nil).Load(map[string]any{"organization_id": "organization_id", "repo_id": "repo_id"}, nil)
 if err != nil {
     panic(err)
 }
-// A []any of entities, one per record.
-for _, item := range repoStats.([]any) {
-    fmt.Println(item.(sdk.Entity).Data())
-}
+fmt.Println(repoStat.(sdk.Entity).Data()) // the loaded entity's record
 ```
 
 

@@ -4978,10 +4978,13 @@ class CacheNamespaceEntryRemoveMatch(TypedDict):
 
 
 class CatalogSelector(TypedDict):
-    app: dict
+    environments: list
+    id: str
+    locations: list
+    services: list
 
 
-class CatalogSelectorListMatch(TypedDict):
+class CatalogSelectorLoadMatch(TypedDict):
     app_id: str
 
 
@@ -5509,10 +5512,14 @@ class ChangeTranscriptListMatch(TypedDict):
 
 
 class ChangeTranscriptSummary(TypedDict):
-    summaries: dict
+    estimated_cost: Any
+    session_count: int
+    sessions: list
+    tokens_partial: bool
+    total_tokens: int | None
 
 
-class ChangeTranscriptSummaryListMatch(TypedDict):
+class ChangeTranscriptSummaryLoadMatch(TypedDict):
     organization_id: str
     ids: str
 
@@ -6939,7 +6946,6 @@ class DockerBuilderSessionRemoveMatch(TypedDict):
 
 
 class DockerBuilderSetting(TypedDict):
-    docker_builder_settings: dict
     idle_timeout_seconds: int
     max_concurrency: int
     organization_id: str
@@ -6947,7 +6953,7 @@ class DockerBuilderSetting(TypedDict):
     runtime_timeout_seconds: int
 
 
-class DockerBuilderSettingListMatch(TypedDict):
+class DockerBuilderSettingLoadMatch(TypedDict):
     organization_id: str
 
 
@@ -12203,10 +12209,13 @@ class ProjectMessagingConversationPatchData(ProjectMessagingConversationPatchDat
 
 
 class ProjectOverviewMetric(TypedDict):
-    counts: dict
+    active_runs: int
+    open_findings: int
+    ready_environments: int
+    scenarios: dict
 
 
-class ProjectOverviewMetricListMatch(TypedDict):
+class ProjectOverviewMetricLoadMatch(TypedDict):
     organization_id: str
     project_id: str
 
@@ -13410,10 +13419,15 @@ class RepoSettingUpdateData(RepoSettingUpdateDataRequired, total=False):
 
 
 class RepoStat(TypedDict):
-    repository_stats: dict
+    backend: str
+    can_refresh: bool
+    freshness: dict
+    note: str
+    physical: dict
+    series: list
 
 
-class RepoStatListMatch(TypedDict):
+class RepoStatLoadMatch(TypedDict):
     organization_id: str
     repo_id: str
 
@@ -13421,7 +13435,12 @@ class RepoStatListMatch(TypedDict):
 class RepoStatCreateData(TypedDict):
     organization_id: str
     repo_id: str
-    repository_stats: dict
+    backend: str
+    can_refresh: bool
+    freshness: dict
+    note: str
+    physical: dict
+    series: list
 
 
 class RepoVc(TypedDict):

@@ -16,7 +16,7 @@ import type {
 
 import type {
   ChangeTranscriptSummary,
-  ChangeTranscriptSummaryListMatch,
+  ChangeTranscriptSummaryLoadMatch,
 } from '../ComposalTypes'
 
 class ChangeTranscriptSummaryEntity extends ComposalEntityBase<ChangeTranscriptSummary> {
@@ -35,8 +35,7 @@ class ChangeTranscriptSummaryEntity extends ComposalEntityBase<ChangeTranscriptS
 
 
 
-
-  async list(this: any, reqmatch?: ChangeTranscriptSummaryListMatch, ctrl?: Control): Promise<ChangeTranscriptSummaryEntity[]> {
+  async load(this: any, reqmatch?: ChangeTranscriptSummaryLoadMatch, ctrl?: Control): Promise<ChangeTranscriptSummaryEntity> {
 
     const utility = this._utility
 
@@ -56,7 +55,7 @@ class ChangeTranscriptSummaryEntity extends ComposalEntityBase<ChangeTranscriptS
     let fres: Promise<any> | undefined = undefined
 
     let ctx: Context = makeContext({
-      opname: 'list',
+      opname: 'load',
       ctrl,
       match: this._match,
       data: this._data,
@@ -122,9 +121,15 @@ class ChangeTranscriptSummaryEntity extends ComposalEntityBase<ChangeTranscriptS
         if (null != ctx.result.resmatch) {
           this._match = ctx.result.resmatch
         }
+
+        if (null != ctx.result.resdata) {
+          this._data = ctx.result.resdata
+        }
       }
 
-      return done(ctx)
+      const out = done(ctx)
+
+      return (ctx.result && ctx.result.ok) ? this : out
     }
     catch (err: any) {
       // What a hook throws here must not escape the cleaning below.
@@ -147,11 +152,12 @@ class ChangeTranscriptSummaryEntity extends ComposalEntityBase<ChangeTranscriptS
       }
       else {
         // Off-happy-path (throw disabled): typed as any so the method's
-        // Promise<ChangeTranscriptSummaryEntity[]> return stays clean under strict null checks.
+        // Promise<ChangeTranscriptSummaryEntity> return stays clean under strict null checks.
         return undefined as any
       }
     }
   }
+
 
 
 

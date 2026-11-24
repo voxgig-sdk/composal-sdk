@@ -1,4 +1,4 @@
 $kind: collection
 id: add8f149-54c4-5974-9b64-1f4a560150f1
 description: "The `BasicDomainDnsIntegrationFlow` flow of **domain_dns_integration**."
-order: 180000
+order: 177000

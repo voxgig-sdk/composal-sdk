@@ -2,15 +2,24 @@
   "existing": {
     "catalog_selector": {
       "CATALOG_SELECTOR00": {
-        "app": {},
+        "environments": [],
+        "id": "CATALOG_SELECTOR00",
+        "locations": [],
+        "services": [],
         "app_id": "APP01"
       },
       "CATALOG_SELECTOR01": {
-        "app": {},
+        "environments": [],
+        "id": "CATALOG_SELECTOR01",
+        "locations": [],
+        "services": [],
         "app_id": "APP01"
       },
       "CATALOG_SELECTOR02": {
-        "app": {},
+        "environments": [],
+        "id": "CATALOG_SELECTOR02",
+        "locations": [],
+        "services": [],
         "app_id": "APP01"
       }
     }
@@ -18,7 +27,9 @@
   "new": {
     "catalog_selector": {
       "catalog_selector_ref01": {
-        "app": {}
+        "environments": [],
+        "locations": [],
+        "services": []
       }
     }
   },

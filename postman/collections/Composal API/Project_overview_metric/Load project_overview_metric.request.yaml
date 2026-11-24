@@ -1,0 +1,18 @@
+$kind: http-request
+id: "86380465-ff28-514b-b67c-86b7a1c0c82b"
+description: |-
+  The `load` operation of **project_overview_metric**.
+
+  SDK: `client.ProjectOverviewMetric().load({ organization_id: "example", project_id: "example" })`
+url: "{{base}}/api/v1/organizations/:organization_id/verification/projects/:project_id/pages/overview_metrics"
+method: GET
+headers:
+  Accept: application/json
+pathVariables:
+  - key: organization_id
+    value: "{{organization_id}}"
+    description: The organization this project_overview_metric belongs to.
+  - key: project_id
+    value: "{{project_id}}"
+    description: The project this project_overview_metric belongs to.
+order: 1000

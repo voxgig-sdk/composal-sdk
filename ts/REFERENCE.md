@@ -19788,16 +19788,19 @@ const catalog_selector = client.CatalogSelector()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `Record<string, any>` | Yes |  |
+| `environments` | `any[]` | Yes |  |
+| `id` | `string` | Yes |  |
+| `locations` | `any[]` | Yes |  |
+| `services` | `any[]` | Yes |  |
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.CatalogSelector().list({ app_id: "example" })
+const result = await client.CatalogSelector().load({ app_id: 'app_id' })
 ```
 
 ### Common Methods
@@ -21211,16 +21214,20 @@ const change_transcript_summary = client.ChangeTranscriptSummary()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `Record<string, any>` | Yes |  |
+| `estimated_cost` | `any` | Yes |  |
+| `session_count` | `number` | Yes |  |
+| `sessions` | `any[]` | Yes |  |
+| `tokens_partial` | `boolean` | Yes |  |
+| `total_tokens` | `number | null` | Yes |  |
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.ChangeTranscriptSummary().list({ organization_id: "example", ids: "example" })
+const result = await client.ChangeTranscriptSummary().load({ organization_id: 'organization_id', ids: 'ids' })
 ```
 
 ### Common Methods
@@ -25227,7 +25234,6 @@ const docker_builder_setting = client.DockerBuilderSetting()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `Record<string, any>` | Yes |  |
 | `idle_timeout_seconds` | `number` | Yes |  |
 | `max_concurrency` | `number` | Yes |  |
 | `organization_id` | `string` | Yes |  |
@@ -25236,9 +25242,8 @@ const docker_builder_setting = client.DockerBuilderSetting()
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -25247,12 +25252,12 @@ const docker_builder_setting = client.DockerBuilderSetting()
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.DockerBuilderSetting().list({ organization_id: "example" })
+const result = await client.DockerBuilderSetting().load({ organization_id: 'organization_id' })
 ```
 
 #### `patch(data: object, ctrl?: object)`
@@ -39294,16 +39299,19 @@ const project_overview_metric = client.ProjectOverviewMetric()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `Record<string, any>` | Yes |  |
+| `active_runs` | `number` | Yes |  |
+| `open_findings` | `number` | Yes |  |
+| `ready_environments` | `number` | Yes |  |
+| `scenarios` | `Record<string, any>` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.ProjectOverviewMetric().list({ organization_id: "example", project_id: "example" })
+const result = await client.ProjectOverviewMetric().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 ### Common Methods
@@ -42232,7 +42240,12 @@ const repo_stat = client.RepoStat()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `Record<string, any>` | Yes |  |
+| `backend` | `string` | Yes |  |
+| `can_refresh` | `boolean` | Yes |  |
+| `freshness` | `Record<string, any>` | Yes |  |
+| `note` | `string` | Yes |  |
+| `physical` | `Record<string, any>` | Yes |  |
+| `series` | `any[]` | Yes |  |
 
 ### Actions
 
@@ -42260,12 +42273,12 @@ const result = await client.RepoStat().create({
 
 Create a new entity with the given data. Resolves to the created entity.
 
-#### `list(match: object, ctrl?: object)`
+#### `load(match: object, ctrl?: object)`
 
-List entities matching the given criteria. Resolves to an array of entities, one per record.
+Load a single entity matching the given criteria. Resolves to the entity, whose record `data()` reads.
 
 ```ts
-const results = await client.RepoStat().list({ organization_id: "example", repo_id: "example" })
+const result = await client.RepoStat().load({ organization_id: 'organization_id', repo_id: 'repo_id' })
 ```
 
 ### Common Methods

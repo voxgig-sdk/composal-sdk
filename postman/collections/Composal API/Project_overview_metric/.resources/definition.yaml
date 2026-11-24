@@ -5,5 +5,8 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `counts` | object | yes |  |
+  | `active_runs` | integer | yes |  |
+  | `open_findings` | integer | yes |  |
+  | `ready_environments` | integer | yes |  |
+  | `scenarios` | object | yes |  |
 order: 403000

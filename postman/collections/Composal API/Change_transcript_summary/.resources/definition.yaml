@@ -5,5 +5,9 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `summaries` | object | yes |  |
+  | `estimated_cost` | any | yes |  |
+  | `session_count` | integer | yes |  |
+  | `sessions` | array | yes |  |
+  | `tokens_partial` | boolean | yes |  |
+  | `total_tokens` | integer | yes |  |
 order: 173000

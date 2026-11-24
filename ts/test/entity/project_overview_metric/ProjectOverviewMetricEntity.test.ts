@@ -47,7 +47,7 @@ describe('ProjectOverviewMetricEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.ProjectOverviewMetric().list({"organization_id":1,"project_id":"x"} as any),
+    await assert.rejects(client.ProjectOverviewMetric().load({"organization_id":1,"project_id":"x"} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('ProjectOverviewMetricEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'project_overview_metric.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"counts":{"a":true,"h":"Counts","n":"counts","r":true,"t":"`$OBJECT`","key$":"counts","index$":0}},"name":"project_overview_metric","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics","q":{"exist":["organization_id","project_id"]},"r":{"param":{"project_id":"project_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"verification"},{"lit":"projects"},{"var":"project_id"},{"lit":"pages"},{"lit":"overview_metrics"}],"t":{"req":"`reqdata`","res":"`body.counts`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["$.main.kit.entity.organization","$.main.kit.entity.project"]]},"key$":"project_overview_metric","name__orig":"project_overview_metric","Name":"ProjectOverviewMetric","name_":"project_overview_metric","name-":"project-overview-metric","NAME":"PROJECT_OVERVIEW_METRIC","index$":399}, {"active":true,"entity":"project_overview_metric","key$":"BasicProjectOverviewMetricFlow","kind":"basic","name":"BasicProjectOverviewMetricFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"organization_id":"organization01","project_id":"project01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"project_overview_metric_ref01"}}],"index$":0}]}, 'ProjectOverviewMetric', {"GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"project_id","in":"path","required":true,"schema":{"type":"string"},"index$":1}]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"active_runs":{"a":true,"h":"Active Runs","n":"active_runs","r":true,"t":"`$INTEGER`","key$":"active_runs","index$":0},"open_findings":{"a":true,"h":"Open Findings","n":"open_findings","r":true,"t":"`$INTEGER`","key$":"open_findings","index$":1},"ready_environments":{"a":true,"h":"Ready Environments","n":"ready_environments","r":true,"t":"`$INTEGER`","key$":"ready_environments","index$":2},"scenarios":{"a":true,"h":"Scenarios","n":"scenarios","r":true,"sh":"Scenarios by the state of their latest execution.","t":"`$OBJECT`","key$":"scenarios","index$":3}},"name":"project_overview_metric","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"organization_id","or":"organization_id","r":true,"t":"`$STRING`","index$":0},{"a":true,"k":"param","n":"project_id","or":"project_id","r":true,"t":"`$STRING`","index$":1}]},"k":"http","m":"GET","o":"/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics","q":{"exist":["organization_id","project_id"]},"r":{"param":{"project_id":"project_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"organizations"},{"var":"organization_id"},{"lit":"verification"},{"lit":"projects"},{"var":"project_id"},{"lit":"pages"},{"lit":"overview_metrics"}],"t":{"req":"`reqdata`","res":"`body.counts`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["$.main.kit.entity.organization","$.main.kit.entity.project"]]},"key$":"project_overview_metric","name__orig":"project_overview_metric","Name":"ProjectOverviewMetric","name_":"project_overview_metric","name-":"project-overview-metric","NAME":"PROJECT_OVERVIEW_METRIC","index$":399}, {"active":true,"entity":"project_overview_metric","key$":"BasicProjectOverviewMetricFlow","kind":"basic","name":"BasicProjectOverviewMetricFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"project_overview_metric_ref01","srcdatavar":"project_overview_metric_ref01_data","suffix":"_dt0"},"m":{"id":"project_overview_metric01","organization_id":"organization01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-project_overview_metric_ref01"}}],"unreachable":true}]}, 'ProjectOverviewMetric', {"GET /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics":{"protocol":"http","parameters":[{"name":"organization_id","in":"path","required":true,"schema":{"type":"string"},"index$":0},{"name":"project_id","in":"path","required":true,"schema":{"type":"string"},"index$":1}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,15 +72,6 @@ describe('ProjectOverviewMetricEntity', async () => {
     const select = struct.select
 
     let project_overview_metric_ref01_data = Object.values(setup.data.existing.project_overview_metric)[0] as any
-
-    // LIST
-    const project_overview_metric_ref01_ent = client.ProjectOverviewMetric()
-    const project_overview_metric_ref01_match: any = {}
-    project_overview_metric_ref01_match['organization_id'] = setup.idmap['organization01']
-    project_overview_metric_ref01_match['project_id'] = setup.idmap['project01']
-
-    const project_overview_metric_ref01_list = (await project_overview_metric_ref01_ent.list(project_overview_metric_ref01_match)).map((e: any) => e.data())
-
 
   })
 })

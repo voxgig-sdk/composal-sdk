@@ -2,30 +2,27 @@
   "existing": {
     "docker_builder_setting": {
       "DOCKER_BUILDER_SETTING00": {
-        "docker_builder_settings": {},
-        "idle_timeout_seconds": 61,
-        "max_concurrency": 62,
+        "idle_timeout_seconds": 50,
+        "max_concurrency": 51,
         "organization_id": "ORGANIZATION01",
-        "region": "s40",
-        "runtime_timeout_seconds": 65,
+        "region": "s35",
+        "runtime_timeout_seconds": 54,
         "id": "DOCKER_BUILDER_SETTING00"
       },
       "DOCKER_BUILDER_SETTING01": {
-        "docker_builder_settings": {},
-        "idle_timeout_seconds": 121,
-        "max_concurrency": 122,
+        "idle_timeout_seconds": 100,
+        "max_concurrency": 101,
         "organization_id": "ORGANIZATION01",
-        "region": "s7c",
-        "runtime_timeout_seconds": 125,
+        "region": "s67",
+        "runtime_timeout_seconds": 104,
         "id": "DOCKER_BUILDER_SETTING01"
       },
       "DOCKER_BUILDER_SETTING02": {
-        "docker_builder_settings": {},
-        "idle_timeout_seconds": 181,
-        "max_concurrency": 182,
+        "idle_timeout_seconds": 150,
+        "max_concurrency": 151,
         "organization_id": "ORGANIZATION01",
-        "region": "sb8",
-        "runtime_timeout_seconds": 185,
+        "region": "s99",
+        "runtime_timeout_seconds": 154,
         "id": "DOCKER_BUILDER_SETTING02"
       }
     }
@@ -33,12 +30,11 @@
   "new": {
     "docker_builder_setting": {
       "docker_builder_setting_ref01": {
-        "docker_builder_settings": {},
-        "idle_timeout_seconds": 241,
-        "max_concurrency": 242,
+        "idle_timeout_seconds": 200,
+        "max_concurrency": 201,
         "organization_id": "ORGANIZATION01",
-        "region": "sf4",
-        "runtime_timeout_seconds": 245
+        "region": "scb",
+        "runtime_timeout_seconds": 204
       }
     }
   },

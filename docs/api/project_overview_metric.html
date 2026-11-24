@@ -598,7 +598,7 @@
 <tr>
 <td><code>GET</code></td>
 <td><a href="#get-apiv1organizationsorganization_idverificationprojectsproject_idpagesoverview_metrics"><code>/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics</code></a></td>
-<td><code>list</code></td>
+<td><code>load</code></td>
 <td>ProjectOverviewMetricsPage</td>
 </tr>
 </tbody>
@@ -607,31 +607,31 @@
 <p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
 <h3 id="golang">Golang</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
-<pre><code class="language-go">project_overview_metrics, err := client.ProjectOverviewMetric(nil).List(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
+<pre><code class="language-go">project_overview_metric, err := client.ProjectOverviewMetric(nil).Load(map[string]any{&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(project_overview_metrics)
+fmt.Println(project_overview_metric)
 </code></pre>
 <h3 id="lua">Lua</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
-<pre><code class="language-lua">local project_overview_metrics, err = client:ProjectOverviewMetric():list({ organization_id = &quot;example&quot;, project_id = &quot;example&quot; })
+<pre><code class="language-lua">local project_overview_metric, err = client:ProjectOverviewMetric():load({ organization_id = &quot;example&quot;, project_id = &quot;example&quot; })
 </code></pre>
 <h3 id="php">PHP</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
-<pre><code class="language-php">$project_overview_metrics = $client-&gt;ProjectOverviewMetric()-&gt;list([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
+<pre><code class="language-php">$project_overview_metric = $client-&gt;ProjectOverviewMetric()-&gt;load([&quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot;]);
 </code></pre>
 <h3 id="python">Python</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
-<pre><code class="language-py">project_overview_metrics = client.ProjectOverviewMetric().list({&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
+<pre><code class="language-py">project_overview_metric = client.ProjectOverviewMetric().load({&quot;organization_id&quot;: &quot;example&quot;, &quot;project_id&quot;: &quot;example&quot;})
 </code></pre>
 <h3 id="ruby">Ruby</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
-<pre><code class="language-rb">project_overview_metrics = client.ProjectOverviewMetric.list({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
+<pre><code class="language-rb">project_overview_metric = client.ProjectOverviewMetric.load({ &quot;organization_id&quot; =&gt; &quot;example&quot;, &quot;project_id&quot; =&gt; &quot;example&quot; })
 </code></pre>
 <h3 id="typescript">TypeScript</h3>
 <p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
-<pre><code class="language-ts">const project_overview_metrics = await client.ProjectOverviewMetric().list({ organization_id: &quot;example&quot;, project_id: &quot;example&quot; })
+<pre><code class="language-ts">const project_overview_metric = await client.ProjectOverviewMetric().load({ organization_id: &quot;example&quot;, project_id: &quot;example&quot; })
 </code></pre>
 <h2 id="fields">Fields</h2>
 <table>
@@ -645,14 +645,32 @@ fmt.Println(project_overview_metrics)
 </thead>
 <tbody>
 <tr>
-<td><code>counts</code></td>
+<td><code>active_runs</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Active Runs</td>
+</tr>
+<tr>
+<td><code>open_findings</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Open Findings</td>
+</tr>
+<tr>
+<td><code>ready_environments</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Ready Environments</td>
+</tr>
+<tr>
+<td><code>scenarios</code></td>
 <td><code>object</code></td>
 <td>Yes</td>
-<td>Counts</td>
+<td>Scenarios by the state of their latest execution.</td>
 </tr>
 </tbody>
 </table>
-<h2 id="list">list</h2>
+<h2 id="load">load</h2>
 <h3 id="get-apiv1organizationsorganization_idverificationprojectsproject_idpagesoverview_metrics" class="operation" data-method="get"><code>GET</code> /api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics</h3>
 <p>Operation ID: <code>api_v1_verification_project_pages_overview_metrics</code>.</p>
 <p>Authentication: bearer token (<code>bearerAuth</code>).</p>

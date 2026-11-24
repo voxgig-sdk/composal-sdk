@@ -5283,11 +5283,14 @@ class CacheNamespaceEntryRemoveMatch
 /** CatalogSelector entity data model. */
 class CatalogSelector
 {
-    public array $app;
+    public array $environments;
+    public string $id;
+    public array $locations;
+    public array $services;
 }
 
-/** Request payload for CatalogSelector#list. */
-class CatalogSelectorListMatch
+/** Request payload for CatalogSelector#load. */
+class CatalogSelectorLoadMatch
 {
     public string $app_id;
 }
@@ -5862,11 +5865,15 @@ class ChangeTranscriptListMatch
 /** ChangeTranscriptSummary entity data model. */
 class ChangeTranscriptSummary
 {
-    public array $summaries;
+    public mixed $estimated_cost;
+    public int $session_count;
+    public array $sessions;
+    public bool $tokens_partial;
+    public mixed $total_tokens;
 }
 
-/** Request payload for ChangeTranscriptSummary#list. */
-class ChangeTranscriptSummaryListMatch
+/** Request payload for ChangeTranscriptSummary#load. */
+class ChangeTranscriptSummaryLoadMatch
 {
     public string $organization_id;
     public string $ids;
@@ -7391,7 +7398,6 @@ class DockerBuilderSessionRemoveMatch
 /** DockerBuilderSetting entity data model. */
 class DockerBuilderSetting
 {
-    public array $docker_builder_settings;
     public int $idle_timeout_seconds;
     public int $max_concurrency;
     public string $organization_id;
@@ -7399,8 +7405,8 @@ class DockerBuilderSetting
     public int $runtime_timeout_seconds;
 }
 
-/** Request payload for DockerBuilderSetting#list. */
-class DockerBuilderSettingListMatch
+/** Request payload for DockerBuilderSetting#load. */
+class DockerBuilderSettingLoadMatch
 {
     public string $organization_id;
 }
@@ -13045,11 +13051,14 @@ class ProjectMessagingConversationPatchData
 /** ProjectOverviewMetric entity data model. */
 class ProjectOverviewMetric
 {
-    public array $counts;
+    public int $active_runs;
+    public int $open_findings;
+    public int $ready_environments;
+    public array $scenarios;
 }
 
-/** Request payload for ProjectOverviewMetric#list. */
-class ProjectOverviewMetricListMatch
+/** Request payload for ProjectOverviewMetric#load. */
+class ProjectOverviewMetricLoadMatch
 {
     public string $organization_id;
     public string $project_id;
@@ -14309,11 +14318,16 @@ class RepoSettingUpdateData
 /** RepoStat entity data model. */
 class RepoStat
 {
-    public array $repository_stats;
+    public string $backend;
+    public bool $can_refresh;
+    public array $freshness;
+    public string $note;
+    public array $physical;
+    public array $series;
 }
 
-/** Request payload for RepoStat#list. */
-class RepoStatListMatch
+/** Request payload for RepoStat#load. */
+class RepoStatLoadMatch
 {
     public string $organization_id;
     public string $repo_id;
@@ -14324,7 +14338,12 @@ class RepoStatCreateData
 {
     public string $organization_id;
     public string $repo_id;
-    public array $repository_stats;
+    public string $backend;
+    public bool $can_refresh;
+    public array $freshness;
+    public string $note;
+    public array $physical;
+    public array $series;
 }
 
 /** RepoVc entity data model. */

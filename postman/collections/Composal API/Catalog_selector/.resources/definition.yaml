@@ -5,5 +5,8 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `app` | object | yes |  |
+  | `environments` | array | yes |  |
+  | `id` | string | yes |  |
+  | `locations` | array | yes |  |
+  | `services` | array | yes |  |
 order: 155000

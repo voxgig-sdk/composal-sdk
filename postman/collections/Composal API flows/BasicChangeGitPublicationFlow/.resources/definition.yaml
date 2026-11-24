@@ -1,4 +1,4 @@
 $kind: collection
 id: "11bf7286-4fec-5812-8fdf-f9050bac8da0"
 description: "The `BasicChangeGitPublicationFlow` flow of **change_git_publication**."
-order: 126000
+order: 125000

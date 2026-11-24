@@ -415,7 +415,7 @@ The API exposes 555 entities:
 | **BrowserSessionScreenshot** | The BrowserSessionScreenshot entity (create). | `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/screenshots` |
 | **BrowserSessionTask** | The BrowserSessionTask entity (create, load). | `/api/v1/organizations/{organization_id}/browser_sessions/{browser_session_id}/tasks/{id}` |
 | **CacheNamespaceEntry** | The CacheNamespaceEntry entity (create, load, patch, remove, update). | `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}` |
-| **CatalogSelector** | The CatalogSelector entity (list). | `/api/v1/hosting/apps/{app_id}/catalog/selectors` |
+| **CatalogSelector** | The CatalogSelector entity (load). | `/api/v1/hosting/apps/{app_id}/catalog/selectors` |
 | **CdnDeployment** | The CdnDeployment entity (create, load). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/deployments/{id}` |
 | **CdnHostname** | The CdnHostname entity (create, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/cdns/{cdn_id}/hostnames/{id}` |
 | **CdnSpace** | A CDN storage space and its objects. | `/api/v1/cdn_spaces/{id}` |
@@ -434,7 +434,7 @@ The API exposes 555 entities:
 | **ChangeRequestChange** | The ChangeRequestChange entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/request_changes` |
 | **ChangeReviewer** | The ChangeReviewer entity (list, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{id}/reviewers` |
 | **ChangeTranscript** | The ChangeTranscript entity (list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{change_id}/transcripts` |
-| **ChangeTranscriptSummary** | The ChangeTranscriptSummary entity (list). | `/api/v1/organizations/{org_slug}/changes/transcript_summaries` |
+| **ChangeTranscriptSummary** | The ChangeTranscriptSummary entity (load). | `/api/v1/organizations/{org_slug}/changes/transcript_summaries` |
 | **CheckpointPrepareChunk** | The CheckpointPrepareChunk entity (create). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/agent_sessions/{agent_session_id}/checkpoints/prepare_chunks` |
 | **CiNode** | The CiNode entity (create, load). | `/api/v1/ci/nodes/{id}` |
 | **CiPipeline** | The CiPipeline entity (create, list, load). | `/api/v1/ci/pipelines` |
@@ -488,7 +488,7 @@ The API exposes 555 entities:
 | **DeviceScheduledCheckIn** | The DeviceScheduledCheckIn entity (create). | `/api/v1/organizations/{organization_id}/devices/{device_registration_id}/scheduled_check_ins` |
 | **DockerBuilder** | The DockerBuilder entity (create, list, load, patch, update). | `/api/v1/organizations/{organization_id}/docker_builders` |
 | **DockerBuilderSession** | The DockerBuilderSession entity (create, load, remove). | `/api/v1/organizations/{organization_id}/docker_builder_sessions/{id}` |
-| **DockerBuilderSetting** | The DockerBuilderSetting entity (list, patch, update). | `/api/v1/organizations/{organization_id}/docker_builder_settings` |
+| **DockerBuilderSetting** | The DockerBuilderSetting entity (load, patch, update). | `/api/v1/organizations/{organization_id}/docker_builder_settings` |
 | **DomainDnsIntegration** | The DomainDnsIntegration entity (create, list). | `/api/v1/organizations/{organization_id}/domain_dns_integrations` |
 | **DomainPathRule** | The DomainPathRule entity (create, list, load, patch, remove, update). | `/api/v1/hosting/apps/{app_id}/domains/{domain_id}/path_rules` |
 | **Dream** | The Dream entity (create, list, load). | `/api/v1/organizations/{organization_id}/verify/dreams` |
@@ -663,7 +663,7 @@ The API exposes 555 entities:
 | **ProjectFixture** | The ProjectFixture entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/fixtures` |
 | **ProjectIosApp** | The ProjectIosApp entity (create). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/ios_apps` |
 | **ProjectMessagingConversation** | The ProjectMessagingConversation entity (create, load, patch, update). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/messaging_conversations/{id}` |
-| **ProjectOverviewMetric** | The ProjectOverviewMetric entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics` |
+| **ProjectOverviewMetric** | The ProjectOverviewMetric entity (load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics` |
 | **ProjectOverviewPullRequest** | The ProjectOverviewPullRequest entity (list). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_pull_requests` |
 | **ProjectProductMap** | The ProjectProductMap entity (create, load). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/product_map/path` |
 | **ProjectRecording** | The ProjectRecording entity (create, load, remove). | `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/recordings/{id}` |
@@ -697,7 +697,7 @@ The API exposes 555 entities:
 | **RepoCloudWorkspaceBackup** | The RepoCloudWorkspaceBackup entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/cloud_workspace_backups/{backup_key}` |
 | **RepoCodeRule** | The RepoCodeRule entity (create, list, load, patch, remove, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/code_rules` |
 | **RepoSetting** | The RepoSetting entity (list, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings` |
-| **RepoStat** | The RepoStat entity (create, list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats` |
+| **RepoStat** | The RepoStat entity (create, load). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats` |
 | **RepoVc** | The RepoVc entity (create, load, update). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/blame` |
 | **RepoVcCommit** | The RepoVcCommit entity (list). | `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/commits` |
 | **ReportReplay** | The ReportReplay entity (load). | `/api/v1/organizations/{organization_id}/verify/explorations/{id}/report/replay/{agent_id}` |

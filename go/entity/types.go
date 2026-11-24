@@ -3247,8 +3247,8 @@ type CacheNamespaceEntryRemoveMatch struct {
 type CatalogSelector struct {
 }
 
-// CatalogSelectorListMatch is the typed request payload for CatalogSelector.ListTyped.
-type CatalogSelectorListMatch struct {
+// CatalogSelectorLoadMatch is the typed request payload for CatalogSelector.LoadTyped.
+type CatalogSelectorLoadMatch struct {
 	AppId string `json:"app_id"`
 }
 
@@ -3609,8 +3609,8 @@ type ChangeTranscriptListMatch struct {
 type ChangeTranscriptSummary struct {
 }
 
-// ChangeTranscriptSummaryListMatch is the typed request payload for ChangeTranscriptSummary.ListTyped.
-type ChangeTranscriptSummaryListMatch struct {
+// ChangeTranscriptSummaryLoadMatch is the typed request payload for ChangeTranscriptSummary.LoadTyped.
+type ChangeTranscriptSummaryLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	Ids string `json:"ids"`
 }
@@ -4433,8 +4433,8 @@ type DockerBuilderSessionRemoveMatch struct {
 type DockerBuilderSetting struct {
 }
 
-// DockerBuilderSettingListMatch is the typed request payload for DockerBuilderSetting.ListTyped.
-type DockerBuilderSettingListMatch struct {
+// DockerBuilderSettingLoadMatch is the typed request payload for DockerBuilderSetting.LoadTyped.
+type DockerBuilderSettingLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 }
 
@@ -7912,8 +7912,8 @@ type ProjectMessagingConversationPatchData struct {
 type ProjectOverviewMetric struct {
 }
 
-// ProjectOverviewMetricListMatch is the typed request payload for ProjectOverviewMetric.ListTyped.
-type ProjectOverviewMetricListMatch struct {
+// ProjectOverviewMetricLoadMatch is the typed request payload for ProjectOverviewMetric.LoadTyped.
+type ProjectOverviewMetricLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	ProjectId string `json:"project_id"`
 }
@@ -8704,8 +8704,8 @@ type RepoSettingUpdateData struct {
 type RepoStat struct {
 }
 
-// RepoStatListMatch is the typed request payload for RepoStat.ListTyped.
-type RepoStatListMatch struct {
+// RepoStatLoadMatch is the typed request payload for RepoStat.LoadTyped.
+type RepoStatLoadMatch struct {
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
 }
@@ -8714,7 +8714,12 @@ type RepoStatListMatch struct {
 type RepoStatCreateData struct {
 	OrganizationId string `json:"organization_id"`
 	RepoId string `json:"repo_id"`
-	RepositoryStats map[string]any `json:"repository_stats"`
+	Backend string `json:"backend"`
+	CanRefresh bool `json:"can_refresh"`
+	Freshness map[string]any `json:"freshness"`
+	Note string `json:"note"`
+	Physical map[string]any `json:"physical"`
+	Series []any `json:"series"`
 }
 
 // RepoVc is the typed data model for the repo_vc entity.

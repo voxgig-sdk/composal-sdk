@@ -29,7 +29,7 @@ describe("DockerBuilderSettingEntity", function()
       return
     end
     local client = sdk.test(nil, { feature = { validate = { active = true } } })
-    local _, err = client:DockerBuilderSetting(nil):list({ ["organization_id"] = 1 }, nil)
+    local _, err = client:DockerBuilderSetting(nil):load({ ["organization_id"] = 1 }, nil)
     assert.are.equal("validate_failed", type(err) == "table" and err.code or nil)
   end)
 
@@ -37,7 +37,7 @@ describe("DockerBuilderSettingEntity", function()
     local setup = docker_builder_setting_basic_setup(nil)
     -- Per-op sdk-test-control.json skip.
     local _live = setup.live or false
-    for _, _op in ipairs({"list"}) do
+    for _, _op in ipairs({}) do
       local _should_skip, _reason = runner.is_control_skipped("entityOp", "docker_builder_setting." .. _op, _live and "live" or "unit")
       if _should_skip then
         pending(_reason or "skipped via sdk-test-control.json")
@@ -45,47 +45,16 @@ describe("DockerBuilderSettingEntity", function()
       end
     end
     if setup.live and os.getenv("VOXGIG_GETONLY_GUARD") == "TRUE" then
-      print("LIVE STEP {\"id\":\"docker_builder_setting.update.1\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}")
-    if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID")
-        end
-      end
-    end
-    local client = setup.client
-
-    -- Bootstrap entity data from existing test data.
-    local docker_builder_setting_ref01_data_raw = vs.items(helpers.to_map(
-      vs.getpath(setup.data, "existing.docker_builder_setting")))
-    local docker_builder_setting_ref01_data = nil
-    if #docker_builder_setting_ref01_data_raw > 0 then
-      docker_builder_setting_ref01_data = helpers.to_map(docker_builder_setting_ref01_data_raw[1][2])
-    end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local docker_builder_setting_ref01_ent = client:DockerBuilderSetting(nil)
-    local docker_builder_setting_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local docker_builder_setting_ref01_list_result, err = docker_builder_setting_ref01_ent:list(docker_builder_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(docker_builder_setting_ref01_list_result)
-
+      print("LIVE STEP {\"id\":\"docker_builder_setting.update.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings\"}")
+      pending("Live coverage incomplete: docker_builder_setting.update.0 excluded (GET-only live run: needs PUT /api/v1/organizations/{organization_id}/docker_builder_settings)")
       return
     end
 
     if setup.live then
-      for _, _live_key in ipairs({"organization01"}) do
-        if setup.synthetic_only or setup.idmap[_live_key] == nil then
-          runner.live_miss(pending, LIVE_STRICT, "Live entity test blocked: needs " .. _live_key .. " via COMPOSAL_TEST_DOCKER_BUILDER_SETTING_ENTID")
-        end
-      end
+      pending("Live coverage incomplete: the flow has no step to run")
+      return
     end
+
     local client = setup.client
 
     -- Bootstrap entity data from existing test data.
@@ -95,19 +64,6 @@ describe("DockerBuilderSettingEntity", function()
     if #docker_builder_setting_ref01_data_raw > 0 then
       docker_builder_setting_ref01_data = helpers.to_map(docker_builder_setting_ref01_data_raw[1][2])
     end
-
-    if setup.live then
-      runner.live_pace()
-    end
-    -- LIST
-    local docker_builder_setting_ref01_ent = client:DockerBuilderSetting(nil)
-    local docker_builder_setting_ref01_match = {
-      ["organization_id"] = setup.idmap["organization01"],
-    }
-
-    local docker_builder_setting_ref01_list_result, err = docker_builder_setting_ref01_ent:list(docker_builder_setting_ref01_match, nil)
-    assert.is_nil(err)
-    assert.is_table(docker_builder_setting_ref01_list_result)
 
   end)
 end)

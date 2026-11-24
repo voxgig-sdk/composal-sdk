@@ -13873,16 +13873,19 @@ local catalog_selector = client:CatalogSelector(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `app` | `table` | Yes |  |
+| `environments` | `table` | Yes |  |
+| `id` | `string` | Yes |  |
+| `locations` | `table` | Yes |  |
+| `services` | `table` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:CatalogSelector():list({ app_id = "example" })
+local result, err = client:CatalogSelector():load({ app_id = "app_id" })
 ```
 
 ### Common Methods
@@ -15252,16 +15255,20 @@ local change_transcript_summary = client:ChangeTranscriptSummary(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `summaries` | `table` | Yes |  |
+| `estimated_cost` | `any` | Yes |  |
+| `session_count` | `number` | Yes |  |
+| `sessions` | `table` | Yes |  |
+| `tokens_partial` | `boolean` | Yes |  |
+| `total_tokens` | `number|nil` | Yes |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:ChangeTranscriptSummary():list({ organization_id = "example", ids = "example" })
+local result, err = client:ChangeTranscriptSummary():load({ organization_id = "organization_id", ids = "ids" })
 ```
 
 ### Common Methods
@@ -18929,7 +18936,6 @@ local docker_builder_setting = client:DockerBuilderSetting(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | `table` | Yes |  |
 | `idle_timeout_seconds` | `number` | Yes |  |
 | `max_concurrency` | `number` | Yes |  |
 | `organization_id` | `string` | Yes |  |
@@ -18938,9 +18944,8 @@ local docker_builder_setting = client:DockerBuilderSetting(nil)
 
 ### Field Usage by Operation
 
-| Field | list | update | patch |
+| Field | load | update | patch |
 | --- | --- | --- | --- |
-| `docker_builder_settings` | - | - | - |
 | `idle_timeout_seconds` | - | - | Yes |
 | `max_concurrency` | - | - | Yes |
 | `organization_id` | - | - | - |
@@ -18949,12 +18954,12 @@ local docker_builder_setting = client:DockerBuilderSetting(nil)
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:DockerBuilderSetting():list({ organization_id = "example" })
+local result, err = client:DockerBuilderSetting():load({ organization_id = "organization_id" })
 ```
 
 #### `patch(reqdata, ctrl) -> any, err`
@@ -31871,16 +31876,19 @@ local project_overview_metric = client:ProjectOverviewMetric(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `counts` | `table` | Yes |  |
+| `active_runs` | `number` | Yes |  |
+| `open_findings` | `number` | Yes |  |
+| `ready_environments` | `number` | Yes |  |
+| `scenarios` | `table` | Yes | Scenarios by the state of their latest execution. |
 
 ### Operations
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:ProjectOverviewMetric():list({ organization_id = "example", project_id = "example" })
+local result, err = client:ProjectOverviewMetric():load({ organization_id = "organization_id", project_id = "project_id" })
 ```
 
 ### Common Methods
@@ -34493,7 +34501,12 @@ local repo_stat = client:RepoStat(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `repository_stats` | `table` | Yes |  |
+| `backend` | `string` | Yes |  |
+| `can_refresh` | `boolean` | Yes |  |
+| `freshness` | `table` | Yes |  |
+| `note` | `string` | Yes |  |
+| `physical` | `table` | Yes |  |
+| `series` | `table` | Yes |  |
 
 ### Operations
 
@@ -34501,12 +34514,12 @@ local repo_stat = client:RepoStat(nil)
 
 Create a new entity with the given data. Returns the created entity, or `nil` and an error on failure.
 
-#### `list(reqmatch, ctrl) -> any, err`
+#### `load(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:RepoStat():list({ organization_id = "example", repo_id = "example" })
+local result, err = client:RepoStat():load({ organization_id = "organization_id", repo_id = "repo_id" })
 ```
 
 ### Common Methods

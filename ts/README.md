@@ -3775,9 +3775,12 @@ API path: `/api/v1/artifacts/cache_namespaces/{cache_namespace_id}/entries/{id}/
 
 | Field | Description |
 | --- | --- |
-| `app` |  |
+| `environments` |  |
+| `id` |  |
+| `locations` |  |
+| `services` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/hosting/apps/{app_id}/catalog/selectors`
 
@@ -4108,9 +4111,13 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/vcs/changes/{chang
 
 | Field | Description |
 | --- | --- |
-| `summaries` |  |
+| `estimated_cost` |  |
+| `session_count` |  |
+| `sessions` |  |
+| `tokens_partial` |  |
+| `total_tokens` |  |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{org_slug}/changes/transcript_summaries`
 
@@ -5166,14 +5173,13 @@ API path: `/api/v1/organizations/{organization_id}/docker_builders/{docker_build
 
 | Field | Description |
 | --- | --- |
-| `docker_builder_settings` |  |
 | `idle_timeout_seconds` |  |
 | `max_concurrency` |  |
 | `organization_id` |  |
 | `region` |  |
 | `runtime_timeout_seconds` |  |
 
-Operations: list, patch, update.
+Operations: load, patch, update.
 
 API path: `/api/v1/organizations/{organization_id}/docker_builder_settings`
 
@@ -8382,9 +8388,12 @@ API path: `/api/v1/organizations/{organization_id}/verification/projects/{projec
 
 | Field | Description |
 | --- | --- |
-| `counts` |  |
+| `active_runs` |  |
+| `open_findings` |  |
+| `ready_environments` |  |
+| `scenarios` | Scenarios by the state of their latest execution. |
 
-Operations: list.
+Operations: load.
 
 API path: `/api/v1/organizations/{organization_id}/verification/projects/{project_id}/pages/overview_metrics`
 
@@ -9054,9 +9063,14 @@ API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/settings`
 
 | Field | Description |
 | --- | --- |
-| `repository_stats` |  |
+| `backend` |  |
+| `can_refresh` |  |
+| `freshness` |  |
+| `note` |  |
+| `physical` |  |
+| `series` |  |
 
-Operations: create, list.
+Operations: create, load.
 
 API path: `/api/v1/organizations/{org_slug}/repos/{repo_slug}/stats/refresh`
 
@@ -16525,18 +16539,21 @@ Create an instance: `const catalog_selector = client.CatalogSelector()`
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `app` | `Record<string, any>` |  |
+| `environments` | `any[]` |  |
+| `id` | `string` |  |
+| `locations` | `any[]` |  |
+| `services` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const catalog_selectors = await client.CatalogSelector().list({ app_id: "example" })
+const catalog_selector = await client.CatalogSelector().load({ app_id: 'app_id' })
 ```
 
 
@@ -17192,18 +17209,22 @@ Create an instance: `const change_transcript_summary = client.ChangeTranscriptSu
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `summaries` | `Record<string, any>` |  |
+| `estimated_cost` | `any` |  |
+| `session_count` | `number` |  |
+| `sessions` | `any[]` |  |
+| `tokens_partial` | `boolean` |  |
+| `total_tokens` | `number | null` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const change_transcript_summarys = await client.ChangeTranscriptSummary().list({ organization_id: "example", ids: "example" })
+const change_transcript_summary = await client.ChangeTranscriptSummary().load({ organization_id: 'organization_id', ids: 'ids' })
 ```
 
 
@@ -19082,7 +19103,7 @@ Create an instance: `const docker_builder_setting = client.DockerBuilderSetting(
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 | `patch(data)` | Change part of an existing entity. |
 | `update(data)` | Update an existing entity. |
 
@@ -19090,17 +19111,16 @@ Create an instance: `const docker_builder_setting = client.DockerBuilderSetting(
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `docker_builder_settings` | `Record<string, any>` |  |
 | `idle_timeout_seconds` | `number` |  |
 | `max_concurrency` | `number` |  |
 | `organization_id` | `string` |  |
 | `region` | `string` |  |
 | `runtime_timeout_seconds` | `number` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const docker_builder_settings = await client.DockerBuilderSetting().list({ organization_id: "example" })
+const docker_builder_setting = await client.DockerBuilderSetting().load({ organization_id: 'organization_id' })
 ```
 
 
@@ -25170,18 +25190,21 @@ Create an instance: `const project_overview_metric = client.ProjectOverviewMetri
 
 | Method | Description |
 | --- | --- |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `counts` | `Record<string, any>` |  |
+| `active_runs` | `number` |  |
+| `open_findings` | `number` |  |
+| `ready_environments` | `number` |  |
+| `scenarios` | `Record<string, any>` | Scenarios by the state of their latest execution. |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const project_overview_metrics = await client.ProjectOverviewMetric().list({ organization_id: "example", project_id: "example" })
+const project_overview_metric = await client.ProjectOverviewMetric().load({ organization_id: 'organization_id', project_id: 'project_id' })
 ```
 
 
@@ -26464,18 +26487,23 @@ Create an instance: `const repo_stat = client.RepoStat()`
 | Method | Description |
 | --- | --- |
 | `create(data)` | Create a new entity with the given data. |
-| `list(match)` | List entities matching the criteria. |
+| `load(match)` | Load a single entity by match criteria. |
 
 #### Fields
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `repository_stats` | `Record<string, any>` |  |
+| `backend` | `string` |  |
+| `can_refresh` | `boolean` |  |
+| `freshness` | `Record<string, any>` |  |
+| `note` | `string` |  |
+| `physical` | `Record<string, any>` |  |
+| `series` | `any[]` |  |
 
-#### Example: List
+#### Example: Load
 
 ```ts
-const repo_stats = await client.RepoStat().list({ organization_id: "example", repo_id: "example" })
+const repo_stat = await client.RepoStat().load({ organization_id: 'organization_id', repo_id: 'repo_id' })
 ```
 
 

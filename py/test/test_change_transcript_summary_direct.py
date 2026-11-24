@@ -24,12 +24,9 @@ def _live_ok(result):
 
 class TestChangeTranscriptSummaryDirect:
 
-    def test_should_direct_list_change_transcript_summary(self):
-        setup = _change_transcript_summary_direct_setup([
-            {"id": "direct01"},
-            {"id": "direct02"},
-        ])
-        _skip, _reason = runner.is_control_skipped("direct", "direct-list-change_transcript_summary", "live" if setup["live"] else "unit")
+    def test_should_direct_load_change_transcript_summary(self):
+        setup = _change_transcript_summary_direct_setup({"id": "direct01"})
+        _skip, _reason = runner.is_control_skipped("direct", "direct-load-change_transcript_summary", "live" if setup["live"] else "unit")
         if _skip:
             pytest.skip(_reason or "skipped via sdk-test-control.json")
             return
@@ -46,8 +43,10 @@ class TestChangeTranscriptSummaryDirect:
         query = {}
         if setup["live"]:
             params["organization_id"] = setup["idmap"].get("organization01")
+            pass
         else:
             params["organization_id"] = "direct01"
+            pass
 
         result = client.direct({
             "path": "api/v1/organizations/{organization_id}/changes/transcript_summaries",
@@ -57,14 +56,15 @@ class TestChangeTranscriptSummaryDirect:
         })
         if setup["live"]:
             if not _live_ok(result):
-                runner.live_miss(LIVE_STRICT, "Live list failed: " + runner.live_describe(result))
-            if runner.live_list(result.get("data")) is None:
-                runner.live_miss(LIVE_STRICT, "Live list returned no list: " + runner.live_describe(result))
+                runner.live_miss(LIVE_STRICT, "Live load failed: " + runner.live_describe(result))
+            if result.get("data") is None:
+                runner.live_miss(LIVE_STRICT, "Live load returned no data: " + runner.live_describe(result))
         else:
             assert result["ok"] is True
             assert helpers.to_int(result["status"]) == 200
-            assert isinstance(result["data"], list)
-            assert len(result["data"]) == 2
+            assert result["data"] is not None
+            if isinstance(result["data"], dict):
+                assert result["data"]["id"] == "direct01"
             assert len(setup["calls"]) == 1
 
 

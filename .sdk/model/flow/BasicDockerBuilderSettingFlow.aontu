@@ -7,22 +7,6 @@ main: kit: flow: BasicDockerBuilderSettingFlow:
   name: "BasicDockerBuilderSettingFlow",
   step: [
     {
-      m: {
-        organization_id: "organization01"
-      }
-
-      o: "list",
-      v: [
-        {
-          apply: "ItemExists",
-          def: {
-            ref: "docker_builder_setting_ref01"
-          }
-        }
-      ]
-    }
-
-    {
       i: {
         ref: "docker_builder_setting_ref01",
         srcdatavar: "docker_builder_setting_ref01_data",
@@ -32,6 +16,28 @@ main: kit: flow: BasicDockerBuilderSettingFlow:
 
       o: "update",
       s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-docker_builder_setting_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "docker_builder_setting_ref01",
+        srcdatavar: "docker_builder_setting_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "docker_builder_setting01"
+      }
+
+      o: "load",
+      v: [
         {
           apply: "TextFieldMark",
           def: {

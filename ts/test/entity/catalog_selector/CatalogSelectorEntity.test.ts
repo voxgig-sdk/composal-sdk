@@ -47,7 +47,7 @@ describe('CatalogSelectorEntity', async () => {
       return
     }
     const client = ComposalSDK.test(undefined, { feature: { validate: { active: true } } })
-    await assert.rejects(client.CatalogSelector().list({"app_id":1} as any),
+    await assert.rejects(client.CatalogSelector().load({"app_id":1} as any),
       (err: any) => 'validate_failed' === err.code)
   })
 
@@ -56,14 +56,14 @@ describe('CatalogSelectorEntity', async () => {
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.COMPOSAL_TEST_LIVE
-    for (const op of ['list']) {
+    for (const op of []) {
       if (!live && maybeSkipControl(t, 'entityOp', 'catalog_selector.' + op, live)) return
     }
 
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"app":{"a":true,"h":"App","n":"app","r":true,"t":"`$OBJECT`","key$":"app","index$":0}},"name":"catalog_selector","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/apps/{app_id}/catalog/selectors","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"app_id","or":"app_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/hosting/apps/{app_id}/catalog/selectors","q":{"exist":["app_id"]},"r":{"param":{"app_id":"app_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"apps"},{"var":"app_id"},{"lit":"catalog"},{"lit":"selectors"}],"t":{"req":"`reqdata`","res":"`body.app`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[["$.main.kit.entity.app"]]},"key$":"catalog_selector","name__orig":"catalog_selector","Name":"CatalogSelector","name_":"catalog_selector","name-":"catalog-selector","NAME":"CATALOG_SELECTOR","index$":151}, {"active":true,"entity":"catalog_selector","key$":"BasicCatalogSelectorFlow","kind":"basic","name":"BasicCatalogSelectorFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{"app_id":"app01"},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"catalog_selector_ref01"}}],"index$":0}]}, 'CatalogSelector', {"GET /api/v1/hosting/apps/{app_id}/catalog/selectors":{"protocol":"http","parameters":[{"name":"app_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"environments":{"a":true,"h":"Environments","n":"environments","r":true,"t":"`$ARRAY`","key$":"environments","index$":0},"id":{"a":true,"h":"Id","n":"id","r":true,"t":"`$STRING`","key$":"id","index$":1},"locations":{"a":true,"h":"Locations","n":"locations","r":true,"t":"`$ARRAY`","key$":"locations","index$":2},"services":{"a":true,"h":"Services","n":"services","r":true,"t":"`$ARRAY`","key$":"services","index$":3}},"id":{"field":"id","name":"id"},"name":"catalog_selector","op":{"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /api/v1/hosting/apps/{app_id}/catalog/selectors","source":"openapi3","version":2},"g":{"params":[{"a":true,"k":"param","n":"app_id","or":"app_id","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/api/v1/hosting/apps/{app_id}/catalog/selectors","q":{"exist":["app_id"]},"r":{"param":{"app_id":"app_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"api"},{"lit":"v1"},{"lit":"hosting"},{"lit":"apps"},{"var":"app_id"},{"lit":"catalog"},{"lit":"selectors"}],"t":{"req":"`reqdata`","res":"`body.app`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[["$.main.kit.entity.app"]]},"key$":"catalog_selector","name__orig":"catalog_selector","Name":"CatalogSelector","name_":"catalog_selector","name-":"catalog-selector","NAME":"CATALOG_SELECTOR","index$":151}, {"active":true,"entity":"catalog_selector","key$":"BasicCatalogSelectorFlow","kind":"basic","name":"BasicCatalogSelectorFlow","param":{},"step":[{"a":false,"d":{},"i":{"ref":"catalog_selector_ref01","srcdatavar":"catalog_selector_ref01_data","suffix":"_dt0"},"m":{"id":"catalog_selector01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-catalog_selector_ref01"}}],"unreachable":true}]}, 'CatalogSelector', {"GET /api/v1/hosting/apps/{app_id}/catalog/selectors":{"protocol":"http","parameters":[{"name":"app_id","in":"path","required":true,"schema":{"type":"string"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,14 +72,6 @@ describe('CatalogSelectorEntity', async () => {
     const select = struct.select
 
     let catalog_selector_ref01_data = Object.values(setup.data.existing.catalog_selector)[0] as any
-
-    // LIST
-    const catalog_selector_ref01_ent = client.CatalogSelector()
-    const catalog_selector_ref01_match: any = {}
-    catalog_selector_ref01_match['app_id'] = setup.idmap['app01']
-
-    const catalog_selector_ref01_list = (await catalog_selector_ref01_ent.list(catalog_selector_ref01_match)).map((e: any) => e.data())
-
 
   })
 })

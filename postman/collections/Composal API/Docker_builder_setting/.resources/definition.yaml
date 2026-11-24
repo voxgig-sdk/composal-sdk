@@ -5,7 +5,6 @@ description: |-
 
   | field | type | required | |
   |---|---|---|---|
-  | `docker_builder_settings` | object | yes |  |
   | `idle_timeout_seconds` | integer | yes |  |
   | `max_concurrency` | integer | yes |  |
   | `organization_id` | string | yes |  |

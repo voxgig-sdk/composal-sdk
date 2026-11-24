@@ -3823,9 +3823,12 @@
 ---@field id string
 
 ---@class CatalogSelector
----@field app table
+---@field environments table
+---@field id string
+---@field locations table
+---@field services table
 
----@class CatalogSelectorListMatch
+---@class CatalogSelectorLoadMatch
 ---@field app_id string
 
 ---@class CdnDeployment
@@ -4237,9 +4240,13 @@
 ---@field repo_id string
 
 ---@class ChangeTranscriptSummary
----@field summaries table
+---@field estimated_cost any
+---@field session_count number
+---@field sessions table
+---@field tokens_partial boolean
+---@field total_tokens number|nil
 
----@class ChangeTranscriptSummaryListMatch
+---@class ChangeTranscriptSummaryLoadMatch
 ---@field organization_id string
 ---@field ids string
 
@@ -5367,14 +5374,13 @@
 ---@field organization_id string
 
 ---@class DockerBuilderSetting
----@field docker_builder_settings table
 ---@field idle_timeout_seconds number
 ---@field max_concurrency number
 ---@field organization_id string
 ---@field region string
 ---@field runtime_timeout_seconds number
 
----@class DockerBuilderSettingListMatch
+---@class DockerBuilderSettingLoadMatch
 ---@field organization_id string
 
 ---@class DockerBuilderSettingUpdateData
@@ -9419,9 +9425,12 @@
 ---@field tester_number? string
 
 ---@class ProjectOverviewMetric
----@field counts table
+---@field active_runs number
+---@field open_findings number
+---@field ready_environments number
+---@field scenarios table
 
----@class ProjectOverviewMetricListMatch
+---@class ProjectOverviewMetricLoadMatch
 ---@field organization_id string
 ---@field project_id string
 
@@ -10365,16 +10374,26 @@
 ---@field status? string
 
 ---@class RepoStat
----@field repository_stats table
+---@field backend string
+---@field can_refresh boolean
+---@field freshness table
+---@field note string
+---@field physical table
+---@field series table
 
----@class RepoStatListMatch
+---@class RepoStatLoadMatch
 ---@field organization_id string
 ---@field repo_id string
 
 ---@class RepoStatCreateData
 ---@field organization_id string
 ---@field repo_id string
----@field repository_stats table
+---@field backend string
+---@field can_refresh boolean
+---@field freshness table
+---@field note string
+---@field physical table
+---@field series table
 
 ---@class RepoVc
 

@@ -37,7 +37,7 @@ class TestChangeTranscriptSummaryEntity:
         client = ComposalSDK.test(
             None, {"feature": {"validate": {"active": True}}})
         with pytest.raises(Exception) as err:
-            client.ChangeTranscriptSummary(None).list({"organization_id": 1, "ids": "x"}, None)
+            client.ChangeTranscriptSummary(None).load({"organization_id": 1, "ids": "x"}, None)
         assert "validate_failed" == getattr(err.value, "code", None)
 
     def test_should_run_basic_flow(self):
@@ -46,15 +46,14 @@ class TestChangeTranscriptSummaryEntity:
         # multiple ops; skipping any one skips the whole flow (steps depend
         # on each other).
         _live = setup.get("live", False)
-        for _op in ["list"]:
+        for _op in []:
             _skip, _reason = runner.is_control_skipped("entityOp", "change_transcript_summary." + _op, "live" if _live else "unit")
             if _skip:
                 pytest.skip(_reason or "skipped via sdk-test-control.json")
                 return
         if setup["live"]:
-            for _live_key in ["organization01"]:
-                if setup.get("synthetic_only") or setup["idmap"].get(_live_key) is None:
-                    runner.live_miss(LIVE_STRICT, f"Live entity test blocked: needs {_live_key} via COMPOSAL_TEST_CHANGE_TRANSCRIPT_SUMMARY_ENTID")
+            pytest.skip("Live coverage incomplete: the flow has no step to run")
+
         client = setup["client"]
 
         # Bootstrap entity data from existing test data.
@@ -63,17 +62,6 @@ class TestChangeTranscriptSummaryEntity:
         change_transcript_summary_ref01_data = None
         if len(change_transcript_summary_ref01_data_raw) > 0:
             change_transcript_summary_ref01_data = helpers.to_map(change_transcript_summary_ref01_data_raw[0][1])
-
-        if setup["live"]:
-            runner.live_pace()
-        # LIST
-        change_transcript_summary_ref01_ent = client.ChangeTranscriptSummary(None)
-        change_transcript_summary_ref01_match = {
-            "organization_id": setup["idmap"]["organization01"],
-        }
-
-        change_transcript_summary_ref01_list_result = change_transcript_summary_ref01_ent.list(change_transcript_summary_ref01_match, None)
-        assert isinstance(change_transcript_summary_ref01_list_result, list)
 
 
 
